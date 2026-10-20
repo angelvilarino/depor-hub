@@ -632,14 +632,9 @@ La UI muestra un icono de confianza y la fuente.
 
 ---
 
-## 15. Estado actual del proyecto
+## 15. Estado actual del proyecto (Fase 1)
 
-- Fase: **0 (planificación)**.
-- Hecho: esqueleto funcional, alcance ampliado, stack propuesto, fases.
-- Pendiente inmediato: fijar modelo de datos; elegir framework; crear repositorio.
-- Fecha del documento: 19 de octubre de 2026.
-
-### 15.1 Hechos verificados (19-oct-2026)
+### 15.1 Hechos verificados (20-oct-2026)
 - **Categoría:** el Depor juega la temporada 2026-27 en **Primera División (LaLiga)**, tras ascender en 2025-26 con Antonio Hidalgo como entrenador. Es su primera temporada en Primera desde 2017-18. (Fuentes con datos parcialmente contradictorios sobre la clasificación puntual: obtenerla siempre de la API, no de webs de terceros.)
 - **Estadio:** denominación actual "Estadio Abanca-Riazor". La capacidad aparece con valores distintos según fuente (≈32.490 vs 34.611): ejemplo de dato a cruzar con fuente oficial y marcar con nivel de confianza.
 - **football-data.org (plan gratuito):** 12 competiciones incluida La Liga (`PD`), 10 peticiones/minuto, marcadores con retraso, sin alineaciones/tarjetas/estadísticas de partido en el plan gratuito. Cubre calendario, resultados y clasificación; **no vale para directo ni para stats por jugador**.
