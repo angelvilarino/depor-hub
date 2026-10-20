@@ -6,5 +6,19 @@
     "theme": "Theme", "themeSystem": "System", "themeLight": "Light", "themeDark": "Dark",
     "language": "Language", "languageSystem": "System",
     "version": "App version"
+  },
+  "data": {
+    "loading": "Loading data…",
+    "updated": "Updated {{ago}}",
+    "refreshing": "Refreshing… (last data {{ago}})",
+    "offline": "Offline · last data {{ago}}",
+    "ago_now": "just now",
+    "ago_minutes": "{{n}} min ago",
+    "ago_hours": "{{n}} h ago",
+    "ago_days": "{{n}} d ago",
+    "error": "Couldn't load the data.",
+    "notConfigured": "Data URL missing (EXPO_PUBLIC_DATA_BASE_URL).",
+    "retry": "Retry",
+    "seasonLine": "Season {{season}} · matchday {{matchday}}"
   }
 }

@@ -1,8 +1,8 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { DataProvider } from '@/data/DataProvider';
 import i18n, { resolveLanguage } from '@/i18n';
 import { useSettings } from '@/store/settings';
 import { useTheme } from '@/theme/useTheme';
@@ -11,14 +11,13 @@ export default function RootLayout() {
   const { colors, scheme } = useTheme();
   const { t } = useTranslation();
   const language = useSettings((s) => s.language);
-  const [queryClient] = useState(() => new QueryClient());
 
   useEffect(() => {
     void i18n.changeLanguage(resolveLanguage(language));
   }, [language]);
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <DataProvider>
       <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
       <Stack
         screenOptions={{
@@ -30,6 +29,6 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="settings" options={{ presentation: 'modal', title: t('settings.title') }} />
       </Stack>
-    </QueryClientProvider>
+    </DataProvider>
   );
 }

@@ -1,14 +1,21 @@
 import type { ReactNode } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
-export function Screen({ children }: { children: ReactNode }) {
+type ScreenProps = { children: ReactNode; refreshing?: boolean; onRefresh?: () => void };
+
+export function Screen({ children, refreshing = false, onRefresh }: ScreenProps) {
   const { colors } = useTheme();
   return (
     <ScrollView
       style={{ backgroundColor: colors.background }}
       contentContainerStyle={styles.content}
+      refreshControl={
+        onRefresh ? (
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.primary} />
+        ) : undefined
+      }
     >
       {children}
     </ScrollView>
@@ -31,5 +38,5 @@ export function BodyText({ children, muted }: { children: ReactNode; muted?: boo
 
 const styles = StyleSheet.create({
   content: { padding: spacing.md, gap: spacing.md },
-  card: { padding: spacing.md, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth },
+  card: { padding: spacing.md, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, gap: spacing.sm },
 });
