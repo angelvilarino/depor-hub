@@ -16,3 +16,19 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test -- --ci
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/pyproject.toml
+      - run: pip install -e "scripts[dev]"
+      - run: ruff check scripts
+      - run: pytest scripts
+      - name: Los esquemas JSON publicados coinciden con los modelos
+        run: |
+          python -m depor_hub.cli schemas
+          git diff --exit-code packages/schemas
