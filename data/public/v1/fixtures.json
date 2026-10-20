@@ -1,0 +1,1032 @@
+{
+  "updatedAt": "2026-10-20T10:00:07Z",
+  "season": "2026-27",
+  "matches": [
+    {
+      "id": 564635,
+      "utcDate": "2026-08-17T19:00:00Z",
+      "status": "FINISHED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 285,
+        "name": "Elche CF",
+        "shortName": "Elche",
+        "tla": "ELC"
+      },
+      "score": {
+        "home": 1,
+        "away": 1,
+        "halfTimeHome": 1,
+        "halfTimeAway": 0,
+        "winner": "DRAW"
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564640,
+      "utcDate": "2026-08-24T19:30:00Z",
+      "status": "FINISHED",
+      "matchday": 2,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 84,
+        "name": "Málaga CF",
+        "shortName": "Málaga",
+        "tla": "MAL"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": 1,
+        "away": 1,
+        "halfTimeHome": 1,
+        "halfTimeAway": 1,
+        "winner": "DRAW"
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564651,
+      "utcDate": "2026-08-30T17:30:00Z",
+      "status": "FINISHED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 95,
+        "name": "Valencia CF",
+        "shortName": "Valencia",
+        "tla": "VAL"
+      },
+      "score": {
+        "home": 3,
+        "away": 1,
+        "halfTimeHome": 2,
+        "halfTimeAway": 1,
+        "winner": "HOME_TEAM"
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564662,
+      "utcDate": "2026-09-05T19:00:00Z",
+      "status": "FINISHED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 94,
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": 2,
+        "away": 3,
+        "halfTimeHome": 1,
+        "halfTimeAway": 1,
+        "winner": "AWAY_TEAM"
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564668,
+      "utcDate": "2026-09-13T16:30:00Z",
+      "status": "FINISHED",
+      "matchday": 5,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 82,
+        "name": "Getafe CF",
+        "shortName": "Getafe",
+        "tla": "GET"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": 1,
+        "away": 1,
+        "halfTimeHome": 0,
+        "halfTimeAway": 0,
+        "winner": "DRAW"
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564679,
+      "utcDate": "2026-09-16T17:00:00Z",
+      "status": "FINISHED",
+      "matchday": 6,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 559,
+        "name": "Sevilla FC",
+        "shortName": "Sevilla FC",
+        "tla": "SEV"
+      },
+      "score": {
+        "home": 0,
+        "away": 1,
+        "halfTimeHome": 0,
+        "halfTimeAway": 0,
+        "winner": "AWAY_TEAM"
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564695,
+      "utcDate": "2026-09-20T16:30:00Z",
+      "status": "FINISHED",
+      "matchday": 7,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 90,
+        "name": "Real Betis Balompié",
+        "shortName": "Real Betis",
+        "tla": "BET"
+      },
+      "score": {
+        "home": 1,
+        "away": 1,
+        "halfTimeHome": 0,
+        "halfTimeAway": 1,
+        "winner": "DRAW"
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564707,
+      "utcDate": "2026-10-11T14:15:00Z",
+      "status": "FINISHED",
+      "matchday": 8,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 92,
+        "name": "Real Sociedad de Fútbol",
+        "shortName": "Real Sociedad",
+        "tla": "RSO"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": 3,
+        "away": 2,
+        "halfTimeHome": 2,
+        "halfTimeAway": 0,
+        "winner": "HOME_TEAM"
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564716,
+      "utcDate": "2026-10-16T19:00:00Z",
+      "status": "FINISHED",
+      "matchday": 9,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 88,
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV"
+      },
+      "score": {
+        "home": 1,
+        "away": 1,
+        "halfTimeHome": 0,
+        "halfTimeAway": 0,
+        "winner": "DRAW"
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564724,
+      "utcDate": "2026-10-24T19:00:00Z",
+      "status": "TIMED",
+      "matchday": 10,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 78,
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564731,
+      "utcDate": "2026-11-02T20:00:00Z",
+      "status": "TIMED",
+      "matchday": 11,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 79,
+        "name": "CA Osasuna",
+        "shortName": "Osasuna",
+        "tla": "OSA"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564745,
+      "utcDate": "2026-11-07T15:15:00Z",
+      "status": "TIMED",
+      "matchday": 12,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 80,
+        "name": "RCD Espanyol de Barcelona",
+        "shortName": "Espanyol",
+        "tla": "ESP"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564755,
+      "utcDate": "2026-11-22T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 13,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 263,
+        "name": "Deportivo Alavés",
+        "shortName": "Alavés",
+        "tla": "ALA"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564766,
+      "utcDate": "2026-11-29T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 14,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 81,
+        "name": "FC Barcelona",
+        "shortName": "Barça",
+        "tla": "FCB"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564772,
+      "utcDate": "2026-12-06T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 15,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 5335,
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564781,
+      "utcDate": "2026-12-13T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 16,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 77,
+        "name": "Athletic Club",
+        "shortName": "Athletic",
+        "tla": "ATH"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564796,
+      "utcDate": "2026-12-20T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 17,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 86,
+        "name": "Real Madrid CF",
+        "shortName": "Real Madrid",
+        "tla": "RMA"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564804,
+      "utcDate": "2027-01-03T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 18,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 558,
+        "name": "RC Celta de Vigo",
+        "shortName": "Celta",
+        "tla": "CEL"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564812,
+      "utcDate": "2027-01-10T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 19,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 87,
+        "name": "Rayo Vallecano de Madrid",
+        "shortName": "Rayo Vallecano",
+        "tla": "RAY"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564826,
+      "utcDate": "2027-01-17T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 20,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 90,
+        "name": "Real Betis Balompié",
+        "shortName": "Real Betis",
+        "tla": "BET"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564837,
+      "utcDate": "2027-01-24T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 21,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 78,
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564846,
+      "utcDate": "2027-01-31T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 22,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 79,
+        "name": "CA Osasuna",
+        "shortName": "Osasuna",
+        "tla": "OSA"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564854,
+      "utcDate": "2027-02-07T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 23,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 84,
+        "name": "Málaga CF",
+        "shortName": "Málaga",
+        "tla": "MAL"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564863,
+      "utcDate": "2027-02-14T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 24,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 285,
+        "name": "Elche CF",
+        "shortName": "Elche",
+        "tla": "ELC"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564876,
+      "utcDate": "2027-02-21T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 25,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 92,
+        "name": "Real Sociedad de Fútbol",
+        "shortName": "Real Sociedad",
+        "tla": "RSO"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564879,
+      "utcDate": "2027-02-28T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 26,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 88,
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564896,
+      "utcDate": "2027-03-07T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 27,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 82,
+        "name": "Getafe CF",
+        "shortName": "Getafe",
+        "tla": "GET"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564906,
+      "utcDate": "2027-03-14T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 28,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 81,
+        "name": "FC Barcelona",
+        "shortName": "Barça",
+        "tla": "FCB"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564916,
+      "utcDate": "2027-03-21T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 29,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 95,
+        "name": "Valencia CF",
+        "shortName": "Valencia",
+        "tla": "VAL"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564922,
+      "utcDate": "2027-04-04T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 30,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 94,
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564933,
+      "utcDate": "2027-04-11T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 31,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 559,
+        "name": "Sevilla FC",
+        "shortName": "Sevilla FC",
+        "tla": "SEV"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564943,
+      "utcDate": "2027-04-18T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 32,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 558,
+        "name": "RC Celta de Vigo",
+        "shortName": "Celta",
+        "tla": "CEL"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564953,
+      "utcDate": "2027-04-21T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 33,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 77,
+        "name": "Athletic Club",
+        "shortName": "Athletic",
+        "tla": "ATH"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564958,
+      "utcDate": "2027-05-02T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 34,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 5335,
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564973,
+      "utcDate": "2027-05-09T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 35,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 87,
+        "name": "Rayo Vallecano de Madrid",
+        "shortName": "Rayo Vallecano",
+        "tla": "RAY"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    },
+    {
+      "id": 564983,
+      "utcDate": "2027-05-16T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 36,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 263,
+        "name": "Deportivo Alavés",
+        "shortName": "Alavés",
+        "tla": "ALA"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564997,
+      "utcDate": "2027-05-23T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 37,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "away": {
+        "id": 80,
+        "name": "RCD Espanyol de Barcelona",
+        "shortName": "Espanyol",
+        "tla": "ESP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": true
+    },
+    {
+      "id": 564999,
+      "utcDate": "2027-05-30T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 38,
+      "stage": "REGULAR_SEASON",
+      "home": {
+        "id": 86,
+        "name": "Real Madrid CF",
+        "shortName": "Real Madrid",
+        "tla": "RMA"
+      },
+      "away": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
+      },
+      "deporIsHome": false
+    }
+  ]
+}

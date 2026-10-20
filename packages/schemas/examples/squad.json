@@ -1,0 +1,10 @@
+{
+  "updatedAt": "2026-01-01T00:00:00Z",
+  "coach": { "name": "Entrenador Ejemplo", "nationality": null },
+  "players": [
+    {
+      "id": 10, "name": "Jugador Ejemplo", "position": "Midfield",
+      "dateOfBirth": "2000-01-31", "nationality": "Spain", "shirtNumber": null, "contractUntil": null
+    }
+  ]
+}

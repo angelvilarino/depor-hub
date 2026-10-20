@@ -1,0 +1,28 @@
+{
+  "updatedAt": "2026-01-01T00:00:00Z",
+  "season": "2026-27",
+  "matches": [
+    {
+      "id": 100,
+      "utcDate": "2026-08-16T19:00:00Z",
+      "status": "FINISHED",
+      "matchday": 1,
+      "stage": "REGULAR_SEASON",
+      "home": { "id": 1, "name": "Equipo Ejemplo A", "shortName": "Ejemplo A", "tla": "EJA" },
+      "away": { "id": 2, "name": "Equipo Ejemplo B", "shortName": null, "tla": null },
+      "score": { "home": 2, "away": 0, "halfTimeHome": 1, "halfTimeAway": 0, "winner": "HOME_TEAM" },
+      "deporIsHome": true
+    },
+    {
+      "id": 101,
+      "utcDate": "2026-08-23T19:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
+      "stage": null,
+      "home": { "id": 2, "name": "Equipo Ejemplo B", "shortName": null, "tla": null },
+      "away": { "id": 1, "name": "Equipo Ejemplo A", "shortName": "Ejemplo A", "tla": "EJA" },
+      "score": { "home": null, "away": null, "halfTimeHome": null, "halfTimeAway": null, "winner": null },
+      "deporIsHome": false
+    }
+  ]
+}

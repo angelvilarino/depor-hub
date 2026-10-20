@@ -1,0 +1,154 @@
+{
+  "$defs": {
+    "StandingRow": {
+      "additionalProperties": false,
+      "properties": {
+        "draw": {
+          "title": "Draw",
+          "type": "integer"
+        },
+        "form": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Form"
+        },
+        "goalDifference": {
+          "title": "Goaldifference",
+          "type": "integer"
+        },
+        "goalsAgainst": {
+          "title": "Goalsagainst",
+          "type": "integer"
+        },
+        "goalsFor": {
+          "title": "Goalsfor",
+          "type": "integer"
+        },
+        "lost": {
+          "title": "Lost",
+          "type": "integer"
+        },
+        "played": {
+          "title": "Played",
+          "type": "integer"
+        },
+        "points": {
+          "title": "Points",
+          "type": "integer"
+        },
+        "position": {
+          "title": "Position",
+          "type": "integer"
+        },
+        "team": {
+          "$ref": "#/$defs/TeamRef"
+        },
+        "won": {
+          "title": "Won",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "position",
+        "team",
+        "played",
+        "won",
+        "draw",
+        "lost",
+        "points",
+        "goalsFor",
+        "goalsAgainst",
+        "goalDifference"
+      ],
+      "title": "StandingRow",
+      "type": "object"
+    },
+    "TeamRef": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "shortName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shortname"
+        },
+        "tla": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tla"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "TeamRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "matchday": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Matchday"
+    },
+    "season": {
+      "title": "Season",
+      "type": "string"
+    },
+    "table": {
+      "items": {
+        "$ref": "#/$defs/StandingRow"
+      },
+      "title": "Table",
+      "type": "array"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "season",
+    "table"
+  ],
+  "title": "Standings",
+  "type": "object"
+}

@@ -1,0 +1,145 @@
+{
+  "$defs": {
+    "Coach": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "nationality": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nationality"
+        }
+      },
+      "title": "Coach",
+      "type": "object"
+    },
+    "Player": {
+      "additionalProperties": false,
+      "properties": {
+        "contractUntil": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Contractuntil"
+        },
+        "dateOfBirth": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dateofbirth"
+        },
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "nationality": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nationality"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Position"
+        },
+        "shirtNumber": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shirtnumber"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "Player",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "coach": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Coach"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "players": {
+      "items": {
+        "$ref": "#/$defs/Player"
+      },
+      "title": "Players",
+      "type": "array"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "players"
+  ],
+  "title": "Squad",
+  "type": "object"
+}

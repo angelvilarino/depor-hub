@@ -1,0 +1,261 @@
+{
+  "updatedAt": "2026-10-20T10:00:07Z",
+  "coach": {
+    "name": "Antonio Hidalgo",
+    "nationality": "Spain"
+  },
+  "players": [
+    {
+      "id": 79533,
+      "name": "Álvaro Fernández",
+      "position": "Goalkeeper",
+      "dateOfBirth": "1998-04-13",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 171678,
+      "name": "German Parreno",
+      "position": "Goalkeeper",
+      "dateOfBirth": "1993-02-16",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 172628,
+      "name": "Leo Román",
+      "position": "Goalkeeper",
+      "dateOfBirth": "2000-07-06",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 3134,
+      "name": "Ximo Navarro",
+      "position": "Defence",
+      "dateOfBirth": "1990-01-23",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 7646,
+      "name": "Angeliño",
+      "position": "Defence",
+      "dateOfBirth": "1997-01-04",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 124711,
+      "name": "Giacomo Quagliata",
+      "position": "Defence",
+      "dateOfBirth": "2000-02-19",
+      "nationality": "Italy",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 145500,
+      "name": "Arnau Comas",
+      "position": "Defence",
+      "dateOfBirth": "2000-04-11",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 177239,
+      "name": "Lucas Noubi",
+      "position": "Defence",
+      "dateOfBirth": "2005-01-15",
+      "nationality": "Belgium",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 185093,
+      "name": "Adrià Altimira",
+      "position": "Defence",
+      "dateOfBirth": "2001-03-28",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 186699,
+      "name": "Miguel Loureiro",
+      "position": "Defence",
+      "dateOfBirth": "1996-11-21",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 213277,
+      "name": "José Giménez",
+      "position": "Defence",
+      "dateOfBirth": "1995-01-20",
+      "nationality": "Uruguay",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 226242,
+      "name": "Dani Barcia",
+      "position": "Defence",
+      "dateOfBirth": "2003-01-19",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 298636,
+      "name": "Ede Bright",
+      "position": "Defence",
+      "dateOfBirth": "2007-02-18",
+      "nationality": "Poland",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 69837,
+      "name": "Mario Soriano",
+      "position": "Midfield",
+      "dateOfBirth": "2002-04-22",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 98199,
+      "name": "Riki Rodríguez",
+      "position": "Midfield",
+      "dateOfBirth": "1997-09-25",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 188817,
+      "name": "Marc Casado",
+      "position": "Midfield",
+      "dateOfBirth": "2003-09-14",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 190825,
+      "name": "Lorenzo Amatucci",
+      "position": "Midfield",
+      "dateOfBirth": "2004-02-05",
+      "nationality": "Italy",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 226170,
+      "name": "Diego Villares",
+      "position": "Midfield",
+      "dateOfBirth": "1996-06-17",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 245913,
+      "name": "Teun Gijselhart",
+      "position": "Midfield",
+      "dateOfBirth": "2005-04-06",
+      "nationality": "Netherlands",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 246474,
+      "name": "Jonathan Asp-Jensen",
+      "position": "Midfield",
+      "dateOfBirth": "2006-01-14",
+      "nationality": "Denmark",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 289952,
+      "name": "Noé Carrillo",
+      "position": "Midfield",
+      "dateOfBirth": "2006-12-28",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 4221,
+      "name": "Adama Traoré",
+      "position": "Offence",
+      "dateOfBirth": "1996-01-25",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 7801,
+      "name": "Pierre-Emerick Aubameyang",
+      "position": "Offence",
+      "dateOfBirth": "1989-06-18",
+      "nationality": "Gabon",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 114100,
+      "name": "Zakaria Eddahchouri",
+      "position": "Offence",
+      "dateOfBirth": "2000-05-11",
+      "nationality": "Netherlands",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 176255,
+      "name": "Luismi Cruz",
+      "position": "Offence",
+      "dateOfBirth": "2001-05-23",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 225956,
+      "name": "David Mella",
+      "position": "Offence",
+      "dateOfBirth": "2005-05-23",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 227683,
+      "name": "Peke",
+      "position": "Offence",
+      "dateOfBirth": "2002-12-10",
+      "nationality": "Spain",
+      "shirtNumber": null,
+      "contractUntil": null
+    },
+    {
+      "id": 288836,
+      "name": "Nsongo Tonfack",
+      "position": "Offence",
+      "dateOfBirth": "2004-09-21",
+      "nationality": "Cameroon",
+      "shirtNumber": null,
+      "contractUntil": null
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "depor-hub",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "mobile": "npm run start -w apps/mobile",
+    "lint": "npm run lint -w apps/mobile",
+    "typecheck": "npm run typecheck -w apps/mobile",
+    "test": "npm run test -w apps/mobile",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@testing-library/react-native": "^14.1.0",
+    "eslint": "^9.39.5",
+    "prettier": "^3.3.0"
+  },
+  "dependencies": {
+    "eslint-config-expo": "~57.0.2",
+    "jest": "~29.7.0",
+    "jest-expo": "~57.0.6"
+  }
+}

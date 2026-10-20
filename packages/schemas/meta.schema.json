@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "TeamInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "shortName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shortname"
+        },
+        "tla": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tla"
+        },
+        "venue": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Venue"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "TeamInfo",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "competitionCode": {
+      "title": "Competitioncode",
+      "type": "string"
+    },
+    "competitionName": {
+      "title": "Competitionname",
+      "type": "string"
+    },
+    "dataHash": {
+      "title": "Datahash",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "title": "Schemaversion",
+      "type": "integer"
+    },
+    "season": {
+      "title": "Season",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "team": {
+      "$ref": "#/$defs/TeamInfo"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "season",
+    "competitionCode",
+    "competitionName",
+    "team",
+    "updatedAt",
+    "dataHash",
+    "source"
+  ],
+  "title": "Meta",
+  "type": "object"
+}

@@ -1,0 +1,204 @@
+{
+  "$defs": {
+    "Match": {
+      "additionalProperties": false,
+      "properties": {
+        "away": {
+          "$ref": "#/$defs/TeamRef"
+        },
+        "deporIsHome": {
+          "title": "Deporishome",
+          "type": "boolean"
+        },
+        "home": {
+          "$ref": "#/$defs/TeamRef"
+        },
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "matchday": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Matchday"
+        },
+        "score": {
+          "$ref": "#/$defs/Score"
+        },
+        "stage": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stage"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "utcDate": {
+          "title": "Utcdate",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "utcDate",
+        "status",
+        "home",
+        "away",
+        "score",
+        "deporIsHome"
+      ],
+      "title": "Match",
+      "type": "object"
+    },
+    "Score": {
+      "additionalProperties": false,
+      "properties": {
+        "away": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Away"
+        },
+        "halfTimeAway": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Halftimeaway"
+        },
+        "halfTimeHome": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Halftimehome"
+        },
+        "home": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Home"
+        },
+        "winner": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Winner"
+        }
+      },
+      "title": "Score",
+      "type": "object"
+    },
+    "TeamRef": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "shortName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shortname"
+        },
+        "tla": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tla"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "TeamRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "matches": {
+      "items": {
+        "$ref": "#/$defs/Match"
+      },
+      "title": "Matches",
+      "type": "array"
+    },
+    "season": {
+      "title": "Season",
+      "type": "string"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "season",
+    "matches"
+  ],
+  "title": "Fixtures",
+  "type": "object"
+}
