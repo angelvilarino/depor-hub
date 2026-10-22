@@ -32,6 +32,7 @@ class TeamRef(Public):
     name: str
     short_name: Optional[str] = None
     tla: Optional[str] = None
+    crest_url: Optional[str] = None  # URL externa (ADR 0006): no se almacena ni se redistribuye
 
 
 class Source(Public):
@@ -94,6 +95,8 @@ class Match(Public):
     away: TeamRef
     score: Score
     depor_is_home: bool
+    venue: Optional[str] = None  # sede del partido (la del local si la API no la da)
+    referee: Optional[str] = None  # solo si la API lo informa
 
 
 class Fixtures(Public):

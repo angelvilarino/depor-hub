@@ -41,6 +41,18 @@
     "TeamInfo": {
       "additionalProperties": false,
       "properties": {
+        "crestUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cresturl"
+        },
         "id": {
           "title": "Id",
           "type": "integer"

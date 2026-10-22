@@ -5,6 +5,7 @@
     "title": "Ajustes",
     "theme": "Tema", "themeSystem": "Sistema", "themeLight": "Claro", "themeDark": "Oscuro",
     "language": "Idioma", "languageSystem": "Sistema",
+    "reminders": "Recordatorios de partido", "remindersOn": "Activados", "remindersOff": "Desactivados",
     "version": "Versión de la app"
   },
   "data": {
@@ -20,5 +21,40 @@
     "notConfigured": "Falta la URL de datos (EXPO_PUBLIC_DATA_BASE_URL).",
     "retry": "Reintentar",
     "seasonLine": "Temporada {{season}} · jornada {{matchday}}"
+  },
+  "calendar": {
+    "upcoming": "Próximos", "results": "Resultados", "standings": "Clasificación",
+    "emptyUpcoming": "No hay partidos pendientes.",
+    "emptyResults": "Todavía no hay resultados.",
+    "emptyStandings": "Clasificación no disponible.",
+    "timeTbc": "Hora por confirmar",
+    "versus": "contra",
+    "matchday": "Jornada {{n}}",
+    "export": "Exportar calendario (.ics)",
+    "exportError": "No se ha podido exportar el calendario.",
+    "outcome": { "W": "G", "D": "E", "L": "P" },
+    "outcomeLong": { "W": "Victoria", "D": "Empate", "L": "Derrota" },
+    "col": { "pos": "Pos", "team": "Equipo", "played": "PJ", "goalDiff": "DG", "points": "Pts" },
+    "status": {
+      "SCHEDULED": "Programado", "TIMED": "Hora confirmada", "IN_PLAY": "En juego", "PAUSED": "Descanso",
+      "FINISHED": "Finalizado", "AWARDED": "Adjudicado", "POSTPONED": "Aplazado",
+      "SUSPENDED": "Suspendido", "CANCELLED": "Cancelado"
+    }
+  },
+  "match": {
+    "title": "Partido",
+    "notFound": "No se ha encontrado el partido.",
+    "date": "Fecha", "time": "Hora (Madrid)", "matchday": "Jornada", "venue": "Sede", "referee": "Árbitro", "halfTime": "Descanso",
+    "remind": "Recordarme", "removeReminder": "Quitar recordatorio",
+    "reminderNeedsTime": "El recordatorio estará disponible cuando se confirme la hora del partido.",
+    "permissionDenied": "Activa las notificaciones de la app en los ajustes del sistema para recibir recordatorios.",
+    "addToCalendar": "Añadir al calendario",
+    "addError": "No se ha podido abrir el calendario.",
+    "lineups": "Alineaciones y eventos"
+  },
+  "reminder": {
+    "channel": "Recordatorios de partido",
+    "dayBefore": "Mañana, {{time}}",
+    "hourBefore": "Empieza en 1 hora ({{time}})"
   }
 }

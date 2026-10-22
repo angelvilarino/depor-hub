@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataProvider } from '@/data/DataProvider';
+import { ReminderSync } from '@/features/reminders/ReminderSync';
 import i18n, { resolveLanguage } from '@/i18n';
 import { useSettings } from '@/store/settings';
 import { useTheme } from '@/theme/useTheme';
@@ -18,6 +19,7 @@ export default function RootLayout() {
 
   return (
     <DataProvider>
+      <ReminderSync />
       <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
       <Stack
         screenOptions={{
@@ -28,6 +30,7 @@ export default function RootLayout() {
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="settings" options={{ presentation: 'modal', title: t('settings.title') }} />
+        <Stack.Screen name="match/[id]" options={{ title: t('match.title') }} />
       </Stack>
     </DataProvider>
   );

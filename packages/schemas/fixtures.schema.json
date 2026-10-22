@@ -29,6 +29,18 @@
           "default": null,
           "title": "Matchday"
         },
+        "referee": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Referee"
+        },
         "score": {
           "$ref": "#/$defs/Score"
         },
@@ -51,6 +63,18 @@
         "utcDate": {
           "title": "Utcdate",
           "type": "string"
+        },
+        "venue": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Venue"
         }
       },
       "required": [
@@ -135,6 +159,18 @@
     "TeamRef": {
       "additionalProperties": false,
       "properties": {
+        "crestUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cresturl"
+        },
         "id": {
           "title": "Id",
           "type": "integer"

@@ -3,7 +3,7 @@
   "season": "2026-27",
   "competitionCode": "XX",
   "competitionName": "Liga de ejemplo",
-  "team": { "id": 1, "name": "Equipo Ejemplo A", "shortName": "Ejemplo A", "tla": "EJA", "venue": null },
+  "team": { "id": 1, "name": "Equipo Ejemplo A", "shortName": "Ejemplo A", "tla": "EJA", "crestUrl": "https://example.test/crests/eja.svg", "venue": null },
   "updatedAt": "2026-01-01T00:00:00Z",
   "dataHash": "0000000000000000",
   "source": { "name": "ejemplo", "url": null, "note": "Ejemplo SINTÉTICO para tests de contrato. No son datos reales." }

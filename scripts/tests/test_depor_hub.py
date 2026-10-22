@@ -57,6 +57,28 @@ def test_fixtures_filter_sort_and_home_flag():
     assert out.matches[1].score.home is None
 
 
+def test_fixtures_crest_venue_and_referee():
+    a = {**team(1, "A"), "crest": "https://c.example/a.svg"}
+    b = team(2, "B")
+    away = raw_match(1, "2026-08-16T18:00:00Z", b, a)  # el equipo 1 juega fuera
+    away["referees"] = [{"id": 9, "name": "Árbitro Uno", "type": "ASSISTANT_REFEREE_N1"},
+                        {"id": 8, "name": "Árbitro Dos", "type": "REFEREE"}]
+    own_venue = raw_match(2, "2026-08-23T18:00:00Z", a, b)
+    own_venue["venue"] = "Estadio Propio"
+    nothing = raw_match(3, "2026-08-30T18:00:00Z", b, a)
+    raw = s.FDMatches.model_validate({"matches": [away, own_venue, nothing]})
+
+    out = t.build_fixtures(raw, 1, "2026-27", NOW, {2: "Campo de B", 3: "No se usa"})
+    x1, x2, x3 = out.matches
+    assert x1.venue == "Campo de B"  # sede del local
+    assert x1.referee == "Árbitro Dos"  # prioriza tipo REFEREE
+    assert x1.away.crest_url == "https://c.example/a.svg" and x1.home.crest_url is None
+    assert x2.venue == "Estadio Propio"  # la del partido manda
+    assert x2.referee is None  # sin dato: null, no se inventa
+    assert x3.venue == "Campo de B"
+    assert t.dump(out)["matches"][0]["away"]["crestUrl"] == "https://c.example/a.svg"
+
+
 def test_hash_ignores_timestamps_but_not_content():
     base = {"a.json": {"updatedAt": "x", "v": 1}, "meta.json": {"dataHash": "h", "updatedAt": "x"}}
     other = {"a.json": {"updatedAt": "y", "v": 1}, "meta.json": {"dataHash": "z", "updatedAt": "y"}}

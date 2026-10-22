@@ -38,7 +38,7 @@ function Chips<T extends string>(props: {
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
-  const { theme, language, setTheme, setLanguage } = useSettings();
+  const { theme, language, remindersEnabled, setTheme, setLanguage, setRemindersEnabled } = useSettings();
   return (
     <Screen>
       <Card>
@@ -63,6 +63,17 @@ export default function SettingsScreen() {
             { value: 'es', label: 'Español' },
             { value: 'gl', label: 'Galego' },
             { value: 'en', label: 'English' },
+          ]}
+        />
+      </Card>
+      <Card>
+        <BodyText>{t('settings.reminders')}</BodyText>
+        <Chips<'on' | 'off'>
+          value={remindersEnabled ? 'on' : 'off'}
+          onChange={(v) => setRemindersEnabled(v === 'on')}
+          options={[
+            { value: 'on', label: t('settings.remindersOn') },
+            { value: 'off', label: t('settings.remindersOff') },
           ]}
         />
       </Card>

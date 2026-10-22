@@ -1,4 +1,9 @@
 {
   "tabs": { "home": "Inicio", "team": "Equipo", "calendar": "Calendario", "news": "Novas", "club": "Club" },
-  "settings": { "title": "Axustes" }
+  "settings": { "title": "Axustes", "reminders": "Lembretes de partido", "remindersOn": "Activados", "remindersOff": "Desactivados" },
+  "calendar": {
+    "upcoming": "Próximos", "results": "Resultados", "standings": "Clasificación",
+    "timeTbc": "Hora por confirmar", "matchday": "Xornada {{n}}"
+  },
+  "match": { "title": "Partido", "remind": "Lembrarme", "addToCalendar": "Engadir ao calendario" }
 }

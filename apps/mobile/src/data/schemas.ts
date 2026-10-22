@@ -4,11 +4,16 @@ import { z } from 'zod';
 
 const iso = z.string().refine((s) => !Number.isNaN(Date.parse(s)), 'fecha ISO inválida');
 
+// Campos añadidos en ADR 0006 (crestUrl, venue, referee): Python siempre los emite, pero aquí
+// toleramos su ausencia (default null) para no romper con un JSON publicado antes del cambio.
+const optionalNull = () => z.string().nullable().default(null);
+
 export const TeamRef = z.strictObject({
   id: z.number().int(),
   name: z.string(),
   shortName: z.string().nullable(),
   tla: z.string().nullable(),
+  crestUrl: optionalNull(),
 });
 
 export const Meta = z.strictObject({
@@ -61,6 +66,8 @@ export const Match = z.strictObject({
   away: TeamRef,
   score: Score,
   deporIsHome: z.boolean(),
+  venue: optionalNull(),
+  referee: optionalNull(),
 });
 
 export const Fixtures = z.strictObject({
@@ -91,3 +98,4 @@ export type FixturesT = z.infer<typeof Fixtures>;
 export type SquadT = z.infer<typeof Squad>;
 export type MatchT = z.infer<typeof Match>;
 export type PlayerT = z.infer<typeof Player>;
+export type TeamRefT = z.infer<typeof TeamRef>;

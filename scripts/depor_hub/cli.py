@@ -50,8 +50,9 @@ def cmd_ingest(args: argparse.Namespace) -> int:
         team = s.FDTeam.model_validate(client.get(f"/teams/{team.id}"))
 
     now = _now()
+    venues = {x.id: x.venue for x in teams_raw.teams}  # sede de los partidos fuera de casa
     standings = t.build_standings(standings_raw, season, comp.currentSeason.currentMatchday, now)
-    fixtures = t.build_fixtures(matches_raw, team.id, season, now)
+    fixtures = t.build_fixtures(matches_raw, team.id, season, now, venues)
     squad = t.build_squad(team, now)
     meta = t.build_meta(comp, team, season, now)
 
@@ -99,6 +100,10 @@ def cmd_probe(args: argparse.Namespace) -> int:
     ms = s.FDMatches.model_validate(client.get(f"/competitions/{COMPETITION}/matches"))
     teams = s.FDTeams.model_validate(client.get(f"/competitions/{COMPETITION}/teams"))
     print(f"Partidos totales de la competición: {len(ms.matches)}; equipos: {len(teams.teams)}")
+    print(f"Equipos con escudo (crest): {sum(1 for x in teams.teams if x.crest)}/{len(teams.teams)}")
+    print(f"Equipos con estadio (venue): {sum(1 for x in teams.teams if x.venue)}/{len(teams.teams)}")
+    print(f"Partidos con sede propia: {sum(1 for x in ms.matches if x.venue)}/{len(ms.matches)}")
+    print(f"Partidos con árbitro: {sum(1 for x in ms.matches if x.referees)}/{len(ms.matches)}")
     try:
         team = t.find_team(teams.teams, _team_id())
     except LookupError as exc:

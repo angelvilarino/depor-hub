@@ -5,6 +5,7 @@
     "title": "Settings",
     "theme": "Theme", "themeSystem": "System", "themeLight": "Light", "themeDark": "Dark",
     "language": "Language", "languageSystem": "System",
+    "reminders": "Match reminders", "remindersOn": "On", "remindersOff": "Off",
     "version": "App version"
   },
   "data": {
@@ -20,5 +21,40 @@
     "notConfigured": "Data URL missing (EXPO_PUBLIC_DATA_BASE_URL).",
     "retry": "Retry",
     "seasonLine": "Season {{season}} · matchday {{matchday}}"
+  },
+  "calendar": {
+    "upcoming": "Upcoming", "results": "Results", "standings": "Table",
+    "emptyUpcoming": "No upcoming matches.",
+    "emptyResults": "No results yet.",
+    "emptyStandings": "Table not available.",
+    "timeTbc": "Time TBC",
+    "versus": "versus",
+    "matchday": "Matchday {{n}}",
+    "export": "Export calendar (.ics)",
+    "exportError": "Couldn't export the calendar.",
+    "outcome": { "W": "W", "D": "D", "L": "L" },
+    "outcomeLong": { "W": "Win", "D": "Draw", "L": "Loss" },
+    "col": { "pos": "Pos", "team": "Team", "played": "P", "goalDiff": "GD", "points": "Pts" },
+    "status": {
+      "SCHEDULED": "Scheduled", "TIMED": "Time confirmed", "IN_PLAY": "Live", "PAUSED": "Half-time",
+      "FINISHED": "Full-time", "AWARDED": "Awarded", "POSTPONED": "Postponed",
+      "SUSPENDED": "Suspended", "CANCELLED": "Cancelled"
+    }
+  },
+  "match": {
+    "title": "Match",
+    "notFound": "Match not found.",
+    "date": "Date", "time": "Time (Madrid)", "matchday": "Matchday", "venue": "Venue", "referee": "Referee", "halfTime": "Half-time",
+    "remind": "Remind me", "removeReminder": "Remove reminder",
+    "reminderNeedsTime": "Reminders will be available once the kick-off time is confirmed.",
+    "permissionDenied": "Enable notifications for the app in system settings to get reminders.",
+    "addToCalendar": "Add to calendar",
+    "addError": "Couldn't open the calendar.",
+    "lineups": "Line-ups and events"
+  },
+  "reminder": {
+    "channel": "Match reminders",
+    "dayBefore": "Tomorrow, {{time}}",
+    "hourBefore": "Kick-off in 1 hour ({{time}})"
   }
 }

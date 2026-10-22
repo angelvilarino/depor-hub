@@ -27,7 +27,16 @@
     "plugins": [
       "expo-router",
       "expo-status-bar",
-      "expo-localization"
+      "expo-localization",
+      "expo-notifications",
+      [
+        "expo-calendar",
+        {
+          "calendarPermission": "Depor Hub añade los partidos que tú elijas a tu calendario."
+        }
+      ],
+      "expo-sharing",
+      "expo-image"
     ]
   }
 }

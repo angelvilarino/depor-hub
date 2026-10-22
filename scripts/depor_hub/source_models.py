@@ -20,6 +20,7 @@ class FDTeamRef(Raw):
     name: str
     shortName: Optional[str] = None
     tla: Optional[str] = None
+    crest: Optional[str] = None
 
 
 class FDSeason(Raw):
@@ -45,6 +46,12 @@ class FDScore(Raw):
     halfTime: FDScorePart = Field(default_factory=FDScorePart)
 
 
+class FDReferee(Raw):
+    id: Optional[int] = None
+    name: Optional[str] = None
+    type: Optional[str] = None
+
+
 class FDMatch(Raw):
     id: int
     utcDate: str
@@ -54,6 +61,8 @@ class FDMatch(Raw):
     homeTeam: FDTeamRef
     awayTeam: FDTeamRef
     score: FDScore = Field(default_factory=FDScore)
+    venue: Optional[str] = None  # no siempre viene
+    referees: list[FDReferee] = Field(default_factory=list)  # puede venir vacío en el plan gratuito
 
 
 class FDMatches(Raw):
@@ -103,6 +112,7 @@ class FDTeam(Raw):
     name: str
     shortName: Optional[str] = None
     tla: Optional[str] = None
+    crest: Optional[str] = None
     venue: Optional[str] = None
     coach: Optional[FDCoach] = None
     squad: list[FDPerson] = Field(default_factory=list)

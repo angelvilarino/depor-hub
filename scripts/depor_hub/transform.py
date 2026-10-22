@@ -47,7 +47,9 @@ def find_team(teams: list[s.FDTeam], team_id: int | None = None) -> s.FDTeam:
 
 
 def _ref(t: s.FDTeamRef) -> m.TeamRef:
-    return m.TeamRef(id=t.id, name=t.name, short_name=t.shortName, tla=t.tla)
+    return m.TeamRef(
+        id=t.id, name=t.name, short_name=t.shortName, tla=t.tla, crest_url=t.crest or None
+    )
 
 
 def build_standings(
@@ -75,9 +77,23 @@ def build_standings(
     return m.Standings(updated_at=updated_at, season=season, matchday=matchday, table=rows)
 
 
+def _referee(refs: list[s.FDReferee]) -> str | None:
+    """Árbitro principal si la API lo informa; si no, None (nunca se inventa)."""
+    named = [r for r in refs if r.name]
+    main = [r for r in named if (r.type or "").upper() == "REFEREE"]
+    chosen = main or named
+    return chosen[0].name if chosen else None
+
+
 def build_fixtures(
-    raw: s.FDMatches, team_id: int, season: str, updated_at: str
+    raw: s.FDMatches,
+    team_id: int,
+    season: str,
+    updated_at: str,
+    venues: dict[int, str | None] | None = None,
 ) -> m.Fixtures:
+    """`venues`: id de equipo -> estadio. Si el partido no trae sede, se usa la del local."""
+    venues = venues or {}
     mine = [x for x in raw.matches if team_id in (x.homeTeam.id, x.awayTeam.id)]
     if not mine:
         raise ValueError("No hay partidos del equipo en la respuesta")
@@ -99,6 +115,8 @@ def build_fixtures(
                 winner=x.score.winner,
             ),
             depor_is_home=x.homeTeam.id == team_id,
+            venue=x.venue or venues.get(x.homeTeam.id) or None,
+            referee=_referee(x.referees),
         )
         for x in mine
     ]
@@ -140,7 +158,12 @@ def build_meta(
         competition_code=comp.code,
         competition_name=comp.name,
         team=m.TeamInfo(
-            id=team.id, name=team.name, short_name=team.shortName, tla=team.tla, venue=team.venue
+            id=team.id,
+            name=team.name,
+            short_name=team.shortName,
+            tla=team.tla,
+            crest_url=team.crest or None,
+            venue=team.venue,
         ),
         updated_at=updated_at,
         data_hash="",

@@ -8,10 +8,12 @@
       "status": "FINISHED",
       "matchday": 1,
       "stage": "REGULAR_SEASON",
-      "home": { "id": 1, "name": "Equipo Ejemplo A", "shortName": "Ejemplo A", "tla": "EJA" },
-      "away": { "id": 2, "name": "Equipo Ejemplo B", "shortName": null, "tla": null },
+      "home": { "id": 1, "name": "Equipo Ejemplo A", "shortName": "Ejemplo A", "tla": "EJA", "crestUrl": "https://example.test/crests/eja.svg" },
+      "away": { "id": 2, "name": "Equipo Ejemplo B", "shortName": null, "tla": null, "crestUrl": null },
       "score": { "home": 2, "away": 0, "halfTimeHome": 1, "halfTimeAway": 0, "winner": "HOME_TEAM" },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Ejemplo",
+      "referee": "Árbitro Ejemplo"
     },
     {
       "id": 101,
@@ -19,10 +21,12 @@
       "status": "SCHEDULED",
       "matchday": 2,
       "stage": null,
-      "home": { "id": 2, "name": "Equipo Ejemplo B", "shortName": null, "tla": null },
-      "away": { "id": 1, "name": "Equipo Ejemplo A", "shortName": "Ejemplo A", "tla": "EJA" },
+      "home": { "id": 2, "name": "Equipo Ejemplo B", "shortName": null, "tla": null, "crestUrl": null },
+      "away": { "id": 1, "name": "Equipo Ejemplo A", "shortName": "Ejemplo A", "tla": "EJA", "crestUrl": "https://example.test/crests/eja.svg" },
       "score": { "home": null, "away": null, "halfTimeHome": null, "halfTimeAway": null, "winner": null },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": null,
+      "referee": null
     }
   ]
 }

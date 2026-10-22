@@ -35,7 +35,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
       persistOptions={{
         persister,
         maxAge: GC_TIME,
-        buster: 'data-v1', // súbelo si cambias el contrato de datos de forma incompatible
+        buster: 'data-v2', // v2: el contrato añadió crestUrl/venue/referee (ADR 0006); descarta la caché anterior
         dehydrateOptions: { shouldDehydrateQuery: (q) => q.state.status === 'success' },
       }}
     >
