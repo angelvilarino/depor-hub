@@ -8,10 +8,11 @@
     "name": "RC Deportivo La Coruña",
     "shortName": "Deportivo",
     "tla": "DEP",
+    "crestUrl": "https://crests.football-data.org/560.png",
     "venue": "Estadio Abanca-Riazor"
   },
-  "updatedAt": "2026-10-22T07:34:47Z",
-  "dataHash": "bb58cde97777996a",
+  "updatedAt": "2026-10-22T07:41:23Z",
+  "dataHash": "75660b4bbbfd02ed",
   "source": {
     "name": "football-data.org",
     "url": "https://www.football-data.org",

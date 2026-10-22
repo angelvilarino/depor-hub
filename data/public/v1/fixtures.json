@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T07:34:47Z",
+  "updatedAt": "2026-10-22T07:41:23Z",
   "season": "2026-27",
   "matches": [
     {
@@ -12,13 +12,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 285,
         "name": "Elche CF",
         "shortName": "Elche",
-        "tla": "ELC"
+        "tla": "ELC",
+        "crestUrl": "https://crests.football-data.org/285.png"
       },
       "score": {
         "home": 1,
@@ -27,7 +29,9 @@
         "halfTimeAway": 0,
         "winner": "DRAW"
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": "Francisco Hernández Maeso"
     },
     {
       "id": 564640,
@@ -39,13 +43,15 @@
         "id": 84,
         "name": "Málaga CF",
         "shortName": "Málaga",
-        "tla": "MAL"
+        "tla": "MAL",
+        "crestUrl": "https://crests.football-data.org/84.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": 1,
@@ -54,7 +60,9 @@
         "halfTimeAway": 1,
         "winner": "DRAW"
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio La Rosaleda",
+      "referee": null
     },
     {
       "id": 564651,
@@ -66,13 +74,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 95,
         "name": "Valencia CF",
         "shortName": "Valencia",
-        "tla": "VAL"
+        "tla": "VAL",
+        "crestUrl": "https://crests.football-data.org/95.png"
       },
       "score": {
         "home": 3,
@@ -81,7 +91,9 @@
         "halfTimeAway": 1,
         "winner": "HOME_TEAM"
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564662,
@@ -93,13 +105,15 @@
         "id": 94,
         "name": "Villarreal CF",
         "shortName": "Villarreal",
-        "tla": "VIL"
+        "tla": "VIL",
+        "crestUrl": "https://crests.football-data.org/94.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": 2,
@@ -108,7 +122,9 @@
         "halfTimeAway": 1,
         "winner": "AWAY_TEAM"
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio de la Cerámica",
+      "referee": "Jesús Gil Manzano"
     },
     {
       "id": 564668,
@@ -120,13 +136,15 @@
         "id": 82,
         "name": "Getafe CF",
         "shortName": "Getafe",
-        "tla": "GET"
+        "tla": "GET",
+        "crestUrl": "https://crests.football-data.org/82.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": 1,
@@ -135,7 +153,9 @@
         "halfTimeAway": 0,
         "winner": "DRAW"
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Coliseum Alfonso Pérez",
+      "referee": "Ricardo de Burgos"
     },
     {
       "id": 564679,
@@ -147,13 +167,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 559,
         "name": "Sevilla FC",
         "shortName": "Sevilla FC",
-        "tla": "SEV"
+        "tla": "SEV",
+        "crestUrl": "https://crests.football-data.org/559.png"
       },
       "score": {
         "home": 0,
@@ -162,7 +184,9 @@
         "halfTimeAway": 0,
         "winner": "AWAY_TEAM"
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": "Alejandro Hernández Hernández"
     },
     {
       "id": 564695,
@@ -174,13 +198,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 90,
         "name": "Real Betis Balompié",
         "shortName": "Real Betis",
-        "tla": "BET"
+        "tla": "BET",
+        "crestUrl": "https://crests.football-data.org/90.png"
       },
       "score": {
         "home": 1,
@@ -189,7 +215,9 @@
         "halfTimeAway": 1,
         "winner": "DRAW"
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": "César Soto Grado"
     },
     {
       "id": 564707,
@@ -201,13 +229,15 @@
         "id": 92,
         "name": "Real Sociedad de Fútbol",
         "shortName": "Real Sociedad",
-        "tla": "RSO"
+        "tla": "RSO",
+        "crestUrl": "https://crests.football-data.org/92.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": 3,
@@ -216,7 +246,9 @@
         "halfTimeAway": 0,
         "winner": "HOME_TEAM"
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio Municipal de Anoeta",
+      "referee": "Miguel Sesma Espinosa"
     },
     {
       "id": 564716,
@@ -228,13 +260,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 88,
         "name": "Levante UD",
         "shortName": "Levante",
-        "tla": "LEV"
+        "tla": "LEV",
+        "crestUrl": "https://crests.football-data.org/88.png"
       },
       "score": {
         "home": 1,
@@ -243,7 +277,9 @@
         "halfTimeAway": 0,
         "winner": "DRAW"
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": "Manuel Orellana Cid"
     },
     {
       "id": 564724,
@@ -255,13 +291,15 @@
         "id": 78,
         "name": "Club Atlético de Madrid",
         "shortName": "Atleti",
-        "tla": "ATL"
+        "tla": "ATL",
+        "crestUrl": "https://crests.football-data.org/78.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -270,7 +308,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio Wanda Metropolitano",
+      "referee": null
     },
     {
       "id": 564731,
@@ -282,13 +322,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 79,
         "name": "CA Osasuna",
         "shortName": "Osasuna",
-        "tla": "OSA"
+        "tla": "OSA",
+        "crestUrl": "https://crests.football-data.org/79.png"
       },
       "score": {
         "home": null,
@@ -297,7 +339,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564745,
@@ -309,13 +353,15 @@
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
         "shortName": "Espanyol",
-        "tla": "ESP"
+        "tla": "ESP",
+        "crestUrl": "https://crests.football-data.org/80.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -324,7 +370,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "RCDE Stadium",
+      "referee": null
     },
     {
       "id": 564755,
@@ -336,13 +384,15 @@
         "id": 263,
         "name": "Deportivo Alavés",
         "shortName": "Alavés",
-        "tla": "ALA"
+        "tla": "ALA",
+        "crestUrl": "https://crests.football-data.org/263.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -351,7 +401,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio de Mendizorroza",
+      "referee": null
     },
     {
       "id": 564766,
@@ -363,13 +415,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 81,
         "name": "FC Barcelona",
         "shortName": "Barça",
-        "tla": "FCB"
+        "tla": "FCB",
+        "crestUrl": "https://crests.football-data.org/81.png"
       },
       "score": {
         "home": null,
@@ -378,7 +432,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564772,
@@ -390,13 +446,15 @@
         "id": 5335,
         "name": "Real Racing Club de Santander",
         "shortName": "Santander",
-        "tla": "SAN"
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -405,7 +463,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Campos de Sport de El Sardinero",
+      "referee": null
     },
     {
       "id": 564781,
@@ -417,13 +477,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 77,
         "name": "Athletic Club",
         "shortName": "Athletic",
-        "tla": "ATH"
+        "tla": "ATH",
+        "crestUrl": "https://crests.football-data.org/77.png"
       },
       "score": {
         "home": null,
@@ -432,7 +494,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564796,
@@ -444,13 +508,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 86,
         "name": "Real Madrid CF",
         "shortName": "Real Madrid",
-        "tla": "RMA"
+        "tla": "RMA",
+        "crestUrl": "https://crests.football-data.org/86.png"
       },
       "score": {
         "home": null,
@@ -459,7 +525,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564804,
@@ -471,13 +539,15 @@
         "id": 558,
         "name": "RC Celta de Vigo",
         "shortName": "Celta",
-        "tla": "CEL"
+        "tla": "CEL",
+        "crestUrl": "https://crests.football-data.org/558.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -486,7 +556,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio de Balaídos",
+      "referee": null
     },
     {
       "id": 564812,
@@ -498,13 +570,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 87,
         "name": "Rayo Vallecano de Madrid",
         "shortName": "Rayo Vallecano",
-        "tla": "RAY"
+        "tla": "RAY",
+        "crestUrl": "https://crests.football-data.org/87.png"
       },
       "score": {
         "home": null,
@@ -513,7 +587,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564826,
@@ -525,13 +601,15 @@
         "id": 90,
         "name": "Real Betis Balompié",
         "shortName": "Real Betis",
-        "tla": "BET"
+        "tla": "BET",
+        "crestUrl": "https://crests.football-data.org/90.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -540,7 +618,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio Benito Villamarín",
+      "referee": null
     },
     {
       "id": 564837,
@@ -552,13 +632,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 78,
         "name": "Club Atlético de Madrid",
         "shortName": "Atleti",
-        "tla": "ATL"
+        "tla": "ATL",
+        "crestUrl": "https://crests.football-data.org/78.png"
       },
       "score": {
         "home": null,
@@ -567,7 +649,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564846,
@@ -579,13 +663,15 @@
         "id": 79,
         "name": "CA Osasuna",
         "shortName": "Osasuna",
-        "tla": "OSA"
+        "tla": "OSA",
+        "crestUrl": "https://crests.football-data.org/79.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -594,7 +680,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio El Sadar",
+      "referee": null
     },
     {
       "id": 564854,
@@ -606,13 +694,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 84,
         "name": "Málaga CF",
         "shortName": "Málaga",
-        "tla": "MAL"
+        "tla": "MAL",
+        "crestUrl": "https://crests.football-data.org/84.png"
       },
       "score": {
         "home": null,
@@ -621,7 +711,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564863,
@@ -633,13 +725,15 @@
         "id": 285,
         "name": "Elche CF",
         "shortName": "Elche",
-        "tla": "ELC"
+        "tla": "ELC",
+        "crestUrl": "https://crests.football-data.org/285.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -648,7 +742,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio Manuel Martínez Valero",
+      "referee": null
     },
     {
       "id": 564876,
@@ -660,13 +756,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 92,
         "name": "Real Sociedad de Fútbol",
         "shortName": "Real Sociedad",
-        "tla": "RSO"
+        "tla": "RSO",
+        "crestUrl": "https://crests.football-data.org/92.png"
       },
       "score": {
         "home": null,
@@ -675,7 +773,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564879,
@@ -687,13 +787,15 @@
         "id": 88,
         "name": "Levante UD",
         "shortName": "Levante",
-        "tla": "LEV"
+        "tla": "LEV",
+        "crestUrl": "https://crests.football-data.org/88.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -702,7 +804,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio Ciudad de Valencia",
+      "referee": null
     },
     {
       "id": 564896,
@@ -714,13 +818,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 82,
         "name": "Getafe CF",
         "shortName": "Getafe",
-        "tla": "GET"
+        "tla": "GET",
+        "crestUrl": "https://crests.football-data.org/82.png"
       },
       "score": {
         "home": null,
@@ -729,7 +835,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564906,
@@ -741,13 +849,15 @@
         "id": 81,
         "name": "FC Barcelona",
         "shortName": "Barça",
-        "tla": "FCB"
+        "tla": "FCB",
+        "crestUrl": "https://crests.football-data.org/81.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -756,7 +866,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Camp Nou",
+      "referee": null
     },
     {
       "id": 564916,
@@ -768,13 +880,15 @@
         "id": 95,
         "name": "Valencia CF",
         "shortName": "Valencia",
-        "tla": "VAL"
+        "tla": "VAL",
+        "crestUrl": "https://crests.football-data.org/95.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -783,7 +897,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio de Mestalla",
+      "referee": null
     },
     {
       "id": 564922,
@@ -795,13 +911,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 94,
         "name": "Villarreal CF",
         "shortName": "Villarreal",
-        "tla": "VIL"
+        "tla": "VIL",
+        "crestUrl": "https://crests.football-data.org/94.png"
       },
       "score": {
         "home": null,
@@ -810,7 +928,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564933,
@@ -822,13 +942,15 @@
         "id": 559,
         "name": "Sevilla FC",
         "shortName": "Sevilla FC",
-        "tla": "SEV"
+        "tla": "SEV",
+        "crestUrl": "https://crests.football-data.org/559.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -837,7 +959,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio Ramón Sánchez Pizjuán",
+      "referee": null
     },
     {
       "id": 564943,
@@ -849,13 +973,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 558,
         "name": "RC Celta de Vigo",
         "shortName": "Celta",
-        "tla": "CEL"
+        "tla": "CEL",
+        "crestUrl": "https://crests.football-data.org/558.png"
       },
       "score": {
         "home": null,
@@ -864,7 +990,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564953,
@@ -876,13 +1004,15 @@
         "id": 77,
         "name": "Athletic Club",
         "shortName": "Athletic",
-        "tla": "ATH"
+        "tla": "ATH",
+        "crestUrl": "https://crests.football-data.org/77.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -891,7 +1021,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "San Mamés",
+      "referee": null
     },
     {
       "id": 564958,
@@ -903,13 +1035,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 5335,
         "name": "Real Racing Club de Santander",
         "shortName": "Santander",
-        "tla": "SAN"
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
       },
       "score": {
         "home": null,
@@ -918,7 +1052,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564973,
@@ -930,13 +1066,15 @@
         "id": 87,
         "name": "Rayo Vallecano de Madrid",
         "shortName": "Rayo Vallecano",
-        "tla": "RAY"
+        "tla": "RAY",
+        "crestUrl": "https://crests.football-data.org/87.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -945,7 +1083,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio del Rayo Vallecano",
+      "referee": null
     },
     {
       "id": 564983,
@@ -957,13 +1097,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 263,
         "name": "Deportivo Alavés",
         "shortName": "Alavés",
-        "tla": "ALA"
+        "tla": "ALA",
+        "crestUrl": "https://crests.football-data.org/263.png"
       },
       "score": {
         "home": null,
@@ -972,7 +1114,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564997,
@@ -984,13 +1128,15 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "away": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
         "shortName": "Espanyol",
-        "tla": "ESP"
+        "tla": "ESP",
+        "crestUrl": "https://crests.football-data.org/80.png"
       },
       "score": {
         "home": null,
@@ -999,7 +1145,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": true
+      "deporIsHome": true,
+      "venue": "Estadio Abanca-Riazor",
+      "referee": null
     },
     {
       "id": 564999,
@@ -1011,13 +1159,15 @@
         "id": 86,
         "name": "Real Madrid CF",
         "shortName": "Real Madrid",
-        "tla": "RMA"
+        "tla": "RMA",
+        "crestUrl": "https://crests.football-data.org/86.png"
       },
       "away": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
         "home": null,
@@ -1026,7 +1176,9 @@
         "halfTimeAway": null,
         "winner": null
       },
-      "deporIsHome": false
+      "deporIsHome": false,
+      "venue": "Estadio Santiago Bernabéu",
+      "referee": null
     }
   ]
 }

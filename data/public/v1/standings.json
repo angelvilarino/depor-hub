@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T07:34:47Z",
+  "updatedAt": "2026-10-22T07:41:23Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -9,7 +9,8 @@
         "id": 81,
         "name": "FC Barcelona",
         "shortName": "Barça",
-        "tla": "FCB"
+        "tla": "FCB",
+        "crestUrl": "https://crests.football-data.org/81.png"
       },
       "played": 9,
       "won": 9,
@@ -27,7 +28,8 @@
         "id": 78,
         "name": "Club Atlético de Madrid",
         "shortName": "Atleti",
-        "tla": "ATL"
+        "tla": "ATL",
+        "crestUrl": "https://crests.football-data.org/78.png"
       },
       "played": 9,
       "won": 7,
@@ -45,7 +47,8 @@
         "id": 86,
         "name": "Real Madrid CF",
         "shortName": "Real Madrid",
-        "tla": "RMA"
+        "tla": "RMA",
+        "crestUrl": "https://crests.football-data.org/86.png"
       },
       "played": 9,
       "won": 7,
@@ -63,7 +66,8 @@
         "id": 90,
         "name": "Real Betis Balompié",
         "shortName": "Real Betis",
-        "tla": "BET"
+        "tla": "BET",
+        "crestUrl": "https://crests.football-data.org/90.png"
       },
       "played": 9,
       "won": 6,
@@ -81,7 +85,8 @@
         "id": 92,
         "name": "Real Sociedad de Fútbol",
         "shortName": "Real Sociedad",
-        "tla": "RSO"
+        "tla": "RSO",
+        "crestUrl": "https://crests.football-data.org/92.png"
       },
       "played": 9,
       "won": 5,
@@ -99,7 +104,8 @@
         "id": 559,
         "name": "Sevilla FC",
         "shortName": "Sevilla FC",
-        "tla": "SEV"
+        "tla": "SEV",
+        "crestUrl": "https://crests.football-data.org/559.png"
       },
       "played": 9,
       "won": 4,
@@ -117,7 +123,8 @@
         "id": 263,
         "name": "Deportivo Alavés",
         "shortName": "Alavés",
-        "tla": "ALA"
+        "tla": "ALA",
+        "crestUrl": "https://crests.football-data.org/263.png"
       },
       "played": 9,
       "won": 3,
@@ -135,7 +142,8 @@
         "id": 558,
         "name": "RC Celta de Vigo",
         "shortName": "Celta",
-        "tla": "CEL"
+        "tla": "CEL",
+        "crestUrl": "https://crests.football-data.org/558.png"
       },
       "played": 9,
       "won": 2,
@@ -153,7 +161,8 @@
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
-        "tla": "DEP"
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
       },
       "played": 9,
       "won": 2,
@@ -171,7 +180,8 @@
         "id": 79,
         "name": "CA Osasuna",
         "shortName": "Osasuna",
-        "tla": "OSA"
+        "tla": "OSA",
+        "crestUrl": "https://crests.football-data.org/79.png"
       },
       "played": 9,
       "won": 3,
@@ -189,7 +199,8 @@
         "id": 88,
         "name": "Levante UD",
         "shortName": "Levante",
-        "tla": "LEV"
+        "tla": "LEV",
+        "crestUrl": "https://crests.football-data.org/88.png"
       },
       "played": 9,
       "won": 2,
@@ -207,7 +218,8 @@
         "id": 94,
         "name": "Villarreal CF",
         "shortName": "Villarreal",
-        "tla": "VIL"
+        "tla": "VIL",
+        "crestUrl": "https://crests.football-data.org/94.png"
       },
       "played": 9,
       "won": 2,
@@ -225,7 +237,8 @@
         "id": 77,
         "name": "Athletic Club",
         "shortName": "Athletic",
-        "tla": "ATH"
+        "tla": "ATH",
+        "crestUrl": "https://crests.football-data.org/77.png"
       },
       "played": 8,
       "won": 2,
@@ -243,7 +256,8 @@
         "id": 87,
         "name": "Rayo Vallecano de Madrid",
         "shortName": "Rayo Vallecano",
-        "tla": "RAY"
+        "tla": "RAY",
+        "crestUrl": "https://crests.football-data.org/87.png"
       },
       "played": 8,
       "won": 2,
@@ -261,7 +275,8 @@
         "id": 82,
         "name": "Getafe CF",
         "shortName": "Getafe",
-        "tla": "GET"
+        "tla": "GET",
+        "crestUrl": "https://crests.football-data.org/82.png"
       },
       "played": 9,
       "won": 2,
@@ -279,7 +294,8 @@
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
         "shortName": "Espanyol",
-        "tla": "ESP"
+        "tla": "ESP",
+        "crestUrl": "https://crests.football-data.org/80.png"
       },
       "played": 9,
       "won": 2,
@@ -297,7 +313,8 @@
         "id": 5335,
         "name": "Real Racing Club de Santander",
         "shortName": "Santander",
-        "tla": "SAN"
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
       },
       "played": 9,
       "won": 2,
@@ -315,7 +332,8 @@
         "id": 285,
         "name": "Elche CF",
         "shortName": "Elche",
-        "tla": "ELC"
+        "tla": "ELC",
+        "crestUrl": "https://crests.football-data.org/285.png"
       },
       "played": 9,
       "won": 1,
@@ -333,7 +351,8 @@
         "id": 95,
         "name": "Valencia CF",
         "shortName": "Valencia",
-        "tla": "VAL"
+        "tla": "VAL",
+        "crestUrl": "https://crests.football-data.org/95.png"
       },
       "played": 9,
       "won": 1,
@@ -351,7 +370,8 @@
         "id": 84,
         "name": "Málaga CF",
         "shortName": "Málaga",
-        "tla": "MAL"
+        "tla": "MAL",
+        "crestUrl": "https://crests.football-data.org/84.png"
       },
       "played": 9,
       "won": 0,
