@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T13:31:00Z",
+  "updatedAt": "2026-10-23T18:33:38Z",
   "coach": {
     "name": "Antonio Hidalgo",
     "nationality": "Spain"
@@ -12,7 +12,8 @@
       "dateOfBirth": "1998-04-13",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 171678,
@@ -21,7 +22,8 @@
       "dateOfBirth": "1993-02-16",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 172628,
@@ -30,7 +32,8 @@
       "dateOfBirth": "2000-07-06",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 3134,
@@ -39,7 +42,8 @@
       "dateOfBirth": "1990-01-23",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 7646,
@@ -48,7 +52,8 @@
       "dateOfBirth": "1997-01-04",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 124711,
@@ -57,7 +62,8 @@
       "dateOfBirth": "2000-02-19",
       "nationality": "Italy",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 145500,
@@ -66,7 +72,8 @@
       "dateOfBirth": "2000-04-11",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 177239,
@@ -75,7 +82,8 @@
       "dateOfBirth": "2005-01-15",
       "nationality": "Belgium",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 185093,
@@ -84,7 +92,8 @@
       "dateOfBirth": "2001-03-28",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 186699,
@@ -93,7 +102,8 @@
       "dateOfBirth": "1996-11-21",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 213277,
@@ -102,7 +112,8 @@
       "dateOfBirth": "1995-01-20",
       "nationality": "Uruguay",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 226242,
@@ -111,7 +122,8 @@
       "dateOfBirth": "2003-01-19",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 298636,
@@ -120,7 +132,8 @@
       "dateOfBirth": "2007-02-18",
       "nationality": "Poland",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 69837,
@@ -129,7 +142,8 @@
       "dateOfBirth": "2002-04-22",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 98199,
@@ -138,7 +152,8 @@
       "dateOfBirth": "1997-09-25",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 188817,
@@ -147,7 +162,8 @@
       "dateOfBirth": "2003-09-14",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 190825,
@@ -156,7 +172,8 @@
       "dateOfBirth": "2004-02-05",
       "nationality": "Italy",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 226170,
@@ -165,7 +182,8 @@
       "dateOfBirth": "1996-06-17",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 245913,
@@ -174,7 +192,8 @@
       "dateOfBirth": "2005-04-06",
       "nationality": "Netherlands",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 246474,
@@ -183,7 +202,8 @@
       "dateOfBirth": "2006-01-14",
       "nationality": "Denmark",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 289952,
@@ -192,7 +212,8 @@
       "dateOfBirth": "2006-12-28",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 4221,
@@ -201,7 +222,8 @@
       "dateOfBirth": "1996-01-25",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 7801,
@@ -210,7 +232,8 @@
       "dateOfBirth": "1989-06-18",
       "nationality": "Gabon",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 114100,
@@ -219,7 +242,8 @@
       "dateOfBirth": "2000-05-11",
       "nationality": "Netherlands",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 176255,
@@ -228,7 +252,8 @@
       "dateOfBirth": "2001-05-23",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 225956,
@@ -237,7 +262,8 @@
       "dateOfBirth": "2005-05-23",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 227683,
@@ -246,7 +272,8 @@
       "dateOfBirth": "2002-12-10",
       "nationality": "Spain",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     },
     {
       "id": 288836,
@@ -255,7 +282,8 @@
       "dateOfBirth": "2004-09-21",
       "nationality": "Cameroon",
       "shirtNumber": null,
-      "contractUntil": null
+      "contractUntil": null,
+      "heightCm": null
     }
   ]
 }
