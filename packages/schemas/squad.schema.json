@@ -58,6 +58,18 @@
           "default": null,
           "title": "Dateofbirth"
         },
+        "heightCm": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Heightcm"
+        },
         "id": {
           "title": "Id",
           "type": "integer"

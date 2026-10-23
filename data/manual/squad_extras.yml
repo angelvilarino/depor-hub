@@ -1,0 +1,13 @@
+# Datos de plantilla que football-data.org (plan gratuito) no da: dorsal, contrato y altura.
+# NO inventes nada: cada jugador con datos necesita `source` (URL o nombre de la fuente).
+# El dato de la API, si existe, manda; este fichero solo rellena huecos.
+# Clave = id de football-data.org (ver data/public/v1/squad.json).
+#
+# players:
+#   7801:
+#     name: Pierre-Emerick Aubameyang   # solo orientativo
+#     shirt_number: 9                   # EJEMPLO, no verificado
+#     contract_until: 2027-06-30        # AAAA, AAAA-MM o AAAA-MM-DD
+#     height_cm: 187
+#     source: https://…
+players: {}

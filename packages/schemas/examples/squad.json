@@ -4,7 +4,8 @@
   "players": [
     {
       "id": 10, "name": "Jugador Ejemplo", "position": "Midfield",
-      "dateOfBirth": "2000-01-31", "nationality": "Spain", "shirtNumber": null, "contractUntil": null
+      "dateOfBirth": "2000-01-31", "nationality": "Spain", "shirtNumber": null, "contractUntil": null,
+      "heightCm": 180
     }
   ]
 }

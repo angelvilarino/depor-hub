@@ -1,9 +1,54 @@
 {
-  "tabs": { "home": "Inicio", "team": "Equipo", "calendar": "Calendario", "news": "Novas", "club": "Club" },
-  "settings": { "title": "Axustes", "reminders": "Lembretes de partido", "remindersOn": "Activados", "remindersOff": "Desactivados" },
-  "calendar": {
-    "upcoming": "Próximos", "results": "Resultados", "standings": "Clasificación",
-    "timeTbc": "Hora por confirmar", "matchday": "Xornada {{n}}"
+  "tabs": {
+    "home": "Inicio",
+    "team": "Equipo",
+    "calendar": "Calendario",
+    "news": "Novas",
+    "club": "Club"
   },
-  "match": { "title": "Partido", "remind": "Lembrarme", "addToCalendar": "Engadir ao calendario" }
+  "settings": {
+    "title": "Axustes",
+    "reminders": "Lembretes de partido",
+    "remindersOn": "Activados",
+    "remindersOff": "Desactivados"
+  },
+  "calendar": {
+    "upcoming": "Próximos",
+    "results": "Resultados",
+    "standings": "Clasificación",
+    "timeTbc": "Hora por confirmar",
+    "matchday": "Xornada {{n}}"
+  },
+  "match": {
+    "title": "Partido",
+    "remind": "Lembrarme",
+    "addToCalendar": "Engadir ao calendario"
+  },
+  "team": {
+    "coach": "Adestrador",
+    "group": {
+      "GK": "Porteiros",
+      "DF": "Defensas",
+      "MF": "Centrocampistas",
+      "FW": "Dianteiros",
+      "OTHER": "Outros"
+    }
+  },
+  "player": {
+    "title": "Xogador",
+    "shirtNumber": "Dorsal",
+    "position": "Posición",
+    "nationality": "Nacionalidade",
+    "age": "Idade",
+    "ageValue": "{{n}} anos",
+    "height": "Altura",
+    "contract": "Contrato ata",
+    "pendingTitle": "Datos pendentes",
+    "positionName": {
+      "GK": "Porteiro",
+      "DF": "Defensa",
+      "MF": "Centrocampista",
+      "FW": "Dianteiro"
+    }
+  }
 }

@@ -84,6 +84,8 @@ export const Player = z.strictObject({
   nationality: z.string().nullable(),
   shirtNumber: z.number().int().nullable(),
   contractUntil: z.string().nullable(),
+  // ADR 0007: campo añadido; tolerado ausente (default null) para JSON publicado antes del cambio.
+  heightCm: z.number().int().nullable().default(null),
 });
 
 export const Squad = z.strictObject({

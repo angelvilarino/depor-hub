@@ -13,6 +13,7 @@ from . import models as m
 from . import source_models as s
 from . import transform as t
 from .client import Client
+from .extras import apply_extras, load_extras, unknown_ids
 from .publish import write_if_changed
 
 COMPETITION = "PD"
@@ -54,6 +55,11 @@ def cmd_ingest(args: argparse.Namespace) -> int:
     standings = t.build_standings(standings_raw, season, comp.currentSeason.currentMatchday, now)
     fixtures = t.build_fixtures(matches_raw, team.id, season, now, venues)
     squad = t.build_squad(team, now)
+    # Datos manuales con fuente (dorsal, contrato, altura): solo rellenan huecos de la API (ADR 0007).
+    extras = load_extras(Path(args.extras))
+    squad = apply_extras(squad, extras)
+    for pid in unknown_ids(squad, extras):
+        print(f"AVISO: {args.extras} menciona el id {pid}, que no está en la plantilla", file=sys.stderr)
     meta = t.build_meta(comp, team, season, now)
 
     if len(standings.table) != 20:
@@ -150,6 +156,7 @@ def main(argv: list[str] | None = None) -> int:
         sp.add_argument("--raw", default="data/raw")
         if name == "ingest":
             sp.add_argument("--out", default="data/public/v1")
+            sp.add_argument("--extras", default="data/manual/squad_extras.yml")
             sp.add_argument("--force", action="store_true")
         sp.set_defaults(fn=fn)
     sp = sub.add_parser("schemas")

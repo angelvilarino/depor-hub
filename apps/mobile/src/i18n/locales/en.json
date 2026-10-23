@@ -1,11 +1,26 @@
 {
-  "tabs": { "home": "Home", "team": "Squad", "calendar": "Fixtures", "news": "News", "club": "Club" },
-  "common": { "comingSoon": "Coming in a later Phase 1 milestone.", "unofficial": "Fan project with no official affiliation with Real Club Deportivo de La Coruña, S.A.D." },
+  "tabs": {
+    "home": "Home",
+    "team": "Squad",
+    "calendar": "Fixtures",
+    "news": "News",
+    "club": "Club"
+  },
+  "common": {
+    "comingSoon": "Coming in a later Phase 1 milestone.",
+    "unofficial": "Fan project with no official affiliation with Real Club Deportivo de La Coruña, S.A.D."
+  },
   "settings": {
     "title": "Settings",
-    "theme": "Theme", "themeSystem": "System", "themeLight": "Light", "themeDark": "Dark",
-    "language": "Language", "languageSystem": "System",
-    "reminders": "Match reminders", "remindersOn": "On", "remindersOff": "Off",
+    "theme": "Theme",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "language": "Language",
+    "languageSystem": "System",
+    "reminders": "Match reminders",
+    "remindersOn": "On",
+    "remindersOff": "Off",
     "version": "App version"
   },
   "data": {
@@ -23,7 +38,9 @@
     "seasonLine": "Season {{season}} · matchday {{matchday}}"
   },
   "calendar": {
-    "upcoming": "Upcoming", "results": "Results", "standings": "Table",
+    "upcoming": "Upcoming",
+    "results": "Results",
+    "standings": "Table",
     "emptyUpcoming": "No upcoming matches.",
     "emptyResults": "No results yet.",
     "emptyStandings": "Table not available.",
@@ -32,20 +49,46 @@
     "matchday": "Matchday {{n}}",
     "export": "Export calendar (.ics)",
     "exportError": "Couldn't export the calendar.",
-    "outcome": { "W": "W", "D": "D", "L": "L" },
-    "outcomeLong": { "W": "Win", "D": "Draw", "L": "Loss" },
-    "col": { "pos": "Pos", "team": "Team", "played": "P", "goalDiff": "GD", "points": "Pts" },
+    "outcome": {
+      "W": "W",
+      "D": "D",
+      "L": "L"
+    },
+    "outcomeLong": {
+      "W": "Win",
+      "D": "Draw",
+      "L": "Loss"
+    },
+    "col": {
+      "pos": "Pos",
+      "team": "Team",
+      "played": "P",
+      "goalDiff": "GD",
+      "points": "Pts"
+    },
     "status": {
-      "SCHEDULED": "Scheduled", "TIMED": "Time confirmed", "IN_PLAY": "Live", "PAUSED": "Half-time",
-      "FINISHED": "Full-time", "AWARDED": "Awarded", "POSTPONED": "Postponed",
-      "SUSPENDED": "Suspended", "CANCELLED": "Cancelled"
+      "SCHEDULED": "Scheduled",
+      "TIMED": "Time confirmed",
+      "IN_PLAY": "Live",
+      "PAUSED": "Half-time",
+      "FINISHED": "Full-time",
+      "AWARDED": "Awarded",
+      "POSTPONED": "Postponed",
+      "SUSPENDED": "Suspended",
+      "CANCELLED": "Cancelled"
     }
   },
   "match": {
     "title": "Match",
     "notFound": "Match not found.",
-    "date": "Date", "time": "Time (Madrid)", "matchday": "Matchday", "venue": "Venue", "referee": "Referee", "halfTime": "Half-time",
-    "remind": "Remind me", "removeReminder": "Remove reminder",
+    "date": "Date",
+    "time": "Time (Madrid)",
+    "matchday": "Matchday",
+    "venue": "Venue",
+    "referee": "Referee",
+    "halfTime": "Half-time",
+    "remind": "Remind me",
+    "removeReminder": "Remove reminder",
     "reminderNeedsTime": "Reminders will be available once the kick-off time is confirmed.",
     "permissionDenied": "Enable notifications for the app in system settings to get reminders.",
     "addToCalendar": "Add to calendar",
@@ -56,5 +99,84 @@
     "channel": "Match reminders",
     "dayBefore": "Tomorrow, {{time}}",
     "hourBefore": "Kick-off in 1 hour ({{time}})"
+  },
+  "team": {
+    "coach": "Head coach",
+    "empty": "Squad not available.",
+    "group": {
+      "GK": "Goalkeepers",
+      "DF": "Defenders",
+      "MF": "Midfielders",
+      "FW": "Forwards",
+      "OTHER": "Others"
+    }
+  },
+  "player": {
+    "title": "Player",
+    "notFound": "Player not found.",
+    "position": "Position",
+    "shirtNumber": "Number",
+    "nationality": "Nationality",
+    "birth": "Born",
+    "age": "Age",
+    "ageValue": "{{n}} years old",
+    "height": "Height",
+    "heightValue": "{{n}} cm",
+    "contract": "Contract until",
+    "pendingTitle": "Pending data",
+    "pendingBody": "We don't have these details from a reliable source yet; they are never made up.",
+    "positionName": {
+      "GK": "Goalkeeper",
+      "DF": "Defender",
+      "MF": "Midfielder",
+      "FW": "Forward",
+      "OTHER": "Other"
+    },
+    "field": {
+      "shirtNumber": "Number",
+      "position": "Position",
+      "nationality": "Nationality",
+      "dateOfBirth": "Date of birth",
+      "heightCm": "Height",
+      "contractUntil": "Contract"
+    }
+  },
+  "country": {
+    "Spain": "Spain",
+    "Italy": "Italy",
+    "Belgium": "Belgium",
+    "Uruguay": "Uruguay",
+    "Poland": "Poland",
+    "Netherlands": "Netherlands",
+    "Denmark": "Denmark",
+    "Gabon": "Gabon",
+    "Cameroon": "Cameroon",
+    "France": "France",
+    "Portugal": "Portugal",
+    "Germany": "Germany",
+    "England": "England",
+    "Ireland": "Ireland",
+    "Argentina": "Argentina",
+    "Brazil": "Brazil",
+    "Colombia": "Colombia",
+    "Morocco": "Morocco",
+    "Senegal": "Senegal",
+    "Ghana": "Ghana",
+    "Nigeria": "Nigeria",
+    "Mali": "Mali",
+    "Venezuela": "Venezuela",
+    "Mexico": "Mexico",
+    "Chile": "Chile",
+    "Paraguay": "Paraguay",
+    "Ecuador": "Ecuador",
+    "Peru": "Peru",
+    "Switzerland": "Switzerland",
+    "Sweden": "Sweden",
+    "Norway": "Norway",
+    "Serbia": "Serbia",
+    "Croatia": "Croatia",
+    "Algeria": "Algeria",
+    "Japan": "Japan",
+    "United States": "United States"
   }
 }

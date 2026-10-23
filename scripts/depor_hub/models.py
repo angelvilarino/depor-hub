@@ -118,6 +118,7 @@ class Player(Public):
     nationality: Optional[str] = None
     shirt_number: Optional[int] = None
     contract_until: Optional[str] = None
+    height_cm: Optional[int] = None  # ADR 0007: solo de data/manual/squad_extras.yml (con fuente)
 
 
 class Squad(Public):
