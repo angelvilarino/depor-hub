@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T17:23:38Z",
+  "updatedAt": "2026-10-24T18:29:22Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -215,6 +215,25 @@
     {
       "position": 12,
       "team": {
+        "id": 94,
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL",
+        "crestUrl": "https://crests.football-data.org/94.png"
+      },
+      "played": 10,
+      "won": 2,
+      "draw": 4,
+      "lost": 4,
+      "points": 10,
+      "goalsFor": 14,
+      "goalsAgainst": 14,
+      "goalDifference": 0,
+      "form": null
+    },
+    {
+      "position": 13,
+      "team": {
         "id": 88,
         "name": "Levante UD",
         "shortName": "Levante",
@@ -232,7 +251,7 @@
       "form": null
     },
     {
-      "position": 13,
+      "position": 14,
       "team": {
         "id": 285,
         "name": "Elche CF",
@@ -248,25 +267,6 @@
       "goalsFor": 14,
       "goalsAgainst": 17,
       "goalDifference": -3,
-      "form": null
-    },
-    {
-      "position": 14,
-      "team": {
-        "id": 94,
-        "name": "Villarreal CF",
-        "shortName": "Villarreal",
-        "tla": "VIL",
-        "crestUrl": "https://crests.football-data.org/94.png"
-      },
-      "played": 10,
-      "won": 2,
-      "draw": 3,
-      "lost": 5,
-      "points": 9,
-      "goalsFor": 13,
-      "goalsAgainst": 14,
-      "goalDifference": -1,
       "form": null
     },
     {
@@ -329,25 +329,6 @@
     {
       "position": 18,
       "team": {
-        "id": 95,
-        "name": "Valencia CF",
-        "shortName": "Valencia",
-        "tla": "VAL",
-        "crestUrl": "https://crests.football-data.org/95.png"
-      },
-      "played": 10,
-      "won": 2,
-      "draw": 3,
-      "lost": 5,
-      "points": 9,
-      "goalsFor": 7,
-      "goalsAgainst": 15,
-      "goalDifference": -8,
-      "form": null
-    },
-    {
-      "position": 19,
-      "team": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
         "shortName": "Espanyol",
@@ -362,6 +343,25 @@
       "goalsFor": 12,
       "goalsAgainst": 14,
       "goalDifference": -2,
+      "form": null
+    },
+    {
+      "position": 19,
+      "team": {
+        "id": 95,
+        "name": "Valencia CF",
+        "shortName": "Valencia",
+        "tla": "VAL",
+        "crestUrl": "https://crests.football-data.org/95.png"
+      },
+      "played": 10,
+      "won": 1,
+      "draw": 4,
+      "lost": 5,
+      "points": 7,
+      "goalsFor": 7,
+      "goalsAgainst": 16,
+      "goalDifference": -9,
       "form": null
     },
     {
