@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T19:21:51Z",
+  "updatedAt": "2026-10-24T20:25:33Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -32,13 +32,13 @@
         "crestUrl": "https://crests.football-data.org/78.png"
       },
       "played": 10,
-      "won": 7,
-      "draw": 2,
+      "won": 8,
+      "draw": 1,
       "lost": 1,
-      "points": 23,
-      "goalsFor": 19,
+      "points": 25,
+      "goalsFor": 20,
       "goalsAgainst": 8,
-      "goalDifference": 11,
+      "goalDifference": 12,
       "form": null
     },
     {
@@ -158,25 +158,6 @@
     {
       "position": 9,
       "team": {
-        "id": 560,
-        "name": "RC Deportivo La Coruña",
-        "shortName": "Deportivo",
-        "tla": "DEP",
-        "crestUrl": "https://crests.football-data.org/560.png"
-      },
-      "played": 10,
-      "won": 2,
-      "draw": 6,
-      "lost": 2,
-      "points": 12,
-      "goalsFor": 13,
-      "goalsAgainst": 12,
-      "goalDifference": 1,
-      "form": null
-    },
-    {
-      "position": 10,
-      "team": {
         "id": 558,
         "name": "RC Celta de Vigo",
         "shortName": "Celta",
@@ -191,6 +172,25 @@
       "goalsFor": 10,
       "goalsAgainst": 7,
       "goalDifference": 3,
+      "form": null
+    },
+    {
+      "position": 10,
+      "team": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
+      },
+      "played": 10,
+      "won": 2,
+      "draw": 5,
+      "lost": 3,
+      "points": 11,
+      "goalsFor": 13,
+      "goalsAgainst": 13,
+      "goalDifference": 0,
       "form": null
     },
     {
