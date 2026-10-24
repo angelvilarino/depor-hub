@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-23T21:25:37Z",
+  "updatedAt": "2026-10-24T12:33:43Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -215,6 +215,25 @@
     {
       "position": 12,
       "team": {
+        "id": 285,
+        "name": "Elche CF",
+        "shortName": "Elche",
+        "tla": "ELC",
+        "crestUrl": "https://crests.football-data.org/285.png"
+      },
+      "played": 10,
+      "won": 2,
+      "draw": 4,
+      "lost": 4,
+      "points": 10,
+      "goalsFor": 12,
+      "goalsAgainst": 17,
+      "goalDifference": -5,
+      "form": null
+    },
+    {
+      "position": 13,
+      "team": {
         "id": 94,
         "name": "Villarreal CF",
         "shortName": "Villarreal",
@@ -232,7 +251,7 @@
       "form": null
     },
     {
-      "position": 13,
+      "position": 14,
       "team": {
         "id": 77,
         "name": "Athletic Club",
@@ -251,7 +270,7 @@
       "form": null
     },
     {
-      "position": 14,
+      "position": 15,
       "team": {
         "id": 87,
         "name": "Rayo Vallecano de Madrid",
@@ -259,18 +278,18 @@
         "tla": "RAY",
         "crestUrl": "https://crests.football-data.org/87.png"
       },
-      "played": 8,
+      "played": 9,
       "won": 2,
       "draw": 3,
-      "lost": 3,
+      "lost": 4,
       "points": 9,
       "goalsFor": 12,
-      "goalsAgainst": 17,
-      "goalDifference": -5,
+      "goalsAgainst": 18,
+      "goalDifference": -6,
       "form": null
     },
     {
-      "position": 15,
+      "position": 16,
       "team": {
         "id": 82,
         "name": "Getafe CF",
@@ -289,7 +308,7 @@
       "form": null
     },
     {
-      "position": 16,
+      "position": 17,
       "team": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
@@ -308,7 +327,7 @@
       "form": null
     },
     {
-      "position": 17,
+      "position": 18,
       "team": {
         "id": 5335,
         "name": "Real Racing Club de Santander",
@@ -324,25 +343,6 @@
       "goalsFor": 13,
       "goalsAgainst": 25,
       "goalDifference": -12,
-      "form": null
-    },
-    {
-      "position": 18,
-      "team": {
-        "id": 285,
-        "name": "Elche CF",
-        "shortName": "Elche",
-        "tla": "ELC",
-        "crestUrl": "https://crests.football-data.org/285.png"
-      },
-      "played": 9,
-      "won": 1,
-      "draw": 4,
-      "lost": 4,
-      "points": 7,
-      "goalsFor": 11,
-      "goalsAgainst": 17,
-      "goalDifference": -6,
       "form": null
     },
     {
