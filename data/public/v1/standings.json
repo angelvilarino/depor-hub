@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T18:29:22Z",
+  "updatedAt": "2026-10-24T19:21:51Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -31,11 +31,11 @@
         "tla": "ATL",
         "crestUrl": "https://crests.football-data.org/78.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 7,
-      "draw": 1,
+      "draw": 2,
       "lost": 1,
-      "points": 22,
+      "points": 23,
       "goalsFor": 19,
       "goalsAgainst": 8,
       "goalDifference": 11,
@@ -139,6 +139,44 @@
     {
       "position": 8,
       "team": {
+        "id": 94,
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL",
+        "crestUrl": "https://crests.football-data.org/94.png"
+      },
+      "played": 10,
+      "won": 3,
+      "draw": 3,
+      "lost": 4,
+      "points": 12,
+      "goalsFor": 15,
+      "goalsAgainst": 14,
+      "goalDifference": 1,
+      "form": null
+    },
+    {
+      "position": 9,
+      "team": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
+      },
+      "played": 10,
+      "won": 2,
+      "draw": 6,
+      "lost": 2,
+      "points": 12,
+      "goalsFor": 13,
+      "goalsAgainst": 12,
+      "goalDifference": 1,
+      "form": null
+    },
+    {
+      "position": 10,
+      "team": {
         "id": 558,
         "name": "RC Celta de Vigo",
         "shortName": "Celta",
@@ -156,26 +194,7 @@
       "form": null
     },
     {
-      "position": 9,
-      "team": {
-        "id": 560,
-        "name": "RC Deportivo La Coruña",
-        "shortName": "Deportivo",
-        "tla": "DEP",
-        "crestUrl": "https://crests.football-data.org/560.png"
-      },
-      "played": 9,
-      "won": 2,
-      "draw": 5,
-      "lost": 2,
-      "points": 11,
-      "goalsFor": 13,
-      "goalsAgainst": 12,
-      "goalDifference": 1,
-      "form": null
-    },
-    {
-      "position": 10,
+      "position": 11,
       "team": {
         "id": 79,
         "name": "CA Osasuna",
@@ -194,7 +213,7 @@
       "form": null
     },
     {
-      "position": 11,
+      "position": 12,
       "team": {
         "id": 5335,
         "name": "Real Racing Club de Santander",
@@ -210,25 +229,6 @@
       "goalsFor": 15,
       "goalsAgainst": 26,
       "goalDifference": -11,
-      "form": null
-    },
-    {
-      "position": 12,
-      "team": {
-        "id": 94,
-        "name": "Villarreal CF",
-        "shortName": "Villarreal",
-        "tla": "VIL",
-        "crestUrl": "https://crests.football-data.org/94.png"
-      },
-      "played": 10,
-      "won": 2,
-      "draw": 4,
-      "lost": 4,
-      "points": 10,
-      "goalsFor": 14,
-      "goalsAgainst": 14,
-      "goalDifference": 0,
       "form": null
     },
     {
@@ -356,12 +356,12 @@
       },
       "played": 10,
       "won": 1,
-      "draw": 4,
-      "lost": 5,
-      "points": 7,
+      "draw": 3,
+      "lost": 6,
+      "points": 6,
       "goalsFor": 7,
-      "goalsAgainst": 16,
-      "goalDifference": -9,
+      "goalsAgainst": 17,
+      "goalDifference": -10,
       "form": null
     },
     {
