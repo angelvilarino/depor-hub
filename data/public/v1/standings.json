@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T12:33:43Z",
+  "updatedAt": "2026-10-24T13:24:45Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -226,9 +226,9 @@
       "draw": 4,
       "lost": 4,
       "points": 10,
-      "goalsFor": 12,
+      "goalsFor": 13,
       "goalsAgainst": 17,
-      "goalDifference": -5,
+      "goalDifference": -4,
       "form": null
     },
     {
@@ -272,25 +272,6 @@
     {
       "position": 15,
       "team": {
-        "id": 87,
-        "name": "Rayo Vallecano de Madrid",
-        "shortName": "Rayo Vallecano",
-        "tla": "RAY",
-        "crestUrl": "https://crests.football-data.org/87.png"
-      },
-      "played": 9,
-      "won": 2,
-      "draw": 3,
-      "lost": 4,
-      "points": 9,
-      "goalsFor": 12,
-      "goalsAgainst": 18,
-      "goalDifference": -6,
-      "form": null
-    },
-    {
-      "position": 16,
-      "team": {
         "id": 82,
         "name": "Getafe CF",
         "shortName": "Getafe",
@@ -305,6 +286,25 @@
       "goalsFor": 5,
       "goalsAgainst": 11,
       "goalDifference": -6,
+      "form": null
+    },
+    {
+      "position": 16,
+      "team": {
+        "id": 87,
+        "name": "Rayo Vallecano de Madrid",
+        "shortName": "Rayo Vallecano",
+        "tla": "RAY",
+        "crestUrl": "https://crests.football-data.org/87.png"
+      },
+      "played": 9,
+      "won": 2,
+      "draw": 3,
+      "lost": 4,
+      "points": 9,
+      "goalsFor": 12,
+      "goalsAgainst": 19,
+      "goalDifference": -7,
       "form": null
     },
     {
