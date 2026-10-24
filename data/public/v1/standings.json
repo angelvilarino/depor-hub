@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T13:24:45Z",
+  "updatedAt": "2026-10-24T14:25:19Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -226,9 +226,9 @@
       "draw": 4,
       "lost": 4,
       "points": 10,
-      "goalsFor": 13,
+      "goalsFor": 14,
       "goalsAgainst": 17,
-      "goalDifference": -4,
+      "goalDifference": -3,
       "form": null
     },
     {
@@ -253,6 +253,25 @@
     {
       "position": 14,
       "team": {
+        "id": 80,
+        "name": "RCD Espanyol de Barcelona",
+        "shortName": "Espanyol",
+        "tla": "ESP",
+        "crestUrl": "https://crests.football-data.org/80.png"
+      },
+      "played": 10,
+      "won": 2,
+      "draw": 3,
+      "lost": 5,
+      "points": 9,
+      "goalsFor": 11,
+      "goalsAgainst": 12,
+      "goalDifference": -1,
+      "form": null
+    },
+    {
+      "position": 15,
+      "team": {
         "id": 77,
         "name": "Athletic Club",
         "shortName": "Athletic",
@@ -270,7 +289,7 @@
       "form": null
     },
     {
-      "position": 15,
+      "position": 16,
       "team": {
         "id": 82,
         "name": "Getafe CF",
@@ -289,7 +308,7 @@
       "form": null
     },
     {
-      "position": 16,
+      "position": 17,
       "team": {
         "id": 87,
         "name": "Rayo Vallecano de Madrid",
@@ -303,27 +322,8 @@
       "lost": 4,
       "points": 9,
       "goalsFor": 12,
-      "goalsAgainst": 19,
-      "goalDifference": -7,
-      "form": null
-    },
-    {
-      "position": 17,
-      "team": {
-        "id": 80,
-        "name": "RCD Espanyol de Barcelona",
-        "shortName": "Espanyol",
-        "tla": "ESP",
-        "crestUrl": "https://crests.football-data.org/80.png"
-      },
-      "played": 9,
-      "won": 2,
-      "draw": 2,
-      "lost": 5,
-      "points": 8,
-      "goalsFor": 11,
-      "goalsAgainst": 12,
-      "goalDifference": -1,
+      "goalsAgainst": 20,
+      "goalDifference": -8,
       "form": null
     },
     {
@@ -335,11 +335,11 @@
         "tla": "SAN",
         "crestUrl": "https://crests.football-data.org/5335.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 2,
-      "draw": 2,
+      "draw": 3,
       "lost": 5,
-      "points": 8,
+      "points": 9,
       "goalsFor": 13,
       "goalsAgainst": 25,
       "goalDifference": -12,
