@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T14:25:19Z",
+  "updatedAt": "2026-10-24T16:26:33Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -196,6 +196,25 @@
     {
       "position": 11,
       "team": {
+        "id": 5335,
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
+      },
+      "played": 10,
+      "won": 3,
+      "draw": 2,
+      "lost": 5,
+      "points": 11,
+      "goalsFor": 15,
+      "goalsAgainst": 26,
+      "goalDifference": -11,
+      "form": null
+    },
+    {
+      "position": 12,
+      "team": {
         "id": 88,
         "name": "Levante UD",
         "shortName": "Levante",
@@ -213,7 +232,7 @@
       "form": null
     },
     {
-      "position": 12,
+      "position": 13,
       "team": {
         "id": 285,
         "name": "Elche CF",
@@ -232,7 +251,7 @@
       "form": null
     },
     {
-      "position": 13,
+      "position": 14,
       "team": {
         "id": 94,
         "name": "Villarreal CF",
@@ -248,25 +267,6 @@
       "goalsFor": 13,
       "goalsAgainst": 13,
       "goalDifference": 0,
-      "form": null
-    },
-    {
-      "position": 14,
-      "team": {
-        "id": 80,
-        "name": "RCD Espanyol de Barcelona",
-        "shortName": "Espanyol",
-        "tla": "ESP",
-        "crestUrl": "https://crests.football-data.org/80.png"
-      },
-      "played": 10,
-      "won": 2,
-      "draw": 3,
-      "lost": 5,
-      "points": 9,
-      "goalsFor": 11,
-      "goalsAgainst": 12,
-      "goalDifference": -1,
       "form": null
     },
     {
@@ -329,20 +329,20 @@
     {
       "position": 18,
       "team": {
-        "id": 5335,
-        "name": "Real Racing Club de Santander",
-        "shortName": "Santander",
-        "tla": "SAN",
-        "crestUrl": "https://crests.football-data.org/5335.png"
+        "id": 80,
+        "name": "RCD Espanyol de Barcelona",
+        "shortName": "Espanyol",
+        "tla": "ESP",
+        "crestUrl": "https://crests.football-data.org/80.png"
       },
       "played": 10,
       "won": 2,
-      "draw": 3,
-      "lost": 5,
-      "points": 9,
-      "goalsFor": 13,
-      "goalsAgainst": 25,
-      "goalDifference": -12,
+      "draw": 2,
+      "lost": 6,
+      "points": 8,
+      "goalsFor": 12,
+      "goalsAgainst": 14,
+      "goalDifference": -2,
       "form": null
     },
     {
