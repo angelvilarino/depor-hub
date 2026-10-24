@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T16:26:33Z",
+  "updatedAt": "2026-10-24T17:23:38Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -259,14 +259,14 @@
         "tla": "VIL",
         "crestUrl": "https://crests.football-data.org/94.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 2,
       "draw": 3,
-      "lost": 4,
+      "lost": 5,
       "points": 9,
       "goalsFor": 13,
-      "goalsAgainst": 13,
-      "goalDifference": 0,
+      "goalsAgainst": 14,
+      "goalDifference": -1,
       "form": null
     },
     {
@@ -329,6 +329,25 @@
     {
       "position": 18,
       "team": {
+        "id": 95,
+        "name": "Valencia CF",
+        "shortName": "Valencia",
+        "tla": "VAL",
+        "crestUrl": "https://crests.football-data.org/95.png"
+      },
+      "played": 10,
+      "won": 2,
+      "draw": 3,
+      "lost": 5,
+      "points": 9,
+      "goalsFor": 7,
+      "goalsAgainst": 15,
+      "goalDifference": -8,
+      "form": null
+    },
+    {
+      "position": 19,
+      "team": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
         "shortName": "Espanyol",
@@ -343,25 +362,6 @@
       "goalsFor": 12,
       "goalsAgainst": 14,
       "goalDifference": -2,
-      "form": null
-    },
-    {
-      "position": 19,
-      "team": {
-        "id": 95,
-        "name": "Valencia CF",
-        "shortName": "Valencia",
-        "tla": "VAL",
-        "crestUrl": "https://crests.football-data.org/95.png"
-      },
-      "played": 9,
-      "won": 1,
-      "draw": 3,
-      "lost": 5,
-      "points": 6,
-      "goalsFor": 6,
-      "goalsAgainst": 15,
-      "goalDifference": -9,
       "form": null
     },
     {
