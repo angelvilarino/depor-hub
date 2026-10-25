@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T18:29:54Z",
+  "updatedAt": "2026-10-25T20:25:59Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -12,11 +12,11 @@
         "tla": "FCB",
         "crestUrl": "https://crests.football-data.org/81.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 9,
-      "draw": 0,
+      "draw": 1,
       "lost": 0,
-      "points": 27,
+      "points": 28,
       "goalsFor": 39,
       "goalsAgainst": 9,
       "goalDifference": 30,
@@ -50,11 +50,11 @@
         "tla": "RMA",
         "crestUrl": "https://crests.football-data.org/86.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 7,
-      "draw": 0,
+      "draw": 1,
       "lost": 2,
-      "points": 21,
+      "points": 22,
       "goalsFor": 23,
       "goalsAgainst": 9,
       "goalDifference": 14,
