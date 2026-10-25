@@ -2,6 +2,7 @@ pyproject.toml
 depor_hub/__init__.py
 depor_hub/cli.py
 depor_hub/client.py
+depor_hub/extras.py
 depor_hub/models.py
 depor_hub/publish.py
 depor_hub/source_models.py
@@ -12,3 +13,4 @@ depor_hub_scripts.egg-info/dependency_links.txt
 depor_hub_scripts.egg-info/requires.txt
 depor_hub_scripts.egg-info/top_level.txt
 tests/test_depor_hub.py
+tests/test_squad_extras.py
