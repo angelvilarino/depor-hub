@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T12:33:48Z",
+  "updatedAt": "2026-10-25T13:24:22Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -234,6 +234,25 @@
     {
       "position": 13,
       "team": {
+        "id": 77,
+        "name": "Athletic Club",
+        "shortName": "Athletic",
+        "tla": "ATH",
+        "crestUrl": "https://crests.football-data.org/77.png"
+      },
+      "played": 9,
+      "won": 2,
+      "draw": 4,
+      "lost": 3,
+      "points": 10,
+      "goalsFor": 8,
+      "goalsAgainst": 9,
+      "goalDifference": -1,
+      "form": null
+    },
+    {
+      "position": 14,
+      "team": {
         "id": 88,
         "name": "Levante UD",
         "shortName": "Levante",
@@ -251,7 +270,7 @@
       "form": null
     },
     {
-      "position": 14,
+      "position": 15,
       "team": {
         "id": 285,
         "name": "Elche CF",
@@ -270,25 +289,6 @@
       "form": null
     },
     {
-      "position": 15,
-      "team": {
-        "id": 77,
-        "name": "Athletic Club",
-        "shortName": "Athletic",
-        "tla": "ATH",
-        "crestUrl": "https://crests.football-data.org/77.png"
-      },
-      "played": 8,
-      "won": 2,
-      "draw": 3,
-      "lost": 3,
-      "points": 9,
-      "goalsFor": 8,
-      "goalsAgainst": 9,
-      "goalDifference": -1,
-      "form": null
-    },
-    {
       "position": 16,
       "team": {
         "id": 82,
@@ -297,11 +297,11 @@
         "tla": "GET",
         "crestUrl": "https://crests.football-data.org/82.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 2,
-      "draw": 3,
+      "draw": 4,
       "lost": 4,
-      "points": 9,
+      "points": 10,
       "goalsFor": 5,
       "goalsAgainst": 11,
       "goalDifference": -6,
