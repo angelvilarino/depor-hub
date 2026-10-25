@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T09:26:32Z",
+  "updatedAt": "2026-10-25T10:25:44Z",
   "season": "2026-27",
   "matches": [
     {
@@ -284,7 +284,7 @@
     {
       "id": 564724,
       "utcDate": "2026-10-24T19:00:00Z",
-      "status": "FINISHED",
+      "status": "TIMED",
       "matchday": 10,
       "stage": "REGULAR_SEASON",
       "home": {
@@ -302,11 +302,11 @@
         "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
-        "home": 1,
-        "away": 0,
-        "halfTimeHome": 0,
-        "halfTimeAway": 0,
-        "winner": "HOME_TEAM"
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
       },
       "deporIsHome": false,
       "venue": "Estadio Wanda Metropolitano",
