@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T13:24:22Z",
+  "updatedAt": "2026-10-25T14:25:24Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -158,6 +158,25 @@
     {
       "position": 9,
       "team": {
+        "id": 77,
+        "name": "Athletic Club",
+        "shortName": "Athletic",
+        "tla": "ATH",
+        "crestUrl": "https://crests.football-data.org/77.png"
+      },
+      "played": 9,
+      "won": 3,
+      "draw": 3,
+      "lost": 3,
+      "points": 12,
+      "goalsFor": 10,
+      "goalsAgainst": 9,
+      "goalDifference": 1,
+      "form": null
+    },
+    {
+      "position": 10,
+      "team": {
         "id": 558,
         "name": "RC Celta de Vigo",
         "shortName": "Celta",
@@ -175,7 +194,7 @@
       "form": null
     },
     {
-      "position": 10,
+      "position": 11,
       "team": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
@@ -194,7 +213,7 @@
       "form": null
     },
     {
-      "position": 11,
+      "position": 12,
       "team": {
         "id": 79,
         "name": "CA Osasuna",
@@ -213,7 +232,7 @@
       "form": null
     },
     {
-      "position": 12,
+      "position": 13,
       "team": {
         "id": 5335,
         "name": "Real Racing Club de Santander",
@@ -229,25 +248,6 @@
       "goalsFor": 15,
       "goalsAgainst": 26,
       "goalDifference": -11,
-      "form": null
-    },
-    {
-      "position": 13,
-      "team": {
-        "id": 77,
-        "name": "Athletic Club",
-        "shortName": "Athletic",
-        "tla": "ATH",
-        "crestUrl": "https://crests.football-data.org/77.png"
-      },
-      "played": 9,
-      "won": 2,
-      "draw": 4,
-      "lost": 3,
-      "points": 10,
-      "goalsFor": 8,
-      "goalsAgainst": 9,
-      "goalDifference": -1,
       "form": null
     },
     {
@@ -291,25 +291,6 @@
     {
       "position": 16,
       "team": {
-        "id": 82,
-        "name": "Getafe CF",
-        "shortName": "Getafe",
-        "tla": "GET",
-        "crestUrl": "https://crests.football-data.org/82.png"
-      },
-      "played": 10,
-      "won": 2,
-      "draw": 4,
-      "lost": 4,
-      "points": 10,
-      "goalsFor": 5,
-      "goalsAgainst": 11,
-      "goalDifference": -6,
-      "form": null
-    },
-    {
-      "position": 17,
-      "team": {
         "id": 87,
         "name": "Rayo Vallecano de Madrid",
         "shortName": "Rayo Vallecano",
@@ -323,6 +304,25 @@
       "points": 9,
       "goalsFor": 12,
       "goalsAgainst": 20,
+      "goalDifference": -8,
+      "form": null
+    },
+    {
+      "position": 17,
+      "team": {
+        "id": 82,
+        "name": "Getafe CF",
+        "shortName": "Getafe",
+        "tla": "GET",
+        "crestUrl": "https://crests.football-data.org/82.png"
+      },
+      "played": 10,
+      "won": 2,
+      "draw": 3,
+      "lost": 5,
+      "points": 9,
+      "goalsFor": 5,
+      "goalsAgainst": 13,
       "goalDifference": -8,
       "form": null
     },
