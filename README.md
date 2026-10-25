@@ -17,7 +17,7 @@ npm run mobile      # sirve data/public en local y arranca Expo
 ```
 `npm run mobile` levanta un servidor estático de solo lectura sobre `data/public` (puerto 8000) y arranca Expo. La app deriva la URL del host de Metro, así que en desarrollo siempre enseña los datos locales; para apuntar a GitHub Pages, define `EXPO_PUBLIC_DATA_BASE_URL` en `apps/mobile/.env` (ver `.env.example`).
 
-Para probar en iPhone con un SDK recién salido, Expo Go de la App Store puede ir por detrás: usa un development build (EAS) o `eas go`.
+El proyecto usa **Expo SDK 58** (React Native 0.88), el SDK que soporta Expo Go actualmente. Para probar en iPhone con un SDK recién salido, Expo Go de la App Store puede ir por detrás: usa un development build (EAS) o `eas go`.
 
 ## Scripts de datos
 ```bash

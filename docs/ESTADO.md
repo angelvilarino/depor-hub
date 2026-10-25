@@ -22,6 +22,7 @@ Ver `docs/adr/0005-calendario-y-recordatorios.md` y `0006-escudos-sede-arbitro.m
 - Cada campo enriquecido lleva `source`, `confidence` (`verified`, `cross_checked`, `single_source`, `estimated`) y `capturedAt`. Los conflictos no se ocultan: los aplicados dejan `applied` y `resolution`; los no aplicados se quedan en `null`.
 - `data/manual/squad_extras.yml` es **salida generada**; los datos manuales viven en `data/manual/squad_overrides.yml` (se cargan con `--overrides`). Así una regeneración no pisa correcciones ni fotos puntuales.
 - `npm run mobile` sirve `data/public` en local además de arrancar Expo; la URL se deriva del host de Metro (sin IPs fijas). `.env.example` documenta las variables.
+- La app está en **Expo SDK 58** (React Native 0.88, React 19.3), que es el SDK que soporta Expo Go actualmente. `npx expo install --check` y `npx expo-doctor` pasan sin avisos.
 - Fuentes y límites detallados en `docs/sources.md`; decisiones en `docs/adr/0008-enriquecimiento-fuentes-libres.md` y `docs/adr/0009-fotos-y-fuente-oficial.md`.
 
 ### Comandos de enriquecimiento
