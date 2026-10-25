@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import type { z } from 'zod';
+import { DATA_BASE_URL } from '@/config';
 import { DataError, fetchData } from './api';
 import { Fixtures, Meta, Squad, Standings } from './schemas';
 
@@ -8,9 +9,11 @@ const STALE_TIME = 5 * 60 * 1000;
 
 function useData<T extends z.ZodType>(name: string, schema: T) {
   return useQuery({
-    queryKey: ['data', name],
+    // La URL forma parte de la clave: la caché de GitHub Pages no se mezcla con la local.
+    queryKey: ['data', DATA_BASE_URL, name],
     queryFn: () => fetchData(name, schema),
-    staleTime: STALE_TIME,
+    // En desarrollo queremos ver los cambios de data/public al recargar, sin esperar 5 minutos.
+    staleTime: __DEV__ ? 0 : STALE_TIME,
     gcTime: GC_TIME,
     // No reintentar lo que no se arregla reintentando.
     retry: (count, err) =>

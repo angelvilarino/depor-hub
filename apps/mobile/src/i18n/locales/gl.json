@@ -39,16 +39,79 @@
     "shirtNumber": "Dorsal",
     "position": "Posición",
     "nationality": "Nacionalidade",
+    "birth": "Nacemento",
+    "birthPlace": "Lugar de nacemento",
     "age": "Idade",
     "ageValue": "{{n}} anos",
     "height": "Altura",
+    "heightValue": "{{n}} cm",
+    "weight": "Peso",
+    "weightValue": "{{n}} kg",
+    "preferredFoot": "Pé dominante",
+    "foot": {
+      "left": "Esquerdo",
+      "right": "Dereito",
+      "both": "Ambos"
+    },
     "contract": "Contrato ata",
+    "loanFrom": "Cedido por",
+    "loanTo": "Cedido a",
+    "marketValue": "Valor de mercado",
+    "estimated": "Estimación",
+    "socialTitle": "Redes oficiais",
+    "social": {
+      "x": "X",
+      "instagram": "Instagram",
+      "tiktok": "TikTok"
+    },
+    "photosTitle": "Fotos",
+    "photoLicense": "Licenza: {{license}}",
+    "photoSource": "Ver ficha da foto",
+    "photoAuthor": "Autoría: {{author}}",
+    "photoNote": "As fotos enlázanse desde a súa fonte orixinal con atribución; non se redistribúen.",
+    "careerTitle": "Traxectoria",
+    "careerTotalsTitle": "Totais de carreira",
+    "deporMatchesTitle": "Partidos co Depor",
+    "matchHome": "Local",
+    "matchAway": "Visitante",
+    "stats": {
+      "appearances": "Partidos",
+      "goals": "Goles",
+      "assists": "Asistencias",
+      "minutes": "Minutos",
+      "yellowCards": "Amarillas",
+      "redCards": "Vermellas",
+      "appearancesShort": "PX",
+      "goalsShort": "G",
+      "assistsShort": "A",
+      "minutesShort": "min",
+      "yellowCardsShort": "TA",
+      "redCardsShort": "TV"
+    },
+    "sourceLine": "Fonte: {{sources}} · Confianza: {{confidence}}",
+    "confidence": {
+      "verified": "verificada",
+      "cross_checked": "contrastada",
+      "single_source": "unha fonte",
+      "estimated": "estimación"
+    },
     "pendingTitle": "Datos pendentes",
     "positionName": {
       "GK": "Porteiro",
       "DF": "Defensa",
       "MF": "Centrocampista",
       "FW": "Dianteiro"
+    },
+    "field": {
+      "shirtNumber": "Dorsal",
+      "position": "Posición",
+      "nationality": "Nacionalidade",
+      "dateOfBirth": "Data de nacemento",
+      "birthPlace": "Lugar de nacemento",
+      "heightCm": "Altura",
+      "weightKg": "Peso",
+      "preferredFoot": "Pé dominante",
+      "contractUntil": "Contrato"
     }
   }
 }

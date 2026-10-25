@@ -45,6 +45,10 @@
   },
   "private": true,
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "moduleNameMapper": {
+      "^react$": "<rootDir>/../../node_modules/react",
+      "^react/(.*)$": "<rootDir>/../../node_modules/react/$1"
+    }
   }
 }

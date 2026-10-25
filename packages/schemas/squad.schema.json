@@ -1,8 +1,332 @@
 {
   "$defs": {
+    "CareerEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "appearances": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Appearances"
+        },
+        "assists": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Assists"
+        },
+        "club": {
+          "title": "Club",
+          "type": "string"
+        },
+        "from": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "From"
+        },
+        "goals": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Goals"
+        },
+        "minutes": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minutes"
+        },
+        "redCards": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Redcards"
+        },
+        "seasons": {
+          "items": {
+            "$ref": "#/$defs/CareerSeason"
+          },
+          "title": "Seasons",
+          "type": "array"
+        },
+        "to": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "To"
+        },
+        "yellowCards": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Yellowcards"
+        }
+      },
+      "required": [
+        "club"
+      ],
+      "title": "CareerEntry",
+      "type": "object"
+    },
+    "CareerSeason": {
+      "additionalProperties": false,
+      "properties": {
+        "appearances": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Appearances"
+        },
+        "assists": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Assists"
+        },
+        "goals": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Goals"
+        },
+        "minutes": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minutes"
+        },
+        "redCards": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Redcards"
+        },
+        "season": {
+          "title": "Season",
+          "type": "string"
+        },
+        "yellowCards": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Yellowcards"
+        }
+      },
+      "required": [
+        "season"
+      ],
+      "title": "CareerSeason",
+      "type": "object"
+    },
+    "CareerTotals": {
+      "additionalProperties": false,
+      "properties": {
+        "appearances": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Appearances"
+        },
+        "assists": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Assists"
+        },
+        "goals": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Goals"
+        },
+        "minutes": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minutes"
+        },
+        "redCards": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Redcards"
+        },
+        "yellowCards": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Yellowcards"
+        }
+      },
+      "title": "CareerTotals",
+      "type": "object"
+    },
     "Coach": {
       "additionalProperties": false,
       "properties": {
+        "birthDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Birthdate"
+        },
+        "contractUntil": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Contractuntil"
+        },
         "name": {
           "anyOf": [
             {
@@ -26,6 +350,25 @@
           ],
           "default": null,
           "title": "Nationality"
+        },
+        "provenance": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Provenance"
+          },
+          "title": "Provenance",
+          "type": "object"
+        },
+        "since": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Since"
         }
       },
       "title": "Coach",
@@ -34,6 +377,28 @@
     "Player": {
       "additionalProperties": false,
       "properties": {
+        "birthPlace": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Birthplace"
+        },
+        "career": {
+          "items": {
+            "$ref": "#/$defs/CareerEntry"
+          },
+          "title": "Career",
+          "type": "array"
+        },
+        "careerTotals": {
+          "$ref": "#/$defs/CareerTotals"
+        },
         "contractUntil": {
           "anyOf": [
             {
@@ -58,6 +423,13 @@
           "default": null,
           "title": "Dateofbirth"
         },
+        "deporMatches": {
+          "items": {
+            "$ref": "#/$defs/PlayerMatch"
+          },
+          "title": "Depormatches",
+          "type": "array"
+        },
         "heightCm": {
           "anyOf": [
             {
@@ -73,6 +445,43 @@
         "id": {
           "title": "Id",
           "type": "integer"
+        },
+        "loanFrom": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Loanfrom"
+        },
+        "loanTo": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Loanto"
+        },
+        "marketValueEur": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Marketvalueeur"
         },
         "name": {
           "title": "Name",
@@ -90,6 +499,13 @@
           "default": null,
           "title": "Nationality"
         },
+        "photos": {
+          "items": {
+            "$ref": "#/$defs/PlayerPhoto"
+          },
+          "title": "Photos",
+          "type": "array"
+        },
         "position": {
           "anyOf": [
             {
@@ -102,6 +518,30 @@
           "default": null,
           "title": "Position"
         },
+        "preferredFoot": {
+          "anyOf": [
+            {
+              "enum": [
+                "left",
+                "right",
+                "both"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Preferredfoot"
+        },
+        "provenance": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Provenance"
+          },
+          "title": "Provenance",
+          "type": "object"
+        },
         "shirtNumber": {
           "anyOf": [
             {
@@ -113,6 +553,22 @@
           ],
           "default": null,
           "title": "Shirtnumber"
+        },
+        "social": {
+          "$ref": "#/$defs/Social"
+        },
+        "weightKg": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Weightkg"
         }
       },
       "required": [
@@ -120,6 +576,354 @@
         "name"
       ],
       "title": "Player",
+      "type": "object"
+    },
+    "PlayerMatch": {
+      "additionalProperties": false,
+      "description": "Partido disputado con el Depor. Las asistencias no se inventan: null si la fuente no las da.",
+      "properties": {
+        "assists": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Assists"
+        },
+        "competition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Competition"
+        },
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "goals": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Goals"
+        },
+        "home": {
+          "title": "Home",
+          "type": "boolean"
+        },
+        "minutes": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minutes"
+        },
+        "opponent": {
+          "title": "Opponent",
+          "type": "string"
+        },
+        "opponentGoals": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Opponentgoals"
+        },
+        "redCards": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Redcards"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "enum": [
+                "W",
+                "D",
+                "L"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Result"
+        },
+        "started": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Started"
+        },
+        "teamGoals": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Teamgoals"
+        },
+        "yellowCards": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Yellowcards"
+        }
+      },
+      "required": [
+        "date",
+        "opponent",
+        "home"
+      ],
+      "title": "PlayerMatch",
+      "type": "object"
+    },
+    "PlayerPhoto": {
+      "additionalProperties": false,
+      "description": "Foto externa con su licencia y atribuci\u00f3n (ADR 0009).\n\n`url` apunta siempre a la fuente original: el repositorio no redistribuye binarios.\nSi no hay licencia de reutilizaci\u00f3n, `license` lo dice expl\u00edcitamente.",
+      "properties": {
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Author"
+        },
+        "credit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Credit"
+        },
+        "height": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Height"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "licenseUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Licenseurl"
+        },
+        "role": {
+          "default": "portrait",
+          "enum": [
+            "portrait",
+            "action",
+            "other"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "width": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Width"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "PlayerPhoto",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "description": "De d\u00f3nde sale un dato y con qu\u00e9 confianza (ADR 0008).",
+      "properties": {
+        "capturedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Capturedat"
+        },
+        "confidence": {
+          "default": "single_source",
+          "enum": [
+            "verified",
+            "cross_checked",
+            "single_source",
+            "estimated"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "Social": {
+      "additionalProperties": false,
+      "description": "Handles, no URLs. La app construye los enlaces oficiales.",
+      "properties": {
+        "instagram": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Instagram"
+        },
+        "tiktok": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tiktok"
+        },
+        "x": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "X"
+        }
+      },
+      "title": "Social",
       "type": "object"
     }
   },

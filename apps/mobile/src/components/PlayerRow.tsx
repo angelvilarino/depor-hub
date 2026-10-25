@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { PlayerAvatar } from '@/components/PlayerAvatar';
+import { PlayerPortrait } from '@/components/PlayerPortrait';
 import type { PlayerT } from '@/data/schemas';
 import { countryLabel } from '@/features/squad/labels';
 import { ageFrom } from '@/features/squad/logic';
@@ -29,7 +29,7 @@ export function PlayerRow({ player, now }: { player: PlayerT; now: number }) {
       onPress={() => router.push(`/player/${player.id}`)}
       style={[styles.row, { backgroundColor: colors.surface, borderColor: colors.border }]}
     >
-      <PlayerAvatar id={player.id} name={player.name} size={44} />
+      <PlayerPortrait player={player} size={44} />
       <View style={styles.text}>
         <Text numberOfLines={1} style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
           {player.name}

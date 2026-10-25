@@ -10,7 +10,7 @@
     "node": ">=22.13"
   },
   "scripts": {
-    "mobile": "npm run start -w apps/mobile",
+    "mobile": "node scripts/mobile.mjs",
     "lint": "npm run lint -w apps/mobile",
     "typecheck": "npm run typecheck -w apps/mobile",
     "test": "npm run test -w apps/mobile",

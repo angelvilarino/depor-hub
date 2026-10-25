@@ -4,11 +4,19 @@ import {
   AVATAR_COLORS,
   ageFrom,
   avatarColor,
+  careerChronological,
+  formatEuro,
   formatPartialDate,
   groupSquad,
+  hasCareerTotals,
   initials,
+  matchScore,
   pendingFields,
   positionGroup,
+  provenanceSummary,
+  seasonRange,
+  socialLinks,
+  summarizeMatches,
 } from '@/features/squad/logic';
 import { contrastRatio } from '@/utils/contrast';
 
@@ -21,6 +29,25 @@ const player = (over: Partial<PlayerT> = {}): PlayerT => ({
   shirtNumber: null,
   contractUntil: null,
   heightCm: null,
+  birthPlace: null,
+  preferredFoot: null,
+  loanFrom: null,
+  loanTo: null,
+  marketValueEur: null,
+  weightKg: null,
+  social: { x: null, instagram: null, tiktok: null },
+  photos: [],
+  career: [],
+  careerTotals: {
+    appearances: null,
+    goals: null,
+    assists: null,
+    minutes: null,
+    yellowCards: null,
+    redCards: null,
+  },
+  deporMatches: [],
+  provenance: {},
   ...over,
 });
 
@@ -94,15 +121,135 @@ describe('formatPartialDate', () => {
 
 describe('pendingFields', () => {
   it('lista lo que falta, en orden estable', () => {
-    expect(pendingFields(player())).toEqual(['shirtNumber', 'heightCm', 'contractUntil']);
+    expect(pendingFields(player())).toEqual([
+      'shirtNumber',
+      'birthPlace',
+      'heightCm',
+      'weightKg',
+      'preferredFoot',
+      'contractUntil',
+    ]);
   });
   it('un jugador completo no tiene pendientes', () => {
-    const full = player({ shirtNumber: 8, heightCm: 180, contractUntil: '2028-06-30' });
+    const full = player({
+      shirtNumber: 8,
+      birthPlace: 'A Coruña',
+      heightCm: 180,
+      weightKg: 75,
+      preferredFoot: 'right',
+      contractUntil: '2028-06-30',
+    });
     expect(pendingFields(full)).toEqual([]);
   });
   it('caché antigua sin heightCm cuenta como pendiente', () => {
     const old = { ...player(), heightCm: undefined } as unknown as PlayerT;
     expect(pendingFields(old)).toContain('heightCm');
+  });
+});
+
+describe('carrera', () => {
+  const entry = (over: Partial<PlayerT['career'][number]> = {}) => ({
+    club: 'Depor',
+    from: '2014',
+    to: '2017',
+    appearances: null,
+    goals: null,
+    assists: null,
+    minutes: null,
+    yellowCards: null,
+    redCards: null,
+    seasons: [],
+    ...over,
+  });
+
+  it('rango de temporadas, incluido el club actual', () => {
+    expect(seasonRange('2014', '2017')).toBe('2014–2017');
+    expect(seasonRange('2026', null)).toBe('2026–');
+    expect(seasonRange(null, '2017')).toBeNull();
+  });
+
+  it('ordena de más antigua a más reciente sin mutar', () => {
+    const input = [entry({ club: 'B', from: '2019' }), entry({ club: 'A', from: '2014' })];
+    expect(careerChronological(input).map((e) => e.club)).toEqual(['A', 'B']);
+    expect(input.map((e) => e.club)).toEqual(['B', 'A']);
+  });
+
+  it('sin fechas conocidas van al final', () => {
+    const input = [entry({ club: 'X', from: null }), entry({ club: 'Y', from: '2020' })];
+    expect(careerChronological(input).map((e) => e.club)).toEqual(['Y', 'X']);
+  });
+});
+
+describe('totales y partidos', () => {
+  it('detecta totales con algún dato', () => {
+    expect(hasCareerTotals({ ...player().careerTotals })).toBe(false);
+    expect(hasCareerTotals({ ...player().careerTotals, goals: 0 })).toBe(true);
+  });
+
+  it('resume partidos y respeta los datos desconocidos', () => {
+    const base: Omit<PlayerT['deporMatches'][number], 'date'> = {
+      opponent: 'Rival',
+      competition: null,
+      home: true,
+      teamGoals: null,
+      opponentGoals: null,
+      result: null,
+      started: null,
+      minutes: null,
+      goals: null,
+      assists: null,
+      yellowCards: null,
+      redCards: null,
+    };
+    expect(summarizeMatches([])).toBeNull();
+    expect(
+      summarizeMatches([
+        { ...base, date: '2026-01-01', minutes: 90, goals: 1 },
+        { ...base, date: '2026-02-01', minutes: 30, goals: 0, yellowCards: 1 },
+      ]),
+    ).toEqual({ appearances: 2, goals: 1, assists: null, minutes: 120, yellowCards: 1, redCards: null });
+  });
+
+  it('marcador y enlaces sociales', () => {
+    const match: PlayerT['deporMatches'][number] = {
+      date: '2026-01-01',
+      opponent: 'Rival',
+      competition: null,
+      home: true,
+      teamGoals: 2,
+      opponentGoals: 1,
+      result: 'W',
+      started: true,
+      minutes: 90,
+      goals: 0,
+      assists: null,
+      yellowCards: 0,
+      redCards: 0,
+    };
+    expect(matchScore(match)).toBe('2–1');
+    expect(socialLinks({ x: 'depor', instagram: null, tiktok: 'deporhub' })).toEqual([
+      { network: 'x', handle: 'depor', url: 'https://x.com/depor' },
+      { network: 'tiktok', handle: 'deporhub', url: 'https://tiktok.com/@deporhub' },
+    ]);
+    expect(socialLinks({ x: null, instagram: null, tiktok: null })).toEqual([]);
+  });
+
+  it('valor de mercado en euros', () => {
+    expect(formatEuro(null, 'es')).toBeNull();
+    expect(formatEuro(5_000_000, 'es')).toContain('5');
+    expect(formatEuro(5_000_000, 'es')).toContain('€');
+  });
+
+  it('resumen de procedencia con la confianza más baja', () => {
+    const prov = {
+      career: { source: 'BDFutbol + Wikidata', confidence: 'cross_checked' as const },
+      careerTotals: { source: 'BDFutbol', confidence: 'single_source' as const },
+    };
+    expect(provenanceSummary(prov, ['career', 'careerTotals'])).toEqual({
+      sources: ['BDFutbol', 'Wikidata'],
+      confidence: 'single_source',
+    });
+    expect(provenanceSummary(prov, ['unknown'])).toBeNull();
   });
 });
 

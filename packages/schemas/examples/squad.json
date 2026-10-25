@@ -1,11 +1,99 @@
 {
   "updatedAt": "2026-01-01T00:00:00Z",
-  "coach": { "name": "Entrenador Ejemplo", "nationality": null },
+  "coach": {
+    "name": "Entrenador Ejemplo",
+    "nationality": null,
+    "birthDate": "1975-05-10",
+    "since": "2025-07-01",
+    "contractUntil": "2027",
+    "provenance": {
+      "since": { "source": "Fuente de ejemplo", "confidence": "single_source", "capturedAt": "2026-10-25" }
+    }
+  },
   "players": [
     {
-      "id": 10, "name": "Jugador Ejemplo", "position": "Midfield",
-      "dateOfBirth": "2000-01-31", "nationality": "Spain", "shirtNumber": null, "contractUntil": null,
-      "heightCm": 180
+      "id": 10,
+      "name": "Jugador Ejemplo",
+      "position": "Midfield",
+      "dateOfBirth": "2000-01-31",
+      "nationality": "Spain",
+      "shirtNumber": 8,
+      "contractUntil": "2028",
+      "heightCm": 180,
+      "birthPlace": "A Coruña",
+      "preferredFoot": "right",
+      "loanFrom": null,
+      "loanTo": null,
+      "marketValueEur": 2500000,
+      "weightKg": 74,
+      "social": { "x": "jugador_ejemplo", "instagram": "jugador.ejemplo", "tiktok": null },
+      "photos": [
+        {
+          "url": "https://cdn.bff.rcdeportivo.app/players/000000-large?v=21",
+          "role": "portrait",
+          "width": null,
+          "height": null,
+          "license": "Uso editorial del club (sin licencia de reutilización)",
+          "licenseUrl": null,
+          "author": "RC Deportivo de La Coruña",
+          "credit": "© RC Deportivo de La Coruña",
+          "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/jugador-ejemplo"
+        }
+      ],
+      "career": [
+        {
+          "club": "Club de Origen",
+          "from": "2018",
+          "to": "2022",
+          "appearances": 84,
+          "goals": 9,
+          "assists": null,
+          "minutes": 5120,
+          "yellowCards": 11,
+          "redCards": 0,
+          "seasons": [
+            {
+              "season": "2018-19",
+              "appearances": 20,
+              "goals": 2,
+              "assists": null,
+              "minutes": 1200,
+              "yellowCards": 3,
+              "redCards": 0
+            }
+          ]
+        }
+      ],
+      "careerTotals": {
+        "appearances": 84,
+        "goals": 9,
+        "assists": null,
+        "minutes": 5120,
+        "yellowCards": 11,
+        "redCards": 0
+      },
+      "deporMatches": [
+        {
+          "date": "2026-09-13",
+          "opponent": "Getafe",
+          "competition": "LaLiga",
+          "home": false,
+          "teamGoals": 1,
+          "opponentGoals": 1,
+          "result": "D",
+          "started": true,
+          "minutes": 90,
+          "goals": 1,
+          "assists": null,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ],
+      "provenance": {
+        "heightCm": { "source": "Fuente de ejemplo", "confidence": "single_source", "capturedAt": "2026-10-25" },
+        "marketValueEur": { "source": "Estimación de ejemplo", "confidence": "estimated", "capturedAt": "2026-10-25" },
+        "career": { "source": "Fuente de ejemplo", "confidence": "single_source", "capturedAt": "2026-10-25" }
+      }
     }
   ]
 }

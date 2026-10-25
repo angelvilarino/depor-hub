@@ -1,0 +1,43 @@
+name: Enrich proposal
+on:
+  workflow_dispatch:
+    inputs:
+      min_confidence:
+        description: "Confianza mínima que se aplicaría (el artefacto siempre incluye todo)"
+        type: choice
+        options:
+          - single_source
+          - cross_checked
+          - verified
+        default: single_source
+
+permissions:
+  contents: read
+
+concurrency:
+  group: enrich-proposal
+  cancel-in-progress: false
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/pyproject.toml
+      - run: pip install -e scripts
+      - name: Generar propuesta (sin aplicar ni commitear)
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+        run: |
+          python -m depor_hub.cli enrich --min-confidence "${{ inputs.min_confidence }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: squad-enrich-proposal
+          path: data/manual/squad_enrich.proposed.yml
+          if-no-files-found: error
+          retention-days: 14

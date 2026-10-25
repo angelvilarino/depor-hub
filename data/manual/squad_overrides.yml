@@ -1,0 +1,146 @@
+# Datos manuales que el generador NO debe pisar.
+#
+# `enrich --apply` escribe los datos automáticos en data/manual/squad_extras.yml.
+# Este fichero es la capa de overrides: lo que pongas aquí manda sobre lo generado.
+# Cada jugador con datos exige `source`; cada campo puede afinar su `provenance`.
+players:
+  177239:
+    name: Lucas Noubi
+    contract_until: '2029'
+    source: https://www.rcdeportivo.es/es/noticias/lucas-noubi-nuevo-jugador-del-rc-deportivo-hasta-2029
+    provenance:
+      contractUntil:
+        source: https://www.rcdeportivo.es/es/noticias/lucas-noubi-nuevo-jugador-del-rc-deportivo-hasta-2029
+        confidence: verified
+  226242:
+    name: Dani Barcia
+    contract_until: '2028'
+    source: https://www.rcdeportivo.es/es/noticias/dani-barcia-renueva-por-el-depor-hasta-2028
+    provenance:
+      contractUntil:
+        source: https://www.rcdeportivo.es/es/noticias/dani-barcia-renueva-por-el-depor-hasta-2028
+        confidence: verified
+  289952:
+    name: Noé Carrillo
+    contract_until: '2029'
+    source: https://www.rcdeportivo.es/es/noticias/noe-carrillo-renueva-por-el-depor-hasta-2029
+    provenance:
+      contractUntil:
+        source: https://www.rcdeportivo.es/es/noticias/noe-carrillo-renueva-por-el-depor-hasta-2029
+        confidence: verified
+  245913:
+    name: Teun Gijselhart
+    contract_until: '2030'
+    preferred_foot: right
+    loan_to: Al Ain (Emiratos Árabes Unidos)
+    source: https://www.rcdeportivo.es/es/noticias/teun-gijselhart-nuevo-jugador-del-depor
+    photos:
+      - url: https://scdn.ovixia.app/images/scn1tr4b/production/b85c03080c2957fe63d1e2651440aea5443ec981-2161x3841.png?w=800&auto=format
+        role: portrait
+        width: 2161
+        height: 3841
+        license: Uso editorial del club (sin licencia de reutilización)
+        credit: © RC Deportivo de La Coruña
+        author: RC Deportivo de La Coruña
+        source_url: https://www.rcdeportivo.es/es/noticias/teun-gijselhart-nuevo-jugador-del-depor
+    provenance:
+      contractUntil:
+        source: https://www.rcdeportivo.es/es/noticias/teun-gijselhart-nuevo-jugador-del-depor
+        confidence: verified
+      preferredFoot:
+        source: https://www.fotmob.com/players/1466558/teun-gijselhart + https://en.soccerwiki.org/player.php?pid=145451
+        confidence: cross_checked
+      loanTo:
+        source: https://www.rcdeportivo.es/es/noticias/teun-gijselhart-cedido-al-al-ain
+        confidence: verified
+      photos:
+        source: https://www.rcdeportivo.es/es/noticias/teun-gijselhart-nuevo-jugador-del-depor
+        confidence: single_source
+  79533:
+    name: Álvaro Fernández
+    social:
+      x: alvaroferllo98
+      instagram: alvaroferllo
+      tiktok: null
+    source: https://www.instagram.com/alvaroferllo + https://x.com/alvaroferllo98
+    provenance:
+      social:
+        source: https://www.instagram.com/alvaroferllo + https://x.com/alvaroferllo98
+        confidence: single_source
+  172628:
+    name: Leo Román
+    social:
+      x: null
+      instagram: leo_rr0
+      tiktok: null
+    source: https://www.instagram.com/leo_rr0
+    provenance:
+      social:
+        source: https://www.instagram.com/leo_rr0
+        confidence: single_source
+  185093:
+    name: Adrià Altimira
+    social:
+      x: adrialti72
+      instagram: adrialti_
+      tiktok: null
+    source: https://www.instagram.com/adrialti_ + https://x.com/adrialti72
+    provenance:
+      social:
+        source: https://www.instagram.com/adrialti_ + https://x.com/adrialti72
+        confidence: single_source
+  213277:
+    name: José Giménez
+    social:
+      x: josemagimenez13
+      instagram: josemariagimenez
+      tiktok: null
+    source: https://www.instagram.com/josemariagimenez + https://x.com/josemagimenez13
+    provenance:
+      social:
+        source: https://www.instagram.com/josemariagimenez + https://x.com/josemagimenez13
+        confidence: single_source
+  298636:
+    name: Ede Bright
+    social:
+      x: null
+      instagram: bright_ede
+      tiktok: null
+    source: https://www.instagram.com/bright_ede
+    provenance:
+      social:
+        source: https://www.instagram.com/bright_ede
+        confidence: single_source
+  98199:
+    name: Riki Rodríguez
+    social:
+      x: null
+      instagram: rikirgc6
+      tiktok: null
+    source: https://www.instagram.com/rikirgc6
+    provenance:
+      social:
+        source: https://www.instagram.com/rikirgc6
+        confidence: single_source
+  190825:
+    name: Lorenzo Amatucci
+    social:
+      x: null
+      instagram: lorenzo.amatucci
+      tiktok: null
+    source: https://www.instagram.com/lorenzo.amatucci
+    provenance:
+      social:
+        source: https://www.instagram.com/lorenzo.amatucci
+        confidence: single_source
+  246474:
+    name: Jonathan Asp-Jensen
+    social:
+      x: null
+      instagram: jonathan_asp1
+      tiktok: null
+    source: https://www.instagram.com/jonathan_asp1
+    provenance:
+      social:
+        source: https://www.instagram.com/jonathan_asp1
+        confidence: single_source
