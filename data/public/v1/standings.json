@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T14:25:24Z",
+  "updatedAt": "2026-10-25T15:25:04Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -69,11 +69,11 @@
         "tla": "BET",
         "crestUrl": "https://crests.football-data.org/90.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 6,
-      "draw": 1,
+      "draw": 2,
       "lost": 2,
-      "points": 19,
+      "points": 20,
       "goalsFor": 16,
       "goalsAgainst": 14,
       "goalDifference": 2,
@@ -139,6 +139,44 @@
     {
       "position": 8,
       "team": {
+        "id": 77,
+        "name": "Athletic Club",
+        "shortName": "Athletic",
+        "tla": "ATH",
+        "crestUrl": "https://crests.football-data.org/77.png"
+      },
+      "played": 9,
+      "won": 3,
+      "draw": 3,
+      "lost": 3,
+      "points": 12,
+      "goalsFor": 12,
+      "goalsAgainst": 9,
+      "goalDifference": 3,
+      "form": null
+    },
+    {
+      "position": 9,
+      "team": {
+        "id": 558,
+        "name": "RC Celta de Vigo",
+        "shortName": "Celta",
+        "tla": "CEL",
+        "crestUrl": "https://crests.football-data.org/558.png"
+      },
+      "played": 10,
+      "won": 2,
+      "draw": 6,
+      "lost": 2,
+      "points": 12,
+      "goalsFor": 10,
+      "goalsAgainst": 7,
+      "goalDifference": 3,
+      "form": null
+    },
+    {
+      "position": 10,
+      "team": {
         "id": 94,
         "name": "Villarreal CF",
         "shortName": "Villarreal",
@@ -153,44 +191,6 @@
       "goalsFor": 15,
       "goalsAgainst": 14,
       "goalDifference": 1,
-      "form": null
-    },
-    {
-      "position": 9,
-      "team": {
-        "id": 77,
-        "name": "Athletic Club",
-        "shortName": "Athletic",
-        "tla": "ATH",
-        "crestUrl": "https://crests.football-data.org/77.png"
-      },
-      "played": 9,
-      "won": 3,
-      "draw": 3,
-      "lost": 3,
-      "points": 12,
-      "goalsFor": 10,
-      "goalsAgainst": 9,
-      "goalDifference": 1,
-      "form": null
-    },
-    {
-      "position": 10,
-      "team": {
-        "id": 558,
-        "name": "RC Celta de Vigo",
-        "shortName": "Celta",
-        "tla": "CEL",
-        "crestUrl": "https://crests.football-data.org/558.png"
-      },
-      "played": 9,
-      "won": 2,
-      "draw": 5,
-      "lost": 2,
-      "points": 11,
-      "goalsFor": 10,
-      "goalsAgainst": 7,
-      "goalDifference": 3,
       "form": null
     },
     {
@@ -322,8 +322,8 @@
       "lost": 5,
       "points": 9,
       "goalsFor": 5,
-      "goalsAgainst": 13,
-      "goalDifference": -8,
+      "goalsAgainst": 15,
+      "goalDifference": -10,
       "form": null
     },
     {
