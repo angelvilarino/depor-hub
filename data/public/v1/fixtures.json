@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T20:25:33Z",
+  "updatedAt": "2026-10-25T02:36:02Z",
   "season": "2026-27",
   "matches": [
     {
@@ -284,7 +284,7 @@
     {
       "id": 564724,
       "utcDate": "2026-10-24T19:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "matchday": 10,
       "stage": "REGULAR_SEASON",
       "home": {
@@ -302,15 +302,15 @@
         "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "halfTimeHome": null,
-        "halfTimeAway": null,
-        "winner": null
+        "home": 1,
+        "away": 0,
+        "halfTimeHome": 0,
+        "halfTimeAway": 0,
+        "winner": "HOME_TEAM"
       },
       "deporIsHome": false,
       "venue": "Estadio Wanda Metropolitano",
-      "referee": null
+      "referee": "José Sánchez Martínez"
     },
     {
       "id": 564731,
