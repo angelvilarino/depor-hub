@@ -4,7 +4,9 @@ import * as Sharing from 'expo-sharing';
 import type { MatchT } from '@/data/schemas';
 import { hasConfirmedTime } from '@/utils/matchTime';
 
-/** Abre el editor de eventos del sistema (no necesita permiso de calendario). */
+/** Abre el diálogo del sistema para añadir un evento al calendario del usuario.
+ *  API expo-calendar 58: presentPicker() devuelve el calendario elegido por el usuario;
+ *  addEventWithForm() abre el formulario nativo del sistema pre-rellenado. */
 export async function addMatchToCalendar(
   m: MatchT,
   info: { title: string; venue: string | null; notes?: string },
@@ -12,14 +14,16 @@ export async function addMatchToCalendar(
   const start = new Date(m.utcDate);
   const allDay = !hasConfirmedTime(m.status);
   const end = new Date(start.getTime() + (allDay ? 86_400_000 : 2 * 3_600_000));
-  await Calendar.createEventInCalendarAsync({
+  // presentPicker() devuelve null si el usuario cancela la selección de calendario.
+  const cal = await Calendar.presentPicker();
+  if (!cal) return;
+  await cal.addEventWithForm({
     title: info.title,
     startDate: start,
     endDate: end,
     allDay,
     location: info.venue ?? undefined,
     notes: info.notes,
-    timeZone: allDay ? 'UTC' : 'Europe/Madrid',
   });
 }
 

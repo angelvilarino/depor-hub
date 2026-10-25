@@ -1,4 +1,6 @@
 import * as Notifications from 'expo-notifications';
+// AndroidImportance se importa directamente porque ESLint/import-namespace no resuelve export*
+import { AndroidImportance } from 'expo-notifications/build/NotificationChannelManager.types';
 import { Platform } from 'react-native';
 import i18n from '@/i18n';
 import type { MatchT } from '@/data/schemas';
@@ -21,7 +23,7 @@ async function ensureChannel(): Promise<void> {
   if (Platform.OS !== 'android') return;
   await Notifications.setNotificationChannelAsync(CHANNEL, {
     name: i18n.t('reminder.channel'),
-    importance: Notifications.AndroidImportance.DEFAULT,
+    importance: AndroidImportance.DEFAULT,
   });
 }
 
