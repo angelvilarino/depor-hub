@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T15:41:25Z",
+  "updatedAt": "2026-10-25T18:29:54Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -88,14 +88,14 @@
         "tla": "RSO",
         "crestUrl": "https://crests.football-data.org/92.png"
       },
-      "played": 9,
-      "won": 5,
+      "played": 10,
+      "won": 6,
       "draw": 1,
       "lost": 3,
-      "points": 16,
-      "goalsFor": 17,
-      "goalsAgainst": 17,
-      "goalDifference": 0,
+      "points": 19,
+      "goalsFor": 19,
+      "goalsAgainst": 18,
+      "goalDifference": 1,
       "form": null
     },
     {
@@ -259,14 +259,14 @@
         "tla": "LEV",
         "crestUrl": "https://crests.football-data.org/88.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 2,
       "draw": 4,
-      "lost": 3,
+      "lost": 4,
       "points": 10,
-      "goalsFor": 15,
-      "goalsAgainst": 17,
-      "goalDifference": -2,
+      "goalsFor": 16,
+      "goalsAgainst": 19,
+      "goalDifference": -3,
       "form": null
     },
     {
