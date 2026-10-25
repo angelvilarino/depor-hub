@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T20:25:59Z",
+  "updatedAt": "2026-10-25T21:24:04Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -14,12 +14,12 @@
       },
       "played": 10,
       "won": 9,
-      "draw": 1,
-      "lost": 0,
-      "points": 28,
+      "draw": 0,
+      "lost": 1,
+      "points": 27,
       "goalsFor": 39,
-      "goalsAgainst": 9,
-      "goalDifference": 30,
+      "goalsAgainst": 10,
+      "goalDifference": 29,
       "form": null
     },
     {
@@ -51,13 +51,13 @@
         "crestUrl": "https://crests.football-data.org/86.png"
       },
       "played": 10,
-      "won": 7,
-      "draw": 1,
+      "won": 8,
+      "draw": 0,
       "lost": 2,
-      "points": 22,
-      "goalsFor": 23,
+      "points": 24,
+      "goalsFor": 24,
       "goalsAgainst": 9,
-      "goalDifference": 14,
+      "goalDifference": 15,
       "form": null
     },
     {
