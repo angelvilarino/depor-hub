@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T22:23:41Z",
+  "updatedAt": "2026-10-26T20:29:22Z",
   "season": "2026-27",
   "matchday": 10,
   "table": [
@@ -107,11 +107,11 @@
         "tla": "SEV",
         "crestUrl": "https://crests.football-data.org/559.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 4,
-      "draw": 2,
+      "draw": 3,
       "lost": 3,
-      "points": 14,
+      "points": 15,
       "goalsFor": 14,
       "goalsAgainst": 16,
       "goalDifference": -2,
@@ -196,6 +196,25 @@
     {
       "position": 11,
       "team": {
+        "id": 79,
+        "name": "CA Osasuna",
+        "shortName": "Osasuna",
+        "tla": "OSA",
+        "crestUrl": "https://crests.football-data.org/79.png"
+      },
+      "played": 10,
+      "won": 3,
+      "draw": 3,
+      "lost": 4,
+      "points": 12,
+      "goalsFor": 10,
+      "goalsAgainst": 18,
+      "goalDifference": -8,
+      "form": null
+    },
+    {
+      "position": 12,
+      "team": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
@@ -210,25 +229,6 @@
       "goalsFor": 13,
       "goalsAgainst": 13,
       "goalDifference": 0,
-      "form": null
-    },
-    {
-      "position": 12,
-      "team": {
-        "id": 79,
-        "name": "CA Osasuna",
-        "shortName": "Osasuna",
-        "tla": "OSA",
-        "crestUrl": "https://crests.football-data.org/79.png"
-      },
-      "played": 9,
-      "won": 3,
-      "draw": 2,
-      "lost": 4,
-      "points": 11,
-      "goalsFor": 10,
-      "goalsAgainst": 18,
-      "goalDifference": -8,
       "form": null
     },
     {
