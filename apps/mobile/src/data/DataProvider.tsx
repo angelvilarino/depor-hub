@@ -35,7 +35,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
       persistOptions={{
         persister,
         maxAge: GC_TIME,
-        buster: 'data-v4', // v4: escudos de carrera y rivales (ADR 0012); descarta la caché anterior
+        buster: 'data-v5', // v5: entrenador y cuerpo técnico, escudos completos y ficha v2 (ADR 0014)
         dehydrateOptions: { shouldDehydrateQuery: (q) => q.state.status === 'success' },
       }}
     >
