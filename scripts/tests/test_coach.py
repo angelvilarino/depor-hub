@@ -458,3 +458,26 @@ def test_reset_coach_is_a_noop_without_coach_or_provenance():
         coach=m.Coach(name="Antonio Hidalgo", birth_date="1979-02-06"),
     )
     assert reset_coach(plain) is plain
+
+
+def test_contract_defaults_keep_old_json_and_cache_valid():
+    squad = m.Squad.model_validate(
+        {
+            "updatedAt": "2026-10-20T10:00:00Z",
+            "coach": {"name": "Entrenador", "nationality": "España"},
+            "players": [
+                {
+                    "id": 1,
+                    "name": "Jugador Antiguo",
+                    "career": [{"club": "Club Antiguo", "from": "2014", "to": "2017"}],
+                }
+            ],
+        }
+    )
+
+    assert squad.coach is not None
+    assert squad.coach.career == []
+    assert squad.coach.staff == []
+    assert squad.coach.photo_url is None
+    assert squad.players[0].career[0].role == "player"
+

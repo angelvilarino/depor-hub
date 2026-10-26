@@ -125,6 +125,35 @@ describe('compatibilidad con JSON anterior a ADR 0012', () => {
   });
 });
 
+describe('compatibilidad con JSON anterior a ADR 0014', () => {
+  it('entrenador y carrera sin campos nuevos -> defaults seguros', () => {
+    const r = Squad.safeParse({
+      updatedAt: '2026-10-20T10:00:00Z',
+      coach: { name: 'Entrenador', nationality: 'Spain' },
+      players: [
+        {
+          id: 1,
+          name: 'Jugador Antiguo',
+          position: 'Midfield',
+          dateOfBirth: '2000-01-31',
+          nationality: 'Spain',
+          shirtNumber: null,
+          contractUntil: null,
+          heightCm: null,
+          career: [{ club: 'Club Antiguo', from: '2014', to: '2017' }],
+        },
+      ],
+    });
+    expect(r.success).toBe(true);
+    if (!r.success) return;
+    expect(r.data.coach?.birthPlace).toBeNull();
+    expect(r.data.coach?.photoUrl).toBeNull();
+    expect(r.data.coach?.career).toEqual([]);
+    expect(r.data.coach?.staff).toEqual([]);
+    expect(r.data.players[0]!.career[0]!.role).toBe('player');
+  });
+});
+
 describe('compatibilidad con JSON anterior a ADR 0009', () => {
   it('foto con solo url -> defaults seguros', () => {
     const r = Squad.safeParse({
