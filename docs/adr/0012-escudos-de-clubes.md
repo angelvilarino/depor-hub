@@ -66,6 +66,10 @@ Los escudos son marcas de sus clubes. El usuario asume el riesgo de usarlos como
 - Entradas de carrera: **97/156**. Partidos: **320/1262**.
 - La cobertura es deliberadamente parcial: no se rellena con URLs sin fuente. Los overrides manuales solo se añaden con una URL y una fuente verificables.
 
+### Actualización (ADR 0014, 26-oct-2026)
+
+La pasada real posterior elevó la cobertura a **156/156** entradas de carrera (**75/75** clubes) y **1229/1262** partidos (**76/82** rivales distintos). Los 6 rivales sin escudo son históricos de Segunda B. Se añadió el respaldo de Wikipedia (infobox y `Special:FilePath`) y un override para RB Leipzig; la prioridad y las reglas conservadoras no cambian. Ver ADR 0014.
+
 ## Comandos
 
 ```bash
