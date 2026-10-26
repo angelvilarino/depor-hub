@@ -33,6 +33,18 @@
           "title": "Club",
           "type": "string"
         },
+        "crestUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cresturl"
+        },
         "from": {
           "anyOf": [
             {
@@ -644,6 +656,18 @@
         "opponent": {
           "title": "Opponent",
           "type": "string"
+        },
+        "opponentCrestUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Opponentcresturl"
         },
         "opponentGoals": {
           "anyOf": [

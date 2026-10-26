@@ -50,6 +50,7 @@ const basePlayer: PlayerT = {
   career: [
     {
       club: 'Club Nuevo',
+      crestUrl: null,
       from: '2020',
       to: '2022',
       appearances: 10,
@@ -72,6 +73,7 @@ const basePlayer: PlayerT = {
     },
     {
       club: 'Club Antiguo',
+      crestUrl: null,
       from: '2014',
       to: null,
       appearances: 19,
@@ -95,6 +97,7 @@ const basePlayer: PlayerT = {
     {
       date: '2026-05-24',
       opponent: 'Valladolid',
+      opponentCrestUrl: null,
       competition: 'LaLiga Hypermotion',
       home: false,
       teamGoals: 2,

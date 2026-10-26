@@ -46,6 +46,8 @@ export const CareerSeason = z.strictObject({
 
 export const CareerEntry = z.strictObject({
   club: z.string(),
+  // ADR 0012: escudo externo del club; tolerado ausente en JSON y caché anteriores.
+  crestUrl: optionalNull(),
   from: optionalNull(),
   to: optionalNull(),
   appearances: optionalInt(),
@@ -69,6 +71,8 @@ export const CareerTotals = z.strictObject({
 export const PlayerMatch = z.strictObject({
   date: z.string(),
   opponent: z.string(),
+  // ADR 0012: escudo externo del rival; tolerado ausente en JSON y caché anteriores.
+  opponentCrestUrl: optionalNull(),
   competition: optionalNull(),
   home: z.boolean(),
   teamGoals: optionalInt(),

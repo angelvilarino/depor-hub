@@ -69,6 +69,62 @@ describe('compatibilidad con JSON anterior a ADR 0008', () => {
   });
 });
 
+describe('compatibilidad con JSON anterior a ADR 0012', () => {
+  it('carrera y partidos sin escudos -> null', () => {
+    const r = Squad.safeParse({
+      updatedAt: '2026-10-20T10:00:00Z',
+      coach: null,
+      players: [
+        {
+          id: 1,
+          name: 'Jugador Antiguo',
+          position: 'Midfield',
+          dateOfBirth: '2000-01-31',
+          nationality: 'Spain',
+          shirtNumber: null,
+          contractUntil: null,
+          heightCm: null,
+          career: [
+            {
+              club: 'Club Antiguo',
+              from: '2014',
+              to: '2017',
+              appearances: 10,
+              goals: 1,
+              assists: null,
+              minutes: 900,
+              yellowCards: 1,
+              redCards: 0,
+              seasons: [],
+            },
+          ],
+          deporMatches: [
+            {
+              date: '2026-05-24',
+              opponent: 'Valladolid',
+              competition: 'LaLiga',
+              home: true,
+              teamGoals: 2,
+              opponentGoals: 0,
+              result: 'W',
+              started: true,
+              minutes: 90,
+              goals: 0,
+              assists: null,
+              yellowCards: 0,
+              redCards: 0,
+            },
+          ],
+        },
+      ],
+    });
+    expect(r.success).toBe(true);
+    if (!r.success) return;
+    expect(r.data.players[0]!.career[0]!.crestUrl).toBeNull();
+    expect(r.data.players[0]!.deporMatches[0]!.opponentCrestUrl).toBeNull();
+  });
+});
+
 describe('compatibilidad con JSON anterior a ADR 0009', () => {
   it('foto con solo url -> defaults seguros', () => {
     const r = Squad.safeParse({

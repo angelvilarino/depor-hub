@@ -92,6 +92,60 @@ def test_examples_validate(name):
     m.FILES[name].model_validate_json((EXAMPLES / name).read_text(encoding="utf-8"))
 
 
+def test_old_squad_json_without_crest_fields_validates_as_null():
+    """Compatibilidad ADR 0012: un JSON anterior no trae crestUrl ni opponentCrestUrl."""
+    old = {
+        "updatedAt": NOW,
+        "coach": None,
+        "players": [
+            {
+                "id": 1,
+                "name": "Jugador Antiguo",
+                "position": "Midfield",
+                "dateOfBirth": "2000-01-31",
+                "nationality": "Spain",
+                "shirtNumber": None,
+                "contractUntil": None,
+                "heightCm": None,
+                "career": [
+                    {
+                        "club": "Club Antiguo",
+                        "from": "2014",
+                        "to": "2017",
+                        "appearances": 10,
+                        "goals": 1,
+                        "assists": None,
+                        "minutes": 900,
+                        "yellowCards": 1,
+                        "redCards": 0,
+                        "seasons": [],
+                    }
+                ],
+                "deporMatches": [
+                    {
+                        "date": "2026-05-24",
+                        "opponent": "Valladolid",
+                        "competition": "LaLiga",
+                        "home": True,
+                        "teamGoals": 2,
+                        "opponentGoals": 0,
+                        "result": "W",
+                        "started": True,
+                        "minutes": 90,
+                        "goals": 0,
+                        "assists": None,
+                        "yellowCards": 0,
+                        "redCards": 0,
+                    }
+                ],
+            }
+        ],
+    }
+    squad = m.Squad.model_validate(old)
+    assert squad.players[0].career[0].crest_url is None
+    assert squad.players[0].depor_matches[0].opponent_crest_url is None
+
+
 def test_write_if_changed(tmp_path):
     files = {n: json.loads((EXAMPLES / n).read_text(encoding="utf-8")) for n in m.FILES}
     assert write_if_changed(tmp_path, files, "0000000000000000") is True

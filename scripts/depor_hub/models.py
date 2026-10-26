@@ -164,6 +164,7 @@ class CareerSeason(Public):
 
 class CareerEntry(Public):
     club: str
+    crest_url: Optional[str] = None  # URL externa del escudo (ADR 0012); null si no se resuelve
     from_: Optional[str] = Field(default=None, alias="from")  # AAAA, AAAA-MM o AAAA-MM-DD
     to: Optional[str] = None
     appearances: Optional[int] = Field(default=None, ge=0)
@@ -196,6 +197,7 @@ class PlayerMatch(Public):
 
     date: str  # AAAA-MM-DD
     opponent: str
+    opponent_crest_url: Optional[str] = None  # URL externa del rival (ADR 0012)
     competition: Optional[str] = None
     home: bool
     team_goals: Optional[int] = None

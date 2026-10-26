@@ -150,6 +150,7 @@ describe('pendingFields', () => {
 describe('carrera', () => {
   const entry = (over: Partial<PlayerT['career'][number]> = {}) => ({
     club: 'Depor',
+    crestUrl: null,
     from: '2014',
     to: '2017',
     appearances: null,
@@ -189,6 +190,7 @@ describe('totales y partidos', () => {
   it('resume partidos y respeta los datos desconocidos', () => {
     const base: Omit<PlayerT['deporMatches'][number], 'date'> = {
       opponent: 'Rival',
+      opponentCrestUrl: null,
       competition: null,
       home: true,
       teamGoals: null,
@@ -214,6 +216,7 @@ describe('totales y partidos', () => {
     const match: PlayerT['deporMatches'][number] = {
       date: '2026-01-01',
       opponent: 'Rival',
+      opponentCrestUrl: null,
       competition: null,
       home: true,
       teamGoals: 2,
