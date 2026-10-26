@@ -117,18 +117,17 @@
       "FW": "FWD",
       "OTHER": "OTH"
     },
-    "summary_one": "{{count}} player · average age {{age}}",
-    "summary_other": "{{count}} players · average age {{age}}",
-    "summaryNoAge_one": "{{count}} player",
-    "summaryNoAge_other": "{{count}} players",
+    "summary_one": "{{count}} player",
+    "summary_other": "{{count}} players",
     "emptyFiltered": "No player matches these filters.",
     "clearFilters": "Clear filters",
     "listHeader": {
+      "number": "#",
       "player": "Player",
-      "number": "No.",
-      "position": "Pos.",
       "age": "Age"
-    }
+    },
+    "loaned": "On loan",
+    "openCoach": "Open coach profile"
   },
   "player": {
     "title": "Player",
@@ -207,7 +206,23 @@
     "photoClose": "Close",
     "photoOpen": "Enlarge photo",
     "bioTitle": "Details",
-    "viewMatch": "Open match"
+    "viewMatch": "Open match",
+    "scope": {
+      "depor": "Depor {{season}}",
+      "deporShort": "Depor",
+      "career": "Career"
+    },
+    "tabs": {
+      "summary": "Summary",
+      "matches": "Matches",
+      "career": "Career"
+    },
+    "loanFromValue": "On loan from {{club}}",
+    "loanToValue": "On loan to {{club}}",
+    "noSeasonStats": "No matches for Depor this season.",
+    "noStats": "No statistics with a reliable source yet.",
+    "matchesEmpty": "No matches recorded for Depor.",
+    "careerEmpty": "No career recorded."
   },
   "country": {
     "Spain": "Spain",
@@ -246,5 +261,51 @@
     "Algeria": "Algeria",
     "Japan": "Japan",
     "United States": "United States"
+  },
+  "coach": {
+    "title": "Coach",
+    "notFound": "Coach profile not found.",
+    "role": "Head coach",
+    "personalTitle": "Personal details",
+    "birth": "Date of birth",
+    "birthPlace": "Place of birth",
+    "nationality": "Nationality",
+    "age": "Age",
+    "since": "Since",
+    "sinceValue": "At Depor since {{year}}",
+    "contract": "Contract until",
+    "recordTitle": "Record at Depor",
+    "recordNote": "Calculated from finished matches in the published season.",
+    "record": {
+      "played": "Pld",
+      "won": "W",
+      "drawn": "D",
+      "lost": "L",
+      "goalsFor": "GF",
+      "goalsAgainst": "GA",
+      "points": "Pts"
+    },
+    "careerTitle": "Career",
+    "careerCoach": "Coach",
+    "careerPlayer": "Player",
+    "careerEmpty": "No career recorded.",
+    "staffTitle": "Coaching staff",
+    "staffNote": "Published by the club's official website.",
+    "staffRole": {
+      "assistant_coach": "Assistant coach",
+      "technical_assistant": "Technical assistant",
+      "goalkeeping_coach": "Goalkeeping coach",
+      "fitness_coach": "Fitness coach",
+      "rehab_coach": "Rehab coach",
+      "physiotherapist": "Physiotherapist",
+      "doctor": "Doctor",
+      "nutritionist": "Nutritionist",
+      "psychologist": "Psychologist",
+      "podiatrist": "Podiatrist",
+      "analyst": "Analyst",
+      "delegate": "Delegate",
+      "kit_manager": "Kit manager"
+    },
+    "sourceNote": "Data from Wikidata, Wikipedia and the club's official website."
   }
 }

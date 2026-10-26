@@ -6,24 +6,23 @@ import {
   FlatList,
   Pressable,
   RefreshControl,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { CoachPortrait } from '@/components/CoachPortrait';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
-import { PlayerAvatar } from '@/components/PlayerAvatar';
 import { PlayerPortrait } from '@/components/PlayerPortrait';
-import { BodyText, Card, Screen } from '@/components/Screen';
-import { SegmentedControl } from '@/components/SegmentedControl';
+import { Screen } from '@/components/Screen';
 import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
 import { useSquad } from '@/data/queries';
-import type { PlayerT } from '@/data/schemas';
+import type { CoachT, PlayerT } from '@/data/schemas';
 import { countryLabel } from '@/features/squad/labels';
 import {
   ageFrom,
-  averageAge,
   countryFlag,
   filterSquad,
   positionGroup,
@@ -37,10 +36,27 @@ import { useTheme } from '@/theme/useTheme';
 type Filter = PositionGroup | 'ALL';
 const FILTERS: Filter[] = ['ALL', 'GK', 'DF', 'MF', 'FW'];
 
+const VIEWS: { value: SquadView; icon: keyof typeof Ionicons.glyphMap }[] = [
+  { value: 'grid', icon: 'grid-outline' },
+  { value: 'list', icon: 'list-outline' },
+];
+
 function positionAbbreviation(player: PlayerT, t: TFunction): string {
   const group = positionGroup(player.position);
   if (group === 'OTHER') return player.position ?? t('team.filters.OTHER');
   return t(`team.filters.${group}`);
+}
+
+function LoanChip() {
+  const { t } = useTranslation();
+  const { colors } = useTheme();
+  return (
+    <View style={[styles.loanChip, { borderColor: colors.primary }]}>
+      <Text style={{ color: colors.primary, fontSize: 11, fontWeight: '700' }}>
+        {t('team.loaned')}
+      </Text>
+    </View>
+  );
 }
 
 function SquadCard({ player, now }: { player: PlayerT; now: number }) {
@@ -61,23 +77,27 @@ function SquadCard({ player, now }: { player: PlayerT; now: number }) {
       style={[styles.gridCard, { backgroundColor: colors.surface, borderColor: colors.border }]}
     >
       <View style={styles.portraitWrap}>
-        <PlayerPortrait player={player} size={112} quality="large" />
+        <PlayerPortrait player={player} size={88} quality="large" />
       </View>
       {player.shirtNumber !== null ? (
         <View style={[styles.numberBadge, { backgroundColor: colors.primary }]}>
-          <Text style={{ color: colors.onPrimary, fontSize: 13, fontWeight: '800' }}>
+          <Text style={{ color: colors.onPrimary, fontSize: 12, fontWeight: '800' }}>
             {player.shirtNumber}
           </Text>
         </View>
       ) : null}
-      <Text numberOfLines={1} style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+      <Text
+        numberOfLines={2}
+        style={{ color: colors.text, fontSize: 15, fontWeight: '700', textAlign: 'center' }}
+      >
         {player.name}
       </Text>
       {details ? (
-        <Text numberOfLines={1} style={{ color: colors.textMuted, fontSize: 13 }}>
+        <Text numberOfLines={1} style={{ color: colors.textMuted, fontSize: 12 }}>
           {details}
         </Text>
       ) : null}
+      {player.loanTo ? <LoanChip /> : null}
     </Pressable>
   );
 }
@@ -88,9 +108,13 @@ function SquadListRow({ player, now }: { player: PlayerT; now: number }) {
   const age = ageFrom(player.dateOfBirth, now);
   const flag = countryFlag(player.nationality);
   const position = positionAbbreviation(player, t);
-  const subtitle = [flag, player.nationality ? countryLabel(t, player.nationality) : null]
+  const subtitle = [
+    position,
+    flag,
+    player.nationality ? countryLabel(t, player.nationality) : null,
+  ]
     .filter(Boolean)
-    .join(' ');
+    .join(' · ');
 
   return (
     <Pressable
@@ -104,21 +128,53 @@ function SquadListRow({ player, now }: { player: PlayerT; now: number }) {
       <Text style={[styles.listNumber, { color: colors.textMuted }]}>
         {player.shirtNumber ?? '—'}
       </Text>
-      <PlayerPortrait player={player} size={44} quality="small" />
+      <PlayerPortrait player={player} size={40} quality="small" />
       <View style={styles.listText}>
-        <Text numberOfLines={1} style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+        <Text numberOfLines={2} style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>
           {player.name}
         </Text>
         {subtitle ? (
-          <Text numberOfLines={1} style={{ color: colors.textMuted, fontSize: 13 }}>
+          <Text numberOfLines={2} style={{ color: colors.textMuted, fontSize: 12 }}>
             {subtitle}
           </Text>
         ) : null}
+        {player.loanTo ? <LoanChip /> : null}
       </View>
-      <Text style={[styles.listMeta, { color: colors.textMuted }]}>{position}</Text>
-      <Text style={[styles.listMeta, { color: colors.textMuted }]}>
+      <Text style={[styles.listAge, { color: colors.textMuted }]}>
         {age !== null ? age : '—'}
       </Text>
+    </Pressable>
+  );
+}
+
+function CoachCard({ coach }: { coach: CoachT | null }) {
+  const { t } = useTranslation();
+  const { colors } = useTheme();
+  if (!coach?.name) return null;
+  const flag = countryFlag(coach.nationality);
+  const nationality = coach.nationality
+    ? [flag, countryLabel(t, coach.nationality)].filter(Boolean).join(' ')
+    : null;
+
+  return (
+    <Pressable
+      accessibilityHint={t('team.openCoach')}
+      accessibilityLabel={[coach.name, t('team.coach'), nationality].filter(Boolean).join('. ')}
+      accessibilityRole="button"
+      onPress={() => router.push('/coach')}
+      style={[styles.coachCard, { backgroundColor: colors.surface, borderColor: colors.border }]}
+    >
+      <CoachPortrait name={coach.name} photoUrl={coach.photoUrl} size={48} />
+      <View style={{ flex: 1, gap: 1 }}>
+        <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>
+          {t('team.coach').toUpperCase()}
+        </Text>
+        <Text style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>{coach.name}</Text>
+        {nationality ? (
+          <Text style={{ color: colors.textMuted, fontSize: 13 }}>{nationality}</Text>
+        ) : null}
+      </View>
+      <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
     </Pressable>
   );
 }
@@ -137,12 +193,7 @@ export default function TeamScreen() {
   const searched = useMemo(() => filterSquad(players, query, 'ALL'), [players, query]);
   const counts = useMemo(() => squadCounts(searched), [searched]);
   const visible = useMemo(() => filterSquad(players, query, filter), [players, query, filter]);
-  const average = averageAge(visible, now);
   const hasFilters = query.trim().length > 0 || filter !== 'ALL';
-  const summary =
-    average !== null
-      ? t('team.summary', { count: visible.length, age: average })
-      : t('team.summaryNoAge', { count: visible.length });
   const coach = squad.data?.coach ?? null;
 
   const clearFilters = () => {
@@ -157,21 +208,7 @@ export default function TeamScreen() {
         isFetching={squad.isFetching}
         isError={squad.isError}
       />
-      {coach?.name ? (
-        <Card>
-          <View style={styles.coach}>
-            <PlayerAvatar id={0} name={coach.name} size={44} />
-            <View style={{ flex: 1 }}>
-              <Text style={{ color: colors.textMuted, fontSize: 14 }}>{t('team.coach')}</Text>
-              <BodyText>
-                {coach.nationality
-                  ? `${coach.name} · ${countryLabel(t, coach.nationality)}`
-                  : coach.name}
-              </BodyText>
-            </View>
-          </View>
-        </Card>
-      ) : null}
+      <CoachCard coach={coach} />
 
       <View
         style={[styles.search, { backgroundColor: colors.surface, borderColor: colors.border }]}
@@ -202,20 +239,43 @@ export default function TeamScreen() {
       </View>
 
       <View style={styles.toolbar}>
-        <Text style={{ color: colors.textMuted, fontSize: 14, flex: 1 }}>{summary}</Text>
-        <View style={styles.viewToggle}>
-          <SegmentedControl<SquadView>
-            onChange={setSquadView}
-            options={[
-              { value: 'grid', label: t('team.view.grid') },
-              { value: 'list', label: t('team.view.list') },
-            ]}
-            value={squadView}
-          />
+        <Text style={{ color: colors.textMuted, fontSize: 14, flex: 1 }}>
+          {t('team.summary', { count: visible.length })}
+        </Text>
+        <View
+          style={[styles.viewToggle, { backgroundColor: colors.surface, borderColor: colors.border }]}
+        >
+          {VIEWS.map(({ value, icon }) => {
+            const selected = value === squadView;
+            return (
+              <Pressable
+                key={value}
+                accessibilityLabel={t(`team.view.${value}`)}
+                accessibilityRole="button"
+                accessibilityState={{ selected }}
+                onPress={() => setSquadView(value)}
+                style={[
+                  styles.viewButton,
+                  selected ? { backgroundColor: colors.primary } : null,
+                ]}
+              >
+                <Ionicons
+                  name={icon}
+                  size={20}
+                  color={selected ? colors.onPrimary : colors.text}
+                />
+              </Pressable>
+            );
+          })}
         </View>
       </View>
 
-      <View style={styles.chips}>
+      <ScrollView
+        contentContainerStyle={styles.chips}
+        horizontal
+        keyboardShouldPersistTaps="handled"
+        showsHorizontalScrollIndicator={false}
+      >
         {FILTERS.map((item) => {
           const selected = item === filter;
           const label = t(item === 'ALL' ? 'team.filters.all' : `team.filters.${item}`);
@@ -245,7 +305,7 @@ export default function TeamScreen() {
             </Pressable>
           );
         })}
-      </View>
+      </ScrollView>
 
       {squadView === 'list' ? (
         <View style={[styles.listHeader, { borderBottomColor: colors.border }]}>
@@ -256,10 +316,7 @@ export default function TeamScreen() {
           <Text style={[styles.listHeaderPlayer, { color: colors.textMuted }]}>
             {t('team.listHeader.player')}
           </Text>
-          <Text style={[styles.listMeta, { color: colors.textMuted }]}>
-            {t('team.listHeader.position')}
-          </Text>
-          <Text style={[styles.listMeta, { color: colors.textMuted }]}>
+          <Text style={[styles.listAge, { color: colors.textMuted }]}>
             {t('team.listHeader.age')}
           </Text>
         </View>
@@ -287,6 +344,8 @@ export default function TeamScreen() {
       contentContainerStyle={styles.content}
       data={visible}
       keyExtractor={(player) => String(player.id)}
+      keyboardDismissMode="on-drag"
+      keyboardShouldPersistTaps="handled"
       ListHeaderComponent={header}
       ListEmptyComponent={
         <EmptyState
@@ -321,7 +380,15 @@ export default function TeamScreen() {
 const styles = StyleSheet.create({
   content: { padding: spacing.md, paddingBottom: spacing.xl },
   header: { gap: spacing.md, marginBottom: spacing.md },
-  coach: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  coachCard: {
+    minHeight: minTouch + spacing.sm,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    padding: spacing.sm,
+    borderRadius: radius.md,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
   search: {
     minHeight: minTouch,
     flexDirection: 'row',
@@ -333,9 +400,21 @@ const styles = StyleSheet.create({
   },
   searchInput: { flex: 1, minHeight: minTouch, fontSize: 16, paddingVertical: spacing.sm },
   iconButton: { minHeight: minTouch, minWidth: minTouch, alignItems: 'center', justifyContent: 'center' },
-  toolbar: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, flexWrap: 'wrap' },
-  viewToggle: { minWidth: 150 },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  toolbar: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  viewToggle: {
+    flexDirection: 'row',
+    borderRadius: radius.md,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 2,
+  },
+  viewButton: {
+    minWidth: minTouch,
+    minHeight: minTouch,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: radius.sm,
+  },
+  chips: { flexDirection: 'row', gap: spacing.sm, paddingRight: spacing.md },
   chip: {
     minHeight: minTouch,
     justifyContent: 'center',
@@ -346,9 +425,9 @@ const styles = StyleSheet.create({
   gridRow: { justifyContent: 'space-between' },
   gridCard: {
     width: '48%',
-    minHeight: 220,
+    minHeight: 168,
     alignItems: 'center',
-    gap: spacing.xs,
+    gap: 2,
     padding: spacing.sm,
     marginBottom: spacing.sm,
     borderRadius: radius.md,
@@ -359,12 +438,19 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: spacing.sm,
     right: spacing.sm,
-    minWidth: 28,
-    height: 28,
-    paddingHorizontal: 6,
-    borderRadius: 14,
+    minWidth: 26,
+    height: 26,
+    paddingHorizontal: 5,
+    borderRadius: 13,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  loanChip: {
+    marginTop: 2,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 1,
+    borderRadius: radius.sm,
+    borderWidth: StyleSheet.hairlineWidth,
   },
   listRow: {
     minHeight: minTouch + spacing.md,
@@ -376,10 +462,10 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
   },
-  listNumber: { width: 36, textAlign: 'center', fontSize: 15, fontWeight: '700' },
-  listPortraitSpacer: { width: 44 },
-  listText: { flex: 1, gap: 2 },
-  listMeta: { width: 40, textAlign: 'center', fontSize: 13, fontWeight: '600' },
+  listNumber: { width: 32, textAlign: 'center', fontSize: 14, fontWeight: '700' },
+  listPortraitSpacer: { width: 40 },
+  listText: { flex: 1, gap: 1 },
+  listAge: { width: 34, textAlign: 'center', fontSize: 13, fontWeight: '600' },
   listHeader: {
     flexDirection: 'row',
     alignItems: 'center',

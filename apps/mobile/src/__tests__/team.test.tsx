@@ -80,7 +80,8 @@ describe('pantalla de plantilla', () => {
     expect(screen.getByText('Jugador Uno')).toBeTruthy();
     expect(screen.getByText('Portero Dos')).toBeTruthy();
     expect(screen.getByText('Delantero Tres')).toBeTruthy();
-    expect(screen.getByText('3 jugadores · edad media 25')).toBeTruthy();
+    expect(screen.getByText('3 jugadores')).toBeTruthy();
+    expect(screen.queryByText(/edad media/)).toBeNull();
     expect(screen.getByText('Todos 3')).toBeTruthy();
     expect(screen.getByText('POR 1')).toBeTruthy();
     expect(screen.getByText('MED 1')).toBeTruthy();
@@ -119,7 +120,7 @@ describe('pantalla de plantilla', () => {
     await fireEvent.press(screen.getByText('POR 1'));
     expect(screen.getByText('Portero Dos')).toBeTruthy();
     expect(screen.queryByText('Jugador Uno')).toBeNull();
-    expect(screen.getByText('1 jugador · edad media 25')).toBeTruthy();
+    expect(screen.getByText('1 jugador')).toBeTruthy();
 
     await fireEvent.changeText(
       screen.getByPlaceholderText('Buscar por nombre o dorsal'),
@@ -132,16 +133,50 @@ describe('pantalla de plantilla', () => {
     expect(screen.getByText('Portero Dos')).toBeTruthy();
   });
 
-  it('cambia a la vista de lista y muestra sus cabeceras', async () => {
+  it('cambia a la vista de lista y muestra sus cabeceras sin truncar', async () => {
     mockUseSquad.mockReturnValue(squad(threePlayers));
     await render(<TeamScreen />);
 
-    await fireEvent.press(screen.getByText('Lista'));
+    await fireEvent.press(screen.getByLabelText('Lista'));
+    expect(screen.getByText('#')).toBeTruthy();
     expect(screen.getByText('Jugador')).toBeTruthy();
-    expect(screen.getByText('Dorsal')).toBeTruthy();
-    expect(screen.getByText('Pos.')).toBeTruthy();
     expect(screen.getByText('Edad')).toBeTruthy();
+    expect(screen.queryByText('Dorsal')).toBeNull();
+    expect(screen.queryByText('Pos.')).toBeNull();
     expect(screen.getByText('Delantero Tres')).toBeTruthy();
+  });
+
+  it('abre la ficha del entrenador desde la tarjeta', async () => {
+    mockUseSquad.mockReturnValue({
+      ...squad(threePlayers),
+      data: {
+        ...squad(threePlayers).data,
+        coach: {
+          name: 'Antonio Hidalgo',
+          nationality: 'España',
+          birthDate: '1979-02-06',
+          birthPlace: 'Granollers',
+          photoUrl: 'https://cdn.example.org/entrenador.jpg',
+          since: '2025',
+          contractUntil: null,
+          career: [],
+          staff: [],
+          provenance: {},
+        },
+      },
+    });
+    await render(<TeamScreen />);
+
+    expect(screen.getByText('ENTRENADOR')).toBeTruthy();
+    await fireEvent.press(screen.getByText('Antonio Hidalgo'));
+    expect(mockPush).toHaveBeenCalledWith('/coach');
+  });
+
+  it('marca como cedido al jugador con loanTo', async () => {
+    mockUseSquad.mockReturnValue(squad([{ ...basePlayer, loanTo: 'Al Ain' }]));
+    await render(<TeamScreen />);
+
+    expect(screen.getByText('Cedido')).toBeTruthy();
   });
 
   it('plantilla vacía muestra el estado vacío', async () => {

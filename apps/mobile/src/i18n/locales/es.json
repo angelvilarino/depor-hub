@@ -117,18 +117,17 @@
       "FW": "DEL",
       "OTHER": "OTR"
     },
-    "summary_one": "{{count}} jugador · edad media {{age}}",
-    "summary_other": "{{count}} jugadores · edad media {{age}}",
-    "summaryNoAge_one": "{{count}} jugador",
-    "summaryNoAge_other": "{{count}} jugadores",
+    "summary_one": "{{count}} jugador",
+    "summary_other": "{{count}} jugadores",
     "emptyFiltered": "Ningún jugador coincide con los filtros.",
     "clearFilters": "Limpiar filtros",
     "listHeader": {
+      "number": "#",
       "player": "Jugador",
-      "number": "Dorsal",
-      "position": "Pos.",
       "age": "Edad"
-    }
+    },
+    "loaned": "Cedido",
+    "openCoach": "Abrir ficha del entrenador"
   },
   "player": {
     "title": "Jugador",
@@ -207,7 +206,23 @@
     "photoClose": "Cerrar",
     "photoOpen": "Ampliar foto",
     "bioTitle": "Datos",
-    "viewMatch": "Abrir partido"
+    "viewMatch": "Abrir partido",
+    "scope": {
+      "depor": "Depor {{season}}",
+      "deporShort": "Depor",
+      "career": "Carrera"
+    },
+    "tabs": {
+      "summary": "Resumen",
+      "matches": "Partidos",
+      "career": "Carrera"
+    },
+    "loanFromValue": "Cedido por {{club}}",
+    "loanToValue": "Cedido a {{club}}",
+    "noSeasonStats": "Sin partidos con el Depor en esta temporada.",
+    "noStats": "Todavía no hay estadísticas con fuente fiable.",
+    "matchesEmpty": "No hay partidos registrados con el Depor.",
+    "careerEmpty": "Sin trayectoria registrada."
   },
   "country": {
     "Spain": "España",
@@ -246,5 +261,51 @@
     "Algeria": "Argelia",
     "Japan": "Japón",
     "United States": "Estados Unidos"
+  },
+  "coach": {
+    "title": "Entrenador",
+    "notFound": "No se ha encontrado la ficha del entrenador.",
+    "role": "Entrenador",
+    "personalTitle": "Datos personales",
+    "birth": "Nacimiento",
+    "birthPlace": "Lugar de nacimiento",
+    "nationality": "Nacionalidad",
+    "age": "Edad",
+    "since": "Desde",
+    "sinceValue": "En el Depor desde {{year}}",
+    "contract": "Contrato hasta",
+    "recordTitle": "Balance con el Depor",
+    "recordNote": "Calculado con los partidos terminados de la temporada publicada.",
+    "record": {
+      "played": "PJ",
+      "won": "G",
+      "drawn": "E",
+      "lost": "P",
+      "goalsFor": "GF",
+      "goalsAgainst": "GC",
+      "points": "Pts"
+    },
+    "careerTitle": "Trayectoria",
+    "careerCoach": "Entrenador",
+    "careerPlayer": "Jugador",
+    "careerEmpty": "Sin trayectoria registrada.",
+    "staffTitle": "Cuerpo técnico",
+    "staffNote": "Publicado por la web oficial del club.",
+    "staffRole": {
+      "assistant_coach": "Segundo entrenador",
+      "technical_assistant": "Asistente técnico",
+      "goalkeeping_coach": "Entrenador de porteros",
+      "fitness_coach": "Preparador físico",
+      "rehab_coach": "Readaptador físico",
+      "physiotherapist": "Fisioterapeuta",
+      "doctor": "Médico",
+      "nutritionist": "Nutricionista",
+      "psychologist": "Psicólogo",
+      "podiatrist": "Podólogo",
+      "analyst": "Analista",
+      "delegate": "Delegado",
+      "kit_manager": "Utillero"
+    },
+    "sourceNote": "Datos de Wikidata, Wikipedia y la web oficial del club."
   }
 }

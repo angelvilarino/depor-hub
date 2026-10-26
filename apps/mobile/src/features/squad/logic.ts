@@ -8,6 +8,7 @@ import type {
   PlayerMatchT,
   PlayerT,
   SocialT,
+  StaffMemberT,
 } from '@/data/schemas';
 
 export type PositionGroup = 'GK' | 'DF' | 'MF' | 'FW' | 'OTHER';
@@ -83,6 +84,7 @@ export function averageAge(players: PlayerT[], nowMs: number): number | null {
 
 const FLAGS: Record<string, string> = {
   Spain: '🇪🇸',
+  España: '🇪🇸',
   Italy: '🇮🇹',
   Belgium: '🇧🇪',
   Uruguay: '🇺🇾',
@@ -168,6 +170,63 @@ export function seasonRange(from: string | null | undefined, to: string | null |
   return `${start}–${end}`;
 }
 
+/** Temporada publicada en formato corto: "2026-27" → "26-27". */
+export function shortSeason(season: string | null | undefined): string | null {
+  if (!season) return null;
+  const match = /^(\d{4})-(\d{2,4})$/.exec(season);
+  if (!match) return season;
+  return `${match[1]?.slice(2)}-${match[2]?.slice(-2)}`;
+}
+
+/**
+ * Une etapas contiguas del mismo club y rol en un solo periodo.
+ *
+ * Wikipedia y BDFutbol pueden publicar una fila por temporada; la ficha quiere un
+ * periodo legible («2014–2017») y no el mismo club repetido. No muta las entradas.
+ */
+export function mergeCareerPeriods(career: CareerEntryT[]): CareerEntryT[] {
+  const out: CareerEntryT[] = [];
+  for (const entry of careerChronological(career)) {
+    const previous = out[out.length - 1];
+    const previousEnd = Number(previous?.to?.slice(0, 4));
+    const currentStart = Number(entry.from?.slice(0, 4));
+    const contiguous =
+      previous !== undefined &&
+      previous.club === entry.club &&
+      (previous.role ?? 'player') === (entry.role ?? 'player') &&
+      Number.isFinite(previousEnd) &&
+      Number.isFinite(currentStart) &&
+      currentStart <= previousEnd + 1;
+
+    if (!contiguous || previous === undefined) {
+      out.push({ ...entry, seasons: [...entry.seasons] });
+      continue;
+    }
+
+    const end =
+      entry.to !== null && entry.to !== undefined
+        ? String(Math.max(Number(previous.to?.slice(0, 4) ?? 0), Number(entry.to.slice(0, 4))))
+        : previous.to;
+    const sum = (a: number | null, b: number | null) =>
+      a === null && b === null ? null : (a ?? 0) + (b ?? 0);
+    const seasons = [...previous.seasons];
+    for (const season of entry.seasons) {
+      if (!seasons.some((item) => item.season === season.season)) seasons.push(season);
+    }
+    out[out.length - 1] = {
+      ...previous,
+      to: end,
+      appearances: sum(previous.appearances, entry.appearances),
+      goals: sum(previous.goals, entry.goals),
+      minutes: sum(previous.minutes, entry.minutes),
+      yellowCards: sum(previous.yellowCards, entry.yellowCards),
+      redCards: sum(previous.redCards, entry.redCards),
+      seasons,
+    };
+  }
+  return out;
+}
+
 /** Carrera de más antigua a más reciente. No muta la entrada; los datos sin año van al final. */
 export function careerChronological(career: CareerEntryT[]): CareerEntryT[] {
   const year = (value: string | null | undefined) => {
@@ -177,6 +236,124 @@ export function careerChronological(career: CareerEntryT[]): CareerEntryT[] {
   return [...career].sort((a, b) => {
     const byStart = year(a.from) - year(b.from);
     return byStart !== 0 ? byStart : year(a.to) - year(b.to);
+  });
+}
+
+export type CoachRecord = {
+  played: number;
+  won: number;
+  drawn: number;
+  lost: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  points: number;
+};
+
+/**
+ * Balance del entrenador con el Depor calculado desde los partidos ya jugados.
+ *
+ * No se guarda en el contrato: se deriva de `fixtures.json` para que nunca quede
+ * desactualizado. `since` es una fecha parcial (año o AAAA-MM-DD); si falta, cuenta
+ * todos los partidos terminados de la temporada publicada.
+ */
+export function coachRecord(
+  fixtures: FixturesT | null | undefined,
+  since: string | null | undefined,
+): CoachRecord | null {
+  if (!fixtures) return null;
+  const from = since?.slice(0, 4) ?? null;
+  const finished = fixtures.matches.filter((match) => {
+    if (match.status !== 'FINISHED') return false;
+    if (!from) return true;
+    return match.utcDate.slice(0, 4) >= from;
+  });
+  if (finished.length === 0) return null;
+  let won = 0;
+  let drawn = 0;
+  let lost = 0;
+  let goalsFor = 0;
+  let goalsAgainst = 0;
+  for (const match of finished) {
+    const own = match.deporIsHome ? match.score.home : match.score.away;
+    const rival = match.deporIsHome ? match.score.away : match.score.home;
+    if (own === null || rival === null) continue;
+    goalsFor += own;
+    goalsAgainst += rival;
+    if (own > rival) won += 1;
+    else if (own === rival) drawn += 1;
+    else lost += 1;
+  }
+  const played = won + drawn + lost;
+  if (played === 0) return null;
+  return { played, won, drawn, lost, goalsFor, goalsAgainst, points: won * 3 + drawn };
+}
+
+/** Trayectoria filtrada por rol, en orden cronológico. */
+export function careerByRole(career: CareerEntryT[], role: 'player' | 'coach'): CareerEntryT[] {
+  return careerChronological(career.filter((entry) => (entry.role ?? 'player') === role));
+}
+
+/** Orden estable del cuerpo técnico (ADR 0014); los roles desconocidos van al final. */
+export const STAFF_ROLE_ORDER = [
+  'assistant_coach',
+  'technical_assistant',
+  'goalkeeping_coach',
+  'fitness_coach',
+  'rehab_coach',
+  'physiotherapist',
+  'doctor',
+  'nutritionist',
+  'psychologist',
+  'podiatrist',
+  'analyst',
+  'delegate',
+  'kit_manager',
+] as const;
+
+/** Agrupa el cuerpo técnico por rol conservando el orden de la web oficial dentro de cada grupo. */
+export function groupStaff(staff: StaffMemberT[]): { role: string; members: StaffMemberT[] }[] {
+  const groups = new Map<string, StaffMemberT[]>();
+  for (const member of staff) {
+    const members = groups.get(member.role) ?? [];
+    members.push(member);
+    groups.set(member.role, members);
+  }
+  const rank = (role: string) => {
+    const index = (STAFF_ROLE_ORDER as readonly string[]).indexOf(role);
+    return index === -1 ? STAFF_ROLE_ORDER.length : index;
+  };
+  return [...groups.entries()]
+    .map(([role, members]) => ({ role, members }))
+    .sort((a, b) => rank(a.role) - rank(b.role));
+}
+
+/** Número localizado (miles con separador del idioma). */
+export function formatNumber(value: number, locale: string): string {
+  return new Intl.NumberFormat(locale).format(value);
+}
+
+/** Año de inicio de una temporada publicada ("2026-27" → 2026). */
+export function seasonStartYear(season: string | null | undefined): number | null {
+  const match = /^(\d{4})-/.exec(season ?? '');
+  return match ? Number(match[1]) : null;
+}
+
+/**
+ * Partidos de una temporada de fútbol (julio–junio).
+ *
+ * `deporMatches` acumula todas las etapas del jugador en el Depor; la ficha separa la
+ * temporada publicada del total de carrera. Sin temporada conocida se devuelven todos.
+ */
+export function matchesInSeason(
+  matches: PlayerMatchT[],
+  season: string | null | undefined,
+): PlayerMatchT[] {
+  const start = seasonStartYear(season);
+  if (start === null) return matches;
+  return matches.filter((match) => {
+    const year = Number(match.date.slice(0, 4));
+    const month = Number(match.date.slice(5, 7));
+    return (year === start && month >= 7) || (year === start + 1 && month <= 6);
   });
 }
 

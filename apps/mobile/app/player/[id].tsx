@@ -4,33 +4,30 @@ import * as Linking from 'expo-linking';
 import { Stack, router, useLocalSearchParams } from 'expo-router';
 import type { TFunction } from 'i18next';
 import { useMemo, useState } from 'react';
-import {
-  Modal,
-  PanResponder,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Modal, PanResponder, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { CareerTimeline } from '@/components/CareerTimeline';
 import { PlayerPortrait, portraitUrl } from '@/components/PlayerPortrait';
 import { BodyText, Card, Screen } from '@/components/Screen';
+import { SegmentedControl } from '@/components/SegmentedControl';
 import { EmptyState, LoadingState } from '@/components/StateViews';
 import { TeamCrest } from '@/components/TeamCrest';
-import { useFixtures, useSquad } from '@/data/queries';
-import type { CareerEntryT, PlayerMatchT, PlayerPhotoT, PlayerT } from '@/data/schemas';
+import { useFixtures, useMeta, useSquad } from '@/data/queries';
+import type { PlayerMatchT, PlayerPhotoT, PlayerT } from '@/data/schemas';
 import { countryLabel } from '@/features/squad/labels';
 import {
   ageFrom,
-  careerChronological,
   countryFlag,
   fixtureForMatch,
   formatEuro,
+  formatNumber,
   formatPartialDate,
+  hasCareerTotals,
   matchScore,
+  matchesInSeason,
   pendingFields,
   positionGroup,
-  seasonRange,
+  shortSeason,
   socialLinks,
   summarizeMatches,
   type SocialLink,
@@ -39,7 +36,15 @@ import { minTouch, radius, spacing } from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 
-type Stat = { key: string; label: string; value: number | null };
+type Stat = {
+  key: string;
+  label: string;
+  value: number | null;
+  icon: keyof typeof Ionicons.glyphMap;
+  color?: string;
+};
+type Tab = 'summary' | 'matches' | 'career';
+type Scope = 'season' | 'career';
 
 const SOCIAL_ICON: Record<SocialLink['network'], keyof typeof Ionicons.glyphMap> = {
   x: 'logo-x',
@@ -62,18 +67,26 @@ function resultColor(result: PlayerMatchT['result'], colors: ReturnType<typeof u
 
 function StatStrip({ values }: { values: Stat[] }) {
   const { colors } = useTheme();
+  const { i18n } = useTranslation();
   const present = values.filter((item) => item.value !== null);
   if (present.length === 0) return null;
   return (
     <View
       accessible
-      accessibilityLabel={present.map((item) => `${item.label}: ${item.value}`).join('. ')}
+      accessibilityLabel={present
+        .map((item) => `${item.label}: ${formatNumber(item.value ?? 0, i18n.language)}`)
+        .join('. ')}
       style={[styles.statsStrip, { borderTopColor: colors.border }]}
     >
       {present.map((item) => (
         <View key={item.key} style={styles.stat}>
-          <Text style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>{item.value}</Text>
-          <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '600' }}>{item.label}</Text>
+          <Ionicons name={item.icon} size={17} color={item.color ?? colors.textMuted} />
+          <Text style={{ color: colors.text, fontSize: 18, fontWeight: '800' }}>
+            {formatNumber(item.value ?? 0, i18n.language)}
+          </Text>
+          <Text style={{ color: colors.textMuted, fontSize: 11, fontWeight: '600' }}>
+            {item.label}
+          </Text>
         </View>
       ))}
     </View>
@@ -186,105 +199,6 @@ function PhotoModal({
   );
 }
 
-function SectionToggle({
-  title,
-  expanded,
-  onPress,
-  count,
-}: {
-  title: string;
-  expanded: boolean;
-  onPress: () => void;
-  count?: number;
-}) {
-  const { colors } = useTheme();
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityState={{ expanded }}
-      onPress={onPress}
-      style={styles.sectionToggle}
-    >
-      <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700', flex: 1 }}>
-        {title}
-        {count !== undefined ? ` · ${count}` : ''}
-      </Text>
-      <Ionicons name={expanded ? 'chevron-up' : 'chevron-down'} size={20} color={colors.textMuted} />
-    </Pressable>
-  );
-}
-
-function CareerTimeline({ career, t }: { career: CareerEntryT[]; t: TFunction }) {
-  const { colors } = useTheme();
-  return (
-    <View style={styles.timeline}>
-      {career.map((entry, index) => {
-        const range = seasonRange(entry.from, entry.to);
-        const stats = [
-          entry.appearances !== null
-            ? `${entry.appearances} ${t('player.stats.appearancesShort')}`
-            : null,
-          entry.goals !== null ? `${entry.goals} ${t('player.stats.goalsShort')}` : null,
-          entry.assists !== null ? `${entry.assists} ${t('player.stats.assistsShort')}` : null,
-          entry.minutes !== null ? `${entry.minutes} ${t('player.stats.minutesShort')}` : null,
-        ].filter(Boolean);
-        return (
-          <View key={`${entry.club}-${entry.from ?? index}`} style={styles.timelineRow}>
-            <View style={styles.timelineRail}>
-              <View style={[styles.timelineDot, { backgroundColor: colors.primary }]} />
-              {index < career.length - 1 ? (
-                <View style={[styles.timelineLine, { backgroundColor: colors.border }]} />
-              ) : null}
-            </View>
-            <View style={[styles.timelineBody, index > 0 ? { borderTopColor: colors.border } : null]}>
-              <View style={styles.careerHead}>
-                {entry.crestUrl ? (
-                  <TeamCrest
-                    size={24}
-                    team={{ name: entry.club, tla: null, crestUrl: entry.crestUrl }}
-                  />
-                ) : null}
-                <Text
-                  numberOfLines={2}
-                  style={{ color: colors.text, fontSize: 15, fontWeight: '700', flex: 1 }}
-                >
-                  {entry.club}
-                </Text>
-                {range ? (
-                  <Text style={{ color: colors.textMuted, fontSize: 13 }}>{range}</Text>
-                ) : null}
-              </View>
-              {stats.length > 0 ? (
-                <Text style={{ color: colors.textMuted, fontSize: 13 }}>{stats.join(' · ')}</Text>
-              ) : null}
-              {entry.seasons.map((season) => {
-                const parts = [
-                  season.appearances !== null
-                    ? `${season.appearances} ${t('player.stats.appearancesShort')}`
-                    : null,
-                  season.goals !== null ? `${season.goals} ${t('player.stats.goalsShort')}` : null,
-                  season.assists !== null ? `${season.assists} ${t('player.stats.assistsShort')}` : null,
-                  season.minutes !== null
-                    ? `${season.minutes} ${t('player.stats.minutesShort')}`
-                    : null,
-                ].filter(Boolean);
-                return (
-                  <Text
-                    key={season.season}
-                    style={{ color: colors.textMuted, fontSize: 12, lineHeight: 18 }}
-                  >
-                    {parts.length > 0 ? `${season.season} · ${parts.join(' · ')}` : season.season}
-                  </Text>
-                );
-              })}
-            </View>
-          </View>
-        );
-      })}
-    </View>
-  );
-}
-
 function MatchRow({
   match,
   fixtureId,
@@ -312,13 +226,11 @@ function MatchRow({
         team={{ name: match.opponent, tla: null, crestUrl: match.opponentCrestUrl }}
       />
       <View style={styles.matchText}>
-        <Text numberOfLines={1} style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>
+        <Text style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>
           {match.opponent}
         </Text>
         {subtitle ? (
-          <Text numberOfLines={1} style={{ color: colors.textMuted, fontSize: 12 }}>
-            {subtitle}
-          </Text>
+          <Text style={{ color: colors.textMuted, fontSize: 12 }}>{subtitle}</Text>
         ) : null}
       </View>
       {score ? (
@@ -356,11 +268,7 @@ function MatchRow({
   }
 
   return (
-    <View
-      accessible
-      accessibilityLabel={label}
-      style={[styles.matchRow, { borderTopColor: colors.border }]}
-    >
+    <View accessible accessibilityLabel={label} style={[styles.matchRow, { borderTopColor: colors.border }]}>
       {content}
     </View>
   );
@@ -372,10 +280,11 @@ export default function PlayerDetail() {
   const { colors } = useTheme();
   const squad = useSquad();
   const fixtures = useFixtures();
+  const meta = useMeta();
   const [now] = useState(() => Date.now()); // fuera del render: regla react-hooks/purity
   const [photoOpen, setPhotoOpen] = useState(false);
-  const [careerOpen, setCareerOpen] = useState(true);
-  const [pendingOpen, setPendingOpen] = useState(false);
+  const [tab, setTab] = useState<Tab>('summary');
+  const [scope, setScope] = useState<Scope>('season');
   const player = squad.data?.players.find((p) => String(p.id) === id);
 
   if (!player) {
@@ -392,52 +301,112 @@ export default function PlayerDetail() {
   const age = ageFrom(player.dateOfBirth, now);
   const birth = formatPartialDate(player.dateOfBirth, locale);
   const flag = countryFlag(player.nationality);
+  const nationality = player.nationality
+    ? [flag, countryLabel(t, player.nationality)].filter(Boolean).join(' ')
+    : null;
   const height = player.heightCm ?? null; // la caché anterior al ADR 0007 no trae el campo
   const pending = pendingFields(player);
-  const career = careerChronological(player.career);
   const totals = player.careerTotals;
   const matches = player.deporMatches;
-  const matchSummary = summarizeMatches(matches);
+  const seasonMatches = matchesInSeason(matches, fixtures.data?.season);
+  const scopeMatches = scope === 'career' ? matches : seasonMatches;
+  const scopeSummary = summarizeMatches(scopeMatches);
   const social = socialLinks(player.social);
   const marketValue = formatEuro(player.marketValueEur, locale);
   const photo =
     player.photos?.find((item) => item.role === 'portrait') ?? player.photos?.[0] ?? null;
+  const seasonLabel = shortSeason(fixtures.data?.season);
+  const deporTeam = meta.data?.team ?? {
+    id: 560,
+    name: 'Deportivo',
+    shortName: 'Depor',
+    tla: 'DEP',
+    crestUrl: null,
+  };
 
-  const totalValues: Stat[] = [
-    { key: 'appearances', label: t('player.stats.appearancesShort'), value: totals.appearances },
-    { key: 'goals', label: t('player.stats.goalsShort'), value: totals.goals },
-    { key: 'minutes', label: t('player.stats.minutesShort'), value: totals.minutes },
-    { key: 'yellowCards', label: t('player.stats.yellowCardsShort'), value: totals.yellowCards },
-    { key: 'redCards', label: t('player.stats.redCardsShort'), value: totals.redCards },
-  ];
-  const matchValues: Stat[] = matchSummary
+  const identity = [nationality, position, age !== null ? t('player.ageValue', { n: age }) : null]
+    .filter(Boolean)
+    .join(' · ');
+
+  const seasonValues: Stat[] = scopeSummary
     ? [
-        { key: 'appearances', label: t('player.stats.appearancesShort'), value: matchSummary.appearances },
-        { key: 'goals', label: t('player.stats.goalsShort'), value: matchSummary.goals },
-        { key: 'minutes', label: t('player.stats.minutesShort'), value: matchSummary.minutes },
-        { key: 'yellowCards', label: t('player.stats.yellowCardsShort'), value: matchSummary.yellowCards },
-        { key: 'redCards', label: t('player.stats.redCardsShort'), value: matchSummary.redCards },
+        {
+          key: 'appearances',
+          label: t('player.stats.appearancesShort'),
+          value: scopeSummary.appearances,
+          icon: 'calendar-outline',
+        },
+        {
+          key: 'goals',
+          label: t('player.stats.goalsShort'),
+          value: scopeSummary.goals,
+          icon: 'football-outline',
+        },
+        {
+          key: 'minutes',
+          label: t('player.stats.minutesShort'),
+          value: scopeSummary.minutes,
+          icon: 'time-outline',
+        },
+        {
+          key: 'yellowCards',
+          label: t('player.stats.yellowCardsShort'),
+          value: scopeSummary.yellowCards,
+          icon: 'card-outline',
+          color: '#EAB308',
+        },
+        {
+          key: 'redCards',
+          label: t('player.stats.redCardsShort'),
+          value: scopeSummary.redCards,
+          icon: 'card-outline',
+          color: colors.loss,
+        },
       ]
     : [];
-  const hasTotal = totalValues.some((item) => item.value !== null);
-  const stats = hasTotal ? totalValues : matchValues;
+
+  const careerValues: Stat[] = hasCareerTotals(totals)
+    ? [
+        {
+          key: 'appearances',
+          label: t('player.stats.appearancesShort'),
+          value: totals.appearances,
+          icon: 'calendar-outline',
+        },
+        {
+          key: 'goals',
+          label: t('player.stats.goalsShort'),
+          value: totals.goals,
+          icon: 'football-outline',
+        },
+        {
+          key: 'minutes',
+          label: t('player.stats.minutesShort'),
+          value: totals.minutes,
+          icon: 'time-outline',
+        },
+        {
+          key: 'yellowCards',
+          label: t('player.stats.yellowCardsShort'),
+          value: totals.yellowCards,
+          icon: 'card-outline',
+          color: '#EAB308',
+        },
+        {
+          key: 'redCards',
+          label: t('player.stats.redCardsShort'),
+          value: totals.redCards,
+          icon: 'card-outline',
+          color: colors.loss,
+        },
+      ]
+    : [];
+
+  const stats = scope === 'career' ? careerValues : seasonValues;
 
   const bio = [
-    { key: 'position', label: t('player.position'), value: position },
-    {
-      key: 'nationality',
-      label: t('player.nationality'),
-      value: player.nationality
-        ? [flag, countryLabel(t, player.nationality)].filter(Boolean).join(' ')
-        : null,
-    },
     { key: 'birth', label: t('player.birth'), value: birth },
     { key: 'birthPlace', label: t('player.birthPlace'), value: player.birthPlace },
-    {
-      key: 'age',
-      label: t('player.age'),
-      value: age !== null ? t('player.ageValue', { n: age }) : null,
-    },
     {
       key: 'height',
       label: t('player.height'),
@@ -458,8 +427,6 @@ export default function PlayerDetail() {
       label: t('player.contract'),
       value: formatPartialDate(player.contractUntil, locale),
     },
-    { key: 'loanFrom', label: t('player.loanFrom'), value: player.loanFrom },
-    { key: 'loanTo', label: t('player.loanTo'), value: player.loanTo },
     {
       key: 'marketValue',
       label: t('player.marketValue'),
@@ -467,9 +434,15 @@ export default function PlayerDetail() {
     },
   ].filter((item) => item.value);
 
-  const heroMeta = [position, age !== null ? t('player.ageValue', { n: age }) : null]
-    .filter(Boolean)
-    .join(' · ');
+  const scopeOptions = [
+    {
+      value: 'season' as const,
+      label: seasonLabel
+        ? t('player.scope.depor', { season: seasonLabel })
+        : t('player.scope.deporShort'),
+    },
+    { value: 'career' as const, label: t('player.scope.career') },
+  ];
 
   return (
     <Screen>
@@ -484,143 +457,125 @@ export default function PlayerDetail() {
               onPress={() => setPhotoOpen(true)}
               style={styles.portraitButton}
             >
-              <PlayerPortrait player={player} quality="large" size={88} />
+              <PlayerPortrait player={player} quality="large" size={96} />
               <View style={[styles.zoomBadge, { backgroundColor: colors.primary }]}>
                 <Ionicons name="expand" size={12} color={colors.onPrimary} />
               </View>
             </Pressable>
           ) : (
-            <PlayerPortrait player={player} quality="large" size={88} />
+            <PlayerPortrait player={player} quality="large" size={96} />
           )}
           <View style={styles.heroText}>
             <Text
               accessibilityRole="header"
-              numberOfLines={2}
               style={{ color: colors.text, fontSize: 24, fontWeight: '800' }}
             >
               {player.name}
             </Text>
-            {heroMeta ? (
-              <Text style={{ color: colors.textMuted, fontSize: 14 }}>{heroMeta}</Text>
+            <View style={styles.identityRow}>
+              <TeamCrest size={18} team={deporTeam} />
+              <Text style={{ color: colors.textMuted, fontSize: 13, flex: 1 }}>{identity}</Text>
+            </View>
+          </View>
+          {player.shirtNumber !== null ? (
+            <View style={styles.numberBlock}>
+              <Text
+                accessibilityLabel={`${t('player.shirtNumber')} ${player.shirtNumber}`}
+                style={{ color: colors.primary, fontSize: 44, fontWeight: '900', lineHeight: 46 }}
+              >
+                {player.shirtNumber}
+              </Text>
+              <Text style={{ color: colors.textMuted, fontSize: 10, fontWeight: '700' }}>
+                {t('player.shirtNumber').toUpperCase()}
+              </Text>
+            </View>
+          ) : null}
+        </View>
+
+        {player.loanFrom || player.loanTo ? (
+          <View style={styles.loanRow}>
+            {player.loanFrom ? (
+              <Text style={[styles.loanChip, { color: colors.primary, borderColor: colors.primary }]}>
+                {t('player.loanFromValue', { club: player.loanFrom })}
+              </Text>
             ) : null}
-            {player.nationality ? (
-              <Text numberOfLines={1} style={{ color: colors.textMuted, fontSize: 14 }}>
-                {[flag, countryLabel(t, player.nationality)].filter(Boolean).join(' ')}
+            {player.loanTo ? (
+              <Text style={[styles.loanChip, { color: colors.primary, borderColor: colors.primary }]}>
+                {t('player.loanToValue', { club: player.loanTo })}
               </Text>
             ) : null}
           </View>
-          {player.shirtNumber !== null ? (
-            <Text
-              accessibilityLabel={`${t('player.shirtNumber')} ${player.shirtNumber}`}
-              style={{ color: colors.primary, fontSize: 30, fontWeight: '800' }}
-            >
-              {player.shirtNumber}
-            </Text>
-          ) : null}
-        </View>
-        <StatStrip values={stats} />
+        ) : null}
+
+        <SegmentedControl<Scope> onChange={setScope} options={scopeOptions} value={scope} />
+        {stats.length > 0 ? (
+          <StatStrip values={stats} />
+        ) : (
+          <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+            {scope === 'season' ? t('player.noSeasonStats') : t('player.noStats')}
+          </Text>
+        )}
       </Card>
 
-      {bio.length > 0 ? (
-        <Card>
-          <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
-            {t('player.bioTitle')}
-          </Text>
-          <View style={styles.bioGrid}>
-            {bio.map((item) => (
-              <View key={item.key} style={styles.bioItem}>
-                <Text style={{ color: colors.textMuted, fontSize: 12 }}>{item.label}</Text>
-                <Text numberOfLines={2} style={{ color: colors.text, fontSize: 15, fontWeight: '600' }}>
-                  {item.value}
-                </Text>
+      <SegmentedControl<Tab>
+        onChange={setTab}
+        options={[
+          { value: 'summary', label: t('player.tabs.summary') },
+          { value: 'matches', label: t('player.tabs.matches') },
+          { value: 'career', label: t('player.tabs.career') },
+        ]}
+        value={tab}
+      />
+
+      {tab === 'summary' ? (
+        <>
+          {bio.length > 0 ? (
+            <Card>
+              <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+                {t('player.bioTitle')}
+              </Text>
+              <View style={styles.bioGrid}>
+                {bio.map((item) => (
+                  <View key={item.key} style={styles.bioItem}>
+                    <Text style={{ color: colors.textMuted, fontSize: 12 }}>{item.label}</Text>
+                    <Text style={{ color: colors.text, fontSize: 15, fontWeight: '600' }}>
+                      {item.value}
+                    </Text>
+                  </View>
+                ))}
               </View>
-            ))}
-          </View>
-        </Card>
-      ) : null}
-
-      {social.length > 0 ? (
-        <Card>
-          <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
-            {t('player.socialTitle')}
-          </Text>
-          <View style={styles.socialRow}>
-            {social.map((link) => (
-              <Pressable
-                key={link.network}
-                accessibilityLabel={`${t(`player.social.${link.network}`)} @${link.handle}`}
-                accessibilityRole="link"
-                onPress={() => void Linking.openURL(link.url)}
-                style={[styles.socialButton, { borderColor: colors.border }]}
-              >
-                <Ionicons name={SOCIAL_ICON[link.network]} size={20} color={colors.primary} />
-                <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }}>
-                  {t(`player.social.${link.network}`)}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-        </Card>
-      ) : null}
-
-      {matches.length > 0 ? (
-        <Card>
-          <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
-            {t('player.deporMatchesTitle')}
-          </Text>
-          {matchSummary ? (
-            <Text style={{ color: colors.textMuted, fontSize: 13 }}>
-              {[
-                `${matchSummary.appearances} ${t('player.stats.appearancesShort')}`,
-                matchSummary.goals !== null
-                  ? `${matchSummary.goals} ${t('player.stats.goalsShort')}`
-                  : null,
-                matchSummary.minutes !== null
-                  ? `${matchSummary.minutes} ${t('player.stats.minutesShort')}`
-                  : null,
-                matchSummary.yellowCards !== null
-                  ? `${matchSummary.yellowCards} ${t('player.stats.yellowCardsShort')}`
-                  : null,
-                matchSummary.redCards !== null
-                  ? `${matchSummary.redCards} ${t('player.stats.redCardsShort')}`
-                  : null,
-              ]
-                .filter(Boolean)
-                .join(' · ')}
-            </Text>
+            </Card>
           ) : null}
-          {matches.map((match) => (
-            <MatchRow
-              key={`${match.date}-${match.opponent}`}
-              fixtureId={fixtureForMatch(match, fixtures.data)?.id ?? null}
-              locale={locale}
-              match={match}
-            />
-          ))}
-        </Card>
-      ) : null}
 
-      {career.length > 0 ? (
-        <Card>
-          <SectionToggle
-            expanded={careerOpen}
-            onPress={() => setCareerOpen((open) => !open)}
-            title={t('player.careerTitle')}
-          />
-          {careerOpen ? <CareerTimeline career={career} t={t} /> : null}
-        </Card>
-      ) : null}
+          {social.length > 0 ? (
+            <Card>
+              <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+                {t('player.socialTitle')}
+              </Text>
+              <View style={styles.socialRow}>
+                {social.map((link) => (
+                  <Pressable
+                    key={link.network}
+                    accessibilityLabel={`${t(`player.social.${link.network}`)} @${link.handle}`}
+                    accessibilityRole="link"
+                    onPress={() => void Linking.openURL(link.url)}
+                    style={[styles.socialButton, { borderColor: colors.border }]}
+                  >
+                    <Ionicons name={SOCIAL_ICON[link.network]} size={20} color={colors.primary} />
+                    <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }}>
+                      {t(`player.social.${link.network}`)}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            </Card>
+          ) : null}
 
-      {pending.length > 0 ? (
-        <Card>
-          <SectionToggle
-            count={pending.length}
-            expanded={pendingOpen}
-            onPress={() => setPendingOpen((open) => !open)}
-            title={t('player.pendingTitle')}
-          />
-          {pendingOpen ? (
-            <>
+          {pending.length > 0 ? (
+            <Card>
+              <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+                {t('player.pendingTitle')}
+              </Text>
               <BodyText muted>{t('player.pendingBody')}</BodyText>
               <View style={styles.pendingRow}>
                 {pending.map((field) => (
@@ -632,8 +587,52 @@ export default function PlayerDetail() {
                   </Text>
                 ))}
               </View>
-            </>
+            </Card>
           ) : null}
+        </>
+      ) : null}
+
+      {tab === 'matches' ? (
+        <Card>
+          <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+            {t('player.deporMatchesTitle')}
+          </Text>
+          {scopeSummary ? (
+            <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+              {[
+                `${scopeSummary.appearances} ${t('player.stats.appearancesShort')}`,
+                scopeSummary.goals !== null
+                  ? `${scopeSummary.goals} ${t('player.stats.goalsShort')}`
+                  : null,
+                scopeSummary.minutes !== null
+                  ? `${scopeSummary.minutes} ${t('player.stats.minutesShort')}`
+                  : null,
+              ]
+                .filter(Boolean)
+                .join(' · ')}
+            </Text>
+          ) : null}
+          {scopeMatches.length > 0 ? (
+            scopeMatches.map((match) => (
+              <MatchRow
+                key={`${match.date}-${match.opponent}`}
+                fixtureId={fixtureForMatch(match, fixtures.data)?.id ?? null}
+                locale={locale}
+                match={match}
+              />
+            ))
+          ) : (
+            <BodyText muted>{t('player.matchesEmpty')}</BodyText>
+          )}
+        </Card>
+      ) : null}
+
+      {tab === 'career' ? (
+        <Card>
+          <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+            {t('player.careerTitle')}
+          </Text>
+          <CareerTimeline career={player.career} />
         </Card>
       ) : null}
 
@@ -649,7 +648,7 @@ export default function PlayerDetail() {
 
 const styles = StyleSheet.create({
   hero: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  portraitButton: { width: 88, height: 88 },
+  portraitButton: { width: 96, height: 96 },
   zoomBadge: {
     position: 'absolute',
     right: 0,
@@ -660,7 +659,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  heroText: { flex: 1, gap: 2 },
+  heroText: { flex: 1, gap: spacing.xs },
+  identityRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  numberBlock: { alignItems: 'center', minWidth: 48 },
+  loanRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, marginTop: spacing.sm },
+  loanChip: {
+    fontSize: 12,
+    fontWeight: '700',
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 3,
+    borderRadius: radius.sm,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
   statsStrip: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -699,14 +709,6 @@ const styles = StyleSheet.create({
     borderRadius: radius.sm,
     borderWidth: 1.5,
   },
-  sectionToggle: { minHeight: minTouch, flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  timeline: { gap: 0 },
-  timelineRow: { flexDirection: 'row', gap: spacing.sm },
-  timelineRail: { width: 16, alignItems: 'center' },
-  timelineDot: { width: 10, height: 10, borderRadius: 5, marginTop: 6 },
-  timelineLine: { flex: 1, width: 2, marginVertical: 2 },
-  timelineBody: { flex: 1, gap: 2, paddingBottom: spacing.md, paddingTop: 2 },
-  careerHead: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   pendingRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   pendingChip: {
     fontSize: 12,

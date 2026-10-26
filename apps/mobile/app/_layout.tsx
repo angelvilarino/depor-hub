@@ -31,7 +31,14 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="settings" options={{ presentation: 'modal', title: t('settings.title') }} />
         <Stack.Screen name="match/[id]" options={{ title: t('match.title') }} />
-        <Stack.Screen name="player/[id]" options={{ title: t('player.title') }} />
+        <Stack.Screen
+          name="player/[id]"
+          options={{ title: t('player.title'), headerBackTitle: t('tabs.team') }}
+        />
+        <Stack.Screen
+          name="coach"
+          options={{ title: t('coach.title'), headerBackTitle: t('tabs.team') }}
+        />
       </Stack>
     </DataProvider>
   );

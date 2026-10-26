@@ -6,10 +6,16 @@ import { useOnline } from '@/data/useOnline';
 import { radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
-type Props = { dataUpdatedAt: number; isFetching: boolean; isError: boolean };
+type Props = {
+  dataUpdatedAt: number;
+  isFetching: boolean;
+  isError: boolean;
+  /** A partir de estas horas sin sincronizar se considera obsoleto. */
+  maxAgeHours?: number;
+};
 
-/** Muestra cuándo se sincronizó por última vez y avisa si se están viendo datos guardados sin conexión. */
-export function FreshnessBanner({ dataUpdatedAt, isFetching, isError }: Props) {
+/** Avisa solo si los datos están obsoletos o se ven sin conexión (ADR 0014). */
+export function FreshnessBanner({ dataUpdatedAt, isFetching, isError, maxAgeHours = 12 }: Props) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const online = useOnline();
@@ -22,8 +28,10 @@ export function FreshnessBanner({ dataUpdatedAt, isFetching, isError }: Props) {
 
   if (!dataUpdatedAt) return null;
   const f = freshness(dataUpdatedAt, now);
-  const ago = t(`data.ago_${f.unit}`, { n: f.n });
   const offline = !online || isError;
+  const stale = f.unit === 'days' || (f.unit === 'hours' && f.n >= maxAgeHours);
+  if (!offline && !stale) return null;
+  const ago = t(`data.ago_${f.unit}`, { n: f.n });
   const text = offline
     ? t('data.offline', { ago })
     : isFetching

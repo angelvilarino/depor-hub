@@ -5,6 +5,7 @@ import PlayerDetail from '../../app/player/[id]';
 
 const mockUseSquad = jest.fn();
 const mockUseFixtures = jest.fn();
+const mockUseMeta = jest.fn();
 const mockOpenURL = jest.fn();
 const mockPush = jest.fn();
 const mockParams: { id: string } = { id: '1' };
@@ -17,6 +18,7 @@ jest.mock('@/theme/useReducedMotion', () => ({
 jest.mock('@/data/queries', () => ({
   useSquad: () => mockUseSquad(),
   useFixtures: () => mockUseFixtures(),
+  useMeta: () => mockUseMeta(),
 }));
 jest.mock('expo-linking', () => ({ openURL: (...args: unknown[]) => mockOpenURL(...args) }));
 jest.mock('expo-router', () => ({
@@ -71,6 +73,7 @@ const basePlayer: PlayerT = {
     {
       club: 'Club Nuevo',
       crestUrl: 'https://crest.example.org/nuevo.png',
+      role: 'player',
       from: '2020',
       to: '2022',
       appearances: 10,
@@ -94,6 +97,7 @@ const basePlayer: PlayerT = {
     {
       club: 'Club Antiguo',
       crestUrl: null,
+      role: 'player',
       from: '2014',
       to: null,
       appearances: 19,
@@ -126,6 +130,22 @@ const basePlayer: PlayerT = {
       started: true,
       minutes: 90,
       goals: 1,
+      assists: null,
+      yellowCards: 0,
+      redCards: 0,
+    },
+    {
+      date: '2024-01-15',
+      opponent: 'Rival Antiguo',
+      opponentCrestUrl: null,
+      competition: 'LaLiga Hypermotion',
+      home: true,
+      teamGoals: 1,
+      opponentGoals: 1,
+      result: 'D',
+      started: true,
+      minutes: 45,
+      goals: 0,
       assists: null,
       yellowCards: 0,
       redCards: 0,
@@ -190,40 +210,61 @@ beforeAll(async () => {
 beforeEach(() => {
   mockUseSquad.mockReset();
   mockUseFixtures.mockReset();
+  mockUseMeta.mockReset();
   mockOpenURL.mockReset();
   mockPush.mockReset();
   mockReducedMotion = false;
   mockParams.id = '1';
   mockUseFixtures.mockReturnValue({ data: null });
+  mockUseMeta.mockReturnValue({
+    data: {
+      team: {
+        id: 560,
+        name: 'RC Deportivo La Coruña',
+        shortName: 'Deportivo',
+        tla: 'DEP',
+        crestUrl: 'https://crest.example.org/depor.png',
+      },
+    },
+  });
 });
 
 describe('ficha de jugador', () => {
-  it('muestra los datos completos, la franja, la carrera y los partidos', async () => {
+  it('muestra hero, identidad, resumen y estadísticas de la temporada', async () => {
     mockUseSquad.mockReturnValue(squad([basePlayer]));
+    mockUseFixtures.mockReturnValue({ data: fixtures });
     await render(<PlayerDetail />);
 
     expect(screen.getByText('Jugador Completo')).toBeTruthy();
-    expect(screen.getByText(`Portero · ${expectedAge} años`)).toBeTruthy();
+    expect(screen.getByText(`🇪🇸 España · Portero · ${expectedAge} años`)).toBeTruthy();
     expect(screen.getByText('Arnedo (La Rioja), España')).toBeTruthy();
     expect(screen.getByText('Izquierdo')).toBeTruthy();
     expect(screen.getByText(/5\.000\.000/)).toBeTruthy();
     expect(screen.getByText(/Estimación/)).toBeTruthy();
 
-    expect(screen.getByText('191')).toBeTruthy();
-    expect(screen.getByText('16992')).toBeTruthy();
+    // La franja arranca en el ámbito «Depor»: solo el partido de esta temporada.
+    expect(screen.getByText('90')).toBeTruthy();
     expect(screen.getAllByText('PJ').length).toBeGreaterThan(0);
     expect(screen.getAllByText('min').length).toBeGreaterThan(0);
+    expect(screen.getByText('Resumen')).toBeTruthy();
+    expect(screen.getByText('Partidos')).toBeTruthy();
+    expect(screen.getAllByText('Carrera').length).toBe(2);
+    expect(screen.queryByText(/Fuente:/)).toBeNull();
+  });
 
+  it('cambia al ámbito Carrera y muestra los totales y la trayectoria', async () => {
+    mockUseSquad.mockReturnValue(squad([basePlayer]));
+    await render(<PlayerDetail />);
+
+    await fireEvent.press(screen.getAllByText('Carrera')[0]!);
+    expect(screen.getByText('191')).toBeTruthy();
+    expect(screen.getByText('16.992')).toBeTruthy();
+
+    await fireEvent.press(screen.getAllByText('Carrera')[1]!);
     expect(screen.getByText('Club Antiguo')).toBeTruthy();
     expect(screen.getByText('2014–')).toBeTruthy();
     expect(screen.getByText('2020–2022')).toBeTruthy();
-    expect(screen.getByText('2020-21 · 10 PJ · 2 G · 900 min')).toBeTruthy();
-
-    expect(screen.getByText('Valladolid')).toBeTruthy();
-    expect(screen.getByText(/Visitante/)).toBeTruthy();
-    expect(screen.getByText('2–0')).toBeTruthy();
-    expect(screen.getAllByText('G').length).toBeGreaterThan(0);
-    expect(screen.queryByText(/Fuente:/)).toBeNull();
+    expect(screen.queryByText('Asistencias')).toBeNull();
   });
 
   it('enlaza el partido con su fixture cuando coincide de forma inequívoca', async () => {
@@ -231,8 +272,27 @@ describe('ficha de jugador', () => {
     mockUseFixtures.mockReturnValue({ data: fixtures });
     await render(<PlayerDetail />);
 
+    await fireEvent.press(screen.getByText('Partidos'));
+    expect(screen.getByText('Valladolid')).toBeTruthy();
+    expect(screen.getByText(/Visitante/)).toBeTruthy();
+    expect(screen.getByText('2–0')).toBeTruthy();
+    expect(screen.getAllByText('G').length).toBeGreaterThan(0);
+
     await fireEvent.press(screen.getByLabelText('Valladolid. Visitante. 2–0. Victoria'));
     expect(mockPush).toHaveBeenCalledWith('/match/42');
+  });
+
+  it('separa los partidos de la temporada publicada de los históricos', async () => {
+    mockUseSquad.mockReturnValue(squad([basePlayer]));
+    mockUseFixtures.mockReturnValue({ data: fixtures });
+    await render(<PlayerDetail />);
+
+    await fireEvent.press(screen.getByText('Partidos'));
+    expect(screen.getByText('Valladolid')).toBeTruthy();
+    expect(screen.queryByText('Rival Antiguo')).toBeNull();
+
+    await fireEvent.press(screen.getAllByText('Carrera')[0]!);
+    expect(screen.getByText('Rival Antiguo')).toBeTruthy();
   });
 
   it('abre las redes oficiales con Ionicons y Linking', async () => {
@@ -271,28 +331,16 @@ describe('ficha de jugador', () => {
     expect(screen.getByTestId('photo-modal').props.animationType).toBe('none');
   });
 
-  it('pliega la trayectoria', async () => {
-    mockUseSquad.mockReturnValue(squad([basePlayer]));
-    await render(<PlayerDetail />);
-
-    expect(screen.getByText('Club Antiguo')).toBeTruthy();
-    await fireEvent.press(screen.getByText('Trayectoria'));
-    expect(screen.queryByText('Club Antiguo')).toBeNull();
-    await fireEvent.press(screen.getByText('Trayectoria'));
-    expect(screen.getByText('Club Antiguo')).toBeTruthy();
-  });
-
   it('muestra la cesión de salida cuando existe', async () => {
     mockUseSquad.mockReturnValue(
       squad([{ ...basePlayer, loanTo: 'Al Ain (Emiratos Árabes Unidos)' }]),
     );
     await render(<PlayerDetail />);
 
-    expect(screen.getByText('Cedido a')).toBeTruthy();
-    expect(screen.getByText('Al Ain (Emiratos Árabes Unidos)')).toBeTruthy();
+    expect(screen.getByText('Cedido a Al Ain (Emiratos Árabes Unidos)')).toBeTruthy();
   });
 
-  it('con todos los datos a null solo enseña lo que existe y los pendientes plegados', async () => {
+  it('con todos los datos a null solo enseña lo que existe y los pendientes', async () => {
     const empty: PlayerT = {
       ...basePlayer,
       id: 2,
@@ -329,15 +377,13 @@ describe('ficha de jugador', () => {
 
     expect(screen.getByText('Sin Datos')).toBeTruthy();
     expect(screen.getByText(/Datos pendientes/)).toBeTruthy();
-    expect(screen.queryByText(/no se inventan/)).toBeNull();
+    expect(screen.getByText(/no se inventan/)).toBeTruthy();
+    expect(screen.getByText('Fecha de nacimiento')).toBeTruthy();
+    expect(screen.getByText('Sin partidos con el Depor en esta temporada.')).toBeTruthy();
     expect(screen.queryByText('Trayectoria')).toBeNull();
     expect(screen.queryByText('Partidos con el Depor')).toBeNull();
     expect(screen.queryByText('Redes oficiales')).toBeNull();
     expect(screen.queryByLabelText('Ampliar foto')).toBeNull();
-
-    await fireEvent.press(screen.getByText(/Datos pendientes/));
-    expect(screen.getByText(/no se inventan/)).toBeTruthy();
-    expect(screen.getByText('Fecha de nacimiento')).toBeTruthy();
   });
 
   it('jugador inexistente', async () => {

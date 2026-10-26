@@ -25,7 +25,11 @@
     "addToCalendar": "Engadir ao calendario"
   },
   "team": {
-    "coach": "Adestrador"
+    "coach": "Adestrador",
+    "summary_one": "{{count}} xogador",
+    "summary_other": "{{count}} xogadores",
+    "loaned": "Cedido",
+    "openCoach": "Abrir ficha do adestrador"
   },
   "player": {
     "title": "Xogador",
@@ -96,6 +100,41 @@
       "weightKg": "Peso",
       "preferredFoot": "Pé dominante",
       "contractUntil": "Contrato"
-    }
+    },
+    "scope": {
+      "depor": "Depor {{season}}",
+      "deporShort": "Depor",
+      "career": "Carreira"
+    },
+    "tabs": {
+      "summary": "Resumo",
+      "matches": "Partidos",
+      "career": "Carreira"
+    },
+    "loanFromValue": "Cedido por {{club}}",
+    "loanToValue": "Cedido a {{club}}",
+    "careerEmpty": "Sen traxectoria rexistrada."
+  },
+  "coach": {
+    "title": "Adestrador",
+    "notFound": "Non se atopou a ficha do adestrador.",
+    "role": "Adestrador",
+    "personalTitle": "Datos persoais",
+    "birth": "Nacemento",
+    "birthPlace": "Lugar de nacemento",
+    "nationality": "Nacionalidade",
+    "age": "Idade",
+    "since": "Desde",
+    "sinceValue": "No Depor desde {{year}}",
+    "contract": "Contrato ata",
+    "recordTitle": "Balance co Depor",
+    "recordNote": "Calculado cos partidos rematados da tempada publicada.",
+    "careerTitle": "Traxectoria",
+    "careerCoach": "Adestrador",
+    "careerPlayer": "Xogador",
+    "careerEmpty": "Sen traxectoria rexistrada.",
+    "staffTitle": "Corpo técnico",
+    "staffNote": "Publicado pola web oficial do club.",
+    "sourceNote": "Datos de Wikidata, Wikipedia e a web oficial do club."
   }
 }
