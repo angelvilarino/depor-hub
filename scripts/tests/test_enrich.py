@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 import yaml
 
 from depor_hub import models as m
 from depor_hub.enrich import bdfutbol, commons, official, wikidata, wikipedia
 from depor_hub.enrich.proposal import (
+    EnrichmentProposal,
     Observation,
     PlayerProposal,
     _add_official_priority,
@@ -458,6 +460,39 @@ def test_apply_is_idempotent_and_refreshes_enriched_fields(tmp_path):
     assert refreshed.model_dump(by_alias=True) == once.model_dump(by_alias=True)
 
 
+def test_enrich_apply_offline_is_idempotent(tmp_path, capsys):
+    from depor_hub import cli
+
+    out = tmp_path / "out"
+    out.mkdir()
+    for name in ("meta.json", "standings.json", "fixtures.json"):
+        (out / name).write_bytes((Path("data/public/v1") / name).read_bytes())
+    squad_path = out / "squad.json"
+    squad_path.write_text(squad().model_dump_json(by_alias=True, indent=2), encoding="utf-8")
+
+    args = [
+        "enrich",
+        "--squad", str(squad_path),
+        "--out", str(out),
+        "--extras", str(tmp_path / "extras.yml"),
+        "--overrides", str(tmp_path / "sin-overrides.yml"),
+        "--proposal", str(tmp_path / "proposal.yml"),
+        "--raw", str(tmp_path / "raw"),
+        "--offline",
+        "--apply",
+        "--no-bdfutbol",
+        "--no-wikidata",
+        "--no-wikipedia",
+        "--no-official",
+        "--no-crests",
+        "--limit", "1",
+    ]
+    assert cli.main(args) == 0
+    assert "changed=true" in capsys.readouterr().out
+    assert cli.main(args) == 0
+    assert "changed=false" in capsys.readouterr().out
+
+
 def test_csv_template_round_trip(tmp_path):
     from depor_hub import cli
 
@@ -706,6 +741,95 @@ def test_no_photos_flag_skips_the_official_photo_too():
     )
     proposal = collect_player(player, None, None, [], [profile], with_photos=False)
     assert "photos" not in proposal.decisions
+
+
+def test_crest_resolver_fills_career_and_matches_and_reports_coverage():
+    player = m.Player(id=1, name="A", date_of_birth="2000-01-31")
+    season = bdfutbol.SeasonRow("2025-26", "Deportivo de La Coruña", 30, 4, 2700, 3, 0, 25)
+    career = [
+        bdfutbol.CareerEntryData("Osasuna B", "2014", "2017", 29, 1, 2610, 2, 1, []),
+        bdfutbol.CareerEntryData(
+            "Deportivo de La Coruña", "2025", None, 30, 4, 2700, 3, 0, [season]
+        ),
+    ]
+    profile = bdfutbol.Profile(
+        bdf_id="j1",
+        url="https://example.test/j/j1.html",
+        name="A",
+        date_of_birth="2000-01-31",
+        birth_place=None,
+        height_cm=None,
+        weight_kg=None,
+        seasons=[season],
+        career=career,
+        totals={"appearances": 59, "goals": 5, "assists": None, "minutes": 5310,
+                "yellow_cards": 5, "red_cards": 1},
+    )
+    match = bdfutbol.MatchData(
+        date="2026-05-24",
+        opponent="Valladolid",
+        competition="LaLiga",
+        home=True,
+        team_goals=2,
+        opponent_goals=0,
+        result="W",
+        started=True,
+        minutes=90,
+        goals=1,
+        assists=None,
+        yellow_cards=0,
+        red_cards=0,
+    )
+
+    class FakeBDF:
+        def resolve(self, name, date_of_birth, aliases=()):
+            return bdfutbol.Candidate("j1", "A", "2000-01-31", (), profile.url)
+
+        def profile(self, candidate):
+            return profile
+
+        def matches(self, candidate):
+            return [match]
+
+    class FakeCrests:
+        def __init__(self):
+            self.calls: list[str] = []
+
+        def resolve(self, club):
+            self.calls.append(club)
+            return {
+                "Osasuna B": "https://crests.example/osasuna.png",
+                "Deportivo de La Coruña": "https://crests.example/depor.png",
+                "Valladolid": "https://crests.example/valladolid.png",
+            }.get(club)
+
+    crests = FakeCrests()
+    proposal = collect_player(player, FakeBDF(), None, [], [], crest_resolver=crests)  # type: ignore[arg-type]
+    assert crests.calls == ["Osasuna B", "Deportivo de La Coruña", "Valladolid"]
+    assert [entry.crest_url for entry in proposal.decisions["career"].value] == [
+        "https://crests.example/osasuna.png",
+        "https://crests.example/depor.png",
+    ]
+    assert proposal.decisions["depor_matches"].value[0].opponent_crest_url == (
+        "https://crests.example/valladolid.png"
+    )
+
+    extras = proposal.to_extras("single_source")
+    assert extras["career"][0]["crest_url"] == "https://crests.example/osasuna.png"
+    assert extras["depor_matches"][0]["opponent_crest_url"] == (
+        "https://crests.example/valladolid.png"
+    )
+
+    coverage = EnrichmentProposal(
+        squad_updated_at="2026-10-20T10:00:00Z",
+        generated_at="2026-10-25T10:00:00Z",
+        players=[proposal],
+        source_urls={},
+    ).coverage()
+    assert coverage["crests"] == {
+        "career": {"total": 2, "resolved": 2},
+        "matches": {"total": 1, "resolved": 1},
+    }
 
 
 def test_manual_loan_to_is_applied_with_provenance_and_cleared_on_reset(tmp_path):

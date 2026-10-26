@@ -69,6 +69,7 @@ class CareerEntryData:
     yellow_cards: int | None
     red_cards: int | None
     seasons: list[SeasonRow] = field(default_factory=list)
+    crest_url: str | None = None
 
 
 @dataclass
@@ -100,6 +101,7 @@ class MatchData:
     assists: int | None
     yellow_cards: int | None
     red_cards: int | None
+    opponent_crest_url: str | None = None
 
 
 def _int(text: str | None) -> int | None:

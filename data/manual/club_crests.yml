@@ -1,0 +1,14 @@
+# Escudos manuales de club (ADR 0012).
+#
+# Solo se usan cuando football-data.org y Wikidata no resuelven el club. Nunca se
+# inventa un escudo: si no hay una URL fiable, se deja fuera y la app pinta un monograma.
+#
+# Formato:
+# clubs:
+#   Nombre del club:
+#     url: https://...
+#     source: https://...   # opcional, para revisión humana
+#
+# La clave debe ser el nombre que aparece en la carrera o en los partidos. El emparejador
+# normaliza tildes, mayúsculas y sufijos societarios (CF, FC, SAD...), pero no adivina.
+clubs: {}

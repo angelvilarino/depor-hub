@@ -14,7 +14,7 @@ from . import models as m
 from . import source_models as s
 from . import transform as t
 from .client import Client
-from .enrich import bdfutbol, official, proposal, wikidata, wikipedia
+from .enrich import bdfutbol, crests, official, proposal, wikidata, wikipedia
 from .enrich.http import PoliteClient, SourceError, contact_from_env
 from .extras import PlayerExtra, apply_extras, load_extras, reset_enriched, unknown_ids
 from .publish import write_if_changed
@@ -279,9 +279,19 @@ def cmd_enrich(args: argparse.Namespace) -> int:
         interval=args.interval,
         offline=args.offline,
     )
+    crest_resolver: crests.CrestResolver | None = None
     try:
         bdf = None if args.no_bdfutbol else bdfutbol.BDFutbolClient(http)
         wd = None if args.no_wikidata else wikidata.WikidataClient(http)
+        if not args.no_crests:
+            crest_resolver = crests.CrestResolver(
+                http=http,
+                wikidata=wd,
+                fixtures_path=Path(args.fixtures),
+                overrides_path=Path(args.club_crests),
+                cache_path=Path(args.raw) / "enrich" / "crests.json",
+                use_wikidata=not args.no_wikidata,
+            )
         wiki_players: list[wikipedia.WikiPlayer] = []
         wiki_client: wikipedia.WikipediaClient | None = None
         if not args.no_wikipedia:
@@ -316,8 +326,11 @@ def cmd_enrich(args: argparse.Namespace) -> int:
             log=print,
             wiki_client=wiki_client,
             with_photos=not args.no_photos,
+            crest_resolver=crest_resolver,
         )
     finally:
+        if crest_resolver is not None:
+            crest_resolver.save()
         http.close()
 
     data = proposal.proposal_data(result, args.min_confidence)
@@ -328,6 +341,10 @@ def cmd_enrich(args: argparse.Namespace) -> int:
     )
     for field, count in coverage["fields"].items():
         print(f"  {field}: {count}/{coverage['players']}")
+    crest_coverage = coverage.get("crests") or {}
+    for label, key in (("carrera", "career"), ("partidos", "matches")):
+        values = crest_coverage.get(key) or {}
+        print(f"  escudos {label}: {values.get('resolved', 0)}/{values.get('total', 0)}")
 
     if args.dry_run:
         return 0
@@ -383,6 +400,9 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--no-wikidata", action="store_true")
     sp.add_argument("--no-wikipedia", action="store_true")
     sp.add_argument("--no-photos", action="store_true")
+    sp.add_argument("--no-crests", action="store_true")
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--club-crests", default="data/manual/club_crests.yml")
     sp.add_argument("--export-template", default=None)
     sp.add_argument("--import-csv", default=None)
     sp.set_defaults(fn=cmd_enrich)

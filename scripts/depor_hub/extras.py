@@ -172,6 +172,7 @@ class CareerExtra(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     club: str
+    crest_url: Optional[str] = None
     from_: Optional[str] = Field(default=None, alias="from")
     to: Optional[str] = None
     appearances: Optional[int] = Field(default=None, ge=0)
@@ -226,6 +227,7 @@ class MatchExtra(BaseModel):
 
     date: str
     opponent: str
+    opponent_crest_url: Optional[str] = None
     competition: Optional[str] = None
     home: bool
     team_goals: Optional[int] = Field(default=None, ge=0, le=30)
@@ -393,6 +395,7 @@ def _photo(extra: PhotoExtra) -> m.PlayerPhoto:
 def _career(extra: CareerExtra) -> m.CareerEntry:
     return m.CareerEntry(
         club=extra.club,
+        crest_url=extra.crest_url,
         from_=extra.from_,
         to=extra.to,
         appearances=extra.appearances,
@@ -431,6 +434,7 @@ def _match(extra: MatchExtra) -> m.PlayerMatch:
     return m.PlayerMatch(
         date=extra.date,
         opponent=extra.opponent,
+        opponent_crest_url=extra.opponent_crest_url,
         competition=extra.competition,
         home=extra.home,
         team_goals=extra.team_goals,
