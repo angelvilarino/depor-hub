@@ -11,11 +11,13 @@ import type { PlayerT } from '@/data/schemas';
  * al avatar generado.
  */
 
+export type PortraitQuality = 'small' | 'large';
+
 /** El CDN del club publica `-small` (192 px, ~43 KB) además de `-large` (~1,1 MB). */
-function portraitUrl(url: string): string {
+export function portraitUrl(url: string, quality: PortraitQuality = 'small'): string {
   try {
     if (new URL(url).hostname === 'cdn.bff.rcdeportivo.app') {
-      return url.replace('-large', '-small');
+      return url.replace(quality === 'small' ? '-large' : '-small', `-${quality}`);
     }
   } catch {
     // URL no absoluta: se usa tal cual.
@@ -23,7 +25,15 @@ function portraitUrl(url: string): string {
   return url;
 }
 
-export function PlayerPortrait({ player, size = 44 }: { player: PlayerT; size?: number }) {
+export function PlayerPortrait({
+  player,
+  size = 44,
+  quality = 'small',
+}: {
+  player: PlayerT;
+  size?: number;
+  quality?: PortraitQuality;
+}) {
   const [failed, setFailed] = useState(false);
   const photo = player.photos?.[0];
   if (!photo || failed) {
@@ -37,7 +47,8 @@ export function PlayerPortrait({ player, size = 44 }: { player: PlayerT; size?: 
       contentFit="cover"
       contentPosition="top"
       onError={() => setFailed(true)}
-      source={{ uri: portraitUrl(photo.url) }}
+      recyclingKey={`${player.id}-${size}-${quality}`}
+      source={{ uri: portraitUrl(photo.url, quality) }}
       style={{ width: size, height: size, borderRadius: size / 2 }}
       transition={150}
     />

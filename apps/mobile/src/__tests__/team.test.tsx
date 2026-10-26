@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import TeamScreen from '../../app/(tabs)/team';
 import i18n from '@/i18n';
 import type { PlayerT } from '@/data/schemas';
+import { useSettings } from '@/store/settings';
 
 const mockUseSquad = jest.fn();
 const mockPush = jest.fn();
@@ -13,11 +14,13 @@ jest.mock('@/theme/useTheme', () => {
   return { useTheme: () => ({ scheme: 'light', colors: lightColors }) };
 });
 
+const birthYear = new Date().getUTCFullYear() - 25;
+
 const basePlayer: PlayerT = {
   id: 1,
   name: 'Jugador Uno',
   position: 'Midfield',
-  dateOfBirth: '2000-01-31',
+  dateOfBirth: `${birthYear}-01-31`,
   nationality: 'Spain',
   shirtNumber: null,
   contractUntil: null,
@@ -45,12 +48,19 @@ const basePlayer: PlayerT = {
 
 const squad = (players: PlayerT[], isPending = false) => ({
   data: { updatedAt: '2026-10-25T10:00:00Z', coach: null, players },
+  dataUpdatedAt: Date.parse('2026-10-25T10:00:00Z'),
   isPending,
   isFetching: false,
   isError: false,
   isRefetching: false,
   refetch: jest.fn(),
 });
+
+const threePlayers = [
+  basePlayer,
+  { ...basePlayer, id: 2, name: 'Portero Dos', position: 'Goalkeeper', shirtNumber: 1 },
+  { ...basePlayer, id: 3, name: 'Delantero Tres', position: 'Offence', shirtNumber: 9 },
+];
 
 beforeAll(async () => {
   await i18n.changeLanguage('es');
@@ -59,25 +69,79 @@ beforeAll(async () => {
 beforeEach(() => {
   mockUseSquad.mockReset();
   mockPush.mockReset();
+  useSettings.setState({ squadView: 'grid' });
 });
 
 describe('pantalla de plantilla', () => {
-  it('agrupa por posición, ordena por dorsal y navega a la ficha', async () => {
-    mockUseSquad.mockReturnValue(
-      squad([
-        basePlayer,
-        { ...basePlayer, id: 2, name: 'Portero Dos', position: 'Goalkeeper', shirtNumber: 1 },
-        { ...basePlayer, id: 3, name: 'Delantero Tres', position: 'Offence', shirtNumber: 9 },
-      ]),
-    );
+  it('muestra la cuadrícula por defecto con resumen y contadores reales', async () => {
+    mockUseSquad.mockReturnValue(squad(threePlayers));
     await render(<TeamScreen />);
 
-    expect(screen.getByText('Porteros · 1')).toBeTruthy();
-    expect(screen.getByText('Centrocampistas · 1')).toBeTruthy();
-    expect(screen.getByText('Delanteros · 1')).toBeTruthy();
+    expect(screen.getByText('Jugador Uno')).toBeTruthy();
+    expect(screen.getByText('Portero Dos')).toBeTruthy();
+    expect(screen.getByText('Delantero Tres')).toBeTruthy();
+    expect(screen.getByText('3 jugadores · edad media 25')).toBeTruthy();
+    expect(screen.getByText('Todos 3')).toBeTruthy();
+    expect(screen.getByText('POR 1')).toBeTruthy();
+    expect(screen.getByText('MED 1')).toBeTruthy();
+    expect(screen.getByText('DEL 1')).toBeTruthy();
+  });
+
+  it('navega a la ficha al pulsar un jugador', async () => {
+    mockUseSquad.mockReturnValue(squad(threePlayers));
+    await render(<TeamScreen />);
 
     await fireEvent.press(screen.getByText('Delantero Tres'));
     expect(mockPush).toHaveBeenCalledWith('/player/3');
+  });
+
+  it('busca sin mayúsculas ni tildes y también por dorsal', async () => {
+    mockUseSquad.mockReturnValue(
+      squad([...threePlayers, { ...basePlayer, id: 4, name: 'Álvaro López' }]),
+    );
+    await render(<TeamScreen />);
+    const search = screen.getByPlaceholderText('Buscar por nombre o dorsal');
+
+    await fireEvent.changeText(search, 'ALVARO');
+    expect(screen.getByText('Álvaro López')).toBeTruthy();
+    expect(screen.queryByText('Portero Dos')).toBeNull();
+    expect(screen.getByText('Todos 1')).toBeTruthy();
+
+    await fireEvent.changeText(search, '9');
+    expect(screen.getByText('Delantero Tres')).toBeTruthy();
+    expect(screen.queryByText('Álvaro López')).toBeNull();
+  });
+
+  it('filtra por posición y permite limpiar los filtros', async () => {
+    mockUseSquad.mockReturnValue(squad(threePlayers));
+    await render(<TeamScreen />);
+
+    await fireEvent.press(screen.getByText('POR 1'));
+    expect(screen.getByText('Portero Dos')).toBeTruthy();
+    expect(screen.queryByText('Jugador Uno')).toBeNull();
+    expect(screen.getByText('1 jugador · edad media 25')).toBeTruthy();
+
+    await fireEvent.changeText(
+      screen.getByPlaceholderText('Buscar por nombre o dorsal'),
+      'no-existe',
+    );
+    expect(screen.getByText('Ningún jugador coincide con los filtros.')).toBeTruthy();
+
+    await fireEvent.press(screen.getByText('Limpiar filtros'));
+    expect(screen.getByText('Jugador Uno')).toBeTruthy();
+    expect(screen.getByText('Portero Dos')).toBeTruthy();
+  });
+
+  it('cambia a la vista de lista y muestra sus cabeceras', async () => {
+    mockUseSquad.mockReturnValue(squad(threePlayers));
+    await render(<TeamScreen />);
+
+    await fireEvent.press(screen.getByText('Lista'));
+    expect(screen.getByText('Jugador')).toBeTruthy();
+    expect(screen.getByText('Dorsal')).toBeTruthy();
+    expect(screen.getByText('Pos.')).toBeTruthy();
+    expect(screen.getByText('Edad')).toBeTruthy();
+    expect(screen.getByText('Delantero Tres')).toBeTruthy();
   });
 
   it('plantilla vacía muestra el estado vacío', async () => {
@@ -88,7 +152,13 @@ describe('pantalla de plantilla', () => {
   });
 
   it('mientras carga enseña el esqueleto', async () => {
-    mockUseSquad.mockReturnValue({ isPending: true, isFetching: true, isError: false, isRefetching: false, refetch: jest.fn() });
+    mockUseSquad.mockReturnValue({
+      isPending: true,
+      isFetching: true,
+      isError: false,
+      isRefetching: false,
+      refetch: jest.fn(),
+    });
     await render(<TeamScreen />);
 
     expect(screen.getByLabelText('Cargando datos…')).toBeTruthy();

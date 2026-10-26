@@ -15,6 +15,9 @@ describe.each([
     ['onPrimary/primary', c.onPrimary, c.primary],
     ['primary/surface', c.primary, c.surface],
     ['danger/surface', c.danger, c.surface],
+    ['win/surface', c.win, c.surface],
+    ['draw/surface', c.draw, c.surface],
+    ['loss/surface', c.loss, c.surface],
   ])('%s >= 4.5', (_label, fg, bg) => {
     expect(contrastRatio(fg, bg)).toBeGreaterThanOrEqual(AA);
   });

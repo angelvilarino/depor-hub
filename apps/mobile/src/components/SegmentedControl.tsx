@@ -32,5 +32,5 @@ export function SegmentedControl<T extends string>({ value, options, onChange }:
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', borderRadius: radius.lg, borderWidth: StyleSheet.hairlineWidth, padding: spacing.xs },
-  item: { flex: 1, minHeight: minTouch - spacing.sm, alignItems: 'center', justifyContent: 'center', borderRadius: radius.md },
+  item: { flex: 1, minHeight: minTouch, alignItems: 'center', justifyContent: 'center', borderRadius: radius.md },
 });

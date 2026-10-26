@@ -103,12 +103,31 @@
   "team": {
     "coach": "Entrenador",
     "empty": "La plantilla no está disponible.",
-    "group": {
-      "GK": "Porteros",
-      "DF": "Defensas",
-      "MF": "Centrocampistas",
-      "FW": "Delanteros",
-      "OTHER": "Otros"
+    "searchPlaceholder": "Buscar por nombre o dorsal",
+    "searchClear": "Limpiar búsqueda",
+    "view": {
+      "grid": "Cuadrícula",
+      "list": "Lista"
+    },
+    "filters": {
+      "all": "Todos",
+      "GK": "POR",
+      "DF": "DEF",
+      "MF": "MED",
+      "FW": "DEL",
+      "OTHER": "OTR"
+    },
+    "summary_one": "{{count}} jugador · edad media {{age}}",
+    "summary_other": "{{count}} jugadores · edad media {{age}}",
+    "summaryNoAge_one": "{{count}} jugador",
+    "summaryNoAge_other": "{{count}} jugadores",
+    "emptyFiltered": "Ningún jugador coincide con los filtros.",
+    "clearFilters": "Limpiar filtros",
+    "listHeader": {
+      "player": "Jugador",
+      "number": "Dorsal",
+      "position": "Pos.",
+      "age": "Edad"
     }
   },
   "player": {
@@ -142,13 +161,11 @@
       "instagram": "Instagram",
       "tiktok": "TikTok"
     },
-    "photosTitle": "Fotos",
     "photoLicense": "Licencia: {{license}}",
     "photoSource": "Ver ficha de la foto",
     "photoAuthor": "Autoría: {{author}}",
     "photoNote": "Las fotos se enlazan desde su fuente original con atribución; no se redistribuyen.",
     "careerTitle": "Trayectoria",
-    "careerTotalsTitle": "Totales de carrera",
     "deporMatchesTitle": "Partidos con el Depor",
     "matchHome": "Local",
     "matchAway": "Visitante",
@@ -165,13 +182,6 @@
       "minutesShort": "min",
       "yellowCardsShort": "TA",
       "redCardsShort": "TR"
-    },
-    "sourceLine": "Fuente: {{sources}} · Confianza: {{confidence}}",
-    "confidence": {
-      "verified": "verificada",
-      "cross_checked": "contrastada",
-      "single_source": "una fuente",
-      "estimated": "estimación"
     },
     "pendingTitle": "Datos pendientes",
     "pendingBody": "Todavía no tenemos estos datos con una fuente fiable; no se inventan.",
@@ -192,7 +202,12 @@
       "weightKg": "Peso",
       "preferredFoot": "Pie dominante",
       "contractUntil": "Contrato"
-    }
+    },
+    "photoTitle": "Foto",
+    "photoClose": "Cerrar",
+    "photoOpen": "Ampliar foto",
+    "bioTitle": "Datos",
+    "viewMatch": "Abrir partido"
   },
   "country": {
     "Spain": "España",

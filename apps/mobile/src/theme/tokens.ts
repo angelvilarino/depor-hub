@@ -8,6 +8,9 @@ export type ColorTokens = {
   onPrimary: string;
   border: string;
   danger: string;
+  win: string;
+  draw: string;
+  loss: string;
 };
 
 export const lightColors: ColorTokens = {
@@ -19,6 +22,9 @@ export const lightColors: ColorTokens = {
   onPrimary: '#FFFFFF',
   border: '#D5DDE6',
   danger: '#B3261E',
+  win: '#0B6B4F',
+  draw: '#8A5A00',
+  loss: '#B3261E',
 };
 
 export const darkColors: ColorTokens = {
@@ -30,6 +36,9 @@ export const darkColors: ColorTokens = {
   onPrimary: '#0B1220',
   border: '#263449',
   danger: '#F2B8B5',
+  win: '#5FD3A6',
+  draw: '#F2C14E',
+  loss: '#F2B8B5',
 };
 
 export const spacing = { xs: 4, sm: 8, md: 16, lg: 24, xl: 32 } as const;

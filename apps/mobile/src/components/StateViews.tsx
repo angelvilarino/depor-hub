@@ -30,10 +30,19 @@ export function ErrorState({ onRetry }: { onRetry: () => void }) {
   );
 }
 
-export function EmptyState({ message }: { message: string }) {
+export function EmptyState({
+  message,
+  actionLabel,
+  onAction,
+}: {
+  message: string;
+  actionLabel?: string;
+  onAction?: () => void;
+}) {
   return (
     <Card>
       <BodyText muted>{message}</BodyText>
+      {actionLabel && onAction ? <Button label={actionLabel} onPress={onAction} /> : null}
     </Card>
   );
 }

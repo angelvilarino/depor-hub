@@ -49,6 +49,7 @@
   "private": true,
   "jest": {
     "preset": "jest-expo",
+    "setupFiles": ["<rootDir>/jest.setup.js"],
     "moduleNameMapper": {
       "^react$": "<rootDir>/../../node_modules/react",
       "^react/(.*)$": "<rootDir>/../../node_modules/react/$1"

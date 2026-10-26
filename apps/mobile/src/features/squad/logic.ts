@@ -3,6 +3,8 @@ import type {
   CareerEntryT,
   CareerTotalsT,
   ConfidenceT,
+  FixturesT,
+  MatchT,
   PlayerMatchT,
   PlayerT,
   SocialT,
@@ -38,6 +40,91 @@ export function groupSquad(players: PlayerT[]): { group: PositionGroup; data: Pl
   })).filter((g) => g.data.length > 0);
 }
 
+/** Búsqueda de plantilla sin mayúsculas ni tildes, por nombre o dorsal. */
+export function normalizeSearch(text: string | null | undefined): string {
+  return (text ?? '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLocaleLowerCase()
+    .trim();
+}
+
+export function filterSquad(players: PlayerT[], query: string, group: PositionGroup | 'ALL'): PlayerT[] {
+  const needle = normalizeSearch(query);
+  return players.filter((player) => {
+    if (group !== 'ALL' && positionGroup(player.position) !== group) return false;
+    if (!needle) return true;
+    if (normalizeSearch(player.name).includes(needle)) return true;
+    return player.shirtNumber !== null && String(player.shirtNumber).includes(needle);
+  });
+}
+
+export function squadCounts(players: PlayerT[]): Record<PositionGroup | 'ALL', number> {
+  const counts: Record<PositionGroup | 'ALL', number> = {
+    ALL: players.length,
+    GK: 0,
+    DF: 0,
+    MF: 0,
+    FW: 0,
+    OTHER: 0,
+  };
+  for (const player of players) counts[positionGroup(player.position)] += 1;
+  return counts;
+}
+
+/** Edad media redondeada; null si ningún jugador tiene fecha válida. */
+export function averageAge(players: PlayerT[], nowMs: number): number | null {
+  const ages = players
+    .map((player) => ageFrom(player.dateOfBirth, nowMs))
+    .filter((age): age is number => age !== null);
+  if (ages.length === 0) return null;
+  return Math.round(ages.reduce((total, age) => total + age, 0) / ages.length);
+}
+
+const FLAGS: Record<string, string> = {
+  Spain: '🇪🇸',
+  Italy: '🇮🇹',
+  Belgium: '🇧🇪',
+  Uruguay: '🇺🇾',
+  Poland: '🇵🇱',
+  Netherlands: '🇳🇱',
+  Denmark: '🇩🇰',
+  Gabon: '🇬🇦',
+  Cameroon: '🇨🇲',
+  France: '🇫🇷',
+  Portugal: '🇵🇹',
+  Germany: '🇩🇪',
+  England: '🇬🇧',
+  Ireland: '🇮🇪',
+  Argentina: '🇦🇷',
+  Brazil: '🇧🇷',
+  Colombia: '🇨🇴',
+  Morocco: '🇲🇦',
+  Senegal: '🇸🇳',
+  Ghana: '🇬🇭',
+  Nigeria: '🇳🇬',
+  Mali: '🇲🇱',
+  Venezuela: '🇻🇪',
+  Mexico: '🇲🇽',
+  Chile: '🇨🇱',
+  Paraguay: '🇵🇾',
+  Ecuador: '🇪🇨',
+  Peru: '🇵🇪',
+  Switzerland: '🇨🇭',
+  Sweden: '🇸🇪',
+  Norway: '🇳🇴',
+  Serbia: '🇷🇸',
+  Croatia: '🇭🇷',
+  Algeria: '🇩🇿',
+  Japan: '🇯🇵',
+  'United States': '🇺🇸',
+};
+
+/** Bandera emoji de la nacionalidad; null si no hay un país reconocido. */
+export function countryFlag(nationality: string | null | undefined): string | null {
+  return nationality ? (FLAGS[nationality] ?? null) : null;
+}
+
 /** Edad en años cumplidos a `nowMs` desde "YYYY-MM-DD"; null si el dato falta o no es válido. */
 export function ageFrom(dateOfBirth: string | null | undefined, nowMs: number): number | null {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateOfBirth ?? '');
@@ -67,13 +154,18 @@ export function formatPartialDate(value: string | null | undefined, locale: stri
   return new Intl.DateTimeFormat(locale, opts).format(new Date(Date.UTC(year, month - 1, day ?? 1)));
 }
 
-/** Rango de carrera ("2014–2017", "2026–" si sigue en el club). null si no hay inicio. */
+/**
+ * Rango de carrera: una sola temporada se escribe "2009-10"; varias, "2014–2017".
+ * Si sigue en el club, "2026–". null si no hay inicio.
+ */
 export function seasonRange(from: string | null | undefined, to: string | null | undefined): string | null {
   const start = from?.slice(0, 4);
   if (!start) return null;
   const end = to?.slice(0, 4);
   if (!end) return `${start}–`;
-  return end === start ? start : `${start}–${end}`;
+  if (end === start) return start;
+  if (Number(end) === Number(start) + 1) return `${start}-${end.slice(2)}`;
+  return `${start}–${end}`;
 }
 
 /** Carrera de más antigua a más reciente. No muta la entrada; los datos sin año van al final. */
@@ -131,6 +223,66 @@ export function summarizeMatches(matches: PlayerMatchT[]): MatchSummary | null {
 export function matchScore(match: PlayerMatchT): string | null {
   if (match.teamGoals === null || match.opponentGoals === null) return null;
   return `${match.teamGoals}–${match.opponentGoals}`;
+}
+
+const CLUB_STOPWORDS = new Set([
+  'a',
+  'ad',
+  'balompie',
+  'cd',
+  'cf',
+  'club',
+  'de',
+  'del',
+  'el',
+  'fc',
+  'futbol',
+  'la',
+  'las',
+  'los',
+  'rc',
+  'rcd',
+  'sad',
+  'sd',
+  'the',
+  'ud',
+]);
+
+export function clubKey(name: string | null | undefined): string {
+  return normalizeSearch(name)
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter((token) => token && !CLUB_STOPWORDS.has(token))
+    .join(' ');
+}
+
+function opponentMatches(match: PlayerMatchT, fixture: MatchT): boolean {
+  const opponent = match.home ? fixture.away : fixture.home;
+  const wanted = clubKey(match.opponent);
+  if (!wanted) return false;
+  const candidate = clubKey(opponent.name);
+  if (candidate === wanted) return true;
+  const wantedTokens = new Set(wanted.split(' '));
+  return [...wantedTokens].every((token) => candidate.split(' ').includes(token));
+}
+
+/**
+ * Fixture que corresponde a un partido de la ficha (fecha, localía y rival).
+ * Si hay más de uno o el nombre no casa, devuelve null: nunca se enlaza a ciegas.
+ */
+export function fixtureForMatch(
+  match: PlayerMatchT,
+  fixtures: FixturesT | null | undefined,
+): MatchT | null {
+  if (!fixtures) return null;
+  const candidates = fixtures.matches.filter(
+    (fixture) =>
+      fixture.utcDate.slice(0, 10) === match.date && fixture.deporIsHome === match.home,
+  );
+  const matches = candidates.filter((fixture) => opponentMatches(match, fixture));
+  const unique = [...new Map(matches.map((fixture) => [fixture.id, fixture])).values()];
+  return unique.length === 1 ? (unique[0] ?? null) : null;
 }
 
 export type SocialLink = { network: 'x' | 'instagram' | 'tiktok'; handle: string; url: string };

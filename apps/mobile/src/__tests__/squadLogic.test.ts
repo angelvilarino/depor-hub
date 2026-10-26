@@ -1,21 +1,28 @@
 import { Squad } from '@/data/schemas';
-import type { PlayerT } from '@/data/schemas';
+import type { FixturesT, PlayerT } from '@/data/schemas';
 import {
   AVATAR_COLORS,
   ageFrom,
+  averageAge,
   avatarColor,
   careerChronological,
+  clubKey,
+  countryFlag,
+  filterSquad,
+  fixtureForMatch,
   formatEuro,
   formatPartialDate,
   groupSquad,
   hasCareerTotals,
   initials,
   matchScore,
+  normalizeSearch,
   pendingFields,
   positionGroup,
   provenanceSummary,
   seasonRange,
   socialLinks,
+  squadCounts,
   summarizeMatches,
 } from '@/features/squad/logic';
 import { contrastRatio } from '@/utils/contrast';
@@ -86,6 +93,40 @@ describe('groupSquad', () => {
       player({ id: 3, name: 'Eva', shirtNumber: 4 }),
     ]);
     expect(mf?.data.map((p) => p.id)).toEqual([3, 2, 1]);
+  });
+});
+
+describe('búsqueda y filtros', () => {
+  const players = [
+    player({ id: 1, name: 'Álvaro López', position: 'Midfield', shirtNumber: 8 }),
+    player({ id: 2, name: 'Portero Dos', position: 'Goalkeeper', shirtNumber: 1 }),
+    player({ id: 3, name: 'Delantero Tres', position: 'Offence', shirtNumber: 9 }),
+  ];
+
+  it('normaliza mayúsculas y tildes', () => {
+    expect(normalizeSearch('  ÁLVARO  ')).toBe('alvaro');
+    expect(normalizeSearch(null)).toBe('');
+  });
+
+  it('busca por nombre o dorsal y respeta el grupo', () => {
+    expect(filterSquad(players, 'alvaro', 'ALL').map((p) => p.id)).toEqual([1]);
+    expect(filterSquad(players, '9', 'ALL').map((p) => p.id)).toEqual([3]);
+    expect(filterSquad(players, '', 'GK').map((p) => p.id)).toEqual([2]);
+    expect(filterSquad(players, 'portero', 'FW')).toEqual([]);
+  });
+
+  it('cuenta todos los grupos y la edad media', () => {
+    expect(squadCounts(players)).toEqual({ ALL: 3, GK: 1, DF: 0, MF: 1, FW: 1, OTHER: 0 });
+    const now = Date.UTC(2026, 9, 22);
+    expect(averageAge(players, now)).toBe(26);
+    expect(averageAge([], now)).toBeNull();
+  });
+
+  it('banderas de países conocidos y null para el resto', () => {
+    expect(countryFlag('Spain')).toBe('🇪🇸');
+    expect(countryFlag('United States')).toBe('🇺🇸');
+    expect(countryFlag('Atlantis')).toBeNull();
+    expect(countryFlag(null)).toBeNull();
   });
 });
 
@@ -163,8 +204,9 @@ describe('carrera', () => {
     ...over,
   });
 
-  it('rango de temporadas, incluido el club actual', () => {
+  it('rango de temporadas, incluido el club actual y una sola temporada', () => {
     expect(seasonRange('2014', '2017')).toBe('2014–2017');
+    expect(seasonRange('2009', '2010')).toBe('2009-10');
     expect(seasonRange('2026', null)).toBe('2026–');
     expect(seasonRange(null, '2017')).toBeNull();
   });
@@ -253,6 +295,80 @@ describe('totales y partidos', () => {
       confidence: 'single_source',
     });
     expect(provenanceSummary(prov, ['unknown'])).toBeNull();
+  });
+});
+
+describe('partido de la ficha y fixture', () => {
+  const depor = {
+    id: 1,
+    name: 'Real Club Deportivo de La Coruña',
+    shortName: 'Depor',
+    tla: 'DEP',
+    crestUrl: null,
+  };
+  const rival = {
+    id: 2,
+    name: 'Real Valladolid CF',
+    shortName: 'Valladolid',
+    tla: 'VLL',
+    crestUrl: null,
+  };
+  const match = (over: Partial<PlayerT['deporMatches'][number]> = {}) => ({
+    date: '2026-05-24',
+    opponent: 'Valladolid',
+    opponentCrestUrl: null,
+    competition: null,
+    home: false,
+    teamGoals: 2,
+    opponentGoals: 0,
+    result: 'W' as const,
+    started: true,
+    minutes: 90,
+    goals: 1,
+    assists: null,
+    yellowCards: 0,
+    redCards: 0,
+    ...over,
+  });
+  const fixture = (over: Partial<FixturesT['matches'][number]> = {}) => ({
+    id: 42,
+    utcDate: '2026-05-24T18:00:00Z',
+    status: 'FINISHED',
+    matchday: 40,
+    stage: null,
+    home: rival,
+    away: depor,
+    score: { home: 0, away: 2, halfTimeHome: 0, halfTimeAway: 1, winner: 'AWAY_TEAM' },
+    deporIsHome: false,
+    venue: null,
+    referee: null,
+    ...over,
+  });
+  const fixtures = (matches: FixturesT['matches']): FixturesT => ({
+    updatedAt: '2026-05-25T10:00:00Z',
+    season: '2025-26',
+    matches,
+  });
+
+  it('normaliza el nombre del club quitando siglas y artículos', () => {
+    expect(clubKey('Real Club Deportivo de La Coruña')).toBe('real deportivo coruna');
+    expect(clubKey('Real Valladolid CF')).toBe('real valladolid');
+  });
+
+  it('encuentra el fixture por fecha, localía y rival', () => {
+    expect(fixtureForMatch(match(), fixtures([fixture()]))?.id).toBe(42);
+    expect(fixtureForMatch(match({ opponent: 'Real Valladolid' }), fixtures([fixture()]))?.id).toBe(42);
+  });
+
+  it('no enlaza si cambia la fecha, la localía o el rival', () => {
+    expect(fixtureForMatch(match({ date: '2026-05-25' }), fixtures([fixture()]))).toBeNull();
+    expect(fixtureForMatch(match({ home: true }), fixtures([fixture()]))).toBeNull();
+    expect(fixtureForMatch(match({ opponent: 'Otro Club' }), fixtures([fixture()]))).toBeNull();
+    expect(fixtureForMatch(match(), null)).toBeNull();
+  });
+
+  it('no enlaza si hay más de un candidato', () => {
+    expect(fixtureForMatch(match(), fixtures([fixture(), fixture({ id: 43 })]))).toBeNull();
   });
 });
 

@@ -1,22 +1,42 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import i18n from '@/i18n';
-import type { PlayerT } from '@/data/schemas';
+import type { FixturesT, PlayerT } from '@/data/schemas';
 import PlayerDetail from '../../app/player/[id]';
 
 const mockUseSquad = jest.fn();
+const mockUseFixtures = jest.fn();
 const mockOpenURL = jest.fn();
+const mockPush = jest.fn();
 const mockParams: { id: string } = { id: '1' };
+let mockReducedMotion = false;
 
-jest.mock('@/data/queries', () => ({ useSquad: () => mockUseSquad() }));
+jest.mock('@/theme/useReducedMotion', () => ({
+  useReducedMotion: () => mockReducedMotion,
+}));
+
+jest.mock('@/data/queries', () => ({
+  useSquad: () => mockUseSquad(),
+  useFixtures: () => mockUseFixtures(),
+}));
 jest.mock('expo-linking', () => ({ openURL: (...args: unknown[]) => mockOpenURL(...args) }));
 jest.mock('expo-router', () => ({
   Stack: { Screen: () => null },
+  router: { push: (...args: unknown[]) => mockPush(...args) },
   useLocalSearchParams: () => mockParams,
 }));
 jest.mock('@/theme/useTheme', () => {
   const { lightColors } = jest.requireActual('@/theme/tokens');
   return { useTheme: () => ({ scheme: 'light', colors: lightColors }) };
 });
+
+const today = new Date();
+let expectedAge = today.getUTCFullYear() - 1998;
+if (
+  today.getUTCMonth() + 1 < 4 ||
+  (today.getUTCMonth() + 1 === 4 && today.getUTCDate() < 13)
+) {
+  expectedAge -= 1;
+}
 
 const basePlayer: PlayerT = {
   id: 1,
@@ -50,7 +70,7 @@ const basePlayer: PlayerT = {
   career: [
     {
       club: 'Club Nuevo',
-      crestUrl: null,
+      crestUrl: 'https://crest.example.org/nuevo.png',
       from: '2020',
       to: '2022',
       appearances: 10,
@@ -97,7 +117,7 @@ const basePlayer: PlayerT = {
     {
       date: '2026-05-24',
       opponent: 'Valladolid',
-      opponentCrestUrl: null,
+      opponentCrestUrl: 'https://crest.example.org/valladolid.png',
       competition: 'LaLiga Hypermotion',
       home: false,
       teamGoals: 2,
@@ -121,9 +141,46 @@ const basePlayer: PlayerT = {
   },
 };
 
+const fixtures: FixturesT = {
+  updatedAt: '2026-05-25T10:00:00Z',
+  season: '2025-26',
+  matches: [
+    {
+      id: 42,
+      utcDate: '2026-05-24T18:00:00Z',
+      status: 'FINISHED',
+      matchday: 40,
+      stage: null,
+      home: {
+        id: 2,
+        name: 'Real Valladolid CF',
+        shortName: 'Valladolid',
+        tla: 'VLL',
+        crestUrl: null,
+      },
+      away: {
+        id: 1,
+        name: 'Real Club Deportivo de La Coruña',
+        shortName: 'Depor',
+        tla: 'DEP',
+        crestUrl: null,
+      },
+      score: { home: 0, away: 2, halfTimeHome: 0, halfTimeAway: 1, winner: 'AWAY_TEAM' },
+      deporIsHome: false,
+      venue: null,
+      referee: null,
+    },
+  ],
+};
+
 const squad = (players: PlayerT[], isPending = false) => ({
   data: { updatedAt: '2026-10-25T10:00:00Z', coach: null, players },
+  dataUpdatedAt: Date.parse('2026-10-25T10:00:00Z'),
   isPending,
+  isFetching: false,
+  isError: false,
+  isRefetching: false,
+  refetch: jest.fn(),
 });
 
 beforeAll(async () => {
@@ -132,34 +189,97 @@ beforeAll(async () => {
 
 beforeEach(() => {
   mockUseSquad.mockReset();
+  mockUseFixtures.mockReset();
   mockOpenURL.mockReset();
+  mockPush.mockReset();
+  mockReducedMotion = false;
   mockParams.id = '1';
+  mockUseFixtures.mockReturnValue({ data: null });
 });
 
 describe('ficha de jugador', () => {
-  it('muestra los datos completos, la carrera en orden y los partidos', async () => {
+  it('muestra los datos completos, la franja, la carrera y los partidos', async () => {
     mockUseSquad.mockReturnValue(squad([basePlayer]));
     await render(<PlayerDetail />);
 
     expect(screen.getByText('Jugador Completo')).toBeTruthy();
+    expect(screen.getByText(`Portero · ${expectedAge} años`)).toBeTruthy();
     expect(screen.getByText('Arnedo (La Rioja), España')).toBeTruthy();
     expect(screen.getByText('Izquierdo')).toBeTruthy();
     expect(screen.getByText(/5\.000\.000/)).toBeTruthy();
     expect(screen.getByText(/Estimación/)).toBeTruthy();
+
+    expect(screen.getByText('191')).toBeTruthy();
+    expect(screen.getByText('16992')).toBeTruthy();
+    expect(screen.getAllByText('PJ').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('min').length).toBeGreaterThan(0);
+
+    expect(screen.getByText('Club Antiguo')).toBeTruthy();
     expect(screen.getByText('2014–')).toBeTruthy();
     expect(screen.getByText('2020–2022')).toBeTruthy();
-    expect(screen.getByText(/Valladolid/)).toBeTruthy();
-    expect(screen.getByText(/2–0/)).toBeTruthy();
-    expect(screen.getAllByText(/Fuente: BDFutbol/).length).toBeGreaterThan(0);
-    expect(screen.queryByText('Datos pendientes')).toBeNull();
+    expect(screen.getByText('2020-21 · 10 PJ · 2 G · 900 min')).toBeTruthy();
+
+    expect(screen.getByText('Valladolid')).toBeTruthy();
+    expect(screen.getByText(/Visitante/)).toBeTruthy();
+    expect(screen.getByText('2–0')).toBeTruthy();
+    expect(screen.getAllByText('G').length).toBeGreaterThan(0);
+    expect(screen.queryByText(/Fuente:/)).toBeNull();
   });
 
-  it('abre las redes oficiales con Linking', async () => {
+  it('enlaza el partido con su fixture cuando coincide de forma inequívoca', async () => {
+    mockUseSquad.mockReturnValue(squad([basePlayer]));
+    mockUseFixtures.mockReturnValue({ data: fixtures });
+    await render(<PlayerDetail />);
+
+    await fireEvent.press(screen.getByLabelText('Valladolid. Visitante. 2–0. Victoria'));
+    expect(mockPush).toHaveBeenCalledWith('/match/42');
+  });
+
+  it('abre las redes oficiales con Ionicons y Linking', async () => {
     mockUseSquad.mockReturnValue(squad([basePlayer]));
     await render(<PlayerDetail />);
 
-    await fireEvent.press(screen.getByText('X'));
+    await fireEvent.press(screen.getByLabelText('X @deporhub'));
     expect(mockOpenURL).toHaveBeenCalledWith('https://x.com/deporhub');
+  });
+
+  it('abre la foto en un modal con atribución y la cierra', async () => {
+    mockUseSquad.mockReturnValue(squad([basePlayer]));
+    await render(<PlayerDetail />);
+
+    expect(screen.queryByText('© Autora de Ejemplo')).toBeNull();
+    await fireEvent.press(screen.getByLabelText('Ampliar foto'));
+
+    expect(screen.getByText('© Autora de Ejemplo')).toBeTruthy();
+    expect(screen.getByText('Autoría: Autora de Ejemplo')).toBeTruthy();
+    expect(screen.getByText('Licencia: CC BY-SA 4.0')).toBeTruthy();
+    expect(screen.getByText(/no se redistribuyen/)).toBeTruthy();
+
+    await fireEvent.press(screen.getByText('Ver ficha de la foto'));
+    expect(mockOpenURL).toHaveBeenCalledWith('https://commons.wikimedia.org/wiki/File:Jugador.jpg');
+
+    await fireEvent.press(screen.getByLabelText('Cerrar'));
+    expect(screen.queryByText('© Autora de Ejemplo')).toBeNull();
+  });
+
+  it('respeta reducir movimiento al abrir la foto', async () => {
+    mockReducedMotion = true;
+    mockUseSquad.mockReturnValue(squad([basePlayer]));
+    await render(<PlayerDetail />);
+
+    await fireEvent.press(screen.getByLabelText('Ampliar foto'));
+    expect(screen.getByTestId('photo-modal').props.animationType).toBe('none');
+  });
+
+  it('pliega la trayectoria', async () => {
+    mockUseSquad.mockReturnValue(squad([basePlayer]));
+    await render(<PlayerDetail />);
+
+    expect(screen.getByText('Club Antiguo')).toBeTruthy();
+    await fireEvent.press(screen.getByText('Trayectoria'));
+    expect(screen.queryByText('Club Antiguo')).toBeNull();
+    await fireEvent.press(screen.getByText('Trayectoria'));
+    expect(screen.getByText('Club Antiguo')).toBeTruthy();
   });
 
   it('muestra la cesión de salida cuando existe', async () => {
@@ -172,21 +292,7 @@ describe('ficha de jugador', () => {
     expect(screen.getByText('Al Ain (Emiratos Árabes Unidos)')).toBeTruthy();
   });
 
-  it('muestra las fotos con atribución y enlaza a su ficha original', async () => {
-    mockUseSquad.mockReturnValue(squad([basePlayer]));
-    await render(<PlayerDetail />);
-
-    expect(screen.getByText('Fotos')).toBeTruthy();
-    expect(screen.getByText('© Autora de Ejemplo')).toBeTruthy();
-    expect(screen.getByText('Autoría: Autora de Ejemplo')).toBeTruthy();
-    expect(screen.getByText('Licencia: CC BY-SA 4.0')).toBeTruthy();
-    expect(screen.getByText(/no se redistribuyen/)).toBeTruthy();
-
-    await fireEvent.press(screen.getByText('Ver ficha de la foto'));
-    expect(mockOpenURL).toHaveBeenCalledWith('https://commons.wikimedia.org/wiki/File:Jugador.jpg');
-  });
-
-  it('con todos los datos a null solo enseña lo que existe y los pendientes', async () => {
+  it('con todos los datos a null solo enseña lo que existe y los pendientes plegados', async () => {
     const empty: PlayerT = {
       ...basePlayer,
       id: 2,
@@ -222,11 +328,16 @@ describe('ficha de jugador', () => {
     await render(<PlayerDetail />);
 
     expect(screen.getByText('Sin Datos')).toBeTruthy();
-    expect(screen.getByText('Datos pendientes')).toBeTruthy();
+    expect(screen.getByText(/Datos pendientes/)).toBeTruthy();
+    expect(screen.queryByText(/no se inventan/)).toBeNull();
     expect(screen.queryByText('Trayectoria')).toBeNull();
     expect(screen.queryByText('Partidos con el Depor')).toBeNull();
     expect(screen.queryByText('Redes oficiales')).toBeNull();
-    expect(screen.queryByText('Fotos')).toBeNull();
+    expect(screen.queryByLabelText('Ampliar foto')).toBeNull();
+
+    await fireEvent.press(screen.getByText(/Datos pendientes/));
+    expect(screen.getByText(/no se inventan/)).toBeTruthy();
+    expect(screen.getByText('Fecha de nacimiento')).toBeTruthy();
   });
 
   it('jugador inexistente', async () => {

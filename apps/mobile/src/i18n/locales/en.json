@@ -103,12 +103,31 @@
   "team": {
     "coach": "Head coach",
     "empty": "Squad not available.",
-    "group": {
-      "GK": "Goalkeepers",
-      "DF": "Defenders",
-      "MF": "Midfielders",
-      "FW": "Forwards",
-      "OTHER": "Others"
+    "searchPlaceholder": "Search by name or number",
+    "searchClear": "Clear search",
+    "view": {
+      "grid": "Grid",
+      "list": "List"
+    },
+    "filters": {
+      "all": "All",
+      "GK": "GK",
+      "DF": "DEF",
+      "MF": "MID",
+      "FW": "FWD",
+      "OTHER": "OTH"
+    },
+    "summary_one": "{{count}} player · average age {{age}}",
+    "summary_other": "{{count}} players · average age {{age}}",
+    "summaryNoAge_one": "{{count}} player",
+    "summaryNoAge_other": "{{count}} players",
+    "emptyFiltered": "No player matches these filters.",
+    "clearFilters": "Clear filters",
+    "listHeader": {
+      "player": "Player",
+      "number": "No.",
+      "position": "Pos.",
+      "age": "Age"
     }
   },
   "player": {
@@ -142,13 +161,11 @@
       "instagram": "Instagram",
       "tiktok": "TikTok"
     },
-    "photosTitle": "Photos",
     "photoLicense": "License: {{license}}",
     "photoSource": "View photo source",
     "photoAuthor": "Author: {{author}}",
     "photoNote": "Photos are linked from their original source with attribution; they are not redistributed.",
     "careerTitle": "Career",
-    "careerTotalsTitle": "Career totals",
     "deporMatchesTitle": "Matches with Depor",
     "matchHome": "Home",
     "matchAway": "Away",
@@ -165,13 +182,6 @@
       "minutesShort": "min",
       "yellowCardsShort": "YC",
       "redCardsShort": "RC"
-    },
-    "sourceLine": "Source: {{sources}} · Confidence: {{confidence}}",
-    "confidence": {
-      "verified": "verified",
-      "cross_checked": "cross-checked",
-      "single_source": "single source",
-      "estimated": "estimate"
     },
     "pendingTitle": "Pending data",
     "pendingBody": "We don't have these details from a reliable source yet; they are never made up.",
@@ -192,7 +202,12 @@
       "weightKg": "Weight",
       "preferredFoot": "Preferred foot",
       "contractUntil": "Contract"
-    }
+    },
+    "photoTitle": "Photo",
+    "photoClose": "Close",
+    "photoOpen": "Enlarge photo",
+    "bioTitle": "Details",
+    "viewMatch": "Open match"
   },
   "country": {
     "Spain": "Spain",
