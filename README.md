@@ -27,12 +27,15 @@ pip install -e "scripts[dev]"
 python -m depor_hub.cli probe                       # comprueba la API y la cobertura
 python -m depor_hub.cli ingest                      # actualiza data/public/v1
 python -m depor_hub.cli schemas                     # regenera packages/schemas
-python -m depor_hub.cli enrich                      # propone carrera/estadísticas (no aplica)
+python -m depor_hub.cli enrich                      # propone carrera/estadísticas/escudos (no aplica)
 python -m depor_hub.cli enrich --apply              # aplica y actualiza el JSON público
 python -m depor_hub.cli enrich --apply --offline    # repite desde data/raw/enrich
+python -m depor_hub.cli enrich --apply --no-crests  # sin resolver escudos
 ```
 
-El enriquecimiento usa BDFutbol (carrera, temporadas, totales, peso y partidos), Wikipedia ES/GL/EN (dorsal, contrato, cesión, altura), Wikidata (lugar, altura, pie, dorsal y redes) y la ficha oficial del club (altura, pie, foto y redes; autoritativa cuando existe). Cada dato va con fuente y confianza; los conflictos quedan visibles en `data/manual/squad_enrich.proposed.yml`. La foto de perfil es siempre la que publica el club, enlazada con crédito editorial y sin guardar binarios. Las cesiones de salida (`loanTo`) y las redes que no publica ninguna fuente automática viven en `data/manual/squad_overrides.yml` (`--overrides`). Detalles en [`docs/sources.md`](docs/sources.md), [`docs/adr/0008-enriquecimiento-fuentes-libres.md`](docs/adr/0008-enriquecimiento-fuentes-libres.md), [`docs/adr/0009-fotos-y-fuente-oficial.md`](docs/adr/0009-fotos-y-fuente-oficial.md) y [`docs/adr/0010-cesion-de-salida.md`](docs/adr/0010-cesion-de-salida.md).
+El enriquecimiento usa BDFutbol (carrera, temporadas, totales, peso y partidos), Wikipedia ES/GL/EN (dorsal, contrato, cesión, altura), Wikidata (lugar, altura, pie, dorsal y redes) y la ficha oficial del club (altura, pie, foto y redes; autoritativa cuando existe). Cada dato va con fuente y confianza; los conflictos quedan visibles en `data/manual/squad_enrich.proposed.yml`. La foto de perfil es siempre la que publica el club, enlazada con crédito editorial y sin guardar binarios. Las cesiones de salida (`loanTo`) y las redes que no publica ninguna fuente automática viven en `data/manual/squad_overrides.yml` (`--overrides`).
+
+Los escudos de la trayectoria y de los rivales se resuelven con prioridad football-data.org (fixtures) → Wikidata `P154` + Wikimedia Commons (96 px) → overrides `data/manual/club_crests.yml`. Si no hay una fuente inequívoca, el campo queda en `null` y la app pinta un monograma; no se inventan URLs. Detalles en [`docs/sources.md`](docs/sources.md), [`docs/adr/0008-enriquecimiento-fuentes-libres.md`](docs/adr/0008-enriquecimiento-fuentes-libres.md), [`docs/adr/0009-fotos-y-fuente-oficial.md`](docs/adr/0009-fotos-y-fuente-oficial.md), [`docs/adr/0010-cesion-de-salida.md`](docs/adr/0010-cesion-de-salida.md), [`docs/adr/0011-rediseno-equipo-y-ficha.md`](docs/adr/0011-rediseno-equipo-y-ficha.md) y [`docs/adr/0012-escudos-de-clubes.md`](docs/adr/0012-escudos-de-clubes.md).
 
 ## Comprobaciones
 ```bash
@@ -45,4 +48,4 @@ npm run lint && npm run typecheck && npm test
 Ver `.env.example`. El token de football-data.org vive solo en GitHub Secrets (`FOOTBALL_DATA_TOKEN`). `CONTACT_EMAIL` se configura como variable de Actions para el User-Agent de las peticiones.
 
 ## Estado
-H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario) y H4 (plantilla + ficha enriquecida) hechos. Siguiente: H5 (inicio). Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/).
+H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario) y H4 (plantilla + ficha enriquecida, rediseño de Equipo/ficha y escudos de clubes) hechos. Siguiente: H5 (inicio). Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/).
