@@ -48,6 +48,8 @@ export const CareerEntry = z.strictObject({
   club: z.string(),
   // ADR 0012: escudo externo del club; tolerado ausente en JSON y caché anteriores.
   crestUrl: optionalNull(),
+  // ADR 0014: trayectoria como jugador o entrenador. Default para JSON anteriores.
+  role: z.enum(['player', 'coach']).default('player'),
   from: optionalNull(),
   to: optionalNull(),
   appearances: optionalInt(),
@@ -154,16 +156,38 @@ export const Fixtures = z.strictObject({
   matches: z.array(Match),
 });
 
+export const StaffMember = z.strictObject({
+  name: z.string(),
+  role: z.string(),
+  photoUrl: optionalNull(),
+});
+
 export const Coach = z
   .strictObject({
     name: z.string().nullable(),
     nationality: z.string().nullable(),
     birthDate: optionalNull(),
+    // ADR 0014: campos aditivos con default para leer JSON y caché anteriores.
+    birthPlace: optionalNull(),
+    photoUrl: optionalNull(),
     since: optionalNull(),
     contractUntil: optionalNull(),
+    career: z.array(CareerEntry).default([]),
+    staff: z.array(StaffMember).default([]),
     provenance: z.record(z.string(), Provenance).default({}),
   })
-  .default({ name: null, nationality: null, birthDate: null, since: null, contractUntil: null, provenance: {} });
+  .default({
+    name: null,
+    nationality: null,
+    birthDate: null,
+    birthPlace: null,
+    photoUrl: null,
+    since: null,
+    contractUntil: null,
+    career: [],
+    staff: [],
+    provenance: {},
+  });
 
 export const Player = z.strictObject({
   id: z.number().int(),
@@ -213,6 +237,7 @@ export type MatchT = z.infer<typeof Match>;
 export type PlayerT = z.infer<typeof Player>;
 export type TeamRefT = z.infer<typeof TeamRef>;
 export type CoachT = z.infer<typeof Coach>;
+export type StaffMemberT = z.infer<typeof StaffMember>;
 export type SocialT = z.infer<typeof Social>;
 export type PlayerPhotoT = z.infer<typeof PlayerPhoto>;
 export type CareerSeasonT = z.infer<typeof CareerSeason>;

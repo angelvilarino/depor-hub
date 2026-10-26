@@ -10,13 +10,25 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
+import yaml
+
 from . import models as m
 from . import source_models as s
 from . import transform as t
 from .client import Client
 from .enrich import bdfutbol, crests, official, proposal, wikidata, wikipedia
+from .enrich import coach as coach_enrich
 from .enrich.http import PoliteClient, SourceError, contact_from_env
-from .extras import PlayerExtra, apply_extras, load_extras, reset_enriched, unknown_ids
+from .extras import (
+    PlayerExtra,
+    apply_coach,
+    apply_extras,
+    load_coach,
+    load_extras,
+    reset_coach,
+    reset_enriched,
+    unknown_ids,
+)
 from .publish import write_if_changed
 
 COMPETITION = "PD"
@@ -61,6 +73,7 @@ def cmd_ingest(args: argparse.Namespace) -> int:
     # Datos manuales con fuente (dorsal, contrato, altura): solo rellenan huecos de la API (ADR 0007).
     extras = load_extras(Path(args.extras))
     squad = apply_extras(squad, extras)
+    squad = apply_coach(squad, load_coach(Path(args.coach)))
     for pid in unknown_ids(squad, extras):
         print(f"AVISO: {args.extras} menciona el id {pid}, que no está en la plantilla", file=sys.stderr)
     meta = t.build_meta(comp, team, season, now)
@@ -239,10 +252,14 @@ def _import_csv(path: Path, extras_path: Path, squad: m.Squad) -> int:
     return 0
 
 
-def _apply_to_public(squad_path: Path, extras_path: Path, out_dir: Path) -> bool:
+def _apply_to_public(
+    squad_path: Path, extras_path: Path, out_dir: Path, coach_path: Path | None = None
+) -> bool:
     squad = m.Squad.model_validate_json(squad_path.read_text(encoding="utf-8"))
     extras = load_extras(extras_path)
     updated = apply_extras(reset_enriched(squad), extras)
+    if coach_path is not None:
+        updated = apply_coach(reset_coach(updated), load_coach(coach_path))
     files: dict[str, dict] = {}
     for name in m.FILES:
         candidate = out_dir / name
@@ -361,7 +378,86 @@ def cmd_enrich(args: argparse.Namespace) -> int:
         merged = proposal.merge_extras(manual, generated)
         proposal.write_extras(Path(args.extras), merged)
         print(f"Datos aplicados: {args.extras} ({len(generated)} jugadores)")
-        _apply_to_public(squad_path, Path(args.extras), Path(args.out))
+        _apply_to_public(squad_path, Path(args.extras), Path(args.out), Path(args.coach))
+    return 0
+
+
+def cmd_coach(args: argparse.Namespace) -> int:
+    """Descarga/actualiza la ficha del entrenador y el cuerpo técnico (ADR 0014)."""
+    http = PoliteClient(
+        cache_dir=Path(args.raw) / "enrich",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    try:
+        data = coach_enrich.fetch_coach(
+            http,
+            qid=args.qid,
+            wiki_lang=args.wiki_lang,
+            wiki_title=args.wiki_title,
+            official_team_url=args.official_team,
+            official_profile_url=args.official_profile,
+        )
+        if not args.no_crests:
+            resolver = crests.CrestResolver(
+                http=http,
+                fixtures_path=Path(args.fixtures),
+                overrides_path=Path(args.club_crests),
+                cache_path=Path(args.raw) / "enrich" / "crests.json",
+            )
+            try:
+                for entry in data.get("career") or []:
+                    entry["crest_url"] = resolver.resolve(entry["club"])
+            finally:
+                resolver.save()
+    finally:
+        http.close()
+
+    captured = datetime.now(UTC).strftime("%Y-%m-%d")
+    provenance = {
+        "birthDate": {
+            "source": f"Wikidata {args.qid} + Wikipedia ({args.wiki_lang})",
+            "confidence": "cross_checked",
+            "captured_at": captured,
+        },
+        "birthPlace": {
+            "source": f"Wikidata {args.qid} + Wikipedia ({args.wiki_lang})",
+            "confidence": "cross_checked",
+            "captured_at": captured,
+        },
+        "photoUrl": {
+            "source": "Web oficial del RC Deportivo",
+            "confidence": "verified",
+            "captured_at": captured,
+        },
+        "career": {
+            "source": f"Wikipedia ({args.wiki_lang})",
+            "confidence": "single_source",
+            "captured_at": captured,
+        },
+        "staff": {
+            "source": "Web oficial del RC Deportivo",
+            "confidence": "verified",
+            "captured_at": captured,
+        },
+    }
+    payload = {"coach": {**data, "provenance": provenance}}
+    text = yaml.safe_dump(payload, allow_unicode=True, sort_keys=False)
+    target = Path(args.out)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    changed = not target.exists() or target.read_text(encoding="utf-8") != text
+    if changed:
+        target.write_text(text, encoding="utf-8")
+    print(
+        f"Entrenador: {data.get('name')} · carrera: {len(data.get('career') or [])} · "
+        f"staff: {len(data.get('staff') or [])} · changed={'true' if changed else 'false'}"
+    )
+    print(f"Ficha escrita en {target}")
+    if args.apply:
+        _apply_to_public(
+            Path(args.squad), Path(args.extras), Path(args.out_dir), target
+        )
     return 0
 
 
@@ -374,6 +470,7 @@ def main(argv: list[str] | None = None) -> int:
         if name == "ingest":
             sp.add_argument("--out", default="data/public/v1")
             sp.add_argument("--extras", default="data/manual/squad_extras.yml")
+            sp.add_argument("--coach", default="data/manual/coach.yml")
             sp.add_argument("--force", action="store_true")
         sp.set_defaults(fn=fn)
     sp = sub.add_parser("schemas")
@@ -383,6 +480,7 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--squad", default="data/public/v1/squad.json")
     sp.add_argument("--out", default="data/public/v1")
     sp.add_argument("--extras", default="data/manual/squad_extras.yml")
+    sp.add_argument("--coach", default="data/manual/coach.yml")
     sp.add_argument("--overrides", default="data/manual/squad_overrides.yml")
     sp.add_argument("--proposal", default="data/manual/squad_enrich.proposed.yml")
     sp.add_argument("--raw", default="data/raw")
@@ -406,6 +504,27 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--export-template", default=None)
     sp.add_argument("--import-csv", default=None)
     sp.set_defaults(fn=cmd_enrich)
+    sp = sub.add_parser("coach", help="Actualiza la ficha del entrenador y el cuerpo técnico")
+    sp.add_argument("--out", default="data/manual/coach.yml")
+    sp.add_argument("--raw", default="data/raw")
+    sp.add_argument("--offline", action="store_true")
+    sp.add_argument("--interval", type=float, default=1.0)
+    sp.add_argument("--qid", default=coach_enrich.WIKIDATA_QID)
+    sp.add_argument("--wiki-lang", default=coach_enrich.WIKI_LANG)
+    sp.add_argument("--wiki-title", default=coach_enrich.WIKI_TITLE)
+    sp.add_argument("--official-team", default=official.TEAM_URL)
+    sp.add_argument(
+        "--official-profile",
+        default="https://www.rcdeportivo.es/es/jugadores/depor/antonio-hidalgo",
+    )
+    sp.add_argument("--no-crests", action="store_true")
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--club-crests", default="data/manual/club_crests.yml")
+    sp.add_argument("--apply", action="store_true")
+    sp.add_argument("--squad", default="data/public/v1/squad.json")
+    sp.add_argument("--extras", default="data/manual/squad_extras.yml")
+    sp.add_argument("--out-dir", default="data/public/v1")
+    sp.set_defaults(fn=cmd_coach)
     args = p.parse_args(argv)
     return args.fn(args)
 

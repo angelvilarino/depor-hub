@@ -56,6 +56,16 @@ _PROVENANCE_KEYS = {
     "depor_matches": "deporMatches",
 }
 
+_COACH_PROVENANCE_KEYS = {
+    "birth_date": "birthDate",
+    "birth_place": "birthPlace",
+    "photo_url": "photoUrl",
+    "since": "since",
+    "contract_until": "contractUntil",
+    "career": "career",
+    "staff": "staff",
+}
+
 
 class ExtrasError(ValueError):
     pass
@@ -173,6 +183,7 @@ class CareerExtra(BaseModel):
 
     club: str
     crest_url: Optional[str] = None
+    role: Literal["player", "coach"] = "player"
     from_: Optional[str] = Field(default=None, alias="from")
     to: Optional[str] = None
     appearances: Optional[int] = Field(default=None, ge=0)
@@ -355,6 +366,109 @@ class PlayerExtra(BaseModel):
         return self
 
 
+class StaffExtra(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    name: str
+    role: str
+    photo_url: Optional[str] = None
+
+    @field_validator("name", "role")
+    @classmethod
+    def _non_empty(cls, v: str) -> str:
+        text = str(v).strip()
+        if not text:
+            raise ValueError("texto vacío")
+        return text
+
+
+class CoachExtra(BaseModel):
+    """Datos del entrenador y del cuerpo técnico (ADR 0014).
+
+    Igual que en la plantilla, `source` es obligatoria si hay algún dato. Los valores
+    de la API (nombre y nacionalidad) nunca se pisan.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    name: Optional[str] = None
+    nationality: Optional[str] = None
+    birth_date: Optional[str] = None
+    birth_place: Optional[str] = None
+    photo_url: Optional[str] = None
+    since: Optional[str] = None
+    contract_until: Optional[str] = None
+    career: list[CareerExtra] = Field(default_factory=list)
+    staff: list[StaffExtra] = Field(default_factory=list)
+    provenance: dict[str, ProvenanceExtra] = Field(default_factory=dict)
+    source: Optional[str] = None
+    confidence: m.Confidence = "single_source"
+    captured_at: Optional[str] = None
+
+    @field_validator("birth_date", "since", "contract_until", mode="before")
+    @classmethod
+    def _partial(cls, v: object) -> Optional[str]:
+        return _partial(v)  # type: ignore[arg-type]
+
+    @field_validator("birth_place", "photo_url", "nationality", "name")
+    @classmethod
+    def _text(cls, v: Optional[str]) -> Optional[str]:
+        if v is None:
+            return None
+        text = str(v).strip()
+        if not text:
+            raise ValueError("texto vacío")
+        return text
+
+    @field_validator("photo_url")
+    @classmethod
+    def _url(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None and not v.startswith(("http://", "https://")):
+            raise ValueError("la foto debe ser una URL http(s)")
+        return v
+
+    @field_validator("captured_at")
+    @classmethod
+    def _captured(cls, v: Optional[str]) -> Optional[str]:
+        return ProvenanceExtra._captured(v)
+
+    @model_validator(mode="after")
+    def _needs_source(self) -> "CoachExtra":
+        has_data = any(
+            v is not None
+            for v in (
+                self.birth_date,
+                self.birth_place,
+                self.photo_url,
+                self.since,
+                self.contract_until,
+            )
+        ) or bool(self.career) or bool(self.staff)
+        if has_data and not (self.source and self.source.strip()):
+            raise ValueError("falta 'source' (de dónde sale el dato)")
+        unknown = set(self.provenance) - (
+            set(_COACH_PROVENANCE_KEYS) | set(_COACH_PROVENANCE_KEYS.values())
+        )
+        if unknown:
+            raise ValueError(f"provenance con campos desconocidos: {sorted(unknown)}")
+        return self
+
+
+def load_coach(path: Path) -> CoachExtra | None:
+    if not path.exists():
+        return None
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    if not isinstance(data, dict) or set(data) - {"coach"}:
+        raise ExtrasError(f"{path}: solo se admite la clave de primer nivel 'coach'")
+    raw = data.get("coach")
+    if raw is None:
+        return None
+    try:
+        return CoachExtra.model_validate(raw)
+    except ValidationError as exc:
+        raise ExtrasError(f"{path}: entrenador: {exc}") from exc
+
+
 def load_extras(path: Path) -> dict[int, PlayerExtra]:
     if not path.exists():
         return {}
@@ -396,6 +510,7 @@ def _career(extra: CareerExtra) -> m.CareerEntry:
     return m.CareerEntry(
         club=extra.club,
         crest_url=extra.crest_url,
+        role=extra.role,
         from_=extra.from_,
         to=extra.to,
         appearances=extra.appearances,
@@ -572,6 +687,81 @@ def apply_extras(squad: m.Squad, extras: dict[int, PlayerExtra]) -> m.Squad:
             updates["provenance"] = provenance
         players.append(p.model_copy(update=updates))
     return squad.model_copy(update={"players": players})
+
+
+def _coach_provenance(extra: CoachExtra, field: str) -> m.Provenance:
+    key = _COACH_PROVENANCE_KEYS.get(field, field)
+    given = extra.provenance.get(key)
+    if given is not None:
+        return m.Provenance(
+            source=given.source, confidence=given.confidence, captured_at=given.captured_at
+        )
+    return m.Provenance(
+        source=(extra.source or "desconocida").strip(),
+        confidence=extra.confidence,
+        captured_at=extra.captured_at,
+    )
+
+
+def reset_coach(squad: m.Squad) -> m.Squad:
+    """Quita los campos del entrenador puestos por el enriquecimiento (ADR 0014)."""
+    coach = squad.coach
+    if coach is None or not coach.provenance:
+        return squad
+    updates: dict[str, Any] = {}
+    for field, key in _COACH_PROVENANCE_KEYS.items():
+        if key not in coach.provenance and field not in coach.provenance:
+            continue
+        if field in {"career", "staff"}:
+            updates[field] = []
+        else:
+            updates[field] = None
+    legacy = set(_COACH_PROVENANCE_KEYS) | set(_COACH_PROVENANCE_KEYS.values())
+    updates["provenance"] = {
+        key: value for key, value in coach.provenance.items() if key not in legacy
+    }
+    return squad.model_copy(update={"coach": coach.model_copy(update=updates)})
+
+
+def apply_coach(squad: m.Squad, extra: CoachExtra | None) -> m.Squad:
+    """Rellena los huecos del entrenador y añade trayectoria/cuerpo técnico.
+
+    El nombre y la nacionalidad que vengan de football-data.org nunca se pisan.
+    """
+    if extra is None:
+        return squad
+    coach = squad.coach or m.Coach()
+    updates: dict[str, Any] = {}
+    provenance = dict(coach.provenance)
+
+    def fill(field: str, value: Any) -> None:
+        if getattr(coach, field) is None and value is not None:
+            updates[field] = value
+            provenance[_COACH_PROVENANCE_KEYS.get(field, field)] = _coach_provenance(extra, field)
+
+    fill("name", extra.name)
+    fill("nationality", extra.nationality)
+    fill("birth_date", extra.birth_date)
+    fill("birth_place", extra.birth_place)
+    fill("photo_url", extra.photo_url)
+    fill("since", extra.since)
+    fill("contract_until", extra.contract_until)
+
+    if not coach.career and extra.career:
+        updates["career"] = [_career(c) for c in extra.career]
+        provenance["career"] = _coach_provenance(extra, "career")
+
+    if not coach.staff and extra.staff:
+        updates["staff"] = [
+            m.StaffMember(name=member.name, role=member.role, photo_url=member.photo_url)
+            for member in extra.staff
+        ]
+        provenance["staff"] = _coach_provenance(extra, "staff")
+
+    if not updates:
+        return squad
+    updates["provenance"] = provenance
+    return squad.model_copy(update={"coach": coach.model_copy(update=updates)})
 
 
 def unknown_ids(squad: m.Squad, extras: dict[int, PlayerExtra]) -> list[int]:

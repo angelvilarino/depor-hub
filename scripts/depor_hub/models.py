@@ -165,6 +165,9 @@ class CareerSeason(Public):
 class CareerEntry(Public):
     club: str
     crest_url: Optional[str] = None  # URL externa del escudo (ADR 0012); null si no se resuelve
+    # ADR 0014: distingue la trayectoria como jugador de la de entrenador. Default "player"
+    # para que el JSON y las cachés anteriores sigan siendo válidos.
+    role: Literal["player", "coach"] = "player"
     from_: Optional[str] = Field(default=None, alias="from")  # AAAA, AAAA-MM o AAAA-MM-DD
     to: Optional[str] = None
     appearances: Optional[int] = Field(default=None, ge=0)
@@ -217,12 +220,29 @@ class PlayerMatch(Public):
         return v
 
 
+class StaffMember(Public):
+    """Miembro del cuerpo técnico publicado por la web oficial (ADR 0014).
+
+    `role` es una clave estable (``head_coach``, ``assistant_coach``...); la app la
+    traduce y, si no la conoce, muestra el texto original sin inventar nada.
+    """
+
+    name: str
+    role: str
+    photo_url: Optional[str] = None
+
+
 class Coach(Public):
     name: Optional[str] = None
     nationality: Optional[str] = None
     birth_date: Optional[str] = None
+    birth_place: Optional[str] = None
+    photo_url: Optional[str] = None  # foto oficial del club; URL externa
     since: Optional[str] = None
     contract_until: Optional[str] = None
+    # ADR 0014: trayectoria como jugador y como entrenador, y cuerpo técnico oficial.
+    career: list[CareerEntry] = Field(default_factory=list)
+    staff: list[StaffMember] = Field(default_factory=list)
     provenance: dict[str, Provenance] = Field(default_factory=dict)
 
     @field_validator("birth_date", "since", "contract_until")
