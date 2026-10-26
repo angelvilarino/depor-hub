@@ -238,6 +238,22 @@ def test_wikidata_p154_and_commons_are_used_when_unambiguous(tmp_path):
     assert resolver.resolve("Club Uno") == "https://thumb.example/Uno.svg/96.png"
 
 
+def test_manchester_city_resolves_with_its_badge(tmp_path):
+    """Caso real que fallaba: la búsqueda ES/EN debía encontrar el club y su P154."""
+    http = FakeHttp(
+        search={"Manchester City": ["Q50602"]},
+        entities={
+            "Q50602": entity(
+                "Q50602", "Manchester City FC", crest="Manchester_City_FC_badge.svg"
+            ),
+        },
+    )
+    resolver = wikidata_resolver(tmp_path, http)
+    assert resolver.resolve("Manchester City") == (
+        "https://thumb.example/Manchester_City_FC_badge.svg/96.png"
+    )
+
+
 def test_wide_p154_image_is_rejected_instead_of_used_as_crest(tmp_path):
     http = FakeHttp(
         search={"Club Foto": ["Q1"]},
