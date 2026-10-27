@@ -5,7 +5,15 @@ import type { StandingsT } from '@/data/schemas';
 import { radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
-export function StandingsTable({ table, highlightTeamId }: { table: StandingsT['table']; highlightTeamId?: number }) {
+export function StandingsTable({
+  table,
+  highlightTeamId,
+  compact = false,
+}: {
+  table: StandingsT['table'];
+  highlightTeamId?: number;
+  compact?: boolean;
+}) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const cell = (text: string | number, width: number, bold = false, muted = false) => (
@@ -27,8 +35,8 @@ export function StandingsTable({ table, highlightTeamId }: { table: StandingsT['
         {cell(t('calendar.col.pos'), 28, true, true)}
         <View style={{ width: 20 }} />
         <Text style={{ flex: 1, color: colors.textMuted, fontSize: 14, fontWeight: '700' }}>{t('calendar.col.team')}</Text>
-        {cell(t('calendar.col.played'), 32, true, true)}
-        {cell(t('calendar.col.goalDiff'), 36, true, true)}
+        {!compact && cell(t('calendar.col.played'), 32, true, true)}
+        {!compact && cell(t('calendar.col.goalDiff'), 36, true, true)}
         {cell(t('calendar.col.points'), 36, true, true)}
       </View>
       {table.map((r) => {
@@ -45,8 +53,8 @@ export function StandingsTable({ table, highlightTeamId }: { table: StandingsT['
             <Text numberOfLines={1} style={{ flex: 1, color: colors.text, fontSize: 15, fontWeight: me ? '700' : '400' }}>
               {r.team.shortName ?? r.team.name}
             </Text>
-            {cell(r.played, 32, me)}
-            {cell(r.goalDifference > 0 ? `+${r.goalDifference}` : r.goalDifference, 36, me)}
+            {!compact && cell(r.played, 32, me)}
+            {!compact && cell(r.goalDifference > 0 ? `+${r.goalDifference}` : r.goalDifference, 36, me)}
             {cell(r.points, 36, true)}
           </View>
         );

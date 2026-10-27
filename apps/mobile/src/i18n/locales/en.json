@@ -37,6 +37,46 @@
     "retry": "Retry",
     "seasonLine": "Season {{season}} · matchday {{matchday}}"
   },
+  "home": {
+    "nextMatch": "Next match",
+    "lastResult": "Last result",
+    "season": "The season",
+    "miniTable": "Table",
+    "opponent": "The opponent",
+    "formTitle": "Last 5 matches",
+    "noNextMatch": "No upcoming matches.",
+    "noLastResult": "No results yet.",
+    "noStandings": "Table not available.",
+    "seeFullTable": "See full table",
+    "local": "Home",
+    "away": "Away",
+    "matchToday": "Today",
+    "daysUntil_one": "{{count}} day to go",
+    "daysUntil_other": "{{count}} days to go",
+    "countdown": {
+      "days": "{{n}}d",
+      "hours": "{{n}}h",
+      "minutes": "{{n}}m",
+      "seconds": "{{n}}s",
+      "label": "Countdown: {{days}} days, {{hours}} hours and {{minutes}} minutes",
+      "labelWithSeconds": "Countdown: {{days}} days, {{hours}} hours, {{minutes}} minutes and {{seconds}} seconds"
+    },
+    "howToGetThere": "Get directions",
+    "mapError": "Couldn't open the map.",
+    "seasonSummary": "Position {{position}}, {{points}} points in {{played}} matches: {{won}} wins, {{drawn}} draws and {{lost}} losses. {{goalsFor}} goals for and {{goalsAgainst}} against, difference {{goalDifference}}.",
+    "stats": {
+      "position": "Position",
+      "points": "Points",
+      "record": "W-D-L",
+      "goals": "GF-GA"
+    },
+    "opponentTable": "{{position}}th with {{points}} points.",
+    "balance": "This season: {{played}} matches, {{won}} wins, {{drawn}} draws, {{lost}} losses and {{goalsFor}}-{{goalsAgainst}}.",
+    "headlines": "Headlines",
+    "headlineMeta": "{{source}} · {{date}}",
+    "openHeadline": "Open story: {{title}} ({{source}})",
+    "openError": "Couldn't open the story."
+  },
   "calendar": {
     "upcoming": "Upcoming",
     "results": "Results",

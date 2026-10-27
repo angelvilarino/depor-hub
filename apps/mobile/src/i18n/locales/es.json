@@ -37,6 +37,46 @@
     "retry": "Reintentar",
     "seasonLine": "Temporada {{season}} · jornada {{matchday}}"
   },
+  "home": {
+    "nextMatch": "Próximo partido",
+    "lastResult": "Último resultado",
+    "season": "La temporada",
+    "miniTable": "Clasificación",
+    "opponent": "El rival",
+    "formTitle": "Últimos 5 partidos",
+    "noNextMatch": "No hay próximos partidos.",
+    "noLastResult": "Todavía no hay resultados.",
+    "noStandings": "Clasificación no disponible.",
+    "seeFullTable": "Ver tabla completa",
+    "local": "Local",
+    "away": "Visitante",
+    "matchToday": "Hoy",
+    "daysUntil_one": "Falta {{count}} día",
+    "daysUntil_other": "Faltan {{count}} días",
+    "countdown": {
+      "days": "{{n}} d",
+      "hours": "{{n}} h",
+      "minutes": "{{n}} min",
+      "seconds": "{{n}} s",
+      "label": "Cuenta atrás: {{days}} días, {{hours}} horas y {{minutes}} minutos",
+      "labelWithSeconds": "Cuenta atrás: {{days}} días, {{hours}} horas, {{minutes}} minutos y {{seconds}} segundos"
+    },
+    "howToGetThere": "Cómo llegar",
+    "mapError": "No se ha podido abrir el mapa.",
+    "seasonSummary": "Posición {{position}}, {{points}} puntos en {{played}} partidos: {{won}} victorias, {{drawn}} empates y {{lost}} derrotas. {{goalsFor}} goles a favor y {{goalsAgainst}} en contra, diferencia {{goalDifference}}.",
+    "stats": {
+      "position": "Posición",
+      "points": "Puntos",
+      "record": "G-E-P",
+      "goals": "GF-GC"
+    },
+    "opponentTable": "{{position}}º con {{points}} puntos.",
+    "balance": "Esta temporada: {{played}} partidos, {{won}} victorias, {{drawn}} empates, {{lost}} derrotas y {{goalsFor}}-{{goalsAgainst}}.",
+    "headlines": "Titulares",
+    "headlineMeta": "{{source}} · {{date}}",
+    "openHeadline": "Abrir noticia: {{title}} ({{source}})",
+    "openError": "No se ha podido abrir la noticia."
+  },
   "calendar": {
     "upcoming": "Próximos",
     "results": "Resultados",

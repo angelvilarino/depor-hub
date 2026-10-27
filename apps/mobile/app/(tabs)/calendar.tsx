@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Alert, RefreshControl, SectionList, StyleSheet, Text, View } from 'react-native';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
@@ -18,13 +19,20 @@ import { formatMonth } from '@/utils/matchTime';
 
 type Tab = 'upcoming' | 'results' | 'standings';
 
+const isTab = (value: unknown): value is Tab =>
+  value === 'upcoming' || value === 'results' || value === 'standings';
+
 export default function CalendarScreen() {
   const { t, i18n } = useTranslation();
   const { colors } = useTheme();
+  const { tab: tabParam } = useLocalSearchParams<{ tab?: string }>();
   const fixtures = useFixtures();
   const standings = useStandings();
   const meta = useMeta();
-  const [tab, setTab] = useState<Tab>('upcoming');
+  // La Home enlaza a «Ver tabla completa» con ?tab=standings. La pestaña vive en la
+  // URL para que el enlace funcione aunque la pantalla ya estuviera montada.
+  const tab: Tab = isTab(tabParam) ? tabParam : 'upcoming';
+  const setTab = (next: Tab) => router.setParams({ tab: next });
 
   const { upcoming, results } = useMemo(() => splitMatches(fixtures.data?.matches ?? []), [fixtures.data]);
   const query = tab === 'standings' ? standings : fixtures;

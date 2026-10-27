@@ -1,20 +1,17 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { BodyText, Card, Screen } from '@/components/Screen';
 import { EmptyState, LoadingState } from '@/components/StateViews';
 import { TeamCrest } from '@/components/TeamCrest';
-import { useFixtures, useMeta } from '@/data/queries';
+import type { MatchT } from '@/data/schemas';
+import { useFixtures } from '@/data/queries';
 import { isFinished, teamName } from '@/features/calendar/logic';
-import { addMatchToCalendar } from '@/features/calendar/system';
-import { ensureReminderPermission } from '@/features/reminders/notifications';
-import { isRemindable } from '@/features/reminders/plan';
-import { useSettings } from '@/store/settings';
+import { useMatchActions } from '@/features/home/useMatchActions';
 import { spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
-import { formatMatchDate, formatMatchTime } from '@/utils/matchTime';
+import { formatMatchDate } from '@/utils/matchTime';
 
 function InfoRow({ label, value }: { label: string; value: string | null }) {
   const { colors } = useTheme();
@@ -29,12 +26,8 @@ function InfoRow({ label, value }: { label: string; value: string | null }) {
 
 export default function MatchDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { t, i18n } = useTranslation();
-  const { colors } = useTheme();
+  const { t } = useTranslation();
   const fixtures = useFixtures();
-  const meta = useMeta();
-  const [now] = useState(() => Date.now()); // fuera del render: regla react-hooks/purity
-  const { remindMatchIds, remindersEnabled, toggleRemind, setRemindersEnabled } = useSettings();
   const match = fixtures.data?.matches.find((m) => String(m.id) === id);
   const screenOptions = <Stack.Screen options={{ title: t('match.title') }} />;
 
@@ -47,45 +40,28 @@ export default function MatchDetail() {
     );
   }
 
+  return (
+    <>
+      {screenOptions}
+      <MatchDetailBody match={match} />
+    </>
+  );
+}
+
+function MatchDetailBody({ match }: { match: MatchT }) {
+  const { t, i18n } = useTranslation();
+  const { colors } = useTheme();
+  const { venue, time, title, remindable, reminded, toggleReminder, addToCalendar } =
+    useMatchActions(match);
+
   const locale = i18n.language;
   const finished = isFinished(match);
-  const time = formatMatchTime(match.utcDate, match.status, locale);
-  // `?? null`: la caché persistida anterior al ADR 0006 puede no traer estos campos.
-  const venue = match.venue ?? (match.deporIsHome ? (meta.data?.team.venue ?? null) : null);
   const referee = match.referee ?? null;
   const hasScore = match.score.home !== null && match.score.away !== null;
-  const remindable = isRemindable(match, now);
-  const reminded = remindersEnabled && remindMatchIds.includes(match.id);
-  const title = `${teamName(match.home)} – ${teamName(match.away)}`;
   const ht =
     match.score.halfTimeHome !== null && match.score.halfTimeAway !== null
       ? `${match.score.halfTimeHome}–${match.score.halfTimeAway}`
       : null;
-
-  const onRemind = async () => {
-    if (reminded) {
-      toggleRemind(match.id, false);
-      return;
-    }
-    if (!(await ensureReminderPermission())) {
-      Alert.alert(t('match.permissionDenied'));
-      return;
-    }
-    if (!remindersEnabled) setRemindersEnabled(true);
-    toggleRemind(match.id, true);
-  };
-
-  const onAddToCalendar = async () => {
-    try {
-      await addMatchToCalendar(match, {
-        title,
-        venue,
-        notes: time ? undefined : t('calendar.timeTbc'),
-      });
-    } catch {
-      Alert.alert(t('match.addError'));
-    }
-  };
 
   const side = (team: typeof match.home) => (
     <View style={styles.side}>
@@ -96,7 +72,6 @@ export default function MatchDetail() {
 
   return (
     <Screen>
-      {screenOptions}
       <Card>
         <View
           accessible
@@ -127,12 +102,12 @@ export default function MatchDetail() {
             <Button
               variant={reminded ? 'secondary' : 'primary'}
               label={t(reminded ? 'match.removeReminder' : 'match.remind')}
-              onPress={() => void onRemind()}
+              onPress={() => void toggleReminder()}
             />
           ) : (
             <BodyText muted>{t('match.reminderNeedsTime')}</BodyText>
           )}
-          <Button variant="secondary" label={t('match.addToCalendar')} onPress={() => void onAddToCalendar()} />
+          <Button variant="secondary" label={t('match.addToCalendar')} onPress={() => void addToCalendar()} />
         </Card>
       )}
 
