@@ -1,0 +1,14 @@
+{
+  "updatedAt": "2026-01-01T00:00:00Z",
+  "items": [
+    {
+      "id": "ejemplo-1",
+      "title": "Titular sintético de ejemplo",
+      "url": "https://example.test/noticia",
+      "sourceName": "Medio de ejemplo",
+      "publishedAt": "2026-01-01T00:00:00Z",
+      "thumbnailUrl": null,
+      "tags": ["ejemplo"]
+    }
+  ]
+}

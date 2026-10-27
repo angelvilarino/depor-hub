@@ -7,6 +7,7 @@ export class DataError extends Error {
   constructor(
     public kind: DataErrorKind,
     message: string,
+    public status?: number,
   ) {
     super(message);
     this.name = 'DataError';
@@ -36,7 +37,7 @@ export async function fetchData<T extends z.ZodType>(
   } finally {
     clearTimeout(timer);
   }
-  if (!res.ok) throw new DataError('http', `HTTP ${res.status} en ${name}`);
+  if (!res.ok) throw new DataError('http', `HTTP ${res.status} en ${name}`, res.status);
 
   let json: unknown;
   try {

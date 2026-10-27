@@ -156,6 +156,23 @@ export const Fixtures = z.strictObject({
   matches: z.array(Match),
 });
 
+// Contrato mínimo de H5 para titulares; H6 añadirá la ingesta RSS. Es aditivo y
+// news.json puede no existir: la query lo trata como «sin titulares».
+export const NewsItem = z.strictObject({
+  id: z.string(),
+  title: z.string(),
+  url: z.string(),
+  sourceName: z.string(),
+  publishedAt: iso,
+  thumbnailUrl: optionalNull(),
+  tags: z.array(z.string()).default([]),
+});
+
+export const News = z.strictObject({
+  updatedAt: iso,
+  items: z.array(NewsItem),
+});
+
 export const StaffMember = z.strictObject({
   name: z.string(),
   role: z.string(),
@@ -231,7 +248,10 @@ export const Squad = z.strictObject({
 
 export type MetaT = z.infer<typeof Meta>;
 export type StandingsT = z.infer<typeof Standings>;
+export type StandingRowT = z.infer<typeof StandingRow>;
 export type FixturesT = z.infer<typeof Fixtures>;
+export type NewsT = z.infer<typeof News>;
+export type NewsItemT = z.infer<typeof NewsItem>;
 export type SquadT = z.infer<typeof Squad>;
 export type MatchT = z.infer<typeof Match>;
 export type PlayerT = z.infer<typeof Player>;

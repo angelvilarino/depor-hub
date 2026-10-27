@@ -1,4 +1,4 @@
-import { Fixtures, Squad, Standings } from '@/data/schemas';
+import { Fixtures, News, Squad, Standings } from '@/data/schemas';
 
 // JSON publicado ANTES de ADR 0006 (sin crestUrl/venue/referee): debe seguir validando.
 const oldTeam = { id: 1, name: 'A', shortName: null, tla: null };
@@ -151,6 +151,27 @@ describe('compatibilidad con JSON anterior a ADR 0014', () => {
     expect(r.data.coach?.career).toEqual([]);
     expect(r.data.coach?.staff).toEqual([]);
     expect(r.data.players[0]!.career[0]!.role).toBe('player');
+  });
+});
+
+describe('contrato mínimo de noticias (H5)', () => {
+  it('acepta un titular con solo los campos obligatorios y rellena defaults', () => {
+    const r = News.safeParse({
+      updatedAt: '2026-10-27T10:00:00Z',
+      items: [
+        {
+          id: 'n1',
+          title: 'Titular',
+          url: 'https://example.test/n1',
+          sourceName: 'Medio',
+          publishedAt: '2026-10-27T09:00:00Z',
+        },
+      ],
+    });
+    expect(r.success).toBe(true);
+    if (!r.success) return;
+    expect(r.data.items[0]!.thumbnailUrl).toBeNull();
+    expect(r.data.items[0]!.tags).toEqual([]);
   });
 });
 

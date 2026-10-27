@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { Fixtures, Meta, Squad, Standings } from '@/data/schemas';
+import { Fixtures, Meta, News, Squad, Standings } from '@/data/schemas';
 
 // Los MISMOS ejemplos los valida Pydantic en scripts/tests: si divergen, falla uno de los dos CI.
 const dir = path.resolve(__dirname, '../../../../packages/schemas/examples');
@@ -12,6 +12,7 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
     ['standings.json', Standings],
     ['fixtures.json', Fixtures],
     ['squad.json', Squad],
+    ['news.json', News],
   ] as const)('%s valida', (file, schema) => {
     expect(schema.safeParse(load(file)).success).toBe(true);
   });

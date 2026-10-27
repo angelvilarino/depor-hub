@@ -1,0 +1,78 @@
+{
+  "$defs": {
+    "NewsItem": {
+      "additionalProperties": false,
+      "description": "Titular agregado de un medio (contrato m\u00ednimo de H5; H6 a\u00f1adir\u00e1 la ingesta).",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "publishedAt": {
+          "title": "Publishedat",
+          "type": "string"
+        },
+        "sourceName": {
+          "title": "Sourcename",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "thumbnailUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Thumbnailurl"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "sourceName",
+        "publishedAt"
+      ],
+      "title": "NewsItem",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "#/$defs/NewsItem"
+      },
+      "title": "Items",
+      "type": "array"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "items"
+  ],
+  "title": "News",
+  "type": "object"
+}

@@ -111,6 +111,23 @@ class Fixtures(Public):
     matches: list[Match]
 
 
+class NewsItem(Public):
+    """Titular agregado de un medio (contrato mínimo de H5; H6 añadirá la ingesta)."""
+
+    id: str
+    title: str
+    url: str
+    source_name: str
+    published_at: IsoDateTime
+    thumbnail_url: Optional[str] = None
+    tags: list[str] = Field(default_factory=list)
+
+
+class News(Public):
+    updated_at: IsoDateTime
+    items: list[NewsItem]
+
+
 class Provenance(Public):
     """De dónde sale un dato y con qué confianza (ADR 0008)."""
 
@@ -289,4 +306,10 @@ FILES: dict[str, type[Public]] = {
     "standings.json": Standings,
     "fixtures.json": Fixtures,
     "squad.json": Squad,
+}
+
+# Contratos que aún no publica la ingesta (news.json llega en H6) pero que la app
+# ya puede leer de forma opcional. Se exportan igual para mantener Pydantic como origen.
+NEWS_FILES: dict[str, type[Public]] = {
+    "news.json": News,
 }
