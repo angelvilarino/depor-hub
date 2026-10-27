@@ -1,0 +1,398 @@
+{
+  "updatedAt": "2026-10-27T15:09:12Z",
+  "dataHash": "50a6b62bf7092b14",
+  "sources": [
+    {
+      "id": "20minutos",
+      "name": "20Minutos",
+      "url": "https://www.20minutos.es",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "365scores",
+      "name": "365Scores",
+      "url": "https://www.365scores.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "besoccer",
+      "name": "BeSoccer",
+      "url": "https://www.besoccer.es",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "besoccer-es",
+      "name": "BeSoccer ES",
+      "url": "https://es.besoccer.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "bolavip-mexico",
+      "name": "Bolavip México",
+      "url": "https://bolavip.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "cadena-ser",
+      "name": "Cadena SER",
+      "url": "https://cadenaser.com",
+      "kind": "radio",
+      "items": 1
+    },
+    {
+      "id": "cope",
+      "name": "COPE",
+      "url": "https://www.cope.es",
+      "kind": "radio",
+      "items": 5
+    },
+    {
+      "id": "dazn",
+      "name": "DAZN",
+      "url": "https://www.dazn.com",
+      "kind": "agregador",
+      "items": 2
+    },
+    {
+      "id": "as",
+      "name": "Diario AS",
+      "url": "https://as.com",
+      "kind": "nacional",
+      "items": 14
+    },
+    {
+      "id": "diario-de-ferrol",
+      "name": "Diario de Ferrol",
+      "url": "https://www.diariodeferrol.com/",
+      "kind": "local",
+      "items": 1
+    },
+    {
+      "id": "diario-de-noticias-de-alava",
+      "name": "Diario de Noticias de Álava",
+      "url": "https://www.noticiasdealava.eus",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "diario-de-santiago",
+      "name": "Diario de Santiago",
+      "url": "https://www.diariodesantiago.es",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "dxt-campeon",
+      "name": "DXT Campeón",
+      "url": "https://dxtcampeon.elidealgallego.com",
+      "kind": "agregador",
+      "items": 19
+    },
+    {
+      "id": "el-debate",
+      "name": "El Debate",
+      "url": "https://www.eldebate.com",
+      "kind": "agregador",
+      "items": 2
+    },
+    {
+      "id": "el-desmarque",
+      "name": "El Desmarque",
+      "url": "https://www.eldesmarque.com",
+      "kind": "nacional",
+      "items": 2
+    },
+    {
+      "id": "el-espanol",
+      "name": "El Español",
+      "url": "https://www.elespanol.com",
+      "kind": "nacional",
+      "items": 1
+    },
+    {
+      "id": "el-ideal-gallego",
+      "name": "El Ideal Gallego",
+      "url": "https://www.elidealgallego.com/",
+      "kind": "local",
+      "items": 2
+    },
+    {
+      "id": "el-nacional-cat",
+      "name": "El Nacional.cat",
+      "url": "https://www.elnacional.cat",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "el-observador",
+      "name": "El Observador",
+      "url": "https://www.elobservador.com.uy",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "el-pais",
+      "name": "EL PAÍS",
+      "url": "https://elpais.com",
+      "kind": "agregador",
+      "items": 2
+    },
+    {
+      "id": "elgoldigital",
+      "name": "ElGOLdigital",
+      "url": "https://www.elgoldigital.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "estadio-deportivo",
+      "name": "Estadio Deportivo",
+      "url": "https://www.estadiodeportivo.com",
+      "kind": "agregador",
+      "items": 2
+    },
+    {
+      "id": "fc-barcelona",
+      "name": "FC Barcelona",
+      "url": "https://www.fcbarcelona.es",
+      "kind": "agregador",
+      "items": 2
+    },
+    {
+      "id": "fichajes-com",
+      "name": "Fichajes.com",
+      "url": "https://www.fichajes.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "flashscore-es",
+      "name": "Flashscore.es",
+      "url": "https://www.flashscore.es",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "futbolfantasy",
+      "name": "FútbolFantasy",
+      "url": "https://www.futbolfantasy.com",
+      "kind": "agregador",
+      "items": 5
+    },
+    {
+      "id": "infobae",
+      "name": "Infobae",
+      "url": "https://www.infobae.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "islam-en-murcia",
+      "name": "ISLAM EN MURCIA",
+      "url": "https://islamenmurcia.blogspot.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "jornada-perfecta",
+      "name": "Jornada Perfecta",
+      "url": "https://www.jornadaperfecta.com",
+      "kind": "agregador",
+      "items": 2
+    },
+    {
+      "id": "la-opinion",
+      "name": "La Opinión A Coruña",
+      "url": "https://www.laopinioncoruna.es",
+      "kind": "local",
+      "items": 12
+    },
+    {
+      "id": "la-razon",
+      "name": "La Razón",
+      "url": "https://www.larazon.es",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "la-vanguardia",
+      "name": "La Vanguardia",
+      "url": "https://www.lavanguardia.com",
+      "kind": "agregador",
+      "items": 2
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "url": "https://www.lavozdegalicia.es",
+      "kind": "local",
+      "items": 7
+    },
+    {
+      "id": "la-voz-deportes",
+      "name": "La Voz de Galicia · Deportes",
+      "url": "https://www.lavozdegalicia.es/deportes/",
+      "kind": "local",
+      "items": 1
+    },
+    {
+      "id": "laliga",
+      "name": "LALIGA",
+      "url": "https://www.laliga.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "lecturas",
+      "name": "Lecturas",
+      "url": "https://www.lecturas.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "levante-ud-web-oficial",
+      "name": "Levante UD | Web Oficial",
+      "url": "https://www.levanteud.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "marca",
+      "name": "Marca",
+      "url": "https://www.marca.com",
+      "kind": "nacional",
+      "items": 2
+    },
+    {
+      "id": "mundiario",
+      "name": "MUNDIARIO",
+      "url": "https://www.mundiario.com",
+      "kind": "agregador",
+      "items": 2
+    },
+    {
+      "id": "mundo-deportivo",
+      "name": "Mundo Deportivo",
+      "url": "https://www.mundodeportivo.com",
+      "kind": "nacional",
+      "items": 2
+    },
+    {
+      "id": "onda-cero",
+      "name": "Onda Cero",
+      "url": "https://www.ondacero.es",
+      "kind": "agregador",
+      "items": 2
+    },
+    {
+      "id": "onefootball",
+      "name": "OneFootball",
+      "url": "https://onefootball.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "plaza-deportiva",
+      "name": "Plaza Deportiva",
+      "url": "https://plazadeportiva.valenciaplaza.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "pagina-oficial-del-atletico-de-madrid",
+      "name": "Página oficial del Atlético de Madrid",
+      "url": "https://www.atleticodemadrid.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "club",
+      "name": "RC Deportivo",
+      "url": "https://www.rcdeportivo.es",
+      "kind": "club",
+      "items": 26
+    },
+    {
+      "id": "youtube-club",
+      "name": "RC Deportivo · YouTube",
+      "url": "https://www.youtube.com/@rcdeportivo",
+      "kind": "video",
+      "items": 15
+    },
+    {
+      "id": "real-oviedo-web-oficial",
+      "name": "Real Oviedo | Web Oficial",
+      "url": "https://www.realoviedo.es",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "riazor-org",
+      "name": "Riazor.org",
+      "url": "https://www.riazor.org",
+      "kind": "agregador",
+      "items": 17
+    },
+    {
+      "id": "rtve-es",
+      "name": "RTVE.es",
+      "url": "https://www.rtve.es",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "sport-aragon",
+      "name": "Sport Aragón",
+      "url": "https://www.sportaragon.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "sports-illustrated",
+      "name": "Sports Illustrated",
+      "url": "https://www.si.com",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "transfermarkt",
+      "name": "Transfermarkt",
+      "url": "https://www.transfermarkt.es",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "tudn",
+      "name": "TUDN",
+      "url": "https://www.tudn.com",
+      "kind": "agregador",
+      "items": 3
+    },
+    {
+      "id": "vavel-com",
+      "name": "VAVEL.com",
+      "url": "https://www.vavel.com",
+      "kind": "agregador",
+      "items": 3
+    },
+    {
+      "id": "vermouth-deportivo",
+      "name": "Vermouth Deportivo",
+      "url": "https://www.vermouth-deportivo.com.ar",
+      "kind": "agregador",
+      "items": 1
+    },
+    {
+      "id": "yahoo",
+      "name": "Yahoo",
+      "url": "https://es-us.noticias.yahoo.com",
+      "kind": "agregador",
+      "items": 1
+    }
+  ]
+}

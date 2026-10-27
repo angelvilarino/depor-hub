@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Atom de prueba</title>
+  <link href="https://atom.example.test/" rel="alternate" />
+  <updated>2026-10-27T12:00:00Z</updated>
+  <id>urn:example:atom</id>
+  <entry>
+    <title>Riazor acogerá el próximo partido del Depor</title>
+    <link rel="alternate" href="https://atom.example.test/riazor" />
+    <id>urn:example:atom:1</id>
+    <updated>2026-10-27T11:30:00+01:00</updated>
+    <published>2026-10-27T10:30:00+01:00</published>
+    <summary type="html">&lt;p&gt;El estadio abre sus puertas el domingo.&lt;/p&gt;</summary>
+    <link rel="enclosure" type="image/jpeg" href="https://cdn.example.test/riazor.jpg" />
+  </entry>
+  <entry>
+    <title>Noticia sin fecha ni enlace válido</title>
+    <id>urn:example:atom:2</id>
+    <updated>not-a-date</updated>
+  </entry>
+</feed>

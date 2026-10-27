@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Medio de prueba</title>
+    <link>https://example.test/</link>
+    <description>Feed sintético para las pruebas de H6</description>
+    <item>
+      <title><![CDATA[El Dépor ficha a un delantero para el ascenso]]></title>
+      <link>https://example.test/deportivo-fichaje?utm_source=rss&amp;utm_medium=feed</link>
+      <guid isPermaLink="false">noticia-1</guid>
+      <pubDate>Tue, 27 Oct 2026 10:00:00 +0000</pubDate>
+      <description><![CDATA[<p>El club <strong>blanquiazul</strong> anuncia un refuerzo para la delantera.</p><script>alert(1)</script>]]></description>
+      <media:thumbnail url="https://cdn.example.test/fichaje.jpg" width="640" height="360" />
+    </item>
+    <item>
+      <title>El tiempo en A Coruña para el fin de semana - Medio de prueba</title>
+      <link>https://example.test/tiempo</link>
+      <pubDate>Mon, 26 Oct 2026 09:00:00 +0000</pubDate>
+      <description>Sol y nubes en la ciudad.</description>
+    </item>
+    <item>
+      <title>Partido del Fabril el domingo</title>
+      <link>https://example.test/fabril</link>
+      <pubDate>Sun, 25 Oct 2026 18:30:00 +0000</pubDate>
+      <description>El filial juega en Abegondo.</description>
+    </item>
+  </channel>
+</rss>

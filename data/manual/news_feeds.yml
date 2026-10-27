@@ -1,0 +1,325 @@
+# Catálogo de feeds de noticias (H6, ADR 0016).
+#
+# `keyword_filter: true` significa que el feed es general y hay que aplicar el filtro de
+# relevancia del Depor. `false` se usa solo cuando el feed ya es específico del club o la
+# consulta de Google News es suficientemente concreta.
+#
+# `enabled: false` documenta una fuente descartada en la auditoría. No se reintenta a ciegas:
+# el motivo queda en `note` y en docs/sources.md. `news audit --write-docs` puede actualizar
+# este fichero, pero la revisión final es manual.
+feeds:
+  - id: la-voz-deportes
+    name: La Voz de Galicia · Deportes
+    kind: local
+    url: https://www.lavozdegalicia.es/deportes/index.xml
+    media_url: https://www.lavozdegalicia.es/deportes/
+    language: es
+    weight: 70
+    keyword_filter: true
+    enabled: true
+
+  - id: la-voz-coruna
+    name: La Voz de Galicia · A Coruña
+    kind: local
+    url: https://www.lavozdegalicia.es/coruna/index.xml
+    media_url: https://www.lavozdegalicia.es/coruna/
+    language: es
+    weight: 60
+    keyword_filter: true
+    enabled: true
+
+  - id: galiciapress
+    name: Galiciapress
+    kind: local
+    url: https://www.galiciapress.es/feed/all
+    media_url: https://www.galiciapress.es/
+    language: es
+    weight: 55
+    keyword_filter: true
+    enabled: true
+
+  - id: el-ideal-gallego
+    name: El Ideal Gallego
+    kind: local
+    url: https://www.elidealgallego.com/rss/
+    media_url: https://www.elidealgallego.com/
+    language: es
+    weight: 50
+    keyword_filter: true
+    enabled: true
+
+  - id: diario-de-ferrol
+    name: Diario de Ferrol
+    kind: local
+    url: https://www.diariodeferrol.com/rss/
+    media_url: https://www.diariodeferrol.com/
+    language: es
+    weight: 45
+    keyword_filter: true
+    enabled: true
+
+  - id: marca
+    name: Marca
+    kind: nacional
+    url: https://e00-marca.uecdn.es/rss/portada.xml
+    media_url: https://www.marca.com/
+    language: es
+    weight: 50
+    keyword_filter: true
+    enabled: true
+
+  - id: mundo-deportivo
+    name: Mundo Deportivo
+    kind: nacional
+    url: https://www.mundodeportivo.com/rss/portada
+    media_url: https://www.mundodeportivo.com/
+    language: es
+    weight: 45
+    keyword_filter: true
+    enabled: true
+
+  - id: el-espanol
+    name: El Español
+    kind: nacional
+    url: https://www.elespanol.com/rss/
+    media_url: https://www.elespanol.com/
+    language: es
+    weight: 40
+    keyword_filter: true
+    enabled: true
+
+  - id: cope
+    name: COPE
+    kind: radio
+    url: https://www.cope.es/api/es/news/rss.xml
+    media_url: https://www.cope.es/
+    language: es
+    weight: 35
+    keyword_filter: true
+    enabled: true
+
+  - id: defensa-central
+    name: Defensa Central
+    kind: nacional
+    url: https://defensacentral.com/uploads/feeds/feed_defensa-central_es.xml
+    media_url: https://www.defensacentral.com/
+    language: es
+    weight: 20
+    keyword_filter: true
+    enabled: true
+
+  - id: youtube-club
+    name: RC Deportivo · YouTube
+    kind: video
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCY2s1XaPzO60Hu6M_YZCTgA
+    media_url: https://www.youtube.com/@rcdeportivo
+    language: es
+    weight: 80
+    keyword_filter: false
+    enabled: true
+
+  # Google News: consultas fijas. Son la vía más barata para ampliar cobertura y también
+  # el respaldo de los medios que bloquean el RSS directo. No se resuelve la redirección
+  # si exige scraping: se guarda la URL de Google News tal cual.
+  - id: google-news-depor
+    name: Google News · Deportivo de La Coruña
+    kind: agregador
+    url: https://news.google.com/rss/search?q=%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es
+    media_url: https://news.google.com/
+    language: es
+    weight: 30
+    keyword_filter: true
+    enabled: true
+
+  - id: google-news-riazor
+    name: Google News · Depor Riazor
+    kind: agregador
+    url: https://news.google.com/rss/search?q=%22Depor%22%20Riazor&hl=es&gl=ES&ceid=ES:es
+    media_url: https://news.google.com/
+    language: es
+    weight: 28
+    keyword_filter: true
+    enabled: true
+
+  - id: google-news-rc
+    name: Google News · RC Deportivo
+    kind: agregador
+    url: https://news.google.com/rss/search?q=%22RC%20Deportivo%22&hl=es&gl=ES&ceid=ES:es
+    media_url: https://news.google.com/
+    language: es
+    weight: 28
+    keyword_filter: true
+    enabled: true
+
+  # Respaldo de medios con RSS directo bloqueado o inexistente. La consulta `site:` se
+  # limita al medio y el filtro de relevancia sigue activo.
+  - id: google-news-as
+    name: Google News · AS
+    kind: nacional
+    url: https://news.google.com/rss/search?q=site%3Aas.com%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es
+    media_url: https://as.com/
+    language: es
+    weight: 42
+    keyword_filter: true
+    enabled: true
+
+  - id: google-news-sport
+    name: Google News · Sport
+    kind: nacional
+    url: https://news.google.com/rss/search?q=site%3Asport.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es
+    media_url: https://www.sport.es/
+    language: es
+    weight: 42
+    keyword_filter: true
+    enabled: true
+
+  - id: google-news-ser
+    name: Google News · Cadena SER
+    kind: radio
+    url: https://news.google.com/rss/search?q=site%3Acadenaser.com%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es
+    media_url: https://cadenaser.com/
+    language: es
+    weight: 38
+    keyword_filter: true
+    enabled: true
+
+  - id: google-news-faro
+    name: Google News · Faro de Vigo
+    kind: local
+    url: https://news.google.com/rss/search?q=site%3Afarodevigo.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es
+    media_url: https://www.farodevigo.es/
+    language: es
+    weight: 38
+    keyword_filter: true
+    enabled: true
+
+  - id: google-news-la-opinion
+    name: Google News · La Opinión A Coruña
+    kind: local
+    url: https://news.google.com/rss/search?q=site%3Alaopinioncoruna.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es
+    media_url: https://www.laopinioncoruna.es/
+    language: es
+    weight: 38
+    keyword_filter: true
+    enabled: true
+
+  - id: google-news-superdeporte
+    name: Google News · Superdeporte
+    kind: local
+    url: https://news.google.com/rss/search?q=site%3Asuperdeporte.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es
+    media_url: https://www.superdeporte.es/
+    language: es
+    weight: 32
+    keyword_filter: true
+    enabled: true
+
+  - id: google-news-club
+    name: Google News · Web oficial
+    kind: club
+    url: https://news.google.com/rss/search?q=site%3Arcdeportivo.es&hl=es&gl=ES&ceid=ES:es
+    media_url: https://www.rcdeportivo.es/
+    language: es
+    weight: 60
+    keyword_filter: true
+    enabled: true
+
+  # Descartadas en la auditoría del 27-oct-2026. Se conservan documentadas para no
+  # repetir el intento y para poder reactivarlas si la fuente cambia.
+  - id: club-official
+    name: Web oficial del RC Deportivo
+    kind: club
+    url: https://www.rcdeportivo.es/es
+    media_url: https://www.rcdeportivo.es/
+    language: es
+    weight: 100
+    keyword_filter: false
+    enabled: false
+    note: "Sin feed RSS propio (404 en /rss, /es/rss y /rss.xml). Se cubre con google-news-club."
+
+  - id: as-direct
+    name: AS
+    kind: nacional
+    url: https://feeds.as.com/mrss-s/pages/as/portada.xml
+    media_url: https://as.com/
+    language: es
+    weight: 45
+    keyword_filter: true
+    enabled: false
+    note: "HTTP 403 para el User-Agent identificable. No se intenta rodear. Respaldo: google-news-as."
+
+  - id: sport-direct
+    name: Sport
+    kind: nacional
+    url: https://www.sport.es/es/rss/
+    media_url: https://www.sport.es/
+    language: es
+    weight: 45
+    keyword_filter: true
+    enabled: false
+    note: "HTTP 406 (WAF). Respaldo: google-news-sport."
+
+  - id: cadena-ser-direct
+    name: Cadena SER
+    kind: radio
+    url: https://cadenaser.com/rss/
+    media_url: https://cadenaser.com/
+    language: es
+    weight: 40
+    keyword_filter: true
+    enabled: false
+    note: "HTTP 403. Respaldo: google-news-ser."
+
+  - id: radio-coruna-direct
+    name: Radio Coruña
+    kind: radio
+    url: https://cadenaser.com/radio-coruna/
+    media_url: https://cadenaser.com/radio-coruna/
+    language: es
+    weight: 35
+    keyword_filter: true
+    enabled: false
+    note: "Sin RSS propio; el dominio de Cadena SER bloquea con 403. Respaldo: google-news-ser."
+
+  - id: faro-direct
+    name: Faro de Vigo
+    kind: local
+    url: https://www.farodevigo.es/rss/
+    media_url: https://www.farodevigo.es/
+    language: es
+    weight: 40
+    keyword_filter: true
+    enabled: false
+    note: "HTTP 406 (WAF de Prensa Ibérica). Respaldo: google-news-faro."
+
+  - id: la-opinion-direct
+    name: La Opinión A Coruña
+    kind: local
+    url: https://www.laopinioncoruna.es/rss/
+    media_url: https://www.laopinioncoruna.es/
+    language: es
+    weight: 40
+    keyword_filter: true
+    enabled: false
+    note: "HTTP 406 (WAF de Prensa Ibérica). Respaldo: google-news-la-opinion."
+
+  - id: superdeporte-direct
+    name: Superdeporte
+    kind: local
+    url: https://www.superdeporte.es/rss/
+    media_url: https://www.superdeporte.es/
+    language: es
+    weight: 35
+    keyword_filter: true
+    enabled: false
+    note: "HTTP 406 (WAF de Prensa Ibérica). Respaldo: google-news-superdeporte."
+
+  - id: deportivo-hoy
+    name: Deportivo Hoy
+    kind: local
+    url: https://www.deportivohoy.es/rss/
+    media_url: https://www.deportivohoy.es/
+    language: es
+    weight: 30
+    keyword_filter: true
+    enabled: false
+    note: "El dominio no resuelve (DNS). No se inventa una URL alternativa."
