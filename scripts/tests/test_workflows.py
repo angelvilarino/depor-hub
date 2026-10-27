@@ -1,0 +1,74 @@
+from pathlib import Path
+
+import yaml
+
+WORKFLOWS = Path(__file__).resolve().parents[2] / ".github" / "workflows"
+
+
+def load(name: str) -> dict:
+    data = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
+    # PyYAML interpreta `on` como booleano (YAML 1.1); GitHub lo trata como clave.
+    if True in data and "on" not in data:
+        data["on"] = data.pop(True)
+    return data
+
+
+def steps(workflow: dict, job: str) -> list[dict]:
+    return workflow["jobs"][job]["steps"]
+
+
+def runs(workflow: dict, job: str) -> str:
+    return "\n".join(str(step.get("run", "")) for step in steps(workflow, job))
+
+
+def test_both_data_workflows_share_the_publish_lock():
+    refresh = load("data-refresh.yml")
+    news = load("news-refresh.yml")
+    for workflow in (refresh, news):
+        assert workflow["concurrency"]["group"] == "data-publish"
+        assert workflow["concurrency"]["cancel-in-progress"] is False
+
+
+def test_both_workflows_rebase_before_push_and_deploy_from_a_fresh_checkout():
+    for name in ("data-refresh.yml", "news-refresh.yml"):
+        workflow = load(name)
+        body = runs(workflow, "refresh")
+        assert "git pull --rebase" in body
+        assert "git push origin HEAD:main" in body
+        deploy = workflow["jobs"]["deploy"]
+        assert deploy["needs"] == "refresh"
+        checkout = next(
+            step for step in deploy["steps"] if str(step.get("uses", "")).startswith("actions/checkout")
+        )
+        assert checkout["with"]["ref"] == "main"
+        upload = next(
+            step
+            for step in deploy["steps"]
+            if str(step.get("uses", "")).startswith("actions/upload-pages-artifact")
+        )
+        assert upload["with"]["path"] == "data/public"
+        assert any(
+            str(step.get("uses", "")).startswith("actions/deploy-pages")
+            for step in deploy["steps"]
+        )
+
+
+def test_news_runs_every_thirty_minutes_and_caches_the_feeds():
+    workflow = load("news-refresh.yml")
+    crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
+    assert "*/30 * * * *" in crons
+    body = runs(workflow, "refresh")
+    assert "news ingest" in body
+    paths = [
+        step["with"]["path"]
+        for step in steps(workflow, "refresh")
+        if str(step.get("uses", "")).startswith("actions/cache")
+    ]
+    assert "data/raw/news" in paths
+
+
+def test_data_refresh_keeps_its_adaptive_cadence():
+    workflow = load("data-refresh.yml")
+    crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
+    assert "*/10 * * * *" in crons
+    assert "ingest --if-due" in runs(workflow, "refresh")
