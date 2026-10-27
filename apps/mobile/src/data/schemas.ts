@@ -156,21 +156,68 @@ export const Fixtures = z.strictObject({
   matches: z.array(Match),
 });
 
-// Contrato mínimo de H5 para titulares; H6 añadirá la ingesta RSS. Es aditivo y
-// news.json puede no existir: la query lo trata como «sin titulares».
+// Noticias (H6, ADR 0016). Todo lo nuevo es aditivo: el JSON mínimo de H5 y la caché
+// anterior deben seguir validando. news.json sigue siendo opcional (404 = sin titulares).
+export const NewsSourceKind = z.enum(['club', 'local', 'nacional', 'radio', 'agregador', 'video']);
+
+export const NewsAlsoIn = z.strictObject({
+  sourceName: z.string(),
+  url: z.string(),
+  sourceId: optionalNull(),
+});
+
 export const NewsItem = z.strictObject({
   id: z.string(),
   title: z.string(),
   url: z.string(),
+  sourceId: optionalNull(),
   sourceName: z.string(),
+  sourceKind: NewsSourceKind.default('agregador'),
+  kind: z.enum(['article', 'video']).default('article'),
   publishedAt: iso,
+  publishedEstimated: z.boolean().default(false),
   thumbnailUrl: optionalNull(),
+  summary: optionalNull(),
   tags: z.array(z.string()).default([]),
+  players: z.array(z.number().int()).default([]),
+  alsoIn: z.array(NewsAlsoIn).default([]),
+  durationSeconds: optionalInt(),
+  videoId: optionalNull(),
+});
+
+export const NewsSourceMeta = z.strictObject({
+  feedId: z.string(),
+  feedName: z.string(),
+  items: z.number().int().nonnegative().default(0),
+  error: optionalNull(),
+  lastAttemptAt: optionalNull(),
+  lastSuccessAt: optionalNull(),
+});
+
+export const NewsMeta = z.strictObject({
+  capturedAt: iso,
+  sources: z.array(NewsSourceMeta).default([]),
 });
 
 export const News = z.strictObject({
   updatedAt: iso,
+  dataHash: z.string().default(''),
   items: z.array(NewsItem),
+  meta: NewsMeta.nullable().default(null),
+});
+
+export const NewsSource = z.strictObject({
+  id: z.string(),
+  name: z.string(),
+  url: optionalNull(),
+  kind: NewsSourceKind,
+  items: z.number().int().nonnegative().default(0),
+});
+
+export const NewsSources = z.strictObject({
+  updatedAt: iso,
+  dataHash: z.string().default(''),
+  sources: z.array(NewsSource),
 });
 
 export const StaffMember = z.strictObject({
@@ -252,6 +299,11 @@ export type StandingRowT = z.infer<typeof StandingRow>;
 export type FixturesT = z.infer<typeof Fixtures>;
 export type NewsT = z.infer<typeof News>;
 export type NewsItemT = z.infer<typeof NewsItem>;
+export type NewsAlsoInT = z.infer<typeof NewsAlsoIn>;
+export type NewsSourceKindT = z.infer<typeof NewsSourceKind>;
+export type NewsSourceT = z.infer<typeof NewsSource>;
+export type NewsSourcesT = z.infer<typeof NewsSources>;
+export type NewsMetaT = z.infer<typeof NewsMeta>;
 export type SquadT = z.infer<typeof Squad>;
 export type MatchT = z.infer<typeof Match>;
 export type PlayerT = z.infer<typeof Player>;

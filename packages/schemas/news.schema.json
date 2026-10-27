@@ -1,20 +1,130 @@
 {
   "$defs": {
+    "NewsAlsoIn": {
+      "additionalProperties": false,
+      "description": "Otro medio que public\u00f3 la misma noticia (ADR 0016).",
+      "properties": {
+        "sourceId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceid"
+        },
+        "sourceName": {
+          "title": "Sourcename",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sourceName",
+        "url"
+      ],
+      "title": "NewsAlsoIn",
+      "type": "object"
+    },
     "NewsItem": {
       "additionalProperties": false,
-      "description": "Titular agregado de un medio (contrato m\u00ednimo de H5; H6 a\u00f1adir\u00e1 la ingesta).",
+      "description": "Titular agregado de un medio (H6, ADR 0016).\n\nSolo se publica lo que entrega el feed: t\u00edtulo, enlace, fecha, miniatura, resumen y\nmetadatos. No se descarga ni se scrapea el cuerpo del art\u00edculo.",
       "properties": {
+        "alsoIn": {
+          "items": {
+            "$ref": "#/$defs/NewsAlsoIn"
+          },
+          "title": "Alsoin",
+          "type": "array"
+        },
+        "durationSeconds": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Durationseconds"
+        },
         "id": {
           "title": "Id",
           "type": "string"
+        },
+        "kind": {
+          "default": "article",
+          "enum": [
+            "article",
+            "video"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "players": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Players",
+          "type": "array"
         },
         "publishedAt": {
           "title": "Publishedat",
           "type": "string"
         },
+        "publishedEstimated": {
+          "default": false,
+          "title": "Publishedestimated",
+          "type": "boolean"
+        },
+        "sourceId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceid"
+        },
+        "sourceKind": {
+          "default": "agregador",
+          "enum": [
+            "club",
+            "local",
+            "nacional",
+            "radio",
+            "agregador",
+            "video"
+          ],
+          "title": "Sourcekind",
+          "type": "string"
+        },
         "sourceName": {
           "title": "Sourcename",
           "type": "string"
+        },
+        "summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Summary"
         },
         "tags": {
           "items": {
@@ -42,6 +152,18 @@
         "url": {
           "title": "Url",
           "type": "string"
+        },
+        "videoId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Videoid"
         }
       },
       "required": [
@@ -53,16 +175,115 @@
       ],
       "title": "NewsItem",
       "type": "object"
+    },
+    "NewsMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "capturedAt": {
+          "title": "Capturedat",
+          "type": "string"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/NewsSourceMeta"
+          },
+          "title": "Sources",
+          "type": "array"
+        }
+      },
+      "required": [
+        "capturedAt"
+      ],
+      "title": "NewsMeta",
+      "type": "object"
+    },
+    "NewsSourceMeta": {
+      "additionalProperties": false,
+      "description": "Diagn\u00f3stico por feed: lo que la app no necesita pero s\u00ed quien mantiene la ingesta.",
+      "properties": {
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        },
+        "feedId": {
+          "title": "Feedid",
+          "type": "string"
+        },
+        "feedName": {
+          "title": "Feedname",
+          "type": "string"
+        },
+        "items": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Items",
+          "type": "integer"
+        },
+        "lastAttemptAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lastattemptat"
+        },
+        "lastSuccessAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lastsuccessat"
+        }
+      },
+      "required": [
+        "feedId",
+        "feedName"
+      ],
+      "title": "NewsSourceMeta",
+      "type": "object"
     }
   },
   "additionalProperties": false,
   "properties": {
+    "dataHash": {
+      "default": "",
+      "title": "Datahash",
+      "type": "string"
+    },
     "items": {
       "items": {
         "$ref": "#/$defs/NewsItem"
       },
       "title": "Items",
       "type": "array"
+    },
+    "meta": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/NewsMeta"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
     "updatedAt": {
       "title": "Updatedat",

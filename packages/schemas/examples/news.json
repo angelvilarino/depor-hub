@@ -1,14 +1,61 @@
 {
-  "updatedAt": "2026-01-01T00:00:00Z",
+  "updatedAt": "2026-10-27T12:00:00Z",
+  "dataHash": "ejemplo00000000",
   "items": [
     {
       "id": "ejemplo-1",
       "title": "Titular sintético de ejemplo",
       "url": "https://example.test/noticia",
+      "sourceId": "medio-ejemplo",
       "sourceName": "Medio de ejemplo",
-      "publishedAt": "2026-01-01T00:00:00Z",
-      "thumbnailUrl": null,
-      "tags": ["ejemplo"]
+      "sourceKind": "nacional",
+      "kind": "article",
+      "publishedAt": "2026-10-27T10:30:00Z",
+      "publishedEstimated": false,
+      "thumbnailUrl": "https://example.test/miniatura.jpg",
+      "summary": "Extracto sintético publicado por el feed de ejemplo.",
+      "tags": ["fichajes", "player:1"],
+      "players": [1],
+      "alsoIn": [
+        {
+          "sourceName": "Otro medio de ejemplo",
+          "url": "https://example.test/otra-version",
+          "sourceId": "otro-medio"
+        }
+      ],
+      "durationSeconds": null,
+      "videoId": null
+    },
+    {
+      "id": "ejemplo-2",
+      "title": "Vídeo sintético de ejemplo",
+      "url": "https://www.youtube.com/watch?v=ejemplo",
+      "sourceId": "youtube-club",
+      "sourceName": "RC Deportivo",
+      "sourceKind": "video",
+      "kind": "video",
+      "publishedAt": "2026-10-27T09:00:00Z",
+      "publishedEstimated": false,
+      "thumbnailUrl": "https://example.test/video.jpg",
+      "summary": null,
+      "tags": ["cantera"],
+      "players": [],
+      "alsoIn": [],
+      "durationSeconds": null,
+      "videoId": "ejemplo"
     }
-  ]
+  ],
+  "meta": {
+    "capturedAt": "2026-10-27T12:00:00Z",
+    "sources": [
+      {
+        "feedId": "feed-ejemplo",
+        "feedName": "Feed de ejemplo",
+        "items": 2,
+        "error": null,
+        "lastAttemptAt": "2026-10-27T12:00:00Z",
+        "lastSuccessAt": "2026-10-27T12:00:00Z"
+      }
+    ]
+  }
 }

@@ -12,10 +12,19 @@ const item = {
   id: 'n1',
   title: 'Titular de prueba',
   url: 'https://example.test/noticia',
+  sourceId: 'medio',
   sourceName: 'Medio de prueba',
+  sourceKind: 'nacional' as const,
+  kind: 'article' as const,
   publishedAt: '2026-10-27T08:00:00Z',
+  publishedEstimated: false,
   thumbnailUrl: null,
+  summary: null,
   tags: [],
+  players: [],
+  alsoIn: [],
+  durationSeconds: null,
+  videoId: null,
 };
 
 beforeAll(async () => {

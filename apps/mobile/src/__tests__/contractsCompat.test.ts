@@ -154,7 +154,7 @@ describe('compatibilidad con JSON anterior a ADR 0014', () => {
   });
 });
 
-describe('contrato mínimo de noticias (H5)', () => {
+describe('compatibilidad con el contrato mínimo de noticias de H5', () => {
   it('acepta un titular con solo los campos obligatorios y rellena defaults', () => {
     const r = News.safeParse({
       updatedAt: '2026-10-27T10:00:00Z',
@@ -170,8 +170,20 @@ describe('contrato mínimo de noticias (H5)', () => {
     });
     expect(r.success).toBe(true);
     if (!r.success) return;
-    expect(r.data.items[0]!.thumbnailUrl).toBeNull();
-    expect(r.data.items[0]!.tags).toEqual([]);
+    const item = r.data.items[0]!;
+    expect(item.thumbnailUrl).toBeNull();
+    expect(item.tags).toEqual([]);
+    expect(item.sourceId).toBeNull();
+    expect(item.sourceKind).toBe('agregador');
+    expect(item.kind).toBe('article');
+    expect(item.publishedEstimated).toBe(false);
+    expect(item.summary).toBeNull();
+    expect(item.players).toEqual([]);
+    expect(item.alsoIn).toEqual([]);
+    expect(item.durationSeconds).toBeNull();
+    expect(item.videoId).toBeNull();
+    expect(r.data.dataHash).toBe('');
+    expect(r.data.meta).toBeNull();
   });
 });
 
