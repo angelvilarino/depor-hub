@@ -1,5 +1,5 @@
-# Estado del proyecto — 26-oct-2026
-H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)** y **H5 (inicio real + cadencia adaptativa)** implementados; H4 y H5 pendientes de verificación final en dispositivo (ver «Verificación H4» y «Verificación H5»). Siguiente: H6 (noticias).
+# Estado del proyecto — 27-oct-2026
+H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio real + cadencia adaptativa)** y **H6 (noticias, vídeos y redes curadas)** implementados; H4, H5 y H6 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5» y «Verificación H6»). Siguiente: H7 (club y legal).
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
@@ -8,7 +8,7 @@ H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calend
 - Fuente del enriquecimiento: BDFutbol (carrera, temporadas, totales, dorsal actual, peso y partidos), Wikipedia ES/GL/EN (contrato, cesión, altura y contraste), Wikidata (lugar, altura, pie, dorsal, redes, alias y sitelinks), ficha oficial del club (altura, pie, foto y redes; autoritativa cuando existe) y overrides manuales para redes y cesión de salida. 37 conflictos visibles en `data/manual/squad_enrich.proposed.yml`: los aplicados llevan `applied` + `resolution`, los no aplicados quedan sin valor.
 - Dos fichas de Wikipedia con fecha de nacimiento distinta a la API (Lucas Noubi y Dani Barcia) se descartaron por identidad; su dorsal se recuperó de BDFutbol. No se empareja por nombre si hay fecha y no coincide.
 - Estados de partido: TIMED = hora confirmada; SCHEDULED = hora NO fijada (00:00:00Z). Solo fecha en SCHEDULED; hora en Europe/Madrid solo en TIMED. No inventar horas.
-- URL de datos: https://angelvilarino.github.io/depor-hub/v1 (meta, standings, fixtures, squad y news opcional). Contrato v1 en packages/schemas (Pydantic origen, Zod espejo).
+- URL de datos: https://angelvilarino.github.io/depor-hub/v1 (meta, standings, fixtures, squad, news, sources y social; los tres últimos opcionales). Contrato v1 en packages/schemas (Pydantic origen, Zod espejo).
 
 ## H3 — Calendario (hecho)
 Ver `docs/adr/0005-calendario-y-recordatorios.md` y `0006-escudos-sede-arbitro.md`.
@@ -78,6 +78,31 @@ python -m depor_hub.cli ingest --if-due --state /tmp/ingest_state.json  # sin re
 ```
 Probar en iPhone: Home con datos reales (próximo partido, cuenta atrás, último resultado, temporada, mini tabla, rival y pie), pulsar «Cómo llegar», «Recordarme» y «Añadir al calendario», abrir un partido y volver, entrar en «Ver tabla completa» y comprobar que Calendario abre en Clasificación, y repetir con modo avión y con datos vacíos.
 
+## H6 — Noticias, vídeos y redes curadas (implementado, ADR 0016)
+- **Catálogo real:** `data/manual/news_feeds.yml` tiene 30 entradas, **21 activas y 9 descartadas** con su motivo. Los descartes no se reintentan: AS (403), Sport (406), Cadena SER (403), Radio Coruña, Faro de Vigo, La Opinión A Coruña y Superdeporte (406), la web del club sin RSS y Deportivo Hoy (DNS inexistente). Los medios bloqueados se cubren con consultas `site:` de Google News; el club, con su canal de YouTube y `site:rcdeportivo.es`.
+- **Pipeline** en `scripts/depor_hub/news/`: `httpx` con User-Agent identificable, timeout, **1 s por dominio**, `ETag`/`If-Modified-Since` y caché en `data/raw/news/`. Normaliza HTML y URLs, descarta `utm_*`, calcula un `id` estable desde la URL canónica, recorta el resumen a 240 caracteres y marca `publishedEstimated` solo cuando el feed no da fecha y no hay una anterior reutilizable. Tolerancia por feed: un medio caído no tumba la ingesta.
+- **Filtro de relevancia:** exige 3 puntos; descarta otros «Deportivo», apellidos comunes sueltos y el `Riazor` de playa/sucesos. Etiquetas cerradas (`fichajes`, `cantera`, `partido`, `rueda-de-prensa`, `lesiones`, `entrenador`, `aficion`, `resultados`) más `player:<id>` y `rival:<slug>`, máximo 12.
+- **Deduplicación:** entre medios distintos, similitud ≥ 0,82 en 7 días; el principal se elige por peso y antigüedad y los demás van a `alsoIn`. Dos entradas del mismo medio solo se fusionan si el titular normalizado es idéntico, para corregir las URLs repetidas de Google News sin mezclar noticias parecidas.
+- **Ventana y rotación:** 14 días y máximo 400 ítems. Las consultas de jugador de Google News rotan de 6 en 6 con un offset en `data/raw/news/state.json`. La ingesta es idempotente: si no cambia el hash, no escribe.
+- **Contrato aditivo:** `NewsItem` gana `sourceId`, `sourceKind`, `kind`, `publishedEstimated`, `summary`, `players`, `alsoIn`, `durationSeconds` y `videoId`; `news.json` añade `meta` y hash propio. `sources.json` publica las fuentes reales para filtros y créditos; `social.json`, los perfiles y pins curados. `meta.json.dataHash` sigue cubriendo solo los cuatro ficheros deportivos.
+- **Vídeos:** el canal oficial del club se publica dentro de `news.json` con `kind: 'video'` y `videoId`; comparten filtros, leídos y paginación con los artículos.
+- **Redes:** `data/manual/social_pins.yml` solo contiene perfiles oficiales verificados (X, Instagram y YouTube). `pins` está vacío a propósito: no se inventan publicaciones ni se scrapea ninguna red.
+- **Workflow:** `news-refresh.yml` cada 30 minutos, con `concurrency.group: data-publish` y `cancel-in-progress: false` compartido con `data-refresh.yml`. Ambos hacen `git pull --rebase` y despliegan Pages desde un checkout fresco de `main`; un test de humo lo comprueba.
+- **App:** `useNews`, `useSources` y `useSocial` con 10 minutos de `staleTime` y **404 opcional**. Pestaña Noticias con miniaturas o monograma, hora relativa, etiquetas, `alsoIn`, filtros por tipo/fuente/etiqueta, búsqueda sin acentos, paginación de 30, pull-to-refresh y leídos persistidos. Enlaces con `expo-web-browser` y respaldo a `Linking`. Home con **5 titulares** sin repetir y «Ver todas».
+- **i18n:** ES y EN con paridad exacta; GL parcial con caída a ES.
+- **Pruebas:** **136 pytest** (33 de noticias, 5 de redes y 4 de workflows) y **172 tests / 22 suites** en la app, incluidos render con 0/1/muchos/error/offline y la lógica de filtros, paginación, top 5, edad y apertura de enlaces.
+
+### Verificación H6
+```bash
+source .venv/bin/activate && ruff check scripts && pytest scripts
+python -m depor_hub.cli schemas && git diff --exit-code packages/schemas
+npm run lint && npm run typecheck && npm test
+python -m depor_hub.cli news audit --write-docs
+python -m depor_hub.cli news ingest --interval 1 --player-queries 6
+python -m depor_hub.cli social
+```
+Probar en iPhone: pestaña Noticias con miniaturas y monogramas, filtros por tipo/fuente/etiqueta, búsqueda, «Cargar más», pull-to-refresh, abrir un artículo y un vídeo, marcar leídos, sección Redes, y Home con cinco titulares y «Ver todas». Repetir con modo avión (la caché sigue visible con el banner) y con `news.json` ausente (la app no debe romperse).
+
 ## Reglas de trabajo que han evitado errores
 - Node 22 (nvm use 22) y venv Python 3.12 (.venv). Aplicar zips con `unzip -o X.zip -d .`, NUNCA reemplazando carpetas en Finder. Commit antes y después de cada hito.
 - Instalar dependencias de la app con `npm install -w apps/mobile <pkg>`; módulos nativos con `(cd apps/mobile && npx expo install <pkg>)`. Nunca `npx expo install -- -w ...`.
@@ -87,4 +112,4 @@ Probar en iPhone: Home con datos reales (próximo partido, cuenta atrás, últim
 - Datos desconocidos = null. Escudos y fotos solo por URL externa con atribución (ADR 0006, 0009 y 0012); sin binarios de imágenes en el repo. Los hechos de fuentes externas no se inventan ni se completan por deducción. En escudos, una imagen apaisada de `P154` se descarta: es preferible un monograma a una foto pintada como escudo.
 
 ## Pendiente
-H6 noticias (ingesta RSS real y ampliación aditiva de `news.json`), H7 club y legal, H8 pulido (reevaluar FlashList si la lista crece, revisión de los 37 conflictos, más tests de render y ampliar overrides de escudos con fuente real), H9 distribución. Huecos honestos que no se rellenan sin fuente fiable: peso de Ede Bright, Teun Gijselhart y Jonathan Asp-Jensen; redes de Teun Gijselhart (cedido al Al Ain, sin redes públicas aportadas); pie y peso de Teun ya resueltos con override contrastado. Escudos: los 6 rivales históricos de Segunda B (Covadonga, Linares, SD Logroñés, San Fernando CD, UD Logroñés y Zamora) siguen en `null`; no se rellenan sin URL y fuente verificables. El balance del entrenador solo cubre la temporada publicada y el staff depende del HTML oficial; el balance del próximo rival solo cubre la temporada publicada. Los titulares de la Home quedan ocultos hasta que H6 publique `news.json` con una fuente auditada. Decisiones abiertas: contactar al club por el uso editorial de las fotos y los escudos, nombre definitivo, identificadores com.deporhub.app provisionales y revisión de términos de BDFutbol antes de una publicación a gran escala.
+H7 club y legal, H8 pulido (reevaluar FlashList si la lista crece, revisión de los 37 conflictos, más tests de render y ampliar overrides de escudos con fuente real), H9 distribución. Huecos honestos que no se rellenan sin fuente fiable: peso de Ede Bright, Teun Gijselhart y Jonathan Asp-Jensen; redes de Teun Gijselhart (cedido al Al Ain, sin redes públicas aportadas); pie y peso de Teun ya resueltos con override contrastado. Escudos: los 6 rivales históricos de Segunda B (Covadonga, Linares, SD Logroñés, San Fernando CD, UD Logroñés y Zamora) siguen en `null`; no se rellenan sin URL y fuente verificables. El balance del entrenador solo cubre la temporada publicada y el staff depende del HTML oficial; el balance del próximo rival solo cubre la temporada publicada. Noticias: Google News no da miniaturas y `social_pins.yml` no tiene pins verificados todavía; se añadirán por Pull Request con URL y fecha reales. Decisiones abiertas: contactar al club por el uso editorial de las fotos, los escudos y los titulares, nombre definitivo, identificadores com.deporhub.app provisionales y revisión de términos de BDFutbol y de los medios antes de una publicación a gran escala.

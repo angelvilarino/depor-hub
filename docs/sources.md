@@ -15,7 +15,7 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 | `data/manual/squad_overrides.yml` | Redes aportadas por el usuario, cesión de salida y contratos publicados en notas del club | Solo enlaces/handles públicos aportados; sin scrapeo de perfiles privados | Manual | En uso (12 jugadores) |
 | `data/manual/club_crests.yml` | Escudos que no resuelven fixtures ni Wikidata | Solo URL y fuente reales; nunca se inventa ni se deduce un id | Manual | En uso (RB Leipzig, escudo apaisado) |
 | `data/manual/coach.yml` | Salida generada de la ficha del entrenador y del cuerpo técnico | Se revisa antes de aplicar; no se inventan etapas ni miembros | Manual / `coach` | En uso (Antonio Hidalgo, 15 etapas, 21 miembros) |
-| **RSS de medios** | Titular, fuente, fecha, enlace | Pendiente por medio | 30-60 min | Auditoría en H6 |
+| **RSS/Atom de medios y YouTube** | Titular, fuente, fecha, miniatura y resumen tal como los publica el feed; nunca el cuerpo del artículo | Solo lo que el feed entrega; User-Agent identificable, 1 s por dominio y `ETag`/`If-Modified-Since`. Los 403/406/429 se documentan y no se rodean | Cada 30 min; 14 días de ventana | En uso: 21 feeds activos y 0 errores en la auditoría del 27-oct-2026 (tabla en «Noticias») |
 | `data/manual/club.yml` | Datos del club | Elaboración propia con fuente | Manual | H7 |
 
 ### Fuentes descartadas para el enriquecimiento (H4)
@@ -25,6 +25,74 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 | **Transfermarkt** | Devuelve 202/bloqueo; no se intenta rodear |
 | **FBref** | 403 de Cloudflare |
 | **LaLiga** | `Crawl-delay: 30`; no se usa como dependencia |
+
+## Noticias (H6)
+
+<!-- news-audit:start -->
+Auditoría automática: **27-Oct-2026 14:50 UTC**. `relevant` aplica el filtro del Depor a los feeds generales.
+
+| Fuente | Tipo | URL | Estado | Ítems | Relevantes | Más reciente | Imagen | Resumen | Nota |
+|---|---|---|---|---:|---:|---|---:|---:|---|
+| La Voz de Galicia · Deportes | local | https://www.lavozdegalicia.es/deportes/index.xml | ok | 24 | 1 | 2026-10-27 12:41Z | 23/24 | 23/24 |  |
+| La Voz de Galicia · A Coruña | local | https://www.lavozdegalicia.es/coruna/index.xml | ok | 52 | 0 | 2026-10-27 12:54Z | 52/52 | 52/52 |  |
+| Galiciapress | local | https://www.galiciapress.es/feed/all | ok | 50 | 0 | 2026-10-27 14:39Z | 32/50 | 50/50 |  |
+| El Ideal Gallego | local | https://www.elidealgallego.com/rss/ | ok | 57 | 2 | 2026-10-27 13:59Z | 57/57 | 34/57 |  |
+| Diario de Ferrol | local | https://www.diariodeferrol.com/rss/ | ok | 53 | 1 | 2026-10-27 04:00Z | 53/53 | 44/53 |  |
+| Marca | nacional | https://e00-marca.uecdn.es/rss/portada.xml | ok | 79 | 0 | 2026-10-21 16:07Z | 79/79 | 75/79 |  |
+| Mundo Deportivo | nacional | https://www.mundodeportivo.com/rss/portada | ok | 100 | 2 | 2026-09-21 10:25Z | 100/100 | 92/100 |  |
+| El Español | nacional | https://www.elespanol.com/rss/ | ok | 30 | 0 | 2026-10-27 13:20Z | 30/30 | 29/30 |  |
+| COPE | radio | https://www.cope.es/api/es/news/rss.xml | ok | 20 | 0 | 2026-10-27 14:40Z | 20/20 | 20/20 |  |
+| Defensa Central | nacional | https://defensacentral.com/uploads/feeds/feed_defensa-central_es.xml | ok | 15 | 0 | 2026-10-27 14:00Z | 15/15 | 15/15 |  |
+| RC Deportivo · YouTube | video | https://www.youtube.com/feeds/videos.xml?channel_id=UCY2s1XaPzO60Hu6M_YZCTgA | ok | 15 | 15 | 2026-10-27 12:54Z | 15/15 | 2/15 |  |
+| Google News · Deportivo de La Coruña | agregador | https://news.google.com/rss/search?q=%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 102 | 39 | 2026-10-27 13:26Z | 0/102 | 102/102 |  |
+| Google News · Depor Riazor | agregador | https://news.google.com/rss/search?q=%22Depor%22%20Riazor&hl=es&gl=ES&ceid=ES:es | ok | 65 | 63 | 2026-10-27 06:00Z | 0/65 | 65/65 |  |
+| Google News · RC Deportivo | agregador | https://news.google.com/rss/search?q=%22RC%20Deportivo%22&hl=es&gl=ES&ceid=ES:es | ok | 102 | 80 | 2026-10-27 14:41Z | 0/102 | 102/102 |  |
+| Google News · AS | nacional | https://news.google.com/rss/search?q=site%3Aas.com%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 100 | 54 | 2026-10-27 12:31Z | 0/100 | 100/100 |  |
+| Google News · Sport | nacional | https://news.google.com/rss/search?q=site%3Asport.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 62 | 30 | 2026-10-26 11:40Z | 0/62 | 62/62 |  |
+| Google News · Cadena SER | radio | https://news.google.com/rss/search?q=site%3Acadenaser.com%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 63 | 40 | 2026-10-25 13:03Z | 0/63 | 63/63 |  |
+| Google News · Faro de Vigo | local | https://news.google.com/rss/search?q=site%3Afarodevigo.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 55 | 21 | 2026-10-24 21:28Z | 0/55 | 55/55 |  |
+| Google News · La Opinión A Coruña | local | https://news.google.com/rss/search?q=site%3Alaopinioncoruna.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 40 | 17 | 2026-07-28 18:40Z | 0/40 | 40/40 |  |
+| Google News · Superdeporte | local | https://news.google.com/rss/search?q=site%3Asuperdeporte.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 100 | 31 | 2026-10-27 10:24Z | 0/100 | 100/100 |  |
+| Google News · Web oficial | club | https://news.google.com/rss/search?q=site%3Arcdeportivo.es&hl=es&gl=ES&ceid=ES:es | ok | 100 | 100 | 2026-10-27 14:41Z | 0/100 | 100/100 |  |
+
+Los feeds con error se deshabilitan en `data/manual/news_feeds.yml`. No se intenta saltar 403/429/captchas ni muros de pago.
+<!-- news-audit:end -->
+
+### Cómo se ingiere
+
+`news ingest` lee RSS/Atom y el canal de YouTube del club, normaliza cada entrada y publica solo lo que el feed entrega. No descarga el cuerpo del artículo ni intenta saltar muros de pago. Cada medio tiene su `id`, su peso y su tipo en `data/manual/news_feeds.yml`; los feeds generales pasan por el filtro de relevancia del Depor.
+
+- **Ritmo:** al menos 1 s entre peticiones al mismo dominio, `ETag`/`If-Modified-Since` y caché de cuerpos en `data/raw/news/`.
+- **Ventana:** 14 días y un máximo de 400 ítems; lo que sale de la ventana deja de publicarse.
+- **Rotación:** las consultas de jugador de Google News se reparten de 6 en 6 con un offset persistido, para no repetir siempre los mismos nombres ni castigar el dominio.
+- **Fechas:** si el feed no trae fecha se reutiliza la del mismo ítem y, si no existe, se marca `publishedEstimated: true`. Nunca se inventa una hora.
+
+### Filtro y deduplicación
+
+El filtro exige 3 puntos de señales del Depor y descarta otros «Deportivo», apellidos comunes sueltos y el `Riazor` de playa o sucesos. La deduplicación agrupa el mismo titular entre medios distintos (similitud ≥ 0,82 en 7 días) y solo fusiona dos entradas del mismo medio cuando el titular normalizado es idéntico. El principal se elige por peso y antigüedad; los demás quedan en `alsoIn`. Los vídeos del club se publican dentro de `news.json` con `kind: 'video'`.
+
+### Redes
+
+`social.json` sale de `data/manual/social_pins.yml`: perfiles oficiales verificados y, si los hay, pins revisados a mano. `pins` está vacío porque no hay publicaciones con URL y fecha estables que se puedan verificar. No se scrapea ninguna red ni se inventan posts, miniaturas o métricas.
+
+### Fuentes descartadas para noticias
+
+| Fuente | Motivo | Respaldo |
+|---|---|---|
+| **Web oficial del club** | Sin RSS propio (404 en `/rss`, `/es/rss` y `/rss.xml`) | YouTube oficial y `site:rcdeportivo.es` en Google News |
+| **AS** | HTTP 403 para el User-Agent identificable; no se rodea | `site:as.com` en Google News |
+| **Sport** | HTTP 406 (WAF) | `site:sport.es` en Google News |
+| **Cadena SER** | HTTP 403 | `site:cadenaser.com` en Google News |
+| **Radio Coruña** | Sin RSS propio y dominio de Cadena SER bloqueado | Google News |
+| **Faro de Vigo** | HTTP 406 (WAF de Prensa Ibérica) | `site:farodevigo.es` en Google News |
+| **La Opinión A Coruña** | HTTP 406 (WAF de Prensa Ibérica) | `site:laopinioncoruna.es` en Google News |
+| **Superdeporte** | HTTP 406 (WAF de Prensa Ibérica) | `site:superdeporte.es` en Google News |
+| **Deportivo Hoy** | El dominio no resuelve (DNS); no se inventa una URL | Ninguno |
+
+### Límites
+
+Google News no entrega miniaturas: la app pinta un monograma con la inicial del medio. Algunos resúmenes llegan vacíos o muy cortos y se muestran tal cual; no se completan con texto del artículo. Los medios con WAF pueden cambiar de comportamiento sin aviso: la auditoría (`news audit`) lo detecta y actualiza la tabla y el catálogo. La ingesta tolera feeds caídos y deja el error en `meta.sources` sin tumbar el resto. Todo el contenido enlaza al medio original; el proyecto no redistribuye el artículo.
+
 
 ## Cadencia de la ingesta
 
@@ -151,7 +219,14 @@ python -m depor_hub.cli enrich --overrides RUTA      # overrides manuales (por d
 python -m depor_hub.cli coach                        # regenera data/manual/coach.yml
 python -m depor_hub.cli coach --apply                # aplica entrenador y staff
 python -m depor_hub.cli enrich --apply --coach data/manual/coach.yml
+python -m depor_hub.cli news audit                   # prueba los feeds y muestra la tabla
+python -m depor_hub.cli news audit --write-docs      # además actualiza docs/sources.md y el catálogo
+python -m depor_hub.cli news ingest                  # publica news.json y sources.json
+python -m depor_hub.cli news ingest --offline        # repite desde data/raw/news sin red
+python -m depor_hub.cli social                       # regenera social.json desde social_pins.yml
 ```
+
+El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 30 minutos y comparte con `Data refresh` el grupo `data-publish`. Los dos hacen rebase antes de empujar y despliegan Pages desde un checkout fresco de `main`.
 
 El workflow `Enrich proposal` (`.github/workflows/enrich.yml`) es manual y solo sube el informe como artefacto. No hace commit.
 
@@ -162,3 +237,5 @@ npm run mobile
 ```
 
 Arranca Expo y un servidor estático de solo lectura sobre `data/public` (puerto 8000). La app deriva la URL del host de Metro; no hay IPs fijas. Para usar los datos publicados, define `EXPO_PUBLIC_DATA_BASE_URL` en `apps/mobile/.env`. Detalles en `docs/adr/0009-fotos-y-fuente-oficial.md`.
+
+
