@@ -1,11 +1,14 @@
 name: Data refresh
 on:
   schedule:
-    - cron: "17 * * * *"
+    # Cada 10 min: --if-due decide 10 min en ventana de partido y 60 min fuera.
+    # GitHub Actions no garantiza puntualidad (mínimo ~5 min entre ejecuciones y
+    # puede retrasarse); el estado real del último refresco vive en la caché.
+    - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs:
       force:
-        description: "Publicar aunque no haya cambios"
+        description: "Publicar aunque no haya cambios y saltarse --if-due"
         type: boolean
         default: false
 
@@ -32,11 +35,24 @@ jobs:
           cache: pip
           cache-dependency-path: scripts/pyproject.toml
       - run: pip install -e scripts
+      - name: Restaurar el último refresco
+        uses: actions/cache/restore@v4
+        with:
+          path: data/raw/ingest_state.json
+          key: ingest-state-${{ github.run_id }}
+          restore-keys: |
+            ingest-state-
       - id: ingest
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
-        run: python -m depor_hub.cli ingest ${{ inputs.force && '--force' || '' }}
+        run: python -m depor_hub.cli ingest --if-due ${{ inputs.force && '--force' || '' }}
+      - name: Guardar el último refresco
+        if: steps.ingest.outputs.refreshed == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: data/raw/ingest_state.json
+          key: ingest-state-${{ github.run_id }}
       - name: Commit de los datos
         if: steps.ingest.outputs.changed == 'true'
         run: |

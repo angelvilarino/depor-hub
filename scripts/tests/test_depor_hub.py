@@ -87,9 +87,10 @@ def test_hash_ignores_timestamps_but_not_content():
     assert t.content_hash(base) != t.content_hash(changed)
 
 
-@pytest.mark.parametrize("name", list(m.FILES))
+@pytest.mark.parametrize("name", [*m.FILES, *m.NEWS_FILES])
 def test_examples_validate(name):
-    m.FILES[name].model_validate_json((EXAMPLES / name).read_text(encoding="utf-8"))
+    model = {**m.FILES, **m.NEWS_FILES}[name]
+    model.model_validate_json((EXAMPLES / name).read_text(encoding="utf-8"))
 
 
 def test_old_squad_json_without_crest_fields_validates_as_null():

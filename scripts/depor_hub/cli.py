@@ -15,6 +15,7 @@ import yaml
 from . import models as m
 from . import source_models as s
 from . import transform as t
+from .cadence import is_due, load_fixtures, read_last_refresh, write_last_refresh
 from .client import Client
 from .enrich import bdfutbol, crests, official, proposal, wikidata, wikipedia
 from .enrich import coach as coach_enrich
@@ -51,7 +52,26 @@ def _team_id() -> int | None:
     return int(value) if value else None
 
 
+def _gh_output(**values: str) -> None:
+    path = os.environ.get("GITHUB_OUTPUT")
+    if not path:
+        return
+    with open(path, "a", encoding="utf-8") as fh:
+        for key, value in values.items():
+            fh.write(f"{key}={value}\n")
+
+
 def cmd_ingest(args: argparse.Namespace) -> int:
+    # `--if-due` sale antes de tocar la red. `--force` salta la comprobación.
+    if args.if_due and not args.force:
+        now = datetime.now(UTC)
+        fixtures = load_fixtures(Path(args.fixtures))
+        last = read_last_refresh(Path(args.state))
+        if not is_due(fixtures, now, last):
+            print("changed=false due=false")
+            _gh_output(changed="false", refreshed="false")
+            return 0
+
     client = _client(Path(args.raw))
     comp = s.FDCompetition.model_validate(client.get(f"/competitions/{COMPETITION}"))
     if not comp.currentSeason:
@@ -94,10 +114,12 @@ def cmd_ingest(args: argparse.Namespace) -> int:
 
     changed = write_if_changed(Path(args.out), files, digest, force=args.force)
     print(f"changed={'true' if changed else 'false'} hash={digest}")
-    gh_out = os.environ.get("GITHUB_OUTPUT")
-    if gh_out:
-        with open(gh_out, "a", encoding="utf-8") as fh:
-            fh.write(f"changed={'true' if changed else 'false'}\n")
+    if args.if_due:
+        # Solo se actualiza el estado cuando se ha hecho una pasada real (aunque no cambie el contenido).
+        write_last_refresh(Path(args.state), datetime.now(UTC))
+        _gh_output(changed="true" if changed else "false", refreshed="true")
+    else:
+        _gh_output(changed="true" if changed else "false")
     return 0
 
 
@@ -156,7 +178,7 @@ def cmd_probe(args: argparse.Namespace) -> int:
 def cmd_schemas(args: argparse.Namespace) -> int:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    for name, model in m.FILES.items():
+    for name, model in {**m.FILES, **m.NEWS_FILES}.items():
         schema = model.model_json_schema(by_alias=True)
         target = out / name.replace(".json", ".schema.json")
         target.write_text(json.dumps(schema, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -472,6 +494,13 @@ def main(argv: list[str] | None = None) -> int:
             sp.add_argument("--extras", default="data/manual/squad_extras.yml")
             sp.add_argument("--coach", default="data/manual/coach.yml")
             sp.add_argument("--force", action="store_true")
+            sp.add_argument(
+                "--if-due",
+                action="store_true",
+                help="Refresca solo si toca según la ventana de partido y el último refresco",
+            )
+            sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+            sp.add_argument("--state", default="data/raw/ingest_state.json")
         sp.set_defaults(fn=fn)
     sp = sub.add_parser("schemas")
     sp.add_argument("--out", default="packages/schemas")
