@@ -1,0 +1,165 @@
+{
+  "$defs": {
+    "SocialPin": {
+      "additionalProperties": false,
+      "description": "Publicaci\u00f3n concreta curada a mano. Nunca se obtiene por scraping.",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "imageUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Imageurl"
+        },
+        "platform": {
+          "enum": [
+            "x",
+            "instagram",
+            "youtube",
+            "tiktok",
+            "facebook",
+            "whatsapp",
+            "twitch",
+            "bluesky",
+            "threads"
+          ],
+          "title": "Platform",
+          "type": "string"
+        },
+        "publishedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publishedat"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "platform",
+        "url",
+        "title"
+      ],
+      "title": "SocialPin",
+      "type": "object"
+    },
+    "SocialProfile": {
+      "additionalProperties": false,
+      "description": "Perfil oficial enlazado desde data/manual/social_pins.yml (ADR 0016).",
+      "properties": {
+        "handle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Handle"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "platform": {
+          "enum": [
+            "x",
+            "instagram",
+            "youtube",
+            "tiktok",
+            "facebook",
+            "whatsapp",
+            "twitch",
+            "bluesky",
+            "threads"
+          ],
+          "title": "Platform",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "platform",
+        "name",
+        "url"
+      ],
+      "title": "SocialProfile",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "dataHash": {
+      "default": "",
+      "title": "Datahash",
+      "type": "string"
+    },
+    "pins": {
+      "items": {
+        "$ref": "#/$defs/SocialPin"
+      },
+      "title": "Pins",
+      "type": "array"
+    },
+    "profiles": {
+      "items": {
+        "$ref": "#/$defs/SocialProfile"
+      },
+      "title": "Profiles",
+      "type": "array"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt"
+  ],
+  "title": "SocialFeed",
+  "type": "object"
+}

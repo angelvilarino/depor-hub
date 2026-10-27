@@ -1,0 +1,31 @@
+{
+  "updatedAt": "2026-10-27T12:00:00Z",
+  "dataHash": "ejemplo00000000",
+  "profiles": [
+    {
+      "id": "club-x",
+      "platform": "x",
+      "name": "RC Deportivo",
+      "url": "https://x.com/RCDeportivo",
+      "handle": "@RCDeportivo"
+    },
+    {
+      "id": "club-youtube",
+      "platform": "youtube",
+      "name": "RC Deportivo",
+      "url": "https://www.youtube.com/@rcdeportivo",
+      "handle": "@rcdeportivo"
+    }
+  ],
+  "pins": [
+    {
+      "id": "pin-ejemplo",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=ejemplo",
+      "title": "Publicación sintética de ejemplo",
+      "publishedAt": "2026-10-27T09:00:00Z",
+      "imageUrl": "https://example.test/pin.jpg",
+      "source": "RC Deportivo"
+    }
+  ]
+}

@@ -187,6 +187,40 @@ class NewsSources(Public):
     sources: list[NewsSource]
 
 
+SocialPlatform = Literal[
+    "x", "instagram", "youtube", "tiktok", "facebook", "whatsapp", "twitch", "bluesky", "threads"
+]
+
+
+class SocialProfile(Public):
+    """Perfil oficial enlazado desde data/manual/social_pins.yml (ADR 0016)."""
+
+    id: str
+    platform: SocialPlatform
+    name: str
+    url: str
+    handle: Optional[str] = None
+
+
+class SocialPin(Public):
+    """Publicación concreta curada a mano. Nunca se obtiene por scraping."""
+
+    id: str
+    platform: SocialPlatform
+    url: str
+    title: str
+    published_at: Optional[IsoDateTime] = None
+    image_url: Optional[str] = None
+    source: Optional[str] = None
+
+
+class SocialFeed(Public):
+    updated_at: IsoDateTime
+    data_hash: str = ""
+    profiles: list[SocialProfile] = Field(default_factory=list)
+    pins: list[SocialPin] = Field(default_factory=list)
+
+
 class Provenance(Public):
     """De dónde sale un dato y con qué confianza (ADR 0008)."""
 
@@ -372,4 +406,5 @@ FILES: dict[str, type[Public]] = {
 NEWS_FILES: dict[str, type[Public]] = {
     "news.json": News,
     "sources.json": NewsSources,
+    "social.json": SocialFeed,
 }

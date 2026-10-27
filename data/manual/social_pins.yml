@@ -1,0 +1,28 @@
+# Perfiles oficiales y publicaciones curadas (H6, ADR 0016).
+#
+# Regla: solo URLs reales y verificadas en la web oficial del club. No se inventan
+# handles, posts, miniaturas ni métricas. `pins` se actualiza por Pull Request con
+# publicaciones concretas; la ingesta no scrapea ninguna red social.
+profiles:
+  - id: club-x
+    platform: x
+    name: RC Deportivo
+    url: https://x.com/RCDeportivo
+    handle: "@RCDeportivo"
+
+  - id: club-instagram
+    platform: instagram
+    name: RC Deportivo
+    url: https://www.instagram.com/rcdeportivo/
+    handle: "@rcdeportivo"
+
+  - id: club-youtube
+    platform: youtube
+    name: RC Deportivo
+    url: https://www.youtube.com/@rcdeportivo
+    handle: "@rcdeportivo"
+
+# Vacío a propósito: no hay publicaciones destacadas verificadas con fecha y URL
+# estables. Cuando se curen, cada entrada necesita id, platform, url, title y, si se
+# conoce, published_at y source. Nunca se rellena por deducción.
+pins: []

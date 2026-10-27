@@ -30,7 +30,13 @@ from .extras import (
     reset_enriched,
     unknown_ids,
 )
+from .news import audit as news_audit
+from .news import ingest as news_ingest
+from .news.feeds import load_feeds
+from .news.http import NewsHttp
+from .news.relevance import build_index
 from .publish import write_if_changed
+from .social import build_social, load_social, write_social
 
 COMPETITION = "PD"
 
@@ -172,6 +178,149 @@ def cmd_probe(args: argparse.Namespace) -> int:
     if mine:
         print(f"Primero: {min(x.utcDate for x in mine)}  Último: {max(x.utcDate for x in mine)}")
     print("\nCrudos guardados en", args.raw)
+    return 0
+
+
+def _load_model(path: Path, model: type) -> object | None:
+    if not path.exists():
+        return None
+    return model.model_validate_json(path.read_text(encoding="utf-8"))
+
+
+def _news_index(squad: m.Squad | None, coach_name: str | None, fixtures: m.Fixtures | None):
+    opponents: list[str] = []
+    for match in fixtures.matches if fixtures else []:
+        opponents.extend([match.home.name, match.away.name])
+    return build_index(squad, coach_name=coach_name, opponents=opponents)
+
+
+def _coach_name(coach_path: Path, squad: m.Squad | None) -> str | None:
+    if coach_path.exists():
+        try:
+            data = yaml.safe_load(coach_path.read_text(encoding="utf-8")) or {}
+            name = (data.get("coach") or {}).get("name")
+            if name:
+                return str(name)
+        except (OSError, yaml.YAMLError):
+            pass
+    return squad.coach.name if squad and squad.coach else None
+
+
+def _news_state(path: Path) -> dict:
+    if not path.exists():
+        return {"playerOffset": 0}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return {"playerOffset": int(data.get("playerOffset", 0))}
+    except (OSError, ValueError, TypeError):
+        return {"playerOffset": 0}
+
+
+def cmd_news_audit(args: argparse.Namespace) -> int:
+    feeds = load_feeds(Path(args.feeds))
+    squad = _load_model(Path(args.squad), m.Squad)
+    fixtures = _load_model(Path(args.fixtures), m.Fixtures)
+    coach_name = _coach_name(Path(args.coach), squad)
+    index = _news_index(squad, coach_name, fixtures)
+    http = NewsHttp(
+        cache_dir=Path(args.raw) / "news",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    try:
+        rows = news_audit.audit_feeds(
+            feeds, http, include_disabled=args.all, index=index
+        )
+    finally:
+        http.close()
+    print(news_audit.format_table(rows))
+    if args.write_docs:
+        if news_audit.update_catalog(Path(args.feeds), feeds, rows):
+            print(f"Catálogo actualizado: {args.feeds}")
+        news_audit.update_docs(Path(args.docs), rows)
+        print(f"Auditoría escrita en {args.docs}")
+    errors = sum(1 for row in rows if row.status == "error")
+    print(f"\nFeeds auditados: {len(rows)} · con error: {errors}")
+    return 0
+
+
+def cmd_news_ingest(args: argparse.Namespace) -> int:
+    feeds = load_feeds(Path(args.feeds))
+    squad = _load_model(Path(args.squad), m.Squad)
+    fixtures = _load_model(Path(args.fixtures), m.Fixtures)
+    coach_name = _coach_name(Path(args.coach), squad)
+    out_dir = Path(args.out)
+    existing = news_ingest.load_existing(out_dir / "news.json")
+    existing_sources = news_ingest.load_existing_sources(out_dir / "sources.json")
+    state_path = Path(args.state)
+    state = _news_state(state_path)
+    http = NewsHttp(
+        cache_dir=Path(args.raw) / "news",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    try:
+        result = news_ingest.run_ingest(
+            feeds=feeds,
+            http=http,
+            squad=squad,
+            coach_name=coach_name,
+            opponents=[
+                name
+                for match in (fixtures.matches if fixtures else [])
+                for name in (match.home.name, match.away.name)
+            ],
+            existing=existing,
+            existing_sources=existing_sources,
+            now=datetime.now(UTC),
+            threshold=args.threshold,
+            dedupe_threshold=args.dedupe_threshold,
+            player_offset=state["playerOffset"],
+            player_count=args.player_queries,
+            force=args.force,
+        )
+    finally:
+        http.close()
+
+    changed = False
+    if not args.dry_run:
+        changed = news_ingest.write_news(out_dir, result, force=args.force)
+        if args.social:
+            social_config = load_social(Path(args.social))
+            social = build_social(
+                social_config,
+                datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            )
+            changed = write_social(out_dir, social, force=args.force) or changed
+        if args.player_queries > 0:
+            state_path.parent.mkdir(parents=True, exist_ok=True)
+            state_path.write_text(
+                json.dumps({"playerOffset": result.next_player_offset}, indent=2) + "\n",
+                encoding="utf-8",
+            )
+    print(
+        f"changed={'true' if changed else 'false'} items={len(result.news.items)} "
+        f"errors={len(result.errors)} hash={result.news.data_hash}"
+    )
+    for error in result.errors:
+        print(f"AVISO: {error}", file=sys.stderr)
+    _gh_output(changed="true" if changed else "false")
+    return 0
+
+
+def cmd_social(args: argparse.Namespace) -> int:
+    config = load_social(Path(args.source))
+    social = build_social(config, datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    changed = False
+    if not args.dry_run:
+        changed = write_social(Path(args.out), social, force=args.force)
+    print(
+        f"changed={'true' if changed else 'false'} profiles={len(social.profiles)} "
+        f"pins={len(social.pins)} hash={social.data_hash}"
+    )
+    _gh_output(changed="true" if changed else "false")
     return 0
 
 
@@ -554,6 +703,47 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--extras", default="data/manual/squad_extras.yml")
     sp.add_argument("--out-dir", default="data/public/v1")
     sp.set_defaults(fn=cmd_coach)
+
+    sp = sub.add_parser("news", help="Audita feeds y publica noticias")
+    nsub = sp.add_subparsers(dest="news_cmd", required=True)
+    audit = nsub.add_parser("audit", help="Prueba los feeds y actualiza docs/sources.md")
+    audit.add_argument("--feeds", default="data/manual/news_feeds.yml")
+    audit.add_argument("--squad", default="data/public/v1/squad.json")
+    audit.add_argument("--coach", default="data/manual/coach.yml")
+    audit.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    audit.add_argument("--raw", default="data/raw")
+    audit.add_argument("--docs", default="docs/sources.md")
+    audit.add_argument("--interval", type=float, default=1.0)
+    audit.add_argument("--offline", action="store_true")
+    audit.add_argument("--all", action="store_true", help="Incluye feeds deshabilitados")
+    audit.add_argument("--write-docs", action="store_true")
+    audit.set_defaults(fn=cmd_news_audit)
+
+    news_ing = nsub.add_parser("ingest", help="Ingiere los feeds y publica news.json")
+    news_ing.add_argument("--feeds", default="data/manual/news_feeds.yml")
+    news_ing.add_argument("--squad", default="data/public/v1/squad.json")
+    news_ing.add_argument("--coach", default="data/manual/coach.yml")
+    news_ing.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    news_ing.add_argument("--out", default="data/public/v1")
+    news_ing.add_argument("--raw", default="data/raw")
+    news_ing.add_argument("--state", default="data/raw/news/state.json")
+    news_ing.add_argument("--interval", type=float, default=1.0)
+    news_ing.add_argument("--threshold", type=int, default=3)
+    news_ing.add_argument("--dedupe-threshold", type=float, default=0.82)
+    news_ing.add_argument("--player-queries", type=int, default=6)
+    news_ing.add_argument("--social", default="data/manual/social_pins.yml")
+    news_ing.add_argument("--offline", action="store_true")
+    news_ing.add_argument("--force", action="store_true")
+    news_ing.add_argument("--dry-run", action="store_true")
+    news_ing.set_defaults(fn=cmd_news_ingest)
+
+    sp = sub.add_parser("social", help="Publica los perfiles y pins curados de redes")
+    sp.add_argument("--source", default="data/manual/social_pins.yml")
+    sp.add_argument("--out", default="data/public/v1")
+    sp.add_argument("--force", action="store_true")
+    sp.add_argument("--dry-run", action="store_true")
+    sp.set_defaults(fn=cmd_social)
+
     args = p.parse_args(argv)
     return args.fn(args)
 
