@@ -1,5 +1,5 @@
 # Estado del proyecto — 26-oct-2026
-H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario) y **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico) implementados**; H4 pendiente de verificación final en dispositivo (ver «Verificación H4»). Siguiente: H5 (inicio).
+H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)** y **H5 (inicio real + cadencia adaptativa)** implementados; H4 y H5 pendientes de verificación final en dispositivo (ver «Verificación H4» y «Verificación H5»). Siguiente: H6 (noticias).
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
@@ -8,7 +8,7 @@ H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calend
 - Fuente del enriquecimiento: BDFutbol (carrera, temporadas, totales, dorsal actual, peso y partidos), Wikipedia ES/GL/EN (contrato, cesión, altura y contraste), Wikidata (lugar, altura, pie, dorsal, redes, alias y sitelinks), ficha oficial del club (altura, pie, foto y redes; autoritativa cuando existe) y overrides manuales para redes y cesión de salida. 37 conflictos visibles en `data/manual/squad_enrich.proposed.yml`: los aplicados llevan `applied` + `resolution`, los no aplicados quedan sin valor.
 - Dos fichas de Wikipedia con fecha de nacimiento distinta a la API (Lucas Noubi y Dani Barcia) se descartaron por identidad; su dorsal se recuperó de BDFutbol. No se empareja por nombre si hay fecha y no coincide.
 - Estados de partido: TIMED = hora confirmada; SCHEDULED = hora NO fijada (00:00:00Z). Solo fecha en SCHEDULED; hora en Europe/Madrid solo en TIMED. No inventar horas.
-- URL de datos: https://angelvilarino.github.io/depor-hub/v1 (meta, standings, fixtures, squad). Contrato v1 en packages/schemas (Pydantic origen, Zod espejo).
+- URL de datos: https://angelvilarino.github.io/depor-hub/v1 (meta, standings, fixtures, squad y news opcional). Contrato v1 en packages/schemas (Pydantic origen, Zod espejo).
 
 ## H3 — Calendario (hecho)
 Ver `docs/adr/0005-calendario-y-recordatorios.md` y `0006-escudos-sede-arbitro.md`.
@@ -59,6 +59,25 @@ python -m depor_hub.cli coach --apply --offline    # segunda pasada: changed=fal
 ```
 Probar en iPhone: `npm run mobile` (sirve `data/public` en local), pestaña Equipo (cuadrícula/lista solo con iconos, buscador con borrar, chips en una fila, cabecera `# / Jugador / Edad`, etiqueta «Cedido» y tarjeta del entrenador), tocar un jugador (hero con dorsal grande, selector «Depor 26-27 | Carrera», tres pestañas, partidos con escudo/enlace, trayectoria con escudos y pendientes), abrir la ficha del entrenador (foto, datos personales, balance, selector jugador/entrenador y staff), abrir una red social y la ficha de la foto, activar «Reducir movimiento» en el sistema y comprobar que el modal no anima, cambiar idioma ES/EN/GL, modo oscuro y modo avión (la plantilla sigue visible con el banner solo si procede).
 
+## H5 — Inicio y cadencia adaptativa (implementado, ADR 0015)
+- **Home real:** `FreshnessBanner` → `NextMatchCard` → `LastResultCard` → `SeasonCard` → `MiniTable` → `OpponentCard` → `HeadlinesBlock` opcional → pie `data.seasonLine`. Refresco manual de `meta`, `standings` y `fixtures`; las noticias nunca convierten la Home en un error global.
+- **Próximo partido:** primer `splitMatches().upcoming` (incluye `IN_PLAY`, `PAUSED` y `POSTPONED`), escudos, nombres, Local/Visitante, jornada, competición, sede con enlace nativo al mapa, fecha larga y hora de Madrid o «Hora por confirmar». `TIMED` tiene cuenta atrás con un único intervalo y sin animaciones; `SCHEDULED` muestra días; en juego muestra marcador y estado; los aplazados muestran su estado. Acciones compartidas con la ficha: `Recordarme` (permiso contextual) y `Añadir al calendario` mediante `useMatchActions(match)`.
+- **Último resultado:** marcador, chip G/E/P con el mismo color y etiqueta que `MatchCard`, jornada y enlace a `/match/[id]`; estado vacío si no hay resultados.
+- **Temporada y tabla:** posición, puntos, PJ, G-E-P, GF-GC y DG desde `standings.json`; últimos cinco resultados en orden cronológico con etiquetas accesibles. Mini tabla de cinco filas centrada en el Depor (desplazada en los extremos) y «Ver tabla completa» → Calendario con `?tab=standings`.
+- **Rival y titulares:** posición y puntos del próximo rival y balance de la temporada si ya se han jugado partidos; las partes sin dato se ocultan. `news.json` es opcional: un 404 significa «sin titulares» y el bloque no se pinta. Contrato mínimo Pydantic + Zod + ejemplo sintético; la ingesta RSS llega en H6.
+- **Lógica pura:** `selectNextMatch`, `selectLastResult`, `miniTableWindow`, `recentForm`, `seasonSummary`, `nextOpponentInfo`, `countdownParts` y utilidades de estado en `apps/mobile/src/features/home/logic.ts`.
+- **Cadencia:** `ingest --if-due` refresca cada 10 min entre −30 min y +3 h del kickoff (`TIMED`/`IN_PLAY`/`PAUSED`) y cada 60 min fuera; sin fixtures o sin estado, refresca. El estado vive en `data/raw/ingest_state.json` y el workflow lo persiste con `actions/cache`; cron cada 10 min y `workflow_dispatch` con `force`. Si no toca, termina con `changed=false due=false` sin tocar la red.
+- **Pruebas:** lógica de Home con datos reales, vacíos, error, `SCHEDULED`, aplazados y CET/CEST; render de Home con los JSON publicados; titulares; limpieza de la cuenta atrás; mapas; cadencia con reloj inyectado.
+
+### Verificación H5
+```bash
+source .venv/bin/activate && ruff check scripts && pytest scripts
+python -m depor_hub.cli schemas && git diff --exit-code packages/schemas
+npm run lint && npm run typecheck && npm test
+python -m depor_hub.cli ingest --if-due --state /tmp/ingest_state.json  # sin red si no toca
+```
+Probar en iPhone: Home con datos reales (próximo partido, cuenta atrás, último resultado, temporada, mini tabla, rival y pie), pulsar «Cómo llegar», «Recordarme» y «Añadir al calendario», abrir un partido y volver, entrar en «Ver tabla completa» y comprobar que Calendario abre en Clasificación, y repetir con modo avión y con datos vacíos.
+
 ## Reglas de trabajo que han evitado errores
 - Node 22 (nvm use 22) y venv Python 3.12 (.venv). Aplicar zips con `unzip -o X.zip -d .`, NUNCA reemplazando carpetas en Finder. Commit antes y después de cada hito.
 - Instalar dependencias de la app con `npm install -w apps/mobile <pkg>`; módulos nativos con `(cd apps/mobile && npx expo install <pkg>)`. Nunca `npx expo install -- -w ...`.
@@ -68,4 +87,4 @@ Probar en iPhone: `npm run mobile` (sirve `data/public` en local), pestaña Equi
 - Datos desconocidos = null. Escudos y fotos solo por URL externa con atribución (ADR 0006, 0009 y 0012); sin binarios de imágenes en el repo. Los hechos de fuentes externas no se inventan ni se completan por deducción. En escudos, una imagen apaisada de `P154` se descarta: es preferible un monograma a una foto pintada como escudo.
 
 ## Pendiente
-H5 inicio, H6 noticias, H7 club y legal, H8 pulido (reevaluar FlashList si la lista crece, revisión de los 37 conflictos, más tests de render y ampliar overrides de escudos con fuente real), H9 distribución. Huecos honestos que no se rellenan sin fuente fiable: peso de Ede Bright, Teun Gijselhart y Jonathan Asp-Jensen; redes de Teun Gijselhart (cedido al Al Ain, sin redes públicas aportadas); pie y peso de Teun ya resueltos con override contrastado. Escudos: los 6 rivales históricos de Segunda B (Covadonga, Linares, SD Logroñés, San Fernando CD, UD Logroñés y Zamora) siguen en `null`; no se rellenan sin URL y fuente verificables. El balance del entrenador solo cubre la temporada publicada y el staff depende del HTML oficial. Decisiones abiertas: contactar al club por el uso editorial de las fotos y los escudos, nombre definitivo, identificadores com.deporhub.app provisionales y revisión de términos de BDFutbol antes de una publicación a gran escala.
+H6 noticias (ingesta RSS real y ampliación aditiva de `news.json`), H7 club y legal, H8 pulido (reevaluar FlashList si la lista crece, revisión de los 37 conflictos, más tests de render y ampliar overrides de escudos con fuente real), H9 distribución. Huecos honestos que no se rellenan sin fuente fiable: peso de Ede Bright, Teun Gijselhart y Jonathan Asp-Jensen; redes de Teun Gijselhart (cedido al Al Ain, sin redes públicas aportadas); pie y peso de Teun ya resueltos con override contrastado. Escudos: los 6 rivales históricos de Segunda B (Covadonga, Linares, SD Logroñés, San Fernando CD, UD Logroñés y Zamora) siguen en `null`; no se rellenan sin URL y fuente verificables. El balance del entrenador solo cubre la temporada publicada y el staff depende del HTML oficial; el balance del próximo rival solo cubre la temporada publicada. Los titulares de la Home quedan ocultos hasta que H6 publique `news.json` con una fuente auditada. Decisiones abiertas: contactar al club por el uso editorial de las fotos y los escudos, nombre definitivo, identificadores com.deporhub.app provisionales y revisión de términos de BDFutbol antes de una publicación a gran escala.

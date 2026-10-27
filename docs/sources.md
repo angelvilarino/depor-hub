@@ -6,7 +6,7 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 
 | Fuente | Aporta | Términos / robots | Frecuencia | Estado |
 |---|---|---|---|---|
-| **football-data.org** (plan gratuito) | Clasificación, partidos, plantilla y entrenador (PD) | Pendiente de revisar términos y atribución | Cron horario; escribe solo si cambia el contenido | En uso. Cobertura 2026-27 en «Sondeo» |
+| **football-data.org** (plan gratuito) | Clasificación, partidos, plantilla y entrenador (PD) | Pendiente de revisar términos y atribución | Adaptativa: cada 10 min entre −30 min y +3 h del kickoff; cada 60 min fuera (ADR 0015). Escribe solo si cambia el contenido | En uso. Cobertura 2026-27 en «Sondeo» |
 | **BDFutbol** (`bdfutbol.com`) | Trayectoria por club y temporada, totales, dorsal de la temporada actual, partidos con el Depor (minutos, goles, tarjetas, marcador) | `robots.txt` permite `/es/`; HTML público. Reutilización pendiente de revisión; solo se guardan hechos, no se redistribuye HTML | Manual / `enrich`; caché en `data/raw/enrich/` | En uso. HTTP 200 en las pruebas del 25-oct-2026 |
 | **Wikipedia ES/EN** (`es.wikipedia.org`, `en.wikipedia.org`) | Dorsal, contrato, procedencia, cesión, altura, peso y lugar de nacimiento; trayectoria del entrenador como jugador y como entrenador | CC BY-SA; se extraen hechos, no texto | Manual / `enrich` | En uso. Se recorren los sitelinks ES/GL/EN de Wikidata; la fecha de nacimiento desambigua |
 | **Wikidata** (`www.wikidata.org`, API de entidades) | Lugar de nacimiento, altura, pie (`P8006`), dorsal con `P54=Q8760`, redes, alias, imagen (`P18`) y sitelinks; entrenador `Q602465` (`P569`, `P19`, `P27`) | CC0 | Manual / `enrich` | En uso |
@@ -25,6 +25,17 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 | **Transfermarkt** | Devuelve 202/bloqueo; no se intenta rodear |
 | **FBref** | 403 de Cloudflare |
 | **LaLiga** | `Crawl-delay: 30`; no se usa como dependencia |
+
+## Cadencia de la ingesta
+
+`python -m depor_hub.cli ingest --if-due` decide antes de tocar la red:
+
+- **Ventana de partido:** desde 30 min antes del kickoff hasta 3 h después, para `TIMED`, `IN_PLAY` y `PAUSED`. Refresco cada 10 min.
+- **Fuera de la ventana:** refresco cada 60 min.
+- **Sin fixtures o sin estado previo:** refresca.
+- **Si no toca:** termina con `changed=false due=false` y no hace peticiones.
+
+El último refresco se guarda en `data/raw/ingest_state.json` (no se deduce de `updatedAt`, que solo cambia cuando cambia el contenido). El workflow `Data refresh` se ejecuta cada 10 min, restaura y guarda ese fichero con `actions/cache` y respeta el límite de 10 peticiones/minuto porque hace una sola pasada por ejecución. `workflow_dispatch` permite forzar con `force`.
 
 ## Etiqueta y límites aplicados
 
