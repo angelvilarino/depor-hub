@@ -75,7 +75,8 @@
     "headlines": "Titulares",
     "headlineMeta": "{{source}} · {{date}}",
     "openHeadline": "Abrir noticia: {{title}} ({{source}})",
-    "openError": "No se ha podido abrir la noticia."
+    "openError": "No se ha podido abrir la noticia.",
+    "seeAllHeadlines": "Ver todas"
   },
   "calendar": {
     "upcoming": "Próximos",
@@ -347,5 +348,71 @@
       "kit_manager": "Utillero"
     },
     "sourceNote": "Datos de Wikidata, Wikipedia y la web oficial del club."
+  },
+  "news": {
+    "openItem": "Abrir noticia: {{title}} ({{source}})",
+    "openHint": "Se abre en el navegador de la app.",
+    "openError": "No se ha podido abrir el enlace.",
+    "unread": "No leída",
+    "estimated": "hora estimada",
+    "alsoIn": "También en: {{sources}}",
+    "video": "Vídeo",
+    "minutes": "{{n}} min",
+    "searchPlaceholder": "Buscar titulares, medio o etiqueta",
+    "searchClear": "Borrar búsqueda",
+    "sources": "Fuentes",
+    "allSources": "Todos los medios",
+    "filterSource": "{{source}}: {{count}} noticias",
+    "tagsTitle": "Etiquetas",
+    "allTags": "Todas",
+    "filterTag": "{{tag}}: {{count}} noticias",
+    "clearFilters": "Quitar filtros",
+    "markAllRead_one": "Marcar leída ({{count}})",
+    "markAllRead_other": "Marcar leídas ({{count}})",
+    "kind": {
+      "all": "Todo",
+      "article": "Artículos",
+      "video": "Vídeos"
+    },
+    "emptyAll": "Todavía no hay noticias publicadas.",
+    "emptyFiltered": "No hay noticias con estos filtros.",
+    "loadMore_one": "Cargar 1 más",
+    "loadMore_other": "Cargar {{count}} más",
+    "count_one": "{{count}} noticia",
+    "count_other": "{{count}} noticias",
+    "socialTitle": "Redes oficiales",
+    "socialNote": "Perfiles verificados del club. No se cargan scripts ni se scrapean redes.",
+    "openProfile": "Abrir {{platform}} de {{name}}",
+    "openPin": "Abrir publicación: {{title}} ({{platform}})",
+    "pinsTitle": "Publicaciones destacadas",
+    "platforms": {
+      "x": "X",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "tiktok": "TikTok",
+      "facebook": "Facebook",
+      "whatsapp": "WhatsApp",
+      "twitch": "Twitch",
+      "bluesky": "Bluesky",
+      "threads": "Threads"
+    },
+    "sourceKind": {
+      "club": "Club",
+      "local": "Local",
+      "nacional": "Nacional",
+      "radio": "Radio",
+      "agregador": "Agregador",
+      "video": "Vídeo"
+    },
+    "tags": {
+      "fichajes": "Fichajes",
+      "cantera": "Cantera",
+      "partido": "Partido",
+      "rueda-de-prensa": "Rueda de prensa",
+      "lesiones": "Lesiones",
+      "entrenador": "Entrenador",
+      "aficion": "Afición",
+      "resultados": "Resultados"
+    }
   }
 }

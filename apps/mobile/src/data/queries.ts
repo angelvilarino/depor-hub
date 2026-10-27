@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import type { z } from 'zod';
 import { DATA_BASE_URL } from '@/config';
 import { DataError, fetchData } from './api';
-import { Fixtures, Meta, News, Squad, Standings } from './schemas';
+import { Fixtures, Meta, News, NewsSources, SocialFeed, Squad, Standings } from './schemas';
 
 export const GC_TIME = 7 * 24 * 60 * 60 * 1000; // la caché persistida vive 7 días
 const STALE_TIME = 5 * 60 * 1000;
+const NEWS_STALE_TIME = 10 * 60 * 1000; // las noticias cambian cada 30 min
 
 function useData<T extends z.ZodType>(name: string, schema: T) {
   return useQuery({
@@ -22,7 +23,11 @@ function useData<T extends z.ZodType>(name: string, schema: T) {
   });
 }
 
-function useOptionalData<T extends z.ZodType>(name: string, schema: T) {
+function useOptionalData<T extends z.ZodType>(
+  name: string,
+  schema: T,
+  staleTime: number = STALE_TIME,
+) {
   return useQuery({
     queryKey: ['data', DATA_BASE_URL, name],
     queryFn: async () => {
@@ -34,7 +39,7 @@ function useOptionalData<T extends z.ZodType>(name: string, schema: T) {
         throw err;
       }
     },
-    staleTime: __DEV__ ? 0 : STALE_TIME,
+    staleTime: __DEV__ ? 0 : staleTime,
     gcTime: GC_TIME,
     retry: (count, err) =>
       !(
@@ -48,4 +53,6 @@ export const useMeta = () => useData('meta.json', Meta);
 export const useStandings = () => useData('standings.json', Standings);
 export const useFixtures = () => useData('fixtures.json', Fixtures);
 export const useSquad = () => useData('squad.json', Squad);
-export const useNews = () => useOptionalData('news.json', News);
+export const useNews = () => useOptionalData('news.json', News, NEWS_STALE_TIME);
+export const useSources = () => useOptionalData('sources.json', NewsSources, NEWS_STALE_TIME);
+export const useSocial = () => useOptionalData('social.json', SocialFeed, NEWS_STALE_TIME);

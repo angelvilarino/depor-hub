@@ -136,5 +136,60 @@
     "staffTitle": "Corpo técnico",
     "staffNote": "Publicado pola web oficial do club.",
     "sourceNote": "Datos de Wikidata, Wikipedia e a web oficial do club."
+  },
+  "home": {
+    "seeAllHeadlines": "Ver todas"
+  },
+  "news": {
+    "openItem": "Abrir nova: {{title}} ({{source}})",
+    "openError": "Non se puido abrir a ligazón.",
+    "unread": "Non lida",
+    "alsoIn": "Tamén en: {{sources}}",
+    "video": "Vídeo",
+    "searchPlaceholder": "Buscar titulares, medio ou etiqueta",
+    "searchClear": "Borrar busca",
+    "sources": "Fontes",
+    "allSources": "Todos os medios",
+    "tagsTitle": "Etiquetas",
+    "allTags": "Todas",
+    "clearFilters": "Quitar filtros",
+    "kind": {
+      "all": "Todo",
+      "article": "Artigos",
+      "video": "Vídeos"
+    },
+    "emptyAll": "Aínda non hai novas publicadas.",
+    "emptyFiltered": "Non hai novas con estes filtros.",
+    "loadMore_other": "Cargar {{count}} máis",
+    "socialTitle": "Redes oficiais",
+    "platforms": {
+      "x": "X",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "tiktok": "TikTok",
+      "facebook": "Facebook",
+      "whatsapp": "WhatsApp",
+      "twitch": "Twitch",
+      "bluesky": "Bluesky",
+      "threads": "Threads"
+    },
+    "sourceKind": {
+      "club": "Club",
+      "local": "Local",
+      "nacional": "Nacional",
+      "radio": "Radio",
+      "agregador": "Agregador",
+      "video": "Vídeo"
+    },
+    "tags": {
+      "fichajes": "Fichaxes",
+      "cantera": "Canteira",
+      "partido": "Partido",
+      "rueda-de-prensa": "Rolda de prensa",
+      "lesiones": "Lesións",
+      "entrenador": "Adestrador",
+      "aficion": "Afección",
+      "resultados": "Resultados"
+    }
   }
 }

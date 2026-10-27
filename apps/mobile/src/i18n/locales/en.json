@@ -75,7 +75,8 @@
     "headlines": "Headlines",
     "headlineMeta": "{{source}} · {{date}}",
     "openHeadline": "Open story: {{title}} ({{source}})",
-    "openError": "Couldn't open the story."
+    "openError": "Couldn't open the story.",
+    "seeAllHeadlines": "See all"
   },
   "calendar": {
     "upcoming": "Upcoming",
@@ -347,5 +348,71 @@
       "kit_manager": "Kit manager"
     },
     "sourceNote": "Data from Wikidata, Wikipedia and the club's official website."
+  },
+  "news": {
+    "openItem": "Open story: {{title}} ({{source}})",
+    "openHint": "It opens in the app's browser.",
+    "openError": "Couldn't open the link.",
+    "unread": "Unread",
+    "estimated": "estimated time",
+    "alsoIn": "Also in: {{sources}}",
+    "video": "Video",
+    "minutes": "{{n}} min",
+    "searchPlaceholder": "Search headlines, outlet or tag",
+    "searchClear": "Clear search",
+    "sources": "Outlets",
+    "allSources": "All outlets",
+    "filterSource": "{{source}}: {{count}} stories",
+    "tagsTitle": "Tags",
+    "allTags": "All",
+    "filterTag": "{{tag}}: {{count}} stories",
+    "clearFilters": "Clear filters",
+    "markAllRead_one": "Mark read ({{count}})",
+    "markAllRead_other": "Mark read ({{count}})",
+    "kind": {
+      "all": "All",
+      "article": "Articles",
+      "video": "Videos"
+    },
+    "emptyAll": "No news published yet.",
+    "emptyFiltered": "No news matches these filters.",
+    "loadMore_one": "Load 1 more",
+    "loadMore_other": "Load {{count}} more",
+    "count_one": "{{count}} story",
+    "count_other": "{{count}} stories",
+    "socialTitle": "Official social accounts",
+    "socialNote": "Verified club accounts. No third-party scripts are loaded and nothing is scraped.",
+    "openProfile": "Open {{name}} on {{platform}}",
+    "openPin": "Open post: {{title}} ({{platform}})",
+    "pinsTitle": "Featured posts",
+    "platforms": {
+      "x": "X",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "tiktok": "TikTok",
+      "facebook": "Facebook",
+      "whatsapp": "WhatsApp",
+      "twitch": "Twitch",
+      "bluesky": "Bluesky",
+      "threads": "Threads"
+    },
+    "sourceKind": {
+      "club": "Club",
+      "local": "Local",
+      "nacional": "National",
+      "radio": "Radio",
+      "agregador": "Aggregator",
+      "video": "Video"
+    },
+    "tags": {
+      "fichajes": "Transfers",
+      "cantera": "Academy",
+      "partido": "Match",
+      "rueda-de-prensa": "Press conference",
+      "lesiones": "Injuries",
+      "entrenador": "Coach",
+      "aficion": "Fans",
+      "resultados": "Results"
+    }
   }
 }

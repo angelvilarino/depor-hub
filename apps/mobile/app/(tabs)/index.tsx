@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { StyleSheet, Text } from 'react-native';
+import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
 import { Screen } from '@/components/Screen';
@@ -117,7 +118,7 @@ export default function Home() {
       {opponent ? <OpponentCard info={opponent} /> : null}
 
       {news.data && news.data.items.length > 0 ? (
-        <HeadlinesBlock items={news.data.items} />
+        <HeadlinesBlock items={news.data.items} onSeeAll={() => router.push('/news')} />
       ) : null}
 
       {meta.data ? (

@@ -220,6 +220,44 @@ export const NewsSources = z.strictObject({
   sources: z.array(NewsSource),
 });
 
+// Redes (H6): solo perfiles y publicaciones curadas a mano. social.json es opcional.
+export const SocialPlatform = z.enum([
+  'x',
+  'instagram',
+  'youtube',
+  'tiktok',
+  'facebook',
+  'whatsapp',
+  'twitch',
+  'bluesky',
+  'threads',
+]);
+
+export const SocialProfile = z.strictObject({
+  id: z.string(),
+  platform: SocialPlatform,
+  name: z.string(),
+  url: z.string(),
+  handle: optionalNull(),
+});
+
+export const SocialPin = z.strictObject({
+  id: z.string(),
+  platform: SocialPlatform,
+  url: z.string(),
+  title: z.string(),
+  publishedAt: optionalNull(),
+  imageUrl: optionalNull(),
+  source: optionalNull(),
+});
+
+export const SocialFeed = z.strictObject({
+  updatedAt: iso,
+  dataHash: z.string().default(''),
+  profiles: z.array(SocialProfile).default([]),
+  pins: z.array(SocialPin).default([]),
+});
+
 export const StaffMember = z.strictObject({
   name: z.string(),
   role: z.string(),
@@ -304,6 +342,10 @@ export type NewsSourceKindT = z.infer<typeof NewsSourceKind>;
 export type NewsSourceT = z.infer<typeof NewsSource>;
 export type NewsSourcesT = z.infer<typeof NewsSources>;
 export type NewsMetaT = z.infer<typeof NewsMeta>;
+export type SocialPlatformT = z.infer<typeof SocialPlatform>;
+export type SocialProfileT = z.infer<typeof SocialProfile>;
+export type SocialPinT = z.infer<typeof SocialPin>;
+export type SocialFeedT = z.infer<typeof SocialFeed>;
 export type SquadT = z.infer<typeof Squad>;
 export type MatchT = z.infer<typeof Match>;
 export type PlayerT = z.infer<typeof Player>;
