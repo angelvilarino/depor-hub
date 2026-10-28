@@ -13,6 +13,7 @@ from pathlib import Path
 import yaml
 
 from . import models as m
+from . import rivals as rivals_ctx
 from . import source_models as s
 from . import transform as t
 from .cadence import is_due, load_fixtures, read_last_refresh, write_last_refresh
@@ -35,7 +36,7 @@ from .news import ingest as news_ingest
 from .news.feeds import load_feeds
 from .news.http import NewsHttp
 from .news.relevance import build_index
-from .publish import write_if_changed
+from .publish import write_if_changed, write_optional
 from .social import build_social, load_social, write_social
 
 COMPETITION = "PD"
@@ -114,6 +115,9 @@ def cmd_ingest(args: argparse.Namespace) -> int:
         "fixtures.json": t.dump(fixtures),
         "squad.json": t.dump(squad),
         "meta.json": t.dump(meta),
+        "season.json": t.dump(
+            t.build_season(matches_raw, fixtures, standings, team.id, season, now)
+        ),
     }
     digest = t.content_hash(files)
     files["meta.json"]["dataHash"] = digest
@@ -126,6 +130,74 @@ def cmd_ingest(args: argparse.Namespace) -> int:
         _gh_output(changed="true" if changed else "false", refreshed="true")
     else:
         _gh_output(changed="true" if changed else "false")
+    return 0
+
+
+def _bdfutbol_ids(path: Path) -> dict[int, str]:
+    raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    teams = raw.get("teams") or {}
+    return {int(team_id): str(bdf_id) for team_id, bdf_id in teams.items()}
+
+
+def cmd_rivals(args: argparse.Namespace) -> int:
+    """Publica rivals.json: histórico BDFutbol, entrenador y goleadores por rival."""
+    out_dir = Path(args.out)
+    fixtures = m.Fixtures.model_validate_json(Path(args.fixtures).read_text(encoding="utf-8"))
+    standings = (
+        m.Standings.model_validate_json(Path(args.standings).read_text(encoding="utf-8"))
+        if Path(args.standings).exists()
+        else None
+    )
+    meta = m.Meta.model_validate_json(Path(args.meta).read_text(encoding="utf-8"))
+    bdf_ids = _bdfutbol_ids(Path(args.bdfutbol_teams))
+
+    client = _client(Path(args.raw))
+    teams_raw = s.FDTeams.model_validate(client.get(f"/competitions/{COMPETITION}/teams"))
+    scorers_raw = s.FDScorers.model_validate(
+        client.get(f"/competitions/{COMPETITION}/scorers", params={"limit": 100})
+    )
+
+    http = PoliteClient(
+        cache_dir=Path(args.raw) / "enrich" / "h2h",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    heads: dict[int, m.HeadToHead | None] = {}
+    try:
+        for opponent in rivals_ctx.opponents(fixtures, meta.team.id):
+            bdf_id = bdf_ids.get(opponent.id)
+            if not bdf_id:
+                print(f"AVISO: sin id de BDFutbol para {opponent.name}", file=sys.stderr)
+                heads[opponent.id] = None
+                continue
+            try:
+                heads[opponent.id] = rivals_ctx.fetch_head_to_head(http, bdf_id)
+            except SourceError as exc:
+                print(f"AVISO: sin histórico para {opponent.name}: {exc}", file=sys.stderr)
+                heads[opponent.id] = None
+    finally:
+        http.close()
+
+    now = _now()
+    data = rivals_ctx.build_rivals(
+        meta.season,
+        meta.team.id,
+        fixtures,
+        standings,
+        teams_raw.teams,
+        scorers_raw.scorers,
+        bdf_ids,
+        heads,
+        now,
+    )
+    digest = t.content_hash({"rivals.json": t.dump(data)})
+    changed = write_optional(out_dir, "rivals.json", t.dump(data), m.Rivals, force=args.force)
+    with_history = sum(1 for rival in data.rivals if rival.head_to_head)
+    print(
+        f"rivals={len(data.rivals)} con_historico={with_history} "
+        f"changed={'true' if changed else 'false'} hash={digest}"
+    )
     return 0
 
 
@@ -327,7 +399,7 @@ def cmd_social(args: argparse.Namespace) -> int:
 def cmd_schemas(args: argparse.Namespace) -> int:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    for name, model in {**m.FILES, **m.NEWS_FILES}.items():
+    for name, model in {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}.items():
         schema = model.model_json_schema(by_alias=True)
         target = out / name.replace(".json", ".schema.json")
         target.write_text(json.dumps(schema, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -654,6 +726,17 @@ def main(argv: list[str] | None = None) -> int:
     sp = sub.add_parser("schemas")
     sp.add_argument("--out", default="packages/schemas")
     sp.set_defaults(fn=cmd_schemas)
+    sp = sub.add_parser("rivals", help="Publica el histórico y el contexto de los 19 rivales")
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--standings", default="data/public/v1/standings.json")
+    sp.add_argument("--meta", default="data/public/v1/meta.json")
+    sp.add_argument("--out", default="data/public/v1")
+    sp.add_argument("--raw", default="data/raw")
+    sp.add_argument("--bdfutbol-teams", default="data/manual/bdfutbol_teams.yml")
+    sp.add_argument("--interval", type=float, default=1.0)
+    sp.add_argument("--offline", action="store_true")
+    sp.add_argument("--force", action="store_true")
+    sp.set_defaults(fn=cmd_rivals)
     sp = sub.add_parser("enrich", help="Propone o aplica datos de BDFutbol/Wikidata/Wikipedia")
     sp.add_argument("--squad", default="data/public/v1/squad.json")
     sp.add_argument("--out", default="data/public/v1")

@@ -1,0 +1,1821 @@
+{
+  "updatedAt": "2026-10-28T09:30:46Z",
+  "season": "2026-27",
+  "rivals": [
+    {
+      "team": {
+        "id": 81,
+        "name": "FC Barcelona",
+        "shortName": "Barça",
+        "tla": "FCB",
+        "crestUrl": "https://crests.football-data.org/81.png"
+      },
+      "bdfutbolId": "1",
+      "coach": "Hansi Flick",
+      "keyPlayers": [
+        {
+          "id": 37428,
+          "name": "Raphinha",
+          "goals": 13,
+          "assists": 2,
+          "playedMatches": 9
+        },
+        {
+          "id": 202283,
+          "name": "Lamine Yamal",
+          "goals": 8,
+          "assists": 6,
+          "playedMatches": 10
+        },
+        {
+          "id": 214533,
+          "name": "Fermín López",
+          "goals": 4,
+          "assists": 3,
+          "playedMatches": 10
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=1",
+        "played": 105,
+        "won": 22,
+        "drawn": 20,
+        "lost": 63,
+        "goalsFor": 112,
+        "goalsAgainst": 258,
+        "meetings": [
+          {
+            "date": "2018-04-29",
+            "competition": "Primera División",
+            "round": "Jornada 35",
+            "home": "Deportivo de La Coruña",
+            "away": "Barcelona",
+            "homeGoals": 2,
+            "awayGoals": 4,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-12-17",
+            "competition": "Primera División",
+            "round": "Jornada 16",
+            "home": "Barcelona",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 4,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-03-12",
+            "competition": "Primera División",
+            "round": "Jornada 27",
+            "home": "Deportivo de La Coruña",
+            "away": "Barcelona",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "W"
+          },
+          {
+            "date": "2016-10-15",
+            "competition": "Primera División",
+            "round": "Jornada 8",
+            "home": "Barcelona",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 4,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-04-20",
+            "competition": "Primera División",
+            "round": "Jornada 34",
+            "home": "Deportivo de La Coruña",
+            "away": "Barcelona",
+            "homeGoals": 0,
+            "awayGoals": 8,
+            "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 78,
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL",
+        "crestUrl": "https://crests.football-data.org/78.png"
+      },
+      "bdfutbolId": "7",
+      "coach": "Diego Simeone",
+      "keyPlayers": [
+        {
+          "id": 213278,
+          "name": "Álex Baena",
+          "goals": 5,
+          "assists": 2,
+          "playedMatches": 10
+        },
+        {
+          "id": 16739,
+          "name": "Alejandro Grimaldo",
+          "goals": 3,
+          "assists": 2,
+          "playedMatches": 10
+        },
+        {
+          "id": 8924,
+          "name": "Jonathan David",
+          "goals": 3,
+          "assists": 2,
+          "playedMatches": 7
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=7",
+        "played": 108,
+        "won": 26,
+        "drawn": 26,
+        "lost": 56,
+        "goalsFor": 116,
+        "goalsAgainst": 184,
+        "meetings": [
+          {
+            "date": "2026-10-24",
+            "competition": "Primera División",
+            "round": "Jornada 10",
+            "home": "Atlético de Madrid",
+            "away": "Deportivo de A Coruña",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2026-01-13",
+            "competition": "Copa del Rey",
+            "round": "Octavos de final",
+            "home": "Deportivo de La Coruña",
+            "away": "Atlético de Madrid",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2018-04-01",
+            "competition": "Primera División",
+            "round": "Jornada 30",
+            "home": "Atlético de Madrid",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-11-04",
+            "competition": "Primera División",
+            "round": "Jornada 11",
+            "home": "Deportivo de La Coruña",
+            "away": "Atlético de Madrid",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-03-02",
+            "competition": "Primera División",
+            "round": "Jornada 25",
+            "home": "Deportivo de La Coruña",
+            "away": "Atlético de Madrid",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 86,
+        "name": "Real Madrid CF",
+        "shortName": "Real Madrid",
+        "tla": "RMA",
+        "crestUrl": "https://crests.football-data.org/86.png"
+      },
+      "bdfutbolId": "2",
+      "coach": "José Mourinho",
+      "keyPlayers": [
+        {
+          "id": 3374,
+          "name": "Kylian Mbappé",
+          "goals": 11,
+          "assists": 2,
+          "playedMatches": 10
+        },
+        {
+          "id": 125010,
+          "name": "Jude Bellingham",
+          "goals": 3,
+          "assists": 3,
+          "playedMatches": 10
+        },
+        {
+          "id": 169162,
+          "name": "Arda Guler",
+          "goals": 2,
+          "assists": 2,
+          "playedMatches": 10
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=2",
+        "played": 103,
+        "won": 24,
+        "drawn": 21,
+        "lost": 58,
+        "goalsFor": 128,
+        "goalsAgainst": 210,
+        "meetings": [
+          {
+            "date": "2018-01-21",
+            "competition": "Primera División",
+            "round": "Jornada 20",
+            "home": "Real Madrid",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 7,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-08-20",
+            "competition": "Primera División",
+            "round": "Jornada 1",
+            "home": "Deportivo de La Coruña",
+            "away": "Real Madrid",
+            "homeGoals": 0,
+            "awayGoals": 3,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-04-26",
+            "competition": "Primera División",
+            "round": "Jornada 34",
+            "home": "Deportivo de La Coruña",
+            "away": "Real Madrid",
+            "homeGoals": 2,
+            "awayGoals": 6,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-12-10",
+            "competition": "Primera División",
+            "round": "Jornada 15",
+            "home": "Real Madrid",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 3,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-05-14",
+            "competition": "Primera División",
+            "round": "Jornada 38",
+            "home": "Deportivo de La Coruña",
+            "away": "Real Madrid",
+            "homeGoals": 0,
+            "awayGoals": 2,
+            "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 90,
+        "name": "Real Betis Balompié",
+        "shortName": "Real Betis",
+        "tla": "BET",
+        "crestUrl": "https://crests.football-data.org/90.png"
+      },
+      "bdfutbolId": "8",
+      "coach": "Manuel Pellegrini",
+      "keyPlayers": [
+        {
+          "id": 175941,
+          "name": "Abdessamad Ezzalzouli",
+          "goals": 3,
+          "assists": null,
+          "playedMatches": 7
+        },
+        {
+          "id": 32415,
+          "name": "Cucho Hernández",
+          "goals": 2,
+          "assists": 2,
+          "playedMatches": 9
+        },
+        {
+          "id": 66,
+          "name": "Isco",
+          "goals": 2,
+          "assists": null,
+          "playedMatches": 10
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=8",
+        "played": 76,
+        "won": 25,
+        "drawn": 25,
+        "lost": 26,
+        "goalsFor": 79,
+        "goalsAgainst": 90,
+        "meetings": [
+          {
+            "date": "2026-09-20",
+            "competition": "Primera División",
+            "round": "Jornada 7",
+            "home": "Deportivo de A Coruña",
+            "away": "Betis",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2018-02-12",
+            "competition": "Primera División",
+            "round": "Jornada 23",
+            "home": "Deportivo de La Coruña",
+            "away": "Betis",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-09-16",
+            "competition": "Primera División",
+            "round": "Jornada 4",
+            "home": "Betis",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-03-08",
+            "competition": "Primera División",
+            "round": "Jornada 21",
+            "home": "Deportivo de La Coruña",
+            "away": "Betis",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2016-12-21",
+            "competition": "Copa del Rey",
+            "round": "Dieciseisavos de final (vuelta)",
+            "home": "Deportivo de La Coruña",
+            "away": "Betis",
+            "homeGoals": 3,
+            "awayGoals": 1,
+            "deporResult": "W"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 92,
+        "name": "Real Sociedad de Fútbol",
+        "shortName": "Real Sociedad",
+        "tla": "RSO",
+        "crestUrl": "https://crests.football-data.org/92.png"
+      },
+      "bdfutbolId": "30",
+      "coach": "Pellegrino Matarazzo",
+      "keyPlayers": [
+        {
+          "id": 82516,
+          "name": "Luka Sučić",
+          "goals": 3,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 182319,
+          "name": "Orri Oskarsson",
+          "goals": 3,
+          "assists": null,
+          "playedMatches": 9
+        },
+        {
+          "id": 101182,
+          "name": "Ander Barrenetxea",
+          "goals": 2,
+          "assists": 1,
+          "playedMatches": 10
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=30",
+        "played": 91,
+        "won": 35,
+        "drawn": 24,
+        "lost": 32,
+        "goalsFor": 130,
+        "goalsAgainst": 136,
+        "meetings": [
+          {
+            "date": "2026-10-11",
+            "competition": "Primera División",
+            "round": "Jornada 8",
+            "home": "Real Sociedad",
+            "away": "Deportivo de A Coruña",
+            "homeGoals": 3,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2018-02-02",
+            "competition": "Primera División",
+            "round": "Jornada 22",
+            "home": "Real Sociedad",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 5,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-09-10",
+            "competition": "Primera División",
+            "round": "Jornada 3",
+            "home": "Deportivo de La Coruña",
+            "away": "Real Sociedad",
+            "homeGoals": 2,
+            "awayGoals": 4,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-04-23",
+            "competition": "Primera División",
+            "round": "Jornada 33",
+            "home": "Real Sociedad",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-12-05",
+            "competition": "Primera División",
+            "round": "Jornada 14",
+            "home": "Deportivo de La Coruña",
+            "away": "Real Sociedad",
+            "homeGoals": 5,
+            "awayGoals": 1,
+            "deporResult": "W"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 559,
+        "name": "Sevilla FC",
+        "shortName": "Sevilla FC",
+        "tla": "SEV",
+        "crestUrl": "https://crests.football-data.org/559.png"
+      },
+      "bdfutbolId": "33",
+      "coach": "Luís García",
+      "keyPlayers": [
+        {
+          "id": 213043,
+          "name": "Isaac",
+          "goals": 3,
+          "assists": 1,
+          "playedMatches": 9
+        },
+        {
+          "id": 127657,
+          "name": "Félix Correia",
+          "goals": 2,
+          "assists": 1,
+          "playedMatches": 7
+        },
+        {
+          "id": 226950,
+          "name": "Miguel Ángel Sierra",
+          "goals": 2,
+          "assists": null,
+          "playedMatches": 8
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=33",
+        "played": 110,
+        "won": 39,
+        "drawn": 26,
+        "lost": 45,
+        "goalsFor": 145,
+        "goalsAgainst": 183,
+        "meetings": [
+          {
+            "date": "2026-09-16",
+            "competition": "Primera División",
+            "round": "Jornada 6",
+            "home": "Deportivo de A Coruña",
+            "away": "Sevilla",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2018-04-17",
+            "competition": "Primera División",
+            "round": "Jornada 33",
+            "home": "Deportivo de La Coruña",
+            "away": "Sevilla",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-12-02",
+            "competition": "Primera División",
+            "round": "Jornada 14",
+            "home": "Sevilla",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-04-08",
+            "competition": "Primera División",
+            "round": "Jornada 31",
+            "home": "Sevilla",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 4,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-11-19",
+            "competition": "Primera División",
+            "round": "Jornada 12",
+            "home": "Deportivo de La Coruña",
+            "away": "Sevilla",
+            "homeGoals": 2,
+            "awayGoals": 3,
+            "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 263,
+        "name": "Deportivo Alavés",
+        "shortName": "Alavés",
+        "tla": "ALA",
+        "crestUrl": "https://crests.football-data.org/263.png"
+      },
+      "bdfutbolId": "3",
+      "coach": "Quique Sanchez Flores",
+      "keyPlayers": [
+        {
+          "id": 11113,
+          "name": "Lucas Boyé",
+          "goals": 5,
+          "assists": null,
+          "playedMatches": 9
+        },
+        {
+          "id": 8474,
+          "name": "Mariano Díaz",
+          "goals": 3,
+          "assists": 4,
+          "playedMatches": 10
+        },
+        {
+          "id": 290184,
+          "name": "Mikel Rodríguez",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 3
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=3",
+        "played": 60,
+        "won": 21,
+        "drawn": 15,
+        "lost": 24,
+        "goalsFor": 98,
+        "goalsAgainst": 82,
+        "meetings": [
+          {
+            "date": "2021-01-06",
+            "competition": "Copa del Rey",
+            "round": "Ronda 2",
+            "home": "Deportivo de La Coruña",
+            "away": "Alavés",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2018-02-17",
+            "competition": "Primera División",
+            "round": "Jornada 24",
+            "home": "Alavés",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-09-20",
+            "competition": "Primera División",
+            "round": "Jornada 5",
+            "home": "Deportivo de La Coruña",
+            "away": "Alavés",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "W"
+          },
+          {
+            "date": "2017-02-18",
+            "competition": "Primera División",
+            "round": "Jornada 23",
+            "home": "Deportivo de La Coruña",
+            "away": "Alavés",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-01-11",
+            "competition": "Copa del Rey",
+            "round": "Octavos de final (vuelta)",
+            "home": "Alavés",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 77,
+        "name": "Athletic Club",
+        "shortName": "Athletic",
+        "tla": "ATH",
+        "crestUrl": "https://crests.football-data.org/77.png"
+      },
+      "bdfutbolId": "6",
+      "coach": "Edin Terzić",
+      "keyPlayers": [
+        {
+          "id": 2294,
+          "name": "Álex Berenguer",
+          "goals": 3,
+          "assists": 4,
+          "playedMatches": 10
+        },
+        {
+          "id": 151439,
+          "name": "Aitor Paredes Casamichana",
+          "goals": 2,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 32629,
+          "name": "Iñaki Williams",
+          "goals": 2,
+          "assists": 2,
+          "playedMatches": 10
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=6",
+        "played": 104,
+        "won": 37,
+        "drawn": 32,
+        "lost": 35,
+        "goalsFor": 142,
+        "goalsAgainst": 160,
+        "meetings": [
+          {
+            "date": "2018-04-14",
+            "competition": "Primera División",
+            "round": "Jornada 32",
+            "home": "Athletic Club",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 3,
+            "deporResult": "W"
+          },
+          {
+            "date": "2017-11-26",
+            "competition": "Primera División",
+            "round": "Jornada 13",
+            "home": "Deportivo de La Coruña",
+            "away": "Athletic Club",
+            "homeGoals": 2,
+            "awayGoals": 2,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-02-11",
+            "competition": "Primera División",
+            "round": "Jornada 22",
+            "home": "Athletic Club",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-09-11",
+            "competition": "Primera División",
+            "round": "Jornada 3",
+            "home": "Deportivo de La Coruña",
+            "away": "Athletic Club",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-03-02",
+            "competition": "Primera División",
+            "round": "Jornada 27",
+            "home": "Athletic Club",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 4,
+            "awayGoals": 1,
+            "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 558,
+        "name": "RC Celta de Vigo",
+        "shortName": "Celta",
+        "tla": "CEL",
+        "crestUrl": "https://crests.football-data.org/558.png"
+      },
+      "bdfutbolId": "11",
+      "coach": "Claudio",
+      "keyPlayers": [
+        {
+          "id": 83406,
+          "name": "Ferran Jutglà",
+          "goals": 2,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 188859,
+          "name": "Pablo Duran",
+          "goals": 2,
+          "assists": null,
+          "playedMatches": 9
+        },
+        {
+          "id": 31019,
+          "name": "Carl Starfelt",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 7
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=11",
+        "played": 133,
+        "won": 49,
+        "drawn": 32,
+        "lost": 52,
+        "goalsFor": 194,
+        "goalsAgainst": 202,
+        "meetings": [
+          {
+            "date": "2018-05-05",
+            "competition": "Primera División",
+            "round": "Jornada 36",
+            "home": "Celta de Vigo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-12-23",
+            "competition": "Primera División",
+            "round": "Jornada 17",
+            "home": "Deportivo de La Coruña",
+            "away": "Celta de Vigo",
+            "homeGoals": 1,
+            "awayGoals": 3,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-03-19",
+            "competition": "Primera División",
+            "round": "Jornada 28",
+            "home": "Deportivo de La Coruña",
+            "away": "Celta de Vigo",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-10-23",
+            "competition": "Primera División",
+            "round": "Jornada 9",
+            "home": "Celta de Vigo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 4,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-04-02",
+            "competition": "Primera División",
+            "round": "Jornada 31",
+            "home": "Celta de Vigo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 94,
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL",
+        "crestUrl": "https://crests.football-data.org/94.png"
+      },
+      "bdfutbolId": "38",
+      "coach": "Inigo Perez",
+      "keyPlayers": [
+        {
+          "id": 136646,
+          "name": "Georges Mikautadze",
+          "goals": 3,
+          "assists": 1,
+          "playedMatches": 10
+        },
+        {
+          "id": 633,
+          "name": "Pape Gueye",
+          "goals": 3,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 150533,
+          "name": "Alberto Moleiro",
+          "goals": 2,
+          "assists": 4,
+          "playedMatches": 10
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=38",
+        "played": 35,
+        "won": 14,
+        "drawn": 9,
+        "lost": 12,
+        "goalsFor": 45,
+        "goalsAgainst": 40,
+        "meetings": [
+          {
+            "date": "2026-09-05",
+            "competition": "Primera División",
+            "round": "Jornada 4",
+            "home": "Villarreal",
+            "away": "Deportivo de A Coruña",
+            "homeGoals": 2,
+            "awayGoals": 3,
+            "deporResult": "W"
+          },
+          {
+            "date": "2018-05-12",
+            "competition": "Primera División",
+            "round": "Jornada 37",
+            "home": "Deportivo de La Coruña",
+            "away": "Villarreal",
+            "homeGoals": 2,
+            "awayGoals": 4,
+            "deporResult": "L"
+          },
+          {
+            "date": "2018-01-07",
+            "competition": "Primera División",
+            "round": "Jornada 18",
+            "home": "Villarreal",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-05-14",
+            "competition": "Primera División",
+            "round": "Jornada 37",
+            "home": "Villarreal",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-01-14",
+            "competition": "Primera División",
+            "round": "Jornada 18",
+            "home": "Deportivo de La Coruña",
+            "away": "Villarreal",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 79,
+        "name": "CA Osasuna",
+        "shortName": "Osasuna",
+        "tla": "OSA",
+        "crestUrl": "https://crests.football-data.org/79.png"
+      },
+      "bdfutbolId": "27",
+      "coach": "Luis Ramis",
+      "keyPlayers": [
+        {
+          "id": 2237,
+          "name": "Ante Budimir",
+          "goals": 7,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 32004,
+          "name": "Kike Barja",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 9
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=27",
+        "played": 80,
+        "won": 38,
+        "drawn": 14,
+        "lost": 28,
+        "goalsFor": 133,
+        "goalsAgainst": 105,
+        "meetings": [
+          {
+            "date": "2021-12-16",
+            "competition": "Copa del Rey",
+            "round": "Ronda 2",
+            "home": "Deportivo de La Coruña",
+            "away": "Osasuna",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2019-04-13",
+            "competition": "Segunda División",
+            "round": "Jornada 34",
+            "home": "Osasuna",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2018-11-24",
+            "competition": "Segunda División",
+            "round": "Jornada 15",
+            "home": "Deportivo de La Coruña",
+            "away": "Osasuna",
+            "homeGoals": 2,
+            "awayGoals": 0,
+            "deporResult": "W"
+          },
+          {
+            "date": "2017-04-30",
+            "competition": "Primera División",
+            "round": "Jornada 35",
+            "home": "Osasuna",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 2,
+            "deporResult": "D"
+          },
+          {
+            "date": "2016-12-18",
+            "competition": "Primera División",
+            "round": "Jornada 16",
+            "home": "Deportivo de La Coruña",
+            "away": "Osasuna",
+            "homeGoals": 2,
+            "awayGoals": 0,
+            "deporResult": "W"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 5335,
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
+      },
+      "bdfutbolId": "29",
+      "coach": "José Alberto López",
+      "keyPlayers": [
+        {
+          "id": 265516,
+          "name": "Yassir Zabiri",
+          "goals": 8,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 274546,
+          "name": "Pablo García",
+          "goals": 2,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 32679,
+          "name": "Andrés Martín",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 6
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=29",
+        "played": 90,
+        "won": 39,
+        "drawn": 18,
+        "lost": 33,
+        "goalsFor": 122,
+        "goalsAgainst": 106,
+        "meetings": [
+          {
+            "date": "2026-01-25",
+            "competition": "Segunda División",
+            "round": "Jornada 23",
+            "home": "Deportivo de La Coruña",
+            "away": "Racing de Santander",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2025-10-19",
+            "competition": "Segunda División",
+            "round": "Jornada 10",
+            "home": "Racing de Santander",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2025-04-27",
+            "competition": "Segunda División",
+            "round": "Jornada 37",
+            "home": "Racing de Santander",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2024-10-27",
+            "competition": "Segunda División",
+            "round": "Jornada 12",
+            "home": "Deportivo de La Coruña",
+            "away": "Racing de Santander",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2022-02-16",
+            "competition": "1ª RFEF",
+            "round": "Jornada 21",
+            "home": "Deportivo de La Coruña",
+            "away": "Racing de Santander",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 88,
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV",
+        "crestUrl": "https://crests.football-data.org/88.png"
+      },
+      "bdfutbolId": "20",
+      "coach": "Luís Castro",
+      "keyPlayers": [
+        {
+          "id": 180282,
+          "name": "Brugui",
+          "goals": 5,
+          "assists": 1,
+          "playedMatches": 9
+        },
+        {
+          "id": 156746,
+          "name": "Iván Romero",
+          "goals": 3,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 98741,
+          "name": "Adrián de la Fuente",
+          "goals": 2,
+          "assists": null,
+          "playedMatches": 8
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=20",
+        "played": 48,
+        "won": 20,
+        "drawn": 8,
+        "lost": 20,
+        "goalsFor": 65,
+        "goalsAgainst": 60,
+        "meetings": [
+          {
+            "date": "2026-10-16",
+            "competition": "Primera División",
+            "round": "Jornada 9",
+            "home": "Deportivo de A Coruña",
+            "away": "Levante",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2025-01-25",
+            "competition": "Segunda División",
+            "round": "Jornada 24",
+            "home": "Deportivo de La Coruña",
+            "away": "Levante",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2024-10-24",
+            "competition": "Segunda División",
+            "round": "Jornada 11",
+            "home": "Levante",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2018-01-27",
+            "competition": "Primera División",
+            "round": "Jornada 21",
+            "home": "Deportivo de La Coruña",
+            "away": "Levante",
+            "homeGoals": 2,
+            "awayGoals": 2,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-08-26",
+            "competition": "Primera División",
+            "round": "Jornada 2",
+            "home": "Levante",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 2,
+            "deporResult": "D"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 285,
+        "name": "Elche CF",
+        "shortName": "Elche",
+        "tla": "ELC",
+        "crestUrl": "https://crests.football-data.org/285.png"
+      },
+      "bdfutbolId": "42",
+      "coach": "Martin Anselmi",
+      "keyPlayers": [
+        {
+          "id": 214497,
+          "name": "Fer Niño",
+          "goals": 6,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 137485,
+          "name": "Germán Valera",
+          "goals": 2,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 244544,
+          "name": "Buba",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 9
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=42",
+        "played": 48,
+        "won": 18,
+        "drawn": 11,
+        "lost": 19,
+        "goalsFor": 48,
+        "goalsAgainst": 62,
+        "meetings": [
+          {
+            "date": "2026-08-17",
+            "competition": "Primera División",
+            "round": "Jornada 1",
+            "home": "Deportivo de A Coruña",
+            "away": "Elche",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2025-06-01",
+            "competition": "Segunda División",
+            "round": "Jornada 42",
+            "home": "Deportivo de La Coruña",
+            "away": "Elche",
+            "homeGoals": 0,
+            "awayGoals": 4,
+            "deporResult": "L"
+          },
+          {
+            "date": "2024-10-13",
+            "competition": "Segunda División",
+            "round": "Jornada 9",
+            "home": "Elche",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "2020-06-23",
+            "competition": "Segunda División",
+            "round": "Jornada 35",
+            "home": "Elche",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "W"
+          },
+          {
+            "date": "2019-11-10",
+            "competition": "Segunda División",
+            "round": "Jornada 15",
+            "home": "Deportivo de La Coruña",
+            "away": "Elche",
+            "homeGoals": 1,
+            "awayGoals": 3,
+            "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 87,
+        "name": "Rayo Vallecano de Madrid",
+        "shortName": "Rayo Vallecano",
+        "tla": "RAY",
+        "crestUrl": "https://crests.football-data.org/87.png"
+      },
+      "bdfutbolId": "5",
+      "coach": "Beñat San José",
+      "keyPlayers": [
+        {
+          "id": 115175,
+          "name": "Sergio Camello",
+          "goals": 7,
+          "assists": 1,
+          "playedMatches": 10
+        },
+        {
+          "id": 32312,
+          "name": "Álvaro García",
+          "goals": 3,
+          "assists": 2,
+          "playedMatches": 10
+        },
+        {
+          "id": 213280,
+          "name": "Adrià Pedrosa",
+          "goals": 1,
+          "assists": 1,
+          "playedMatches": 8
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=5",
+        "played": 56,
+        "won": 26,
+        "drawn": 17,
+        "lost": 13,
+        "goalsFor": 85,
+        "goalsAgainst": 55,
+        "meetings": [
+          {
+            "date": "2020-06-20",
+            "competition": "Segunda División",
+            "round": "Jornada 34",
+            "home": "Deportivo de La Coruña",
+            "away": "Rayo Vallecano",
+            "homeGoals": 3,
+            "awayGoals": 3,
+            "deporResult": "D"
+          },
+          {
+            "date": "2019-09-01",
+            "competition": "Segunda División",
+            "round": "Jornada 3",
+            "home": "Rayo Vallecano",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 3,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-02-01",
+            "competition": "Primera División",
+            "round": "Jornada 22",
+            "home": "Deportivo de La Coruña",
+            "away": "Rayo Vallecano",
+            "homeGoals": 2,
+            "awayGoals": 2,
+            "deporResult": "D"
+          },
+          {
+            "date": "2015-09-14",
+            "competition": "Primera División",
+            "round": "Jornada 3",
+            "home": "Rayo Vallecano",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 3,
+            "deporResult": "W"
+          },
+          {
+            "date": "2015-01-30",
+            "competition": "Primera División",
+            "round": "Jornada 21",
+            "home": "Rayo Vallecano",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "W"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 82,
+        "name": "Getafe CF",
+        "shortName": "Getafe",
+        "tla": "GET",
+        "crestUrl": "https://crests.football-data.org/82.png"
+      },
+      "bdfutbolId": "16",
+      "coach": "Pepe Bordalás",
+      "keyPlayers": [
+        {
+          "id": 152458,
+          "name": "Martin Satriano",
+          "goals": 2,
+          "assists": 1,
+          "playedMatches": 10
+        },
+        {
+          "id": 33132,
+          "name": "Enes Ünal",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 9
+        },
+        {
+          "id": 154000,
+          "name": "RamónTerrats Espacio",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 9
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=16",
+        "played": 25,
+        "won": 7,
+        "drawn": 9,
+        "lost": 9,
+        "goalsFor": 26,
+        "goalsAgainst": 36,
+        "meetings": [
+          {
+            "date": "2026-09-13",
+            "competition": "Primera División",
+            "round": "Jornada 5",
+            "home": "Getafe",
+            "away": "Deportivo de A Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2018-02-28",
+            "competition": "Primera División",
+            "round": "Jornada 26",
+            "home": "Getafe",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 3,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-09-30",
+            "competition": "Primera División",
+            "round": "Jornada 7",
+            "home": "Deportivo de La Coruña",
+            "away": "Getafe",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "W"
+          },
+          {
+            "date": "2016-05-01",
+            "competition": "Primera División",
+            "round": "Jornada 36",
+            "home": "Deportivo de La Coruña",
+            "away": "Getafe",
+            "homeGoals": 0,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2015-12-30",
+            "competition": "Primera División",
+            "round": "Jornada 17",
+            "home": "Getafe",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 80,
+        "name": "RCD Espanyol de Barcelona",
+        "shortName": "Espanyol",
+        "tla": "ESP",
+        "crestUrl": "https://crests.football-data.org/80.png"
+      },
+      "bdfutbolId": "14",
+      "coach": "Manolo González",
+      "keyPlayers": [
+        {
+          "id": 180218,
+          "name": "Roberto Fernández",
+          "goals": 6,
+          "assists": null,
+          "playedMatches": 10
+        },
+        {
+          "id": 278018,
+          "name": "Marcos Fernández",
+          "goals": 1,
+          "assists": 1,
+          "playedMatches": 10
+        },
+        {
+          "id": 149049,
+          "name": "Tyrhys Dolan",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 10
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=14",
+        "played": 104,
+        "won": 35,
+        "drawn": 28,
+        "lost": 41,
+        "goalsFor": 134,
+        "goalsAgainst": 158,
+        "meetings": [
+          {
+            "date": "2018-02-23",
+            "competition": "Primera División",
+            "round": "Jornada 25",
+            "home": "Deportivo de La Coruña",
+            "away": "Espanyol",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-09-24",
+            "competition": "Primera División",
+            "round": "Jornada 6",
+            "home": "Espanyol",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 4,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-05-07",
+            "competition": "Primera División",
+            "round": "Jornada 36",
+            "home": "Deportivo de La Coruña",
+            "away": "Espanyol",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-01-06",
+            "competition": "Primera División",
+            "round": "Jornada 17",
+            "home": "Espanyol",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2016-02-20",
+            "competition": "Primera División",
+            "round": "Jornada 25",
+            "home": "Espanyol",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 95,
+        "name": "Valencia CF",
+        "shortName": "Valencia",
+        "tla": "VAL",
+        "crestUrl": "https://crests.football-data.org/95.png"
+      },
+      "bdfutbolId": "36",
+      "coach": "Carlos Corberán",
+      "keyPlayers": [
+        {
+          "id": 7672,
+          "name": "Umar Sadiq",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 3
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=36",
+        "played": 117,
+        "won": 34,
+        "drawn": 25,
+        "lost": 58,
+        "goalsFor": 127,
+        "goalsAgainst": 193,
+        "meetings": [
+          {
+            "date": "2026-08-30",
+            "competition": "Primera División",
+            "round": "Jornada 3",
+            "home": "Deportivo de A Coruña",
+            "away": "Valencia",
+            "homeGoals": 3,
+            "awayGoals": 1,
+            "deporResult": "W"
+          },
+          {
+            "date": "2018-05-20",
+            "competition": "Primera División",
+            "round": "Jornada 38",
+            "home": "Valencia",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2018-01-13",
+            "competition": "Primera División",
+            "round": "Jornada 19",
+            "home": "Deportivo de La Coruña",
+            "away": "Valencia",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-04-02",
+            "competition": "Primera División",
+            "round": "Jornada 29",
+            "home": "Valencia",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 3,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-10-31",
+            "competition": "Primera División",
+            "round": "Jornada 10",
+            "home": "Deportivo de La Coruña",
+            "away": "Valencia",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 84,
+        "name": "Málaga CF",
+        "shortName": "Málaga",
+        "tla": "MAL",
+        "crestUrl": "https://crests.football-data.org/84.png"
+      },
+      "bdfutbolId": "23",
+      "coach": "Juan Funes",
+      "keyPlayers": [
+        {
+          "id": 221308,
+          "name": "Adrián",
+          "goals": 4,
+          "assists": null,
+          "playedMatches": 6
+        },
+        {
+          "id": 264254,
+          "name": "Chupete",
+          "goals": 1,
+          "assists": null,
+          "playedMatches": 10
+        }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=23",
+        "played": 45,
+        "won": 17,
+        "drawn": 17,
+        "lost": 11,
+        "goalsFor": 60,
+        "goalsAgainst": 49,
+        "meetings": [
+          {
+            "date": "2026-08-24",
+            "competition": "Primera División",
+            "round": "Jornada 2",
+            "home": "Málaga",
+            "away": "Deportivo de A Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2026-04-04",
+            "competition": "Segunda División",
+            "round": "Jornada 34",
+            "home": "Deportivo de La Coruña",
+            "away": "Málaga",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2025-10-12",
+            "competition": "Segunda División",
+            "round": "Jornada 9",
+            "home": "Málaga",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 3,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2025-01-11",
+            "competition": "Segunda División",
+            "round": "Jornada 22",
+            "home": "Málaga",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2024-10-06",
+            "competition": "Segunda División",
+            "round": "Jornada 8",
+            "home": "Deportivo de La Coruña",
+            "away": "Málaga",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          }
+        ]
+      }
+    }
+  ]
+}

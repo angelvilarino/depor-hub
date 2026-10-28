@@ -1,0 +1,44 @@
+{
+  "updatedAt": "2026-01-01T00:00:00Z",
+  "season": "2026-27",
+  "rivals": [
+    {
+      "team": { "id": 2, "name": "Equipo Ejemplo B", "shortName": null, "tla": null, "crestUrl": null },
+      "bdfutbolId": "27",
+      "coach": "Entrenador Ejemplo",
+      "keyPlayers": [
+        { "id": 501, "name": "Delantero Ejemplo", "goals": 5, "assists": 1, "playedMatches": 9 }
+      ],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=27",
+        "played": 80,
+        "won": 38,
+        "drawn": 14,
+        "lost": 28,
+        "goalsFor": 133,
+        "goalsAgainst": 105,
+        "meetings": [
+          {
+            "date": "2021-12-16",
+            "competition": "Copa del Rey",
+            "round": "Ronda 2",
+            "home": "Deportivo de La Coruña",
+            "away": "Osasuna",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": { "id": 3, "name": "Equipo Ejemplo C", "shortName": null, "tla": null, "crestUrl": null },
+      "bdfutbolId": null,
+      "coach": null,
+      "keyPlayers": [],
+      "headToHead": null
+    }
+  ]
+}

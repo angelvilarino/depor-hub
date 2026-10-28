@@ -130,6 +130,209 @@ def _contract_until(p: s.FDPerson) -> str | None:
     return str(until) if until else None
 
 
+DONE_STATUSES = {"FINISHED", "AWARDED"}
+
+
+def _result_for(depor_is_home: bool, home: int, away: int) -> str:
+    mine, theirs = (home, away) if depor_is_home else (away, home)
+    return "W" if mine > theirs else "L" if mine < theirs else "D"
+
+
+def _finished_score(x: s.FDMatch) -> tuple[int, int] | None:
+    home, away = x.score.fullTime.home, x.score.fullTime.away
+    if home is None or away is None:
+        return None
+    return home, away
+
+
+def _accumulated_table(matches: list[s.FDMatch], upto: int) -> list[dict[str, Any]]:
+    """Clasificación acumulada hasta una jornada, solo con partidos terminados."""
+    stats: dict[int, dict[str, Any]] = {}
+    for x in matches:
+        if x.matchday is None or x.matchday > upto or x.status not in DONE_STATUSES:
+            continue
+        score = _finished_score(x)
+        if score is None:
+            continue
+        home, away = score
+        for team, gf, ga in ((x.homeTeam, home, away), (x.awayTeam, away, home)):
+            row = stats.setdefault(
+                team.id, {"team": team, "points": 0, "goals_for": 0, "goals_against": 0}
+            )
+            row["goals_for"] += gf
+            row["goals_against"] += ga
+        if home > away:
+            stats[x.homeTeam.id]["points"] += 3
+        elif home < away:
+            stats[x.awayTeam.id]["points"] += 3
+        else:
+            stats[x.homeTeam.id]["points"] += 1
+            stats[x.awayTeam.id]["points"] += 1
+    return sorted(
+        stats.values(),
+        key=lambda r: (
+            -r["points"],
+            -(r["goals_for"] - r["goals_against"]),
+            -r["goals_for"],
+            _norm(r["team"].name),
+        ),
+    )
+
+
+def _position_evolution(matches: list[s.FDMatch], team_id: int) -> list[m.PositionPoint]:
+    played = sorted(
+        {
+            x.matchday
+            for x in matches
+            if x.matchday is not None
+            and x.status in DONE_STATUSES
+            and team_id in (x.homeTeam.id, x.awayTeam.id)
+            and _finished_score(x) is not None
+        }
+    )
+    out: list[m.PositionPoint] = []
+    for matchday in played:
+        table = _accumulated_table(matches, matchday)
+        for index, row in enumerate(table):
+            if row["team"].id == team_id:
+                out.append(
+                    m.PositionPoint(
+                        matchday=matchday, position=index + 1, points=row["points"]
+                    )
+                )
+                break
+    return out
+
+
+def _recent_form(fixtures: m.Fixtures, limit: int = 5) -> list[m.SeasonFormMatch]:
+    finished = [
+        x
+        for x in fixtures.matches
+        if x.status in DONE_STATUSES
+        and x.score.home is not None
+        and x.score.away is not None
+    ]
+    finished.sort(key=lambda x: x.utc_date, reverse=True)
+    out: list[m.SeasonFormMatch] = []
+    for x in finished[:limit]:
+        mine = x.score.home if x.depor_is_home else x.score.away
+        theirs = x.score.away if x.depor_is_home else x.score.home
+        assert mine is not None and theirs is not None
+        out.append(
+            m.SeasonFormMatch(
+                match_id=x.id,
+                matchday=x.matchday,
+                date=x.utc_date[:10],
+                opponent=x.away if x.depor_is_home else x.home,
+                home=x.depor_is_home,
+                score_for=mine,
+                score_against=theirs,
+                result=_result_for(x.depor_is_home, x.score.home, x.score.away),  # type: ignore[arg-type]
+            )
+        )
+    return out
+
+
+def _what_is_at_stake(
+    standings: m.Standings, team_id: int, next_match: m.Match | None
+) -> m.WhatIsAtStake | None:
+    """Simula solo los puntos del Depor; el resto de la jornada puede cambiarlo."""
+    if next_match is None:
+        return None
+    row = next((r for r in standings.table if r.team.id == team_id), None)
+    if row is None:
+        return None
+    scenarios: list[m.StakeScenario] = []
+    for result, delta in (("W", 3), ("D", 1), ("L", 0)):
+        points = row.points + delta
+        simulated = sorted(
+            ((candidate, points if candidate.team.id == team_id else candidate.points) for candidate in standings.table),
+            key=lambda pair: (
+                -pair[1],
+                -pair[0].goal_difference,
+                -pair[0].goals_for,
+                _norm(pair[0].team.name),
+            ),
+        )
+        index = next(i for i, (candidate, _) in enumerate(simulated) if candidate.team.id == team_id)
+        first = index
+        while first > 0 and simulated[first - 1][1] == points:
+            first -= 1
+        last = index
+        while last + 1 < len(simulated) and simulated[last + 1][1] == points:
+            last += 1
+        scenarios.append(
+            m.StakeScenario(
+                result=result,  # type: ignore[arg-type]
+                points=points,
+                range=m.StakeRange(**{"from": first + 1, "to": last + 1}),
+            )
+        )
+    return m.WhatIsAtStake(
+        position=row.position,
+        points=row.points,
+        scenarios=scenarios,
+        assumption="other_results_unchanged",
+    )
+
+
+def build_season(
+    raw: s.FDMatches,
+    fixtures: m.Fixtures,
+    standings: m.Standings,
+    team_id: int,
+    season: str,
+    updated_at: str,
+) -> m.Season:
+    row = next((r for r in standings.table if r.team.id == team_id), None)
+    if row is None:
+        raise ValueError("El Depor no aparece en la clasificación; no se publica season.json")
+    upcoming = sorted(
+        (x for x in fixtures.matches if x.status not in DONE_STATUSES and x.status != "CANCELLED"),
+        key=lambda x: x.utc_date,
+    )
+    next_match = upcoming[0] if upcoming else None
+    provenance = {
+        "summary": m.Provenance(
+            source="football-data.org", confidence="verified", captured_at=updated_at
+        ),
+        "form": m.Provenance(
+            source="football-data.org", confidence="verified", captured_at=updated_at
+        ),
+        "positionEvolution": m.Provenance(
+            source="football-data.org (cálculo propio por jornada)",
+            confidence="estimated",
+            captured_at=updated_at,
+        ),
+        "whatIsAtStake": m.Provenance(
+            source="football-data.org (simulación solo con los puntos del Depor)",
+            confidence="estimated",
+            captured_at=updated_at,
+        ),
+    }
+    return m.Season(
+        updated_at=updated_at,
+        season=season,
+        matchday=standings.matchday,
+        team=row.team,
+        summary=m.SeasonSummary(
+            position=row.position,
+            points=row.points,
+            played=row.played,
+            won=row.won,
+            drawn=row.draw,
+            lost=row.lost,
+            goals_for=row.goals_for,
+            goals_against=row.goals_against,
+            goal_difference=row.goal_difference,
+        ),
+        form=_recent_form(fixtures),
+        position_evolution=_position_evolution(raw.matches, team_id),
+        what_is_at_stake=_what_is_at_stake(standings, team_id, next_match),
+        provenance=provenance,
+    )
+
+
 def build_squad(team: s.FDTeam, updated_at: str) -> m.Squad:
     coach = None
     if team.coach and (team.coach.name or team.coach.nationality):

@@ -31,6 +31,29 @@ def write_if_changed(
         (out_dir / name).write_text(
             json.dumps(files[name], ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
-    for name, model in m.FILES.items():  # revalida lo escrito
-        model.model_validate_json((out_dir / name).read_text(encoding="utf-8"))
+    for name in files:  # revalida solo lo escrito
+        model = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}.get(name)
+        if model is not None:
+            model.model_validate_json((out_dir / name).read_text(encoding="utf-8"))
+    return True
+
+
+def write_optional(
+    out_dir: Path,
+    name: str,
+    body: dict[str, Any],
+    model: type[m.Public],
+    force: bool = False,
+) -> bool:
+    """Escribe un JSON opcional (rivals.json) comparando solo su contenido."""
+    target = out_dir / name
+    if not force and target.exists():
+        try:
+            if json.loads(target.read_text(encoding="utf-8")) == body:
+                return False
+        except (ValueError, OSError):
+            pass
+    out_dir.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(body, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    model.model_validate_json(target.read_text(encoding="utf-8"))
     return True

@@ -1,0 +1,28 @@
+# Mapa verificado football-data.org -> BDFutbol (temporada 2026-27).
+#
+# Se comprobó abriendo https://www.bdfutbol.com/es/e/e{id}.html y contrastando el
+# nombre largo del club. No se resuelve por búsqueda automática: un homónimo
+# (filial, club histórico) produciría un balance equivocado.
+#
+# Fuente: https://www.bdfutbol.com/es/e/e{id}.html
+teams:
+  81: "1"     # FC Barcelona
+  78: "7"     # Club Atlético de Madrid
+  86: "2"     # Real Madrid CF
+  90: "8"     # Real Betis Balompié
+  92: "30"    # Real Sociedad de Fútbol
+  559: "33"   # Sevilla FC
+  263: "3"    # Deportivo Alavés
+  77: "6"     # Athletic Club
+  558: "11"   # RC Celta de Vigo
+  94: "38"    # Villarreal CF
+  560: "13"   # RC Deportivo La Coruña
+  79: "27"    # CA Osasuna
+  5335: "29"  # Real Racing Club de Santander
+  88: "20"    # Levante UD
+  285: "42"   # Elche CF
+  87: "5"     # Rayo Vallecano de Madrid
+  82: "16"    # Getafe CF
+  80: "14"    # RCD Espanyol de Barcelona
+  95: "36"    # Valencia CF
+  84: "23"    # Málaga CF

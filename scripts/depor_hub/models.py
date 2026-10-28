@@ -83,6 +83,135 @@ class Standings(Public):
     table: list[StandingRow]
 
 
+# --- H5.2: contexto de temporada y rivales (ADR 0017) -------------------------
+
+
+class SeasonSummary(Public):
+    position: int = Field(ge=1)
+    points: int = Field(ge=0)
+    played: int = Field(ge=0)
+    won: int = Field(ge=0)
+    drawn: int = Field(ge=0)
+    lost: int = Field(ge=0)
+    goals_for: int = Field(ge=0)
+    goals_against: int = Field(ge=0)
+    goal_difference: int
+
+
+class SeasonFormMatch(Public):
+    """Partido terminado con el detalle mínimo para explicar la racha."""
+
+    match_id: int
+    matchday: Optional[int] = None
+    date: str  # AAAA-MM-DD
+    opponent: TeamRef
+    home: bool
+    score_for: int = Field(ge=0)
+    score_against: int = Field(ge=0)
+    result: Literal["W", "D", "L"]
+
+    @field_validator("date")
+    @classmethod
+    def _full_date(cls, v: str) -> str:
+        datetime.strptime(v, "%Y-%m-%d")
+        return v
+
+
+class PositionPoint(Public):
+    matchday: int = Field(ge=0)
+    position: int = Field(ge=1)
+    points: int = Field(ge=0)
+
+
+class StakeRange(Public):
+    from_: int = Field(alias="from", ge=1)
+    to: int = Field(ge=1)
+
+
+class StakeScenario(Public):
+    """Qué posición ocuparía el Depor con cada resultado, sin mover al resto."""
+
+    result: Literal["W", "D", "L"]
+    points: int = Field(ge=0)
+    range: StakeRange
+
+
+class WhatIsAtStake(Public):
+    position: int = Field(ge=1)
+    points: int = Field(ge=0)
+    scenarios: list[StakeScenario]
+    # Clave estable; la app la traduce. Nunca se presenta como una certeza.
+    assumption: str = "other_results_unchanged"
+
+
+class Season(Public):
+    updated_at: IsoDateTime
+    season: str
+    matchday: Optional[int] = None
+    team: TeamRef
+    summary: SeasonSummary
+    form: list[SeasonFormMatch] = Field(default_factory=list)
+    position_evolution: list[PositionPoint] = Field(default_factory=list)
+    what_is_at_stake: Optional[WhatIsAtStake] = None
+    provenance: dict[str, Provenance] = Field(default_factory=dict)
+
+
+class HeadToHeadMeeting(Public):
+    date: str
+    competition: str
+    round_: Optional[str] = Field(default=None, alias="round")
+    home: str
+    away: str
+    home_goals: int = Field(ge=0)
+    away_goals: int = Field(ge=0)
+    depor_result: Literal["W", "D", "L"]
+
+    @field_validator("date")
+    @classmethod
+    def _full_date(cls, v: str) -> str:
+        datetime.strptime(v, "%Y-%m-%d")
+        return v
+
+
+class HeadToHead(Public):
+    """Balance histórico completo y los últimos cinco cruces (BDFutbol)."""
+
+    scope: Literal["all_official_matches"] = "all_official_matches"
+    source: str = "BDFutbol"
+    source_url: str
+    played: int = Field(ge=0)
+    won: int = Field(ge=0)
+    drawn: int = Field(ge=0)
+    lost: int = Field(ge=0)
+    goals_for: int = Field(ge=0)
+    goals_against: int = Field(ge=0)
+    meetings: list[HeadToHeadMeeting] = Field(default_factory=list)
+
+
+class KeyPlayer(Public):
+    """Máximo goleador del rival según football-data.org (solo goles, sin inventar asistencias)."""
+
+    id: int
+    name: str
+    goals: int = Field(ge=0)
+    assists: Optional[int] = Field(default=None, ge=0)
+    played_matches: Optional[int] = Field(default=None, ge=0)
+
+
+class Rival(Public):
+    team: TeamRef
+    bdfutbol_id: Optional[str] = None
+    coach: Optional[str] = None
+    key_players: list[KeyPlayer] = Field(default_factory=list)
+    head_to_head: Optional[HeadToHead] = None
+
+
+class Rivals(Public):
+    updated_at: IsoDateTime
+    season: str
+    rivals: list[Rival] = Field(default_factory=list)
+
+
 class Score(Public):
     home: Optional[int] = None
     away: Optional[int] = None
@@ -399,6 +528,7 @@ FILES: dict[str, type[Public]] = {
     "standings.json": Standings,
     "fixtures.json": Fixtures,
     "squad.json": Squad,
+    "season.json": Season,
 }
 
 # Contratos que aún no publica la ingesta (news.json llega en H6) pero que la app
@@ -407,4 +537,10 @@ NEWS_FILES: dict[str, type[Public]] = {
     "news.json": News,
     "sources.json": NewsSources,
     "social.json": SocialFeed,
+}
+
+# Contexto que se publica en su propio comando (rivals.json): la app lo trata como
+# opcional, igual que news.json, y funciona con 404 o con una caché anterior.
+EXTRA_FILES: dict[str, type[Public]] = {
+    "rivals.json": Rivals,
 }

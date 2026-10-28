@@ -1,0 +1,49 @@
+{
+  "updatedAt": "2026-01-01T00:00:00Z",
+  "season": "2026-27",
+  "matchday": 10,
+  "team": { "id": 1, "name": "Equipo Ejemplo A", "shortName": "Ejemplo A", "tla": "EJA", "crestUrl": "https://example.test/crests/eja.svg" },
+  "summary": {
+    "position": 11,
+    "points": 11,
+    "played": 10,
+    "won": 2,
+    "drawn": 5,
+    "lost": 3,
+    "goalsFor": 13,
+    "goalsAgainst": 13,
+    "goalDifference": 0
+  },
+  "form": [
+    {
+      "matchId": 110,
+      "matchday": 10,
+      "date": "2026-10-24",
+      "opponent": { "id": 2, "name": "Equipo Ejemplo B", "shortName": null, "tla": null, "crestUrl": null },
+      "home": false,
+      "scoreFor": 0,
+      "scoreAgainst": 1,
+      "result": "L"
+    }
+  ],
+  "positionEvolution": [
+    { "matchday": 1, "position": 11, "points": 1 },
+    { "matchday": 2, "position": 11, "points": 2 },
+    { "matchday": 10, "position": 11, "points": 11 }
+  ],
+  "whatIsAtStake": {
+    "position": 11,
+    "points": 11,
+    "scenarios": [
+      { "result": "W", "points": 14, "range": { "from": 7, "to": 9 } },
+      { "result": "D", "points": 12, "range": { "from": 9, "to": 11 } },
+      { "result": "L", "points": 11, "range": { "from": 11, "to": 13 } }
+    ],
+    "assumption": "other_results_unchanged"
+  },
+  "provenance": {
+    "summary": { "source": "football-data.org", "confidence": "verified", "capturedAt": "2026-01-01T00:00:00Z" },
+    "positionEvolution": { "source": "football-data.org (cálculo propio por jornada)", "confidence": "estimated", "capturedAt": "2026-01-01T00:00:00Z" },
+    "whatIsAtStake": { "source": "football-data.org (simulación solo con los puntos del Depor)", "confidence": "estimated", "capturedAt": "2026-01-01T00:00:00Z" }
+  }
+}
