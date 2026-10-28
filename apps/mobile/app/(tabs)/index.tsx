@@ -69,9 +69,14 @@ export default function Home() {
   const opponent = teamId !== null ? nextOpponentInfo(matches, table, teamId) : null;
   const miniRows = teamId !== null ? miniTableWindow(table, teamId) : [];
   const recent = last && isRecentResult(last, now) ? last : null;
+  // Una caché de otra temporada no se mezcla con la actual: se usa el respaldo local.
+  const seasonData =
+    season.data && meta.data && season.data.season === meta.data.season ? season.data : null;
+  const rivalsData =
+    rivals.data && meta.data && rivals.data.season === meta.data.season ? rivals.data : null;
   const rival =
     opponent !== null
-      ? (rivals.data?.rivals.find((entry) => entry.team.id === opponent.opponent.id) ?? null)
+      ? (rivalsData?.rivals.find((entry) => entry.team.id === opponent.opponent.id) ?? null)
       : null;
 
   const pending =
@@ -154,12 +159,12 @@ export default function Home() {
 
       {opponent ? <OpponentCard info={opponent} rival={rival} /> : null}
 
-      {season.data?.whatIsAtStake ? (
-        <WhatsAtStakeCard stake={season.data.whatIsAtStake} />
+      {seasonData?.whatIsAtStake ? (
+        <WhatsAtStakeCard stake={seasonData.whatIsAtStake} />
       ) : null}
 
       <SeasonCard
-        season={season.data ?? null}
+        season={seasonData}
         summary={summary}
         form={form}
         rows={miniRows}

@@ -160,6 +160,18 @@ describe('Home', () => {
     expect(screen.getByText('Clasificación')).toBeTruthy();
   });
 
+  it('ignora season.json y rivals.json de otra temporada', async () => {
+    mockSeason = query({ ...seasonData, season: '2025-26' });
+    mockRivals = query({ ...rivalsData, season: '2025-26' });
+
+    await render(<Home />);
+
+    expect(screen.queryByText('Qué se juega')).toBeNull();
+    expect(screen.queryByText('Histórico')).toBeNull();
+    expect(screen.getByText('La temporada')).toBeTruthy();
+    expect(screen.getByText('11º')).toBeTruthy();
+  });
+
   it('muestra el tiempo del estadio cuando la consulta devuelve datos', async () => {
     mockWeather = query({
       temperatureC: 16,
