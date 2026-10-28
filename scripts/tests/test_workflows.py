@@ -21,16 +21,15 @@ def runs(workflow: dict, job: str) -> str:
     return "\n".join(str(step.get("run", "")) for step in steps(workflow, job))
 
 
-def test_both_data_workflows_share_the_publish_lock():
-    refresh = load("data-refresh.yml")
-    news = load("news-refresh.yml")
-    for workflow in (refresh, news):
+def test_all_data_workflows_share_the_publish_lock():
+    for name in ("data-refresh.yml", "news-refresh.yml", "rivals-refresh.yml"):
+        workflow = load(name)
         assert workflow["concurrency"]["group"] == "data-publish"
         assert workflow["concurrency"]["cancel-in-progress"] is False
 
 
-def test_both_workflows_rebase_before_push_and_deploy_from_a_fresh_checkout():
-    for name in ("data-refresh.yml", "news-refresh.yml"):
+def test_all_workflows_rebase_before_push_and_deploy_from_a_fresh_checkout():
+    for name in ("data-refresh.yml", "news-refresh.yml", "rivals-refresh.yml"):
         workflow = load(name)
         body = runs(workflow, "refresh")
         assert "git pull --rebase" in body
@@ -72,3 +71,17 @@ def test_data_refresh_keeps_its_adaptive_cadence():
     crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
     assert "*/10 * * * *" in crons
     assert "ingest --if-due" in runs(workflow, "refresh")
+
+
+def test_rivals_refresh_runs_daily_and_caches_bdfutbol():
+    workflow = load("rivals-refresh.yml")
+    crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
+    assert "17 6 * * *" in crons
+    body = runs(workflow, "refresh")
+    assert "cli rivals" in body
+    paths = [
+        step["with"]["path"]
+        for step in steps(workflow, "refresh")
+        if str(step.get("uses", "")).startswith("actions/cache")
+    ]
+    assert "data/raw/enrich/h2h" in paths
