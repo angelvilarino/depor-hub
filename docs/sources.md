@@ -123,6 +123,28 @@ La clave es la **fecha de nacimiento** de football-data.org + nombre normalizado
 - Wikidata: búsqueda + fecha exacta; si hay varias, descripción de fútbol. Sin coincidencia única, no se usa.
 - Web oficial: fecha exacta y, si hay varias fichas con la misma fecha, coincidencia de algún token del nombre. Se deduplica por `(fecha, foto)` porque el mismo jugador aparece en `/depor` y `/depor-fabril`.
 
+## Contexto de temporada y rivales (H5.2)
+
+| Dato | Fuente | Cómo se obtiene | Límite |
+|---|---|---|---|
+| Resumen, racha y evolución de la posición | football-data.org (`standings`, `matches`) | Cálculo propio por jornada con los partidos terminados; se marca `estimated` | La evolución es una reconstrucción, no una tabla publicada |
+| Qué se juega | football-data.org (`standings`) | Simulación solo con los puntos del Depor; el resto no se mueve | `assumption: other_results_unchanged`; nunca se presenta como certeza |
+| Balance histórico y últimos 5 cruces | BDFutbol `https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=<id>` | HTML público; se leen los totales (`valorpj`, `valorpg`, `valorpp`, `valorpe`, `valorgf`, `valorgc`) y las filas de partidos | Alcance `all_official_matches`; se cita fuente y enlace. `robots.txt` permite `/es/` |
+| Entrenador del rival | football-data.org (`competitions/PD/teams`) | Campo `coach.name` | Si la API no lo da, `null` |
+| Goleadores del rival | football-data.org (`competitions/PD/scorers?limit=100`) | Máximo 3 por equipo, ordenados por goles | Solo goles; asistencias `null` si la fuente no las publica |
+
+El mapa football-data → BDFutbol es manual y verificado en `data/manual/bdfutbol_teams.yml`. No se resuelve por búsqueda automática: un homónimo (filial, club histórico) produciría un balance equivocado. Depor = `13`. Los 19 rivales de la temporada tienen histórico; si una consulta falla, ese rival queda con `headToHead: null` y el resto se publica.
+
+`rivals` se ejecuta a diario (`rivals-refresh.yml`) y no en `ingest`: BDFutbol es más lento y no debe bloquear la cadencia de 10 minutos. La caché vive en `data/raw/enrich/h2h/`.
+
+## Tiempo en la sede (H5.2)
+
+| Dato | Fuente | Cómo se obtiene | Límite |
+|---|---|---|---|
+| Temperatura, cielo, lluvia y viento | **Open-Meteo** (`api.open-meteo.com/v1/forecast`) | Previsión horaria por coordenadas del estadio, zona `Europe/Madrid` | Solo con hora confirmada, coordenadas verificadas y ≤ 16 días. Sin ubicación del usuario |
+
+Solo Riazor tiene coordenadas verificadas (`43.3686, -8.4175`). Las demás sedes ocultan el tiempo hasta que exista una coordenada contrastada. Open-Meteo se usa bajo **CC BY 4.0** y la app muestra «Datos: Open-Meteo». Un fallo de la API no rompe la Home.
+
 ## Fotos y licencias
 
 - Solo se usa **la foto que publica el club** en la ficha oficial del jugador (o en la noticia oficial de presentación si no tiene ficha). Es la foto de perfil y la única que se aplica.
