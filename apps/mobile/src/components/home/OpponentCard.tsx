@@ -93,7 +93,7 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
 
       {form.length > 0 ? (
         <View style={styles.block}>
-          <Text style={styles.label}>{t('home.rival.form')}</Text>
+          <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.form')}</Text>
           <FormChips results={form} />
         </View>
       ) : null}
@@ -104,14 +104,14 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
 
       {rival?.coach ? (
         <View style={styles.lineRow}>
-          <Text style={styles.label}>{t('home.rival.coach')}</Text>
+          <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.coach')}</Text>
           <Text style={{ color: colors.text, fontSize: 15 }}>{rival.coach}</Text>
         </View>
       ) : null}
 
       {rival && rival.keyPlayers.length > 0 ? (
         <View style={styles.block}>
-          <Text style={styles.label}>{t('home.rival.keyPlayers')}</Text>
+          <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.keyPlayers')}</Text>
           {rival.keyPlayers.map((player) => (
             <Text key={player.id} style={{ color: colors.text, fontSize: 14 }}>
               {player.name} · {t('home.rival.goals', { count: player.goals })}
@@ -122,7 +122,7 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
 
       {head ? (
         <View style={styles.block}>
-          <Text style={styles.label}>{t('home.rival.headToHead')}</Text>
+          <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.headToHead')}</Text>
           <Text style={{ color: colors.textMuted, fontSize: 12 }}>
             {t('home.rival.headToHeadScope', { source: head.source })}
           </Text>
@@ -138,7 +138,7 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
           </Text>
           {head.meetings.length > 0 ? (
             <View style={styles.meetings}>
-              <Text style={styles.label}>{t('home.rival.lastMeetings')}</Text>
+              <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.lastMeetings')}</Text>
               {head.meetings.map((meeting) => (
                 <Meeting
                   key={`${meeting.date}-${meeting.home}-${meeting.away}`}
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   header: { gap: spacing.xs },
   teamRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   block: { gap: spacing.xs },
-  label: { color: '#4A5B6C', fontSize: 12, fontWeight: '700', textTransform: 'uppercase' },
+  label: { fontSize: 12, fontWeight: '700', textTransform: 'uppercase' },
   lineRow: { flexDirection: 'row', alignItems: 'baseline', gap: spacing.sm },
   meetings: { gap: 2, marginTop: spacing.xs },
   meeting: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, minHeight: 28 },
