@@ -70,7 +70,7 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
         goalsAgainst: info.balance.goalsAgainst,
       })
     : null;
-  const form = parseForm(info.row?.form ?? null);
+  const form = info.form.length > 0 ? info.form : parseForm(info.row?.form ?? null);
   const head = rival?.headToHead ?? null;
 
   return (

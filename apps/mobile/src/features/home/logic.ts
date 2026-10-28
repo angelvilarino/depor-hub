@@ -30,6 +30,7 @@ export type OpponentInfo = {
   opponent: TeamRefT;
   row: StandingRowT | null;
   balance: OpponentBalance | null;
+  form: FormResult[];
 };
 
 export type CountdownParts = {
@@ -139,6 +140,7 @@ export function nextOpponentInfo(
   let lost = 0;
   let goalsFor = 0;
   let goalsAgainst = 0;
+  const recent: { date: number; result: FormResult }[] = [];
   for (const match of matches) {
     if (!isFinished(match)) continue;
     const isOpponent =
@@ -155,6 +157,16 @@ export function nextOpponentInfo(
     if (result === 'W') won += 1;
     else if (result === 'D') drawn += 1;
     else lost += 1;
+
+    // Racha del rival desde su punto de vista, no desde el del Depor.
+    const opponentIsHome = match.home.id === opponent.id;
+    const rivalFor = opponentIsHome ? match.score.home : match.score.away;
+    const rivalAgainst = opponentIsHome ? match.score.away : match.score.home;
+    if (rivalFor === null || rivalAgainst === null) continue;
+    recent.push({
+      date: Date.parse(match.utcDate),
+      result: rivalFor > rivalAgainst ? 'W' : rivalFor < rivalAgainst ? 'L' : 'D',
+    });
   }
 
   return {
@@ -163,6 +175,10 @@ export function nextOpponentInfo(
     row,
     balance:
       played > 0 ? { played, won, drawn, lost, goalsFor, goalsAgainst } : null,
+    form: recent
+      .sort((a, b) => a.date - b.date)
+      .slice(-5)
+      .map((entry) => entry.result),
   };
 }
 

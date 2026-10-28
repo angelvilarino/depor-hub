@@ -190,9 +190,11 @@ describe('lógica de la Home', () => {
       goalsFor: 2,
       goalsAgainst: 1,
     });
+    expect(info?.form).toEqual(['L', 'D']);
 
     const withoutHistory = nextOpponentInfo([match(3, '2026-11-02T20:00:00Z', 'TIMED')], table, depor.id);
     expect(withoutHistory?.balance).toBeNull();
+    expect(withoutHistory?.form).toEqual([]);
     expect(nextOpponentInfo([], table, depor.id)).toBeNull();
   });
 
