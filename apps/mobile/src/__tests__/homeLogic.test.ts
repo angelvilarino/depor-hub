@@ -2,12 +2,15 @@ import type { MatchT, StandingRowT, TeamRefT } from '@/data/schemas';
 import {
   countdownParts,
   hasCountdown,
+  isRecentResult,
+  matchPhase,
   miniTableWindow,
   nextOpponentInfo,
   recentForm,
   seasonSummary,
   selectLastResult,
   selectNextMatch,
+  selectPostponedNotice,
   showsSeconds,
   utcDayDiff,
 } from '@/features/home/logic';
@@ -99,7 +102,7 @@ const table: StandingRowT[] = [
 ];
 
 describe('lógica de la Home', () => {
-  it('elige el primer próximo partido e incluye en juego y aplazados', () => {
+  it('elige el primer próximo partido jugable y descarta aplazados y cancelados', () => {
     const matches = [
       match(1, '2026-11-10T20:00:00Z', 'TIMED'),
       match(2, '2026-11-01T20:00:00Z', 'IN_PLAY'),
@@ -108,7 +111,16 @@ describe('lógica de la Home', () => {
       match(5, '2026-11-03T20:00:00Z', 'CANCELLED'),
     ];
     expect(selectNextMatch(matches)?.id).toBe(2);
+    expect(selectNextMatch([match(3, '2026-11-05T20:00:00Z', 'POSTPONED')])).toBeNull();
     expect(selectNextMatch([])).toBeNull();
+  });
+
+  it('avisa del aplazado solo si es anterior al próximo partido jugable', () => {
+    const postponed = match(1, '2026-11-03T20:00:00Z', 'POSTPONED');
+    expect(selectPostponedNotice([postponed, match(2, '2026-11-10T20:00:00Z', 'TIMED')])?.id).toBe(1);
+    expect(selectPostponedNotice([postponed, match(2, '2026-11-01T20:00:00Z', 'TIMED')])).toBeNull();
+    expect(selectPostponedNotice([match(2, '2026-11-10T20:00:00Z', 'TIMED')])).toBeNull();
+    expect(selectPostponedNotice([postponed])?.id).toBe(1);
   });
 
   it('elige el resultado más reciente y no confunde un aplazado con un resultado', () => {
@@ -182,6 +194,30 @@ describe('lógica de la Home', () => {
     const withoutHistory = nextOpponentInfo([match(3, '2026-11-02T20:00:00Z', 'TIMED')], table, depor.id);
     expect(withoutHistory?.balance).toBeNull();
     expect(nextOpponentInfo([], table, depor.id)).toBeNull();
+  });
+
+  it('traduce el estado de la API a la fase de presentación', () => {
+    const now = Date.parse('2026-11-02T20:00:00Z');
+    expect(matchPhase(match(1, '2026-11-02T20:00:00Z', 'SCHEDULED'), now)).toBe('tbc');
+    expect(matchPhase(match(2, '2026-11-02T21:00:00Z', 'TIMED'), now)).toBe('upcoming');
+    expect(matchPhase(match(3, '2026-11-02T19:00:00Z', 'TIMED'), now)).toBe('awaiting_result');
+    expect(matchPhase(match(4, '2026-11-02T19:00:00Z', 'IN_PLAY'), now)).toBe('live');
+    expect(matchPhase(match(5, '2026-11-02T19:00:00Z', 'PAUSED'), now)).toBe('live');
+    expect(
+      matchPhase(match(6, '2026-11-02T19:00:00Z', 'FINISHED', depor, osasuna, [2, 1]), now),
+    ).toBe('finished');
+    expect(matchPhase(match(7, '2026-11-02T19:00:00Z', 'FINISHED'), now)).toBe('awaiting_result');
+    expect(matchPhase(match(8, '2026-11-02T19:00:00Z', 'POSTPONED'), now)).toBe('postponed');
+    expect(matchPhase(match(9, '2026-11-02T19:00:00Z', 'SUSPENDED'), now)).toBe('suspended');
+    expect(matchPhase(match(10, '2026-11-02T19:00:00Z', 'CANCELLED'), now)).toBe('cancelled');
+    expect(matchPhase(match(11, '2026-11-02T19:00:00Z', 'OTHER'), now)).toBe('unknown');
+  });
+
+  it('destaca el resultado solo durante 24 horas', () => {
+    const finished = match(1, '2026-10-24T19:00:00Z', 'FINISHED', depor, osasuna, [1, 0]);
+    expect(isRecentResult(finished, Date.parse('2026-10-25T10:00:00Z'))).toBe(true);
+    expect(isRecentResult(finished, Date.parse('2026-10-26T10:00:00Z'))).toBe(false);
+    expect(isRecentResult(match(2, '2026-10-24T19:00:00Z', 'TIMED'), Date.parse('2026-10-25T10:00:00Z'))).toBe(false);
   });
 
   it('descompone la cuenta atrás y no baja de cero', () => {

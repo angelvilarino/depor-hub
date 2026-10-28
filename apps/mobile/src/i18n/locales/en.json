@@ -77,7 +77,66 @@
     "headlineMeta": "{{source}} · {{date}}",
     "openHeadline": "Open story: {{title}} ({{source}})",
     "openError": "Couldn't open the story.",
-    "seeAllHeadlines": "See all"
+    "seeAllHeadlines": "See all",
+    "awaitingResult": "Awaiting update",
+    "phase": {
+      "postponed": "Postponed",
+      "suspended": "Suspended",
+      "cancelled": "Cancelled",
+      "unknown": "Status unavailable"
+    },
+    "finalResult": "Final result",
+    "stake": {
+      "title": "What is at stake",
+      "win": "If they win",
+      "draw": "If they draw",
+      "loss": "If they lose",
+      "points": "{{points}} pts",
+      "range": "{{from}}–{{to}}",
+      "rangeSame": "{{position}}",
+      "assumption": "Simulation using only Depor’s points; the rest of the matchday can change the order."
+    },
+    "weather": {
+      "clear": "Clear",
+      "cloudy": "Cloudy",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "snow": "Snow",
+      "showers": "Showers",
+      "storm": "Storm",
+      "unknown": "Changeable",
+      "precipitation": "{{n}}% rain",
+      "wind": "{{n}} km/h",
+      "attribution": "Data: Open-Meteo"
+    },
+    "rival": {
+      "position": "{{position}} · {{points}} pts",
+      "form": "Form",
+      "seasonBalance": "This season: {{played}} matches, {{won}}W-{{drawn}}D-{{lost}}L and {{goalsFor}}-{{goalsAgainst}}.",
+      "headToHead": "Head-to-head",
+      "headToHeadScope": "All official matches · {{source}}",
+      "headToHeadRecord": "{{played}} matches · {{won}}W-{{drawn}}D-{{lost}}L · {{goalsFor}}-{{goalsAgainst}}",
+      "lastMeetings": "Last 5 meetings",
+      "coach": "Coach",
+      "keyPlayers": "Top scorers",
+      "goals_one": "{{count}} goal",
+      "goals_other": "{{count}} goals",
+      "missing": "No data available."
+    },
+    "seasonCard": {
+      "position": "Position",
+      "points": "Points",
+      "record": "W-D-L",
+      "goals": "GF-GA",
+      "evolution": "Position over time",
+      "evolutionA11y": "Position by matchday: {{points}}.",
+      "form": "Last 5 matches",
+      "formLegend": "W win · D draw · L loss",
+      "formA11y": "{{result}} against {{opponent}} on {{date}}",
+      "tableA11y": "Table: {{position}}, {{team}}, {{points}} points"
+    },
+    "postponedNotice": "Postponed: {{teams}} ({{date}})"
   },
   "competition": {
     "PD": "La Liga",

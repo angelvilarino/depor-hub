@@ -128,6 +128,112 @@ export const Standings = z.strictObject({
   table: z.array(StandingRow),
 });
 
+// Temporada y contexto (H5.2, ADR 0017). Aditivo y opcional: la Home funciona con 404.
+export const SeasonSummary = z.strictObject({
+  position: z.number().int().positive(),
+  points: z.number().int().nonnegative(),
+  played: z.number().int().nonnegative(),
+  won: z.number().int().nonnegative(),
+  drawn: z.number().int().nonnegative(),
+  lost: z.number().int().nonnegative(),
+  goalsFor: z.number().int().nonnegative(),
+  goalsAgainst: z.number().int().nonnegative(),
+  goalDifference: z.number().int(),
+});
+
+export const SeasonFormMatch = z.strictObject({
+  matchId: z.number().int(),
+  matchday: optionalInt(),
+  date: z.string(),
+  opponent: TeamRef,
+  home: z.boolean(),
+  scoreFor: z.number().int().nonnegative(),
+  scoreAgainst: z.number().int().nonnegative(),
+  result: z.enum(['W', 'D', 'L']),
+});
+
+export const PositionPoint = z.strictObject({
+  matchday: z.number().int().nonnegative(),
+  position: z.number().int().positive(),
+  points: z.number().int().nonnegative(),
+});
+
+export const StakeRange = z.strictObject({
+  from: z.number().int().positive(),
+  to: z.number().int().positive(),
+});
+
+export const StakeScenario = z.strictObject({
+  result: z.enum(['W', 'D', 'L']),
+  points: z.number().int().nonnegative(),
+  range: StakeRange,
+});
+
+export const WhatIsAtStake = z.strictObject({
+  position: z.number().int().positive(),
+  points: z.number().int().nonnegative(),
+  scenarios: z.array(StakeScenario).default([]),
+  assumption: z.string().default('other_results_unchanged'),
+});
+
+export const Season = z.strictObject({
+  updatedAt: iso,
+  season: z.string(),
+  matchday: optionalInt(),
+  team: TeamRef,
+  summary: SeasonSummary,
+  form: z.array(SeasonFormMatch).default([]),
+  positionEvolution: z.array(PositionPoint).default([]),
+  whatIsAtStake: WhatIsAtStake.nullable().default(null),
+  provenance: z.record(z.string(), Provenance).default({}),
+});
+
+export const HeadToHeadMeeting = z.strictObject({
+  date: z.string(),
+  competition: z.string(),
+  round: optionalNull(),
+  home: z.string(),
+  away: z.string(),
+  homeGoals: z.number().int().nonnegative(),
+  awayGoals: z.number().int().nonnegative(),
+  deporResult: z.enum(['W', 'D', 'L']),
+});
+
+export const HeadToHead = z.strictObject({
+  scope: z.literal('all_official_matches').default('all_official_matches'),
+  source: z.string().default('BDFutbol'),
+  sourceUrl: z.string(),
+  played: z.number().int().nonnegative(),
+  won: z.number().int().nonnegative(),
+  drawn: z.number().int().nonnegative(),
+  lost: z.number().int().nonnegative(),
+  goalsFor: z.number().int().nonnegative(),
+  goalsAgainst: z.number().int().nonnegative(),
+  meetings: z.array(HeadToHeadMeeting).default([]),
+});
+
+export const KeyPlayer = z.strictObject({
+  id: z.number().int(),
+  name: z.string(),
+  goals: z.number().int().nonnegative(),
+  assists: optionalInt(),
+  playedMatches: optionalInt(),
+});
+
+export const Rival = z.strictObject({
+  team: TeamRef,
+  bdfutbolId: optionalNull(),
+  coach: optionalNull(),
+  keyPlayers: z.array(KeyPlayer).default([]),
+  headToHead: HeadToHead.nullable().default(null),
+});
+
+export const Rivals = z.strictObject({
+  updatedAt: iso,
+  season: z.string(),
+  rivals: z.array(Rival).default([]),
+});
+
 export const Score = z.strictObject({
   home: z.number().int().nullable(),
   away: z.number().int().nullable(),
@@ -334,6 +440,17 @@ export const Squad = z.strictObject({
 export type MetaT = z.infer<typeof Meta>;
 export type StandingsT = z.infer<typeof Standings>;
 export type StandingRowT = z.infer<typeof StandingRow>;
+export type SeasonT = z.infer<typeof Season>;
+export type SeasonSummaryT = z.infer<typeof SeasonSummary>;
+export type SeasonFormMatchT = z.infer<typeof SeasonFormMatch>;
+export type PositionPointT = z.infer<typeof PositionPoint>;
+export type WhatIsAtStakeT = z.infer<typeof WhatIsAtStake>;
+export type StakeScenarioT = z.infer<typeof StakeScenario>;
+export type RivalsT = z.infer<typeof Rivals>;
+export type RivalT = z.infer<typeof Rival>;
+export type HeadToHeadT = z.infer<typeof HeadToHead>;
+export type HeadToHeadMeetingT = z.infer<typeof HeadToHeadMeeting>;
+export type KeyPlayerT = z.infer<typeof KeyPlayer>;
 export type FixturesT = z.infer<typeof Fixtures>;
 export type NewsT = z.infer<typeof News>;
 export type NewsItemT = z.infer<typeof NewsItem>;

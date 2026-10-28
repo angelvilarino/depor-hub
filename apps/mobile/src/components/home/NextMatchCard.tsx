@@ -5,19 +5,19 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Screen';
 import { TeamCrest } from '@/components/TeamCrest';
+import { Countdown } from '@/components/home/Countdown';
+import { WeatherLine } from '@/components/home/WeatherLine';
 import type { MatchT, TeamRefT } from '@/data/schemas';
 import { teamName } from '@/features/calendar/logic';
 import { ReminderSheet } from '@/features/reminders/ReminderSheet';
 import {
-  hasCountdown,
-  isLive,
-  showsSeconds,
+  matchPhase,
   utcDayDiff,
-  type CountdownParts,
 } from '@/features/home/logic';
 import { competitionLabel } from '@/features/home/text';
-import { useCountdown } from '@/features/home/useCountdown';
 import { useMatchActions } from '@/features/home/useMatchActions';
+import { useNow } from '@/features/home/useNow';
+import { useWeather } from '@/features/home/useWeather';
 import { minTouch, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { formatMatchDateShort } from '@/utils/matchTime';
@@ -39,33 +39,6 @@ function TeamSide({ team, side }: { team: TeamRefT; side: string }) {
       </Text>
       <Text style={[styles.sideLabel, { color: colors.textMuted }]}>{side}</Text>
     </View>
-  );
-}
-
-function Countdown({ parts, withSeconds }: { parts: CountdownParts; withSeconds: boolean }) {
-  const { t } = useTranslation();
-  const { colors } = useTheme();
-  if (parts.expired) return null;
-  const units: string[] = [];
-  if (parts.days > 0) units.push(t('home.countdown.days', { n: parts.days }));
-  if (parts.days > 0 || parts.hours > 0) {
-    units.push(t('home.countdown.hours', { n: parts.hours }));
-  }
-  units.push(t('home.countdown.minutes', { n: parts.minutes }));
-  if (withSeconds) units.push(t('home.countdown.seconds', { n: parts.seconds }));
-  return (
-    <Text
-      accessibilityLiveRegion="none"
-      accessibilityLabel={t(withSeconds ? 'home.countdown.labelWithSeconds' : 'home.countdown.label', {
-        days: parts.days,
-        hours: parts.hours,
-        minutes: parts.minutes,
-        seconds: parts.seconds,
-      })}
-      style={{ color: colors.primary, fontSize: 18, fontWeight: '700' }}
-    >
-      {units.join(' ')}
-    </Text>
   );
 }
 
@@ -96,14 +69,14 @@ export function NextMatchCard({
     openSystemSettings,
   } = useMatchActions(match);
   const target = Date.parse(match.utcDate);
-  const timed = hasCountdown(match);
-  const countdown = useCountdown(target, timed, timed);
-  const live = isLive(match);
+  const now = useNow(60_000);
+  const phase = matchPhase(match, now);
+  const weather = useWeather(match, now);
   const hasScore = match.score.home !== null && match.score.away !== null;
   const status = t(`calendar.status.${match.status}`, { defaultValue: match.status });
   const date = formatMatchDateShort(match.utcDate, match.status, i18n.language);
   const timeLabel = time ?? t('calendar.timeTbc');
-  const daysUntil = utcDayDiff(match.utcDate, countdown.nowMs);
+  const daysUntil = utcDayDiff(match.utcDate, now);
   const homeSide = match.deporIsHome ? t('home.local') : t('home.away');
   const awaySide = match.deporIsHome ? t('home.away') : t('home.local');
   const competition = competitionLabel(competitionCode, competitionName, t);
@@ -114,7 +87,7 @@ export function NextMatchCard({
     t('home.nextMatch'),
     competitionLine,
     `${teamName(match.home)} ${t('calendar.versus')} ${teamName(match.away)}`,
-    live && hasScore ? `${match.score.home}–${match.score.away}` : status,
+    phase === 'live' && hasScore ? `${match.score.home}–${match.score.away}` : status,
     date,
     timeLabel,
     venue,
@@ -154,21 +127,31 @@ export function NextMatchCard({
           <TeamSide team={match.away} side={awaySide} />
         </View>
 
-        {live ? (
+        {phase === 'live' ? (
           <View style={styles.liveRow}>
             <Text style={{ color: colors.danger, fontSize: 24, fontWeight: '700' }}>
               {hasScore ? `${match.score.home} – ${match.score.away}` : status}
             </Text>
             <Text style={{ color: colors.danger, fontSize: 14, fontWeight: '700' }}>{status}</Text>
           </View>
-        ) : hasCountdown(match) ? (
-          <Countdown parts={countdown} withSeconds={showsSeconds(target, countdown.nowMs)} />
-        ) : match.status === 'SCHEDULED' ? (
+        ) : phase === 'upcoming' ? (
+          <Countdown targetMs={target} />
+        ) : phase === 'tbc' ? (
           <Text style={{ color: colors.primary, fontSize: 18, fontWeight: '700' }}>
             {daysUntil <= 0 ? t('home.matchToday') : t('home.daysUntil', { count: daysUntil })}
           </Text>
+        ) : phase === 'awaiting_result' ? (
+          <Text style={{ color: colors.textMuted, fontSize: 15, fontWeight: '600' }}>
+            {t('home.awaitingResult')}
+          </Text>
+        ) : phase === 'finished' ? (
+          <Text style={{ color: colors.text, fontSize: 24, fontWeight: '700' }}>
+            {hasScore ? `${match.score.home} – ${match.score.away}` : status}
+          </Text>
         ) : (
-          <Text style={{ color: colors.danger, fontSize: 16, fontWeight: '700' }}>{status}</Text>
+          <Text style={{ color: colors.danger, fontSize: 16, fontWeight: '700' }}>
+            {t(`home.phase.${phase}`, { defaultValue: status })}
+          </Text>
         )}
 
         <Text style={[styles.dateLine, { color: colors.text }]}>
@@ -181,6 +164,8 @@ export function NextMatchCard({
           {venue}
         </Text>
       ) : null}
+
+      {weather.data ? <WeatherLine weather={weather.data} /> : null}
 
       <View style={styles.actions}>
         <View style={styles.action}>

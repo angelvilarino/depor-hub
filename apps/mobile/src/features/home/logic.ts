@@ -44,9 +44,26 @@ export type CountdownParts = {
 
 const LIVE = new Set(['IN_PLAY', 'PAUSED']);
 
-/** El próximo partido es el primero de splitMatches().upcoming (incluye en juego y aplazados). */
+/** Estados que no deben ocupar el hero: un aplazado no es «el próximo partido». */
+const NOT_HERO = new Set(['POSTPONED', 'CANCELLED']);
+
+/** El próximo partido jugable: el primero de splitMatches().upcoming sin aplazados. */
 export function selectNextMatch(matches: MatchT[]): MatchT | null {
-  return splitMatches(matches).upcoming[0] ?? null;
+  return splitMatches(matches).upcoming.find((match) => !NOT_HERO.has(match.status)) ?? null;
+}
+
+/**
+ * Aviso discreto cuando el partido cronológicamente más cercano está aplazado.
+ * Devuelve null si el aplazado no es anterior al próximo partido jugable.
+ */
+export function selectPostponedNotice(matches: MatchT[]): MatchT | null {
+  const postponed = splitMatches(matches).upcoming.find(
+    (match) => match.status === 'POSTPONED',
+  );
+  if (!postponed) return null;
+  const next = selectNextMatch(matches);
+  if (!next) return postponed;
+  return Date.parse(postponed.utcDate) <= Date.parse(next.utcDate) ? postponed : null;
 }
 
 /** El último resultado es el más reciente de splitMatches().results. */
@@ -178,6 +195,53 @@ export function utcDayDiff(targetIso: string, nowMs: number): number {
 }
 
 export const isLive = (match: MatchT): boolean => LIVE.has(match.status);
+
+/**
+ * Estado de presentación del partido. No se inventa nada: un TIMED que ya pasó su
+ * hora se queda en `awaiting_result` (la API todavía no ha actualizado el estado).
+ */
+export type MatchPhase =
+  | 'tbc'
+  | 'upcoming'
+  | 'live'
+  | 'awaiting_result'
+  | 'finished'
+  | 'postponed'
+  | 'suspended'
+  | 'cancelled'
+  | 'unknown';
+
+export function matchPhase(match: MatchT, nowMs: number): MatchPhase {
+  switch (match.status) {
+    case 'SCHEDULED':
+      return 'tbc';
+    case 'TIMED':
+      return Date.parse(match.utcDate) > nowMs ? 'upcoming' : 'awaiting_result';
+    case 'IN_PLAY':
+    case 'PAUSED':
+      return 'live';
+    case 'FINISHED':
+    case 'AWARDED':
+      return match.score.home !== null && match.score.away !== null
+        ? 'finished'
+        : 'awaiting_result';
+    case 'POSTPONED':
+      return 'postponed';
+    case 'SUSPENDED':
+      return 'suspended';
+    case 'CANCELLED':
+      return 'cancelled';
+    default:
+      return 'unknown';
+  }
+}
+
+/** Un resultado se destaca en Home durante 24 h desde el inicio del partido. */
+export function isRecentResult(match: MatchT, nowMs: number, windowMs = 86_400_000): boolean {
+  if (!isFinished(match)) return false;
+  const kickoff = Date.parse(match.utcDate);
+  return !Number.isNaN(kickoff) && nowMs - kickoff <= windowMs;
+}
 
 /** Solo TIMED puede tener cuenta atrás; SCHEDULED no tiene hora y los aplazados no son fiables. */
 export const hasCountdown = (match: MatchT): boolean => match.status === 'TIMED';

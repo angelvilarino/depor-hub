@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
@@ -8,33 +8,48 @@ import { ErrorState, EmptyState } from '@/components/StateViews';
 import { HeadlinesBlock } from '@/components/home/HeadlinesBlock';
 import { HomeSkeleton } from '@/components/home/HomeSkeleton';
 import { LastResultCard } from '@/components/home/LastResultCard';
-import { MiniTable } from '@/components/home/MiniTable';
 import { NextMatchCard } from '@/components/home/NextMatchCard';
 import { OpponentCard } from '@/components/home/OpponentCard';
 import { SeasonCard } from '@/components/home/SeasonCard';
+import { WhatsAtStakeCard } from '@/components/home/WhatsAtStakeCard';
 import type { MatchT, StandingRowT } from '@/data/schemas';
-import { useFixtures, useMeta, useNews, useStandings } from '@/data/queries';
 import {
+  useFixtures,
+  useMeta,
+  useNews,
+  useRivals,
+  useSeason,
+  useStandings,
+} from '@/data/queries';
+import { teamName } from '@/features/calendar/logic';
+import {
+  isRecentResult,
   miniTableWindow,
   nextOpponentInfo,
   recentForm,
   seasonSummary,
   selectLastResult,
   selectNextMatch,
+  selectPostponedNotice,
 } from '@/features/home/logic';
+import { useNow } from '@/features/home/useNow';
 import { spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
+import { formatMatchDateShort } from '@/utils/matchTime';
 
 const NO_MATCHES: MatchT[] = [];
 const NO_TABLE: StandingRowT[] = [];
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { colors } = useTheme();
   const meta = useMeta();
   const standings = useStandings();
   const fixtures = useFixtures();
   const news = useNews();
+  const season = useSeason();
+  const rivals = useRivals();
+  const now = useNow(60_000);
 
   const refresh = () => {
     void meta.refetch();
@@ -48,10 +63,16 @@ export default function Home() {
 
   const next = useMemo(() => selectNextMatch(matches), [matches]);
   const last = useMemo(() => selectLastResult(matches), [matches]);
+  const postponed = useMemo(() => selectPostponedNotice(matches), [matches]);
   const form = useMemo(() => recentForm(matches), [matches]);
   const summary = seasonSummary(standings.data, teamId ?? -1);
   const opponent = teamId !== null ? nextOpponentInfo(matches, table, teamId) : null;
   const miniRows = teamId !== null ? miniTableWindow(table, teamId) : [];
+  const recent = last && isRecentResult(last, now) ? last : null;
+  const rival =
+    opponent !== null
+      ? (rivals.data?.rivals.find((entry) => entry.team.id === opponent.opponent.id) ?? null)
+      : null;
 
   const pending =
     !meta.data &&
@@ -97,6 +118,8 @@ export default function Home() {
     >
       {banner}
 
+      {recent ? <LastResultCard match={recent} /> : null}
+
       {next ? (
         <NextMatchCard
           match={next}
@@ -107,19 +130,41 @@ export default function Home() {
         <EmptyState message={t('home.noNextMatch')} />
       )}
 
-      {last ? <LastResultCard match={last} /> : <EmptyState message={t('home.noLastResult')} />}
-
-      {summary ? (
-        <SeasonCard summary={summary} form={form} />
-      ) : (
-        <EmptyState message={t('home.noStandings')} />
-      )}
-
-      {miniRows.length > 0 && teamId !== null ? (
-        <MiniTable rows={miniRows} teamId={teamId} />
+      {postponed ? (
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => router.push(`/match/${postponed.id}`)}
+          style={[
+            styles.notice,
+            { backgroundColor: colors.surface, borderColor: colors.border },
+          ]}
+        >
+          <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+            {t('home.postponedNotice', {
+              teams: `${teamName(postponed.home)} – ${teamName(postponed.away)}`,
+              date: formatMatchDateShort(
+                postponed.utcDate,
+                postponed.status,
+                i18n.language,
+              ),
+            })}
+          </Text>
+        </Pressable>
       ) : null}
 
-      {opponent ? <OpponentCard info={opponent} /> : null}
+      {opponent ? <OpponentCard info={opponent} rival={rival} /> : null}
+
+      {season.data?.whatIsAtStake ? (
+        <WhatsAtStakeCard stake={season.data.whatIsAtStake} />
+      ) : null}
+
+      <SeasonCard
+        season={season.data ?? null}
+        summary={summary}
+        form={form}
+        rows={miniRows}
+        teamId={teamId ?? -1}
+      />
 
       {news.data && news.data.items.length > 0 ? (
         <HeadlinesBlock items={news.data.items} onSeeAll={() => router.push('/news')} />
@@ -139,4 +184,12 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   footer: { fontSize: 12, textAlign: 'center', marginTop: spacing.xs },
+  notice: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 12,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    minHeight: 44,
+    justifyContent: 'center',
+  },
 });

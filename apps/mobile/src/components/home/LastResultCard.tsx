@@ -21,7 +21,7 @@ export function LastResultCard({ match }: { match: MatchT }) {
   const color =
     result === 'W' ? colors.primary : result === 'L' ? colors.danger : colors.textMuted;
   const summary = [
-    t('home.lastResult'),
+    t('home.finalResult'),
     `${teamName(match.home)} ${score} ${teamName(match.away)}`,
     result ? t(`calendar.outcomeLong.${result}`) : null,
     date,
@@ -34,7 +34,7 @@ export function LastResultCard({ match }: { match: MatchT }) {
     <Card>
       <View style={styles.headerRow}>
         <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>
-          {t('home.lastResult')}
+          {t('home.finalResult')}
         </Text>
         {match.matchday !== null ? (
           <Text style={{ color: colors.textMuted, fontSize: 14 }}>

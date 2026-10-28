@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
-/** Esqueleto de la Home: cinco bloques con la misma altura aproximada que las tarjetas. */
+/** Esqueleto de la Home: bloques con la misma altura aproximada que las tarjetas. */
 export function HomeSkeleton() {
   const { t } = useTranslation();
   const { colors } = useTheme();
   return (
     <View style={styles.list} accessibilityLabel={t('data.loading')}>
-      {[140, 110, 150, 190, 80].map((height, index) => (
+      {[120, 220, 200, 260, 90].map((height, index) => (
         <View
           key={index}
           style={[

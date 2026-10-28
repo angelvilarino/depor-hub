@@ -77,7 +77,66 @@
     "headlineMeta": "{{source}} · {{date}}",
     "openHeadline": "Abrir noticia: {{title}} ({{source}})",
     "openError": "No se ha podido abrir la noticia.",
-    "seeAllHeadlines": "Ver todas"
+    "seeAllHeadlines": "Ver todas",
+    "awaitingResult": "Pendiente de actualizar",
+    "phase": {
+      "postponed": "Aplazado",
+      "suspended": "Suspendido",
+      "cancelled": "Cancelado",
+      "unknown": "Estado no disponible"
+    },
+    "finalResult": "Resultado final",
+    "stake": {
+      "title": "Qué se juega",
+      "win": "Si gana",
+      "draw": "Si empata",
+      "loss": "Si pierde",
+      "points": "{{points}} pts",
+      "range": "{{from}}º–{{to}}º",
+      "rangeSame": "{{position}}º",
+      "assumption": "Simulación solo con los puntos del Depor; el resto de la jornada puede cambiar el orden."
+    },
+    "weather": {
+      "clear": "Despejado",
+      "cloudy": "Nubes",
+      "fog": "Niebla",
+      "drizzle": "Llovizna",
+      "rain": "Lluvia",
+      "snow": "Nieve",
+      "showers": "Chubascos",
+      "storm": "Tormenta",
+      "unknown": "Tiempo variable",
+      "precipitation": "{{n}} % lluvia",
+      "wind": "{{n}} km/h",
+      "attribution": "Datos: Open-Meteo"
+    },
+    "rival": {
+      "position": "{{position}}º · {{points}} pts",
+      "form": "Racha",
+      "seasonBalance": "Esta temporada: {{played}} partidos, {{won}}V-{{drawn}}E-{{lost}}D y {{goalsFor}}-{{goalsAgainst}}.",
+      "headToHead": "Histórico",
+      "headToHeadScope": "Todos los partidos oficiales · {{source}}",
+      "headToHeadRecord": "{{played}} partidos · {{won}}V-{{drawn}}E-{{lost}}D · {{goalsFor}}-{{goalsAgainst}}",
+      "lastMeetings": "Últimos 5 cruces",
+      "coach": "Entrenador",
+      "keyPlayers": "Goleadores",
+      "goals_one": "{{count}} gol",
+      "goals_other": "{{count}} goles",
+      "missing": "Sin datos disponibles."
+    },
+    "seasonCard": {
+      "position": "Posición",
+      "points": "Puntos",
+      "record": "G-E-P",
+      "goals": "GF-GC",
+      "evolution": "Evolución de la posición",
+      "evolutionA11y": "Evolución de la posición por jornada: {{points}}.",
+      "form": "Últimos 5 partidos",
+      "formLegend": "G victoria · E empate · P derrota",
+      "formA11y": "{{result}} contra {{opponent}} el {{date}}",
+      "tableA11y": "Clasificación: {{position}}º, {{team}}, {{points}} puntos"
+    },
+    "postponedNotice": "Aplazado: {{teams}} ({{date}})"
   },
   "competition": {
     "PD": "Primera División",
