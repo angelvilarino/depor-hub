@@ -8,6 +8,7 @@
   },
   "common": {
     "comingSoon": "Próximamente en un hito posterior de la Fase 1.",
+    "close": "Cerrar",
     "unofficial": "Proyecto de aficionados sin vinculación oficial con el Real Club Deportivo de La Coruña, S.A.D."
   },
   "settings": {
@@ -78,6 +79,11 @@
     "openError": "No se ha podido abrir la noticia.",
     "seeAllHeadlines": "Ver todas"
   },
+  "competition": {
+    "PD": "Primera División",
+    "SD": "Segunda División",
+    "CDR": "Copa del Rey"
+  },
   "calendar": {
     "upcoming": "Próximos",
     "results": "Resultados",
@@ -133,13 +139,38 @@
     "reminderNeedsTime": "El recordatorio estará disponible cuando se confirme la hora del partido.",
     "permissionDenied": "Activa las notificaciones de la app en los ajustes del sistema para recibir recordatorios.",
     "addToCalendar": "Añadir al calendario",
-    "addError": "No se ha podido abrir el calendario.",
+    "addError": "No se ha podido añadir el partido al calendario.",
+    "addErrorHint": "Prueba a compartir el calendario desde la pestaña Calendario.",
     "lineups": "Alineaciones y eventos"
   },
   "reminder": {
     "channel": "Recordatorios de partido",
-    "dayBefore": "Mañana, {{time}}",
-    "hourBefore": "Empieza en 1 hora ({{time}})"
+    "title": "Recordarme",
+    "explanation": "Recibirás una notificación en este móvil. No necesita cuenta ni conexión.",
+    "offset": {
+      "day": "1 día antes",
+      "hour": "1 h antes",
+      "minutes": "15 min antes",
+      "start": "Al empezar"
+    },
+    "previewTitle": "Avisos que se programarán",
+    "previewEmpty": "Elige al menos un aviso.",
+    "past": "Ya ha pasado",
+    "save": "Guardar aviso",
+    "remove": "Quitar aviso",
+    "active": "Aviso: {{offsets}}",
+    "edit": "Editar",
+    "permissionDenied": "Las notificaciones están bloqueadas. Actívalas en los ajustes del sistema.",
+    "openSettings": "Abrir ajustes del sistema",
+    "globalOff": "Los recordatorios están desactivados en Ajustes.",
+    "enable": "Activar recordatorios",
+    "tbc": "Podrás activar el aviso cuando se confirme la hora.",
+    "body": {
+      "day": "Mañana, {{time}}",
+      "hour": "Empieza en 1 hora ({{time}})",
+      "minutes": "Empieza en 15 minutos ({{time}})",
+      "start": "El partido empieza ahora ({{time}})"
+    }
   },
   "team": {
     "coach": "Entrenador",

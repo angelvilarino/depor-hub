@@ -1,4 +1,10 @@
-import { formatMatchDate, formatMatchTime, hasConfirmedTime, monthKey } from '@/utils/matchTime';
+import {
+  formatMatchDate,
+  formatMatchDateShort,
+  formatMatchTime,
+  hasConfirmedTime,
+  monthKey,
+} from '@/utils/matchTime';
 
 describe('matchTime', () => {
   it('SCHEDULED no tiene hora; el resto sí', () => {
@@ -18,6 +24,11 @@ describe('matchTime', () => {
 
   it('la fecha de un SCHEDULED no cambia de día', () => {
     expect(formatMatchDate('2026-11-22T00:00:00Z', 'SCHEDULED', 'en', 'long')).toContain('22');
+  });
+
+  it('forma corta capitalizada para el hero', () => {
+    expect(formatMatchDateShort('2026-11-02T20:00:00Z', 'TIMED', 'es')).toBe('Lunes 2 nov');
+    expect(formatMatchDateShort('2026-11-02T20:00:00Z', 'TIMED', 'en')).toBe('Monday 2 Nov');
   });
 
   it('agrupa por mes en la zona mostrada', () => {

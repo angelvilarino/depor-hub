@@ -1,4 +1,5 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
@@ -9,6 +10,7 @@ import type { MatchT } from '@/data/schemas';
 import { useFixtures } from '@/data/queries';
 import { isFinished, teamName } from '@/features/calendar/logic';
 import { useMatchActions } from '@/features/home/useMatchActions';
+import { ReminderSheet } from '@/features/reminders/ReminderSheet';
 import { spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { formatMatchDate } from '@/utils/matchTime';
@@ -51,8 +53,22 @@ export default function MatchDetail() {
 function MatchDetailBody({ match }: { match: MatchT }) {
   const { t, i18n } = useTranslation();
   const { colors } = useTheme();
-  const { venue, time, title, remindable, reminded, toggleReminder, addToCalendar } =
-    useMatchActions(match);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const {
+    venue,
+    time,
+    title,
+    remindable,
+    reminded,
+    reminderOffsets,
+    reminderSummary,
+    remindersEnabled,
+    setRemindersEnabled,
+    saveReminder,
+    removeReminder,
+    addToCalendar,
+    openSystemSettings,
+  } = useMatchActions(match);
 
   const locale = i18n.language;
   const finished = isFinished(match);
@@ -101,13 +117,32 @@ function MatchDetailBody({ match }: { match: MatchT }) {
           {remindable ? (
             <Button
               variant={reminded ? 'secondary' : 'primary'}
-              label={t(reminded ? 'match.removeReminder' : 'match.remind')}
-              onPress={() => void toggleReminder()}
+              label={
+                reminded
+                  ? t('reminder.active', { offsets: reminderSummary })
+                  : t('match.remind')
+              }
+              onPress={() => setSheetOpen(true)}
             />
           ) : (
             <BodyText muted>{t('match.reminderNeedsTime')}</BodyText>
           )}
           <Button variant="secondary" label={t('match.addToCalendar')} onPress={() => void addToCalendar()} />
+          {sheetOpen ? (
+            <ReminderSheet
+              visible
+              onClose={() => setSheetOpen(false)}
+              match={match}
+              initialOffsets={reminderOffsets}
+              reminded={reminded}
+              remindable={remindable}
+              remindersEnabled={remindersEnabled}
+              onSave={saveReminder}
+              onRemove={removeReminder}
+              onEnableReminders={() => setRemindersEnabled(true)}
+              onOpenSettings={openSystemSettings}
+            />
+          ) : null}
         </Card>
       )}
 

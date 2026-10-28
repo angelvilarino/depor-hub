@@ -1,11 +1,13 @@
 import { router } from 'expo-router';
-import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Screen';
 import { TeamCrest } from '@/components/TeamCrest';
 import type { MatchT, TeamRefT } from '@/data/schemas';
 import { teamName } from '@/features/calendar/logic';
+import { ReminderSheet } from '@/features/reminders/ReminderSheet';
 import {
   hasCountdown,
   isLive,
@@ -13,24 +15,29 @@ import {
   utcDayDiff,
   type CountdownParts,
 } from '@/features/home/logic';
-import { openVenueInMaps } from '@/features/home/maps';
+import { competitionLabel } from '@/features/home/text';
 import { useCountdown } from '@/features/home/useCountdown';
 import { useMatchActions } from '@/features/home/useMatchActions';
 import { minTouch, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
-import { formatMatchDate } from '@/utils/matchTime';
+import { formatMatchDateShort } from '@/utils/matchTime';
 
-function TeamSide({ team, side }: { team: TeamRefT; side: string | null }) {
+function TeamSide({ team, side }: { team: TeamRefT; side: string }) {
   const { colors } = useTheme();
   return (
     <View style={styles.side}>
-      <TeamCrest team={team} size={52} />
-      <Text numberOfLines={2} style={[styles.teamName, { color: colors.text }]}>
+      <View style={styles.crestBox}>
+        <TeamCrest team={team} size={56} />
+      </View>
+      <Text
+        adjustsFontSizeToFit
+        minimumFontScale={0.8}
+        numberOfLines={1}
+        style={[styles.teamName, { color: colors.text }]}
+      >
         {teamName(team)}
       </Text>
-      {side ? (
-        <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>{side}</Text>
-      ) : null}
+      <Text style={[styles.sideLabel, { color: colors.textMuted }]}>{side}</Text>
     </View>
   );
 }
@@ -64,60 +71,72 @@ function Countdown({ parts, withSeconds }: { parts: CountdownParts; withSeconds:
 
 export function NextMatchCard({
   match,
+  competitionCode,
   competitionName,
 }: {
   match: MatchT;
+  competitionCode: string | null;
   competitionName: string | null;
 }) {
   const { t, i18n } = useTranslation();
   const { colors } = useTheme();
-  const { venue, time, remindable, reminded, toggleReminder, addToCalendar } =
-    useMatchActions(match);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const {
+    venue,
+    time,
+    remindable,
+    reminded,
+    reminderOffsets,
+    reminderSummary,
+    remindersEnabled,
+    setRemindersEnabled,
+    saveReminder,
+    removeReminder,
+    addToCalendar,
+    openSystemSettings,
+  } = useMatchActions(match);
   const target = Date.parse(match.utcDate);
   const timed = hasCountdown(match);
   const countdown = useCountdown(target, timed, timed);
   const live = isLive(match);
   const hasScore = match.score.home !== null && match.score.away !== null;
   const status = t(`calendar.status.${match.status}`, { defaultValue: match.status });
-  const date = formatMatchDate(match.utcDate, match.status, i18n.language, 'long');
+  const date = formatMatchDateShort(match.utcDate, match.status, i18n.language);
   const timeLabel = time ?? t('calendar.timeTbc');
   const daysUntil = utcDayDiff(match.utcDate, countdown.nowMs);
-  const side = match.deporIsHome ? t('home.local') : t('home.away');
+  const homeSide = match.deporIsHome ? t('home.local') : t('home.away');
+  const awaySide = match.deporIsHome ? t('home.away') : t('home.local');
+  const competition = competitionLabel(competitionCode, competitionName, t);
+  const competitionLine = match.matchday !== null
+    ? `${t('calendar.matchday', { n: match.matchday })}${competition ? ` · ${competition}` : ''}`
+    : competition;
   const summary = [
     t('home.nextMatch'),
+    competitionLine,
     `${teamName(match.home)} ${t('calendar.versus')} ${teamName(match.away)}`,
     live && hasScore ? `${match.score.home}–${match.score.away}` : status,
     date,
-    timeLabel ?? t('calendar.timeTbc'),
+    timeLabel,
     venue,
   ]
     .filter(Boolean)
     .join('. ');
 
-  const onMap = async () => {
-    if (!venue) return;
-    try {
-      await openVenueInMaps(venue);
-    } catch {
-      Alert.alert(t('home.mapError'));
-    }
-  };
-
   return (
     <Card>
       <View style={styles.headerRow}>
-        <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>
+        <Text
+          accessibilityRole="header"
+          style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}
+        >
           {t('home.nextMatch')}
         </Text>
-        {match.matchday !== null ? (
-          <Text style={{ color: colors.textMuted, fontSize: 14 }}>
-            {t('calendar.matchday', { n: match.matchday })}
+        {competitionLine ? (
+          <Text numberOfLines={1} style={[styles.competition, { color: colors.textMuted }]}>
+            {competitionLine}
           </Text>
         ) : null}
       </View>
-      {competitionName ? (
-        <Text style={{ color: colors.textMuted, fontSize: 14 }}>{competitionName}</Text>
-      ) : null}
 
       <Pressable
         accessibilityRole="button"
@@ -126,11 +145,13 @@ export function NextMatchCard({
         style={styles.openArea}
       >
         <View style={styles.teamsRow}>
-          <TeamSide team={match.home} side={match.deporIsHome ? side : null} />
-          <Text style={{ color: colors.textMuted, fontSize: 14, fontWeight: '700' }}>
-            {t('calendar.versus')}
-          </Text>
-          <TeamSide team={match.away} side={match.deporIsHome ? null : side} />
+          <TeamSide team={match.home} side={homeSide} />
+          <View style={styles.vsBox}>
+            <Text style={{ color: colors.textMuted, fontSize: 14, fontWeight: '700' }}>
+              {t('calendar.versus')}
+            </Text>
+          </View>
+          <TeamSide team={match.away} side={awaySide} />
         </View>
 
         {live ? (
@@ -150,46 +171,80 @@ export function NextMatchCard({
           <Text style={{ color: colors.danger, fontSize: 16, fontWeight: '700' }}>{status}</Text>
         )}
 
-        <Text style={{ color: colors.text, fontSize: 16, fontWeight: '600' }}>{date}</Text>
-        <Text style={{ color: colors.textMuted, fontSize: 15 }}>
-          {timeLabel ?? t('calendar.timeTbc')}
+        <Text style={[styles.dateLine, { color: colors.text }]}>
+          {date} · {timeLabel}
         </Text>
       </Pressable>
 
       {venue ? (
-        <View style={styles.venueRow}>
-          <Text style={{ flex: 1, color: colors.textMuted, fontSize: 14 }}>{venue}</Text>
-          <Button label={t('home.howToGetThere')} onPress={() => void onMap()} />
-        </View>
+        <Text numberOfLines={1} style={{ color: colors.textMuted, fontSize: 14 }}>
+          {venue}
+        </Text>
       ) : null}
 
       <View style={styles.actions}>
-        {remindable ? (
+        <View style={styles.action}>
+          {remindable ? (
+            <Button
+              variant={reminded ? 'secondary' : 'primary'}
+              label={
+                reminded
+                  ? t('reminder.active', { offsets: reminderSummary })
+                  : t('match.remind')
+              }
+              onPress={() => setSheetOpen(true)}
+            />
+          ) : (
+            <Text style={{ color: colors.textMuted, fontSize: 14 }}>
+              {t('match.reminderNeedsTime')}
+            </Text>
+          )}
+        </View>
+        <View style={styles.action}>
           <Button
-            variant={reminded ? 'secondary' : 'primary'}
-            label={t(reminded ? 'match.removeReminder' : 'match.remind')}
-            onPress={() => void toggleReminder()}
+            variant="secondary"
+            label={t('match.addToCalendar')}
+            onPress={() => void addToCalendar()}
           />
-        ) : (
-          <Text style={{ color: colors.textMuted, fontSize: 14 }}>{t('match.reminderNeedsTime')}</Text>
-        )}
-        <Button
-          variant="secondary"
-          label={t('match.addToCalendar')}
-          onPress={() => void addToCalendar()}
-        />
+        </View>
       </View>
+
+      {sheetOpen ? (
+        <ReminderSheet
+          visible
+          onClose={() => setSheetOpen(false)}
+          match={match}
+          initialOffsets={reminderOffsets}
+          reminded={reminded}
+          remindable={remindable}
+          remindersEnabled={remindersEnabled}
+          onSave={saveReminder}
+          onRemove={removeReminder}
+          onEnableReminders={() => setRemindersEnabled(true)}
+          onOpenSettings={openSystemSettings}
+        />
+      ) : null}
     </Card>
   );
 }
 
 const styles = StyleSheet.create({
-  headerRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.sm },
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.sm,
+  },
+  competition: { flexShrink: 1, fontSize: 14, textAlign: 'right' },
   openArea: { gap: spacing.sm, minHeight: minTouch },
-  teamsRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.sm },
+  teamsRow: { flexDirection: 'row', alignItems: 'flex-start' },
   side: { flex: 1, alignItems: 'center', gap: 2 },
+  crestBox: { height: 60, alignItems: 'center', justifyContent: 'center' },
   teamName: { fontSize: 16, fontWeight: '700', textAlign: 'center' },
+  sideLabel: { fontSize: 12, fontWeight: '700' },
+  vsBox: { width: 44, height: 60, alignItems: 'center', justifyContent: 'center' },
   liveRow: { alignItems: 'center', gap: 2 },
-  venueRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  actions: { gap: spacing.sm },
+  dateLine: { fontSize: 15, fontWeight: '600' },
+  actions: { flexDirection: 'row', gap: spacing.sm },
+  action: { flex: 1 },
 });

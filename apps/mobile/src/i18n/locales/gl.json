@@ -12,6 +12,11 @@
     "remindersOn": "Activados",
     "remindersOff": "Desactivados"
   },
+  "competition": {
+    "PD": "Primeira División",
+    "SD": "Segunda División",
+    "CDR": "Copa do Rei"
+  },
   "calendar": {
     "upcoming": "Próximos",
     "results": "Resultados",

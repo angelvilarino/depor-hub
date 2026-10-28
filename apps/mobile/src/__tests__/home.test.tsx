@@ -84,8 +84,11 @@ describe('Home', () => {
     await render(<Home />);
 
     expect(screen.getByText('Próximo partido')).toBeTruthy();
-    expect(screen.getByText('Jornada 11')).toBeTruthy();
+    expect(screen.getByText(/Jornada 11 · Primera División/)).toBeTruthy();
     expect(screen.getAllByText('Osasuna').length).toBeGreaterThan(0);
+    expect(screen.getByText('Local')).toBeTruthy();
+    expect(screen.getByText('Visitante')).toBeTruthy();
+    expect(screen.getByText(/Lunes 2 nov · 21:00/)).toBeTruthy();
     expect(screen.getByText('Estadio Abanca-Riazor')).toBeTruthy();
 
     expect(screen.getByText('Último resultado')).toBeTruthy();

@@ -22,7 +22,12 @@ export function Button({ label, onPress, variant = 'primary', disabled }: Props)
         },
       ]}
     >
-      <Text style={{ color: primary ? colors.onPrimary : colors.text, fontSize: 16, fontWeight: '600' }}>
+      <Text
+        adjustsFontSizeToFit
+        minimumFontScale={0.85}
+        numberOfLines={1}
+        style={{ color: primary ? colors.onPrimary : colors.text, fontSize: 16, fontWeight: '600' }}
+      >
         {label}
       </Text>
     </Pressable>

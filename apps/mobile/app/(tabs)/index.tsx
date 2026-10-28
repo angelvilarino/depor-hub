@@ -98,7 +98,11 @@ export default function Home() {
       {banner}
 
       {next ? (
-        <NextMatchCard match={next} competitionName={meta.data?.competitionName ?? null} />
+        <NextMatchCard
+          match={next}
+          competitionCode={meta.data?.competitionCode ?? null}
+          competitionName={meta.data?.competitionName ?? null}
+        />
       ) : (
         <EmptyState message={t('home.noNextMatch')} />
       )}

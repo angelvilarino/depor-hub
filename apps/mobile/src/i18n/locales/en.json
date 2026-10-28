@@ -8,6 +8,7 @@
   },
   "common": {
     "comingSoon": "Coming in a later Phase 1 milestone.",
+    "close": "Close",
     "unofficial": "Fan project with no official affiliation with Real Club Deportivo de La Coruña, S.A.D."
   },
   "settings": {
@@ -78,6 +79,11 @@
     "openError": "Couldn't open the story.",
     "seeAllHeadlines": "See all"
   },
+  "competition": {
+    "PD": "La Liga",
+    "SD": "Segunda División",
+    "CDR": "Copa del Rey"
+  },
   "calendar": {
     "upcoming": "Upcoming",
     "results": "Results",
@@ -133,13 +139,38 @@
     "reminderNeedsTime": "Reminders will be available once the kick-off time is confirmed.",
     "permissionDenied": "Enable notifications for the app in system settings to get reminders.",
     "addToCalendar": "Add to calendar",
-    "addError": "Couldn't open the calendar.",
+    "addError": "The match could not be added to your calendar.",
+    "addErrorHint": "Try sharing the calendar from the Calendar tab.",
     "lineups": "Line-ups and events"
   },
   "reminder": {
     "channel": "Match reminders",
-    "dayBefore": "Tomorrow, {{time}}",
-    "hourBefore": "Kick-off in 1 hour ({{time}})"
+    "title": "Remind me",
+    "explanation": "You will get a notification on this phone. No account or connection needed.",
+    "offset": {
+      "day": "1 day before",
+      "hour": "1 hour before",
+      "minutes": "15 min before",
+      "start": "At kick-off"
+    },
+    "previewTitle": "Notifications to schedule",
+    "previewEmpty": "Choose at least one reminder.",
+    "past": "Already passed",
+    "save": "Save reminder",
+    "remove": "Remove reminder",
+    "active": "Reminder: {{offsets}}",
+    "edit": "Edit",
+    "permissionDenied": "Notifications are blocked. Enable them in system settings.",
+    "openSettings": "Open system settings",
+    "globalOff": "Reminders are turned off in Settings.",
+    "enable": "Turn reminders on",
+    "tbc": "You can set a reminder once the kick-off time is confirmed.",
+    "body": {
+      "day": "Tomorrow, {{time}}",
+      "hour": "Kick-off in 1 hour ({{time}})",
+      "minutes": "Kick-off in 15 minutes ({{time}})",
+      "start": "The match is starting now ({{time}})"
+    }
   },
   "team": {
     "coach": "Head coach",
