@@ -1,8 +1,9 @@
 name: News refresh
 on:
   schedule:
-    # Cada 30 min. La ingesta es idempotente y solo escribe si cambia el hash.
-    - cron: "*/30 * * * *"
+    # Cada 6 horas. Las fuentes publican pocas veces al día y la ingesta es idempotente:
+    # solo escribe y despliega si cambia el contenido.
+    - cron: "37 */6 * * *"
   workflow_dispatch:
     inputs:
       force:
@@ -15,7 +16,7 @@ permissions:
   pages: write
   id-token: write
 
-# Mismo grupo que Data refresh (ADR 0016): ambos escriben en main y despliegan Pages.
+# Mismo grupo que Data refresh (ADR 0018): ambos escriben en main y despliegan Pages.
 # Nunca se cancelan entre sí; el segundo espera y parte del último commit.
 concurrency:
   group: data-publish
@@ -24,6 +25,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
     steps:
@@ -41,10 +43,12 @@ jobs:
           key: news-cache-${{ github.run_id }}
           restore-keys: |
             news-cache-
+      # Si ninguna fuente responde, el comando sale con código 1 y el workflow falla:
+      # nunca se publica un news.json vacío ni se pisa el anterior.
       - name: Ingesta de noticias y vídeos
         env:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
-        run: python -m depor_hub.cli news ingest ${{ inputs.force && '--force' || '' }}
+        run: python -m depor_hub.cli news ${{ inputs.force && '--force' || '' }}
       - name: Guardar caché de feeds y rotación
         if: always()
         uses: actions/cache/save@v4
@@ -70,6 +74,7 @@ jobs:
     needs: refresh
     if: needs.refresh.outputs.changed == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}

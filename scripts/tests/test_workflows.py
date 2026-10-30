@@ -52,12 +52,14 @@ def test_all_workflows_rebase_before_push_and_deploy_from_a_fresh_checkout():
         )
 
 
-def test_news_runs_every_thirty_minutes_and_caches_the_feeds():
+def test_news_runs_every_six_hours_and_caches_the_feeds():
     workflow = load("news-refresh.yml")
     crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
-    assert "*/30 * * * *" in crons
+    assert "37 */6 * * *" in crons
     body = runs(workflow, "refresh")
-    assert "news ingest" in body
+    assert "cli news" in body
+    assert "force" in workflow["on"]["workflow_dispatch"]["inputs"]
+    assert workflow["jobs"]["refresh"]["timeout-minutes"] > 0
     paths = [
         step["with"]["path"]
         for step in steps(workflow, "refresh")
