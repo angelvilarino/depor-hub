@@ -201,9 +201,7 @@ class NewsHttp:
             if response.status_code in {403, 429} or response.status_code == 202:
                 retry = response.headers.get("Retry-After")
                 detail = f"Retry-After={retry}" if retry else "sin Retry-After"
-                raise FeedBlocked(
-                    f"{response.status_code} en {url} ({detail}); no se insiste"
-                )
+                raise FeedBlocked(f"{response.status_code} en {url} ({detail}); no se insiste")
             if response.status_code in {500, 502, 503, 504} and attempt < 2:
                 self.sleep(1.0 + attempt)
                 continue

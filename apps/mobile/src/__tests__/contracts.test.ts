@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { Fixtures, Meta, News, NewsSources, Rivals, Season, SocialFeed, Squad, Standings } from '@/data/schemas';
+import { Fixtures, Meta, News, Rivals, Season, SocialFeed, Squad, Standings } from '@/data/schemas';
 
 // Los MISMOS ejemplos los valida Pydantic en scripts/tests: si divergen, falla uno de los dos CI.
 const dir = path.resolve(__dirname, '../../../../packages/schemas/examples');
@@ -18,7 +18,6 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
     ['fixtures.json', Fixtures],
     ['squad.json', Squad],
     ['news.json', News],
-    ['sources.json', NewsSources],
     ['social.json', SocialFeed],
     ['season.json', Season],
     ['rivals.json', Rivals],
@@ -33,7 +32,6 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
 
   it.each([
     ['news.json', News],
-    ['sources.json', NewsSources],
     ['social.json', SocialFeed],
     ['season.json', Season],
     ['rivals.json', Rivals],

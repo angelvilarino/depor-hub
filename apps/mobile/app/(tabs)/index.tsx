@@ -171,8 +171,12 @@ export default function Home() {
         teamId={teamId ?? -1}
       />
 
-      {news.data && news.data.items.length > 0 ? (
-        <HeadlinesBlock items={news.data.items} onSeeAll={() => router.push('/news')} />
+      {news.data && news.data.stories.length > 0 ? (
+        <HeadlinesBlock
+          stories={news.data.stories}
+          sources={news.data.sources}
+          onSeeAll={() => router.push('/news')}
+        />
       ) : null}
 
       {meta.data ? (

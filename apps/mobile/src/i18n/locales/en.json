@@ -9,7 +9,8 @@
   "common": {
     "comingSoon": "Coming in a later Phase 1 milestone.",
     "close": "Close",
-    "unofficial": "Fan project with no official affiliation with Real Club Deportivo de La Coruña, S.A.D."
+    "unofficial": "Fan project with no official affiliation with Real Club Deportivo de La Coruña, S.A.D.",
+    "cancel": "Cancel"
   },
   "settings": {
     "title": "Settings",
@@ -440,34 +441,51 @@
     "sourceNote": "Data from Wikidata, Wikipedia and the club's official website."
   },
   "news": {
-    "openItem": "Open story: {{title}} ({{source}})",
-    "openHint": "It opens in the app's browser.",
-    "openError": "Couldn't open the link.",
-    "unread": "Unread",
-    "estimated": "estimated time",
-    "alsoIn": "Also in: {{sources}}",
-    "video": "Video",
-    "minutes": "{{n}} min",
+    "searchOpen": "Search",
+    "searchClose": "Close search",
     "searchPlaceholder": "Search headlines, outlet or tag",
     "searchClear": "Clear search",
+    "filters": "Filters",
+    "filtersTitle": "Filters",
     "sources": "Outlets",
-    "allSources": "All outlets",
+    "noSources": "No outlets with stories.",
     "filterSource": "{{source}}: {{count}} stories",
     "tagsTitle": "Tags",
-    "allTags": "All",
+    "noTags": "No tags.",
     "filterTag": "{{tag}}: {{count}} stories",
     "clearFilters": "Clear filters",
-    "markAllRead_one": "Mark read ({{count}})",
-    "markAllRead_other": "Mark read ({{count}})",
+    "clearFiltersCount": "Clear ({{count}})",
+    "activeFilters_one": "{{count}} active filter",
+    "activeFilters_other": "{{count}} active filters",
+    "group": {
+      "club": "Club",
+      "galicia": "Galicia",
+      "nacional": "National"
+    },
     "kind": {
       "all": "All",
       "article": "Articles",
       "video": "Videos"
     },
+    "unread": "Unread",
+    "unreadCount": "{{count}} unread",
+    "markAllShort": "Mark read",
+    "markAllTitle": "Mark all as read",
+    "markAllMessage": "{{count}} stories will be marked as read. You can undo this right away.",
+    "markAllConfirm": "Mark read",
+    "markedCount_one": "{{count}} story marked as read",
+    "markedCount_other": "{{count}} stories marked as read",
+    "undo": "Undo",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "openItem": "Open story: {{title}} ({{source}})",
+    "openHint": "It opens in the app's browser.",
+    "openError": "Couldn't open the link.",
+    "openAlsoIn": "Open version in {{source}}: {{title}}",
+    "alsoInCount_one": "+{{count}} outlet",
+    "alsoInCount_other": "+{{count}} outlets",
     "emptyAll": "No news published yet.",
     "emptyFiltered": "No news matches these filters.",
-    "loadMore_one": "Load 1 more",
-    "loadMore_other": "Load {{count}} more",
     "count_one": "{{count}} story",
     "count_other": "{{count}} stories",
     "socialTitle": "Official social accounts",
@@ -486,23 +504,15 @@
       "bluesky": "Bluesky",
       "threads": "Threads"
     },
-    "sourceKind": {
-      "club": "Club",
-      "local": "Local",
-      "nacional": "National",
-      "radio": "Radio",
-      "agregador": "Aggregator",
-      "video": "Video"
-    },
     "tags": {
       "fichajes": "Transfers",
       "cantera": "Academy",
-      "partido": "Match",
-      "rueda-de-prensa": "Press conference",
       "lesiones": "Injuries",
-      "entrenador": "Coach",
+      "partido": "Match",
       "aficion": "Fans",
-      "resultados": "Results"
-    }
+      "club": "Club",
+      "opinion": "Opinion"
+    },
+    "filterTagOnly": "Filter by {{tag}}"
   }
 }

@@ -2,22 +2,18 @@
   "$defs": {
     "NewsAlsoIn": {
       "additionalProperties": false,
-      "description": "Otro medio que public\u00f3 la misma noticia (ADR 0016).",
+      "description": "Otra versi\u00f3n de la misma historia publicada por un medio distinto.",
       "properties": {
-        "sourceId": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Sourceid"
+        "publishedAt": {
+          "title": "Publishedat",
+          "type": "string"
         },
-        "sourceName": {
-          "title": "Sourcename",
+        "sourceId": {
+          "title": "Sourceid",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
           "type": "string"
         },
         "url": {
@@ -26,35 +22,30 @@
         }
       },
       "required": [
-        "sourceName",
-        "url"
+        "sourceId",
+        "title",
+        "url",
+        "publishedAt"
       ],
       "title": "NewsAlsoIn",
       "type": "object"
     },
-    "NewsItem": {
+    "NewsSource": {
       "additionalProperties": false,
-      "description": "Titular agregado de un medio (H6, ADR 0016).\n\nSolo se publica lo que entrega el feed: t\u00edtulo, enlace, fecha, miniatura, resumen y\nmetadatos. No se descarga ni se scrapea el cuerpo del art\u00edculo.",
+      "description": "Medio curado que puede aparecer como representante o en `alsoIn` (ADR 0018).",
       "properties": {
-        "alsoIn": {
-          "items": {
-            "$ref": "#/$defs/NewsAlsoIn"
-          },
-          "title": "Alsoin",
-          "type": "array"
-        },
-        "durationSeconds": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
+        "group": {
+          "enum": [
+            "club",
+            "galicia",
+            "nacional"
           ],
-          "default": null,
-          "title": "Durationseconds"
+          "title": "Group",
+          "type": "string"
+        },
+        "homepage": {
+          "title": "Homepage",
+          "type": "string"
         },
         "id": {
           "title": "Id",
@@ -69,49 +60,50 @@
           "title": "Kind",
           "type": "string"
         },
-        "players": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "group",
+        "homepage"
+      ],
+      "title": "NewsSource",
+      "type": "object"
+    },
+    "NewsStory": {
+      "additionalProperties": false,
+      "description": "Una historia, no un art\u00edculo suelto: representante + versiones en otros medios.\n\nSolo se publica lo que entrega el feed: t\u00edtulo, enlace, fecha, miniatura y extracto\ncorto. No se descarga ni se scrapea el cuerpo del art\u00edculo.",
+      "properties": {
+        "alsoIn": {
           "items": {
-            "type": "integer"
+            "$ref": "#/$defs/NewsAlsoIn"
           },
-          "title": "Players",
+          "title": "Alsoin",
           "type": "array"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "default": "article",
+          "enum": [
+            "article",
+            "video"
+          ],
+          "title": "Kind",
+          "type": "string"
         },
         "publishedAt": {
           "title": "Publishedat",
           "type": "string"
         },
-        "publishedEstimated": {
-          "default": false,
-          "title": "Publishedestimated",
-          "type": "boolean"
-        },
         "sourceId": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Sourceid"
-        },
-        "sourceKind": {
-          "default": "agregador",
-          "enum": [
-            "club",
-            "local",
-            "nacional",
-            "radio",
-            "agregador",
-            "video"
-          ],
-          "title": "Sourcekind",
-          "type": "string"
-        },
-        "sourceName": {
-          "title": "Sourcename",
+          "title": "Sourceid",
           "type": "string"
         },
         "summary": {
@@ -152,138 +144,35 @@
         "url": {
           "title": "Url",
           "type": "string"
-        },
-        "videoId": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Videoid"
         }
       },
       "required": [
         "id",
         "title",
         "url",
-        "sourceName",
+        "sourceId",
         "publishedAt"
       ],
-      "title": "NewsItem",
-      "type": "object"
-    },
-    "NewsMeta": {
-      "additionalProperties": false,
-      "properties": {
-        "capturedAt": {
-          "title": "Capturedat",
-          "type": "string"
-        },
-        "sources": {
-          "items": {
-            "$ref": "#/$defs/NewsSourceMeta"
-          },
-          "title": "Sources",
-          "type": "array"
-        }
-      },
-      "required": [
-        "capturedAt"
-      ],
-      "title": "NewsMeta",
-      "type": "object"
-    },
-    "NewsSourceMeta": {
-      "additionalProperties": false,
-      "description": "Diagn\u00f3stico por feed: lo que la app no necesita pero s\u00ed quien mantiene la ingesta.",
-      "properties": {
-        "error": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Error"
-        },
-        "feedId": {
-          "title": "Feedid",
-          "type": "string"
-        },
-        "feedName": {
-          "title": "Feedname",
-          "type": "string"
-        },
-        "items": {
-          "default": 0,
-          "minimum": 0,
-          "title": "Items",
-          "type": "integer"
-        },
-        "lastAttemptAt": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Lastattemptat"
-        },
-        "lastSuccessAt": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Lastsuccessat"
-        }
-      },
-      "required": [
-        "feedId",
-        "feedName"
-      ],
-      "title": "NewsSourceMeta",
+      "title": "NewsStory",
       "type": "object"
     }
   },
   "additionalProperties": false,
+  "description": "Contrato de noticias v1 reescrito en ADR 0018 (ruptura consciente).",
   "properties": {
-    "dataHash": {
-      "default": "",
-      "title": "Datahash",
-      "type": "string"
-    },
-    "items": {
+    "sources": {
       "items": {
-        "$ref": "#/$defs/NewsItem"
+        "$ref": "#/$defs/NewsSource"
       },
-      "title": "Items",
+      "title": "Sources",
       "type": "array"
     },
-    "meta": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/NewsMeta"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
+    "stories": {
+      "items": {
+        "$ref": "#/$defs/NewsStory"
+      },
+      "title": "Stories",
+      "type": "array"
     },
     "updatedAt": {
       "title": "Updatedat",
@@ -292,7 +181,8 @@
   },
   "required": [
     "updatedAt",
-    "items"
+    "sources",
+    "stories"
   ],
   "title": "News",
   "type": "object"

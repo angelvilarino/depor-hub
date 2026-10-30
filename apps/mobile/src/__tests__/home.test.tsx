@@ -221,15 +221,27 @@ describe('Home', () => {
   it('pinta los titulares solo cuando hay noticias', async () => {
     mockNews = query({
       updatedAt: '2026-10-27T08:00:00Z',
-      items: [
+      sources: [
+        {
+          id: 'medio',
+          name: 'Medio',
+          group: 'galicia',
+          kind: 'article',
+          homepage: 'https://example.test',
+        },
+      ],
+      stories: [
         {
           id: 'n1',
           title: 'Parte médico antes del partido',
           url: 'https://example.test/n1',
-          sourceName: 'Medio',
+          sourceId: 'medio',
           publishedAt: '2026-10-27T08:00:00Z',
+          kind: 'article',
           thumbnailUrl: null,
+          summary: null,
           tags: [],
+          alsoIn: [],
         },
       ],
     });

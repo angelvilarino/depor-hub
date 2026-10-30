@@ -1,4 +1,4 @@
-"""Auditoría de feeds y actualización de docs/sources.md (ADR 0016)."""
+"""Auditoría de feeds y actualización de docs/sources.md (ADR 0018)."""
 
 from __future__ import annotations
 
@@ -40,20 +40,21 @@ def audit_feeds(
         if not feed.enabled and not include_disabled:
             continue
         try:
-            response = http.fetch(feed.id, feed.url, force=True)
+            response = http.fetch(feed.id, feed.feed_url, force=True)
             entries = parse_entries(feed, response.body)
             latest = max(
                 (entry.published_at for entry in entries if entry.published_at),
                 default=None,
             )
             relevant = len(entries)
-            if index is not None and feed.keyword_filter:
+            if index is not None:
                 relevant = sum(
                     1
                     for entry in entries
                     if index.is_relevant(
-                        f"{entry.title} {entry.summary or ''}",
-                        keyword_filter=True,
+                        entry.title,
+                        entry.summary,
+                        depor_specific=feed.depor_specific,
                     )
                 )
             rows.append(
@@ -88,7 +89,7 @@ def audit_feeds(
 
 def format_table(rows: list[AuditRow]) -> str:
     lines = [
-        "| Fuente | Tipo | URL | Estado | Ítems | Relevantes | Más reciente | Imagen | Resumen | Nota |",
+        "| Fuente | Grupo | Feed | Estado | Ítems | Relevantes | Más reciente | Imagen | Resumen | Nota |",
         "|---|---|---|---|---:|---:|---|---:|---:|---|",
     ]
     for row in rows:
@@ -99,11 +100,11 @@ def format_table(rows: list[AuditRow]) -> str:
         if not feed.enabled and row.status == "ok":
             note = f"{note} (deshabilitado en el catálogo)".strip()
         lines.append(
-            "| {name} | {kind} | {url} | {status} | {items} | {relevant} | {latest} | "
+            "| {name} | {group} | {url} | {status} | {items} | {relevant} | {latest} | "
             "{images}/{items} | {summaries}/{items} | {note} |".format(
                 name=str(feed.name).replace("|", "\\|"),
-                kind=feed.kind,
-                url=str(feed.url).replace("|", "\\|"),
+                group=feed.group,
+                url=str(feed.feed_url).replace("|", "\\|"),
                 status=row.status,
                 items=row.items,
                 relevant=row.relevant,
@@ -145,7 +146,7 @@ def update_docs(path: Path | str, rows: list[AuditRow], *, now: datetime | None 
     block = (
         f"{START}\n"
         f"Auditoría automática: **{stamp}**. "
-        "`relevant` aplica el filtro del Depor a los feeds generales.\n\n"
+        "`Relevantes` aplica el filtro del Depor de ADR 0018.\n\n"
         f"{format_table(rows)}\n\n"
         "Los feeds con error se deshabilitan en `data/manual/news_feeds.yml`. "
         "No se intenta saltar 403/429/captchas ni muros de pago.\n"

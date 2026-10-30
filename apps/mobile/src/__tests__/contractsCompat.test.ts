@@ -1,4 +1,4 @@
-import { Fixtures, News, Squad, Standings } from '@/data/schemas';
+import { Fixtures, Squad, Standings } from '@/data/schemas';
 
 // JSON publicado ANTES de ADR 0006 (sin crestUrl/venue/referee): debe seguir validando.
 const oldTeam = { id: 1, name: 'A', shortName: null, tla: null };
@@ -151,39 +151,6 @@ describe('compatibilidad con JSON anterior a ADR 0014', () => {
     expect(r.data.coach?.career).toEqual([]);
     expect(r.data.coach?.staff).toEqual([]);
     expect(r.data.players[0]!.career[0]!.role).toBe('player');
-  });
-});
-
-describe('compatibilidad con el contrato mínimo de noticias de H5', () => {
-  it('acepta un titular con solo los campos obligatorios y rellena defaults', () => {
-    const r = News.safeParse({
-      updatedAt: '2026-10-27T10:00:00Z',
-      items: [
-        {
-          id: 'n1',
-          title: 'Titular',
-          url: 'https://example.test/n1',
-          sourceName: 'Medio',
-          publishedAt: '2026-10-27T09:00:00Z',
-        },
-      ],
-    });
-    expect(r.success).toBe(true);
-    if (!r.success) return;
-    const item = r.data.items[0]!;
-    expect(item.thumbnailUrl).toBeNull();
-    expect(item.tags).toEqual([]);
-    expect(item.sourceId).toBeNull();
-    expect(item.sourceKind).toBe('agregador');
-    expect(item.kind).toBe('article');
-    expect(item.publishedEstimated).toBe(false);
-    expect(item.summary).toBeNull();
-    expect(item.players).toEqual([]);
-    expect(item.alsoIn).toEqual([]);
-    expect(item.durationSeconds).toBeNull();
-    expect(item.videoId).toBeNull();
-    expect(r.data.dataHash).toBe('');
-    expect(r.data.meta).toBeNull();
   });
 });
 

@@ -1,26 +1,28 @@
 import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/Screen';
-import type { NewsItemT } from '@/data/schemas';
-import { HOME_HEADLINES, topHeadlines } from '@/features/news/logic';
+import type { NewsSourceT, NewsStoryT } from '@/data/schemas';
+import { HOME_HEADLINES, sourceName, topHeadlines } from '@/features/news/logic';
 import { minTouch, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 
 /**
  * Titulares opcionales de la Home: como máximo cinco, sin repetidos y con enlace a la
- * pestaña Noticias. Si no hay noticias el bloque no se pinta (404 = sin titulares).
+ * pestaña Noticias. Si no hay historias el bloque no se pinta (404 = sin titulares).
  */
 export function HeadlinesBlock({
-  items,
+  stories,
+  sources,
   onSeeAll,
 }: {
-  items: NewsItemT[];
+  stories: NewsStoryT[];
+  sources: NewsSourceT[];
   onSeeAll?: () => void;
 }) {
   const { t, i18n } = useTranslation();
   const { colors } = useTheme();
-  const headlines = topHeadlines(items, HOME_HEADLINES);
+  const headlines = topHeadlines(stories, HOME_HEADLINES);
   if (headlines.length === 0) return null;
 
   const open = async (url: string) => {
@@ -54,26 +56,31 @@ export function HeadlinesBlock({
           </Pressable>
         ) : null}
       </View>
-      {headlines.map((item) => (
-        <Pressable
-          key={item.id}
-          accessibilityRole="link"
-          accessibilityLabel={t('home.openHeadline', {
-            title: item.title,
-            source: item.sourceName,
-          })}
-          onPress={() => void open(item.url)}
-          style={styles.item}
-        >
-          <Text style={{ color: colors.text, fontSize: 16, fontWeight: '600' }}>{item.title}</Text>
-          <Text style={{ color: colors.textMuted, fontSize: 13 }}>
-            {t('home.headlineMeta', {
-              source: item.sourceName,
-              date: formatDate(item.publishedAt),
+      {headlines.map((story) => {
+        const name = sourceName(story, sources);
+        return (
+          <Pressable
+            key={story.id}
+            accessibilityRole="link"
+            accessibilityLabel={t('home.openHeadline', {
+              title: story.title,
+              source: name,
             })}
-          </Text>
-        </Pressable>
-      ))}
+            onPress={() => void open(story.url)}
+            style={styles.item}
+          >
+            <Text style={{ color: colors.text, fontSize: 16, fontWeight: '600' }}>
+              {story.title}
+            </Text>
+            <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+              {t('home.headlineMeta', {
+                source: name,
+                date: formatDate(story.publishedAt),
+              })}
+            </Text>
+          </Pressable>
+        );
+      })}
     </Card>
   );
 }

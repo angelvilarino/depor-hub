@@ -9,7 +9,8 @@
   "common": {
     "comingSoon": "Próximamente en un hito posterior de la Fase 1.",
     "close": "Cerrar",
-    "unofficial": "Proyecto de aficionados sin vinculación oficial con el Real Club Deportivo de La Coruña, S.A.D."
+    "unofficial": "Proyecto de aficionados sin vinculación oficial con el Real Club Deportivo de La Coruña, S.A.D.",
+    "cancel": "Cancelar"
   },
   "settings": {
     "title": "Ajustes",
@@ -440,34 +441,51 @@
     "sourceNote": "Datos de Wikidata, Wikipedia y la web oficial del club."
   },
   "news": {
-    "openItem": "Abrir noticia: {{title}} ({{source}})",
-    "openHint": "Se abre en el navegador de la app.",
-    "openError": "No se ha podido abrir el enlace.",
-    "unread": "No leída",
-    "estimated": "hora estimada",
-    "alsoIn": "También en: {{sources}}",
-    "video": "Vídeo",
-    "minutes": "{{n}} min",
+    "searchOpen": "Buscar",
+    "searchClose": "Cerrar búsqueda",
     "searchPlaceholder": "Buscar titulares, medio o etiqueta",
     "searchClear": "Borrar búsqueda",
+    "filters": "Filtros",
+    "filtersTitle": "Filtros",
     "sources": "Fuentes",
-    "allSources": "Todos los medios",
+    "noSources": "No hay fuentes con noticias.",
     "filterSource": "{{source}}: {{count}} noticias",
     "tagsTitle": "Etiquetas",
-    "allTags": "Todas",
+    "noTags": "No hay etiquetas.",
     "filterTag": "{{tag}}: {{count}} noticias",
     "clearFilters": "Quitar filtros",
-    "markAllRead_one": "Marcar leída ({{count}})",
-    "markAllRead_other": "Marcar leídas ({{count}})",
+    "clearFiltersCount": "Limpiar ({{count}})",
+    "activeFilters_one": "{{count}} filtro activo",
+    "activeFilters_other": "{{count}} filtros activos",
+    "group": {
+      "club": "Club",
+      "galicia": "Galicia",
+      "nacional": "Nacional"
+    },
     "kind": {
       "all": "Todo",
       "article": "Artículos",
       "video": "Vídeos"
     },
+    "unread": "No leída",
+    "unreadCount": "{{count}} sin leer",
+    "markAllShort": "Marcar leídas",
+    "markAllTitle": "Marcar todas como leídas",
+    "markAllMessage": "Se marcarán {{count}} noticias como leídas. Puedes deshacerlo justo después.",
+    "markAllConfirm": "Marcar leídas",
+    "markedCount_one": "{{count}} noticia marcada como leída",
+    "markedCount_other": "{{count}} noticias marcadas como leídas",
+    "undo": "Deshacer",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "openItem": "Abrir noticia: {{title}} ({{source}})",
+    "openHint": "Se abre en el navegador de la app.",
+    "openError": "No se ha podido abrir el enlace.",
+    "openAlsoIn": "Abrir versión en {{source}}: {{title}}",
+    "alsoInCount_one": "+{{count}} medio",
+    "alsoInCount_other": "+{{count}} medios",
     "emptyAll": "Todavía no hay noticias publicadas.",
     "emptyFiltered": "No hay noticias con estos filtros.",
-    "loadMore_one": "Cargar 1 más",
-    "loadMore_other": "Cargar {{count}} más",
     "count_one": "{{count}} noticia",
     "count_other": "{{count}} noticias",
     "socialTitle": "Redes oficiales",
@@ -486,23 +504,15 @@
       "bluesky": "Bluesky",
       "threads": "Threads"
     },
-    "sourceKind": {
-      "club": "Club",
-      "local": "Local",
-      "nacional": "Nacional",
-      "radio": "Radio",
-      "agregador": "Agregador",
-      "video": "Vídeo"
-    },
     "tags": {
       "fichajes": "Fichajes",
       "cantera": "Cantera",
-      "partido": "Partido",
-      "rueda-de-prensa": "Rueda de prensa",
       "lesiones": "Lesiones",
-      "entrenador": "Entrenador",
+      "partido": "Partido",
       "aficion": "Afición",
-      "resultados": "Resultados"
-    }
+      "club": "Club",
+      "opinion": "Opinión"
+    },
+    "filterTagOnly": "Filtrar por {{tag}}"
   }
 }

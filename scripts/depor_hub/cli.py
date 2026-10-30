@@ -84,7 +84,9 @@ def cmd_ingest(args: argparse.Namespace) -> int:
     if not comp.currentSeason:
         raise SystemExit("La API no informa de temporada actual")
     season = t.season_label(datetime.fromisoformat(comp.currentSeason.startDate).date())
-    standings_raw = s.FDStandings.model_validate(client.get(f"/competitions/{COMPETITION}/standings"))
+    standings_raw = s.FDStandings.model_validate(
+        client.get(f"/competitions/{COMPETITION}/standings")
+    )
     matches_raw = s.FDMatches.model_validate(client.get(f"/competitions/{COMPETITION}/matches"))
     teams_raw = s.FDTeams.model_validate(client.get(f"/competitions/{COMPETITION}/teams"))
 
@@ -102,11 +104,17 @@ def cmd_ingest(args: argparse.Namespace) -> int:
     squad = apply_extras(squad, extras)
     squad = apply_coach(squad, load_coach(Path(args.coach)))
     for pid in unknown_ids(squad, extras):
-        print(f"AVISO: {args.extras} menciona el id {pid}, que no está en la plantilla", file=sys.stderr)
+        print(
+            f"AVISO: {args.extras} menciona el id {pid}, que no está en la plantilla",
+            file=sys.stderr,
+        )
     meta = t.build_meta(comp, team, season, now)
 
     if len(standings.table) != 20:
-        print(f"AVISO: la clasificación tiene {len(standings.table)} filas (se esperaban 20)", file=sys.stderr)
+        print(
+            f"AVISO: la clasificación tiene {len(standings.table)} filas (se esperaban 20)",
+            file=sys.stderr,
+        )
     if not squad.players:
         print("AVISO: plantilla vacía; se publica con players=[]", file=sys.stderr)
 
@@ -212,7 +220,9 @@ def cmd_probe(args: argparse.Namespace) -> int:
 
     comp = s.FDCompetition.model_validate(client.get(f"/competitions/{COMPETITION}"))
     cs = comp.currentSeason
-    print(f"\n== {comp.name} ==\nTemporada actual: {cs.startDate if cs else None} -> {cs.endDate if cs else None}")
+    print(
+        f"\n== {comp.name} ==\nTemporada actual: {cs.startDate if cs else None} -> {cs.endDate if cs else None}"
+    )
     print(f"Jornada actual: {cs.currentMatchday if cs else None}")
 
     st = s.FDStandings.model_validate(client.get(f"/competitions/{COMPETITION}/standings"))
@@ -222,8 +232,12 @@ def cmd_probe(args: argparse.Namespace) -> int:
     ms = s.FDMatches.model_validate(client.get(f"/competitions/{COMPETITION}/matches"))
     teams = s.FDTeams.model_validate(client.get(f"/competitions/{COMPETITION}/teams"))
     print(f"Partidos totales de la competición: {len(ms.matches)}; equipos: {len(teams.teams)}")
-    print(f"Equipos con escudo (crest): {sum(1 for x in teams.teams if x.crest)}/{len(teams.teams)}")
-    print(f"Equipos con estadio (venue): {sum(1 for x in teams.teams if x.venue)}/{len(teams.teams)}")
+    print(
+        f"Equipos con escudo (crest): {sum(1 for x in teams.teams if x.crest)}/{len(teams.teams)}"
+    )
+    print(
+        f"Equipos con estadio (venue): {sum(1 for x in teams.teams if x.venue)}/{len(teams.teams)}"
+    )
     print(f"Partidos con sede propia: {sum(1 for x in ms.matches if x.venue)}/{len(ms.matches)}")
     print(f"Partidos con árbitro: {sum(1 for x in ms.matches if x.referees)}/{len(ms.matches)}")
     try:
@@ -278,16 +292,6 @@ def _coach_name(coach_path: Path, squad: m.Squad | None) -> str | None:
     return squad.coach.name if squad and squad.coach else None
 
 
-def _news_state(path: Path) -> dict:
-    if not path.exists():
-        return {"playerOffset": 0}
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        return {"playerOffset": int(data.get("playerOffset", 0))}
-    except (OSError, ValueError, TypeError):
-        return {"playerOffset": 0}
-
-
 def cmd_news_audit(args: argparse.Namespace) -> int:
     feeds = load_feeds(Path(args.feeds))
     squad = _load_model(Path(args.squad), m.Squad)
@@ -301,9 +305,7 @@ def cmd_news_audit(args: argparse.Namespace) -> int:
         offline=args.offline,
     )
     try:
-        rows = news_audit.audit_feeds(
-            feeds, http, include_disabled=args.all, index=index
-        )
+        rows = news_audit.audit_feeds(feeds, http, include_disabled=args.all, index=index)
     finally:
         http.close()
     print(news_audit.format_table(rows))
@@ -317,16 +319,13 @@ def cmd_news_audit(args: argparse.Namespace) -> int:
     return 0
 
 
-def cmd_news_ingest(args: argparse.Namespace) -> int:
+def cmd_news(args: argparse.Namespace) -> int:
     feeds = load_feeds(Path(args.feeds))
     squad = _load_model(Path(args.squad), m.Squad)
     fixtures = _load_model(Path(args.fixtures), m.Fixtures)
     coach_name = _coach_name(Path(args.coach), squad)
     out_dir = Path(args.out)
     existing = news_ingest.load_existing(out_dir / "news.json")
-    existing_sources = news_ingest.load_existing_sources(out_dir / "sources.json")
-    state_path = Path(args.state)
-    state = _news_state(state_path)
     http = NewsHttp(
         cache_dir=Path(args.raw) / "news",
         contact=contact_from_env(),
@@ -345,16 +344,20 @@ def cmd_news_ingest(args: argparse.Namespace) -> int:
                 for name in (match.home.name, match.away.name)
             ],
             existing=existing,
-            existing_sources=existing_sources,
             now=datetime.now(UTC),
             threshold=args.threshold,
             dedupe_threshold=args.dedupe_threshold,
-            player_offset=state["playerOffset"],
-            player_count=args.player_queries,
             force=args.force,
         )
+    except news_ingest.AllFeedsFailed as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        _gh_output(changed="false", failed="true")
+        return 1
     finally:
         http.close()
+
+    if args.report:
+        print(result.report.render())
 
     changed = False
     if not args.dry_run:
@@ -366,19 +369,13 @@ def cmd_news_ingest(args: argparse.Namespace) -> int:
                 datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
             )
             changed = write_social(out_dir, social, force=args.force) or changed
-        if args.player_queries > 0:
-            state_path.parent.mkdir(parents=True, exist_ok=True)
-            state_path.write_text(
-                json.dumps({"playerOffset": result.next_player_offset}, indent=2) + "\n",
-                encoding="utf-8",
-            )
     print(
-        f"changed={'true' if changed else 'false'} items={len(result.news.items)} "
-        f"errors={len(result.errors)} hash={result.news.data_hash}"
+        f"changed={'true' if changed else 'false'} stories={len(result.news.stories)} "
+        f"sources={len(result.news.sources)} errors={len(result.errors)}"
     )
     for error in result.errors:
         print(f"AVISO: {error}", file=sys.stderr)
-    _gh_output(changed="true" if changed else "false")
+    _gh_output(changed="true" if changed else "false", failed="false")
     return 0
 
 
@@ -430,21 +427,23 @@ def _write_template(path: Path, squad: m.Squad) -> None:
         writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS)
         writer.writeheader()
         for player in squad.players:
-            writer.writerow({
-                "id": player.id,
-                "name": player.name,
-                "shirt_number": player.shirt_number or "",
-                "contract_until": player.contract_until or "",
-                "height_cm": player.height_cm or "",
-                "weight_kg": player.weight_kg or "",
-                "birth_place": player.birth_place or "",
-                "preferred_foot": player.preferred_foot or "",
-                "loan_from": player.loan_from or "",
-                "market_value_eur": player.market_value_eur or "",
-                "source": "",
-                "confidence": "single_source",
-                "captured_at": "",
-            })
+            writer.writerow(
+                {
+                    "id": player.id,
+                    "name": player.name,
+                    "shirt_number": player.shirt_number or "",
+                    "contract_until": player.contract_until or "",
+                    "height_cm": player.height_cm or "",
+                    "weight_kg": player.weight_kg or "",
+                    "birth_place": player.birth_place or "",
+                    "preferred_foot": player.preferred_foot or "",
+                    "loan_from": player.loan_from or "",
+                    "market_value_eur": player.market_value_eur or "",
+                    "source": "",
+                    "confidence": "single_source",
+                    "captured_at": "",
+                }
+            )
     print(f"Plantilla CSV escrita en {path} ({len(squad.players)} jugadores)")
 
 
@@ -481,7 +480,10 @@ def _import_csv(path: Path, extras_path: Path, squad: m.Squad) -> int:
                 continue
             pid = int(raw_id)
             if pid not in ids:
-                print(f"AVISO: el CSV menciona el id {pid}, que no está en la plantilla", file=sys.stderr)
+                print(
+                    f"AVISO: el CSV menciona el id {pid}, que no está en la plantilla",
+                    file=sys.stderr,
+                )
                 continue
             data = _clean_csv_row(row)
             if not data:
@@ -698,9 +700,7 @@ def cmd_coach(args: argparse.Namespace) -> int:
     )
     print(f"Ficha escrita en {target}")
     if args.apply:
-        _apply_to_public(
-            Path(args.squad), Path(args.extras), Path(args.out_dir), target
-        )
+        _apply_to_public(Path(args.squad), Path(args.extras), Path(args.out_dir), target)
     return 0
 
 
@@ -745,7 +745,9 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--overrides", default="data/manual/squad_overrides.yml")
     sp.add_argument("--proposal", default="data/manual/squad_enrich.proposed.yml")
     sp.add_argument("--raw", default="data/raw")
-    sp.add_argument("--min-confidence", choices=list(proposal.CONFIDENCE_ORDER), default="single_source")
+    sp.add_argument(
+        "--min-confidence", choices=list(proposal.CONFIDENCE_ORDER), default="single_source"
+    )
     sp.add_argument("--dry-run", action="store_true")
     sp.add_argument("--apply", action="store_true")
     sp.add_argument("--limit", type=int, default=None)
@@ -787,8 +789,23 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--out-dir", default="data/public/v1")
     sp.set_defaults(fn=cmd_coach)
 
-    sp = sub.add_parser("news", help="Audita feeds y publica noticias")
-    nsub = sp.add_subparsers(dest="news_cmd", required=True)
+    sp = sub.add_parser("news", help="Ingiere feeds y publica news.json (ADR 0018)")
+    sp.add_argument("--feeds", default="data/manual/news_feeds.yml")
+    sp.add_argument("--squad", default="data/public/v1/squad.json")
+    sp.add_argument("--coach", default="data/manual/coach.yml")
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--out", default="data/public/v1")
+    sp.add_argument("--raw", default="data/raw")
+    sp.add_argument("--interval", type=float, default=1.0)
+    sp.add_argument("--threshold", type=int, default=None, help="Umbral de relevancia")
+    sp.add_argument("--dedupe-threshold", type=float, default=0.52)
+    sp.add_argument("--social", default="data/manual/social_pins.yml")
+    sp.add_argument("--offline", action="store_true", help="Usa solo la caché local")
+    sp.add_argument("--force", action="store_true")
+    sp.add_argument("--dry-run", action="store_true")
+    sp.add_argument("--report", action="store_true", help="Imprime el informe de calibración")
+    sp.set_defaults(fn=cmd_news)
+    nsub = sp.add_subparsers(dest="news_cmd")
     audit = nsub.add_parser("audit", help="Prueba los feeds y actualiza docs/sources.md")
     audit.add_argument("--feeds", default="data/manual/news_feeds.yml")
     audit.add_argument("--squad", default="data/public/v1/squad.json")
@@ -802,23 +819,22 @@ def main(argv: list[str] | None = None) -> int:
     audit.add_argument("--write-docs", action="store_true")
     audit.set_defaults(fn=cmd_news_audit)
 
-    news_ing = nsub.add_parser("ingest", help="Ingiere los feeds y publica news.json")
+    news_ing = nsub.add_parser("ingest", help="Alias de `news` (compatibilidad)")
     news_ing.add_argument("--feeds", default="data/manual/news_feeds.yml")
     news_ing.add_argument("--squad", default="data/public/v1/squad.json")
     news_ing.add_argument("--coach", default="data/manual/coach.yml")
     news_ing.add_argument("--fixtures", default="data/public/v1/fixtures.json")
     news_ing.add_argument("--out", default="data/public/v1")
     news_ing.add_argument("--raw", default="data/raw")
-    news_ing.add_argument("--state", default="data/raw/news/state.json")
     news_ing.add_argument("--interval", type=float, default=1.0)
-    news_ing.add_argument("--threshold", type=int, default=3)
-    news_ing.add_argument("--dedupe-threshold", type=float, default=0.82)
-    news_ing.add_argument("--player-queries", type=int, default=6)
+    news_ing.add_argument("--threshold", type=int, default=None)
+    news_ing.add_argument("--dedupe-threshold", type=float, default=0.52)
     news_ing.add_argument("--social", default="data/manual/social_pins.yml")
     news_ing.add_argument("--offline", action="store_true")
     news_ing.add_argument("--force", action="store_true")
     news_ing.add_argument("--dry-run", action="store_true")
-    news_ing.set_defaults(fn=cmd_news_ingest)
+    news_ing.add_argument("--report", action="store_true")
+    news_ing.set_defaults(fn=cmd_news)
 
     sp = sub.add_parser("social", help="Publica los perfiles y pins curados de redes")
     sp.add_argument("--source", default="data/manual/social_pins.yml")

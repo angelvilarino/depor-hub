@@ -146,26 +146,40 @@
     "seeAllHeadlines": "Ver todas"
   },
   "news": {
-    "openItem": "Abrir nova: {{title}} ({{source}})",
-    "openError": "Non se puido abrir a ligazón.",
-    "unread": "Non lida",
-    "alsoIn": "Tamén en: {{sources}}",
-    "video": "Vídeo",
+    "searchOpen": "Buscar",
+    "searchClose": "Pechar busca",
     "searchPlaceholder": "Buscar titulares, medio ou etiqueta",
     "searchClear": "Borrar busca",
+    "filters": "Filtros",
+    "filtersTitle": "Filtros",
     "sources": "Fontes",
-    "allSources": "Todos os medios",
+    "noSources": "Non hai fontes con novas.",
+    "filterSource": "{{source}}: {{count}} novas",
     "tagsTitle": "Etiquetas",
-    "allTags": "Todas",
+    "noTags": "Non hai etiquetas.",
+    "filterTag": "{{tag}}: {{count}} novas",
     "clearFilters": "Quitar filtros",
+    "clearFiltersCount": "Limpar ({{count}})",
+    "group": {
+      "club": "Club",
+      "galicia": "Galicia",
+      "nacional": "Nacional"
+    },
     "kind": {
       "all": "Todo",
       "article": "Artigos",
       "video": "Vídeos"
     },
+    "unread": "Non lida",
+    "unreadCount": "{{count}} sen ler",
+    "markAllShort": "Marcar lidas",
+    "today": "Hoxe",
+    "yesterday": "Onte",
+    "openItem": "Abrir nova: {{title}} ({{source}})",
+    "openError": "Non se puido abrir a ligazón.",
+    "openAlsoIn": "Abrir versión en {{source}}: {{title}}",
     "emptyAll": "Aínda non hai novas publicadas.",
     "emptyFiltered": "Non hai novas con estes filtros.",
-    "loadMore_other": "Cargar {{count}} máis",
     "socialTitle": "Redes oficiais",
     "platforms": {
       "x": "X",
@@ -178,23 +192,15 @@
       "bluesky": "Bluesky",
       "threads": "Threads"
     },
-    "sourceKind": {
-      "club": "Club",
-      "local": "Local",
-      "nacional": "Nacional",
-      "radio": "Radio",
-      "agregador": "Agregador",
-      "video": "Vídeo"
-    },
     "tags": {
       "fichajes": "Fichaxes",
       "cantera": "Canteira",
-      "partido": "Partido",
-      "rueda-de-prensa": "Rolda de prensa",
       "lesiones": "Lesións",
-      "entrenador": "Adestrador",
+      "partido": "Partido",
       "aficion": "Afección",
-      "resultados": "Resultados"
-    }
+      "club": "Club",
+      "opinion": "Opinión"
+    },
+    "filterTagOnly": "Filtrar por {{tag}}"
   }
 }

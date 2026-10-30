@@ -262,68 +262,42 @@ export const Fixtures = z.strictObject({
   matches: z.array(Match),
 });
 
-// Noticias (H6, ADR 0016). Todo lo nuevo es aditivo: el JSON mínimo de H5 y la caché
-// anterior deben seguir validando. news.json sigue siendo opcional (404 = sin titulares).
-export const NewsSourceKind = z.enum(['club', 'local', 'nacional', 'radio', 'agregador', 'video']);
-
-export const NewsAlsoIn = z.strictObject({
-  sourceName: z.string(),
-  url: z.string(),
-  sourceId: optionalNull(),
-});
-
-export const NewsItem = z.strictObject({
-  id: z.string(),
-  title: z.string(),
-  url: z.string(),
-  sourceId: optionalNull(),
-  sourceName: z.string(),
-  sourceKind: NewsSourceKind.default('agregador'),
-  kind: z.enum(['article', 'video']).default('article'),
-  publishedAt: iso,
-  publishedEstimated: z.boolean().default(false),
-  thumbnailUrl: optionalNull(),
-  summary: optionalNull(),
-  tags: z.array(z.string()).default([]),
-  players: z.array(z.number().int()).default([]),
-  alsoIn: z.array(NewsAlsoIn).default([]),
-  durationSeconds: optionalInt(),
-  videoId: optionalNull(),
-});
-
-export const NewsSourceMeta = z.strictObject({
-  feedId: z.string(),
-  feedName: z.string(),
-  items: z.number().int().nonnegative().default(0),
-  error: optionalNull(),
-  lastAttemptAt: optionalNull(),
-  lastSuccessAt: optionalNull(),
-});
-
-export const NewsMeta = z.strictObject({
-  capturedAt: iso,
-  sources: z.array(NewsSourceMeta).default([]),
-});
-
-export const News = z.strictObject({
-  updatedAt: iso,
-  dataHash: z.string().default(''),
-  items: z.array(NewsItem),
-  meta: NewsMeta.nullable().default(null),
-});
+// Noticias (ADR 0018): una historia puede tener versiones en varios medios. El contrato
+// rompe el anterior `items`/`meta`; la app se actualiza al mismo tiempo que el JSON.
+export const NewsGroup = z.enum(['club', 'galicia', 'nacional']);
 
 export const NewsSource = z.strictObject({
   id: z.string(),
   name: z.string(),
-  url: optionalNull(),
-  kind: NewsSourceKind,
-  items: z.number().int().nonnegative().default(0),
+  group: NewsGroup,
+  kind: z.enum(['article', 'video']).default('article'),
+  homepage: z.string(),
 });
 
-export const NewsSources = z.strictObject({
+export const NewsAlsoIn = z.strictObject({
+  sourceId: z.string(),
+  title: z.string(),
+  url: z.string(),
+  publishedAt: iso,
+});
+
+export const NewsStory = z.strictObject({
+  id: z.string(),
+  title: z.string(),
+  url: z.string(),
+  sourceId: z.string(),
+  publishedAt: iso,
+  kind: z.enum(['article', 'video']).default('article'),
+  summary: optionalNull(),
+  thumbnailUrl: optionalNull(),
+  tags: z.array(z.string()).default([]),
+  alsoIn: z.array(NewsAlsoIn).default([]),
+});
+
+export const News = z.strictObject({
   updatedAt: iso,
-  dataHash: z.string().default(''),
-  sources: z.array(NewsSource),
+  sources: z.array(NewsSource).default([]),
+  stories: z.array(NewsStory).default([]),
 });
 
 // Redes (H6): solo perfiles y publicaciones curadas a mano. social.json es opcional.
@@ -453,12 +427,10 @@ export type HeadToHeadMeetingT = z.infer<typeof HeadToHeadMeeting>;
 export type KeyPlayerT = z.infer<typeof KeyPlayer>;
 export type FixturesT = z.infer<typeof Fixtures>;
 export type NewsT = z.infer<typeof News>;
-export type NewsItemT = z.infer<typeof NewsItem>;
+export type NewsStoryT = z.infer<typeof NewsStory>;
 export type NewsAlsoInT = z.infer<typeof NewsAlsoIn>;
-export type NewsSourceKindT = z.infer<typeof NewsSourceKind>;
+export type NewsGroupT = z.infer<typeof NewsGroup>;
 export type NewsSourceT = z.infer<typeof NewsSource>;
-export type NewsSourcesT = z.infer<typeof NewsSources>;
-export type NewsMetaT = z.infer<typeof NewsMeta>;
 export type SocialPlatformT = z.infer<typeof SocialPlatform>;
 export type SocialProfileT = z.infer<typeof SocialProfile>;
 export type SocialPinT = z.infer<typeof SocialPin>;

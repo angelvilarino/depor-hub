@@ -1,61 +1,66 @@
 {
-  "updatedAt": "2026-10-27T12:00:00Z",
-  "dataHash": "ejemplo00000000",
-  "items": [
+  "updatedAt": "2026-10-29T12:00:00Z",
+  "sources": [
+    {
+      "id": "youtube-club",
+      "name": "RC Deportivo (YouTube)",
+      "group": "club",
+      "kind": "video",
+      "homepage": "https://www.youtube.com/@rcdeportivo"
+    },
+    {
+      "id": "riazor",
+      "name": "Riazor.org",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.riazor.org/"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/"
+    },
+    {
+      "id": "marca",
+      "name": "Marca",
+      "group": "nacional",
+      "kind": "article",
+      "homepage": "https://www.marca.com/futbol/deportivo.html"
+    }
+  ],
+  "stories": [
     {
       "id": "ejemplo-1",
-      "title": "Titular sintético de ejemplo",
+      "title": "Titular sintético de ejemplo sobre un fichaje",
       "url": "https://example.test/noticia",
-      "sourceId": "medio-ejemplo",
-      "sourceName": "Medio de ejemplo",
-      "sourceKind": "nacional",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-29T10:30:00Z",
       "kind": "article",
-      "publishedAt": "2026-10-27T10:30:00Z",
-      "publishedEstimated": false,
-      "thumbnailUrl": "https://example.test/miniatura.jpg",
       "summary": "Extracto sintético publicado por el feed de ejemplo.",
-      "tags": ["fichajes", "player:1"],
-      "players": [1],
+      "thumbnailUrl": "https://example.test/miniatura.jpg",
+      "tags": ["fichajes", "cantera"],
       "alsoIn": [
         {
-          "sourceName": "Otro medio de ejemplo",
+          "sourceId": "la-voz",
+          "title": "Otra versión sintética del mismo fichaje",
           "url": "https://example.test/otra-version",
-          "sourceId": "otro-medio"
+          "publishedAt": "2026-10-29T11:00:00Z"
         }
-      ],
-      "durationSeconds": null,
-      "videoId": null
+      ]
     },
     {
       "id": "ejemplo-2",
       "title": "Vídeo sintético de ejemplo",
       "url": "https://www.youtube.com/watch?v=ejemplo",
       "sourceId": "youtube-club",
-      "sourceName": "RC Deportivo",
-      "sourceKind": "video",
+      "publishedAt": "2026-10-29T09:00:00Z",
       "kind": "video",
-      "publishedAt": "2026-10-27T09:00:00Z",
-      "publishedEstimated": false,
-      "thumbnailUrl": "https://example.test/video.jpg",
       "summary": null,
-      "tags": ["cantera"],
-      "players": [],
-      "alsoIn": [],
-      "durationSeconds": null,
-      "videoId": "ejemplo"
+      "thumbnailUrl": "https://example.test/video.jpg",
+      "tags": ["club"],
+      "alsoIn": []
     }
-  ],
-  "meta": {
-    "capturedAt": "2026-10-27T12:00:00Z",
-    "sources": [
-      {
-        "feedId": "feed-ejemplo",
-        "feedName": "Feed de ejemplo",
-        "items": 2,
-        "error": null,
-        "lastAttemptAt": "2026-10-27T12:00:00Z",
-        "lastSuccessAt": "2026-10-27T12:00:00Z"
-      }
-    ]
-  }
+  ]
 }

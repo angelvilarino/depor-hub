@@ -1,153 +1,169 @@
-import type { NewsItemT } from '@/data/schemas';
+import type { NewsSourceT, NewsStoryT } from '@/data/schemas';
 import {
-  availableSources,
+  activeFilterCount,
+  countLabel,
   EMPTY_FILTERS,
   filterNews,
+  groupByDay,
   hasActiveFilters,
-  NEWS_PAGE_SIZE,
   newsAge,
-  newsSourceKey,
-  paginate,
+  sourceGroup,
+  sourceMonogram,
+  sourceName,
   sourceOptions,
   tagOptions,
+  todayKey,
   topHeadlines,
-  durationLabel,
+  unreadCount,
 } from '@/features/news/logic';
 
 const NOW = Date.parse('2026-10-27T12:00:00Z');
 
-function item(overrides: Partial<NewsItemT> = {}): NewsItemT {
+const sources: NewsSourceT[] = [
+  { id: 'medio-a', name: 'Medio A', group: 'galicia', kind: 'article', homepage: 'https://a.test' },
+  { id: 'medio-b', name: 'Medio B', group: 'nacional', kind: 'article', homepage: 'https://b.test' },
+  { id: 'youtube', name: 'RC Deportivo', group: 'club', kind: 'video', homepage: 'https://yt.test' },
+];
+
+function story(overrides: Partial<NewsStoryT> = {}): NewsStoryT {
   return {
     id: 'n1',
     title: 'El Dépor ficha a un delantero',
     url: 'https://example.test/1',
     sourceId: 'medio-a',
-    sourceName: 'Medio A',
-    sourceKind: 'local',
-    kind: 'article',
     publishedAt: '2026-10-27T10:00:00Z',
-    publishedEstimated: false,
-    thumbnailUrl: null,
+    kind: 'article',
     summary: 'Refuerzo para la delantera',
-    tags: ['fichajes', 'player:7'],
-    players: [7],
+    thumbnailUrl: null,
+    tags: ['fichajes'],
     alsoIn: [],
-    durationSeconds: null,
-    videoId: null,
     ...overrides,
   };
 }
 
 describe('lógica de noticias', () => {
-  it('filtra por texto sin acentos y por fuente, tipo y etiqueta', () => {
-    const items = [
-      item(),
-      item({
+  it('filtra por texto sin acentos y por tipo, grupo, fuente y etiqueta', () => {
+    const stories = [
+      story(),
+      story({
         id: 'n2',
         title: 'Riazor estrena césped',
         url: 'https://example.test/2',
         sourceId: 'medio-b',
-        sourceName: 'Medio B',
         tags: ['partido'],
         summary: null,
       }),
-      item({
+      story({
         id: 'n3',
         title: 'Resumen en vídeo del partido',
         url: 'https://example.test/3',
         kind: 'video',
         sourceId: 'youtube',
-        sourceName: 'RC Deportivo',
-        sourceKind: 'video',
         tags: ['partido'],
       }),
     ];
-    expect(filterNews(items, { ...EMPTY_FILTERS, text: 'ficha' })).toHaveLength(1);
-    expect(filterNews(items, { ...EMPTY_FILTERS, text: 'FICHA' })).toHaveLength(1);
-    expect(filterNews(items, { ...EMPTY_FILTERS, kind: 'video' })).toHaveLength(1);
-    expect(filterNews(items, { ...EMPTY_FILTERS, sourceId: 'medio-b' })).toHaveLength(1);
-    expect(filterNews(items, { ...EMPTY_FILTERS, tag: 'partido' })).toHaveLength(2);
-    expect(filterNews(items, { ...EMPTY_FILTERS, tag: 'fichajes' })).toHaveLength(1);
-    expect(filterNews(items, { ...EMPTY_FILTERS, text: 'no existe' })).toHaveLength(0);
+    expect(filterNews(stories, { ...EMPTY_FILTERS, text: 'ficha' }, sources)).toHaveLength(1);
+    expect(filterNews(stories, { ...EMPTY_FILTERS, text: 'FICHA' }, sources)).toHaveLength(1);
+    expect(filterNews(stories, { ...EMPTY_FILTERS, text: 'medio b' }, sources)).toHaveLength(1);
+    expect(filterNews(stories, { ...EMPTY_FILTERS, text: 'partido' }, sources)).toHaveLength(2);
+    expect(filterNews(stories, { ...EMPTY_FILTERS, kind: 'video' }, sources)).toHaveLength(1);
+    expect(filterNews(stories, { ...EMPTY_FILTERS, groups: ['nacional'] }, sources)).toHaveLength(1);
+    expect(
+      filterNews(stories, { ...EMPTY_FILTERS, groups: ['club', 'galicia'] }, sources),
+    ).toHaveLength(2);
+    expect(filterNews(stories, { ...EMPTY_FILTERS, sourceIds: ['medio-b'] }, sources)).toHaveLength(
+      1,
+    );
+    expect(filterNews(stories, { ...EMPTY_FILTERS, tags: ['partido'] }, sources)).toHaveLength(2);
+    expect(
+      filterNews(stories, { ...EMPTY_FILTERS, tags: ['fichajes', 'partido'] }, sources),
+    ).toHaveLength(3);
+    expect(filterNews(stories, { ...EMPTY_FILTERS, text: 'no existe' }, sources)).toHaveLength(0);
   });
 
-  it('sabe cuándo hay filtros activos', () => {
+  it('cuenta decisiones activas sin contar cada letra buscada', () => {
+    expect(activeFilterCount(EMPTY_FILTERS)).toBe(0);
     expect(hasActiveFilters(EMPTY_FILTERS)).toBe(false);
-    expect(hasActiveFilters({ ...EMPTY_FILTERS, text: '  ' })).toBe(false);
-    expect(hasActiveFilters({ ...EMPTY_FILTERS, kind: 'video' })).toBe(true);
-    expect(hasActiveFilters({ ...EMPTY_FILTERS, sourceId: 'x' })).toBe(true);
-    expect(hasActiveFilters({ ...EMPTY_FILTERS, tag: 'x' })).toBe(true);
+    expect(activeFilterCount({ ...EMPTY_FILTERS, text: '  ' })).toBe(0);
+    expect(activeFilterCount({ ...EMPTY_FILTERS, text: 'dépor' })).toBe(1);
+    expect(activeFilterCount({ ...EMPTY_FILTERS, kind: 'video' })).toBe(1);
+    expect(activeFilterCount({ ...EMPTY_FILTERS, groups: ['club', 'nacional'] })).toBe(2);
+    expect(
+      activeFilterCount({
+        text: 'x',
+        kind: 'article',
+        groups: ['club'],
+        sourceIds: ['medio-a'],
+        tags: ['partido'],
+      }),
+    ).toBe(5);
   });
 
-  it('pagina de 30 en 30 sin perder elementos', () => {
-    const items = Array.from({ length: 71 }, (_, i) => item({ id: `n${i}`, url: `https://e.test/${i}` }));
-    const first = paginate(items, 1);
-    expect(first.visible).toHaveLength(NEWS_PAGE_SIZE);
-    expect(first.hasMore).toBe(true);
-    expect(first.remaining).toBe(41);
-    const second = paginate(items, 2);
-    expect(second.visible).toHaveLength(60);
-    expect(second.remaining).toBe(11);
-    const last = paginate(items, 3);
-    expect(last.visible).toHaveLength(71);
-    expect(last.hasMore).toBe(false);
-    expect(last.remaining).toBe(0);
-    expect(paginate([], 1).visible).toHaveLength(0);
+  it('agrupa por día natural de Madrid, más reciente primero', () => {
+    const sections = groupByDay([
+      story({ id: 'a', publishedAt: '2026-10-26T10:00:00Z' }),
+      // 23:30 UTC del 27 son las 00:30 del 28 en Madrid (CET, tras el cambio de hora).
+      story({ id: 'b', publishedAt: '2026-10-27T23:30:00Z' }),
+      story({ id: 'c', publishedAt: '2026-10-27T08:00:00Z' }),
+    ]);
+    expect(sections.map((section) => section.key)).toEqual(['2026-10-28', '2026-10-27', '2026-10-26']);
+    expect(sections[1]!.data.map((entry) => entry.id)).toEqual(['c']);
+    expect(todayKey(Date.parse('2026-10-27T23:30:00Z'))).toBe('2026-10-28');
   });
 
   it('la Home se queda en cinco titulares sin repetir título ni URL', () => {
-    const items = [
-      item({ id: 'a', title: 'Titular uno', url: 'https://e.test/1' }),
-      item({ id: 'b', title: 'Titular uno', url: 'https://e.test/2' }),
-      item({ id: 'c', title: 'Titular dos', url: 'https://e.test/1?utm=x' }),
-      item({ id: 'd', title: 'Titular tres', url: 'https://e.test/3' }),
-      item({ id: 'e', title: 'Titular cuatro', url: 'https://e.test/4' }),
-      item({ id: 'f', title: 'Titular cinco', url: 'https://e.test/5' }),
-      item({ id: 'g', title: 'Titular seis', url: 'https://e.test/6' }),
+    const stories = [
+      story({ id: 'a', title: 'Titular uno', url: 'https://e.test/1' }),
+      story({ id: 'b', title: 'Titular uno', url: 'https://e.test/2' }),
+      story({ id: 'c', title: 'Titular dos', url: 'https://e.test/1?utm=x' }),
+      story({ id: 'd', title: 'Titular tres', url: 'https://e.test/3' }),
+      story({ id: 'e', title: 'Titular cuatro', url: 'https://e.test/4' }),
+      story({ id: 'f', title: 'Titular cinco', url: 'https://e.test/5' }),
+      story({ id: 'g', title: 'Titular seis', url: 'https://e.test/6' }),
     ];
-    const top = topHeadlines(items);
-    expect(top.map((entry) => entry.id)).toEqual(['a', 'd', 'e', 'f', 'g']);
-    expect(topHeadlines(items, 2)).toHaveLength(2);
+    expect(topHeadlines(stories).map((entry) => entry.id)).toEqual(['a', 'd', 'e', 'f', 'g']);
+    expect(topHeadlines(stories, 2)).toHaveLength(2);
   });
 
-  it('agrupa fuentes y etiquetas, y oculta las de jugador', () => {
-    const items = [
-      item(),
-      item({ id: 'n2', url: 'https://e.test/2', tags: ['partido', 'player:7'] }),
-      item({
-        id: 'n3',
-        url: 'https://e.test/3',
-        sourceId: null,
-        sourceName: 'Sin id',
-        tags: [],
-      }),
+  it('lista solo las fuentes y etiquetas presentes, por volumen', () => {
+    const stories = [
+      story({ id: 'a', sourceId: 'medio-a', tags: ['fichajes', 'cantera'] }),
+      story({ id: 'b', url: 'https://e.test/2', sourceId: 'medio-a', tags: ['partido'] }),
+      story({ id: 'c', url: 'https://e.test/3', sourceId: 'youtube', tags: [] }),
     ];
-    expect(newsSourceKey(items[2]!)).toBe('Sin id');
-    expect(sourceOptions(items).map((source) => [source.id, source.items])).toEqual([
-      ['medio-a', 2],
-      ['Sin id', 1],
+    expect(sourceOptions(stories, sources)).toEqual([
+      { id: 'medio-a', name: 'Medio A', group: 'galicia', kind: 'article', items: 2 },
+      { id: 'youtube', name: 'RC Deportivo', group: 'club', kind: 'video', items: 1 },
     ]);
-    expect(tagOptions(items)).toEqual([
+    expect(tagOptions(stories)).toEqual([
+      { tag: 'cantera', items: 1 },
       { tag: 'fichajes', items: 1 },
       { tag: 'partido', items: 1 },
     ]);
-    expect(availableSources(items, null)).toHaveLength(2);
-    expect(
-      availableSources(items, [
-        { id: 'medio-a', name: 'Medio A', url: null, kind: 'local', items: 99 },
-        { id: 'fuera', name: 'Fuera', url: null, kind: 'local', items: 3 },
-      ]),
-    ).toEqual([{ id: 'medio-a', name: 'Medio A', kind: 'local', items: 2 }]);
   });
 
-  it('calcula la antigüedad y la duración', () => {
+  it('resuelve nombre y grupo, y genera un monograma estable', () => {
+    expect(sourceName(story(), sources)).toBe('Medio A');
+    expect(sourceGroup(story(), sources)).toBe('galicia');
+    expect(sourceName(story({ sourceId: 'desconocido' }), sources)).toBe('desconocido');
+    expect(sourceGroup(story({ sourceId: 'desconocido' }), sources)).toBe('galicia');
+    expect(sourceMonogram('DXT Campeón')).toBe('DC');
+    expect(sourceMonogram('La Voz de Galicia')).toBe('VG');
+    expect(sourceMonogram('Marca')).toBe('MA');
+    expect(sourceMonogram('Riazor.org')).toBe('RO');
+  });
+
+  it('calcula la antigüedad, los no leídos y el contador topado', () => {
     expect(newsAge('2026-10-27T11:59:30Z', NOW)).toEqual({ unit: 'now', n: 0 });
     expect(newsAge('2026-10-27T11:50:00Z', NOW)).toEqual({ unit: 'minutes', n: 10 });
     expect(newsAge('2026-10-27T09:00:00Z', NOW)).toEqual({ unit: 'hours', n: 3 });
     expect(newsAge('2026-10-20T12:00:00Z', NOW)).toEqual({ unit: 'days', n: 7 });
     expect(newsAge('no-es-fecha', NOW)).toEqual({ unit: 'now', n: 0 });
-    expect(durationLabel(null)).toBeNull();
-    expect(durationLabel(0)).toBeNull();
-    expect(durationLabel(90)).toBe('2');
+    const stories = [story({ id: 'a' }), story({ id: 'b' }), story({ id: 'c' })];
+    expect(unreadCount(stories, ['b'])).toBe(2);
+    expect(unreadCount(stories, [])).toBe(3);
+    expect(countLabel(0)).toBe('0');
+    expect(countLabel(99)).toBe('99');
+    expect(countLabel(100)).toBe('99+');
   });
 });

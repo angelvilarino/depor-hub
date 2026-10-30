@@ -241,79 +241,53 @@ class Fixtures(Public):
 
 
 NewsKind = Literal["article", "video"]
-NewsSourceKind = Literal["club", "local", "nacional", "radio", "agregador", "video"]
+NewsGroup = Literal["club", "galicia", "nacional"]
+
+
+class NewsSource(Public):
+    """Medio curado que puede aparecer como representante o en `alsoIn` (ADR 0018)."""
+
+    id: str
+    name: str
+    group: NewsGroup
+    kind: NewsKind = "article"
+    homepage: str
 
 
 class NewsAlsoIn(Public):
-    """Otro medio que publicó la misma noticia (ADR 0016)."""
+    """Otra versión de la misma historia publicada por un medio distinto."""
 
-    source_name: str
+    source_id: str
+    title: str
     url: str
-    source_id: Optional[str] = None
+    published_at: IsoDateTime
 
 
-class NewsItem(Public):
-    """Titular agregado de un medio (H6, ADR 0016).
+class NewsStory(Public):
+    """Una historia, no un artículo suelto: representante + versiones en otros medios.
 
-    Solo se publica lo que entrega el feed: título, enlace, fecha, miniatura, resumen y
-    metadatos. No se descarga ni se scrapea el cuerpo del artículo.
+    Solo se publica lo que entrega el feed: título, enlace, fecha, miniatura y extracto
+    corto. No se descarga ni se scrapea el cuerpo del artículo.
     """
 
     id: str
     title: str
     url: str
-    source_id: Optional[str] = None
-    source_name: str
-    source_kind: NewsSourceKind = "agregador"
-    kind: NewsKind = "article"
+    source_id: str
     published_at: IsoDateTime
-    published_estimated: bool = False
-    thumbnail_url: Optional[str] = None
+    kind: NewsKind = "article"
     summary: Optional[str] = None
+    thumbnail_url: Optional[str] = None
     tags: list[str] = Field(default_factory=list)
-    players: list[int] = Field(default_factory=list)
     also_in: list[NewsAlsoIn] = Field(default_factory=list)
-    duration_seconds: Optional[int] = Field(default=None, ge=0)
-    video_id: Optional[str] = None
-
-
-class NewsSourceMeta(Public):
-    """Diagnóstico por feed: lo que la app no necesita pero sí quien mantiene la ingesta."""
-
-    feed_id: str
-    feed_name: str
-    items: int = Field(default=0, ge=0)
-    error: Optional[str] = None
-    last_attempt_at: Optional[str] = None
-    last_success_at: Optional[str] = None
-
-
-class NewsMeta(Public):
-    captured_at: IsoDateTime
-    sources: list[NewsSourceMeta] = Field(default_factory=list)
 
 
 class News(Public):
+    """Contrato de noticias v1 reescrito en ADR 0018 (ruptura consciente)."""
+
     updated_at: IsoDateTime
-    data_hash: str = ""
-    items: list[NewsItem]
-    meta: Optional[NewsMeta] = None
-
-
-class NewsSource(Public):
-    """Fuente pública para filtros y créditos (sources.json)."""
-
-    id: str
-    name: str
-    url: Optional[str] = None
-    kind: NewsSourceKind
-    items: int = Field(default=0, ge=0)
-
-
-class NewsSources(Public):
-    updated_at: IsoDateTime
-    data_hash: str = ""
     sources: list[NewsSource]
+    stories: list[NewsStory]
 
 
 SocialPlatform = Literal[
@@ -535,7 +509,6 @@ FILES: dict[str, type[Public]] = {
 # ya puede leer de forma opcional. Se exportan igual para mantener Pydantic como origen.
 NEWS_FILES: dict[str, type[Public]] = {
     "news.json": News,
-    "sources.json": NewsSources,
     "social.json": SocialFeed,
 }
 
