@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T20:23:55Z",
+  "updatedAt": "2026-10-30T22:20:30Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
@@ -120,25 +120,6 @@
     {
       "position": 7,
       "team": {
-        "id": 94,
-        "name": "Villarreal CF",
-        "shortName": "Villarreal",
-        "tla": "VIL",
-        "crestUrl": "https://crests.football-data.org/94.png"
-      },
-      "played": 11,
-      "won": 3,
-      "draw": 4,
-      "lost": 4,
-      "points": 13,
-      "goalsFor": 15,
-      "goalsAgainst": 14,
-      "goalDifference": 1,
-      "form": null
-    },
-    {
-      "position": 8,
-      "team": {
         "id": 263,
         "name": "Deportivo Alavés",
         "shortName": "Alavés",
@@ -156,7 +137,7 @@
       "form": null
     },
     {
-      "position": 9,
+      "position": 8,
       "team": {
         "id": 77,
         "name": "Athletic Club",
@@ -175,7 +156,7 @@
       "form": null
     },
     {
-      "position": 10,
+      "position": 9,
       "team": {
         "id": 558,
         "name": "RC Celta de Vigo",
@@ -191,6 +172,25 @@
       "goalsFor": 10,
       "goalsAgainst": 7,
       "goalDifference": 3,
+      "form": null
+    },
+    {
+      "position": 10,
+      "team": {
+        "id": 94,
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL",
+        "crestUrl": "https://crests.football-data.org/94.png"
+      },
+      "played": 11,
+      "won": 3,
+      "draw": 3,
+      "lost": 5,
+      "points": 12,
+      "goalsFor": 15,
+      "goalsAgainst": 15,
+      "goalDifference": 0,
       "form": null
     },
     {
@@ -215,6 +215,25 @@
     {
       "position": 12,
       "team": {
+        "id": 80,
+        "name": "RCD Espanyol de Barcelona",
+        "shortName": "Espanyol",
+        "tla": "ESP",
+        "crestUrl": "https://crests.football-data.org/80.png"
+      },
+      "played": 11,
+      "won": 3,
+      "draw": 2,
+      "lost": 6,
+      "points": 11,
+      "goalsFor": 13,
+      "goalsAgainst": 14,
+      "goalDifference": -1,
+      "form": null
+    },
+    {
+      "position": 13,
+      "team": {
         "id": 79,
         "name": "CA Osasuna",
         "shortName": "Osasuna",
@@ -232,7 +251,7 @@
       "form": null
     },
     {
-      "position": 13,
+      "position": 14,
       "team": {
         "id": 5335,
         "name": "Real Racing Club de Santander",
@@ -251,7 +270,7 @@
       "form": null
     },
     {
-      "position": 14,
+      "position": 15,
       "team": {
         "id": 88,
         "name": "Levante UD",
@@ -270,7 +289,7 @@
       "form": null
     },
     {
-      "position": 15,
+      "position": 16,
       "team": {
         "id": 285,
         "name": "Elche CF",
@@ -286,25 +305,6 @@
       "goalsFor": 14,
       "goalsAgainst": 17,
       "goalDifference": -3,
-      "form": null
-    },
-    {
-      "position": 16,
-      "team": {
-        "id": 80,
-        "name": "RCD Espanyol de Barcelona",
-        "shortName": "Espanyol",
-        "tla": "ESP",
-        "crestUrl": "https://crests.football-data.org/80.png"
-      },
-      "played": 11,
-      "won": 2,
-      "draw": 3,
-      "lost": 6,
-      "points": 9,
-      "goalsFor": 12,
-      "goalsAgainst": 14,
-      "goalDifference": -2,
       "form": null
     },
     {
