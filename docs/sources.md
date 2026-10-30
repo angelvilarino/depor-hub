@@ -15,7 +15,7 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 | `data/manual/squad_overrides.yml` | Redes aportadas por el usuario, cesión de salida y contratos publicados en notas del club | Solo enlaces/handles públicos aportados; sin scrapeo de perfiles privados | Manual | En uso (12 jugadores) |
 | `data/manual/club_crests.yml` | Escudos que no resuelven fixtures ni Wikidata | Solo URL y fuente reales; nunca se inventa ni se deduce un id | Manual | En uso (RB Leipzig, escudo apaisado) |
 | `data/manual/coach.yml` | Salida generada de la ficha del entrenador y del cuerpo técnico | Se revisa antes de aplicar; no se inventan etapas ni miembros | Manual / `coach` | En uso (Antonio Hidalgo, 15 etapas, 21 miembros) |
-| **RSS/Atom de medios y YouTube** | Titular, fuente, fecha, miniatura y resumen tal como los publica el feed; nunca el cuerpo del artículo | Solo lo que el feed entrega; User-Agent identificable, 1 s por dominio y `ETag`/`If-Modified-Since`. Los 403/406/429 se documentan y no se rodean | Cada 30 min; 14 días de ventana | En uso: 21 feeds activos y 0 errores en la auditoría del 27-oct-2026 (tabla en «Noticias») |
+| **RSS/Atom de medios y YouTube** | Titular, fuente, fecha, miniatura y resumen tal como los publica el feed; nunca el cuerpo del artículo | Solo lo que el feed entrega; User-Agent identificable, 1 s por dominio y `ETag`/`If-Modified-Since`. Los 403/406/429 se documentan y no se rodean | Cada 6 h; 14 días de ventana | En uso: 5 fuentes curadas y 0 errores en la calibración del 29-oct-2026 (tabla en «Noticias») |
 | `data/manual/club.yml` | Datos del club | Elaboración propia con fuente | Manual | H7 |
 
 ### Fuentes descartadas para el enriquecimiento (H4)
@@ -26,73 +26,70 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 | **FBref** | 403 de Cloudflare |
 | **LaLiga** | `Crawl-delay: 30`; no se usa como dependencia |
 
-## Noticias (H6)
+## Noticias (ADR 0018)
+
+Catálogo curado de cinco fuentes. La calibración del 29-oct-2026 midió cada feed con el filtro real; el detalle y las once fuentes descartadas viven en `data/manual/news_feeds.yml` y en el [ADR 0018](adr/0018-noticias-curacion-dedupe-filtros.md).
 
 <!-- news-audit:start -->
-Auditoría automática: **27-Oct-2026 14:50 UTC**. `relevant` aplica el filtro del Depor a los feeds generales.
+Auditoría de referencia: **29-Oct-2026 10:00 UTC**. `Relevantes` aplica el filtro del Depor de ADR 0018; es una foto de calibración, no un refresco en vivo.
 
-| Fuente | Tipo | URL | Estado | Ítems | Relevantes | Más reciente | Imagen | Resumen | Nota |
+| Fuente | Grupo | Feed | Estado | Ítems | Relevantes | Más reciente | Imagen | Resumen | Nota |
 |---|---|---|---|---:|---:|---|---:|---:|---|
-| La Voz de Galicia · Deportes | local | https://www.lavozdegalicia.es/deportes/index.xml | ok | 24 | 1 | 2026-10-27 12:41Z | 23/24 | 23/24 |  |
-| La Voz de Galicia · A Coruña | local | https://www.lavozdegalicia.es/coruna/index.xml | ok | 52 | 0 | 2026-10-27 12:54Z | 52/52 | 52/52 |  |
-| Galiciapress | local | https://www.galiciapress.es/feed/all | ok | 50 | 0 | 2026-10-27 14:39Z | 32/50 | 50/50 |  |
-| El Ideal Gallego | local | https://www.elidealgallego.com/rss/ | ok | 57 | 2 | 2026-10-27 13:59Z | 57/57 | 34/57 |  |
-| Diario de Ferrol | local | https://www.diariodeferrol.com/rss/ | ok | 53 | 1 | 2026-10-27 04:00Z | 53/53 | 44/53 |  |
-| Marca | nacional | https://e00-marca.uecdn.es/rss/portada.xml | ok | 79 | 0 | 2026-10-21 16:07Z | 79/79 | 75/79 |  |
-| Mundo Deportivo | nacional | https://www.mundodeportivo.com/rss/portada | ok | 100 | 2 | 2026-09-21 10:25Z | 100/100 | 92/100 |  |
-| El Español | nacional | https://www.elespanol.com/rss/ | ok | 30 | 0 | 2026-10-27 13:20Z | 30/30 | 29/30 |  |
-| COPE | radio | https://www.cope.es/api/es/news/rss.xml | ok | 20 | 0 | 2026-10-27 14:40Z | 20/20 | 20/20 |  |
-| Defensa Central | nacional | https://defensacentral.com/uploads/feeds/feed_defensa-central_es.xml | ok | 15 | 0 | 2026-10-27 14:00Z | 15/15 | 15/15 |  |
-| RC Deportivo · YouTube | video | https://www.youtube.com/feeds/videos.xml?channel_id=UCY2s1XaPzO60Hu6M_YZCTgA | ok | 15 | 15 | 2026-10-27 12:54Z | 15/15 | 2/15 |  |
-| Google News · Deportivo de La Coruña | agregador | https://news.google.com/rss/search?q=%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 102 | 39 | 2026-10-27 13:26Z | 0/102 | 102/102 |  |
-| Google News · Depor Riazor | agregador | https://news.google.com/rss/search?q=%22Depor%22%20Riazor&hl=es&gl=ES&ceid=ES:es | ok | 65 | 63 | 2026-10-27 06:00Z | 0/65 | 65/65 |  |
-| Google News · RC Deportivo | agregador | https://news.google.com/rss/search?q=%22RC%20Deportivo%22&hl=es&gl=ES&ceid=ES:es | ok | 102 | 80 | 2026-10-27 14:41Z | 0/102 | 102/102 |  |
-| Google News · AS | nacional | https://news.google.com/rss/search?q=site%3Aas.com%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 100 | 54 | 2026-10-27 12:31Z | 0/100 | 100/100 |  |
-| Google News · Sport | nacional | https://news.google.com/rss/search?q=site%3Asport.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 62 | 30 | 2026-10-26 11:40Z | 0/62 | 62/62 |  |
-| Google News · Cadena SER | radio | https://news.google.com/rss/search?q=site%3Acadenaser.com%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 63 | 40 | 2026-10-25 13:03Z | 0/63 | 63/63 |  |
-| Google News · Faro de Vigo | local | https://news.google.com/rss/search?q=site%3Afarodevigo.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 55 | 21 | 2026-10-24 21:28Z | 0/55 | 55/55 |  |
-| Google News · La Opinión A Coruña | local | https://news.google.com/rss/search?q=site%3Alaopinioncoruna.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 40 | 17 | 2026-07-28 18:40Z | 0/40 | 40/40 |  |
-| Google News · Superdeporte | local | https://news.google.com/rss/search?q=site%3Asuperdeporte.es%20%22Deportivo%20de%20La%20Coru%C3%B1a%22&hl=es&gl=ES&ceid=ES:es | ok | 100 | 31 | 2026-10-27 10:24Z | 0/100 | 100/100 |  |
-| Google News · Web oficial | club | https://news.google.com/rss/search?q=site%3Arcdeportivo.es&hl=es&gl=ES&ceid=ES:es | ok | 100 | 100 | 2026-10-27 14:41Z | 0/100 | 100/100 |  |
+| RC Deportivo (YouTube) | club | https://www.youtube.com/feeds/videos.xml?channel_id=UCY2s1XaPzO60Hu6M_YZCTgA | ok | 15 | 15 | 2026-10-28 09:18Z | 15/15 | 2/15 | Canal oficial. Excepción expresa al RSS de YouTube (ADR 0018). |
+| Riazor.org | galicia | https://www.riazor.org/feed/ | ok | 25 | 14 | 2026-10-29 08:00Z | 5/25 | 25/25 | Medio independiente centrado en el Depor; `robots.txt` permite `/feed/$`. |
+| DXT Campeón | galicia | https://dxtcampeon.elidealgallego.com/rss | ok | 33 | 13 | 2026-10-29 04:00Z | 33/33 | 33/33 | Sección deportiva del Ideal Gallego; el filtro descarta el deporte local no-Depor. |
+| La Voz de Galicia | galicia | https://www.lavozdegalicia.es/temas/deportivo/index.xml | ok | 19 | 8 | 2026-10-29 04:00Z | 19/19 | 16/19 | Feed de tema Deportivo, no la portada de Deportes. |
+| Marca | nacional | https://www.marca.com/rss/googlenews/futbol/deportivo.xml | ok | 50 | 14 | 2026-10-29 09:52Z | 48/50 | 50/50 | Único nacional con feed directo del Depor; mezcla otros equipos y no es `depor_specific`. |
 
 Los feeds con error se deshabilitan en `data/manual/news_feeds.yml`. No se intenta saltar 403/429/captchas ni muros de pago.
 <!-- news-audit:end -->
 
-### Cómo se ingiere
-
-`news ingest` lee RSS/Atom y el canal de YouTube del club, normaliza cada entrada y publica solo lo que el feed entrega. No descarga el cuerpo del artículo ni intenta saltar muros de pago. Cada medio tiene su `id`, su peso y su tipo en `data/manual/news_feeds.yml`; los feeds generales pasan por el filtro de relevancia del Depor.
-
-- **Ritmo:** al menos 1 s entre peticiones al mismo dominio, `ETag`/`If-Modified-Since` y caché de cuerpos en `data/raw/news/`.
-- **Ventana:** 14 días y un máximo de 400 ítems; lo que sale de la ventana deja de publicarse.
-- **Rotación:** las consultas de jugador de Google News se reparten de 6 en 6 con un offset persistido, para no repetir siempre los mismos nombres ni castigar el dominio.
-- **Fechas:** si el feed no trae fecha se reutiliza la del mismo ítem y, si no existe, se marca `publishedEstimated: true`. Nunca se inventa una hora.
-
-### Filtro y deduplicación
-
-El filtro exige 3 puntos de señales del Depor y descarta otros «Deportivo», apellidos comunes sueltos y el `Riazor` de playa o sucesos. La deduplicación agrupa el mismo titular entre medios distintos (similitud ≥ 0,82 en 7 días) y solo fusiona dos entradas del mismo medio cuando el titular normalizado es idéntico. El principal se elige por peso y antigüedad; los demás quedan en `alsoIn`. Los vídeos del club se publican dentro de `news.json` con `kind: 'video'`.
-
-### Redes
-
-`social.json` sale de `data/manual/social_pins.yml`: perfiles oficiales verificados y, si los hay, pins revisados a mano. `pins` está vacío porque no hay publicaciones con URL y fecha estables que se puedan verificar. No se scrapea ninguna red ni se inventan posts, miniaturas o métricas.
-
-### Fuentes descartadas para noticias
+### Fuentes descartadas
 
 | Fuente | Motivo | Respaldo |
 |---|---|---|
-| **Web oficial del club** | Sin RSS propio (404 en `/rss`, `/es/rss` y `/rss.xml`) | YouTube oficial y `site:rcdeportivo.es` en Google News |
-| **AS** | HTTP 403 para el User-Agent identificable; no se rodea | `site:as.com` en Google News |
-| **Sport** | HTTP 406 (WAF) | `site:sport.es` en Google News |
-| **Cadena SER** | HTTP 403 | `site:cadenaser.com` en Google News |
-| **Radio Coruña** | Sin RSS propio y dominio de Cadena SER bloqueado | Google News |
-| **Faro de Vigo** | HTTP 406 (WAF de Prensa Ibérica) | `site:farodevigo.es` en Google News |
-| **La Opinión A Coruña** | HTTP 406 (WAF de Prensa Ibérica) | `site:laopinioncoruna.es` en Google News |
-| **Superdeporte** | HTTP 406 (WAF de Prensa Ibérica) | `site:superdeporte.es` en Google News |
-| **Deportivo Hoy** | El dominio no resuelve (DNS); no se inventa una URL | Ninguno |
+| **Web oficial del club** | Sin RSS/Atom propio (`/feed`, `/rss` y `/rss.xml` dan 404); no se hace scraping HTML | Canal de YouTube |
+| **Diario AS** | HTTP 403 para el User-Agent identificable | Ninguno: no se rodea |
+| **Sport** | HTTP 406 (WAF) | Ninguno |
+| **Cadena SER** | HTTP 403 para el User-Agent identificable | Ninguno |
+| **COPE** | Feed de portada: 0/20 relevantes en la muestra de 7 días | Ninguno |
+| **Galiciapress** | Feed general: 0/50 relevantes | Ninguno |
+| **El Ideal Gallego (Deportes)** | Portada de deportes: 2/61 relevantes; DXT ya cubre la sección del Depor | DXT Campeón |
+| **Diario de Ferrol** | Feed local: 1/38 relevantes | Ninguno |
+| **Relevo** | El tag «deportivo» mezcla director deportivo, Betis Deportivo y otros usos | Ninguno |
+| **Mundo Deportivo** | La sección del Depor devuelve 410; la portada está desactualizada y es generalista | Ninguno |
+| **El Desmarque** | La sección del Depor devuelve 404; el feed general no aporta historias del club | Ninguno |
+
+### Cómo se ingiere
+
+`python -m depor_hub.cli news` lee los cinco feeds, normaliza cada entrada y publica solo lo que el feed entrega. No descarga el cuerpo del artículo ni intenta saltar muros de pago.
+
+- **Ritmo:** al menos 1 s entre peticiones al mismo dominio, `ETag`/`If-Modified-Since` y caché de cuerpos en `data/raw/news/`.
+- **Ventana y retención:** 14 días y un máximo de 150 historias. Si una fuente falla, sus historias anteriores se conservan; si fallan todas, el comando sale con código 1 y no publica.
+- **Fechas:** si el feed no trae fecha se reutiliza la del mismo ítem y, si no existe, se usa el momento de captura. Nunca se inventa una hora.
+- **Idempotencia:** si el contenido no cambia, no se escribe ni se despliega.
+
+### Relevancia, etiquetas y clústeres
+
+«Deportivo» a secas no cuenta: solo suman las señales del club de A Coruña, su entorno y su plantilla. Se excluyen otros «Deportivo» (Alavés, Cali, Saprissa, Tenerife, Betis Deportivo…), el `Riazor` de playa o sucesos y los apellidos comunes sueltos. Un titular que solo se apoya en el extracto se descarta como `solo_extracto`. El umbral es configurable con `--threshold` y `--report` muestra los descartes por motivo.
+
+Las etiquetas son cerradas (`fichajes`, `cantera`, `lesiones`, `partido`, `afición`, `club`, `opinión`), máximo dos, nunca equipos ni jugadores. `lesiones` no se deriva de una muerte y `partido` exige contexto.
+
+La deduplicación agrupa la misma historia entre medios (±48 h, similitud base 0,52, entidades 0,44). Dos piezas distintas del mismo medio o del mismo jugador no se fusionan. El representante se elige por prioridad y antigüedad, el `id` se hereda cuando la historia ya existía y las demás versiones quedan en `alsoIn`.
+
+### Contrato
+
+`news.json` pasa a `{ updatedAt, sources, stories }`. Cada historia incluye `id`, `title`, `url`, `sourceId`, `publishedAt`, `kind`, `summary`, `thumbnailUrl`, `tags` y `alsoIn`. `sources.json` desaparece: las fuentes viajan dentro de `news.json` para resolver nombre, grupo y monograma. Pydantic genera el JSON Schema y el espejo Zod de la app.
+
+`social.json` sigue publicándose desde `data/manual/social_pins.yml`, pero la pestaña Noticias ya no lo muestra: los perfiles verificados quedan para una futura sección social.
+
+### Cadencia
+
+`news-refresh.yml` corre cada 6 horas (`37 */6 * * *`) y también por `workflow_dispatch` con `force`. Comparte el grupo `data-publish` con `Data refresh`, hace `rebase` antes de publicar y despliega Pages solo si hay cambios. Si ninguna fuente responde, el workflow falla y no pisa el `news.json` anterior.
 
 ### Límites
 
-Google News no entrega miniaturas: la app pinta un monograma con la inicial del medio. Algunos resúmenes llegan vacíos o muy cortos y se muestran tal cual; no se completan con texto del artículo. Los medios con WAF pueden cambiar de comportamiento sin aviso: la auditoría (`news audit`) lo detecta y actualiza la tabla y el catálogo. La ingesta tolera feeds caídos y deja el error en `meta.sources` sin tumbar el resto. Todo el contenido enlaza al medio original; el proyecto no redistribuye el artículo.
-
+YouTube es la única fuente sin miniaturas propias en todos los ítems (solo algunos vídeos traen `media:thumbnail`); la app pinta un monograma cuando falta. Riazor.org apenas ofrece `enclosure` (5/25) y el resumen se toma del feed, nunca del artículo. Algunos medios cambian de WAF o de URL sin aviso: `news audit` lo detecta y actualiza la tabla y el catálogo. Todo el contenido enlaza al medio original; el proyecto no redistribuye el artículo.
 
 ## Cadencia de la ingesta
 
@@ -243,12 +240,13 @@ python -m depor_hub.cli coach --apply                # aplica entrenador y staff
 python -m depor_hub.cli enrich --apply --coach data/manual/coach.yml
 python -m depor_hub.cli news audit                   # prueba los feeds y muestra la tabla
 python -m depor_hub.cli news audit --write-docs      # además actualiza docs/sources.md y el catálogo
-python -m depor_hub.cli news ingest                  # publica news.json y sources.json
-python -m depor_hub.cli news ingest --offline        # repite desde data/raw/news sin red
+python -m depor_hub.cli news                         # publica news.json
+python -m depor_hub.cli news --report                # informe de relevancia y clústeres
+python -m depor_hub.cli news --offline               # repite desde data/raw/news sin red
 python -m depor_hub.cli social                       # regenera social.json desde social_pins.yml
 ```
 
-El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 30 minutos y comparte con `Data refresh` el grupo `data-publish`. Los dos hacen rebase antes de empujar y despliegan Pages desde un checkout fresco de `main`.
+El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 6 horas y comparte con `Data refresh` el grupo `data-publish`. Los dos hacen rebase antes de empujar y despliegan Pages solo cuando hay cambios.
 
 El workflow `Enrich proposal` (`.github/workflows/enrich.yml`) es manual y solo sube el informe como artefacto. No hace commit.
 
