@@ -1,7 +1,9 @@
-"""Rivales del Depor: histórico completo en BDFutbol, entrenador y goleadores.
+"""Rivales del Depor: histórico completo en BDFutbol y entrenador publicado.
 
 - BDFutbol (`/es/p/vs.php?e1=13&e2=<id>`) da el balance histórico y los últimos cruces.
-- football-data.org da el entrenador y los goleadores de la temporada publicada.
+- football-data.org da el entrenador del equipo en su plantilla publicada.
+- No se solicitan estadísticas individuales de rivales: no hay una fuente gratuita
+  elegida para publicarlas de forma fiable esta temporada.
 - Si una fuente falla, el bloque queda en `null`/`[]`: nunca se rellena a mano.
 """
 
@@ -109,32 +111,12 @@ def opponents(fixtures: m.Fixtures, team_id: int) -> list[m.TeamRef]:
     return list(seen.values())
 
 
-def _key_players(scorers: Iterable[s.FDScorer], team_id: int, limit: int = 3) -> list[m.KeyPlayer]:
-    rows = [
-        row
-        for row in scorers
-        if row.team.id == team_id and row.goals is not None and row.goals > 0
-    ]
-    rows.sort(key=lambda row: (-(row.goals or 0), row.player.name))
-    return [
-        m.KeyPlayer(
-            id=row.player.id,
-            name=row.player.name,
-            goals=row.goals or 0,
-            assists=row.assists,
-            played_matches=row.playedMatches,
-        )
-        for row in rows[:limit]
-    ]
-
-
 def build_rivals(
     season: str,
     team_id: int,
     fixtures: m.Fixtures,
     standings: m.Standings | None,
     teams: Iterable[s.FDTeam],
-    scorers: Iterable[s.FDScorer],
     bdf_ids: dict[int, str],
     heads: dict[int, m.HeadToHead | None],
     updated_at: str,
@@ -151,7 +133,6 @@ def build_rivals(
                 team=team_ref,
                 bdfutbol_id=bdf_ids.get(team_ref.id),
                 coach=team.coach.name if team and team.coach else None,
-                key_players=_key_players(scorers, team_ref.id),
                 head_to_head=heads.get(team_ref.id),
             )
         )

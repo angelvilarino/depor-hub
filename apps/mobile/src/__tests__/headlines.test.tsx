@@ -6,7 +6,7 @@ import i18n from '@/i18n';
 
 jest.mock('@/theme/useTheme', () => {
   const { lightColors } = jest.requireActual('@/theme/tokens');
-  return { useTheme: () => ({ scheme: 'light', colors: lightColors }) };
+  return { useTheme: () => ({ scheme: 'light', colors: lightColors, paper: lightColors.paper }) };
 });
 
 const sources: NewsSourceT[] = [
@@ -44,13 +44,14 @@ describe('HeadlinesBlock', () => {
     expect(screen.queryByText('Titulares')).toBeNull();
   });
 
-  it('muestra fuente y fecha y abre el enlace', async () => {
+  it('muestra fuente y tiempo relativo y abre el enlace', async () => {
     const open = jest.spyOn(WebBrowser, 'openBrowserAsync').mockResolvedValue(undefined as never);
     await render(<HeadlinesBlock stories={[story]} sources={sources} />);
 
     expect(screen.getByText('Titulares')).toBeTruthy();
     expect(screen.getByText('Titular de prueba')).toBeTruthy();
-    expect(screen.getByText(/Medio de prueba · 27 oct/)).toBeTruthy();
+    expect(screen.getByText('Medio de prueba')).toBeTruthy();
+    expect(screen.getByText(/hace/)).toBeTruthy();
 
     await fireEvent.press(screen.getByText('Titular de prueba'));
     expect(open).toHaveBeenCalledWith('https://example.test/noticia');

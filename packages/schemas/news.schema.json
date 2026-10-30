@@ -47,6 +47,18 @@
           "title": "Homepage",
           "type": "string"
         },
+        "iconUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Iconurl"
+        },
         "id": {
           "title": "Id",
           "type": "string"

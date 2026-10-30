@@ -33,6 +33,11 @@ describe('tiempo en la sede', () => {
       windKmh: 12,
       code: 3,
       hour: '2026-11-02T21:00',
+      nearby: [
+        { hour: '2026-11-02T20:00', temperatureC: 15, precipitationProbability: 10, windKmh: 8, code: 2 },
+        { hour: '2026-11-02T21:00', temperatureC: 17, precipitationProbability: 20, windKmh: 12, code: 3 },
+        { hour: '2026-11-02T22:00', temperatureC: 17, precipitationProbability: 30, windKmh: 14, code: 61 },
+      ],
     });
   });
 

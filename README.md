@@ -1,7 +1,7 @@
 # Depor Hub (no oficial)
 Proyecto de aficionados sin vinculación oficial con el Real Club Deportivo de La Coruña, S.A.D.
 
-App Expo (React Native + TypeScript) con datos públicos del Depor: inicio con próximo partido, último resultado, temporada y clasificación, calendario, plantilla y ficha de jugador enriquecida, noticias y vídeos del club y redes oficiales, con foto y atribución. Los datos se publican como JSON estático en GitHub Pages; la app no contiene claves.
+App Expo (React Native + TypeScript) con datos públicos del Depor: Inicio con identidad Cartel + Prensa, resultado y cuenta atrás, ficha del rival con histórico BDFutbol, temporada interactiva, prensa con noticias agrupadas, calendario, plantilla y fichas enriquecidas, vídeos y redes oficiales. Las estadísticas y fotos individuales de rivales se omiten al no usar una fuente gratuita verificada para 2026/27. Los datos se publican como JSON estático en GitHub Pages; la app no contiene claves.
 
 ## Requisitos
 - Node >= 22.13 y npm.
@@ -50,6 +50,9 @@ La ficha del entrenador (`/coach`) se genera con Wikidata `Q602465`, Wikipedia E
 
 Las noticias salen de **cinco fuentes curadas** (`data/manual/news_feeds.yml`): Riazor.org, DXT Campeón, La Voz de Galicia, Marca y el canal oficial de YouTube. Solo se publica lo que entrega el feed: nunca se descarga el cuerpo del artículo ni se rodean bloqueos. El filtro de relevancia descarta otros «Deportivo» y los titulares que solo se apoyan en el extracto; la deduplicación agrupa cada historia entre medios (principal por prioridad y antigüedad, resto en `alsoIn`) y la ventana es de 14 días con un máximo de 150 historias. Las cinco fuentes viajan dentro de `news.json`; `social.json` solo contiene perfiles oficiales verificados y los pins se curan a mano. Detalles en [`docs/adr/0018-noticias-curacion-dedupe-filtros.md`](docs/adr/0018-noticias-curacion-dedupe-filtros.md).
 
+## Verificación H5.3
+Las fuentes libres empaquetadas suman 776.496 bytes. No se midió el arranque en gama media; el splash permanece visible mientras `expo-font` las carga. El escudo remoto solo se usa dentro de Inicio, con aviso no oficial; icono y splash siguen con DH. No se necesita `API_FOOTBALL_KEY`.
+
 ## Comprobaciones
 ```bash
 ruff check scripts && pytest scripts
@@ -61,4 +64,4 @@ npm run lint && npm run typecheck && npm test
 Ver `.env.example`. El token de football-data.org vive solo en GitHub Secrets (`FOOTBALL_DATA_TOKEN`). `CONTACT_EMAIL` se configura como variable de Actions para el User-Agent de las peticiones.
 
 ## Estado
-H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario), H4 (plantilla + ficha enriquecida, rediseño de Equipo/ficha, escudos de clubes, entrenador y cuerpo técnico), H5 (inicio real + cadencia adaptativa) y H6 (noticias, vídeos y redes curadas) hechos. Siguiente: H7 (club y legal). Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/).
+H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario), H4 (plantilla + ficha enriquecida, rediseño de Equipo/ficha, escudos de clubes, entrenador y cuerpo técnico), H5.3 (Inicio Cartel + Prensa, ficha de rival e historias agrupadas) y H6 (noticias, vídeos y redes curadas) hechos. Siguiente: H7 (club y legal). Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/).

@@ -7,6 +7,8 @@ import {
   groupByDay,
   hasActiveFilters,
   newsAge,
+  relativePublishedAt,
+  sourceBadgeIndex,
   sourceGroup,
   sourceMonogram,
   sourceName,
@@ -151,6 +153,14 @@ describe('lógica de noticias', () => {
     expect(sourceMonogram('La Voz de Galicia')).toBe('VG');
     expect(sourceMonogram('Marca')).toBe('MA');
     expect(sourceMonogram('Riazor.org')).toBe('RO');
+    expect(sourceBadgeIndex('riazor', 5)).toBe(sourceBadgeIndex('riazor', 5));
+    expect(sourceBadgeIndex('riazor', 5)).not.toBe(sourceBadgeIndex('la-voz', 5));
+  });
+
+  it('formatea fechas relativas en el idioma activo', () => {
+    expect(relativePublishedAt('2026-10-27T10:00:00Z', 'es', NOW)).toBe('hace 2 horas');
+    expect(relativePublishedAt('2026-10-27T10:00:00Z', 'en', NOW)).toBe('2 hours ago');
+    expect(relativePublishedAt('no-es-fecha', 'es', NOW)).toBe('');
   });
 
   it('calcula la antigüedad, los no leídos y el contador topado', () => {

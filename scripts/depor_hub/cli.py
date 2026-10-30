@@ -161,9 +161,6 @@ def cmd_rivals(args: argparse.Namespace) -> int:
 
     client = _client(Path(args.raw))
     teams_raw = s.FDTeams.model_validate(client.get(f"/competitions/{COMPETITION}/teams"))
-    scorers_raw = s.FDScorers.model_validate(
-        client.get(f"/competitions/{COMPETITION}/scorers", params={"limit": 100})
-    )
 
     http = PoliteClient(
         cache_dir=Path(args.raw) / "enrich" / "h2h",
@@ -194,7 +191,6 @@ def cmd_rivals(args: argparse.Namespace) -> int:
         fixtures,
         standings,
         teams_raw.teams,
-        scorers_raw.scorers,
         bdf_ids,
         heads,
         now,

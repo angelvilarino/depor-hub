@@ -154,37 +154,6 @@
       "points": 11
     }
   ],
-  "whatIsAtStake": {
-    "position": 11,
-    "points": 11,
-    "scenarios": [
-      {
-        "result": "W",
-        "points": 14,
-        "range": {
-          "from": 7,
-          "to": 7
-        }
-      },
-      {
-        "result": "D",
-        "points": 12,
-        "range": {
-          "from": 7,
-          "to": 11
-        }
-      },
-      {
-        "result": "L",
-        "points": 11,
-        "range": {
-          "from": 11,
-          "to": 13
-        }
-      }
-    ],
-    "assumption": "other_results_unchanged"
-  },
   "provenance": {
     "summary": {
       "source": "football-data.org",
@@ -198,11 +167,6 @@
     },
     "positionEvolution": {
       "source": "football-data.org (cálculo propio por jornada)",
-      "confidence": "estimated",
-      "capturedAt": "2026-10-28T09:29:14Z"
-    },
-    "whatIsAtStake": {
-      "source": "football-data.org (simulación solo con los puntos del Depor)",
       "confidence": "estimated",
       "capturedAt": "2026-10-28T09:29:14Z"
     }

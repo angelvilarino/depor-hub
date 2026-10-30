@@ -3,12 +3,16 @@
   "season": "2026-27",
   "rivals": [
     {
-      "team": { "id": 2, "name": "Equipo Ejemplo B", "shortName": null, "tla": null, "crestUrl": null },
+      "team": {
+        "id": 2,
+        "name": "Equipo Ejemplo B",
+        "shortName": null,
+        "tla": null,
+        "crestUrl": null
+      },
       "bdfutbolId": "27",
       "coach": "Entrenador Ejemplo",
-      "keyPlayers": [
-        { "id": 501, "name": "Delantero Ejemplo", "goals": 5, "assists": 1, "playedMatches": 9 }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -34,7 +38,13 @@
       }
     },
     {
-      "team": { "id": 3, "name": "Equipo Ejemplo C", "shortName": null, "tla": null, "crestUrl": null },
+      "team": {
+        "id": 3,
+        "name": "Equipo Ejemplo C",
+        "shortName": null,
+        "tla": null,
+        "crestUrl": null
+      },
       "bdfutbolId": null,
       "coach": null,
       "keyPlayers": [],

@@ -233,49 +233,6 @@ def _recent_form(fixtures: m.Fixtures, limit: int = 5) -> list[m.SeasonFormMatch
     return out
 
 
-def _what_is_at_stake(
-    standings: m.Standings, team_id: int, next_match: m.Match | None
-) -> m.WhatIsAtStake | None:
-    """Simula solo los puntos del Depor; el resto de la jornada puede cambiarlo."""
-    if next_match is None:
-        return None
-    row = next((r for r in standings.table if r.team.id == team_id), None)
-    if row is None:
-        return None
-    scenarios: list[m.StakeScenario] = []
-    for result, delta in (("W", 3), ("D", 1), ("L", 0)):
-        points = row.points + delta
-        simulated = sorted(
-            ((candidate, points if candidate.team.id == team_id else candidate.points) for candidate in standings.table),
-            key=lambda pair: (
-                -pair[1],
-                -pair[0].goal_difference,
-                -pair[0].goals_for,
-                _norm(pair[0].team.name),
-            ),
-        )
-        index = next(i for i, (candidate, _) in enumerate(simulated) if candidate.team.id == team_id)
-        first = index
-        while first > 0 and simulated[first - 1][1] == points:
-            first -= 1
-        last = index
-        while last + 1 < len(simulated) and simulated[last + 1][1] == points:
-            last += 1
-        scenarios.append(
-            m.StakeScenario(
-                result=result,  # type: ignore[arg-type]
-                points=points,
-                range=m.StakeRange(**{"from": first + 1, "to": last + 1}),
-            )
-        )
-    return m.WhatIsAtStake(
-        position=row.position,
-        points=row.points,
-        scenarios=scenarios,
-        assumption="other_results_unchanged",
-    )
-
-
 def build_season(
     raw: s.FDMatches,
     fixtures: m.Fixtures,
@@ -287,11 +244,6 @@ def build_season(
     row = next((r for r in standings.table if r.team.id == team_id), None)
     if row is None:
         raise ValueError("El Depor no aparece en la clasificación; no se publica season.json")
-    upcoming = sorted(
-        (x for x in fixtures.matches if x.status not in DONE_STATUSES and x.status != "CANCELLED"),
-        key=lambda x: x.utc_date,
-    )
-    next_match = upcoming[0] if upcoming else None
     provenance = {
         "summary": m.Provenance(
             source="football-data.org", confidence="verified", captured_at=updated_at
@@ -301,11 +253,6 @@ def build_season(
         ),
         "positionEvolution": m.Provenance(
             source="football-data.org (cálculo propio por jornada)",
-            confidence="estimated",
-            captured_at=updated_at,
-        ),
-        "whatIsAtStake": m.Provenance(
-            source="football-data.org (simulación solo con los puntos del Depor)",
             confidence="estimated",
             captured_at=updated_at,
         ),
@@ -328,7 +275,6 @@ def build_season(
         ),
         form=_recent_form(fixtures),
         position_evolution=_position_evolution(raw.matches, team_id),
-        what_is_at_stake=_what_is_at_stake(standings, team_id, next_match),
         provenance=provenance,
     )
 

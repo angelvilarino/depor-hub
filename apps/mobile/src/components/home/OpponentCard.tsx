@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { Card } from '@/components/Screen';
-import { TeamCrest } from '@/components/TeamCrest';
+import { CrestBadge, PosterCard, SectionHeader } from '@/components/design/DesignSystem';
+import { HeadToHeadBar } from '@/components/rival/HeadToHeadBar';
 import { FormChips } from '@/components/home/FormChips';
-import type { HeadToHeadT, RivalT } from '@/data/schemas';
+import type { RivalT } from '@/data/schemas';
 import { teamName } from '@/features/calendar/logic';
 import type { FormResult, OpponentInfo } from '@/features/home/logic';
-import { spacing } from '@/theme/tokens';
+import { radius, spacing, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 function parseForm(value: string | null): FormResult[] {
@@ -14,152 +15,96 @@ function parseForm(value: string | null): FormResult[] {
   return value.split(/[^WDL]/).filter((part): part is FormResult => part === 'W' || part === 'D' || part === 'L');
 }
 
-function meetingDate(date: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-    timeZone: 'UTC',
-  }).format(new Date(`${date}T12:00:00Z`));
-}
-
-function Meeting({ meeting, locale }: { meeting: HeadToHeadT['meetings'][number]; locale: string }) {
-  const { t } = useTranslation();
-  const { colors } = useTheme();
-  const color =
-    meeting.deporResult === 'W'
-      ? colors.win
-      : meeting.deporResult === 'L'
-        ? colors.loss
-        : colors.draw;
-  return (
-    <View
-      accessible
-      accessibilityLabel={`${meetingDate(meeting.date, locale)}, ${meeting.competition}, ${meeting.home} ${meeting.homeGoals}–${meeting.awayGoals} ${meeting.away}, ${t(`calendar.outcomeLong.${meeting.deporResult}`)}`}
-      style={styles.meeting}
-    >
-      <Text style={{ color: colors.textMuted, fontSize: 12, width: 84 }}>
-        {meetingDate(meeting.date, locale)}
-      </Text>
-      <Text numberOfLines={1} style={{ color: colors.text, fontSize: 13, flex: 1 }}>
-        {meeting.home} {meeting.homeGoals}–{meeting.awayGoals} {meeting.away}
-      </Text>
-      <Text
-        accessibilityLabel={t(`calendar.outcomeLong.${meeting.deporResult}`)}
-        style={{ color, fontSize: 14, fontWeight: '700', width: 18, textAlign: 'center' }}
-      >
-        {t(`calendar.outcome.${meeting.deporResult}`)}
-      </Text>
-    </View>
-  );
+function initials(name: string) {
+  return name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
 }
 
 export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: RivalT | null }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { colors } = useTheme();
-  const tableLine = info.row
-    ? t('home.rival.position', { position: info.row.position, points: info.row.points })
-    : null;
-  const balanceLine = info.balance
-    ? t('home.rival.seasonBalance', {
-        played: info.balance.played,
-        won: info.balance.won,
-        drawn: info.balance.drawn,
-        lost: info.balance.lost,
-        goalsFor: info.balance.goalsFor,
-        goalsAgainst: info.balance.goalsAgainst,
-      })
-    : null;
   const form = info.form.length > 0 ? info.form : parseForm(info.row?.form ?? null);
   const head = rival?.headToHead ?? null;
+  const label = [
+    t('home.opponent'), teamName(info.opponent),
+    info.row ? t('home.rival.position', { position: info.row.position, points: info.row.points }) : null,
+    rival?.coach ? `${t('home.rival.coach')}: ${rival.coach}` : null,
+    form.map((item) => t(`calendar.outcomeLong.${item}`)).join(', '),
+  ].filter(Boolean).join('. ');
 
   return (
-    <Card>
-      <View style={styles.header}>
-        <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>
-          {t('home.opponent')}
-        </Text>
-        <View style={styles.teamRow}>
-          <TeamCrest team={info.opponent} size={32} />
-          <Text numberOfLines={1} style={{ color: colors.text, fontSize: 17, fontWeight: '700', flexShrink: 1 }}>
-            {teamName(info.opponent)}
-          </Text>
-        </View>
-      </View>
-
-      {tableLine ? (
-        <Text style={{ color: colors.textMuted, fontSize: 14 }}>{tableLine}</Text>
-      ) : null}
-
-      {form.length > 0 ? (
-        <View style={styles.block}>
-          <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.form')}</Text>
-          <FormChips results={form} />
-        </View>
-      ) : null}
-
-      {balanceLine ? (
-        <Text style={{ color: colors.textMuted, fontSize: 14 }}>{balanceLine}</Text>
-      ) : null}
-
-      {rival?.coach ? (
-        <View style={styles.lineRow}>
-          <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.coach')}</Text>
-          <Text style={{ color: colors.text, fontSize: 15 }}>{rival.coach}</Text>
-        </View>
-      ) : null}
-
-      {rival && rival.keyPlayers.length > 0 ? (
-        <View style={styles.block}>
-          <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.keyPlayers')}</Text>
-          {rival.keyPlayers.map((player) => (
-            <Text key={player.id} style={{ color: colors.text, fontSize: 14 }}>
-              {player.name} · {t('home.rival.goals', { count: player.goals })}
+    <PosterCard>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={label}
+        accessibilityHint={t('home.rival.openProfile')}
+        onPress={() => router.push(`/rival/${info.opponent.id}`)}
+        style={styles.pressable}
+      >
+        <SectionHeader title={t('home.opponent')} variant="poster" />
+        <View style={styles.teamBlock}>
+          <CrestBadge team={info.opponent} size={84} />
+          <View style={styles.teamText}>
+            <Text adjustsFontSizeToFit style={[styles.teamName, { color: colors.poster.text }]}>
+              {teamName(info.opponent)}
             </Text>
-          ))}
+            {info.row ? (
+              <View style={styles.rankRow}>
+                <Text style={[styles.rank, { color: colors.poster.accent }]}>{info.row.position}º</Text>
+                <Text style={[styles.points, { color: colors.poster.text }]}>
+                  {t('home.rival.points', { points: info.row.points })}
+                </Text>
+              </View>
+            ) : null}
+          </View>
         </View>
-      ) : null}
 
-      {head ? (
-        <View style={styles.block}>
-          <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.headToHead')}</Text>
-          <Text style={{ color: colors.textMuted, fontSize: 12 }}>
-            {t('home.rival.headToHeadScope', { source: head.source })}
-          </Text>
-          <Text style={{ color: colors.text, fontSize: 15, fontWeight: '600' }}>
-            {t('home.rival.headToHeadRecord', {
-              played: head.played,
-              won: head.won,
-              drawn: head.drawn,
-              lost: head.lost,
-              goalsFor: head.goalsFor,
-              goalsAgainst: head.goalsAgainst,
-            })}
-          </Text>
-          {head.meetings.length > 0 ? (
-            <View style={styles.meetings}>
-              <Text style={[styles.label, { color: colors.textMuted }]}>{t('home.rival.lastMeetings')}</Text>
-              {head.meetings.map((meeting) => (
-                <Meeting
-                  key={`${meeting.date}-${meeting.home}-${meeting.away}`}
-                  meeting={meeting}
-                  locale={i18n.language}
-                />
-              ))}
+        {form.length > 0 ? (
+          <View style={styles.block}>
+            <Text style={[styles.label, { color: colors.poster.muted }]}>{t('home.rival.form')}</Text>
+            <FormChips results={form} variant="poster" />
+          </View>
+        ) : null}
+
+        {rival?.coach ? (
+          <View style={[styles.coachCard, { borderColor: colors.poster.muted }]}>
+            <View style={[styles.coachInitials, { backgroundColor: colors.poster.text }]}>
+              <Text style={{ color: colors.primary, fontSize: 13, fontWeight: '900' }}>{initials(rival.coach)}</Text>
             </View>
-          ) : null}
-        </View>
-      ) : null}
-    </Card>
+            <View style={styles.coachText}>
+              <Text style={[styles.label, { color: colors.poster.muted }]}>{t('home.rival.coach')}</Text>
+              <Text style={[styles.coachName, { color: colors.poster.text }]}>{rival.coach}</Text>
+            </View>
+          </View>
+        ) : null}
+
+        {head ? (
+          <View style={styles.block}>
+            <Text style={[styles.label, { color: colors.poster.muted }]}>{t('home.rival.headToHead')}</Text>
+            <HeadToHeadBar head={head} variant="poster" />
+          </View>
+        ) : null}
+
+        <Text style={[styles.openLink, { color: colors.poster.accent }]}>
+          {t('home.rival.openProfile')} →
+        </Text>
+      </Pressable>
+    </PosterCard>
   );
 }
 
 const styles = StyleSheet.create({
-  header: { gap: spacing.xs },
-  teamRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  pressable: { gap: spacing.md, minHeight: 44 },
+  teamBlock: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  teamText: { flex: 1, minWidth: 0, gap: spacing.xs },
+  teamName: { fontFamily: typography.display, fontSize: 30, lineHeight: 34 },
+  rankRow: { flexDirection: 'row', alignItems: 'baseline', gap: spacing.sm },
+  rank: { fontFamily: typography.numeric, fontSize: 32, lineHeight: 36 },
+  points: { fontSize: 15, fontWeight: '700' },
   block: { gap: spacing.xs },
-  label: { fontSize: 12, fontWeight: '700', textTransform: 'uppercase' },
-  lineRow: { flexDirection: 'row', alignItems: 'baseline', gap: spacing.sm },
-  meetings: { gap: 2, marginTop: spacing.xs },
-  meeting: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, minHeight: 28 },
+  label: { fontSize: 11, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
+  coachCard: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm },
+  coachInitials: { width: 42, height: 42, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
+  coachText: { gap: 2 },
+  coachName: { fontFamily: typography.headline, fontSize: 17 },
+  openLink: { fontSize: 13, fontWeight: '800', alignSelf: 'flex-end' },
 });

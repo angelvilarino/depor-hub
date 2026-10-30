@@ -120,20 +120,3 @@ class FDTeam(Raw):
 
 class FDTeams(Raw):
     teams: list[FDTeam]
-
-
-class FDScorerPlayer(Raw):
-    id: int
-    name: str
-
-
-class FDScorer(Raw):
-    player: FDScorerPlayer
-    team: FDTeamRef
-    playedMatches: Optional[int] = None
-    goals: Optional[int] = None
-    assists: Optional[int] = None
-
-
-class FDScorers(Raw):
-    scorers: list[FDScorer]

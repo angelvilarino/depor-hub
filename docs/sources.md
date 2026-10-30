@@ -75,11 +75,11 @@ Los feeds con error se deshabilitan en `data/manual/news_feeds.yml`. No se inten
 
 Las etiquetas son cerradas (`fichajes`, `cantera`, `lesiones`, `partido`, `afición`, `club`, `opinión`), máximo dos, nunca equipos ni jugadores. `lesiones` no se deriva de una muerte y `partido` exige contexto.
 
-La deduplicación agrupa la misma historia entre medios (±48 h, similitud base 0,52, entidades 0,44). Dos piezas distintas del mismo medio o del mismo jugador no se fusionan. El representante se elige por prioridad y antigüedad, el `id` se hereda cuando la historia ya existía y las demás versiones quedan en `alsoIn`.
+La deduplicación agrupa la misma historia entre medios (±48 h, similitud base 0,52, entidades 0,44), y comparte entidades de evento reconocibles entre títulos y extractos. Dos piezas distintas del mismo medio o del mismo jugador no se fusionan. La prueba con los titulares reales de Falas Dépor agrupa sus tres versiones; la prueba del titular de Alberto Molina verifica que el apellido no activa relevancia. El representante se elige por prioridad y antigüedad, el `id` se hereda cuando la historia ya existía y las demás versiones quedan en `alsoIn`.
 
 ### Contrato
 
-`news.json` pasa a `{ updatedAt, sources, stories }`. Cada historia incluye `id`, `title`, `url`, `sourceId`, `publishedAt`, `kind`, `summary`, `thumbnailUrl`, `tags` y `alsoIn`. `sources.json` desaparece: las fuentes viajan dentro de `news.json` para resolver nombre, grupo y monograma. Pydantic genera el JSON Schema y el espejo Zod de la app.
+`news.json` pasa a `{ updatedAt, sources, stories }`. Cada historia incluye `id`, `title`, `url`, `sourceId`, `publishedAt`, `kind`, `summary`, `thumbnailUrl`, `tags` y `alsoIn`. Las fuentes incluyen `iconUrl` opcional; se usa solo si se configura una URL verificada, sin rastrear la portada. Por defecto se genera un monograma con color estable. `sources.json` desaparece: las fuentes viajan dentro de `news.json` para resolver nombre, grupo y monograma. Pydantic genera el JSON Schema y el espejo Zod de la app.
 
 `social.json` sigue publicándose desde `data/manual/social_pins.yml`, pero la pestaña Noticias ya no lo muestra: los perfiles verificados quedan para una futura sección social.
 
@@ -120,17 +120,16 @@ La clave es la **fecha de nacimiento** de football-data.org + nombre normalizado
 - Wikidata: búsqueda + fecha exacta; si hay varias, descripción de fútbol. Sin coincidencia única, no se usa.
 - Web oficial: fecha exacta y, si hay varias fichas con la misma fecha, coincidencia de algún token del nombre. Se deduplica por `(fecha, foto)` porque el mismo jugador aparece en `/depor` y `/depor-fabril`.
 
-## Contexto de temporada y rivales (H5.2)
+## Contexto de temporada y rivales (H5.3)
 
 | Dato | Fuente | Cómo se obtiene | Límite |
 |---|---|---|---|
 | Resumen, racha y evolución de la posición | football-data.org (`standings`, `matches`) | Cálculo propio por jornada con los partidos terminados; se marca `estimated` | La evolución es una reconstrucción, no una tabla publicada |
-| Qué se juega | football-data.org (`standings`) | Simulación solo con los puntos del Depor; el resto no se mueve | `assumption: other_results_unchanged`; nunca se presenta como certeza |
 | Balance histórico y últimos 5 cruces | BDFutbol `https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=<id>` | HTML público; se leen los totales (`valorpj`, `valorpg`, `valorpp`, `valorpe`, `valorgf`, `valorgc`) y las filas de partidos | Alcance `all_official_matches`; se cita fuente y enlace. `robots.txt` permite `/es/` |
 | Entrenador del rival | football-data.org (`competitions/PD/teams`) | Campo `coach.name` | Si la API no lo da, `null` |
-| Goleadores del rival | football-data.org (`competitions/PD/scorers?limit=100`) | Máximo 3 por equipo, ordenados por goles | Solo goles; asistencias `null` si la fuente no las publica |
+| Estadísticas individuales del rival | No se publican | No se verificó una fuente gratuita suficientemente fiable para la temporada 2026/27; no se llama a `/scorers` ni a API-Football | Campo `keyPlayers` vacío por compatibilidad; sin fotografías rivales |
 
-El mapa football-data → BDFutbol es manual y verificado en `data/manual/bdfutbol_teams.yml`. No se resuelve por búsqueda automática: un homónimo (filial, club histórico) produciría un balance equivocado. Depor = `13`. Los 19 rivales de la temporada tienen histórico; si una consulta falla, ese rival queda con `headToHead: null` y el resto se publica.
+BDFutbol se usa para el historial oficial y los cruces Depor–rival, no como sustituto automático de datos actuales de plantilla: su cobertura para esta temporada no se considera comprobada para este uso. No se añadió `API_FOOTBALL_KEY`; no se requiere una clave para mostrar la ficha básica del rival. El mapa football-data → BDFutbol es manual y verificado en `data/manual/bdfutbol_teams.yml`. No se resuelve por búsqueda automática: un homónimo (filial, club histórico) produciría un balance equivocado. Depor = `13`. Los 19 rivales de la temporada tienen histórico; si una consulta falla, ese rival queda con `headToHead: null` y el resto se publica.
 
 `rivals` se ejecuta a diario (`rivals-refresh.yml`) y no en `ingest`: BDFutbol es más lento y no debe bloquear la cadencia de 10 minutos. La caché vive en `data/raw/enrich/h2h/`.
 

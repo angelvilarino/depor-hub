@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
 from typing import Iterable
@@ -46,6 +47,24 @@ POST_MARKERS = (
     "empate",
     "resumen del",
 )
+EVENT_MARKERS = (
+    "presenta",
+    "presentacion",
+    "foro",
+    "ciclo",
+    "tertulia",
+    "evento",
+    "aniversario",
+    "celebra",
+    "encuentro",
+    "congreso",
+    "festival",
+)
+_PROPER_PHRASE = re.compile(
+    r"(?<![\w])([A-ZÁÉÍÓÚÜÑ][\wÁÉÍÓÚÜÑáéíóúüñ]*(?:[ \t]+(?:de|del|da|do|dos|das|y|e|[A-ZÁÉÍÓÚÜÑ][\wÁÉÍÓÚÜÑáéíóúüñ]*)){1,3})"
+)
+_GENERIC_PROPER_PHRASES = {"el deportivo", "real club deportivo", "rc deportivo", "el depor"}
+_EVENT_LEADS = set(EVENT_MARKERS) | {"de", "del", "da", "do", "dos", "das", "y", "e", "el", "la"}
 
 
 @dataclass
@@ -102,6 +121,22 @@ def _event_conflict(left: Candidate, right: Candidate) -> bool:
     return (left_pre and right_post) or (left_post and right_pre)
 
 
+def _named_event_phrases(candidate: Candidate) -> set[str]:
+    text = f"{candidate.title} {candidate.summary or ''}"
+    normalized = normalize_title(text)
+    if not any(marker in normalized for marker in EVENT_MARKERS):
+        return set()
+    phrases: set[str] = set()
+    for match in _PROPER_PHRASE.findall(text):
+        words = [word for word in match.split() if normalize_title(word).strip() not in _EVENT_LEADS]
+        if len(words) < 2:
+            continue
+        phrase = normalize_title(" ".join(words)).strip()
+        if phrase not in _GENERIC_PROPER_PHRASES:
+            phrases.add(phrase)
+    return phrases
+
+
 def same_story(left: Candidate, right: Candidate, threshold: float = DEFAULT_THRESHOLD) -> bool:
     if left.url == right.url:
         return True
@@ -113,6 +148,10 @@ def same_story(left: Candidate, right: Candidate, threshold: float = DEFAULT_THR
         return False
     if _event_conflict(left, right):
         return False
+    if _named_event_phrases(left) & _named_event_phrases(right):
+        # Una entidad de evento compartida (en título o resumen) permite unir
+        # titulares editoriales distintos sin fusionar piezas sobre un jugador.
+        return True
     similarity = title_similarity(left.title, right.title)
     if similarity >= 0.82:
         return True

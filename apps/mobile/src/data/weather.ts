@@ -20,13 +20,19 @@ export async function fetchWeather(
   signal?: AbortSignal,
 ): Promise<OpenMeteoResponse> {
   const date = madridDate(kickoffIso);
+  const day = new Date(`${date}T12:00:00Z`);
+  const shiftDay = (delta: number) => {
+    const shifted = new Date(day);
+    shifted.setUTCDate(shifted.getUTCDate() + delta);
+    return shifted.toISOString().slice(0, 10);
+  };
   const params = new URLSearchParams({
     latitude: String(latitude),
     longitude: String(longitude),
     hourly: 'temperature_2m,precipitation_probability,wind_speed_10m,weather_code',
     timezone: 'Europe/Madrid',
-    start_date: date,
-    end_date: date,
+    start_date: shiftDay(-1),
+    end_date: shiftDay(1),
   });
   const response = await fetch(`${BASE}?${params.toString()}`, {
     signal,

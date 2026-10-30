@@ -4,6 +4,17 @@
       "additionalProperties": false,
       "description": "Balance hist\u00f3rico completo y los \u00faltimos cinco cruces (BDFutbol).",
       "properties": {
+        "confidence": {
+          "default": "single_source",
+          "enum": [
+            "verified",
+            "cross_checked",
+            "single_source",
+            "estimated"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
         "drawn": {
           "minimum": 0,
           "title": "Drawn",
@@ -134,7 +145,7 @@
     },
     "KeyPlayer": {
       "additionalProperties": false,
-      "description": "M\u00e1ximo goleador del rival seg\u00fan football-data.org (solo goles, sin inventar asistencias).",
+      "description": "Contrato legado: la publicaci\u00f3n actual no incluye estad\u00edsticas individuales de rivales.",
       "properties": {
         "assists": {
           "anyOf": [

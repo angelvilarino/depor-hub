@@ -10,7 +10,14 @@
     "comingSoon": "Coming in a later Phase 1 milestone.",
     "close": "Close",
     "unofficial": "Fan project with no official affiliation with Real Club Deportivo de La Coruña, S.A.D.",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "back": "Back",
+    "confidenceLevel": {
+      "verified": "verified",
+      "cross_checked": "cross-checked",
+      "single_source": "single source",
+      "estimated": "estimated"
+    }
   },
   "settings": {
     "title": "Settings",
@@ -36,8 +43,7 @@
     "ago_days": "{{n}} d ago",
     "error": "Couldn't load the data.",
     "notConfigured": "Data URL missing (EXPO_PUBLIC_DATA_BASE_URL).",
-    "retry": "Retry",
-    "seasonLine": "Season {{season}} · matchday {{matchday}}"
+    "retry": "Retry"
   },
   "home": {
     "nextMatch": "Next match",
@@ -61,7 +67,13 @@
       "minutes": "{{n}}m",
       "seconds": "{{n}}s",
       "label": "Countdown: {{days}} days, {{hours}} hours and {{minutes}} minutes",
-      "labelWithSeconds": "Countdown: {{days}} days, {{hours}} hours, {{minutes}} minutes and {{seconds}} seconds"
+      "labelWithSeconds": "Countdown: {{days}} days, {{hours}} hours, {{minutes}} minutes and {{seconds}} seconds",
+      "units": {
+        "days": "DAYS",
+        "hours": "HRS",
+        "minutes": "MIN",
+        "seconds": "SEC"
+      }
     },
     "howToGetThere": "Get directions",
     "mapError": "Couldn't open the map.",
@@ -72,10 +84,7 @@
       "record": "W-D-L",
       "goals": "GF-GA"
     },
-    "opponentTable": "{{position}}th with {{points}} points.",
-    "balance": "This season: {{played}} matches, {{won}} wins, {{drawn}} draws, {{lost}} losses and {{goalsFor}}-{{goalsAgainst}}.",
     "headlines": "Headlines",
-    "headlineMeta": "{{source}} · {{date}}",
     "openHeadline": "Open story: {{title}} ({{source}})",
     "openError": "Couldn't open the story.",
     "seeAllHeadlines": "See all",
@@ -87,43 +96,45 @@
       "unknown": "Status unavailable"
     },
     "finalResult": "Final result",
-    "stake": {
-      "title": "What is at stake",
-      "win": "If they win",
-      "draw": "If they draw",
-      "loss": "If they lose",
-      "points": "{{points}} pts",
-      "range": "{{from}}–{{to}}",
-      "rangeSame": "{{position}}",
-      "assumption": "Simulation using only Depor’s points; the rest of the matchday can change the order."
-    },
     "weather": {
       "clear": "Clear",
       "cloudy": "Cloudy",
       "fog": "Fog",
       "drizzle": "Drizzle",
-      "rain": "Rain",
+      "rain": "Rain chance",
       "snow": "Snow",
       "showers": "Showers",
       "storm": "Storm",
       "unknown": "Changeable",
       "precipitation": "{{n}}% rain",
       "wind": "{{n}} km/h",
-      "attribution": "Data: Open-Meteo"
+      "attribution": "Data: Open-Meteo",
+      "temperature": "{{n}} degrees",
+      "hour": "Hour",
+      "expandHint": "Show the forecast around kick-off",
+      "cached": "Saved forecast {{ago}}"
     },
     "rival": {
       "position": "{{position}} · {{points}} pts",
       "form": "Form",
-      "seasonBalance": "This season: {{played}} matches, {{won}}W-{{drawn}}D-{{lost}}L and {{goalsFor}}-{{goalsAgainst}}.",
       "headToHead": "Head-to-head",
       "headToHeadScope": "All official matches · {{source}}",
-      "headToHeadRecord": "{{played}} matches · {{won}}W-{{drawn}}D-{{lost}}L · {{goalsFor}}-{{goalsAgainst}}",
       "lastMeetings": "Last 5 meetings",
       "coach": "Coach",
-      "keyPlayers": "Top scorers",
-      "goals_one": "{{count}} goal",
-      "goals_other": "{{count}} goals",
-      "missing": "No data available."
+      "missing": "No data available.",
+      "openProfile": "Open opponent profile",
+      "points": "{{points}} points",
+      "goalsRecord": "{{goalsFor}} for · {{goalsAgainst}} against",
+      "headToHeadA11y": "Head to head: {{played}} matches, {{won}} wins, {{drawn}} draws, {{lost}} losses, goals {{goalsFor}}-{{goalsAgainst}}.",
+      "matchesShort": "Played",
+      "goalsForShort": "GF",
+      "goalsAgainstShort": "GA",
+      "confidence": "Confidence: {{confidence}}",
+      "openSource": "Open the BDFutbol source",
+      "sourceLink": "View source at BDFutbol",
+      "meetingsNote": "Crests and score · most recent first",
+      "coachSource": "Source: football-data.org",
+      "meetingA11y": "{{date}}, {{competition}}: {{home}} {{homeGoals}} to {{awayGoals}} {{away}}. Depor: {{result}}."
     },
     "seasonCard": {
       "position": "Position",
@@ -135,9 +146,22 @@
       "form": "Last 5 matches",
       "formLegend": "W win · D draw · L loss",
       "formA11y": "{{result}} against {{opponent}} on {{date}}",
-      "tableA11y": "Table: {{position}}, {{team}}, {{points}} points"
+      "tableA11y": "Table: {{position}}, {{team}}, {{points}} points",
+      "formOrder": "Oldest → latest",
+      "formSelected": "Selected match",
+      "pointsPerGame": "Points / match",
+      "chartPoint": "Matchday {{matchday}} · {{opponent}} · {{result}} · position {{position}} · {{points}} points",
+      "chartIncrement": "Next matchday",
+      "chartDecrement": "Previous matchday",
+      "best": "Best",
+      "worst": "Worst",
+      "matchday": "Matchday {{matchday}}",
+      "viewMatch": "View match"
     },
-    "postponedNotice": "Postponed: {{teams}} ({{date}})"
+    "postponedNotice": "Postponed: {{teams}} ({{date}})",
+    "rivalProfile": "Opponent profile",
+    "liveNow": "LIVE",
+    "miniTableContext": "Two places around Deportivo"
   },
   "competition": {
     "PD": "La Liga",
@@ -201,7 +225,9 @@
     "addToCalendar": "Add to calendar",
     "addError": "The match could not be added to your calendar.",
     "addErrorHint": "Try sharing the calendar from the Calendar tab.",
-    "lineups": "Line-ups and events"
+    "lineups": "Line-ups and events",
+    "calendarSaved": "Added to calendar",
+    "calendarShared": "Calendar file shared"
   },
   "reminder": {
     "channel": "Match reminders",

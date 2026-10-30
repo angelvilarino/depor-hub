@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { Pressable, StyleSheet, Text } from 'react-native';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
@@ -11,7 +10,7 @@ import { LastResultCard } from '@/components/home/LastResultCard';
 import { NextMatchCard } from '@/components/home/NextMatchCard';
 import { OpponentCard } from '@/components/home/OpponentCard';
 import { SeasonCard } from '@/components/home/SeasonCard';
-import { WhatsAtStakeCard } from '@/components/home/WhatsAtStakeCard';
+import { BrandMark } from '@/components/design/DesignSystem';
 import type { MatchT, StandingRowT } from '@/data/schemas';
 import {
   useFixtures,
@@ -21,28 +20,24 @@ import {
   useSeason,
   useStandings,
 } from '@/data/queries';
-import { teamName } from '@/features/calendar/logic';
 import {
   isRecentResult,
   miniTableWindow,
   nextOpponentInfo,
   recentForm,
+  recentFormMatches,
   seasonSummary,
   selectLastResult,
   selectNextMatch,
   selectPostponedNotice,
 } from '@/features/home/logic';
 import { useNow } from '@/features/home/useNow';
-import { spacing } from '@/theme/tokens';
-import { useTheme } from '@/theme/useTheme';
-import { formatMatchDateShort } from '@/utils/matchTime';
 
 const NO_MATCHES: MatchT[] = [];
 const NO_TABLE: StandingRowT[] = [];
 
 export default function Home() {
-  const { t, i18n } = useTranslation();
-  const { colors } = useTheme();
+  const { t } = useTranslation();
   const meta = useMeta();
   const standings = useStandings();
   const fixtures = useFixtures();
@@ -65,6 +60,7 @@ export default function Home() {
   const last = useMemo(() => selectLastResult(matches), [matches]);
   const postponed = useMemo(() => selectPostponedNotice(matches), [matches]);
   const form = useMemo(() => recentForm(matches), [matches]);
+  const formMatches = useMemo(() => recentFormMatches(matches, 100), [matches]);
   const summary = seasonSummary(standings.data, teamId ?? -1);
   const opponent = teamId !== null ? nextOpponentInfo(matches, table, teamId) : null;
   const miniRows = teamId !== null ? miniTableWindow(table, teamId) : [];
@@ -122,6 +118,7 @@ export default function Home() {
       onRefresh={refresh}
     >
       {banner}
+      <BrandMark team={meta.data?.team ?? null} />
 
       {recent ? <LastResultCard match={recent} /> : null}
 
@@ -130,43 +127,21 @@ export default function Home() {
           match={next}
           competitionCode={meta.data?.competitionCode ?? null}
           competitionName={meta.data?.competitionName ?? null}
+          postponed={postponed}
         />
       ) : (
         <EmptyState message={t('home.noNextMatch')} />
       )}
 
-      {postponed ? (
-        <Pressable
-          accessibilityRole="button"
-          onPress={() => router.push(`/match/${postponed.id}`)}
-          style={[
-            styles.notice,
-            { backgroundColor: colors.surface, borderColor: colors.border },
-          ]}
-        >
-          <Text style={{ color: colors.textMuted, fontSize: 13 }}>
-            {t('home.postponedNotice', {
-              teams: `${teamName(postponed.home)} – ${teamName(postponed.away)}`,
-              date: formatMatchDateShort(
-                postponed.utcDate,
-                postponed.status,
-                i18n.language,
-              ),
-            })}
-          </Text>
-        </Pressable>
-      ) : null}
-
       {opponent ? <OpponentCard info={opponent} rival={rival} /> : null}
-
-      {seasonData?.whatIsAtStake ? (
-        <WhatsAtStakeCard stake={seasonData.whatIsAtStake} />
-      ) : null}
 
       <SeasonCard
         season={seasonData}
         summary={summary}
         form={form}
+        formMatches={formMatches}
+        seasonName={meta.data?.season ?? null}
+        matchday={standings.data?.matchday ?? seasonData?.matchday ?? null}
         rows={miniRows}
         teamId={teamId ?? -1}
       />
@@ -179,26 +154,6 @@ export default function Home() {
         />
       ) : null}
 
-      {meta.data ? (
-        <Text style={[styles.footer, { color: colors.textMuted }]}>
-          {t('data.seasonLine', {
-            season: meta.data.season,
-            matchday: standings.data?.matchday ?? '—',
-          })}
-        </Text>
-      ) : null}
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  footer: { fontSize: 12, textAlign: 'center', marginTop: spacing.xs },
-  notice: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: 12,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
-    minHeight: 44,
-    justifyContent: 'center',
-  },
-});

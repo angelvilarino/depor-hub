@@ -87,6 +87,33 @@ export function sourceMonogram(name: string): string {
   return `${words[0]![0]}${words[1]![0]}`.toLocaleUpperCase();
 }
 
+/** Fecha relativa localizada para el titular destacado y su lista. */
+export function relativePublishedAt(iso: string, locale: string, now = Date.now()): string {
+  const published = Date.parse(iso);
+  if (!Number.isFinite(published)) return '';
+  const seconds = Math.round((published - now) / 1000);
+  const absolute = Math.abs(seconds);
+  const [unit, divisor] = absolute < 60
+    ? ['second', 1]
+    : absolute < 3600
+      ? ['minute', 60]
+      : absolute < 86_400
+        ? ['hour', 3600]
+        : ['day', 86_400];
+  const value = Math.round(seconds / divisor);
+  return new Intl.RelativeTimeFormat(locale, { numeric: 'auto' }).format(
+    value,
+    unit as Intl.RelativeTimeFormatUnit,
+  );
+}
+
+export function sourceBadgeIndex(sourceId: string, count: number): number {
+  if (count <= 0) return 0;
+  let hash = 0;
+  for (const char of sourceId) hash = (hash * 31 + char.charCodeAt(0)) | 0;
+  return Math.abs(hash) % count;
+}
+
 export function filterNews(
   stories: NewsStoryT[],
   filters: NewsFilters,

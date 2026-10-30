@@ -190,57 +190,6 @@
       "title": "SeasonSummary",
       "type": "object"
     },
-    "StakeRange": {
-      "additionalProperties": false,
-      "properties": {
-        "from": {
-          "minimum": 1,
-          "title": "From",
-          "type": "integer"
-        },
-        "to": {
-          "minimum": 1,
-          "title": "To",
-          "type": "integer"
-        }
-      },
-      "required": [
-        "from",
-        "to"
-      ],
-      "title": "StakeRange",
-      "type": "object"
-    },
-    "StakeScenario": {
-      "additionalProperties": false,
-      "description": "Qu\u00e9 posici\u00f3n ocupar\u00eda el Depor con cada resultado, sin mover al resto.",
-      "properties": {
-        "points": {
-          "minimum": 0,
-          "title": "Points",
-          "type": "integer"
-        },
-        "range": {
-          "$ref": "#/$defs/StakeRange"
-        },
-        "result": {
-          "enum": [
-            "W",
-            "D",
-            "L"
-          ],
-          "title": "Result",
-          "type": "string"
-        }
-      },
-      "required": [
-        "result",
-        "points",
-        "range"
-      ],
-      "title": "StakeScenario",
-      "type": "object"
-    },
     "TeamRef": {
       "additionalProperties": false,
       "properties": {
@@ -295,40 +244,6 @@
       ],
       "title": "TeamRef",
       "type": "object"
-    },
-    "WhatIsAtStake": {
-      "additionalProperties": false,
-      "properties": {
-        "assumption": {
-          "default": "other_results_unchanged",
-          "title": "Assumption",
-          "type": "string"
-        },
-        "points": {
-          "minimum": 0,
-          "title": "Points",
-          "type": "integer"
-        },
-        "position": {
-          "minimum": 1,
-          "title": "Position",
-          "type": "integer"
-        },
-        "scenarios": {
-          "items": {
-            "$ref": "#/$defs/StakeScenario"
-          },
-          "title": "Scenarios",
-          "type": "array"
-        }
-      },
-      "required": [
-        "position",
-        "points",
-        "scenarios"
-      ],
-      "title": "WhatIsAtStake",
-      "type": "object"
     }
   },
   "additionalProperties": false,
@@ -379,17 +294,6 @@
     "updatedAt": {
       "title": "Updatedat",
       "type": "string"
-    },
-    "whatIsAtStake": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/WhatIsAtStake"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
     }
   },
   "required": [

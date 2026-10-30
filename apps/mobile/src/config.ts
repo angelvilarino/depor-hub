@@ -26,3 +26,9 @@ export const USING_LOCAL_DATA = !CONFIGURED_DATA_BASE_URL && __DEV__;
 // Escudos de los equipos (ADR 0006): se cargan desde la URL de la API, nunca se almacenan en el repo.
 // Ponlo a false para volver a monogramas sin tocar nada más.
 export const SHOW_TEAM_CREST = true;
+
+// Brand use was explicitly requested; keep it separate from the app icon and splash.
+export const SHOW_CLUB_CREST_AS_BRAND = true;
+
+// Rival player photos/stats are intentionally omitted until a reliable free source is chosen.
+export const SHOW_RIVAL_PHOTOS = false;

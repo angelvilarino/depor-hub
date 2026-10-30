@@ -12,29 +12,7 @@
       },
       "bdfutbolId": "1",
       "coach": "Hansi Flick",
-      "keyPlayers": [
-        {
-          "id": 37428,
-          "name": "Raphinha",
-          "goals": 13,
-          "assists": 2,
-          "playedMatches": 9
-        },
-        {
-          "id": 202283,
-          "name": "Lamine Yamal",
-          "goals": 8,
-          "assists": 6,
-          "playedMatches": 10
-        },
-        {
-          "id": 214533,
-          "name": "Fermín López",
-          "goals": 4,
-          "assists": 3,
-          "playedMatches": 10
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -109,29 +87,7 @@
       },
       "bdfutbolId": "7",
       "coach": "Diego Simeone",
-      "keyPlayers": [
-        {
-          "id": 213278,
-          "name": "Álex Baena",
-          "goals": 5,
-          "assists": 2,
-          "playedMatches": 10
-        },
-        {
-          "id": 16739,
-          "name": "Alejandro Grimaldo",
-          "goals": 3,
-          "assists": 2,
-          "playedMatches": 10
-        },
-        {
-          "id": 8924,
-          "name": "Jonathan David",
-          "goals": 3,
-          "assists": 2,
-          "playedMatches": 7
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -206,29 +162,7 @@
       },
       "bdfutbolId": "2",
       "coach": "José Mourinho",
-      "keyPlayers": [
-        {
-          "id": 3374,
-          "name": "Kylian Mbappé",
-          "goals": 11,
-          "assists": 2,
-          "playedMatches": 10
-        },
-        {
-          "id": 125010,
-          "name": "Jude Bellingham",
-          "goals": 3,
-          "assists": 3,
-          "playedMatches": 10
-        },
-        {
-          "id": 169162,
-          "name": "Arda Guler",
-          "goals": 2,
-          "assists": 2,
-          "playedMatches": 10
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -303,29 +237,7 @@
       },
       "bdfutbolId": "8",
       "coach": "Manuel Pellegrini",
-      "keyPlayers": [
-        {
-          "id": 175941,
-          "name": "Abdessamad Ezzalzouli",
-          "goals": 3,
-          "assists": null,
-          "playedMatches": 7
-        },
-        {
-          "id": 32415,
-          "name": "Cucho Hernández",
-          "goals": 2,
-          "assists": 2,
-          "playedMatches": 9
-        },
-        {
-          "id": 66,
-          "name": "Isco",
-          "goals": 2,
-          "assists": null,
-          "playedMatches": 10
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -400,29 +312,7 @@
       },
       "bdfutbolId": "30",
       "coach": "Pellegrino Matarazzo",
-      "keyPlayers": [
-        {
-          "id": 82516,
-          "name": "Luka Sučić",
-          "goals": 3,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 182319,
-          "name": "Orri Oskarsson",
-          "goals": 3,
-          "assists": null,
-          "playedMatches": 9
-        },
-        {
-          "id": 101182,
-          "name": "Ander Barrenetxea",
-          "goals": 2,
-          "assists": 1,
-          "playedMatches": 10
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -497,29 +387,7 @@
       },
       "bdfutbolId": "33",
       "coach": "Luís García",
-      "keyPlayers": [
-        {
-          "id": 213043,
-          "name": "Isaac",
-          "goals": 3,
-          "assists": 1,
-          "playedMatches": 9
-        },
-        {
-          "id": 127657,
-          "name": "Félix Correia",
-          "goals": 2,
-          "assists": 1,
-          "playedMatches": 7
-        },
-        {
-          "id": 226950,
-          "name": "Miguel Ángel Sierra",
-          "goals": 2,
-          "assists": null,
-          "playedMatches": 8
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -594,29 +462,7 @@
       },
       "bdfutbolId": "3",
       "coach": "Quique Sanchez Flores",
-      "keyPlayers": [
-        {
-          "id": 11113,
-          "name": "Lucas Boyé",
-          "goals": 5,
-          "assists": null,
-          "playedMatches": 9
-        },
-        {
-          "id": 8474,
-          "name": "Mariano Díaz",
-          "goals": 3,
-          "assists": 4,
-          "playedMatches": 10
-        },
-        {
-          "id": 290184,
-          "name": "Mikel Rodríguez",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 3
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -691,29 +537,7 @@
       },
       "bdfutbolId": "6",
       "coach": "Edin Terzić",
-      "keyPlayers": [
-        {
-          "id": 2294,
-          "name": "Álex Berenguer",
-          "goals": 3,
-          "assists": 4,
-          "playedMatches": 10
-        },
-        {
-          "id": 151439,
-          "name": "Aitor Paredes Casamichana",
-          "goals": 2,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 32629,
-          "name": "Iñaki Williams",
-          "goals": 2,
-          "assists": 2,
-          "playedMatches": 10
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -788,29 +612,7 @@
       },
       "bdfutbolId": "11",
       "coach": "Claudio",
-      "keyPlayers": [
-        {
-          "id": 83406,
-          "name": "Ferran Jutglà",
-          "goals": 2,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 188859,
-          "name": "Pablo Duran",
-          "goals": 2,
-          "assists": null,
-          "playedMatches": 9
-        },
-        {
-          "id": 31019,
-          "name": "Carl Starfelt",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 7
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -885,29 +687,7 @@
       },
       "bdfutbolId": "38",
       "coach": "Inigo Perez",
-      "keyPlayers": [
-        {
-          "id": 136646,
-          "name": "Georges Mikautadze",
-          "goals": 3,
-          "assists": 1,
-          "playedMatches": 10
-        },
-        {
-          "id": 633,
-          "name": "Pape Gueye",
-          "goals": 3,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 150533,
-          "name": "Alberto Moleiro",
-          "goals": 2,
-          "assists": 4,
-          "playedMatches": 10
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -982,22 +762,7 @@
       },
       "bdfutbolId": "27",
       "coach": "Luis Ramis",
-      "keyPlayers": [
-        {
-          "id": 2237,
-          "name": "Ante Budimir",
-          "goals": 7,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 32004,
-          "name": "Kike Barja",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 9
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -1072,29 +837,7 @@
       },
       "bdfutbolId": "29",
       "coach": "José Alberto López",
-      "keyPlayers": [
-        {
-          "id": 265516,
-          "name": "Yassir Zabiri",
-          "goals": 8,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 274546,
-          "name": "Pablo García",
-          "goals": 2,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 32679,
-          "name": "Andrés Martín",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 6
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -1169,29 +912,7 @@
       },
       "bdfutbolId": "20",
       "coach": "Luís Castro",
-      "keyPlayers": [
-        {
-          "id": 180282,
-          "name": "Brugui",
-          "goals": 5,
-          "assists": 1,
-          "playedMatches": 9
-        },
-        {
-          "id": 156746,
-          "name": "Iván Romero",
-          "goals": 3,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 98741,
-          "name": "Adrián de la Fuente",
-          "goals": 2,
-          "assists": null,
-          "playedMatches": 8
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -1266,29 +987,7 @@
       },
       "bdfutbolId": "42",
       "coach": "Martin Anselmi",
-      "keyPlayers": [
-        {
-          "id": 214497,
-          "name": "Fer Niño",
-          "goals": 6,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 137485,
-          "name": "Germán Valera",
-          "goals": 2,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 244544,
-          "name": "Buba",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 9
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -1363,29 +1062,7 @@
       },
       "bdfutbolId": "5",
       "coach": "Beñat San José",
-      "keyPlayers": [
-        {
-          "id": 115175,
-          "name": "Sergio Camello",
-          "goals": 7,
-          "assists": 1,
-          "playedMatches": 10
-        },
-        {
-          "id": 32312,
-          "name": "Álvaro García",
-          "goals": 3,
-          "assists": 2,
-          "playedMatches": 10
-        },
-        {
-          "id": 213280,
-          "name": "Adrià Pedrosa",
-          "goals": 1,
-          "assists": 1,
-          "playedMatches": 8
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -1460,29 +1137,7 @@
       },
       "bdfutbolId": "16",
       "coach": "Pepe Bordalás",
-      "keyPlayers": [
-        {
-          "id": 152458,
-          "name": "Martin Satriano",
-          "goals": 2,
-          "assists": 1,
-          "playedMatches": 10
-        },
-        {
-          "id": 33132,
-          "name": "Enes Ünal",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 9
-        },
-        {
-          "id": 154000,
-          "name": "RamónTerrats Espacio",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 9
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -1557,29 +1212,7 @@
       },
       "bdfutbolId": "14",
       "coach": "Manolo González",
-      "keyPlayers": [
-        {
-          "id": 180218,
-          "name": "Roberto Fernández",
-          "goals": 6,
-          "assists": null,
-          "playedMatches": 10
-        },
-        {
-          "id": 278018,
-          "name": "Marcos Fernández",
-          "goals": 1,
-          "assists": 1,
-          "playedMatches": 10
-        },
-        {
-          "id": 149049,
-          "name": "Tyrhys Dolan",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 10
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -1654,15 +1287,7 @@
       },
       "bdfutbolId": "36",
       "coach": "Carlos Corberán",
-      "keyPlayers": [
-        {
-          "id": 7672,
-          "name": "Umar Sadiq",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 3
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -1737,22 +1362,7 @@
       },
       "bdfutbolId": "23",
       "coach": "Juan Funes",
-      "keyPlayers": [
-        {
-          "id": 221308,
-          "name": "Adrián",
-          "goals": 4,
-          "assists": null,
-          "playedMatches": 6
-        },
-        {
-          "id": 264254,
-          "name": "Chupete",
-          "goals": 1,
-          "assists": null,
-          "playedMatches": 10
-        }
-      ],
+      "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",

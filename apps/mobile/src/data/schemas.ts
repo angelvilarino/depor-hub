@@ -158,25 +158,8 @@ export const PositionPoint = z.strictObject({
   points: z.number().int().nonnegative(),
 });
 
-export const StakeRange = z.strictObject({
-  from: z.number().int().positive(),
-  to: z.number().int().positive(),
-});
-
-export const StakeScenario = z.strictObject({
-  result: z.enum(['W', 'D', 'L']),
-  points: z.number().int().nonnegative(),
-  range: StakeRange,
-});
-
-export const WhatIsAtStake = z.strictObject({
-  position: z.number().int().positive(),
-  points: z.number().int().nonnegative(),
-  scenarios: z.array(StakeScenario).default([]),
-  assumption: z.string().default('other_results_unchanged'),
-});
-
-export const Season = z.strictObject({
+// z.object strips the retired whatIsAtStake field from older persisted caches.
+export const Season = z.object({
   updatedAt: iso,
   season: z.string(),
   matchday: optionalInt(),
@@ -184,7 +167,6 @@ export const Season = z.strictObject({
   summary: SeasonSummary,
   form: z.array(SeasonFormMatch).default([]),
   positionEvolution: z.array(PositionPoint).default([]),
-  whatIsAtStake: WhatIsAtStake.nullable().default(null),
   provenance: z.record(z.string(), Provenance).default({}),
 });
 
@@ -202,6 +184,7 @@ export const HeadToHeadMeeting = z.strictObject({
 export const HeadToHead = z.strictObject({
   scope: z.literal('all_official_matches').default('all_official_matches'),
   source: z.string().default('BDFutbol'),
+  confidence: z.enum(['verified', 'cross_checked', 'single_source', 'estimated']).default('single_source'),
   sourceUrl: z.string(),
   played: z.number().int().nonnegative(),
   won: z.number().int().nonnegative(),
@@ -272,6 +255,7 @@ export const NewsSource = z.strictObject({
   group: NewsGroup,
   kind: z.enum(['article', 'video']).default('article'),
   homepage: z.string(),
+  iconUrl: z.string().nullable().optional(),
 });
 
 export const NewsAlsoIn = z.strictObject({
@@ -418,8 +402,6 @@ export type SeasonT = z.infer<typeof Season>;
 export type SeasonSummaryT = z.infer<typeof SeasonSummary>;
 export type SeasonFormMatchT = z.infer<typeof SeasonFormMatch>;
 export type PositionPointT = z.infer<typeof PositionPoint>;
-export type WhatIsAtStakeT = z.infer<typeof WhatIsAtStake>;
-export type StakeScenarioT = z.infer<typeof StakeScenario>;
 export type RivalsT = z.infer<typeof Rivals>;
 export type RivalT = z.infer<typeof Rival>;
 export type HeadToHeadT = z.infer<typeof HeadToHead>;

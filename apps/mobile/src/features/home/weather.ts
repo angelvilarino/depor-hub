@@ -4,6 +4,15 @@ export type Weather = {
   windKmh: number | null;
   code: number;
   hour: string;
+  nearby?: WeatherHour[];
+};
+
+export type WeatherHour = {
+  temperatureC: number;
+  precipitationProbability: number | null;
+  windKmh: number | null;
+  code: number;
+  hour: string;
 };
 
 type OpenMeteoResponse = {
@@ -52,17 +61,42 @@ export function pickWeather(payload: OpenMeteoResponse, kickoffIso: string): Wea
   const hourly = payload.hourly;
   if (!hourly?.time?.length) return null;
   const target = madridHour(kickoffIso);
-  let index = hourly.time.findIndex((time) => time.startsWith(target));
-  if (index === -1) {
-    const targetDay = target.slice(0, 10);
-    index = hourly.time.findIndex((time) => time.startsWith(targetDay));
-  }
+  const wallClockMs = (value: string) => Date.parse(`${value.length === 13 ? `${value}:00` : value}Z`);
+  const targetMs = wallClockMs(target);
+  const index = hourly.time.reduce((best, value, candidate) => {
+    if (best < 0) return candidate;
+    return Math.abs(wallClockMs(value) - targetMs) < Math.abs(wallClockMs(hourly.time![best]!) - targetMs)
+      ? candidate
+      : best;
+  }, -1);
   if (index === -1) return null;
+  if (Math.abs(wallClockMs(hourly.time[index]!) - targetMs) > 3 * 60 * 60 * 1000) return null;
   const temperature = hourly.temperature_2m?.[index];
   const code = hourly.weather_code?.[index];
   if (temperature === null || temperature === undefined || code === null || code === undefined) {
     return null;
   }
+  const hours = hourly.time
+    .map((hour, i) => {
+      const temperature = hourly.temperature_2m?.[i];
+      const code = hourly.weather_code?.[i];
+      if (temperature === null || temperature === undefined || code === null || code === undefined) {
+        return null;
+      }
+      return {
+        hour,
+        temperatureC: Math.round(temperature),
+        precipitationProbability: hourly.precipitation_probability?.[i] ?? null,
+        windKmh:
+          hourly.wind_speed_10m?.[i] === null || hourly.wind_speed_10m?.[i] === undefined
+            ? null
+            : Math.round(hourly.wind_speed_10m[i] as number),
+        code,
+      } satisfies WeatherHour;
+    })
+    .filter((value): value is WeatherHour => value !== null)
+    .filter((value) => Math.abs(wallClockMs(value.hour) - wallClockMs(hourly.time![index]!)) <= 3 * 60 * 60 * 1000);
+
   return {
     temperatureC: Math.round(temperature),
     precipitationProbability: hourly.precipitation_probability?.[index] ?? null,
@@ -72,6 +106,7 @@ export function pickWeather(payload: OpenMeteoResponse, kickoffIso: string): Wea
         : Math.round(hourly.wind_speed_10m[index] as number),
     code,
     hour: hourly.time[index] ?? target,
+    nearby: hours,
   };
 }
 

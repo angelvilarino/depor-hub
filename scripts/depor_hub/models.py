@@ -8,9 +8,9 @@ from __future__ import annotations
 
 import re
 from datetime import datetime
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Any, Literal, Optional
 
-from pydantic import AfterValidator, BaseModel, ConfigDict, Field, field_validator
+from pydantic import AfterValidator, BaseModel, ConfigDict, Field, field_validator, model_validator
 from pydantic.alias_generators import to_camel
 
 SCHEMA_VERSION = 1
@@ -123,28 +123,17 @@ class PositionPoint(Public):
     points: int = Field(ge=0)
 
 
-class StakeRange(Public):
-    from_: int = Field(alias="from", ge=1)
-    to: int = Field(ge=1)
-
-
-class StakeScenario(Public):
-    """Qué posición ocuparía el Depor con cada resultado, sin mover al resto."""
-
-    result: Literal["W", "D", "L"]
-    points: int = Field(ge=0)
-    range: StakeRange
-
-
-class WhatIsAtStake(Public):
-    position: int = Field(ge=1)
-    points: int = Field(ge=0)
-    scenarios: list[StakeScenario]
-    # Clave estable; la app la traduce. Nunca se presenta como una certeza.
-    assumption: str = "other_results_unchanged"
-
-
 class Season(Public):
+    # Strip the retired H5.2 key on input while keeping every other v1 key strict.
+    @model_validator(mode="before")
+    @classmethod
+    def _drop_retired_stake_scenarios(cls, value: Any) -> Any:
+        if isinstance(value, dict) and ("whatIsAtStake" in value or "what_is_at_stake" in value):
+            value = dict(value)
+            value.pop("whatIsAtStake", None)
+            value.pop("what_is_at_stake", None)
+        return value
+
     updated_at: IsoDateTime
     season: str
     matchday: Optional[int] = None
@@ -152,7 +141,6 @@ class Season(Public):
     summary: SeasonSummary
     form: list[SeasonFormMatch] = Field(default_factory=list)
     position_evolution: list[PositionPoint] = Field(default_factory=list)
-    what_is_at_stake: Optional[WhatIsAtStake] = None
     provenance: dict[str, Provenance] = Field(default_factory=dict)
 
 
@@ -178,6 +166,7 @@ class HeadToHead(Public):
 
     scope: Literal["all_official_matches"] = "all_official_matches"
     source: str = "BDFutbol"
+    confidence: Confidence = "single_source"
     source_url: str
     played: int = Field(ge=0)
     won: int = Field(ge=0)
@@ -189,7 +178,7 @@ class HeadToHead(Public):
 
 
 class KeyPlayer(Public):
-    """Máximo goleador del rival según football-data.org (solo goles, sin inventar asistencias)."""
+    """Contrato legado: la publicación actual no incluye estadísticas individuales de rivales."""
 
     id: int
     name: str
@@ -252,6 +241,7 @@ class NewsSource(Public):
     group: NewsGroup
     kind: NewsKind = "article"
     homepage: str
+    icon_url: Optional[str] = None
 
 
 class NewsAlsoIn(Public):

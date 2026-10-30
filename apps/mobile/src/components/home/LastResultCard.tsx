@@ -1,11 +1,10 @@
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { Card } from '@/components/Screen';
-import { TeamCrest } from '@/components/TeamCrest';
+import { CrestBadge, PosterCard, SectionHeader } from '@/components/design/DesignSystem';
 import type { MatchT } from '@/data/schemas';
 import { outcome, teamName } from '@/features/calendar/logic';
-import { spacing } from '@/theme/tokens';
+import { radius, spacing, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { formatMatchDate } from '@/utils/matchTime';
 
@@ -15,72 +14,66 @@ export function LastResultCard({ match }: { match: MatchT }) {
   const result = outcome(match);
   const date = formatMatchDate(match.utcDate, match.status, i18n.language);
   const hasScore = match.score.home !== null && match.score.away !== null;
-  const score = hasScore
-    ? `${match.score.home}–${match.score.away}`
-    : t(`calendar.status.${match.status}`, { defaultValue: match.status });
-  const color =
-    result === 'W' ? colors.primary : result === 'L' ? colors.danger : colors.textMuted;
-  const summary = [
+  const score = hasScore ? `${match.score.home}–${match.score.away}` : t(`calendar.status.${match.status}`, { defaultValue: match.status });
+  const color = result ? colors.poster.outcome[
+    result === 'W' ? 'winText' : result === 'L' ? 'lossText' : 'drawText'
+  ] : colors.poster.text;
+  const label = [
     t('home.finalResult'),
     `${teamName(match.home)} ${score} ${teamName(match.away)}`,
     result ? t(`calendar.outcomeLong.${result}`) : null,
     date,
     match.matchday !== null ? t('calendar.matchday', { n: match.matchday }) : null,
-  ]
-    .filter(Boolean)
-    .join('. ');
+  ].filter(Boolean).join('. ');
+  const resultBackground = result ? colors.poster.outcome[
+    result === 'W' ? 'winBackground' : result === 'L' ? 'lossBackground' : 'drawBackground'
+  ] : colors.poster.text;
 
   return (
-    <Card>
-      <View style={styles.headerRow}>
-        <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>
-          {t('home.finalResult')}
-        </Text>
-        {match.matchday !== null ? (
-          <Text style={{ color: colors.textMuted, fontSize: 14 }}>
-            {t('calendar.matchday', { n: match.matchday })}
-          </Text>
-        ) : null}
-      </View>
+    <PosterCard>
+      <SectionHeader
+        title={t('home.finalResult')}
+        subtitle={match.matchday !== null ? t('calendar.matchday', { n: match.matchday }) : undefined}
+        variant="poster"
+      />
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={summary}
+        accessibilityLabel={label}
         onPress={() => router.push(`/match/${match.id}`)}
         style={styles.row}
       >
         <View style={styles.side}>
-          <TeamCrest team={match.home} size={36} />
-          <Text numberOfLines={1} style={[styles.name, { color: colors.text }]}>
-            {teamName(match.home)}
-          </Text>
+          <CrestBadge team={match.home} size={62} />
+          <Text style={[styles.name, { color: colors.poster.text }]}>{teamName(match.home)}</Text>
         </View>
         <View style={styles.scoreBox}>
-          <Text style={{ color: colors.text, fontSize: 24, fontWeight: '700' }}>{score}</Text>
-          <Text style={{ color: colors.textMuted, fontSize: 12 }}>{date}</Text>
+          <Text adjustsFontSizeToFit style={[styles.score, { color: colors.poster.text }]}>
+            {score}
+          </Text>
+          <Text style={[styles.date, { color: colors.poster.muted }]}>{date}</Text>
         </View>
         <View style={styles.side}>
-          <TeamCrest team={match.away} size={36} />
-          <Text numberOfLines={1} style={[styles.name, { color: colors.text }]}>
-            {teamName(match.away)}
+          <CrestBadge team={match.away} size={62} />
+          <Text style={[styles.name, { color: colors.poster.text }]}>{teamName(match.away)}</Text>
+        </View>
+      </Pressable>
+      {result ? (
+        <View style={[styles.outcome, { backgroundColor: resultBackground }]}>
+          <Text style={{ color, fontSize: 13, fontWeight: '900' }}>
+            {t(`calendar.outcome.${result}`)} · {t(`calendar.outcomeLong.${result}`)}
           </Text>
         </View>
-        {result ? (
-          <Text
-            accessibilityLabel={t(`calendar.outcomeLong.${result}`)}
-            style={{ color, fontSize: 18, fontWeight: '700', width: 22, textAlign: 'center' }}
-          >
-            {t(`calendar.outcome.${result}`)}
-          </Text>
-        ) : null}
-      </Pressable>
-    </Card>
+      ) : null}
+    </PosterCard>
   );
 }
 
 const styles = StyleSheet.create({
-  headerRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.sm },
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, minHeight: 44 },
-  side: { flex: 1, alignItems: 'center', gap: 2 },
-  name: { fontSize: 14, fontWeight: '600', textAlign: 'center' },
-  scoreBox: { alignItems: 'center', gap: 2, minWidth: 72 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  side: { flex: 1, minWidth: 0, alignItems: 'center', gap: spacing.xs },
+  name: { fontFamily: typography.display, fontSize: 18, lineHeight: 21, textAlign: 'center' },
+  scoreBox: { alignItems: 'center', gap: spacing.xs },
+  score: { fontFamily: typography.numeric, fontSize: 40, lineHeight: 46, textAlign: 'center' },
+  date: { fontSize: 12, textAlign: 'center' },
+  outcome: { alignSelf: 'center', borderRadius: radius.pill, paddingHorizontal: spacing.md, paddingVertical: spacing.xs },
 });

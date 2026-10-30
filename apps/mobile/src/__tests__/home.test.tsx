@@ -38,7 +38,7 @@ jest.mock('expo-router', () => ({
 
 jest.mock('@/theme/useTheme', () => {
   const { lightColors } = jest.requireActual('@/theme/tokens');
-  return { useTheme: () => ({ scheme: 'light', colors: lightColors }) };
+  return { useTheme: () => ({ scheme: 'light', colors: lightColors, paper: lightColors.paper, poster: lightColors.poster }) };
 });
 
 jest.mock('@/features/reminders/notifications', () => ({
@@ -104,27 +104,23 @@ describe('Home', () => {
     await render(<Home />);
 
     expect(screen.getByText('Resultado final')).toBeTruthy();
-    expect(screen.getByText('1–0')).toBeTruthy();
+    expect(screen.getAllByText('1–0').length).toBeGreaterThan(0);
 
     expect(screen.getByText('Próximo partido')).toBeTruthy();
     expect(screen.getByText(/Jornada 11 · Primera División/)).toBeTruthy();
     expect(screen.getAllByText('Osasuna').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Local').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Visitante').length).toBeGreaterThan(0);
-    expect(screen.getByText(/Lunes 2 nov · 21:00/)).toBeTruthy();
+    expect(screen.getByLabelText(/Lunes 2 nov\. 21:00/)).toBeTruthy();
     expect(screen.getByText('Estadio Abanca-Riazor')).toBeTruthy();
 
     expect(screen.getByText('El rival')).toBeTruthy();
     expect(screen.getByText('Luis Ramis')).toBeTruthy();
     expect(screen.getByText('Histórico')).toBeTruthy();
-    expect(screen.getByText('80 partidos · 38V-14E-28D · 133-105')).toBeTruthy();
-
-    expect(screen.getByText('Qué se juega')).toBeTruthy();
-    expect(screen.getByText('Si gana')).toBeTruthy();
-    expect(screen.getByText('7º')).toBeTruthy();
+    expect(screen.getByLabelText(/80 partidos, 38 victorias, 14 empates, 28 derrotas/)).toBeTruthy();
+    expect(screen.queryByText('Qué se juega')).toBeNull();
 
     expect(screen.getByText('La temporada')).toBeTruthy();
-    expect(screen.getByText('11º')).toBeTruthy();
     expect(screen.getByText('2-5-3')).toBeTruthy();
     expect(screen.getByText('13-13')).toBeTruthy();
     expect(screen.getByText('G victoria · E empate · P derrota')).toBeTruthy();
@@ -132,8 +128,15 @@ describe('Home', () => {
 
     expect(screen.getByText('Clasificación')).toBeTruthy();
     expect(screen.getByText('Ver tabla completa')).toBeTruthy();
-    expect(screen.getByText('Temporada 2026-27 · jornada 10')).toBeTruthy();
+    expect(screen.getByText('2026-27 · Jornada 10')).toBeTruthy();
     expect(screen.queryByText('Titulares')).toBeNull();
+  });
+
+  it('seleccionar un cromo sincroniza el partido con el gráfico y el marcador', async () => {
+    await render(<Home />);
+    await fireEvent.press(screen.getByLabelText(/empate contra Levante/i));
+    expect(screen.getByText('1–1')).toBeTruthy();
+    expect(screen.getByText(/Jornada 9.*Levante.*Empate.*puesto 9/)).toBeTruthy();
   });
 
   it('oculta el resultado final pasadas 24 horas', async () => {
@@ -153,7 +156,6 @@ describe('Home', () => {
 
     expect(screen.getByText('Próximo partido')).toBeTruthy();
     expect(screen.getByText('La temporada')).toBeTruthy();
-    expect(screen.getByText('11º')).toBeTruthy();
     expect(screen.queryByText('Qué se juega')).toBeNull();
     expect(screen.queryByText('Histórico')).toBeNull();
     expect(screen.getByText('El rival')).toBeTruthy();
@@ -169,7 +171,7 @@ describe('Home', () => {
     expect(screen.queryByText('Qué se juega')).toBeNull();
     expect(screen.queryByText('Histórico')).toBeNull();
     expect(screen.getByText('La temporada')).toBeTruthy();
-    expect(screen.getByText('11º')).toBeTruthy();
+    expect(screen.getByText('2026-27 · Jornada 10')).toBeTruthy();
   });
 
   it('muestra el tiempo del estadio cuando la consulta devuelve datos', async () => {
@@ -183,7 +185,7 @@ describe('Home', () => {
 
     await render(<Home />);
 
-    expect(screen.getByText(/16° · Nubes · 20 % lluvia · 12 km\/h/)).toBeTruthy();
+    expect(screen.getByLabelText(/Nubes\. 16 grados\. 20 % lluvia\. 12 km\/h/)).toBeTruthy();
     expect(screen.getByText('Datos: Open-Meteo')).toBeTruthy();
   });
 

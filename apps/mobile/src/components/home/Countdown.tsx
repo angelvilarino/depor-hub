@@ -1,82 +1,106 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Animated } from 'react-native';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Animated, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
-import {
-  countdownParts,
-  showsSeconds,
-  type CountdownParts,
-} from '@/features/home/logic';
+import { countdownParts, type CountdownParts } from '@/features/home/logic';
 import { useCountdown } from '@/features/home/useCountdown';
+import { motion, radius, spacing, typography } from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 
-function units(parts: CountdownParts, withSeconds: boolean, t: TFunction): string[] {
-  const out: string[] = [];
-  if (parts.days > 0) out.push(t('home.countdown.days', { n: parts.days }));
-  if (parts.days > 0 || parts.hours > 0) {
-    out.push(t('home.countdown.hours', { n: parts.hours }));
-  }
-  out.push(t('home.countdown.minutes', { n: parts.minutes }));
-  if (withSeconds) out.push(t('home.countdown.seconds', { n: parts.seconds }));
-  return out;
+type Unit = { key: string; value: number; label: string };
+
+function units(parts: CountdownParts, t: TFunction): Unit[] {
+  return [
+    { key: 'days', value: parts.days, label: t('home.countdown.units.days') },
+    { key: 'hours', value: parts.hours, label: t('home.countdown.units.hours') },
+    { key: 'minutes', value: parts.minutes, label: t('home.countdown.units.minutes') },
+    { key: 'seconds', value: parts.seconds, label: t('home.countdown.units.seconds') },
+  ];
 }
 
-/**
- * Cuenta atrás aislada: solo este componente se vuelve a pintar cada segundo.
- * La etiqueta accesible se actualiza como mucho una vez por minuto para no
- * interrumpir al lector de pantalla; el texto visible sí cambia cada segundo.
- */
-export function Countdown({ targetMs }: { targetMs: number }) {
-  const { t } = useTranslation();
+function UnitBox({ unit, reducedMotion, urgent }: { unit: Unit; reducedMotion: boolean; urgent: boolean }) {
   const { colors } = useTheme();
+  const [transition] = useState(() => new Animated.Value(1));
+  const previous = useRef(unit.value);
+
+  useEffect(() => {
+    if (unit.value === previous.current) return;
+    previous.current = unit.value;
+    if (reducedMotion) {
+      transition.setValue(1);
+      return;
+    }
+    transition.setValue(0);
+    Animated.timing(transition, { toValue: 1, duration: motion.fast, useNativeDriver: true }).start();
+  }, [reducedMotion, transition, unit.value]);
+
+  return (
+    <View style={[styles.unitBox, { backgroundColor: colors.poster.text, borderColor: urgent ? colors.poster.accent : 'transparent' }]}>
+      <Animated.Text
+        maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
+        style={{
+          color: colors.primary,
+          fontFamily: typography.numeric,
+          fontSize: 30,
+          lineHeight: 34,
+          opacity: transition,
+          transform: [{ translateY: transition.interpolate({ inputRange: [0, 1], outputRange: [5, 0] }) }],
+        }}
+      >
+        {String(unit.value).padStart(2, '0')}
+      </Animated.Text>
+      <Text style={{ color: colors.textMuted, fontSize: 9, letterSpacing: 0.7, textTransform: 'uppercase' }}>
+        {unit.label}
+      </Text>
+    </View>
+  );
+}
+
+/** Solo este componente repinta cada segundo; el resto de Home no depende del tic. */
+export function Countdown({ targetMs, onExpire }: { targetMs: number; onExpire?: () => void }) {
+  const { t } = useTranslation();
   const reducedMotion = useReducedMotion();
   const parts = useCountdown(targetMs, true);
-  const withSeconds = showsSeconds(targetMs, parts.nowMs);
-  const [pulse] = useState(() => new Animated.Value(1));
-  const seconds = parts.seconds;
-
+  const expiredNotified = useRef(false);
   const labelMinute = Math.floor(parts.nowMs / 60_000);
   const label = useMemo(() => {
     const snapshot = countdownParts(targetMs, labelMinute * 60_000);
-    return t(
-      withSeconds ? 'home.countdown.labelWithSeconds' : 'home.countdown.label',
-      {
-        days: snapshot.days,
-        hours: snapshot.hours,
-        minutes: snapshot.minutes,
-        seconds: snapshot.seconds,
-      },
-    );
-  }, [labelMinute, t, targetMs, withSeconds]);
+    return t('home.countdown.labelWithSeconds', {
+      days: snapshot.days,
+      hours: snapshot.hours,
+      minutes: snapshot.minutes,
+      seconds: snapshot.seconds,
+    });
+  }, [labelMinute, t, targetMs]);
 
   useEffect(() => {
-    if (reducedMotion || !withSeconds) {
-      pulse.setValue(1);
-      return;
+    if (parts.expired && !expiredNotified.current) {
+      expiredNotified.current = true;
+      onExpire?.();
     }
-    pulse.setValue(0.7);
-    Animated.timing(pulse, {
-      toValue: 1,
-      duration: 220,
-      useNativeDriver: true,
-    }).start();
-  }, [pulse, reducedMotion, seconds, withSeconds]);
+    if (!parts.expired && expiredNotified.current) expiredNotified.current = false;
+  }, [onExpire, parts.expired]);
 
   if (parts.expired) return null;
+  const displayUnits = units(parts, t);
+  const urgent = targetMs - parts.nowMs < 3_600_000;
 
   return (
-    <Animated.Text
+    <View
+      accessibilityRole="timer"
       accessibilityLabel={label}
       accessibilityLiveRegion="none"
-      style={{
-        color: colors.primary,
-        fontSize: 18,
-        fontWeight: '700',
-        opacity: pulse,
-      }}
+      style={styles.countdown}
     >
-      {units(parts, withSeconds, t).join(' ')}
-    </Animated.Text>
+      {displayUnits.map((unit) => (
+        <UnitBox key={unit.key} unit={unit} reducedMotion={reducedMotion} urgent={urgent} />
+      ))}
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  countdown: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.xs },
+  unitBox: { flex: 1, minWidth: 0, minHeight: 62, alignItems: 'center', justifyContent: 'center', borderRadius: radius.sm, borderWidth: 2, paddingVertical: spacing.xs, gap: 1 },
+});

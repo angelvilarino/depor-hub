@@ -1,5 +1,5 @@
-# Estado del proyecto — 28-oct-2026
-H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio real + cadencia adaptativa)** y **H6 (noticias, vídeos y redes curadas)** implementados; H4, H5 y H6 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5» y «Verificación H6»). Siguiente: H7 (club y legal).
+# Estado del proyecto — 30-oct-2026
+H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)** y **H6 (noticias, vídeos y redes curadas)** implementados; H4, H5 y H6 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5» y «Verificación H6»). Siguiente: H7 (club y legal).
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
@@ -25,7 +25,7 @@ Ver `docs/adr/0005-calendario-y-recordatorios.md` y `0006-escudos-sede-arbitro.m
 - Cada campo enriquecido lleva `source`, `confidence` (`verified`, `cross_checked`, `single_source`, `estimated`) y `capturedAt`. Los conflictos no se ocultan: los aplicados dejan `applied` y `resolution`; los no aplicados se quedan en `null`.
 - `data/manual/squad_extras.yml` es **salida generada**; los datos manuales viven en `data/manual/squad_overrides.yml` (se cargan con `--overrides`). Así una regeneración no pisa correcciones ni fotos puntuales.
 - `npm run mobile` sirve `data/public` en local además de arrancar Expo; la URL se deriva del host de Metro (sin IPs fijas). `.env.example` documenta las variables.
-- La app está en **Expo SDK 58** (React Native 0.88, React 19.3), que es el SDK que soporta Expo Go actualmente. `npx expo install --check` y `npx expo-doctor` pasan sin avisos.
+- La app está en **Expo SDK 58** (React Native 0.88, React 19.3). `npx expo install --check` valida las dependencias contra el mapa local de SDK 58; en esta sesión la red estuvo deshabilitada. RNGH quedó en `~3.3.0`, la versión que recomienda ese mapa.
 - Fuentes y límites detallados en `docs/sources.md`; decisiones en `docs/adr/0008-enriquecimiento-fuentes-libres.md`, `0009-fotos-y-fuente-oficial.md`, `0011-rediseno-equipo-y-ficha.md`, `0012-escudos-de-clubes.md` y `0014-entrenador-y-cuerpo-tecnico.md`.
 
 ### Comandos de enriquecimiento
@@ -59,31 +59,28 @@ python -m depor_hub.cli coach --apply --offline    # segunda pasada: changed=fal
 ```
 Probar en iPhone: `npm run mobile` (sirve `data/public` en local), pestaña Equipo (cuadrícula/lista solo con iconos, buscador con borrar, chips en una fila, cabecera `# / Jugador / Edad`, etiqueta «Cedido» y tarjeta del entrenador), tocar un jugador (hero con dorsal grande, selector «Depor 26-27 | Carrera», tres pestañas, partidos con escudo/enlace, trayectoria con escudos y pendientes), abrir la ficha del entrenador (foto, datos personales, balance, selector jugador/entrenador y staff), abrir una red social y la ficha de la foto, activar «Reducir movimiento» en el sistema y comprobar que el modal no anima, cambiar idioma ES/EN/GL, modo oscuro y modo avión (la plantilla sigue visible con el banner solo si procede).
 
-## H5 — Inicio y cadencia adaptativa (implementado, ADR 0015 + 0017)
-- **Home v2 (ADR 0017):** `FreshnessBanner` → **Resultado final** (solo 24 h) → **Próximo partido** → aviso de aplazado → **El rival** → **Qué se juega** → **La temporada** (fusionada) → **Titulares** opcional → pie `data.seasonLine`. Refresco manual de `meta`, `standings` y `fixtures`; las noticias nunca convierten la Home en un error global.
-- **Próximo partido:** `selectNextMatch` descarta `POSTPONED` y `CANCELLED`; el hero es simétrico (Local/Visitante en ambos lados), con competición traducida por código y fecha capitalizada. Sin «Cómo llegar». `matchPhase` distingue `tbc`, `upcoming`, `live`, `awaiting_result`, `finished`, `postponed`, `suspended`, `cancelled` y `unknown`; un `TIMED` vencido dice «Pendiente de actualizar», nunca un resultado inventado.
-- **Cuenta atrás real:** `Countdown` aislado, intervalo de 1 s bajo una hora y 60 s por encima, pausa con `AppState`, `EXPO_PUBLIC_DEV_NOW` solo en desarrollo. La etiqueta accesible se actualiza como mucho una vez por minuto; el pulso se desactiva con «Reducir movimiento». `SCHEDULED` muestra solo días.
-- **Resultado final:** marcador, chip G/E/P, jornada y enlace a `/match/[id]` durante 24 h desde el inicio; después desaparece.
-- **El rival:** posición y puntos, racha, balance de la temporada, entrenador y hasta 3 goleadores (football-data) y balance histórico completo con alcance, fuente, enlace y últimos 5 cruces (BDFutbol `vs.php`). Las partes sin dato se ocultan.
-- **Qué se juega:** `whatIsAtStake` simula solo los puntos del Depor (V/E/D) con rangos de posición bajo empates y el texto fijo `other_results_unchanged`. Si falta la clasificación o el próximo partido, el bloque no se pinta.
-- **La temporada (fusionada):** un único resumen (posición, puntos, PJ, G-E-P, GF-GC, DG), racha con leyenda y detalle de los cinco partidos, gráfica SVG de evolución de la posición y mini-clasificación de 5 filas con «Ver tabla completa». Se elimina la tarjeta `MiniTable` duplicada.
-- **Tiempo en la sede:** Open-Meteo por coordenadas verificadas, solo con hora confirmada y ≤ 16 días; atribución visible. Solo Riazor tiene coordenadas; el resto oculta el tiempo.
-- **Contratos opcionales:** `season.json` (resumen, racha, evolución `estimated`, qué se juega) y `rivals.json` (19 rivales, histórico BDFutbol, entrenador y goleadores). La Home funciona con 404 o caché anterior usando `standings` y `fixtures`.
-- **Calendario:** el editor nativo (`presentPicker` + `addEventWithForm`) va primero en iOS; `.ics` como respaldo; error específico solo si ambos fallan. `createEventInCalendarAsync` ya no existe en `expo-calendar` 58 (ADR 0005 corregido). En Expo Go el editor nativo no está disponible: requiere development build; el `.ics` sí se puede probar.
-- **Recordatorios:** hoja inferior con 1 día, 1 h, 15 min y al inicio; permiso contextual y estado visible. `remindMatchIds` migra a `remindMatches`; la planificación se recorta a 64 notificaciones (límite de iOS).
-- **Lógica pura:** `selectNextMatch`, `selectPostponedNotice`, `selectLastResult`, `matchPhase`, `isRecentResult`, `miniTableWindow`, `recentForm`, `seasonSummary`, `nextOpponentInfo`, `countdownParts` y utilidades de estado en `apps/mobile/src/features/home/logic.ts`.
-- **Cadencia:** `ingest --if-due` refresca cada 10 min entre −30 min y +3 h del kickoff (`TIMED`/`IN_PLAY`/`PAUSED`) y cada 60 min fuera; sin fixtures o sin estado, refresca. El estado vive en `data/raw/ingest_state.json` y el workflow lo persiste con `actions/cache`; cron cada 10 min y `workflow_dispatch` con `force`. `rivals-refresh.yml` publica `rivals.json` a diario.
-- **Pruebas:** lógica de Home con datos reales, vacíos, error, `SCHEDULED`, aplazados, fases y ventana de 24 h; render de Home con y sin `season.json`/`rivals.json`; tiempo elegible y no elegible; limpieza de la cuenta atrás; mapas; cadencia con reloj inyectado; workflows.
+## H5 — Inicio e identidad «Cartel + Prensa» (iteración 3; ADR 0015, 0017, 0019–0024)
 
-### Verificación H5
+- **Orden de Inicio:** marca no oficial → (resultado final si tiene menos de 24 h) → próximo partido → rival → temporada → titulares. El aviso de partido aplazado vive dentro del cartel del próximo partido para no intercalar otra tarjeta.
+- **Sistema visual:** `PosterCard` para partido, rival y resultado; `PaperCard` para temporada, tabla y prensa. Tokens de color, tipografía por rol, radios y movimiento en `src/theme/tokens.ts`. Barlow Condensed, Source Serif 4 e Inter se cargan localmente bajo OFL; los tres archivos suman **776.496 bytes**. El splash espera a las fuentes y la app conserva fallback de sistema; el arranque <2,5 s no se ha medido todavía en un móvil de gama media.
+- **Marca:** `BrandMark` usa el escudo remoto dentro de Inicio (`SHOW_CLUB_CREST_AS_BRAND=true`) y muestra el aviso de proyecto no oficial. Icono, splash y ficha de tienda conservan el monograma DH. `SHOW_RIVAL_PHOTOS=false`; no se descargan ni muestran fotos de técnicos o jugadores rivales.
+- **Próximo partido:** cartel simétrico, casillas de cuenta atrás con segundos en componente aislado, estados en juego/pendiente/final y acciones de recordatorio/calendario. El tiempo previsto se presenta como talón horario con icono SVG, temperatura, barra de lluvia, viento y detalle ±3 h cuando existe; atribución Open-Meteo, datos cacheados con antigüedad y límites de coordenadas/horizonte.
+- **Rival:** resumen tocable y ficha `/rival/[teamId]`; enseña entrenador de football-data.org, forma, BDFutbol H2H total con barra G/E/P, confianza y fuente enlazada, y hasta cinco cruces con escudos. No se publican `keyPlayers`: quedan vacíos en el JSON publicado y los clientes viejos siguen pudiendo leer el campo. Se decidió omitir estadísticas y fotos individuales de la plantilla rival porque no se eligió una fuente gratuita fiable que cubra 2026/27.
+- **Temporada:** cabecera con temporada/jornada; resumen compacto sin repetir posición y puntos de la mini-tabla; cinco cromos con escudo del rival, resultado en letra y selección por defecto del más reciente. El detalle y punto del gráfico se sincronizan; el gráfico SVG permite arrastrar y ofrece acciones accesibles de jornada anterior/siguiente. La mini-tabla vive en una segunda tarjeta para acortar el bloque. Sin datos opcionales, se ocultan detalle y gráfico y se conserva el resumen derivado de clasificación/fixtures.
+- **Noticias en Inicio:** una destacada con miniatura del feed o monograma, cuatro filas, fuente y hora relativa; `alsoIn` se despliega y enlaza a los otros medios. No se scrapean páginas ni iconos de medios: `iconUrl` es opcional para futuras URLs verificadas. El algoritmo agrupa nombres de eventos compartidos en títulos/extractos dentro de 48 h; las tres entradas reales de Falas Dépor se publican como una sola historia. El test de Alberto Molina confirma que «Deportivo» y el apellido/homonimia no bastan: se rechaza como irrelevante.
+- **Contrato y privacidad:** se retira `whatIsAtStake` del modelo, esquema y datos nuevos; Zod y Pydantic ignoran esa clave al leer cachés H5.2 antiguos. No se añadió `API_FOOTBALL_KEY` ni se incorporó una clave al bundle.
+- **Pruebas H5:** cobertura añadida de contraste AA por parada de degradado/monograma, selección pura de puntos del gráfico, interacción de racha y marcador, fecha relativa, compatibilidad del contrato, Home y ficha de rival sin estadísticas individuales.
+
+### Verificación H5.3
 ```bash
 source .venv/bin/activate && ruff check scripts && pytest scripts
 python -m depor_hub.cli schemas && git diff --exit-code packages/schemas
-npm run lint && npm run typecheck && npm test
-python -m depor_hub.cli ingest --if-due --state /tmp/ingest_state.json  # sin red si no toca
-python -m depor_hub.cli rivals --offline                                # idempotente desde caché
+PATH=/opt/homebrew/opt/node@22/bin:$PATH npm run lint
+PATH=/opt/homebrew/opt/node@22/bin:$PATH npm run typecheck
+PATH=/opt/homebrew/opt/node@22/bin:$PATH npm test
 ```
-Probar en iPhone: Home con datos reales (resultado final si hace menos de 24 h, hero con cuenta atrás, rival con histórico, qué se juega, temporada con gráfica y mini tabla, pie), pulsar «Recordarme» y «Añadir al calendario» (editor nativo en development build; `.ics` en Expo Go), abrir un partido y volver, entrar en «Ver tabla completa» y comprobar que Calendario abre en Clasificación, y repetir con modo avión, con datos vacíos y con `season.json`/`rivals.json` ausentes.
+
+Para revisar en iPhone: claro/oscuro, texto grande, reducir movimiento, resultado final, próximo partido `TIMED`/`SCHEDULED`, error/offline de Open-Meteo, recordatorio/calendario, ficha del rival y gesto del gráfico. La prueba de inicio <2,5 s requiere un móvil de gama media y queda pendiente; las fuentes ocupan 776.496 bytes en el repo. El icono y splash DH se mantienen sin cambios.
 
 ## H6 — Noticias curadas, historias y filtros (implementado, ADR 0018)
 

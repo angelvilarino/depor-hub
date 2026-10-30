@@ -10,7 +10,14 @@
     "comingSoon": "Próximamente en un hito posterior de la Fase 1.",
     "close": "Cerrar",
     "unofficial": "Proyecto de aficionados sin vinculación oficial con el Real Club Deportivo de La Coruña, S.A.D.",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "back": "Volver",
+    "confidenceLevel": {
+      "verified": "verificado",
+      "cross_checked": "contrastado",
+      "single_source": "una fuente",
+      "estimated": "estimado"
+    }
   },
   "settings": {
     "title": "Ajustes",
@@ -36,8 +43,7 @@
     "ago_days": "hace {{n}} d",
     "error": "No se han podido cargar los datos.",
     "notConfigured": "Falta la URL de datos (EXPO_PUBLIC_DATA_BASE_URL).",
-    "retry": "Reintentar",
-    "seasonLine": "Temporada {{season}} · jornada {{matchday}}"
+    "retry": "Reintentar"
   },
   "home": {
     "nextMatch": "Próximo partido",
@@ -61,7 +67,13 @@
       "minutes": "{{n}} min",
       "seconds": "{{n}} s",
       "label": "Cuenta atrás: {{days}} días, {{hours}} horas y {{minutes}} minutos",
-      "labelWithSeconds": "Cuenta atrás: {{days}} días, {{hours}} horas, {{minutes}} minutos y {{seconds}} segundos"
+      "labelWithSeconds": "Cuenta atrás: {{days}} días, {{hours}} horas, {{minutes}} minutos y {{seconds}} segundos",
+      "units": {
+        "days": "DÍAS",
+        "hours": "HORAS",
+        "minutes": "MIN",
+        "seconds": "SEG"
+      }
     },
     "howToGetThere": "Cómo llegar",
     "mapError": "No se ha podido abrir el mapa.",
@@ -72,10 +84,7 @@
       "record": "G-E-P",
       "goals": "GF-GC"
     },
-    "opponentTable": "{{position}}º con {{points}} puntos.",
-    "balance": "Esta temporada: {{played}} partidos, {{won}} victorias, {{drawn}} empates, {{lost}} derrotas y {{goalsFor}}-{{goalsAgainst}}.",
     "headlines": "Titulares",
-    "headlineMeta": "{{source}} · {{date}}",
     "openHeadline": "Abrir noticia: {{title}} ({{source}})",
     "openError": "No se ha podido abrir la noticia.",
     "seeAllHeadlines": "Ver todas",
@@ -87,43 +96,45 @@
       "unknown": "Estado no disponible"
     },
     "finalResult": "Resultado final",
-    "stake": {
-      "title": "Qué se juega",
-      "win": "Si gana",
-      "draw": "Si empata",
-      "loss": "Si pierde",
-      "points": "{{points}} pts",
-      "range": "{{from}}º–{{to}}º",
-      "rangeSame": "{{position}}º",
-      "assumption": "Simulación solo con los puntos del Depor; el resto de la jornada puede cambiar el orden."
-    },
     "weather": {
       "clear": "Despejado",
       "cloudy": "Nubes",
       "fog": "Niebla",
       "drizzle": "Llovizna",
-      "rain": "Lluvia",
+      "rain": "Probabilidad de lluvia",
       "snow": "Nieve",
       "showers": "Chubascos",
       "storm": "Tormenta",
       "unknown": "Tiempo variable",
       "precipitation": "{{n}} % lluvia",
       "wind": "{{n}} km/h",
-      "attribution": "Datos: Open-Meteo"
+      "attribution": "Datos: Open-Meteo",
+      "temperature": "{{n}} grados",
+      "hour": "Hora",
+      "expandHint": "Ver el pronóstico alrededor del inicio",
+      "cached": "Previsión guardada {{ago}}"
     },
     "rival": {
       "position": "{{position}}º · {{points}} pts",
       "form": "Racha",
-      "seasonBalance": "Esta temporada: {{played}} partidos, {{won}}V-{{drawn}}E-{{lost}}D y {{goalsFor}}-{{goalsAgainst}}.",
       "headToHead": "Histórico",
       "headToHeadScope": "Todos los partidos oficiales · {{source}}",
-      "headToHeadRecord": "{{played}} partidos · {{won}}V-{{drawn}}E-{{lost}}D · {{goalsFor}}-{{goalsAgainst}}",
       "lastMeetings": "Últimos 5 cruces",
       "coach": "Entrenador",
-      "keyPlayers": "Goleadores",
-      "goals_one": "{{count}} gol",
-      "goals_other": "{{count}} goles",
-      "missing": "Sin datos disponibles."
+      "missing": "Sin datos disponibles.",
+      "openProfile": "Abrir ficha del rival",
+      "points": "{{points}} puntos",
+      "goalsRecord": "{{goalsFor}} a favor · {{goalsAgainst}} en contra",
+      "headToHeadA11y": "Histórico: {{played}} partidos, {{won}} victorias, {{drawn}} empates, {{lost}} derrotas, goles {{goalsFor}}-{{goalsAgainst}}.",
+      "matchesShort": "PJ",
+      "goalsForShort": "GF",
+      "goalsAgainstShort": "GC",
+      "confidence": "Confianza: {{confidence}}",
+      "openSource": "Abrir la fuente de BDFutbol",
+      "sourceLink": "Ver fuente en BDFutbol",
+      "meetingsNote": "Escudos y marcador · del más reciente al más antiguo",
+      "coachSource": "Fuente: football-data.org",
+      "meetingA11y": "{{date}}, {{competition}}: {{home}} {{homeGoals}} a {{awayGoals}} {{away}}. Depor: {{result}}."
     },
     "seasonCard": {
       "position": "Posición",
@@ -135,9 +146,22 @@
       "form": "Últimos 5 partidos",
       "formLegend": "G victoria · E empate · P derrota",
       "formA11y": "{{result}} contra {{opponent}} el {{date}}",
-      "tableA11y": "Clasificación: {{position}}º, {{team}}, {{points}} puntos"
+      "tableA11y": "Clasificación: {{position}}º, {{team}}, {{points}} puntos",
+      "formOrder": "Más antiguo → más reciente",
+      "formSelected": "Partido seleccionado",
+      "pointsPerGame": "Puntos / partido",
+      "chartPoint": "Jornada {{matchday}} · {{opponent}} · {{result}} · puesto {{position}} · {{points}} puntos",
+      "chartIncrement": "Jornada siguiente",
+      "chartDecrement": "Jornada anterior",
+      "best": "Mejor",
+      "worst": "Peor",
+      "matchday": "Jornada {{matchday}}",
+      "viewMatch": "Ver partido"
     },
-    "postponedNotice": "Aplazado: {{teams}} ({{date}})"
+    "postponedNotice": "Aplazado: {{teams}} ({{date}})",
+    "rivalProfile": "Ficha del rival",
+    "liveNow": "EN JUEGO",
+    "miniTableContext": "Dos puestos alrededor del Dépor"
   },
   "competition": {
     "PD": "Primera División",
@@ -201,7 +225,9 @@
     "addToCalendar": "Añadir al calendario",
     "addError": "No se ha podido añadir el partido al calendario.",
     "addErrorHint": "Prueba a compartir el calendario desde la pestaña Calendario.",
-    "lineups": "Alineaciones y eventos"
+    "lineups": "Alineaciones y eventos",
+    "calendarSaved": "Añadido al calendario",
+    "calendarShared": "Archivo de calendario compartido"
   },
   "reminder": {
     "channel": "Recordatorios de partido",

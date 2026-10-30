@@ -6,6 +6,7 @@ import {
   matchPhase,
   miniTableWindow,
   nextOpponentInfo,
+  positionChartIndex,
   recentForm,
   seasonSummary,
   selectLastResult,
@@ -102,6 +103,15 @@ const table: StandingRowT[] = [
 ];
 
 describe('lógica de la Home', () => {
+  it('selecciona el punto más próximo al dedo y acota los extremos del gráfico', () => {
+    expect(positionChartIndex(18, 300, 5)).toBe(0);
+    expect(positionChartIndex(159, 300, 5)).toBe(2);
+    expect(positionChartIndex(282, 300, 5)).toBe(4);
+    expect(positionChartIndex(-100, 300, 5)).toBe(0);
+    expect(positionChartIndex(999, 300, 5)).toBe(4);
+    expect(positionChartIndex(20, 300, 0)).toBe(-1);
+  });
+
   it('elige el primer próximo partido jugable y descarta aplazados y cancelados', () => {
     const matches = [
       match(1, '2026-11-10T20:00:00Z', 'TIMED'),
@@ -245,7 +255,7 @@ describe('lógica de la Home', () => {
     expect(hasCountdown(match(1, '2026-11-02T20:00:00Z', 'TIMED'))).toBe(true);
     expect(hasCountdown(match(2, '2026-11-02T00:00:00Z', 'SCHEDULED'))).toBe(false);
     expect(hasCountdown(match(3, '2026-11-02T20:00:00Z', 'POSTPONED'))).toBe(false);
-    expect(showsSeconds(3_600_000, 0)).toBe(false);
+    expect(showsSeconds(3_600_000, 0)).toBe(true);
     expect(showsSeconds(3_599_999, 0)).toBe(true);
     expect(showsSeconds(0, 0)).toBe(false);
   });

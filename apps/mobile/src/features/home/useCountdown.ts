@@ -3,9 +3,8 @@ import { useNow } from './useNow';
 import { nowMs } from '@/utils/clock';
 
 /**
- * Cuenta atrás con un único intervalo. Bajo una hora actualiza cada segundo; por
- * encima, cada minuto. El reloj se pausa en segundo plano (ver `useNow`) y no usa
- * animaciones, así que «reducir movimiento» no requiere nada adicional.
+ * Cuenta atrás con un único intervalo. El segundo se actualiza solo en este
+ * componente; `useNow` pausa el reloj cuando la app pasa a segundo plano.
  */
 export function useCountdown(
   targetMs: number,
@@ -13,7 +12,7 @@ export function useCountdown(
   enabled = true,
 ): CountdownParts {
   const remaining = targetMs - nowMs();
-  const interval = withSeconds && remaining > 0 && remaining < 3_600_000 ? 1_000 : 60_000;
+  const interval = withSeconds && remaining > 0 ? 1_000 : 60_000;
   const now = useNow(interval, enabled && targetMs > nowMs());
   return countdownParts(targetMs, now);
 }

@@ -82,7 +82,7 @@ def test_parse_head_to_head_without_totals_raises():
         r.parse_head_to_head("<html></html>", "https://example.test/vs")
 
 
-def test_build_season_evolution_and_stake():
+def test_build_season_evolution_and_summary():
     raw = s.FDMatches.model_validate(
         {
             "matches": [
@@ -137,11 +137,32 @@ def test_build_season_evolution_and_stake():
     assert season.summary.position == 2
     assert [p.matchday for p in season.position_evolution] == [1, 2]
     assert season.form[0].result == "W"
-    assert season.what_is_at_stake is not None
-    scenarios = {s.result: s for s in season.what_is_at_stake.scenarios}
-    assert scenarios["W"].points == 14
-    assert scenarios["W"].range.from_ <= 1
-    assert scenarios["L"].range.to >= 3
+    assert season.summary.points == 11
+    assert not hasattr(season, "what_is_at_stake")
+
+
+def test_season_compatibility_strips_retired_field_but_stays_strict():
+    legacy = {
+        "updatedAt": NOW,
+        "season": "2026-27",
+        "team": TEAM_A,
+        "summary": {
+            "position": 2,
+            "points": 11,
+            "played": 10,
+            "won": 2,
+            "drawn": 5,
+            "lost": 3,
+            "goalsFor": 13,
+            "goalsAgainst": 13,
+            "goalDifference": 0,
+        },
+        "whatIsAtStake": {"position": 2, "points": 11, "scenarios": []},
+    }
+    season = m.Season.model_validate(legacy)
+    assert "whatIsAtStake" not in season.model_dump(by_alias=True)
+    with pytest.raises(ValueError):
+        m.Season.model_validate({**legacy, "unexpected": True})
 
 
 def test_build_rivals_uses_only_real_data():
@@ -173,17 +194,6 @@ def test_build_rivals_uses_only_real_data():
             }
         )
     ]
-    scorers = [
-        s.FDScorer.model_validate(
-            {
-                "player": {"id": 9, "name": "Goleador"},
-                "team": TEAM_B,
-                "playedMatches": 9,
-                "goals": 5,
-                "assists": None,
-            }
-        )
-    ]
     head = m.HeadToHead(
         source_url="https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=27",
         played=80,
@@ -200,7 +210,6 @@ def test_build_rivals_uses_only_real_data():
         fixtures,
         None,
         teams,
-        scorers,
         {2: "27"},
         {2: head},
         NOW,
@@ -209,8 +218,7 @@ def test_build_rivals_uses_only_real_data():
     rival = data.rivals[0]
     assert rival.coach == "Entrenador Real"
     assert rival.bdfutbol_id == "27"
-    assert rival.key_players[0].goals == 5
-    assert rival.key_players[0].assists is None
+    assert rival.key_players == []
     assert rival.head_to_head is head
 
 
@@ -234,7 +242,7 @@ def test_build_rivals_without_sources_keeps_nulls():
             )
         ],
     )
-    data = r.build_rivals("2026-27", 1, fixtures, None, [], [], {}, {}, NOW)
+    data = r.build_rivals("2026-27", 1, fixtures, None, [], {}, {}, NOW)
     rival = data.rivals[0]
     assert rival.coach is None
     assert rival.key_players == []

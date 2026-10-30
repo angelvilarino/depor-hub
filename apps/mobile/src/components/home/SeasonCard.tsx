@@ -1,184 +1,214 @@
+import { useMemo, useState } from 'react';
 import { router } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
-import { Card } from '@/components/Screen';
+import { CrestBadge, PaperCard, SectionHeader, StatTile } from '@/components/design/DesignSystem';
 import { StandingsTable } from '@/components/StandingsTable';
-import { FormChips } from '@/components/home/FormChips';
 import { PositionChart } from '@/components/home/PositionChart';
+import { FormChips } from '@/components/home/FormChips';
 import type { SeasonFormMatchT, SeasonT, StandingRowT } from '@/data/schemas';
 import { teamName } from '@/features/calendar/logic';
 import type { FormResult, SeasonSummary } from '@/features/home/logic';
-import { spacing } from '@/theme/tokens';
+import { minTouch, spacing, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
-function Stat({ label, value }: { label: string; value: string }) {
-  const { colors } = useTheme();
-  return (
-    <View style={styles.stat}>
-      <Text style={{ color: colors.textMuted, fontSize: 12 }}>{label}</Text>
-      <Text style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>{value}</Text>
-    </View>
-  );
-}
-
 function formDate(date: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
-    day: 'numeric',
-    month: 'short',
-    timeZone: 'UTC',
-  }).format(new Date(`${date}T12:00:00Z`));
+  return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', timeZone: 'UTC' })
+    .format(new Date(`${date}T12:00:00Z`));
 }
 
-function FormRow({ match, locale }: { match: SeasonFormMatchT; locale: string }) {
-  const { t } = useTranslation();
+function score(match: SeasonFormMatchT) {
+  return match.home
+    ? `${match.scoreFor}–${match.scoreAgainst}`
+    : `${match.scoreAgainst}–${match.scoreFor}`;
+}
+
+function FormTile({
+  match,
+  selected,
+  onPress,
+}: {
+  match: SeasonFormMatchT;
+  selected: boolean;
+  onPress: () => void;
+}) {
+  const { t, i18n } = useTranslation();
   const { colors } = useTheme();
-  const color =
-    match.result === 'W' ? colors.win : match.result === 'L' ? colors.loss : colors.draw;
+  const paper = colors.paper;
+  const tone = match.result === 'W' ? colors.win : match.result === 'L' ? colors.loss : colors.draw;
   const label = t('home.seasonCard.formA11y', {
     result: t(`calendar.outcomeLong.${match.result}`),
     opponent: teamName(match.opponent),
-    date: formDate(match.date, locale),
+    date: formDate(match.date, i18n.language),
   });
   return (
-    <View accessible accessibilityLabel={label} style={styles.formRow}>
-      <Text style={{ color: colors.textMuted, fontSize: 12, width: 56 }}>
-        {formDate(match.date, locale)}
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      accessibilityState={{ selected }}
+      onPress={onPress}
+      style={[styles.formTile, selected && { borderColor: paper.accent, backgroundColor: colors.surface }]}
+    >
+      <View style={[styles.crestRing, { borderColor: tone }]}>
+        <CrestBadge team={match.opponent} size={38} />
+        <View style={[styles.resultBadge, { backgroundColor: tone }]}>
+          <Text style={[styles.resultLetter, { color: colors.onPrimary }]}>{t(`calendar.outcome.${match.result}`)}</Text>
+        </View>
+      </View>
+      <Text numberOfLines={1} style={{ maxWidth: 76, textAlign: 'center', color: paper.text, fontSize: 11 }}>
+        {match.opponent.shortName ?? teamName(match.opponent)}
       </Text>
-      <Text numberOfLines={1} style={{ color: colors.text, fontSize: 14, flex: 1 }}>
-        {teamName(match.opponent)}
-      </Text>
-      <Text style={{ color: colors.textMuted, fontSize: 12, width: 66 }}>
-        {match.home ? t('home.local') : t('home.away')}
-      </Text>
-      <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600', width: 42, textAlign: 'center' }}>
-        {match.scoreFor}–{match.scoreAgainst}
-      </Text>
-      <Text
-        accessibilityLabel={t(`calendar.outcomeLong.${match.result}`)}
-        style={{ color, fontSize: 14, fontWeight: '700', width: 16, textAlign: 'center' }}
-      >
-        {t(`calendar.outcome.${match.result}`)}
-      </Text>
-    </View>
+    </Pressable>
   );
 }
 
-/**
- * «La temporada» fusionada: un único resumen (posición y puntos no se repiten),
- * racha con leyenda y detalle, evolución de la posición y mini-clasificación.
- * Si `season.json` no existe (404 o caché anterior) se usa la clasificación y la
- * racha calculada con los partidos; el detalle y la gráfica simplemente no salen.
- */
+/** Prensa: temporada, cromos interactivos, gráfico táctil y tabla compacta. */
 export function SeasonCard({
   season,
   summary,
   form,
+  formMatches,
+  seasonName,
+  matchday,
   rows,
   teamId,
 }: {
   season: SeasonT | null;
   summary: SeasonSummary | null;
   form: FormResult[];
+  formMatches: SeasonFormMatchT[];
+  seasonName: string | null;
+  matchday: number | null;
   rows: StandingRowT[];
   teamId: number;
 }) {
   const { t, i18n } = useTranslation();
   const { colors } = useTheme();
-
+  const paper = colors.paper;
+  const [selectedMatchday, setSelectedMatchday] = useState<number | null>(null);
   const stats = season?.summary ?? summary;
+  const evolution = season?.positionEvolution;
+  const chronological = useMemo(() => {
+    const source = formMatches.length > 0 ? formMatches : (season?.form ?? []);
+    return [...source].sort((a, b) => a.date.localeCompare(b.date));
+  }, [formMatches, season?.form]);
+  const recent = chronological.slice(-5);
+  const points = useMemo(
+    () => [...(evolution ?? [])].sort((a, b) => a.matchday - b.matchday),
+    [evolution],
+  );
+  const activeMatchday = selectedMatchday ?? points.at(-1)?.matchday ?? recent.at(-1)?.matchday ?? null;
+  const selectedMatch = chronological.find((item) => item.matchday === activeMatchday) ?? null;
   if (!stats) return null;
 
-  const formMatches = season?.form ?? [];
-  const results = formMatches.length > 0 ? formMatches.map((match) => match.result) : form;
-  const evolution = season?.positionEvolution ?? [];
-  const label = t('home.seasonSummary', {
-    position: stats.position,
-    points: stats.points,
-    played: stats.played,
-    won: stats.won,
-    drawn: stats.drawn,
-    lost: stats.lost,
-    goalsFor: stats.goalsFor,
-    goalsAgainst: stats.goalsAgainst,
-    goalDifference: stats.goalDifference,
-  });
+  const seasonCaption = [
+    seasonName,
+    matchday != null ? t('home.seasonCard.matchday', { matchday }) : null,
+  ].filter(Boolean).join(' · ');
+  const record = `${stats.won}-${stats.drawn}-${stats.lost}`;
+  const goals = `${stats.goalsFor}-${stats.goalsAgainst}`;
+  const average = stats.played > 0
+    ? new Intl.NumberFormat(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(stats.points / stats.played)
+    : '—';
+  const selectedLabel = selectedMatch
+    ? t('home.seasonCard.formA11y', {
+        result: t(`calendar.outcomeLong.${selectedMatch.result}`),
+        opponent: teamName(selectedMatch.opponent),
+        date: formDate(selectedMatch.date, i18n.language),
+      })
+    : null;
 
   return (
-    <Card>
-      <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>
-        {t('home.season')}
-      </Text>
+    <>
+      <PaperCard>
+        <SectionHeader title={t('home.season')} subtitle={seasonCaption || undefined} />
+        <View style={styles.stats}>
+          <StatTile label={t('calendar.col.played')} value={stats.played} />
+          <StatTile label={t('home.stats.record')} value={record} />
+          <StatTile label={t('home.stats.goals')} value={goals} />
+          <StatTile label={t('calendar.col.goalDiff')} value={stats.goalDifference > 0 ? `+${stats.goalDifference}` : stats.goalDifference} />
+          <StatTile label={t('home.seasonCard.pointsPerGame')} value={average} />
+        </View>
 
-      <View accessible accessibilityLabel={label} style={styles.grid}>
-        <Stat label={t('home.stats.position')} value={`${stats.position}º`} />
-        <Stat label={t('home.stats.points')} value={String(stats.points)} />
-        <Stat label={t('calendar.col.played')} value={String(stats.played)} />
-        <Stat
-          label={t('home.stats.record')}
-          value={`${stats.won}-${stats.drawn}-${stats.lost}`}
-        />
-        <Stat
-          label={t('home.stats.goals')}
-          value={`${stats.goalsFor}-${stats.goalsAgainst}`}
-        />
-        <Stat
-          label={t('calendar.col.goalDiff')}
-          value={
-            stats.goalDifference > 0 ? `+${stats.goalDifference}` : String(stats.goalDifference)
-          }
-        />
-      </View>
-
-      {results.length > 0 ? (
-        <View style={styles.block}>
-          <Text style={{ color: colors.textMuted, fontSize: 14, fontWeight: '600' }}>
-            {t('home.seasonCard.form')}
-          </Text>
-          <FormChips results={results} />
-          <Text style={{ color: colors.textMuted, fontSize: 12 }}>
-            {t('home.seasonCard.formLegend')}
-          </Text>
-          {formMatches.length > 0 ? (
-            <View style={styles.formList}>
-              {formMatches.map((match) => (
-                <FormRow key={match.matchId} match={match} locale={i18n.language} />
+        {recent.length > 0 ? (
+          <View style={styles.block}>
+            <SectionHeader title={t('home.seasonCard.form')} subtitle={t('home.seasonCard.formOrder')} />
+            <View style={styles.formStrip}>
+              {recent.map((item) => (
+                <FormTile
+                  key={item.matchId}
+                  match={item}
+                  selected={item.matchday === activeMatchday}
+                  onPress={() => setSelectedMatchday(item.matchday ?? null)}
+                />
               ))}
             </View>
-          ) : null}
-        </View>
-      ) : null}
+            <Text style={{ color: paper.muted, fontSize: 12 }}>{t('home.seasonCard.formLegend')}</Text>
+            {selectedMatch && selectedLabel ? (
+              <View style={[styles.matchDetail, { borderColor: paper.border }]}>
+                <CrestBadge team={selectedMatch.opponent} size={46} />
+                <View style={styles.matchCopy}>
+                  <Text style={[styles.opponent, { color: paper.text }]}>{teamName(selectedMatch.opponent)}</Text>
+                  <Text style={{ color: paper.muted, fontSize: 12 }}>
+                    {formDate(selectedMatch.date, i18n.language)} · {selectedMatch.home ? t('home.local') : t('home.away')}
+                  </Text>
+                </View>
+                <Text accessibilityLabel={selectedLabel} style={[styles.score, { color: paper.text }]}>{score(selectedMatch)}</Text>
+                <Button
+                  variant="secondary"
+                  label={t('home.seasonCard.viewMatch')}
+                  onPress={() => router.push(`/match/${selectedMatch.matchId}`)}
+                />
+              </View>
+            ) : null}
+          </View>
+        ) : form.length > 0 ? (
+          <View style={styles.block}>
+            <Text style={{ color: paper.muted, fontSize: 13 }}>{t('home.seasonCard.form')}</Text>
+            <FormChips results={form} />
+            <Text style={{ color: paper.muted, fontSize: 12 }}>{t('home.seasonCard.formLegend')}</Text>
+          </View>
+        ) : null}
 
-      {evolution.length > 1 ? (
-        <View style={styles.block}>
-          <Text style={{ color: colors.textMuted, fontSize: 14, fontWeight: '600' }}>
-            {t('home.seasonCard.evolution')}
-          </Text>
-          <PositionChart points={evolution} />
-        </View>
-      ) : null}
+        {points.length > 1 ? (
+          <View style={styles.block}>
+            <SectionHeader title={t('home.seasonCard.evolution')} />
+            <PositionChart
+              points={points}
+              matches={chronological}
+              selectedMatchday={activeMatchday}
+              onSelectMatchday={setSelectedMatchday}
+            />
+          </View>
+        ) : null}
+      </PaperCard>
 
       {rows.length > 0 ? (
-        <View style={styles.block}>
-          <Text style={{ color: colors.textMuted, fontSize: 14, fontWeight: '600' }}>
-            {t('home.miniTable')}
-          </Text>
+        <PaperCard>
+          <SectionHeader title={t('home.miniTable')} subtitle={t('home.miniTableContext')} />
           <StandingsTable table={rows} highlightTeamId={teamId} compact />
           <Button
             variant="secondary"
             label={t('home.seeFullTable')}
             onPress={() => router.push({ pathname: '/calendar', params: { tab: 'standings' } })}
           />
-        </View>
+        </PaperCard>
       ) : null}
-    </Card>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  grid: { flexDirection: 'row', flexWrap: 'wrap', rowGap: spacing.sm },
-  stat: { width: '33.33%', gap: 2 },
+  stats: { flexDirection: 'row', flexWrap: 'wrap', columnGap: spacing.lg, rowGap: spacing.md },
   block: { gap: spacing.xs },
-  formList: { gap: 2, marginTop: spacing.xs },
-  formRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, minHeight: 28 },
+  formStrip: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.xs },
+  formTile: { minWidth: minTouch + 14, minHeight: 72, alignItems: 'center', justifyContent: 'center', gap: 4, borderWidth: 1.5, borderColor: 'transparent', borderRadius: 12, padding: 4 },
+  crestRing: { width: 48, height: 48, borderWidth: 2, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
+  resultBadge: { position: 'absolute', right: -4, bottom: -4, width: 20, height: 20, borderRadius: 10, borderWidth: 2, borderColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
+  resultLetter: { fontSize: 11, fontWeight: '900' },
+  matchDetail: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: spacing.sm, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm },
+  matchCopy: { flex: 1, minWidth: 100 },
+  opponent: { fontFamily: typography.headline, fontSize: 17 },
+  score: { fontFamily: typography.numeric, fontSize: 24 },
 });

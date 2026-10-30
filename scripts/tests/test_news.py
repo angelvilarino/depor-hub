@@ -403,6 +403,46 @@ def test_same_story_merges_three_media_and_keeps_also_in():
     assert {alt.source_id for alt in story.also_in} == {"a", "c"}
 
 
+def test_falas_depor_real_headlines_merge_as_one_event_story():
+    candidates = [
+        candidate(
+            url="https://riazor.example/falas",
+            source_id="riazor",
+            source_name="Riazor.org",
+            source_priority=10,
+            title="Falas Dépor: el Deportivo celebra sus 120 años con un foro cultural gratuito del 13 al 15 de noviembre",
+            summary="El Dépor presenta Falas Dépor, un foro cultural gratuito del 13 al 15 de noviembre en Riazor y el Espacio Avenida",
+            published_at=datetime(2026, 10, 27, 16, 53, tzinfo=UTC),
+        ),
+        candidate(
+            url="https://lavoz.example/falas",
+            source_id="la-voz",
+            source_name="La Voz de Galicia",
+            source_priority=30,
+            title="El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
+            summary="«Falas Dépor» es un proyecto enmarcado en el 120.º aniversario y busca reivindicar el impacto del club en la sociedad",
+            published_at=datetime(2026, 10, 27, 16, 17, tzinfo=UTC),
+        ),
+        candidate(
+            url="https://youtube.example/falas",
+            source_id="youtube-club",
+            source_name="RC Deportivo (YouTube)",
+            source_group="club",
+            source_priority=5,
+            kind="video",
+            title="Presentación de Falas Dépor",
+            summary=None,
+            published_at=datetime(2026, 10, 27, 12, 54, tzinfo=UTC),
+        ),
+    ]
+    clusters = cluster_candidates(candidates)
+    assert len(clusters) == 1
+    stories = build_stories(clusters, previous=[], now=datetime(2026, 10, 28, tzinfo=UTC))
+    assert len(stories) == 1
+    assert stories[0].source_id == "youtube-club"
+    assert {item.source_id for item in stories[0].also_in} == {"riazor", "la-voz"}
+
+
 def test_same_url_is_always_the_same_story():
     left = candidate(url="https://a.test/1?utm_source=rss")
     right = candidate(

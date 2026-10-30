@@ -10,7 +10,7 @@ const TONE = {
   L: 'loss',
 } as const;
 
-export function FormChips({ results }: { results: FormResult[] }) {
+export function FormChips({ results, variant = 'paper' }: { results: FormResult[]; variant?: 'paper' | 'poster' }) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   if (results.length === 0) return null;
@@ -28,9 +28,25 @@ export function FormChips({ results }: { results: FormResult[] }) {
           key={`${result}-${index}`}
           accessible
           accessibilityLabel={t(`calendar.outcomeLong.${result}`)}
-          style={[styles.chip, { borderColor: colors[TONE[result]] }]}
+          style={[
+            styles.chip,
+            variant === 'poster'
+              ? {
+                  backgroundColor: colors.poster.outcome[result === 'W' ? 'winBackground' : result === 'L' ? 'lossBackground' : 'drawBackground'],
+                  borderColor: colors.poster.outcome[result === 'W' ? 'winBackground' : result === 'L' ? 'lossBackground' : 'drawBackground'],
+                }
+              : { borderColor: colors[TONE[result]] },
+          ]}
         >
-          <Text style={{ color: colors[TONE[result]], fontSize: 14, fontWeight: '700' }}>
+          <Text
+            style={{
+              color: variant === 'poster'
+                ? colors.poster.outcome[result === 'W' ? 'winText' : result === 'L' ? 'lossText' : 'drawText']
+                : colors[TONE[result]],
+              fontSize: 14,
+              fontWeight: '700',
+            }}
+          >
             {t(`calendar.outcome.${result}`)}
           </Text>
         </View>

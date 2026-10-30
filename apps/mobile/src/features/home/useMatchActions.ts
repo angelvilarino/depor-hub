@@ -3,7 +3,7 @@ import { Alert, Linking } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { MatchT } from '@/data/schemas';
 import { useMeta } from '@/data/queries';
-import { addMatchToCalendar } from '@/features/calendar/system';
+import { addMatchToCalendar, type CalendarResult } from '@/features/calendar/system';
 import { teamName } from '@/features/calendar/logic';
 import { ensureReminderPermission } from '@/features/reminders/notifications';
 import { isRemindable, offsetLabel } from '@/features/reminders/plan';
@@ -21,6 +21,7 @@ export function useMatchActions(match: MatchT) {
   const { t, i18n } = useTranslation();
   const meta = useMeta();
   const [now] = useState(() => Date.now()); // fuera del render: regla react-hooks/purity
+  const [calendarStatus, setCalendarStatus] = useState<CalendarResult | null>(null);
   const {
     remindMatches,
     remindersEnabled,
@@ -59,16 +60,20 @@ export function useMatchActions(match: MatchT) {
       tbcLabel: t('calendar.timeTbc'),
     });
     try {
-      await addMatchToCalendar(match, {
+      const result = await addMatchToCalendar(match, {
         title,
         venue,
         notes: time ? undefined : t('calendar.timeTbc'),
         ics,
         icsName: `depor-hub-${match.id}.ics`,
       });
+      setCalendarStatus(result === 'cancelled' ? null : result);
+      return result;
     } catch (error) {
       if (__DEV__) console.warn('[calendar] add to calendar failed', error);
       Alert.alert(t('match.addError'), t('match.addErrorHint'));
+      setCalendarStatus(null);
+      return null;
     }
   };
 
@@ -85,6 +90,7 @@ export function useMatchActions(match: MatchT) {
     saveReminder,
     removeReminder,
     addToCalendar,
+    calendarStatus,
     openSystemSettings: () => void Linking.openSettings(),
   };
 }

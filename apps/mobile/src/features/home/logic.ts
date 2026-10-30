@@ -1,4 +1,4 @@
-import type { MatchT, StandingsT, StandingRowT, TeamRefT } from '@/data/schemas';
+import type { MatchT, SeasonFormMatchT, StandingsT, StandingRowT, TeamRefT } from '@/data/schemas';
 import { isFinished, outcome, splitMatches } from '@/features/calendar/logic';
 
 export type FormResult = 'W' | 'D' | 'L';
@@ -92,12 +92,41 @@ export function miniTableWindow(
 
 /** Últimos `n` resultados en orden cronológico (el más antiguo primero). */
 export function recentForm(matches: MatchT[], n = 5): FormResult[] {
+  return recentFormMatches(matches, n).map((match) => match.result);
+}
+
+/** Últimos partidos del Depor en orden antiguo → reciente, con lo ya publicado. */
+export function recentFormMatches(matches: MatchT[], n = 5): SeasonFormMatchT[] {
   if (n <= 0) return [];
   return matches
     .filter((match) => isFinished(match) && outcome(match) !== null)
     .sort((a, b) => Date.parse(a.utcDate) - Date.parse(b.utcDate))
     .slice(-n)
-    .map((match) => outcome(match) as FormResult);
+    .flatMap((match) => {
+      const scoreFor = match.deporIsHome ? match.score.home : match.score.away;
+      const scoreAgainst = match.deporIsHome ? match.score.away : match.score.home;
+      const result = outcome(match);
+      if (scoreFor === null || scoreAgainst === null || result === null) return [];
+      return [{
+        matchId: match.id,
+        matchday: match.matchday,
+        date: match.utcDate.slice(0, 10),
+        opponent: match.deporIsHome ? match.away : match.home,
+        home: match.deporIsHome,
+        scoreFor,
+        scoreAgainst,
+        result,
+      }];
+    });
+}
+
+/** Punto SVG más cercano al dedo, acotado al tramo útil del gráfico. */
+export function positionChartIndex(x: number, width: number, count: number, padding = 18): number {
+  if (count <= 0 || width <= 0) return -1;
+  if (count === 1) return 0;
+  const drawable = Math.max(1, width - padding * 2);
+  const ratio = Math.max(0, Math.min(1, (x - padding) / drawable));
+  return Math.round(ratio * (count - 1));
 }
 
 export function seasonSummary(
@@ -262,6 +291,6 @@ export function isRecentResult(match: MatchT, nowMs: number, windowMs = 86_400_0
 /** Solo TIMED puede tener cuenta atrás; SCHEDULED no tiene hora y los aplazados no son fiables. */
 export const hasCountdown = (match: MatchT): boolean => match.status === 'TIMED';
 
-/** Los segundos solo se muestran en TIMED y a menos de una hora. */
+/** TIMED conserva segundos en pantalla hasta el inicio; el reloj se aísla en Countdown. */
 export const showsSeconds = (targetMs: number, nowMs: number): boolean =>
-  targetMs > nowMs && targetMs - nowMs < 3_600_000;
+  targetMs > nowMs;
