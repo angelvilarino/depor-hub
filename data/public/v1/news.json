@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T12:04:05Z",
+  "updatedAt": "2026-10-31T12:19:23Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -445,7 +445,7 @@
       ]
     },
     {
-      "id": "99db1b1585443a93",
+      "id": "a80879a1768c9aba",
       "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
       "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
       "sourceId": "riazor",
@@ -711,6 +711,37 @@
           "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
           "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
           "publishedAt": "2026-10-27T16:17:00Z"
+        }
+      ]
+    },
+    {
+      "id": "99db1b1585443a93",
+      "title": "Presentación de Falas Dépor",
+      "url": "https://youtube.com/watch?v=Ozky7PXLueA",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-27T12:54:09Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/Ozky7PXLueA/hqdefault.jpg",
+      "tags": [],
+      "alsoIn": [
+        {
+          "sourceId": "riazor",
+          "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
+          "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
+          "publishedAt": "2026-10-29T08:00:38Z"
+        },
+        {
+          "sourceId": "la-voz",
+          "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
+          "publishedAt": "2026-10-27T16:17:00Z"
+        },
+        {
+          "sourceId": "la-voz",
+          "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
+          "publishedAt": "2026-10-29T22:32:00Z"
         }
       ]
     },
