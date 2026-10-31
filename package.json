@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@testing-library/react-native": "^14.1.0",
-    "eslint": "^9.39.5",
+    "eslint": "^10.13.0",
     "prettier": "^3.3.0"
   },
   "dependencies": {
