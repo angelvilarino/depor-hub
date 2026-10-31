@@ -18,9 +18,9 @@ export default function RootLayout() {
   const { t } = useTranslation();
   const language = useSettings((s) => s.language);
   const [fontsLoaded, fontError] = useFonts({
-    DeporDisplay: require('@/assets/fonts/BarlowCondensed-SemiBold.ttf'),
-    DeporHeadline: require('@/assets/fonts/SourceSerif4-SemiBold.ttf'),
-    DeporBody: require('@/assets/fonts/Inter-Regular.ttf'),
+    DeporDisplay: require('../assets/fonts/BarlowCondensed-SemiBold.ttf'),
+    DeporHeadline: require('../assets/fonts/SourceSerif4-SemiBold.ttf'),
+    DeporBody: require('../assets/fonts/Inter-Regular.ttf'),
   });
 
   useEffect(() => {
