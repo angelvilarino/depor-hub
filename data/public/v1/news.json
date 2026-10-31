@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T14:33:47Z",
+  "updatedAt": "2026-10-31T15:04:20Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "2ce2396eb4a3b32f",
+      "title": "Óscar Cano y su recuerdo del Deportivo: «Llevo con mucho orgullo haber entrenado a uno de los gigantes de España que por fin está donde se merece»",
+      "url": "https://riazor.org/oscar-cano-recuerdo-deportivo-recuerdo-orgullo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-31T15:01:07Z",
+      "kind": "article",
+      "summary": "Ahora en las filas del Zamora, el que fue entrenador del Deportivo tuvo unas palabras de cariño antes de enfrentarse al Fabril. La entrada…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "067ea967480e1f14",
       "title": "Madrid CFF – Dépor ABANCA: A la tercera… ¿también va la vencida?",
@@ -445,7 +459,7 @@
       ]
     },
     {
-      "id": "99db1b1585443a93",
+      "id": "a80879a1768c9aba",
       "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
       "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
       "sourceId": "riazor",
