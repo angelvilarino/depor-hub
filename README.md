@@ -26,6 +26,7 @@ python -m depor_hub.cli probe                       # comprueba la API y la cobe
 python -m depor_hub.cli ingest                      # actualiza data/public/v1
 python -m depor_hub.cli ingest --if-due             # refresca solo si toca (10 min en partido, 60 min fuera)
 python -m depor_hub.cli schemas                     # regenera packages/schemas
+python -m depor_hub.cli validate                    # valida los ocho JSON públicos con Pydantic
 python -m depor_hub.cli enrich                      # propone carrera/estadísticas/escudos (no aplica)
 python -m depor_hub.cli enrich --apply              # aplica y actualiza el JSON público
 python -m depor_hub.cli enrich --apply --offline    # repite desde data/raw/enrich
@@ -62,4 +63,4 @@ npm run lint && npm run typecheck && npm test
 Ver `.env.example`. El token de football-data.org vive solo en GitHub Secrets (`FOOTBALL_DATA_TOKEN`). `CONTACT_EMAIL` se configura como variable de Actions para el User-Agent de las peticiones.
 
 ## Estado
-H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario), H4 (plantilla + ficha enriquecida, rediseño de Equipo/ficha, escudos de clubes, entrenador y cuerpo técnico), H5.3 (Inicio Cartel + Prensa, ficha de rival e historias agrupadas) y H6 (noticias, vídeos y redes curadas) hechos. Siguiente: H7 (club y legal). Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/).
+H0–H6 están implementados en la rama local de release. Los workflows `Data refresh` (cada 10 min con decisión adaptativa), `News refresh` (cada 30 min), `Rivals refresh` (diario), `CI` y `Enrich proposal` manual están preparados; la publicación de H5/H6 y los ocho JSON queda pendiente de merge y verificación de Actions/Pages. Hoja de ruta y estado de producción en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/).

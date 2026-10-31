@@ -116,7 +116,9 @@ python -m depor_hub.cli news audit [--all] [--write-docs]
 
 `news` es el comando principal; `news ingest` se mantiene como alias. `--report` imprime elementos y relevantes por fuente, descartes por motivo, tamaños de clúster, etiquetas y los 20 clústeres mayores. `--dry-run` calcula sin escribir; `--offline` usa solo la caché de `data/raw/news`; `--force` ignora ETag/If-Modified-Since.
 
-### 8. Workflow cada 6 horas
+### 8. Workflow (política original de 6 horas)
+
+La cadencia fue actualizada a cada 30 minutos por ADR 0025.
 
 `news-refresh.yml` pasa a `cron: "37 */6 * * *"`, con `workflow_dispatch` y `force`. Comparte `concurrency.group: data-publish` con `Data refresh` y `cancel-in-progress: false`; permisos mínimos (`contents`, `pages`, `id-token`); caché `data/raw/news`; `timeout-minutes`; commit solo cuando hay cambios; `git pull --rebase` antes de publicar; despliegue solo con cambios. Si ninguna fuente responde, el paso de ingesta sale con error y no se despliega.
 

@@ -431,9 +431,9 @@ items:
     evidence: [L-01, L-07]
   - id: AUD-002
     priority: P0
-    status: open
+    status: done
     title: Regenerar data/public tras el rebase; no publicar el snapshot local del 28-oct
-    evidence: [L-01, L-07]
+    evidence: [L-01, L-07, commit:8cb6f8e]
   - id: AUD-003
     priority: P0
     status: open
@@ -441,34 +441,34 @@ items:
     evidence: [L-03, L-07]
   - id: AUD-004
     priority: P1
-    status: open
+    status: done
     title: Escritura atómica y validación previa en publish.py
-    evidence: [L-11]
+    evidence: [L-11, commit:e2c4c7c]
   - id: AUD-005
     priority: P1
-    status: open
+    status: done
     title: Tolerancia o versionado de campos aditivos en Zod
-    evidence: [L-12]
+    evidence: [L-12, commit:e2c4c7c]
   - id: AUD-006
     priority: P1
-    status: open
+    status: done
     title: Aplicar overrides en el cron o documentar el paso manual
-    evidence: [L-08]
+    evidence: [L-08, commit:e2c4c7c]
   - id: AUD-007
     priority: P2
-    status: open
+    status: done
     title: TTL y validación de caché en PoliteClient
-    evidence: [L-09]
+    evidence: [L-09, commit:e2c4c7c]
   - id: AUD-008
     priority: P2
-    status: open
+    status: done
     title: Timeout y validación de datos en data-refresh
-    evidence: [L-15, L-30]
+    evidence: [L-15, L-30, commit:e2c4c7c]
   - id: AUD-009
     priority: P2
     status: open
-    title: Ampliar CI con expo-doctor, audit, cobertura y Prettier
-    evidence: [L-16, L-17]
+    title: Añadir checks informativos y gitleaks a CI; cobertura y Prettier siguen aparte
+    evidence: [L-16, L-17, commit:e2c4c7c]
   - id: AUD-010
     priority: P2
     status: open
@@ -491,3 +491,13 @@ items:
 ### Cierre
 
 La auditoría confirma un único bloqueo principal —**noticias sin desplegar**— y un conjunto de deudas secundarias que no lo causan pero elevan el riesgo de la próxima publicación. La limpieza ejecutada es conservadora y reversible; no se modificó ningún dato público ni se tocó el trabajo en curso del propietario.
+
+## Addendum — cierre de preparación local (2026-10-31)
+
+La rama de release se rebasó sobre `origin/main` (`0d472f5` al iniciar la operación). Los conflictos fueron solo JSON generados bajo `data/public`; se conservó el lado remoto y después se regeneró el conjunto mediante `ingest`, `news`, `rivals` y `social`. `meta.updatedAt` resultó `2026-10-31T12:03:58Z` frente a `2026-10-30T22:20:30Z` en la base remota; los 38 partidos continúan presentes. Los ocho documentos validan con Pydantic.
+
+Cambios locales preparados: `e2c4c7c fix(data): harden scheduled publication pipelines` y `8cb6f8e data: regenerate public payloads from origin baseline`. La integración H5/H6 que ya estaba en la rama tiene los dos archivos WIP de la auditoría dentro de commits existentes: `4f828c0` carga fuentes/rutas y `5acedfc` añade fallback de fechas relativas; no había cambios sin commitear al inicio.
+
+Checks locales: Ruff OK; pytest **161 passed**; ESLint OK; TypeScript OK; Jest **245 passed / 29 suites**; esquemas sin diferencias; validación Pydantic de ocho JSON OK; `expo export --platform android` OK. `gitleaks` no está instalado localmente; el escaneo queda como check bloqueante de CI. `npm audit`, `pip-audit`, `expo-doctor` y `expo install --check` están configurados como informativos.
+
+La segunda pasada de limpieza no retiró archivos: los candidatos verificados tienen referencias activas o no están versionados (detalle en `evidence/CLEANUP.txt`). No se imprimieron ni se añadieron credenciales. La verificación de PR, Actions y Pages sigue abierta: por el punto de parada obligatorio no se ha hecho merge; no afirmar aún despliegue en producción.

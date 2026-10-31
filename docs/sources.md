@@ -6,7 +6,7 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 
 | Fuente | Aporta | Términos / robots | Frecuencia | Estado |
 |---|---|---|---|---|
-| **football-data.org** (plan gratuito) | Clasificación, partidos, plantilla y entrenador (PD) | Pendiente de revisar términos y atribución | Adaptativa: cada 10 min entre −30 min y +3 h del kickoff; cada 60 min fuera (ADR 0015). Escribe solo si cambia el contenido | En uso. Cobertura 2026-27 en «Sondeo» |
+| **football-data.org** (plan gratuito) | Clasificación, partidos, plantilla y entrenador (PD) | Pendiente de revisar términos y atribución | Adaptativa: cada 10 min entre −30 min y +150 min del kickoff confirmado; cada 60 min fuera (ADR 0015/0025). Escribe solo si cambia el contenido | En uso. Cobertura 2026-27 en «Sondeo» |
 | **BDFutbol** (`bdfutbol.com`) | Trayectoria por club y temporada, totales, dorsal de la temporada actual, partidos con el Depor (minutos, goles, tarjetas, marcador) | `robots.txt` permite `/es/`; HTML público. Reutilización pendiente de revisión; solo se guardan hechos, no se redistribuye HTML | Manual / `enrich`; caché en `data/raw/enrich/` | En uso. HTTP 200 en las pruebas del 25-oct-2026 |
 | **Wikipedia ES/EN** (`es.wikipedia.org`, `en.wikipedia.org`) | Dorsal, contrato, procedencia, cesión, altura, peso y lugar de nacimiento; trayectoria del entrenador como jugador y como entrenador | CC BY-SA; se extraen hechos, no texto | Manual / `enrich` | En uso. Se recorren los sitelinks ES/GL/EN de Wikidata; la fecha de nacimiento desambigua |
 | **Wikidata** (`www.wikidata.org`, API de entidades) | Lugar de nacimiento, altura, pie (`P8006`), dorsal con `P54=Q8760`, redes, alias, imagen (`P18`) y sitelinks; entrenador `Q602465` (`P569`, `P19`, `P27`) | CC0 | Manual / `enrich` | En uso |
@@ -15,7 +15,7 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 | `data/manual/squad_overrides.yml` | Redes aportadas por el usuario, cesión de salida y contratos publicados en notas del club | Solo enlaces/handles públicos aportados; sin scrapeo de perfiles privados | Manual | En uso (12 jugadores) |
 | `data/manual/club_crests.yml` | Escudos que no resuelven fixtures ni Wikidata | Solo URL y fuente reales; nunca se inventa ni se deduce un id | Manual | En uso (RB Leipzig, escudo apaisado) |
 | `data/manual/coach.yml` | Salida generada de la ficha del entrenador y del cuerpo técnico | Se revisa antes de aplicar; no se inventan etapas ni miembros | Manual / `coach` | En uso (Antonio Hidalgo, 15 etapas, 21 miembros) |
-| **RSS/Atom de medios y YouTube** | Titular, fuente, fecha, miniatura y resumen tal como los publica el feed; nunca el cuerpo del artículo | Solo lo que el feed entrega; User-Agent identificable, 1 s por dominio y `ETag`/`If-Modified-Since`. Los 403/406/429 se documentan y no se rodean | Cada 6 h; 14 días de ventana | En uso: 5 fuentes curadas y 0 errores en la calibración del 29-oct-2026 (tabla en «Noticias») |
+| **RSS/Atom de medios y YouTube** | Titular, fuente, fecha, miniatura y resumen tal como los publica el feed; nunca el cuerpo del artículo | Solo lo que el feed entrega; User-Agent identificable, 1 s por dominio y `ETag`/`If-Modified-Since`. Los 403/406/429 se documentan y no se rodean | Cada 30 min; 14 días de ventana | En uso: 5 fuentes curadas y 0 errores en la calibración del 29-oct-2026 (tabla en «Noticias») |
 | `data/manual/club.yml` | Datos del club | Elaboración propia con fuente | Manual | H7 |
 
 ### Fuentes descartadas para el enriquecimiento (H4)
@@ -85,7 +85,7 @@ La deduplicación agrupa la misma historia entre medios (±48 h, similitud base 
 
 ### Cadencia
 
-`news-refresh.yml` corre cada 6 horas (`37 */6 * * *`) y también por `workflow_dispatch` con `force`. Comparte el grupo `data-publish` con `Data refresh`, hace `rebase` antes de publicar y despliega Pages solo si hay cambios. Si ninguna fuente responde, el workflow falla y no pisa el `news.json` anterior.
+`news-refresh.yml` corre cada 30 minutos (`*/30 * * * *`) y también por `workflow_dispatch` con `force`. Comparte el grupo `data-publish`, valida los ocho JSON con Pydantic, rebasea y reintenta el push hasta tres veces. Despliega el directorio completo de `data/public` solo si hay cambios. Si ninguna fuente responde o quedan menos de cinco historias, falla y no pisa el `news.json` anterior.
 
 ### Límites
 
@@ -95,7 +95,7 @@ YouTube es la única fuente sin miniaturas propias en todos los ítems (solo alg
 
 `python -m depor_hub.cli ingest --if-due` decide antes de tocar la red:
 
-- **Ventana de partido:** desde 30 min antes del kickoff hasta 3 h después, para `TIMED`, `IN_PLAY` y `PAUSED`. Refresco cada 10 min.
+- **Ventana de partido:** desde 30 min antes del kickoff hasta 150 min después, para `TIMED`, `IN_PLAY` y `PAUSED`. `SCHEDULED` sin hora confirmada no abre ventana. Refresco cada 10 min.
 - **Fuera de la ventana:** refresco cada 60 min.
 - **Sin fixtures o sin estado previo:** refresca.
 - **Si no toca:** termina con `changed=false due=false` y no hace peticiones.
@@ -245,7 +245,7 @@ python -m depor_hub.cli news --offline               # repite desde data/raw/new
 python -m depor_hub.cli social                       # regenera social.json desde social_pins.yml
 ```
 
-El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 6 horas y comparte con `Data refresh` el grupo `data-publish`. Los dos hacen rebase antes de empujar y despliegan Pages solo cuando hay cambios.
+El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 30 minutos y comparte con `Data refresh` y `Rivals refresh` el grupo `data-publish`. Los tres validan antes del commit, reintentan el push tras rebase y despliegan el directorio `data/public` completo solo cuando hay cambios.
 
 El workflow `Enrich proposal` (`.github/workflows/enrich.yml`) es manual y solo sube el informe como artefacto. No hace commit.
 

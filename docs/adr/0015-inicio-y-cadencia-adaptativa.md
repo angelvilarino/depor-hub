@@ -67,7 +67,7 @@ Se añade un contrato mínimo `news.json` (`updatedAt`, `items` con `id`, `title
 
 `python -m depor_hub.cli ingest --if-due` decide antes de tocar la red:
 
-- Ventana de partido: desde 30 minutos antes del kickoff hasta 3 horas después, para `TIMED`, `IN_PLAY` y `PAUSED`; refresco cada **10 minutos**.
+- Ventana original: desde 30 minutos antes del kickoff hasta 3 horas después, para `TIMED`, `IN_PLAY` y `PAUSED`; refresco cada **10 minutos**. El límite vigente de +150 min está fijado por ADR 0025.
 - Fuera de la ventana: refresco cada **60 minutos**.
 - Sin fixtures o sin estado previo: se refresca.
 - Si no toca, termina con `changed=false due=false` y no hace peticiones.

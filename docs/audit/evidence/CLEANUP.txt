@@ -33,3 +33,17 @@ git ls-files template/mobile | wc -l -> 22
 - apps/mobile/app/_layout.tsx y apps/mobile/src/features/news/logic.ts (WIP del propietario, sin commit).
 - data/public/** (solo lectura).
 - workflows de ingesta/publicación.
+
+## Segunda pasada de candidatos (31-oct-2026)
+
+No se hizo ningún borrado nuevo: cada candidato comprobado tiene uso activo o no está versionado.
+
+- `apps/mobile/src/components/PlaceholderScreen.tsx` y `common.comingSoon`: referenciados por `app/(tabs)/club.tsx`, `app/match/[id].tsx` y la propia pantalla. Se conservan.
+- `data/manual/squad_extras.yml`: leído por `cli ingest` y por `enrich --apply`; es salida generada, pero también entrada del flujo de publicación. Se conserva.
+- `data/manual/squad.csv` y `PROMPT_FASE1_APP_MOVIL.md`: `git ls-files` no los encuentra y el prompt no está en el árbol. No hay nada que retirar.
+- `scripts/depor_hub/enrich/commons.py`: importado por `enrich/crests.py` y usado por `test_crests.py` y `test_enrich.py`; además, `sources.md` documenta Commons para escudos. Se conserva.
+- Assets `icon.png`, `splash-icon.png`, `android-icon-*` y `favicon.png`: referenciados por `apps/mobile/app.json`; se conservan.
+- `.prettierignore` y `.prettierrc`: `npm run format` ejecuta Prettier; se conservan.
+- Los restos de `template/mobile/**`, `setup.sh` y `*.egg-info/` ya se retiraron en el commit indicado arriba. `.gitignore` cubre `.env*`, `data/raw/*`, `.venv/`, `__pycache__/`, `.expo/`, `dist/` y `*.egg-info/`.
+
+`apps/mobile/app/_layout.tsx` carga las fuentes locales, mantiene el splash hasta que cargan y registra rutas adicionales bajo `GestureHandlerRootView`; `src/features/news/logic.ts` implementa filtros, agrupación, titulares y fecha relativa con fallback. Los archivos no tenían diferencias sin commitear al iniciar esta fase: ya estaban en los commits locales `4f828c0` y `5acedfc`, y pasan typecheck, Jest y export Android.
