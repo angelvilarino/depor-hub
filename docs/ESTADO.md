@@ -1,13 +1,13 @@
 # Estado del proyecto — 31-oct-2026
 H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)** y **H6 (noticias, vídeos y redes curadas)** implementados; H4, H5 y H6 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5» y «Verificación H6»). Siguiente: H7 (club y legal).
 
-## Cierre de auditoría de despliegue — 31-oct-2026
+## Publicación H5/H6 — 31-oct-2026
 
 La rama `release/h5-h6-news` integra la implementación H5/H6 y los JSON adicionales sobre los seis commits de datos de `origin/main`. El cierre local incorpora publicación validada, cadencias revisadas, validación de contratos y workflows con publicación completa. **Producción sigue pendiente**: no se ha hecho merge; Pages, ejecuciones manuales y ejecuciones programadas deben verificarse después del merge autorizado. No interpretar el estado local como despliegue.
 
 Cadencias preparadas: datos cada 10 min (`--if-due`: cada 10 min durante [−30 min, +150 min] de partido confirmado y cada 60 min fuera); noticias cada 30 min (mínimo 5 historias); rivales una vez al día. Los tres workflows comparten `data-publish`, validan JSON antes del commit y despliegan `data/public` completo. Los commits del bot no disparan CI, así que cada workflow de datos valida por sí mismo.
 
-Pendiente aparte: formatear con Prettier 109 archivos; Expo doctor/SDK patches y auditorías informativas se reportan en CI. Consulta `docs/audit/AUDITORIA_2026-10-31.md` para hallazgos y verificación de producción pendiente.
+Pendiente aparte: formatear con Prettier 109 archivos; Expo doctor, comprobación de versiones SDK y análisis informativos de dependencias se reportan en CI.
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
