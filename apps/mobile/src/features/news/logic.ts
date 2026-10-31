@@ -101,10 +101,29 @@ export function relativePublishedAt(iso: string, locale: string, now = Date.now(
         ? ['hour', 3600]
         : ['day', 86_400];
   const value = Math.round(seconds / divisor);
-  return new Intl.RelativeTimeFormat(locale, { numeric: 'auto' }).format(
-    value,
-    unit as Intl.RelativeTimeFormatUnit,
-  );
+  const relativeTimeFormat = Intl.RelativeTimeFormat;
+  if (relativeTimeFormat) {
+    return new relativeTimeFormat(locale, { numeric: 'auto' }).format(
+      value,
+      unit as Intl.RelativeTimeFormatUnit,
+    );
+  }
+
+  // Some Expo Go JavaScript runtimes do not include Intl.RelativeTimeFormat.
+  const spanish = locale.toLowerCase().startsWith('es');
+  const amount = Math.abs(value);
+  const unitLabel = spanish
+    ? unit === 'second' ? (amount === 1 ? 'segundo' : 'segundos')
+      : unit === 'minute' ? (amount === 1 ? 'minuto' : 'minutos')
+        : unit === 'hour' ? (amount === 1 ? 'hora' : 'horas')
+          : (amount === 1 ? 'día' : 'días')
+    : unit === 'second' ? (amount === 1 ? 'second' : 'seconds')
+      : unit === 'minute' ? (amount === 1 ? 'minute' : 'minutes')
+        : unit === 'hour' ? (amount === 1 ? 'hour' : 'hours')
+          : (amount === 1 ? 'day' : 'days');
+  if (value === 0) return spanish ? 'ahora' : 'now';
+  if (spanish) return value < 0 ? `hace ${amount} ${unitLabel}` : `dentro de ${amount} ${unitLabel}`;
+  return value < 0 ? `${amount} ${unitLabel} ago` : `in ${amount} ${unitLabel}`;
 }
 
 export function sourceBadgeIndex(sourceId: string, count: number): number {
