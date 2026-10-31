@@ -1,43 +1,449 @@
 {
-  "updatedAt": "2026-10-30T08:01:09Z",
+  "updatedAt": "2026-10-31T12:04:05Z",
   "sources": [
     {
       "id": "youtube-club",
       "name": "RC Deportivo (YouTube)",
       "group": "club",
       "kind": "video",
-      "homepage": "https://www.youtube.com/@rcdeportivo"
+      "homepage": "https://www.youtube.com/@rcdeportivo",
+      "iconUrl": null
     },
     {
       "id": "riazor",
       "name": "Riazor.org",
       "group": "galicia",
       "kind": "article",
-      "homepage": "https://www.riazor.org/"
+      "homepage": "https://www.riazor.org/",
+      "iconUrl": null
     },
     {
       "id": "dxt-campeon",
       "name": "DXT Campeón",
       "group": "galicia",
       "kind": "article",
-      "homepage": "https://dxtcampeon.elidealgallego.com/"
+      "homepage": "https://dxtcampeon.elidealgallego.com/",
+      "iconUrl": null
     },
     {
       "id": "la-voz",
       "name": "La Voz de Galicia",
       "group": "galicia",
       "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/"
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": null
     },
     {
       "id": "marca",
       "name": "Marca",
       "group": "nacional",
       "kind": "article",
-      "homepage": "https://www.marca.com/futbol/deportivo.html"
+      "homepage": "https://www.marca.com/futbol/deportivo.html",
+      "iconUrl": null
     }
   ],
   "stories": [
+    {
+      "id": "067ea967480e1f14",
+      "title": "Madrid CFF – Dépor ABANCA: A la tercera… ¿también va la vencida?",
+      "url": "https://riazor.org/madrid-cff-depor-abanca-tercera-tambien-va-vencida",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-31T08:00:33Z",
+      "kind": "article",
+      "summary": "El equipo de Alberto Rodríguez busca en Fuenlabrada su tercera victoria seguida de la temporada después de vencer Eibar y Alavés. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "484610c9740d8b23",
+      "title": "Galería de imágenes del Auriense – Deportivo: Trabajo hecho",
+      "url": "https://riazor.org/galeria-imagenes-auriense-deportivo-trabajo-hecho",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-31T06:00:49Z",
+      "kind": "article",
+      "summary": "Repasamos en imágenes la clasificación del Deportivo en Copa del Rey. Asp-Jensen -con un doblete- y Luismi Cruz anotaron ante el Auriense…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "d788dadf2d44ec71",
+      "title": "Dani Barcia, el gran olvidado: \"Tenemos sobrepoblada la posición de centrales\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-31/dani-barcia-el-gran-olvidado-tenemos-sobrepoblada-la-posicion-de-centrales-888028.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-10-31T04:00:00Z",
+      "kind": "article",
+      "summary": "El cambrés tampoco jugó en Copa y es el único jugador de campo sin minutos. Comas, en una situación similar, sí participó, mientras…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4b2884b3e4.r_d.741-1009-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "d2ffd78e10d29f08",
+      "title": "El Dépor-Osasuna en el que el árbitro esquivó una agresión",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/historia/2026-10-31/el-depor-osasuna-en-el-que-el-arbitro-esquivo-una-agresion-888132.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-10-31T04:00:00Z",
+      "kind": "article",
+      "summary": "Un hincha saltó a agredir a Congregado Rodríguez en el siguiente partido en Riazor al del recordado robo de Pes Pérez, tras el que el…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/30/6ae4f5e849802.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "497f575f8b84673e",
+      "title": "El sueño del Auriense de enfrentarse al Dépor: «Cuando entré al campo se me caían las lágrimas»",
+      "url": "https://lavozdegalicia.es/noticia/ourense/2026/10/30/sueno-auriense-enfrentarse-depor-entre-campo-me-emocione/00031793386537212757192.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-10-31T04:00:00Z",
+      "kind": "article",
+      "summary": "Los jugadores del club ourensano, que milita en Preferente, rememoran su partido de Copa del Rey en el estadio de O Couto",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/w5GjrlErKy0J9X2k5q0_62A60ag=/768x/2026/10/29/00121793308204017401638/Foto/i_20261029_220159002.jpg",
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "3b434f067db7458f",
+      "title": "Previa | El tercer triunfo seguido del Dépor pasa por Madrid",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-10-31/previa-el-tercer-triunfo-seguido-del-depor-pasa-por-madrid-888050.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-10-31T04:00:00Z",
+      "kind": "article",
+      "summary": "El conjunto blanquiazul puede sumar esta tarde (18.00 horas) tres victorias consecutivas, algo que no logra desde 2019",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4c8f8038d5.r_d.1643-1086-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "24bdf3ae590a538b",
+      "title": "Así es Ana Seoane, jugadora Dépor Abanca: «Es una portera de ocho tirando a sobresaliente; rápida y agresiva»",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/30/ana-seoane-jugadora-depor-abanca-portera-ocho-tirando-sobresaliente-rapida-agresiva/00031793391856331539535.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-10-31T04:00:00Z",
+      "kind": "article",
+      "summary": "Tras convertirse en la guardameta más joven en debutar como titular en Liga F, exentrenadores desgranan sus atributos, su alta capacidad…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/vOgUayqMr8BIdPh0A_A3Yr_-bjU=/768x/2026/10/30/00121793384235601994865/Foto/anaseoane.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e6409bdcb4be4f38",
+      "title": "Así fue el Auriense CA 0 - 3 Dépor desde dentro | INSIDE DÉPOR",
+      "url": "https://youtube.com/watch?v=yqLWrXYjDY4",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-30T19:44:54Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i2.ytimg.com/vi/yqLWrXYjDY4/hqdefault.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "17664ebc0d70f96f",
+      "title": "Noé Carrillo, una brillante actuación en Copa del Rey y un regreso con segundas",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/30/noe-carrillo-brillante-actuacion-copa-rey-regreso-segundas/00031793384300510374280.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-10-30T18:33:00Z",
+      "kind": "article",
+      "summary": "El canterano de Teo, que volvió a jugar un partido con el primer equipo del Deportivo tras superar su lesión, acepta el reto de Hidalgo…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/Hq0E_stEpi-18WPVJUY-0t1Uy70=/768x/2026/10/29/00121793308202592458588/Foto/i_20261029_220159003.jpg",
+      "tags": [
+        "partido",
+        "lesiones"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "6960696fab4b121a",
+      "title": "«Vamos a ser profesionales, Nsongo»: así fue la RefCam del Atlético – Deportivo",
+      "url": "https://riazor.org/vamos-ser-profesionales-nsongo-refcam-atletico-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-30T18:12:21Z",
+      "kind": "article",
+      "summary": "LaLiga publica la RefCam de Sánchez Martínez en el Atlético-Dépor: la reprimenda a Nsongo, el gol de Julián Álvarez y cómo llamó a unos y…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "5b7c6b27677246dc",
+      "title": "¿Quieres una entrada doble para asistir al Dépor-Osasuna del lunes? Aquí te indicamos los pasos para conseguirla",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-30/quieres-una-entrada-doble-para-asistir-al-depor-osasuna-del-lunes-aqui-te-indicamos-los-pasos-para-conseguirla-888072.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-10-30T17:33:06Z",
+      "kind": "article",
+      "summary": "DXT Campeón sortea entre sus lectores la opción de animar al equipo en Riazor",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/30/6ae4d4927c809.png",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "7945cc0a6f8d6a16",
+      "title": "Resumen del Auriense CA 0 - 3 RC Deportivo",
+      "url": "https://youtube.com/watch?v=9guVqVtZ9o8",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-30T15:59:51Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i2.ytimg.com/vi/9guVqVtZ9o8/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "806e46bb37a0cf67",
+      "title": "Alberto Rodríguez y la portería del Dépor ABANCA: «Tarazona ya está con el grupo»",
+      "url": "https://riazor.org/alberto-rodriguez-porteria-depor-abanca-tarazona",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-30T15:30:34Z",
+      "kind": "article",
+      "summary": "El entrenador del Dépor ABANCA analizó cómo afronta el equipo su próximo compromiso ante el Madrid CFF en la Liga F esta semana. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "ae335f275b4561dc",
+      "title": "Sorteo entradas RCD Espanyol - RC Deportivo | Jornada 12 | Temporada 26/27",
+      "url": "https://youtube.com/watch?v=ueyPxiEcmEI",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-30T12:45:24Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i2.ytimg.com/vi/ueyPxiEcmEI/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "391d2a30ee78148e",
+      "title": "Rueda de prensa de Manuel Pablo previa al Zamora CF - Fabril",
+      "url": "https://youtube.com/watch?v=cyOaLcavZEI",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-30T12:44:22Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/cyOaLcavZEI/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "b666d209ff6055b6",
+      "title": "Rueda de prensa de Alberto Rodríguez previa al Madrid CFF - Dépor ABANCA",
+      "url": "https://youtube.com/watch?v=ZjMNM7y-rVQ",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-30T11:24:13Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i3.ytimg.com/vi/ZjMNM7y-rVQ/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "a58b531de0e590b6",
+      "title": "¿Estuviste en el estreno copero del Dépor? ¡Búscate en nuestra galería de la afición del Auriense – Deportivo!",
+      "url": "https://riazor.org/estreno-copero-galeria-aficion-auriense-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-30T11:00:07Z",
+      "kind": "article",
+      "summary": "El blanquiazul tiñó las gradas de O Couto en la primera ronda de la Copa del Rey. Una multitud de aficionados deportivistas acompañaron al…",
+      "thumbnailUrl": null,
+      "tags": [
+        "aficion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "fc2dedea07f0e97e",
+      "title": "RCD Espanyol vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
+      "url": "https://youtube.com/watch?v=iI7AcrXOwcQ",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-30T08:30:31Z",
+      "kind": "video",
+      "summary": "Vive en directo el partido de la jornada 12 entre el Espanyol y el Dépor perteneciente a la primera eliminatoria de la competición",
+      "thumbnailUrl": "https://i2.ytimg.com/vi/iI7AcrXOwcQ/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "b9831a879307b704",
+      "title": "Noé Carrillo: «Para ganarme un puesto en la plantilla tengo que dar uno o dos pasos más»",
+      "url": "https://riazor.org/noe-carrillo-ganarme-plantilla-uno-dos-pasos-mas",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-30T06:00:08Z",
+      "kind": "article",
+      "summary": "Noé Carrillo fue protagonista en la zona mixta tras su estreno en la presente temporada con el primer equipo, en la primera ronda de Copa…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c3ce60437ee888db",
+      "title": "Auriense vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
+      "url": "https://youtube.com/watch?v=n40vPF3Lnn8",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-30T00:07:04Z",
+      "kind": "video",
+      "summary": "Vive en directo el partido de Copa del Rey entre el Auriense y el Dépor perteneciente a la primera eliminatoria de la competición",
+      "thumbnailUrl": "https://i3.ytimg.com/vi/n40vPF3Lnn8/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "7e2d2c435ca785f3",
+      "title": "Comparecencia de Noé Carrillo tras el Auriense CA 0 - 3 RC Deportivo",
+      "url": "https://youtube.com/watch?v=NHDsB7ODIC4",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-29T23:06:59Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i3.ytimg.com/vi/NHDsB7ODIC4/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "b7f7076fbf0a7f9a",
+      "title": "Rueda de prensa de Antonio Hidalgo tras el Auriense CA 0 - 3 RC Deportivo",
+      "url": "https://youtube.com/watch?v=h4aGwycHn58",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-29T23:06:39Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i1.ytimg.com/vi/h4aGwycHn58/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "9282eb46e35ab2a6",
+      "title": "Antonio Hidalgo: «No es fácil jugar este tipo de partidos; les pedimos que dieran un gran nivel»",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/antonio-hidalgo-facil-jugar-tipo-partidos-pedimos-dieran-gran-nivel/00031793313210852978400.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-10-29T22:36:00Z",
+      "kind": "article",
+      "summary": "«Jony vive del gol, tiene esa ansiedad de demostrar todo lo que tiene dentro», subrayó el técnico del Dépor sobre Asp Jensen",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/mOlzADKIOd_oYdyJBn1YFcXR700=/768x/2026/10/29/00121793308022507793722/Foto/i_20261029_220256003.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "8991b8351c07e90d",
+      "title": "Las claves del Auriense-Deportivo (0-3): Las embestidas de Adama Traoré y el oportunismo de Asp Jensen",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/claves-auriense-deportivo-0-3-embestidas-adama-traore-oportunismo-asp-jensen/00031793312441541405546.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-10-29T22:22:00Z",
+      "kind": "article",
+      "summary": "La inteligencia de Noé Carrillo, la pelea de Kevin y el guante de Angeliño en los córneres también fueron determinantes",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/IM647Bcf4QCdld-G1eVNtcCW26Y=/768x/2026/10/29/00121793312462049571229/Foto/efe_20261029_204710492.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "1f7ecc6a1b6bcabe",
+      "title": "El Dépor pasa de ronda ante un digno Auriense",
+      "url": "https://marca.com/futbol/copa-rey/cronica/2026/10/29/depor-pasa-ronda-digno-auriense.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-10-29T21:58:50Z",
+      "kind": "article",
+      "summary": "Los ourensanos, cinco categorías menos que los coruñeses, disputaron un meritorio partido que se decidió con un doblete de Jensen y otro…",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/10/30/gTSPg1guzM5wlH5MV.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "3cba2c17eb54b034",
+      "title": "El Dépor gana ante un Auriense que dio la cara en la Copa del Rey (0-3)",
+      "url": "https://lavozdegalicia.es/noticia/deportes/2026/10/29/auriense-dio-cara-ante-depor-copa-rey-0-3/00031793310912460712288.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-10-29T21:58:00Z",
+      "kind": "article",
+      "summary": "La formación ourensana aguantó bien a un rival que lo superaba en cinco niveles competitivos y se ganó el aplauso antes de despedirse del…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/ersG2bXLms4FRdI_QGFF_7fZqJo=/768x/2026/10/29/00121793310063514483491/Foto/i_20261029_222838001.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c8d3c8d9453ebf62",
+      "title": "Auriense - Deportivo: resumen, resultado y goles",
+      "url": "https://marca.com/futbol/copa-rey/2026/10/29/01-0105-20261029-24883-180-directo.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-10-29T19:18:12Z",
+      "kind": "article",
+      "summary": "Asp Jensen se reivindica firmando un doblete decisivo que mete al Dépor en la siguiente ronda frente a un combativo y correoso Auriense",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/10/29/17932953267080.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "9b1dc66ef5c66b9f",
+      "title": "Así te contamos el Auriense 0–3 Deportivo | Final del partido, el Deportivo avanza a la segunda ronda de Copa",
+      "url": "https://riazor.org/auriense-deportivo-copa-del-rey-en-directo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-29T18:30:29Z",
+      "kind": "article",
+      "summary": "El Deportivo cumplió ante el Auriense y estará en la segunda ronda de la Copa gracias a un doblete de Asp-Jensen y otro tanto de Luismi…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/arm4GIZKREBLsiTsqc8PGvW_t0M=/768x/2026/10/29/00121793307902630783390/Foto/fffsssaaa.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "Así contamos el partido de Copa del Rey: Auriense 0 - 3 Dépor",
+          "url": "https://lavozdegalicia.es/retransmision/deportes/2026/10/29/copa-rey-directo-auriense-depor/01071793296869160365783.htm",
+          "publishedAt": "2026-10-29T21:52:00Z"
+        }
+      ]
+    },
     {
       "id": "99db1b1585443a93",
       "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
@@ -46,11 +452,30 @@
       "publishedAt": "2026-10-29T08:00:38Z",
       "kind": "article",
       "summary": "El Deportivo inicia su participación en la Copa del Rey enfrentándose a un representante del fútbol modesto como el Auriense en un choque…",
-      "thumbnailUrl": null,
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/KWOSO7f0V1gthO39Qa9Oud5J73I=/768x/2026/10/27/00121793117761899332653/Foto/Z6M2614.jpg",
       "tags": [
         "partido"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
+          "publishedAt": "2026-10-27T16:17:00Z"
+        },
+        {
+          "sourceId": "la-voz",
+          "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
+          "publishedAt": "2026-10-29T22:32:00Z"
+        },
+        {
+          "sourceId": "youtube-club",
+          "title": "Presentación de Falas Dépor",
+          "url": "https://youtube.com/watch?v=Ozky7PXLueA",
+          "publishedAt": "2026-10-27T12:54:09Z"
+        }
+      ]
     },
     {
       "id": "60424e718f485087",
@@ -112,7 +537,7 @@
       "publishedAt": "2026-10-28T19:48:43Z",
       "kind": "article",
       "summary": "Horario, televisión y cómo ver online el Auriense - Dépor de Copa del Rey: jueves 29 de octubre, 21:00, en M+ LaLiga 2 y LaLiga 4, y en…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/05/05/69f9d23c224d2.jpg",
+      "thumbnailUrl": null,
       "tags": [
         "partido"
       ],
@@ -325,20 +750,6 @@
       "summary": "Nsongo Bil ha vuelto a ser citado por la selección absoluta de Camerún. El deportivista vivirá su segunda aventura internacional en el…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "c3ce60437ee888db",
-      "title": "Auriense vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
-      "url": "https://youtube.com/watch?v=n40vPF3Lnn8",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-27T10:26:45Z",
-      "kind": "video",
-      "summary": "Vive en directo el partido de Copa del Rey entre el Auriense y el Dépor perteneciente a la primera eliminatoria de la competición",
-      "thumbnailUrl": "https://i3.ytimg.com/vi/n40vPF3Lnn8/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     },
     {

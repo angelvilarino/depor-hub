@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28T09:30:46Z",
+  "updatedAt": "2026-10-31T12:04:42Z",
   "season": "2026-27",
   "rivals": [
     {
@@ -16,6 +16,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=1",
         "played": 105,
         "won": 22,
@@ -91,6 +92,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=7",
         "played": 108,
         "won": 26,
@@ -166,6 +168,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=2",
         "played": 103,
         "won": 24,
@@ -241,6 +244,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=8",
         "played": 76,
         "won": 25,
@@ -316,6 +320,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=30",
         "played": 91,
         "won": 35,
@@ -391,6 +396,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=33",
         "played": 110,
         "won": 39,
@@ -466,6 +472,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=3",
         "played": 60,
         "won": 21,
@@ -541,6 +548,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=6",
         "played": 104,
         "won": 37,
@@ -616,6 +624,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=11",
         "played": 133,
         "won": 49,
@@ -691,6 +700,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=38",
         "played": 35,
         "won": 14,
@@ -754,6 +764,82 @@
     },
     {
       "team": {
+        "id": 80,
+        "name": "RCD Espanyol de Barcelona",
+        "shortName": "Espanyol",
+        "tla": "ESP",
+        "crestUrl": "https://crests.football-data.org/80.png"
+      },
+      "bdfutbolId": "14",
+      "coach": "Manolo González",
+      "keyPlayers": [],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=14",
+        "played": 104,
+        "won": 35,
+        "drawn": 28,
+        "lost": 41,
+        "goalsFor": 134,
+        "goalsAgainst": 158,
+        "meetings": [
+          {
+            "date": "2018-02-23",
+            "competition": "Primera División",
+            "round": "Jornada 25",
+            "home": "Deportivo de La Coruña",
+            "away": "Espanyol",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-09-24",
+            "competition": "Primera División",
+            "round": "Jornada 6",
+            "home": "Espanyol",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 4,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-05-07",
+            "competition": "Primera División",
+            "round": "Jornada 36",
+            "home": "Deportivo de La Coruña",
+            "away": "Espanyol",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-01-06",
+            "competition": "Primera División",
+            "round": "Jornada 17",
+            "home": "Espanyol",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2016-02-20",
+            "competition": "Primera División",
+            "round": "Jornada 25",
+            "home": "Espanyol",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
         "id": 79,
         "name": "CA Osasuna",
         "shortName": "Osasuna",
@@ -766,6 +852,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=27",
         "played": 80,
         "won": 38,
@@ -841,6 +928,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=29",
         "played": 90,
         "won": 39,
@@ -916,6 +1004,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=20",
         "played": 48,
         "won": 20,
@@ -991,6 +1080,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=42",
         "played": 48,
         "won": 18,
@@ -1066,6 +1156,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=5",
         "played": 56,
         "won": 26,
@@ -1141,6 +1232,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=16",
         "played": 25,
         "won": 7,
@@ -1204,81 +1296,6 @@
     },
     {
       "team": {
-        "id": 80,
-        "name": "RCD Espanyol de Barcelona",
-        "shortName": "Espanyol",
-        "tla": "ESP",
-        "crestUrl": "https://crests.football-data.org/80.png"
-      },
-      "bdfutbolId": "14",
-      "coach": "Manolo González",
-      "keyPlayers": [],
-      "headToHead": {
-        "scope": "all_official_matches",
-        "source": "BDFutbol",
-        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=14",
-        "played": 104,
-        "won": 35,
-        "drawn": 28,
-        "lost": 41,
-        "goalsFor": 134,
-        "goalsAgainst": 158,
-        "meetings": [
-          {
-            "date": "2018-02-23",
-            "competition": "Primera División",
-            "round": "Jornada 25",
-            "home": "Deportivo de La Coruña",
-            "away": "Espanyol",
-            "homeGoals": 0,
-            "awayGoals": 0,
-            "deporResult": "D"
-          },
-          {
-            "date": "2017-09-24",
-            "competition": "Primera División",
-            "round": "Jornada 6",
-            "home": "Espanyol",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 4,
-            "awayGoals": 1,
-            "deporResult": "L"
-          },
-          {
-            "date": "2017-05-07",
-            "competition": "Primera División",
-            "round": "Jornada 36",
-            "home": "Deportivo de La Coruña",
-            "away": "Espanyol",
-            "homeGoals": 1,
-            "awayGoals": 2,
-            "deporResult": "L"
-          },
-          {
-            "date": "2017-01-06",
-            "competition": "Primera División",
-            "round": "Jornada 17",
-            "home": "Espanyol",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 1,
-            "awayGoals": 1,
-            "deporResult": "D"
-          },
-          {
-            "date": "2016-02-20",
-            "competition": "Primera División",
-            "round": "Jornada 25",
-            "home": "Espanyol",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 1,
-            "awayGoals": 0,
-            "deporResult": "L"
-          }
-        ]
-      }
-    },
-    {
-      "team": {
         "id": 95,
         "name": "Valencia CF",
         "shortName": "Valencia",
@@ -1291,6 +1308,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=36",
         "played": 117,
         "won": 34,
@@ -1366,6 +1384,7 @@
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
+        "confidence": "single_source",
         "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=23",
         "played": 45,
         "won": 17,
