@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T19:32:55Z",
+  "updatedAt": "2026-10-31T20:04:11Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,58 @@
     }
   ],
   "stories": [
+    {
+      "id": "7dab33d4c5434c4e",
+      "title": "Volver a empezar (2-1)",
+      "url": "https://riazor.org/volver-a-empezar-2-1",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-31T19:43:35Z",
+      "kind": "article",
+      "summary": "Crónica y resultado del Madrid CFF - Dépor ABANCA de la jornada 9 de la Liga F, que finalizó con derrota coruñesa en Fuenlabrada. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "ae5672ca05ac078b",
+      "title": "Resumen del Madrid CFF 2-1 Dépor ABANCA",
+      "url": "https://youtube.com/watch?v=sdPW5gooxC0",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-31T19:42:59Z",
+      "kind": "video",
+      "summary": "Dos acciones de Ubamba en la segunda mitad dieron la remontada al cuadro local",
+      "thumbnailUrl": "https://i4.ytimg.com/vi/sdPW5gooxC0/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "Al Dépor Abanca se le atraganta el Madrid CFF (2-1)",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/31/depor-abanca-atraganta-madrid-cff-2-1/00031793476601779888952.htm",
+          "publishedAt": "2026-10-31T19:59:00Z"
+        }
+      ]
+    },
+    {
+      "id": "83350e25ecb1daf8",
+      "title": "El 1x1 del Madrid CCF-Dépor: Marisa deja huella en su regreso a casa",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-10-31/el-1x1-del-madrid-ccf-depor-marisa-deja-huella-en-su-regreso-a-casa-888235.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-10-31T19:42:13Z",
+      "kind": "article",
+      "summary": "La delantera disfrutó de su primera titularidad en Liga y anotó el gol que adelantó a las blanquiazules",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/31/6ae643923c453.r_d.480-472-0.jfif",
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "b56a1dc985c3d69f",
       "title": "Aubameyang sigue acortando plazos en su recuperación: ya entrena con normalidad",
@@ -485,7 +537,7 @@
       ]
     },
     {
-      "id": "99db1b1585443a93",
+      "id": "a80879a1768c9aba",
       "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
       "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
       "sourceId": "riazor",
