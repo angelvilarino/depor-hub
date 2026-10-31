@@ -428,7 +428,7 @@ items:
     priority: P0
     status: open
     title: Rebase de H5/H6 sobre origin/main y PR
-    evidence: [L-01, L-07]
+    evidence: [L-01, L-07, PR-16]
   - id: AUD-002
     priority: P0
     status: done
@@ -438,7 +438,7 @@ items:
     priority: P0
     status: open
     title: Verificar news-refresh en Actions y news.json en Pages tras el merge
-    evidence: [L-03, L-07]
+    evidence: [L-03, L-07, PR-16]
   - id: AUD-004
     priority: P1
     status: done
@@ -496,7 +496,7 @@ La auditoría confirma un único bloqueo principal —**noticias sin desplegar**
 
 La rama de release se rebasó sobre `origin/main` (`0d472f5` al iniciar la operación). Los conflictos fueron solo JSON generados bajo `data/public`; se conservó el lado remoto y después se regeneró el conjunto mediante `ingest`, `news`, `rivals` y `social`. `meta.updatedAt` resultó `2026-10-31T12:03:58Z` frente a `2026-10-30T22:20:30Z` en la base remota; los 38 partidos continúan presentes. Los ocho documentos validan con Pydantic.
 
-Cambios locales preparados: `e2c4c7c fix(data): harden scheduled publication pipelines` y `8cb6f8e data: regenerate public payloads from origin baseline`. La integración H5/H6 que ya estaba en la rama tiene los dos archivos WIP de la auditoría dentro de commits existentes: `4f828c0` carga fuentes/rutas y `5acedfc` añade fallback de fechas relativas; no había cambios sin commitear al inicio.
+Cambios locales preparados: `e2c4c7c fix(data): harden scheduled publication pipelines`, `8cb6f8e data: regenerate public payloads from origin baseline` y `cc5a6ba fix(ci): pass token to gitleaks action`. La integración H5/H6 que ya estaba en la rama tiene los dos archivos WIP de la auditoría dentro de commits existentes: `4f828c0` carga fuentes/rutas y `5acedfc` añade fallback de fechas relativas; no había cambios sin commitear al inicio. El PR de revisión es [#16](https://github.com/angelvilarino/depor-hub/pull/16).
 
 Checks locales: Ruff OK; pytest **161 passed**; ESLint OK; TypeScript OK; Jest **245 passed / 29 suites**; esquemas sin diferencias; validación Pydantic de ocho JSON OK; `expo export --platform android` OK. `gitleaks` no está instalado localmente; el escaneo queda como check bloqueante de CI. `npm audit`, `pip-audit`, `expo-doctor` y `expo install --check` están configurados como informativos.
 
