@@ -1,0 +1,23 @@
+# L-10: peticiones condicionales
+
+Fecha: 2026-10-31T11:42:32Z
+
+## NewsHttp sí envía validadores
+
+        headers: dict[str, str] = {}
+        if cached is not None and not force:
+            _, meta = cached
+            # Los validadores solo valen para la misma URL: al cambiar una consulta
+            # (por ejemplo, la rotación de jugadores) hay que pedir el cuerpo nuevo.
+            if meta.get("url") == url:
+                if meta.get("etag"):
+                    headers["If-None-Match"] = str(meta["etag"])
+                if meta.get("lastModified"):
+                    headers["If-Modified-Since"] = str(meta["lastModified"])
+
+        self._throttle(_host(url))
+
+## FootballData Client no
+sin coincidencias
+
+Conclusión: cada ejecución del cron descarga de nuevo todos los recursos de football-data; no hay 304 ni ahorro de cuota. Confianza: Confirmada.

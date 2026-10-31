@@ -1,0 +1,56 @@
+# L-03: workflows reales en GitHub Actions
+
+Fecha: 2026-10-31T11:37:33Z
+
+## Workflows registrados
+CI	active	390394508
+Data refresh	active	390399081
+Enrich proposal	active	396111510
+Dependabot Updates	active	390394622
+
+## Runs recientes de Data refresh
+completed	success	Data refresh	Data refresh	main	schedule	41196370357	38s	2026-10-31T11:19:21Z
+completed	success	Data refresh	Data refresh	main	schedule	41192265493	39s	2026-10-31T10:19:15Z
+completed	success	Data refresh	Data refresh	main	schedule	41188234771	39s	2026-10-31T09:19:37Z
+completed	success	Data refresh	Data refresh	main	schedule	41184197327	44s	2026-10-31T08:20:25Z
+completed	success	Data refresh	Data refresh	main	schedule	41180101126	39s	2026-10-31T07:18:47Z
+completed	success	Data refresh	Data refresh	main	schedule	41176475252	40s	2026-10-31T06:24:29Z
+completed	success	Data refresh	Data refresh	main	schedule	41172127093	48s	2026-10-31T05:19:26Z
+completed	success	Data refresh	Data refresh	main	schedule	41168131214	45s	2026-10-31T04:20:00Z
+completed	success	Data refresh	Data refresh	main	schedule	41163898195	47s	2026-10-31T03:19:51Z
+completed	success	Data refresh	Data refresh	main	schedule	41159693031	38s	2026-10-31T02:22:14Z
+completed	success	Data refresh	Data refresh	main	schedule	41154762129	43s	2026-10-31T01:19:11Z
+completed	success	Data refresh	Data refresh	main	schedule	41151208558	44s	2026-10-31T00:37:52Z
+completed	success	Data refresh	Data refresh	main	schedule	41143751988	42s	2026-10-30T23:19:17Z
+completed	success	Data refresh	Data refresh	main	schedule	41137372654	1m4s	2026-10-30T22:19:41Z
+completed	success	Data refresh	Data refresh	main	schedule	41130172724	43s	2026-10-30T21:19:28Z
+completed	success	Data refresh	Data refresh	main	schedule	41122253158	5m12s	2026-10-30T20:19:34Z
+completed	success	Data refresh	Data refresh	main	schedule	41114333392	44s	2026-10-30T19:19:40Z
+completed	success	Data refresh	Data refresh	main	schedule	41106205706	43s	2026-10-30T18:21:16Z
+completed	success	Data refresh	Data refresh	main	schedule	41097805782	42s	2026-10-30T17:19:26Z
+completed	success	Data refresh	Data refresh	main	schedule	41089276669	44s	2026-10-30T16:22:23Z
+
+## Runs recientes de CI
+completed	failure	chore(deps-dev): bump eslint from 9.39.5 to 10.13.0	CI	dependabot/npm_and_yarn/eslint-10.13.0	pull_request	40477035948	37s	2026-10-27T08:56:20Z
+completed	failure	chore(deps): bump react from 19.3.0 to 19.3.1	CI	dependabot/npm_and_yarn/react-19.3.1	pull_request	40477010852	17s	2026-10-27T08:56:07Z
+completed	success	chore(deps): bump @react-native-async-storage/async-storage from 2.2.0 to 3.1.1	CI	dependabot/npm_and_yarn/react-native-async-storage/async-storage-3.1.1	pull_request	40476977502	56s	2026-10-27T08:55:51Z
+completed	success	chore(deps-dev): bump typescript from 6.0.3 to 7.0.2	CI	dependabot/npm_and_yarn/typescript-7.0.2	pull_request	40476948975	48s	2026-10-27T08:55:37Z
+completed	success	chore(deps): bump react-native-gesture-handler from 3.3.0 to 3.4.0	CI	dependabot/npm_and_yarn/react-native-gesture-handler-3.4.0	pull_request	40476917940	50s	2026-10-27T08:55:21Z
+completed	success	chore(deps): bump actions/upload-pages-artifact from 3 to 5	CI	dependabot/github_actions/actions/upload-pages-artifact-5	pull_request	40476895063	55s	2026-10-27T08:55:10Z
+completed	success	chore(deps): bump actions/configure-pages from 5 to 6	CI	dependabot/github_actions/actions/configure-pages-6	pull_request	40476881744	48s	2026-10-27T08:55:04Z
+completed	success	chore(deps): bump actions/deploy-pages from 4 to 5	CI	dependabot/github_actions/actions/deploy-pages-5	pull_request	40476871038	1m3s	2026-10-27T08:54:58Z
+completed	success	chore(deps): actualizar a Expo SDK 58 (RN 0.88) para Expo Go	CI	main	push	40207861993	42s	2026-10-25T15:38:01Z
+completed	failure	chore(deps): bump expo from 57.0.30 to 58.0.17	CI	dependabot/npm_and_yarn/expo-58.0.14	pull_request	40207130738	20s	2026-10-25T15:28:53Z
+completed	success	chore(deps): bump jest-expo from 57.0.6 to 58.0.12	CI	dependabot/npm_and_yarn/jest-expo-58.0.11	pull_request	40207115659	51s	2026-10-25T15:28:41Z
+completed	failure	feat: fichas completas con foto oficial, redes y cesión de salida	CI	main	push	40206911987	52s	2026-10-25T15:26:06Z
+completed	success	feat(h4): plantilla, fichas de jugador y squad_extras	CI	main	push	40000845882	52s	2026-10-23T18:08:23Z
+completed	failure	chore(deps): bump expo from 57.0.30 to 58.0.17	CI	dependabot/npm_and_yarn/expo-58.0.14	pull_request	39742324493	16s	2026-10-22T07:42:06Z
+completed	success	build(deps): bump expo-status-bar from 57.0.1 to 58.0.3	CI	dependabot/npm_and_yarn/expo-status-bar-58.0.3	pull_request	39742322472	50s	2026-10-22T07:42:05Z
+completed	success	feat(h3): calendario, recordatorios, escudos, sede y árbitro	CI	main	push	39742029691	57s	2026-10-22T07:39:38Z
+completed	success	contexto actualizado	CI	main	push	39484734191	51s	2026-10-20T19:35:18Z
+completed	failure	inicio H3	CI	main	push	39440650428	27s	2026-10-20T14:35:40Z
+completed	success	contexto actualizado	CI	main	push	39429945648	49s	2026-10-20T13:23:14Z
+completed	failure	chore(deps): bump expo from 57.0.30 to 58.0.17	CI	dependabot/npm_and_yarn/expo-58.0.14	pull_request	39408008340	17s	2026-10-20T10:26:58Z
+
+## ¿Existe News refresh?
+could not find any workflows named News refresh

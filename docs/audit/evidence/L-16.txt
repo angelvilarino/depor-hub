@@ -1,0 +1,61 @@
+# L-16: commits del bot y cobertura de CI
+
+Fecha: 2026-10-31T11:41:15Z
+
+## Últimos commits de origin/main
+0d472f5 2026-10-30T22:20:31Z depor-hub-bot data: refresh 2026-10-30T22:20Z
+68e7970 2026-10-30T20:23:56Z depor-hub-bot data: refresh 2026-10-30T20:23Z
+4f25489 2026-10-29T08:27:07Z depor-hub-bot data: refresh 2026-10-29T08:27Z
+deb7550 2026-10-26T22:28:50Z depor-hub-bot data: refresh 2026-10-26T22:28Z
+3f61679 2026-10-26T21:27:26Z depor-hub-bot data: refresh 2026-10-26T21:27Z
+d86d750 2026-10-26T20:29:23Z depor-hub-bot data: refresh 2026-10-26T20:29Z
+4bdbe8f 2026-10-25T22:23:42Z depor-hub-bot data: refresh 2026-10-25T22:23Z
+726c7bb 2026-10-25T21:24:06Z depor-hub-bot data: refresh 2026-10-25T21:24Z
+
+## Últimas ejecuciones de CI
+2026-10-27T08:56:20Z	failure	pull_request	dependabot/npm_and_yarn/eslint-10.13.0	chore(deps-dev): bump eslint from 9.39.5 to 10.13.0
+2026-10-27T08:56:07Z	failure	pull_request	dependabot/npm_and_yarn/react-19.3.1	chore(deps): bump react from 19.3.0 to 19.3.1
+2026-10-27T08:55:51Z	success	pull_request	dependabot/npm_and_yarn/react-native-async-storage/async-storage-3.1.1	chore(deps): bump @react-native-async-storage/async-storage from 2.2.0 to 3.1.1
+2026-10-27T08:55:37Z	success	pull_request	dependabot/npm_and_yarn/typescript-7.0.2	chore(deps-dev): bump typescript from 6.0.3 to 7.0.2
+2026-10-27T08:55:21Z	success	pull_request	dependabot/npm_and_yarn/react-native-gesture-handler-3.4.0	chore(deps): bump react-native-gesture-handler from 3.3.0 to 3.4.0
+
+## ci.yml
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test -- --ci
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/pyproject.toml
+      - run: pip install -e "scripts[dev]"
+      - run: ruff check scripts
+      - run: pytest scripts
+      - name: Los esquemas JSON publicados coinciden con los modelos
+        run: |
+          python -m depor_hub.cli schemas
+          git diff --exit-code packages/schemas
+
+## Conclusión
+- Los commits 'data: refresh' los crea github-actions[bot] con GITHUB_TOKEN; por diseño no disparan CI.
+- La última CI de main es del 25-oct; el 27-oct solo hubo PRs de Dependabot (2 fallos). Ha habido commits de datos hasta el 31-oct sin validación.
+- CI no ejecuta expo-doctor, expo install --check, npm audit, cobertura, prettier ni validación de data/public.

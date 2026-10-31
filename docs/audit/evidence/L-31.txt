@@ -1,0 +1,39 @@
+# L-31: deriva de documentación y artefactos
+
+Fecha: 2026-10-31T11:42:14Z
+
+## README antes de la limpieza
+- Citaba DEPOR_HUB_CONTEXTO.md (existe docs/CONTEXTO.md) y ./setup.sh.
+## AGENTS.md antes de la limpieza
+- Decía que las rutas viven en src/app/; en realidad viven en app/.
+
+## Secuencia ADR
+0003-esquemas.md
+0004-capa-de-datos-app.md
+0005-calendario-y-recordatorios.md
+0006-escudos-sede-arbitro.md
+0007-plantilla-y-fichas.md
+0008-enriquecimiento-fuentes-libres.md
+0009-fotos-y-fuente-oficial.md
+0010-cesion-de-salida.md
+0011-rediseno-equipo-y-ficha.md
+0012-escudos-de-clubes.md
+0014-entrenador-y-cuerpo-tecnico.md
+0015-inicio-y-cadencia-adaptativa.md
+0016-noticias-y-redes.md
+0017-inicio-v2-temporada-rivales-y-tiempo.md
+0018-noticias-curacion-dedupe-filtros.md
+0019-identidad-cartel-prensa.md
+0020-alcance-datos-rival.md
+0021-ficha-rival-bdfutbol.md
+0022-noticias-portada.md
+0023-escudo-en-interfaz.md
+0024-retirada-que-se-juega.md
+
+Falta 0013 entre 0012 y 0014.
+
+## Referencias a setup/template tras la limpieza
+./docs/audit/evidence/L-31.txt:6:- Citaba DEPOR_HUB_CONTEXTO.md (existe docs/CONTEXTO.md) y ./setup.sh.
+
+## Decisión
+Se retiraron template/mobile (22 archivos, 88 KB), setup.sh y egg-info generado; se corrigieron README y AGENTS.md. Se conservaron apps/mobile/LICENSE (atribución MIT de Expo) y apps/mobile/.gitignore (secretos nativos).

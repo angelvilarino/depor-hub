@@ -1,0 +1,19 @@
+# L-15: robustez de workflows
+
+Fecha: 2026-10-31T11:42:40Z
+
+## data-refresh en producción
+17:concurrency:
+19:  cancel-in-progress: false
+
+## data-refresh local
+21:# curso, el otro espera en cola (cancel-in-progress: false) en vez de pisar el commit.
+22:concurrency:
+24:  cancel-in-progress: false
+
+## news-refresh local
+21:concurrency:
+28:    timeout-minutes: 15
+77:    timeout-minutes: 10
+
+Conclusión: news tiene timeout y grupo; data-refresh de producción no tiene timeout. Un fetch colgado puede ocupar el runner hasta el límite por defecto. Confianza: Confirmada.

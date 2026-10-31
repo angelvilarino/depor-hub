@@ -1,0 +1,35 @@
+# Limpieza segura (fase 10)
+
+Fecha: 2026-10-31T11:43:40Z
+Commit: d5ce9bb chore(audit): retirar andamiaje obsoleto y corregir rutas de documentación
+
+## Retirado (32 archivos, 551 líneas)
+- template/mobile/** (22 archivos, 88 KB): esqueleto anterior a apps/mobile; solo lo usaba setup.sh.
+- setup.sh: bootstrap de un solo uso; apps/mobile ya existe y el script salía sin hacer nada.
+- scripts/depor_hub_scripts.egg-info/** (5 archivos): metadata generada por pip install -e; ahora ignorada con *.egg-info/.
+- apps/mobile/.claude/settings.json: configuración personal de herramienta, sin efecto en build/runtime.
+
+## Conservado y por qué
+- apps/mobile/LICENSE: aviso MIT de la plantilla Expo; retirarlo rompería la atribución que cita docs/licenses.md.
+- apps/mobile/.gitignore: cubre secretos nativos (*.jks, *.p8, *.p12, *.key, *.mobileprovision) que el .gitignore raíz no cubre.
+- data/manual/squad_enrich.proposed.yml: propuesta generada y documentada; se revisa, no se borra.
+- data/raw/**: caché local ignorada, no versionada.
+
+## Prueba de no uso (antes de borrar)
+grep -R 'template/mobile|setup.sh|DEPOR_HUB_CONTEXTO' -> solo setup.sh y README.
+git ls-files template/mobile | wc -l -> 22
+
+## Checks después de la limpieza
+- npm run lint: OK
+- npm run typecheck: OK
+- Jest: 238/238, 28 suites
+- pytest: 156 passed
+- ruff: OK
+- schemas: sin diferencias (salvo examples, no generado)
+- expo export android: OK
+- expo-doctor: 19/20 (mismos 11 parches)
+
+## No se tocó
+- apps/mobile/app/_layout.tsx y apps/mobile/src/features/news/logic.ts (WIP del propietario, sin commit).
+- data/public/** (solo lectura).
+- workflows de ingesta/publicación.

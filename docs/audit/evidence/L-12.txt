@@ -1,0 +1,21 @@
+# L-12: contratos Zod estrictos
+
+Fecha: 2026-10-31T11:38:46Z
+
+## Uso de z.strictObject
+33
+99:export const Meta = z.strictObject({
+
+## Prueba temporal (eliminada tras ejecutarla)
+import { Meta } from '../data/schemas';
+import meta from '../../../../data/public/v1/meta.json';
+test('strict Meta', () => {
+  expect(Meta.safeParse(meta).success).toBe(true);
+  const result = Meta.safeParse({ ...meta, extraField: 1 });
+  expect(result.success).toBe(false);
+  if (!result.success) console.log(result.error.issues[0].message);
+});
+
+Resultado: ZOD_ERROR: Unrecognized key: "extraField"
+
+Conclusión: cualquier campo aditivo nuevo en el JSON publicado rompe la app si el esquema Zod no se actualiza a la vez. No hay .passthrough() ni versión negociada.

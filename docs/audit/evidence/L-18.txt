@@ -1,0 +1,48 @@
+# L-18: datos opcionales y 404
+
+Fecha: 2026-10-31T11:41:15Z
+
+## useOptionalData trata 404 como ausencia, no como error
+  name: string,
+  schema: T,
+  staleTime: number = STALE_TIME,
+) {
+  return useQuery({
+    queryKey: ['data', DATA_BASE_URL, name],
+    queryFn: async () => {
+      try {
+        return await fetchData(name, schema);
+      } catch (err) {
+        // news.json aún no existe (H6): 404 = «sin titulares», no un error global.
+        if (err instanceof DataError && err.kind === 'http' && err.status === 404) return null;
+        throw err;
+      }
+    },
+    staleTime: __DEV__ ? 0 : staleTime,
+    gcTime: GC_TIME,
+    retry: (count, err) =>
+      !(
+        err instanceof DataError &&
+        (err.kind === 'not_configured' || err.kind === 'invalid' || err.status === 404)
+      ) && count < 2,
+  });
+}
+
+export const useMeta = () => useData('meta.json', Meta);
+
+## Consultas opcionales
+56:export const useNews = () => useOptionalData('news.json', News, NEWS_STALE_TIME);
+57:export const useSocial = () => useOptionalData('social.json', SocialFeed, NEWS_STALE_TIME);
+58:export const useSeason = () => useOptionalData('season.json', Season, NEWS_STALE_TIME);
+59:export const useRivals = () => useOptionalData('rivals.json', Rivals, NEWS_STALE_TIME);
+
+## Prueba existente
+151:  it('sigue funcionando sin season.json ni rivals.json (404 o caché anterior)', async () => {
+152-    mockSeason = query(null);
+153-    mockRivals = query(null);
+154-
+
+## Resultado Jest
+28 suites / 238 tests OK (ver QA).
+
+Conclusión: la ausencia de news/season/rivals/social no rompe la app; muestra estados vacíos. No es la causa del problema de noticias.

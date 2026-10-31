@@ -1,0 +1,10 @@
+# L-26: completitud de fixtures
+
+Fecha: 2026-10-31T11:42:40Z
+
+Partidos: 38
+Con árbitro: 8
+Estados: Counter({'SCHEDULED': 25, 'FINISHED': 10, 'TIMED': 3})
+Sin sede: 0
+
+Conclusión: la sede y el árbitro son opcionales por contrato; 30/38 partidos no traen árbitro. No es un fallo de la app, pero limita la ficha de partido. Confianza: Confirmada.

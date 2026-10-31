@@ -1,0 +1,61 @@
+# L-02: estado y frescura de GitHub Pages
+
+Fecha: 2026-10-31T11:37:26Z
+
+meta       200 594 application/json; charset=utf-8
+standings  200 8418 application/json; charset=utf-8
+fixtures   200 30680 application/json; charset=utf-8
+squad      200 686115 application/json; charset=utf-8
+news       404 9379 text/html; charset=utf-8
+season     404 9379 text/html; charset=utf-8
+rivals     404 9379 text/html; charset=utf-8
+social     404 9379 text/html; charset=utf-8
+
+## meta.json
+{
+  "schemaVersion": 1,
+  "season": "2026-27",
+  "competitionCode": "PD",
+  "competitionName": "Primera Division",
+  "team": {
+    "id": 560,
+    "name": "RC Deportivo La Coruña",
+    "shortName": "Deportivo",
+    "tla": "DEP",
+    "crestUrl": "https://crests.football-data.org/560.png",
+    "venue": "Estadio Abanca-Riazor"
+  },
+  "updatedAt": "2026-10-30T22:20:30Z",
+  "dataHash": "5a5db9a61c1eed19",
+  "source": {
+    "name": "football-data.org",
+    "url": "https://www.football-data.org",
+    "note": "Datos de terceros; consulta sus términos. Proyecto de aficionados no oficial."
+  }
+}
+
+## Cabeceras de meta.json
+HTTP/2 200 
+server: GitHub.com
+content-type: application/json; charset=utf-8
+last-modified: Fri, 30 Oct 2026 22:20:38 GMT
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "6ae51836-252"
+expires: Sat, 31 Oct 2026 11:31:40 GMT
+cache-control: max-age=600
+x-proxy-cache: MISS
+x-github-request-id: 2ACE:152FF9:A9E92:D247F:6AE5CF43
+x-github-edge-region: switzerlandnorth
+accept-ranges: bytes
+date: Sat, 31 Oct 2026 11:37:28 GMT
+via: 1.1 varnish
+age: 10
+x-served-by: cache-mad2200118-MAD
+x-cache: HIT
+x-cache-hits: 1
+x-timer: S1793446649.810100,VS0,VE2
+vary: Accept-Encoding
+x-fastly-request-id: db002b12138c8c840a44fbc2d025a37ee69493c8
+content-length: 594
+

@@ -1,0 +1,10 @@
+# L-24: paridad i18n ES/EN/GL
+
+Fecha: 2026-10-31T11:41:37Z
+
+ES 454 EN 454 GL 162
+EN faltantes 0 GL faltantes 292 GL extra 0
+GL faltantes por prefijo: {'calendar': 26, 'coach': 20, 'common': 9, 'country': 36, 'data': 11, 'home': 101, 'match': 15, 'news': 17, 'player': 11, 'reminder': 23, 'settings': 7, 'team': 16}
+Primeros 30: ['calendar.col.goalDiff', 'calendar.col.played', 'calendar.col.points', 'calendar.col.pos', 'calendar.col.team', 'calendar.emptyResults', 'calendar.emptyStandings', 'calendar.emptyUpcoming', 'calendar.export', 'calendar.exportError', 'calendar.outcome.D', 'calendar.outcome.L', 'calendar.outcome.W', 'calendar.outcomeLong.D', 'calendar.outcomeLong.L', 'calendar.outcomeLong.W', 'calendar.status.AWARDED', 'calendar.status.CANCELLED', 'calendar.status.FINISHED', 'calendar.status.IN_PLAY', 'calendar.status.PAUSED', 'calendar.status.POSTPONED', 'calendar.status.SCHEDULED', 'calendar.status.SUSPENDED', 'calendar.status.TIMED', 'calendar.versus', 'coach.record.drawn', 'coach.record.goalsAgainst', 'coach.record.goalsFor', 'coach.record.lost']
+
+Consecuencia: la app cae a ES en 292 claves. No es un fallo funcional, pero GL no está completo.

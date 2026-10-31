@@ -1,0 +1,26 @@
+# L-23: anchos fijos y escalado de texto
+
+Fecha: 2026-10-31T11:41:37Z
+
+## Columnas con ancho fijo (muestra)
+apps/mobile/src/components/home/OpponentCard.tsx:106:  coachInitials: { width: 42, height: 42, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
+apps/mobile/src/components/home/HeadlinesBlock.tsx:245:  thumb: { width: 70, height: 54, borderRadius: 8 },
+apps/mobile/src/components/home/HeadlinesBlock.tsx:246:  thumbFallback: { width: 70, height: 54, borderRadius: 8, alignItems: 'center', justifyContent: 'center' },
+apps/mobile/src/components/home/NextMatchCard.tsx:245:  vsBox: { width: 50, minHeight: 76, alignItems: 'center', justifyContent: 'center' },
+apps/mobile/src/components/MatchCard.tsx:78:  dateCol: { width: 84, gap: 2 },
+apps/mobile/src/components/news/NewsStoryCard.tsx:206:  thumb: { width: 72, height: 72, borderRadius: radius.sm },
+apps/mobile/app/(tabs)/team.tsx:465:  listNumber: { width: 32, textAlign: 'center', fontSize: 14, fontWeight: '700' },
+apps/mobile/app/(tabs)/team.tsx:468:  listAge: { width: 34, textAlign: 'center', fontSize: 13, fontWeight: '600' },
+apps/mobile/app/player/[id].tsx:651:  portraitButton: { width: 96, height: 96 },
+apps/mobile/app/rival/[teamId].tsx:197:  meetingResult: { fontWeight: '900', fontSize: 14, width: 22, textAlign: 'center' },
+
+## allowFontScaling
+apps/mobile/src/components/home/WeatherLine.tsx:130:          <Text style={[styles.temperature, { color: paper.text }]} maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}>
+apps/mobile/src/components/home/Countdown.tsx:41:        maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
+apps/mobile/src/components/home/NextMatchCard.tsx:32:        maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
+apps/mobile/src/components/home/NextMatchCard.tsx:148:            <Text maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier} style={[styles.heroScore, { color: colors.poster.text }]}>
+apps/mobile/src/components/home/PositionChart.tsx:108:            maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
+apps/mobile/src/components/design/DesignSystem.tsx:143:        maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
+
+## Interpretación
+El texto display sí limita maxFontSizeMultiplier en varios componentes, pero el texto de cuerpo y las columnas de 20-84 pt no tienen layout alternativo. Con tamaño de texto grande pueden truncar o solapar. Confianza: Probable; requiere prueba visual en dispositivo.

@@ -1,0 +1,16 @@
+# L-25: integridad de plantilla
+
+Fecha: 2026-10-31T11:41:37Z
+
+Dorsales duplicados: {6: ['Marc Casado', 'Noé Carrillo']}
+Jugadores: 28
+Sin photos : 0
+Sin career : 0
+Sin contractUntil : 0
+Sin provenance : 0
+Partidos: 38 con árbitro: 8
+
+## Mismo duplicado en origin/main
+{6: ['Marc Casado', 'Noé Carrillo']}
+
+Conclusión: el dorsal 6 está asignado a Marc Casado y Noé Carrillo en local y en producción. Los 28 jugadores tienen foto, carrera, contrato y procedencia. Solo 8/38 partidos traen árbitro.

@@ -1,0 +1,30 @@
+# L-07: causa raíz del estancamiento de noticias
+
+Fecha: 2026-10-31T11:42:32Z
+
+## Cronología
+- origin/main (producción): solo meta, standings, fixtures y squad en data/public/v1; news.json/season.json/rivals.json/social.json dan 404 en Pages.
+- origin/main: apps/mobile/app/(tabs)/news.tsx es un PlaceholderScreen.
+- origin/main: no existe .github/workflows/news-refresh.yml ni rivals-refresh.yml.
+- HEAD local: 34 commits por delante de origin/main; incluye todo el código H5/H6, news-refresh.yml y los JSON nuevos.
+- HEAD local: news.json existe y está fechado 2026-10-30T08:01:09Z (última ejecución local/manual), no por un cron de GitHub.
+- Reproducción offline del pipeline con la caché local: 72 historias, 5 fuentes, 0 errores, max publishedAt 2026-10-31T08:00:33Z.
+
+## Prueba Git
+6	35
+d5ce9bb chore(audit): retirar andamiaje obsoleto y corregir rutas de documentación
+a5b1ff3 feat(mobile): finish H5 cartel and press redesign
+8a3e4c4 docs(news): ADR 0018, auditoría de fuentes y estado del hito
+6de76bc ci(news): refresco cada 6 horas y fallo si no responde ninguna fuente
+2f963e7 feat(news): historias curadas con relevancia, clústeres y nuevo contrato
+16ba1f7 fix(mobile): ignore season context from another season
+6c6476f feat(mobile): derive rival form from played matches
+2f9ca7c fix(mobile): keep rival labels readable in dark mode
+c891f38 docs: document home v2 and rival context
+841e268 ci: refresh rival head-to-head daily
+7f54835 feat(mobile): redesign home with season, rival and live context
+0f1e2dd feat(data): publish season context and rival head-to-head
+
+## Conclusión
+Las noticias no se actualizan porque la implementación y el workflow solo existen en la rama local; nunca se publicaron a main. GitHub Actions solo ejecuta schedules del branch por defecto. No es un fallo del pipeline ni de las fuentes.
+Confianza: Confirmada.

@@ -1,0 +1,18 @@
+# L-13: sincronía Pydantic ↔ JSON Schema ↔ Zod y validación de datos
+
+Fecha: 2026-10-31T11:38:46Z
+
+## schemas --out temporal vs packages/schemas
+Esquemas escritos en /var/folders/47/s5w64yxd357csjs44m5bkn1w0000gn/T/tmp.YhgJVpPPud
+diff: HAY DIFERENCIAS
+Only in packages/schemas: examples
+
+## Validación Pydantic de los JSON locales
+fixtures.json    OK
+meta.json        OK
+news.json        OK
+rivals.json      OK
+season.json      OK
+social.json      OK
+squad.json       OK
+standings.json   OK

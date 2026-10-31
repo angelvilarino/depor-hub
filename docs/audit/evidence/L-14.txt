@@ -1,0 +1,29 @@
+# L-14: cadencia de los workflows
+
+Fecha: 2026-10-31T11:41:15Z
+
+## data-refresh.yml local (HEAD)
+7:    - cron: "*/10 * * * *"
+21:# curso, el otro espera en cola (cancel-in-progress: false) en vez de pisar el commit.
+22:concurrency:
+24:  cancel-in-progress: false
+50:        run: python -m depor_hub.cli ingest --if-due ${{ inputs.force && '--force' || '' }}
+
+## data-refresh.yml en producción (origin/main)
+4:    - cron: "17 * * * *"
+17:concurrency:
+19:  cancel-in-progress: false
+39:        run: python -m depor_hub.cli ingest ${{ inputs.force && '--force' || '' }}
+
+## news-refresh.yml local
+6:    - cron: "37 */6 * * *"
+21:concurrency:
+23:  cancel-in-progress: false
+28:    timeout-minutes: 15
+51:        run: python -m depor_hub.cli news ${{ inputs.force && '--force' || '' }}
+77:    timeout-minutes: 10
+
+## Conclusión
+- Producción refresca datos cada hora; la copia local cada 10 min con --if-due (10/60 min).
+- news-refresh cada 6 h NO existe en origin/main: no puede ejecutarse.
+- data-refresh de producción tiene concurrencia (grupo data-refresh) pero NO timeout-minutes; un cuelgue puede retener el runner hasta el límite por defecto (6 h).

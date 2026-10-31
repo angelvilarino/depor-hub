@@ -1,0 +1,36 @@
+# L-29: identidad e iconos de la app
+
+Fecha: 2026-10-31T11:41:53Z
+
+## app.json
+5:    "version": "1.0.0",
+7:    "icon": "./assets/icon.png",
+11:      "bundleIdentifier": "com.deporhub.app"
+14:      "adaptiveIcon": {
+15:        "backgroundColor": "#E6F4FE",
+16:        "foregroundImage": "./assets/android-icon-foreground.png",
+17:        "backgroundImage": "./assets/android-icon-background.png",
+18:        "monochromeImage": "./assets/android-icon-monochrome.png"
+21:      "package": "com.deporhub.app"
+24:      "favicon": "./assets/favicon.png"
+
+## Assets
+apps/mobile/assets/icon.png
+apps/mobile/assets/android-icon-background.png
+apps/mobile/assets/favicon.png
+apps/mobile/assets/android-icon-foreground.png
+apps/mobile/assets/android-icon-monochrome.png
+apps/mobile/assets/splash-icon.png
+
+## icon.png
+/Users/mangelvilarino/Desktop/Proyectos/depor-hub/apps/mobile/assets/icon.png
+  pixelWidth: 1024
+  pixelHeight: 1024
+119462bb78eb240a65c869fc067ee599639b3cb5a41953f25c07b17d2a8c7e0f  apps/mobile/assets/icon.png
+
+## eas.json
+no existe
+
+## Observación
+icon.png es el arte de plantilla de Expo (letra A azul sobre fondo #E6F4FE), no el monograma DH descrito en docs/ESTADO.md. Los identificadores com.deporhub.app siguen siendo provisionales.
+Confianza: Confirmada (inspección visual del PNG y color de adaptiveIcon).

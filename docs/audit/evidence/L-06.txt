@@ -1,0 +1,48 @@
+# L-06: feeds y fuentes de noticias
+
+Fecha: 2026-10-31T11:38:03Z
+
+## Catálogo activo
+youtube-club     enabled=True kind=video    priority=5 url=None
+riazor           enabled=True kind=article  priority=10 url=None
+dxt-campeon      enabled=True kind=article  priority=20 url=None
+la-voz           enabled=True kind=article  priority=30 url=None
+marca            enabled=True kind=article  priority=40 url=None
+club-official    enabled=False kind=article  priority=1 url=None
+as-direct        enabled=False kind=article  priority=50 url=None
+sport-direct     enabled=False kind=article  priority=51 url=None
+cadena-ser       enabled=False kind=article  priority=52 url=None
+cope             enabled=False kind=article  priority=53 url=None
+galiciapress     enabled=False kind=article  priority=54 url=None
+ideal-gallego    enabled=False kind=article  priority=55 url=None
+diario-de-ferrol enabled=False kind=article  priority=56 url=None
+relevo           enabled=False kind=article  priority=57 url=None
+mundo-deportivo  enabled=False kind=article  priority=58 url=None
+el-desmarque     enabled=False kind=article  priority=59 url=None
+
+## Última auditoría publicada
+18:| **RSS/Atom de medios y YouTube** | Titular, fuente, fecha, miniatura y resumen tal como los publica el feed; nunca el cuerpo del artículo | Solo lo que el feed entrega; User-Agent identificable, 1 s por dominio y `ETag`/`If-Modified-Since`. Los 403/406/429 se documentan y no se rodean | Cada 6 h; 14 días de ventana | En uso: 5 fuentes curadas y 0 errores en la calibración del 29-oct-2026 (tabla en «Noticias») |
+34:Auditoría de referencia: **29-Oct-2026 10:00 UTC**. `Relevantes` aplica el filtro del Depor de ADR 0018; es una foto de calibración, no un refresco en vivo.
+38:| RC Deportivo (YouTube) | club | https://www.youtube.com/feeds/videos.xml?channel_id=UCY2s1XaPzO60Hu6M_YZCTgA | ok | 15 | 15 | 2026-10-28 09:18Z | 15/15 | 2/15 | Canal oficial. Excepción expresa al RSS de YouTube (ADR 0018). |
+39:| Riazor.org | galicia | https://www.riazor.org/feed/ | ok | 25 | 14 | 2026-10-29 08:00Z | 5/25 | 25/25 | Medio independiente centrado en el Depor; `robots.txt` permite `/feed/$`. |
+40:| DXT Campeón | galicia | https://dxtcampeon.elidealgallego.com/rss | ok | 33 | 13 | 2026-10-29 04:00Z | 33/33 | 33/33 | Sección deportiva del Ideal Gallego; el filtro descarta el deporte local no-Depor. |
+41:| La Voz de Galicia | galicia | https://www.lavozdegalicia.es/temas/deportivo/index.xml | ok | 19 | 8 | 2026-10-29 04:00Z | 19/19 | 16/19 | Feed de tema Deportivo, no la portada de Deportes. |
+42:| Marca | nacional | https://www.marca.com/rss/googlenews/futbol/deportivo.xml | ok | 50 | 14 | 2026-10-29 09:52Z | 48/50 | 50/50 | Único nacional con feed directo del Depor; mezcla otros equipos y no es `depor_specific`. |
+51:| **Web oficial del club** | Sin RSS/Atom propio (`/feed`, `/rss` y `/rss.xml` dan 404); no se hace scraping HTML | Canal de YouTube |
+57:| **El Ideal Gallego (Deportes)** | Portada de deportes: 2/61 relevantes; DXT ya cubre la sección del Depor | DXT Campeón |
+74:«Deportivo» a secas no cuenta: solo suman las señales del club de A Coruña, su entorno y su plantilla. Se excluyen otros «Deportivo» (Alavés, Cali, Saprissa, Tenerife, Betis Deportivo…), el `Riazor` de playa o sucesos y los apellidos comunes sueltos. Un titular que solo se apoya en el extracto se descarta como `solo_extracto`. El umbral es configurable con `--threshold` y `--report` muestra los descartes por motivo.
+92:YouTube es la única fuente sin miniaturas propias en todos los ítems (solo algunos vídeos traen `media:thumbnail`); la app pinta un monograma cuando falta. Riazor.org apenas ofrece `enclosure` (5/25) y el resumen se toma del feed, nunca del artículo. Algunos medios cambian de WAF o de URL sin aviso: `news audit` lo detecta y actualiza la tabla y el catálogo. Todo el contenido enlaza al medio original; el proyecto no redistribuye el artículo.
+142:Solo Riazor tiene coordenadas verificadas (`43.3686, -8.4175`). Las demás sedes ocultan el tiempo hasta que exista una coordenada contrastada. Open-Meteo se usa bajo **CC BY 4.0** y la app muestra «Datos: Open-Meteo». Un fallo de la API no rompe la Home.
+
+## Auditoría online 2026-10-31T11:44:14Z
+| Fuente | Grupo | Feed | Estado | Ítems | Relevantes | Más reciente | Imagen | Resumen | Nota |
+|---|---|---|---|---:|---:|---|---:|---:|---|
+| RC Deportivo (YouTube) | club | https://www.youtube.com/feeds/videos.xml?channel_id=UCY2s1XaPzO60Hu6M_YZCTgA | ok | 15 | 15 | 2026-10-30 19:44Z | 15/15 | 2/15 | Canal oficial. Se mantiene el RSS público por decisión expresa del responsable del proyecto (ADR 0018); YouTube lo desaconseja en robots.txt. |
+| Riazor.org | galicia | https://www.riazor.org/feed/ | ok | 25 | 13 | 2026-10-31 11:30Z | 2/25 | 25/25 | Medio independiente centrado en el Depor. robots.txt permite /feed/$. |
+| DXT Campeón | galicia | https://dxtcampeon.elidealgallego.com/rss | ok | 32 | 9 | 2026-10-31 04:00Z | 32/32 | 32/32 | Sección deportiva del Ideal Gallego; incluye deporte local no-Depor que el filtro descarta. |
+| La Voz de Galicia | galicia | https://www.lavozdegalicia.es/temas/deportivo/index.xml | ok | 20 | 14 | 2026-10-31 04:00Z | 20/20 | 19/20 | Feed de tema Deportivo, no la portada de Deportes. |
+| Marca | nacional | https://www.marca.com/rss/googlenews/futbol/deportivo.xml | ok | 50 | 15 | 2026-10-29 21:58Z | 48/50 | 50/50 | Único nacional con feed directo del Depor; mezcla Atlético y otros equipos, por eso no es depor_specific. |
+
+Feeds auditados: 5 · con error: 0
+
+Resultado: 5/5 fuentes OK, 0 errores; Riazor.org publicó a las 11:30Z del 31-oct.
