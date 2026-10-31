@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T16:42:30Z",
+  "updatedAt": "2026-10-31T17:52:16Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
@@ -69,11 +69,11 @@
         "tla": "BET",
         "crestUrl": "https://crests.football-data.org/90.png"
       },
-      "played": 10,
+      "played": 11,
       "won": 6,
-      "draw": 2,
+      "draw": 3,
       "lost": 2,
-      "points": 20,
+      "points": 21,
       "goalsFor": 16,
       "goalsAgainst": 14,
       "goalDifference": 2,
@@ -158,25 +158,6 @@
     {
       "position": 9,
       "team": {
-        "id": 558,
-        "name": "RC Celta de Vigo",
-        "shortName": "Celta",
-        "tla": "CEL",
-        "crestUrl": "https://crests.football-data.org/558.png"
-      },
-      "played": 11,
-      "won": 2,
-      "draw": 6,
-      "lost": 3,
-      "points": 12,
-      "goalsFor": 10,
-      "goalsAgainst": 9,
-      "goalDifference": 1,
-      "form": null
-    },
-    {
-      "position": 10,
-      "team": {
         "id": 94,
         "name": "Villarreal CF",
         "shortName": "Villarreal",
@@ -194,6 +175,25 @@
       "form": null
     },
     {
+      "position": 10,
+      "team": {
+        "id": 558,
+        "name": "RC Celta de Vigo",
+        "shortName": "Celta",
+        "tla": "CEL",
+        "crestUrl": "https://crests.football-data.org/558.png"
+      },
+      "played": 11,
+      "won": 2,
+      "draw": 6,
+      "lost": 3,
+      "points": 12,
+      "goalsFor": 10,
+      "goalsAgainst": 10,
+      "goalDifference": 0,
+      "form": null
+    },
+    {
       "position": 11,
       "team": {
         "id": 87,
@@ -207,9 +207,9 @@
       "draw": 3,
       "lost": 4,
       "points": 12,
-      "goalsFor": 14,
+      "goalsFor": 15,
       "goalsAgainst": 20,
-      "goalDifference": -6,
+      "goalDifference": -5,
       "form": null
     },
     {
@@ -373,11 +373,11 @@
         "tla": "MAL",
         "crestUrl": "https://crests.football-data.org/84.png"
       },
-      "played": 10,
+      "played": 11,
       "won": 0,
-      "draw": 5,
+      "draw": 6,
       "lost": 5,
-      "points": 5,
+      "points": 6,
       "goalsFor": 7,
       "goalsAgainst": 19,
       "goalDifference": -12,
