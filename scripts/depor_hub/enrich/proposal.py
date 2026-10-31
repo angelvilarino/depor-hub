@@ -16,7 +16,7 @@ from typing import Any
 import yaml
 
 from .. import models as m
-from . import bdfutbol, official, wikidata, wikipedia
+from . import bdfutbol, crests, official, wikidata, wikipedia
 from .bdfutbol import BDFutbolClient, Candidate, CareerEntryData, MatchData, Profile, SeasonRow
 from .official import OfficialPlayer, OfficialProfile
 from .wikidata import WikidataCareer, WikidataClient, WikidataData
@@ -170,12 +170,38 @@ class EnrichmentProposal:
             for key, label in _FIELD_LABELS.items():
                 if key in player.decisions:
                     counts[label] = counts.get(label, 0) + 1
+        career = [
+            entry
+            for player in self.players
+            for entry in (
+                (player.decisions["career"].value or []) if "career" in player.decisions else []
+            )
+        ]
+        matches = [
+            match
+            for player in self.players
+            for match in (
+                (player.decisions["depor_matches"].value or [])
+                if "depor_matches" in player.decisions
+                else []
+            )
+        ]
         return {
             "players": total,
             "withData": sum(1 for p in self.players if p.decisions),
             "withErrors": sum(1 for p in self.players if p.error),
             "fields": counts,
             "conflicts": sum(len(p.conflicts) for p in self.players),
+            "crests": {
+                "career": {
+                    "total": len(career),
+                    "resolved": sum(1 for entry in career if entry.crest_url),
+                },
+                "matches": {
+                    "total": len(matches),
+                    "resolved": sum(1 for match in matches if match.opponent_crest_url),
+                },
+            },
         }
 
     def generated_extras(self, min_confidence: str) -> dict[int, dict[str, Any]]:
@@ -420,6 +446,7 @@ def _photo_dict(photo: dict[str, Any]) -> dict[str, Any]:
 def _career_dict(entry: CareerEntryData) -> dict[str, Any]:
     return {
         "club": entry.club,
+        "crest_url": entry.crest_url,
         "from": entry.from_,
         "to": entry.to,
         "appearances": entry.appearances,
@@ -473,6 +500,7 @@ def _match_dict(match: MatchData) -> dict[str, Any]:
     return {
         "date": match.date,
         "opponent": match.opponent,
+        "opponent_crest_url": match.opponent_crest_url,
         "competition": match.competition,
         "home": match.home,
         "team_goals": match.team_goals,
@@ -506,6 +534,7 @@ def collect_player(
     official_players: list[OfficialPlayer] = (),
     wiki_client: wikipedia.WikipediaClient | None = None,
     with_photos: bool = True,
+    crest_resolver: crests.CrestResolver | None = None,
 ) -> PlayerProposal:
     proposal = PlayerProposal(player_id=player.id, name=player.name)
 
@@ -735,6 +764,12 @@ def collect_player(
             urls=(off.source_url,),
         )
 
+    if crest_resolver is not None:
+        for entry in profile.career if profile is not None else []:
+            entry.crest_url = crest_resolver.resolve(entry.club)
+        for match in matches:
+            match.opponent_crest_url = crest_resolver.resolve(match.opponent)
+
     if profile is not None and profile.career:
         confidence = "cross_checked" if wd_data and _career_overlap(profile.career, wd_data.career) else "single_source"
         proposal.decisions["career"] = Decision(
@@ -756,6 +791,9 @@ def collect_player(
                     yellow_cards=None,
                     red_cards=None,
                     seasons=[],
+                    crest_url=(
+                        crest_resolver.resolve(c.club) if crest_resolver is not None else None
+                    ),
                 )
                 for c in wd_data.career
             ],
@@ -796,6 +834,7 @@ def build_proposals(
     log: Any = None,
     wiki_client: wikipedia.WikipediaClient | None = None,
     with_photos: bool = True,
+    crest_resolver: crests.CrestResolver | None = None,
 ) -> EnrichmentProposal:
     players = squad.players[:limit] if limit else squad.players
     out: list[PlayerProposal] = []
@@ -805,7 +844,7 @@ def build_proposals(
         try:
             out.append(collect_player(
                 player, bdf, wd, wiki_players, official_profiles, official_players,
-                wiki_client, with_photos,
+                wiki_client, with_photos, crest_resolver,
             ))
         except Exception as exc:
             out.append(PlayerProposal(player_id=player.id, name=player.name, error=str(exc)))
@@ -903,6 +942,8 @@ _LEGACY_KEYS = {
     "marketValueEur": "market_value_eur",
     "licenseUrl": "license_url",
     "sourceUrl": "source_url",
+    "crestUrl": "crest_url",
+    "opponentCrestUrl": "opponent_crest_url",
 }
 
 

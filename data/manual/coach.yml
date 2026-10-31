@@ -1,0 +1,180 @@
+coach:
+  name: Antonio Hidalgo Morilla
+  nationality: España
+  birth_date: '1979-02-06'
+  birth_place: Granollers
+  photo_url: https://scdn.ovixia.app/images/scn1tr4b/production/a1cec405-4daa-441e-bb45-f1c7361ef4c8-4531x6793.jpg
+  since: '2025'
+  contract_until: null
+  career:
+  - club: FC Barcelona B
+    role: player
+    from: '1998'
+    to: '2000'
+    appearances: 66
+    goals: 4
+    crest_url: https://crests.football-data.org/81.png
+  - club: CD Tenerife
+    role: player
+    from: '2000'
+    to: '2005'
+    appearances: 122
+    goals: 15
+    crest_url: https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Escucdt.png/120px-Escucdt.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  - club: Málaga CF
+    role: player
+    from: '2005'
+    to: '2008'
+    appearances: 109
+    goals: 28
+    crest_url: https://crests.football-data.org/84.png
+  - club: Real Zaragoza
+    role: player
+    from: '2008'
+    to: '2009'
+    appearances: 17
+    goals: 0
+    crest_url: https://thumb.wikimedia.org/wikipedia/en/thumb/6/69/Real_Zaragoza_logo.svg/120px-Real_Zaragoza_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  - club: CA Osasuna
+    role: player
+    from: '2008'
+    to: '2009'
+    appearances: 12
+    goals: 0
+    crest_url: https://crests.football-data.org/79.png
+  - club: Albacete Balompié
+    role: player
+    from: '2009'
+    to: '2010'
+    appearances: 33
+    goals: 9
+    crest_url: https://thumb.wikimedia.org/wikipedia/en/thumb/3/37/Albacete_balompie.svg/120px-Albacete_balompie.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  - club: CD Tenerife
+    role: player
+    from: '2010'
+    to: '2011'
+    appearances: 29
+    goals: 3
+    crest_url: https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Escucdt.png/120px-Escucdt.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  - club: CE Sabadell
+    role: player
+    from: '2012'
+    to: '2015'
+    appearances: 120
+    goals: 12
+    crest_url: https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/CE_Sabadell_FC_1903.png/120px-CE_Sabadell_FC_1903.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  - club: UE Cornellà
+    role: player
+    from: '2015'
+    to: '2015'
+    appearances: 5
+    goals: 0
+    crest_url: https://thumb.wikimedia.org/wikipedia/en/thumb/0/0d/UE_Cornella_crest.svg/120px-UE_Cornella_crest.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  - club: EC Granollers
+    role: coach
+    from: '2016'
+    to: '2016'
+    appearances: null
+    goals: null
+    crest_url: null
+  - club: AEK Larnaca
+    role: coach
+    from: '2016'
+    to: '2019'
+    appearances: null
+    goals: null
+    crest_url: https://thumb.wikimedia.org/wikipedia/en/thumb/f/f9/AEK_Larnaca_logo.svg/120px-AEK_Larnaca_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  - club: CE Sabadell
+    role: coach
+    from: '2019'
+    to: '2021'
+    appearances: null
+    goals: null
+    crest_url: https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/CE_Sabadell_FC_1903.png/120px-CE_Sabadell_FC_1903.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  - club: Sevilla Atlético
+    role: coach
+    from: '2022'
+    to: '2023'
+    appearances: null
+    goals: null
+    crest_url: https://crests.football-data.org/559.png
+  - club: SD Huesca
+    role: coach
+    from: '2023'
+    to: '2025'
+    appearances: null
+    goals: null
+    crest_url: https://thumb.wikimedia.org/wikipedia/en/thumb/8/8a/Logo_of_SD_Huesca.svg/120px-Logo_of_SD_Huesca.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  - club: Deportivo de La Coruña
+    role: coach
+    from: '2025'
+    to: null
+    appearances: null
+    goals: null
+    crest_url: https://crests.football-data.org/560.png
+  staff:
+  - name: Antonio Hidalgo
+    role: head_coach
+  - name: Ignasi Salafranca
+    role: assistant_coach
+  - name: Óscar Hernández
+    role: technical_assistant
+  - name: Alberto Casal
+    role: goalkeeping_coach
+  - name: Roberto Cabellud
+    role: fitness_coach
+  - name: Sergio Roca
+    role: fitness_coach
+  - name: Alejandro Antón
+    role: analyst
+  - name: Asier Marote
+    role: analyst
+  - name: Pablo Barros
+    role: delegate
+  - name: Arnau Domínguez
+    role: kit_manager
+  - name: Diego Díaz
+    role: kit_manager
+  - name: Alejandro Mejuto
+    role: doctor
+  - name: Adrián Lonut
+    role: physiotherapist
+  - name: Daniel Varela
+    role: physiotherapist
+  - name: Rubén Barreiro
+    role: physiotherapist
+  - name: Emilio J. Pena
+    role: physiotherapist
+  - name: Daniel Pedrosa
+    role: nutritionist
+  - name: Manuel Mosquera
+    role: podiatrist
+  - name: Fernando Rodríguez
+    role: rehab_coach
+  - name: Ignacio González
+    role: rehab_coach
+  - name: Joaquín Sorribas
+    role: psychologist
+  source: Wikidata + Wikipedia + web oficial
+  confidence: cross_checked
+  provenance:
+    birthDate:
+      source: Wikidata Q602465 + Wikipedia (es)
+      confidence: cross_checked
+      captured_at: '2026-10-26'
+    birthPlace:
+      source: Wikidata Q602465 + Wikipedia (es)
+      confidence: cross_checked
+      captured_at: '2026-10-26'
+    photoUrl:
+      source: Web oficial del RC Deportivo
+      confidence: verified
+      captured_at: '2026-10-26'
+    career:
+      source: Wikipedia (es)
+      confidence: single_source
+      captured_at: '2026-10-26'
+    staff:
+      source: Web oficial del RC Deportivo
+      confidence: verified
+      captured_at: '2026-10-26'

@@ -1,0 +1,307 @@
+{
+  "$defs": {
+    "PositionPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "matchday": {
+          "minimum": 0,
+          "title": "Matchday",
+          "type": "integer"
+        },
+        "points": {
+          "minimum": 0,
+          "title": "Points",
+          "type": "integer"
+        },
+        "position": {
+          "minimum": 1,
+          "title": "Position",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "matchday",
+        "position",
+        "points"
+      ],
+      "title": "PositionPoint",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "description": "De d\u00f3nde sale un dato y con qu\u00e9 confianza (ADR 0008).",
+      "properties": {
+        "capturedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Capturedat"
+        },
+        "confidence": {
+          "default": "single_source",
+          "enum": [
+            "verified",
+            "cross_checked",
+            "single_source",
+            "estimated"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "SeasonFormMatch": {
+      "additionalProperties": false,
+      "description": "Partido terminado con el detalle m\u00ednimo para explicar la racha.",
+      "properties": {
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "home": {
+          "title": "Home",
+          "type": "boolean"
+        },
+        "matchId": {
+          "title": "Matchid",
+          "type": "integer"
+        },
+        "matchday": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Matchday"
+        },
+        "opponent": {
+          "$ref": "#/$defs/TeamRef"
+        },
+        "result": {
+          "enum": [
+            "W",
+            "D",
+            "L"
+          ],
+          "title": "Result",
+          "type": "string"
+        },
+        "scoreAgainst": {
+          "minimum": 0,
+          "title": "Scoreagainst",
+          "type": "integer"
+        },
+        "scoreFor": {
+          "minimum": 0,
+          "title": "Scorefor",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "matchId",
+        "date",
+        "opponent",
+        "home",
+        "scoreFor",
+        "scoreAgainst",
+        "result"
+      ],
+      "title": "SeasonFormMatch",
+      "type": "object"
+    },
+    "SeasonSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "drawn": {
+          "minimum": 0,
+          "title": "Drawn",
+          "type": "integer"
+        },
+        "goalDifference": {
+          "title": "Goaldifference",
+          "type": "integer"
+        },
+        "goalsAgainst": {
+          "minimum": 0,
+          "title": "Goalsagainst",
+          "type": "integer"
+        },
+        "goalsFor": {
+          "minimum": 0,
+          "title": "Goalsfor",
+          "type": "integer"
+        },
+        "lost": {
+          "minimum": 0,
+          "title": "Lost",
+          "type": "integer"
+        },
+        "played": {
+          "minimum": 0,
+          "title": "Played",
+          "type": "integer"
+        },
+        "points": {
+          "minimum": 0,
+          "title": "Points",
+          "type": "integer"
+        },
+        "position": {
+          "minimum": 1,
+          "title": "Position",
+          "type": "integer"
+        },
+        "won": {
+          "minimum": 0,
+          "title": "Won",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "position",
+        "points",
+        "played",
+        "won",
+        "drawn",
+        "lost",
+        "goalsFor",
+        "goalsAgainst",
+        "goalDifference"
+      ],
+      "title": "SeasonSummary",
+      "type": "object"
+    },
+    "TeamRef": {
+      "additionalProperties": false,
+      "properties": {
+        "crestUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cresturl"
+        },
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "shortName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shortname"
+        },
+        "tla": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tla"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "TeamRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "form": {
+      "items": {
+        "$ref": "#/$defs/SeasonFormMatch"
+      },
+      "title": "Form",
+      "type": "array"
+    },
+    "matchday": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Matchday"
+    },
+    "positionEvolution": {
+      "items": {
+        "$ref": "#/$defs/PositionPoint"
+      },
+      "title": "Positionevolution",
+      "type": "array"
+    },
+    "provenance": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Provenance"
+      },
+      "title": "Provenance",
+      "type": "object"
+    },
+    "season": {
+      "title": "Season",
+      "type": "string"
+    },
+    "summary": {
+      "$ref": "#/$defs/SeasonSummary"
+    },
+    "team": {
+      "$ref": "#/$defs/TeamRef"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "season",
+    "team",
+    "summary"
+  ],
+  "title": "Season",
+  "type": "object"
+}

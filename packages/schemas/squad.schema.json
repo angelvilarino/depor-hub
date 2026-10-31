@@ -33,6 +33,18 @@
           "title": "Club",
           "type": "string"
         },
+        "crestUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cresturl"
+        },
         "from": {
           "anyOf": [
             {
@@ -83,6 +95,15 @@
           ],
           "default": null,
           "title": "Redcards"
+        },
+        "role": {
+          "default": "player",
+          "enum": [
+            "player",
+            "coach"
+          ],
+          "title": "Role",
+          "type": "string"
         },
         "seasons": {
           "items": {
@@ -315,6 +336,25 @@
           "default": null,
           "title": "Birthdate"
         },
+        "birthPlace": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Birthplace"
+        },
+        "career": {
+          "items": {
+            "$ref": "#/$defs/CareerEntry"
+          },
+          "title": "Career",
+          "type": "array"
+        },
         "contractUntil": {
           "anyOf": [
             {
@@ -351,6 +391,18 @@
           "default": null,
           "title": "Nationality"
         },
+        "photoUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Photourl"
+        },
         "provenance": {
           "additionalProperties": {
             "$ref": "#/$defs/Provenance"
@@ -369,6 +421,13 @@
           ],
           "default": null,
           "title": "Since"
+        },
+        "staff": {
+          "items": {
+            "$ref": "#/$defs/StaffMember"
+          },
+          "title": "Staff",
+          "type": "array"
         }
       },
       "title": "Coach",
@@ -644,6 +703,18 @@
         "opponent": {
           "title": "Opponent",
           "type": "string"
+        },
+        "opponentCrestUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Opponentcresturl"
         },
         "opponentGoals": {
           "anyOf": [
@@ -924,6 +995,38 @@
         }
       },
       "title": "Social",
+      "type": "object"
+    },
+    "StaffMember": {
+      "additionalProperties": false,
+      "description": "Miembro del cuerpo t\u00e9cnico publicado por la web oficial (ADR 0014).\n\n`role` es una clave estable (``head_coach``, ``assistant_coach``...); la app la\ntraduce y, si no la conoce, muestra el texto original sin inventar nada.",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "photoUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Photourl"
+        },
+        "role": {
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "role"
+      ],
+      "title": "StaffMember",
       "type": "object"
     }
   },

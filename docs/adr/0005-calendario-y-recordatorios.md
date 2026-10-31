@@ -1,6 +1,6 @@
 # ADR 0005 — Calendario, recordatorios locales y exportación (H3)
 - **Hora:** SCHEDULED = hora no fijada (00:00Z de la API): solo fecha (leída en UTC) y «Hora por confirmar». Resto de estados: hora real en Europe/Madrid. Nunca se inventa hora.
 - **Recordatorios:** opt-in por partido (el permiso se pide al pulsar «Recordarme»). Solo TIMED futuros, 24 h y 1 h antes. `ReminderSync` cancela las notificaciones propias y replanifica (`plan.ts`, pura y testeada) al cambiar datos o ajustes; cubre cambios de hora y aplazamientos.
-- **Añadir al calendario:** `createEventInCalendarAsync` (editor del sistema, sin permiso). Descartado: escribir en un calendario concreto (exige permisos).
+- **Añadir al calendario:** el editor del sistema, sin permiso. En iOS, `Calendar.presentPicker()` + `cal.addEventWithForm()`; si la API no está disponible (Expo Go, Android o build antigua) o falla, se comparte un `.ics`. El error específico solo se muestra si también falla el `.ics`. **Corregido en el ADR 0017:** `createEventInCalendarAsync` ya no existe en `expo-calendar` 58. El editor nativo no se puede probar en Expo Go porque el módulo nativo no está incluido; requiere development build.
 - **.ics:** generado en el dispositivo, escrito en caché y compartido con la hoja del sistema. Aplazados/suspendidos/cancelados excluidos; SCHEDULED = día completo.
 - **Fuera de H3:** árbitro y sede de partidos fuera de casa (no están en el contrato); alineaciones/eventos («Próximamente»).

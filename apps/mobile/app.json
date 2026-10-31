@@ -32,11 +32,15 @@
       [
         "expo-calendar",
         {
-          "calendarPermission": "Depor Hub añade los partidos que tú elijas a tu calendario."
+          "calendarPermission": false,
+          "writeOnlyAccess": true,
+          "writeOnlyCalendarPermission": "Depor Hub añade los partidos que tú elijas a tu calendario.",
+          "remindersPermission": false
         }
       ],
       "expo-sharing",
-      "expo-image"
+      "expo-image",
+      "expo-web-browser"
     ]
   }
 }

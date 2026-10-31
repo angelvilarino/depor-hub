@@ -35,7 +35,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
       persistOptions={{
         persister,
         maxAge: GC_TIME,
-        buster: 'data-v3', // v3: fotos y ficha oficial (ADR 0009); descarta la caché anterior
+        buster: 'data-v6', // v6: noticias por historia y fuentes curadas (ADR 0018)
         dehydrateOptions: { shouldDehydrateQuery: (q) => q.state.status === 'success' },
       }}
     >

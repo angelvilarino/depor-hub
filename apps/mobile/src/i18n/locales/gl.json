@@ -12,6 +12,11 @@
     "remindersOn": "Activados",
     "remindersOff": "Desactivados"
   },
+  "competition": {
+    "PD": "Primeira División",
+    "SD": "Segunda División",
+    "CDR": "Copa do Rei"
+  },
   "calendar": {
     "upcoming": "Próximos",
     "results": "Resultados",
@@ -26,13 +31,10 @@
   },
   "team": {
     "coach": "Adestrador",
-    "group": {
-      "GK": "Porteiros",
-      "DF": "Defensas",
-      "MF": "Centrocampistas",
-      "FW": "Dianteiros",
-      "OTHER": "Outros"
-    }
+    "summary_one": "{{count}} xogador",
+    "summary_other": "{{count}} xogadores",
+    "loaned": "Cedido",
+    "openCoach": "Abrir ficha do adestrador"
   },
   "player": {
     "title": "Xogador",
@@ -64,13 +66,11 @@
       "instagram": "Instagram",
       "tiktok": "TikTok"
     },
-    "photosTitle": "Fotos",
     "photoLicense": "Licenza: {{license}}",
     "photoSource": "Ver ficha da foto",
     "photoAuthor": "Autoría: {{author}}",
     "photoNote": "As fotos enlázanse desde a súa fonte orixinal con atribución; non se redistribúen.",
     "careerTitle": "Traxectoria",
-    "careerTotalsTitle": "Totais de carreira",
     "deporMatchesTitle": "Partidos co Depor",
     "matchHome": "Local",
     "matchAway": "Visitante",
@@ -87,13 +87,6 @@
       "minutesShort": "min",
       "yellowCardsShort": "TA",
       "redCardsShort": "TV"
-    },
-    "sourceLine": "Fonte: {{sources}} · Confianza: {{confidence}}",
-    "confidence": {
-      "verified": "verificada",
-      "cross_checked": "contrastada",
-      "single_source": "unha fonte",
-      "estimated": "estimación"
     },
     "pendingTitle": "Datos pendentes",
     "positionName": {
@@ -112,6 +105,102 @@
       "weightKg": "Peso",
       "preferredFoot": "Pé dominante",
       "contractUntil": "Contrato"
-    }
+    },
+    "scope": {
+      "depor": "Depor {{season}}",
+      "deporShort": "Depor",
+      "career": "Carreira"
+    },
+    "tabs": {
+      "summary": "Resumo",
+      "matches": "Partidos",
+      "career": "Carreira"
+    },
+    "loanFromValue": "Cedido por {{club}}",
+    "loanToValue": "Cedido a {{club}}",
+    "careerEmpty": "Sen traxectoria rexistrada."
+  },
+  "coach": {
+    "title": "Adestrador",
+    "notFound": "Non se atopou a ficha do adestrador.",
+    "role": "Adestrador",
+    "personalTitle": "Datos persoais",
+    "birth": "Nacemento",
+    "birthPlace": "Lugar de nacemento",
+    "nationality": "Nacionalidade",
+    "age": "Idade",
+    "since": "Desde",
+    "sinceValue": "No Depor desde {{year}}",
+    "contract": "Contrato ata",
+    "recordTitle": "Balance co Depor",
+    "recordNote": "Calculado cos partidos rematados da tempada publicada.",
+    "careerTitle": "Traxectoria",
+    "careerCoach": "Adestrador",
+    "careerPlayer": "Xogador",
+    "careerEmpty": "Sen traxectoria rexistrada.",
+    "staffTitle": "Corpo técnico",
+    "staffNote": "Publicado pola web oficial do club.",
+    "sourceNote": "Datos de Wikidata, Wikipedia e a web oficial do club."
+  },
+  "home": {
+    "seeAllHeadlines": "Ver todas"
+  },
+  "news": {
+    "searchOpen": "Buscar",
+    "searchClose": "Pechar busca",
+    "searchPlaceholder": "Buscar titulares, medio ou etiqueta",
+    "searchClear": "Borrar busca",
+    "filters": "Filtros",
+    "filtersTitle": "Filtros",
+    "sources": "Fontes",
+    "noSources": "Non hai fontes con novas.",
+    "filterSource": "{{source}}: {{count}} novas",
+    "tagsTitle": "Etiquetas",
+    "noTags": "Non hai etiquetas.",
+    "filterTag": "{{tag}}: {{count}} novas",
+    "clearFilters": "Quitar filtros",
+    "clearFiltersCount": "Limpar ({{count}})",
+    "group": {
+      "club": "Club",
+      "galicia": "Galicia",
+      "nacional": "Nacional"
+    },
+    "kind": {
+      "all": "Todo",
+      "article": "Artigos",
+      "video": "Vídeos"
+    },
+    "unread": "Non lida",
+    "unreadCount": "{{count}} sen ler",
+    "markAllShort": "Marcar lidas",
+    "today": "Hoxe",
+    "yesterday": "Onte",
+    "openItem": "Abrir nova: {{title}} ({{source}})",
+    "openError": "Non se puido abrir a ligazón.",
+    "openAlsoIn": "Abrir versión en {{source}}: {{title}}",
+    "emptyAll": "Aínda non hai novas publicadas.",
+    "emptyFiltered": "Non hai novas con estes filtros.",
+    "socialTitle": "Redes oficiais",
+    "platforms": {
+      "x": "X",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "tiktok": "TikTok",
+      "facebook": "Facebook",
+      "whatsapp": "WhatsApp",
+      "twitch": "Twitch",
+      "bluesky": "Bluesky",
+      "threads": "Threads"
+    },
+    "tags": {
+      "fichajes": "Fichaxes",
+      "cantera": "Canteira",
+      "lesiones": "Lesións",
+      "partido": "Partido",
+      "aficion": "Afección",
+      "club": "Club",
+      "opinion": "Opinión"
+    },
+    "filterTagOnly": "Filtrar por {{tag}}"
   }
 }

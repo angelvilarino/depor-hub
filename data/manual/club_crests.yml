@@ -1,0 +1,20 @@
+# Escudos manuales de club (ADR 0012).
+#
+# Solo se usan cuando football-data.org y Wikidata no resuelven el club. Nunca se
+# inventa un escudo: si no hay una URL fiable, se deja fuera y la app pinta un monograma.
+#
+# Formato:
+# clubs:
+#   Nombre del club:
+#     url: https://...
+#     source: https://...   # opcional, para revisión humana
+#
+# La clave debe ser el nombre que aparece en la carrera o en los partidos. El emparejador
+# normaliza tildes, mayúsculas y sufijos societarios (CF, FC, SAD...), pero no adivina.
+clubs:
+  RB Leipzig:
+    url: https://en.wikipedia.org/wiki/Special:FilePath/RB_Leipzig_2014_logo.svg?width=96
+    source: https://en.wikipedia.org/wiki/RB_Leipzig
+    note: >-
+      El escudo oficial es apaisado (390x256) y no pasa el filtro de forma 0,4-1,4.
+      Se fija la miniatura del fichero del infobox de Wikipedia en inglés.

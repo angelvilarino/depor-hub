@@ -1,29 +1,32 @@
 name: Data refresh
 on:
   schedule:
-    - cron: "17 * * * *"
+    # Cada 10 min: --if-due decide 10 min en ventana de partido y 60 min fuera.
+    # GitHub Actions no garantiza puntualidad y puede retrasarse; el estado real del
+    # último refresco vive en la caché.
+    - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs:
       force:
-        description: "Publicar aunque no haya cambios"
+        description: "Publicar aunque no haya cambios y saltarse --if-due"
         type: boolean
         default: false
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
+# Los dos workflows de datos comparten grupo: nunca publican a la vez. Si uno está en
+# curso, el otro espera en cola (cancel-in-progress: false) en vez de pisar el commit.
 concurrency:
-  group: data-refresh
+  group: data-publish
   cancel-in-progress: false
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+    timeout-minutes: 10
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,25 +35,69 @@ jobs:
           cache: pip
           cache-dependency-path: scripts/pyproject.toml
       - run: pip install -e scripts
+      - name: Restaurar el último refresco
+        uses: actions/cache/restore@v4
+        with:
+          path: data/raw/ingest_state.json
+          key: ingest-state-${{ github.run_id }}
+          restore-keys: |
+            ingest-state-
       - id: ingest
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
-        run: python -m depor_hub.cli ingest ${{ inputs.force && '--force' || '' }}
+        run: python -m depor_hub.cli ingest --if-due ${{ inputs.force && '--force' || '' }}
+      - name: Guardar el último refresco
+        if: steps.ingest.outputs.refreshed == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: data/raw/ingest_state.json
+          key: ingest-state-${{ github.run_id }}
+      - name: Validar todos los datos antes de publicar
+        run: python -m depor_hub.cli validate --data data/public/v1
       - name: Commit de los datos
-        if: steps.ingest.outputs.changed == 'true'
+        id: commit
         run: |
           git config user.name "depor-hub-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/public
-          git commit -m "data: refresh $(date -u +%Y-%m-%dT%H:%MZ)" || echo "nada que commitear"
-          git push
-      - uses: actions/configure-pages@v5
-        if: steps.ingest.outputs.changed == 'true'
-      - uses: actions/upload-pages-artifact@v3
-        if: steps.ingest.outputs.changed == 'true'
+          git add -A data/public
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "data: refresh $(date -u +%Y-%m-%dT%H:%MZ)"
+          pushed=false
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then pushed=true; break; fi
+            sleep "$((attempt * 2))"
+          done
+          [ "$pushed" = true ]
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  # Se despliega desde un checkout nuevo de main: así Pages publica exactamente el
+  # commit que acaba de quedar en el repositorio, con data/public completo.
+  deploy:
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
         with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          # deploy-pages sustituye Pages entero: siempre subimos el snapshot completo.
           path: data/public
       - id: deploy
-        if: steps.ingest.outputs.changed == 'true'
         uses: actions/deploy-pages@v4

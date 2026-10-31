@@ -46,6 +46,10 @@ export const CareerSeason = z.strictObject({
 
 export const CareerEntry = z.strictObject({
   club: z.string(),
+  // ADR 0012: escudo externo del club; tolerado ausente en JSON y caché anteriores.
+  crestUrl: optionalNull(),
+  // ADR 0014: trayectoria como jugador o entrenador. Default para JSON anteriores.
+  role: z.enum(['player', 'coach']).default('player'),
   from: optionalNull(),
   to: optionalNull(),
   appearances: optionalInt(),
@@ -69,6 +73,8 @@ export const CareerTotals = z.strictObject({
 export const PlayerMatch = z.strictObject({
   date: z.string(),
   opponent: z.string(),
+  // ADR 0012: escudo externo del rival; tolerado ausente en JSON y caché anteriores.
+  opponentCrestUrl: optionalNull(),
   competition: optionalNull(),
   home: z.boolean(),
   teamGoals: optionalInt(),
@@ -122,6 +128,95 @@ export const Standings = z.strictObject({
   table: z.array(StandingRow),
 });
 
+// Temporada y contexto (H5.2, ADR 0017). Aditivo y opcional: la Home funciona con 404.
+export const SeasonSummary = z.strictObject({
+  position: z.number().int().positive(),
+  points: z.number().int().nonnegative(),
+  played: z.number().int().nonnegative(),
+  won: z.number().int().nonnegative(),
+  drawn: z.number().int().nonnegative(),
+  lost: z.number().int().nonnegative(),
+  goalsFor: z.number().int().nonnegative(),
+  goalsAgainst: z.number().int().nonnegative(),
+  goalDifference: z.number().int(),
+});
+
+export const SeasonFormMatch = z.strictObject({
+  matchId: z.number().int(),
+  matchday: optionalInt(),
+  date: z.string(),
+  opponent: TeamRef,
+  home: z.boolean(),
+  scoreFor: z.number().int().nonnegative(),
+  scoreAgainst: z.number().int().nonnegative(),
+  result: z.enum(['W', 'D', 'L']),
+});
+
+export const PositionPoint = z.strictObject({
+  matchday: z.number().int().nonnegative(),
+  position: z.number().int().positive(),
+  points: z.number().int().nonnegative(),
+});
+
+// z.object strips the retired whatIsAtStake field from older persisted caches.
+export const Season = z.object({
+  updatedAt: iso,
+  season: z.string(),
+  matchday: optionalInt(),
+  team: TeamRef,
+  summary: SeasonSummary,
+  form: z.array(SeasonFormMatch).default([]),
+  positionEvolution: z.array(PositionPoint).default([]),
+  provenance: z.record(z.string(), Provenance).default({}),
+});
+
+export const HeadToHeadMeeting = z.strictObject({
+  date: z.string(),
+  competition: z.string(),
+  round: optionalNull(),
+  home: z.string(),
+  away: z.string(),
+  homeGoals: z.number().int().nonnegative(),
+  awayGoals: z.number().int().nonnegative(),
+  deporResult: z.enum(['W', 'D', 'L']),
+});
+
+export const HeadToHead = z.strictObject({
+  scope: z.literal('all_official_matches').default('all_official_matches'),
+  source: z.string().default('BDFutbol'),
+  confidence: z.enum(['verified', 'cross_checked', 'single_source', 'estimated']).default('single_source'),
+  sourceUrl: z.string(),
+  played: z.number().int().nonnegative(),
+  won: z.number().int().nonnegative(),
+  drawn: z.number().int().nonnegative(),
+  lost: z.number().int().nonnegative(),
+  goalsFor: z.number().int().nonnegative(),
+  goalsAgainst: z.number().int().nonnegative(),
+  meetings: z.array(HeadToHeadMeeting).default([]),
+});
+
+export const KeyPlayer = z.strictObject({
+  id: z.number().int(),
+  name: z.string(),
+  goals: z.number().int().nonnegative(),
+  assists: optionalInt(),
+  playedMatches: optionalInt(),
+});
+
+export const Rival = z.strictObject({
+  team: TeamRef,
+  bdfutbolId: optionalNull(),
+  coach: optionalNull(),
+  keyPlayers: z.array(KeyPlayer).default([]),
+  headToHead: HeadToHead.nullable().default(null),
+});
+
+export const Rivals = z.strictObject({
+  updatedAt: iso,
+  season: z.string(),
+  rivals: z.array(Rival).default([]),
+});
+
 export const Score = z.strictObject({
   home: z.number().int().nullable(),
   away: z.number().int().nullable(),
@@ -150,16 +245,115 @@ export const Fixtures = z.strictObject({
   matches: z.array(Match),
 });
 
+// Noticias (ADR 0018): una historia puede tener versiones en varios medios. El contrato
+// rompe el anterior `items`/`meta`; la app se actualiza al mismo tiempo que el JSON.
+export const NewsGroup = z.enum(['club', 'galicia', 'nacional']);
+
+export const NewsSource = z.strictObject({
+  id: z.string(),
+  name: z.string(),
+  group: NewsGroup,
+  kind: z.enum(['article', 'video']).default('article'),
+  homepage: z.string(),
+  iconUrl: z.string().nullable().optional(),
+});
+
+export const NewsAlsoIn = z.strictObject({
+  sourceId: z.string(),
+  title: z.string(),
+  url: z.string(),
+  publishedAt: iso,
+});
+
+export const NewsStory = z.strictObject({
+  id: z.string(),
+  title: z.string(),
+  url: z.string(),
+  sourceId: z.string(),
+  publishedAt: iso,
+  kind: z.enum(['article', 'video']).default('article'),
+  summary: optionalNull(),
+  thumbnailUrl: optionalNull(),
+  tags: z.array(z.string()).default([]),
+  alsoIn: z.array(NewsAlsoIn).default([]),
+});
+
+export const News = z.strictObject({
+  updatedAt: iso,
+  sources: z.array(NewsSource).default([]),
+  stories: z.array(NewsStory).default([]),
+});
+
+// Redes (H6): solo perfiles y publicaciones curadas a mano. social.json es opcional.
+export const SocialPlatform = z.enum([
+  'x',
+  'instagram',
+  'youtube',
+  'tiktok',
+  'facebook',
+  'whatsapp',
+  'twitch',
+  'bluesky',
+  'threads',
+]);
+
+export const SocialProfile = z.strictObject({
+  id: z.string(),
+  platform: SocialPlatform,
+  name: z.string(),
+  url: z.string(),
+  handle: optionalNull(),
+});
+
+export const SocialPin = z.strictObject({
+  id: z.string(),
+  platform: SocialPlatform,
+  url: z.string(),
+  title: z.string(),
+  publishedAt: optionalNull(),
+  imageUrl: optionalNull(),
+  source: optionalNull(),
+});
+
+export const SocialFeed = z.strictObject({
+  updatedAt: iso,
+  dataHash: z.string().default(''),
+  profiles: z.array(SocialProfile).default([]),
+  pins: z.array(SocialPin).default([]),
+});
+
+export const StaffMember = z.strictObject({
+  name: z.string(),
+  role: z.string(),
+  photoUrl: optionalNull(),
+});
+
 export const Coach = z
   .strictObject({
     name: z.string().nullable(),
     nationality: z.string().nullable(),
     birthDate: optionalNull(),
+    // ADR 0014: campos aditivos con default para leer JSON y caché anteriores.
+    birthPlace: optionalNull(),
+    photoUrl: optionalNull(),
     since: optionalNull(),
     contractUntil: optionalNull(),
+    career: z.array(CareerEntry).default([]),
+    staff: z.array(StaffMember).default([]),
     provenance: z.record(z.string(), Provenance).default({}),
   })
-  .default({ name: null, nationality: null, birthDate: null, since: null, contractUntil: null, provenance: {} });
+  .default({
+    name: null,
+    nationality: null,
+    birthDate: null,
+    birthPlace: null,
+    photoUrl: null,
+    since: null,
+    contractUntil: null,
+    career: [],
+    staff: [],
+    provenance: {},
+  });
 
 export const Player = z.strictObject({
   id: z.number().int(),
@@ -203,12 +397,32 @@ export const Squad = z.strictObject({
 
 export type MetaT = z.infer<typeof Meta>;
 export type StandingsT = z.infer<typeof Standings>;
+export type StandingRowT = z.infer<typeof StandingRow>;
+export type SeasonT = z.infer<typeof Season>;
+export type SeasonSummaryT = z.infer<typeof SeasonSummary>;
+export type SeasonFormMatchT = z.infer<typeof SeasonFormMatch>;
+export type PositionPointT = z.infer<typeof PositionPoint>;
+export type RivalsT = z.infer<typeof Rivals>;
+export type RivalT = z.infer<typeof Rival>;
+export type HeadToHeadT = z.infer<typeof HeadToHead>;
+export type HeadToHeadMeetingT = z.infer<typeof HeadToHeadMeeting>;
+export type KeyPlayerT = z.infer<typeof KeyPlayer>;
 export type FixturesT = z.infer<typeof Fixtures>;
+export type NewsT = z.infer<typeof News>;
+export type NewsStoryT = z.infer<typeof NewsStory>;
+export type NewsAlsoInT = z.infer<typeof NewsAlsoIn>;
+export type NewsGroupT = z.infer<typeof NewsGroup>;
+export type NewsSourceT = z.infer<typeof NewsSource>;
+export type SocialPlatformT = z.infer<typeof SocialPlatform>;
+export type SocialProfileT = z.infer<typeof SocialProfile>;
+export type SocialPinT = z.infer<typeof SocialPin>;
+export type SocialFeedT = z.infer<typeof SocialFeed>;
 export type SquadT = z.infer<typeof Squad>;
 export type MatchT = z.infer<typeof Match>;
 export type PlayerT = z.infer<typeof Player>;
 export type TeamRefT = z.infer<typeof TeamRef>;
 export type CoachT = z.infer<typeof Coach>;
+export type StaffMemberT = z.infer<typeof StaffMember>;
 export type SocialT = z.infer<typeof Social>;
 export type PlayerPhotoT = z.infer<typeof PlayerPhoto>;
 export type CareerSeasonT = z.infer<typeof CareerSeason>;

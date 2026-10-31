@@ -1,0 +1,185 @@
+# Catálogo curado de noticias (ADR 0018).
+#
+# `priority`: menor = más prioritaria para ser representante de un clúster.
+# `depor_specific`: el feed ya está centrado en el Depor; se le exige menos señal,
+# pero el filtro sigue descartando noticias de otros clubes.
+# `enabled: false` documenta una fuente descartada y su motivo.
+
+feeds:
+  - id: youtube-club
+    name: RC Deportivo (YouTube)
+    group: club
+    priority: 5
+    feedUrl: https://www.youtube.com/feeds/videos.xml?channel_id=UCY2s1XaPzO60Hu6M_YZCTgA
+    homepage: https://www.youtube.com/@rcdeportivo
+    kind: video
+    enabled: true
+    depor_specific: true
+    note: "Canal oficial. Se mantiene el RSS público por decisión expresa del responsable del proyecto (ADR 0018); YouTube lo desaconseja en robots.txt."
+
+  - id: riazor
+    name: Riazor.org
+    group: galicia
+    priority: 10
+    feedUrl: https://www.riazor.org/feed/
+    homepage: https://www.riazor.org/
+    kind: article
+    enabled: true
+    depor_specific: true
+    note: "Medio independiente centrado en el Depor. robots.txt permite /feed/$."
+
+  - id: dxt-campeon
+    name: DXT Campeón
+    group: galicia
+    priority: 20
+    feedUrl: https://dxtcampeon.elidealgallego.com/rss
+    homepage: https://dxtcampeon.elidealgallego.com/
+    kind: article
+    enabled: true
+    depor_specific: true
+    note: "Sección deportiva del Ideal Gallego; incluye deporte local no-Depor que el filtro descarta."
+
+  - id: la-voz
+    name: La Voz de Galicia
+    group: galicia
+    priority: 30
+    feedUrl: https://www.lavozdegalicia.es/temas/deportivo/index.xml
+    homepage: https://www.lavozdegalicia.es/temas/deportivo/
+    kind: article
+    enabled: true
+    depor_specific: true
+    note: "Feed de tema Deportivo, no la portada de Deportes."
+
+  - id: marca
+    name: Marca
+    group: nacional
+    priority: 40
+    feedUrl: https://www.marca.com/rss/googlenews/futbol/deportivo.xml
+    homepage: https://www.marca.com/futbol/deportivo.html
+    kind: article
+    enabled: true
+    depor_specific: false
+    note: "Único nacional con feed directo del Depor; mezcla Atlético y otros equipos, por eso no es depor_specific."
+
+  # Descartadas en la auditoría del 29-oct-2026. Se conservan documentadas para no
+  # repetir el intento y para poder reactivarlas si la fuente cambia.
+  - id: club-official
+    name: Web oficial del RC Deportivo
+    group: club
+    priority: 1
+    feedUrl: https://www.rcdeportivo.es/es
+    homepage: https://www.rcdeportivo.es/
+    kind: article
+    enabled: false
+    depor_specific: true
+    note: "Sin RSS/Atom propio (/feed, /rss y /rss.xml devuelven 404). No se hace scraping HTML."
+
+  - id: as-direct
+    name: Diario AS
+    group: nacional
+    priority: 50
+    feedUrl: https://feeds.as.com/mrss-s/pages/as/portada.xml
+    homepage: https://as.com/
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "HTTP 403 para el User-Agent identificable. No se intenta rodear."
+
+  - id: sport-direct
+    name: Sport
+    group: nacional
+    priority: 51
+    feedUrl: https://www.sport.es/es/rss/
+    homepage: https://www.sport.es/
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "HTTP 406 (WAF)."
+
+  - id: cadena-ser
+    name: Cadena SER
+    group: nacional
+    priority: 52
+    feedUrl: https://cadenaser.com/radio-coruna/
+    homepage: https://cadenaser.com/radio-coruna/
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "HTTP 403 para el User-Agent identificable."
+
+  - id: cope
+    name: COPE
+    group: nacional
+    priority: 53
+    feedUrl: https://www.cope.es/api/es/news/rss.xml
+    homepage: https://www.cope.es/
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "Feed de portada: 0/20 relevantes en la muestra de 7 días."
+
+  - id: galiciapress
+    name: Galiciapress
+    group: galicia
+    priority: 54
+    feedUrl: https://www.galiciapress.es/feed/all
+    homepage: https://www.galiciapress.es/
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "Feed general: 0/50 relevantes en la muestra de 7 días."
+
+  - id: ideal-gallego
+    name: El Ideal Gallego (Deportes)
+    group: galicia
+    priority: 55
+    feedUrl: https://www.elidealgallego.com/rss/deportes/
+    homepage: https://www.elidealgallego.com/deportes/
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "Portada de deportes: 2/61 relevantes; DXT ya cubre la sección del Depor."
+
+  - id: diario-de-ferrol
+    name: Diario de Ferrol
+    group: galicia
+    priority: 56
+    feedUrl: https://www.diariodeferrol.com/rss/
+    homepage: https://www.diariodeferrol.com/
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "Feed local: 1/38 relevantes en la muestra de 7 días."
+
+  - id: relevo
+    name: Relevo
+    group: nacional
+    priority: 57
+    feedUrl: https://relevo.com/tag/deportivo/feed/
+    homepage: https://relevo.com/tag/deportivo
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "El tag «deportivo» mezcla director deportivo, Betis Deportivo y otros usos; sin señal del club."
+
+  - id: mundo-deportivo
+    name: Mundo Deportivo
+    group: nacional
+    priority: 58
+    feedUrl: https://www.mundodeportivo.com/rss/portada
+    homepage: https://www.mundodeportivo.com/
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "La sección del Depor devuelve 410; la portada está desactualizada y es generalista."
+
+  - id: el-desmarque
+    name: El Desmarque
+    group: nacional
+    priority: 59
+    feedUrl: https://www.eldesmarque.com/rss.xml
+    homepage: https://www.eldesmarque.com/
+    kind: article
+    enabled: false
+    depor_specific: false
+    note: "La sección del Depor devuelve 404; el feed general no aporta historias del club."

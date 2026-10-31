@@ -1,0 +1,99 @@
+name: Rivals refresh
+on:
+  schedule:
+    # Una vez al día: el histórico de BDFutbol solo cambia cuando se juega un cruce.
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Reescribir rivals.json aunque el contenido no cambie"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# Mismo grupo que Data refresh y News refresh (ADR 0017): los tres escriben en main
+# y despliegan Pages. Nunca se cancelan entre sí.
+concurrency:
+  group: data-publish
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/pyproject.toml
+      - run: pip install -e scripts
+      - name: Restaurar caché de BDFutbol
+        uses: actions/cache/restore@v4
+        with:
+          path: data/raw/enrich/h2h
+          key: h2h-cache-${{ github.run_id }}
+          restore-keys: |
+            h2h-cache-
+      - name: Histórico y contexto de los rivales
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: python -m depor_hub.cli rivals --interval 1 ${{ inputs.force && '--force' || '' }}
+      - name: Validar todos los datos antes de publicar
+        run: python -m depor_hub.cli validate --data data/public/v1
+      - name: Guardar caché de BDFutbol
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/raw/enrich/h2h
+          key: h2h-cache-${{ github.run_id }}
+      - name: Commit de los datos
+        id: commit
+        run: |
+          git config user.name "depor-hub-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/public
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "data(rivals): refresh $(date -u +%Y-%m-%dT%H:%MZ)"
+          pushed=false
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then pushed=true; break; fi
+            sleep "$((attempt * 2))"
+          done
+          [ "$pushed" = true ]
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          # deploy-pages sustituye Pages entero: siempre subimos el snapshot completo.
+          path: data/public
+      - id: deploy
+        uses: actions/deploy-pages@v4

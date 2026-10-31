@@ -183,6 +183,32 @@ class WikidataClient:
         }))
         return [item["id"] for item in data.get("search", []) if item.get("id")]
 
+    def search_multi(self, name: str, languages: tuple[str, ...] = ("es", "en")) -> list[str]:
+        """Busca en varios idiomas y deduplica.
+
+        La búsqueda en español no encuentra clubes cuyo artículo principal está en inglés
+        (Chelsea, Wolverhampton) y la inglesa no encuentra clubes con nombre local
+        (Almería, Huesca). Para escudos se necesitan ambas.
+        """
+        ids: list[str] = []
+        for language in languages:
+            try:
+                data = self.http.get_json(_api_url({
+                    "action": "wbsearchentities",
+                    "search": name,
+                    "language": language,
+                    "uselang": language,
+                    "limit": 10,
+                    "type": "item",
+                }))
+            except SourceError:
+                continue
+            for item in data.get("search", []):
+                item_id = item.get("id")
+                if item_id and item_id not in ids:
+                    ids.append(item_id)
+        return ids
+
     def entities(self, ids: list[str]) -> dict[str, dict]:
         if not ids:
             return {}

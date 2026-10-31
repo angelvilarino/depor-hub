@@ -8,6 +8,7 @@ import pytest
 from depor_hub import models as m
 from depor_hub import source_models as s
 from depor_hub import transform as t
+from depor_hub.cli import _validate_ingest_integrity
 from depor_hub.client import Client, FootballDataError
 from depor_hub.publish import write_if_changed
 
@@ -87,9 +88,64 @@ def test_hash_ignores_timestamps_but_not_content():
     assert t.content_hash(base) != t.content_hash(changed)
 
 
-@pytest.mark.parametrize("name", list(m.FILES))
+@pytest.mark.parametrize("name", [*m.FILES, *m.NEWS_FILES, *m.EXTRA_FILES])
 def test_examples_validate(name):
-    m.FILES[name].model_validate_json((EXAMPLES / name).read_text(encoding="utf-8"))
+    model = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}[name]
+    model.model_validate_json((EXAMPLES / name).read_text(encoding="utf-8"))
+
+
+def test_old_squad_json_without_crest_fields_validates_as_null():
+    """Compatibilidad ADR 0012: un JSON anterior no trae crestUrl ni opponentCrestUrl."""
+    old = {
+        "updatedAt": NOW,
+        "coach": None,
+        "players": [
+            {
+                "id": 1,
+                "name": "Jugador Antiguo",
+                "position": "Midfield",
+                "dateOfBirth": "2000-01-31",
+                "nationality": "Spain",
+                "shirtNumber": None,
+                "contractUntil": None,
+                "heightCm": None,
+                "career": [
+                    {
+                        "club": "Club Antiguo",
+                        "from": "2014",
+                        "to": "2017",
+                        "appearances": 10,
+                        "goals": 1,
+                        "assists": None,
+                        "minutes": 900,
+                        "yellowCards": 1,
+                        "redCards": 0,
+                        "seasons": [],
+                    }
+                ],
+                "deporMatches": [
+                    {
+                        "date": "2026-05-24",
+                        "opponent": "Valladolid",
+                        "competition": "LaLiga",
+                        "home": True,
+                        "teamGoals": 2,
+                        "opponentGoals": 0,
+                        "result": "W",
+                        "started": True,
+                        "minutes": 90,
+                        "goals": 0,
+                        "assists": None,
+                        "yellowCards": 0,
+                        "redCards": 0,
+                    }
+                ],
+            }
+        ],
+    }
+    squad = m.Squad.model_validate(old)
+    assert squad.players[0].career[0].crest_url is None
+    assert squad.players[0].depor_matches[0].opponent_crest_url is None
 
 
 def test_write_if_changed(tmp_path):
@@ -97,6 +153,23 @@ def test_write_if_changed(tmp_path):
     assert write_if_changed(tmp_path, files, "0000000000000000") is True
     assert write_if_changed(tmp_path, files, "0000000000000000") is False
     assert write_if_changed(tmp_path, files, "0000000000000000", force=True) is True
+
+
+def test_write_if_changed_rejects_invalid_model_without_touching_published_files(tmp_path):
+    target = tmp_path / "squad.json"
+    target.write_text('{"previous":"kept"}\n', encoding="utf-8")
+    meta = tmp_path / "meta.json"
+    meta.write_text('{"previous":"hash"}\n', encoding="utf-8")
+    before = {path.name: path.read_bytes() for path in (target, meta)}
+    with pytest.raises(ValueError):
+        write_if_changed(
+            tmp_path,
+            {"squad.json": {"updatedAt": "bad", "players": [{"unexpected": True}]},
+             "meta.json": {"schemaVersion": 1, "updatedAt": NOW, "dataHash": "new"}},
+            "new",
+            force=True,
+        )
+    assert {path.name: path.read_bytes() for path in (target, meta)} == before
 
 
 def make_client(handler, sleeps):
@@ -123,3 +196,13 @@ def test_client_raises_on_403():
     client = make_client(lambda r: httpx.Response(403, json={"message": "plan"}), [])
     with pytest.raises(FootballDataError, match="403"):
         client.get("/competitions/PD")
+
+
+def test_ingest_integrity_rejects_incomplete_table_and_empty_squad():
+    standings = m.Standings.model_validate_json((EXAMPLES / "standings.json").read_text())
+    squad = m.Squad.model_validate_json((EXAMPLES / "squad.json").read_text())
+    with pytest.raises(SystemExit, match="clasificación incompleta"):
+        _validate_ingest_integrity(standings.model_copy(update={"table": []}), squad)
+    full_table = standings.model_copy(update={"table": [standings.table[0]] * 20})
+    with pytest.raises(SystemExit, match="plantilla vacía; se conserva"):
+        _validate_ingest_integrity(full_table, squad.model_copy(update={"players": []}))

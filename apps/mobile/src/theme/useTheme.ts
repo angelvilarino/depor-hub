@@ -6,5 +6,6 @@ export function useTheme() {
   const system = useColorScheme();
   const pref = useSettings((s) => s.theme);
   const scheme: 'light' | 'dark' = pref === 'system' ? (system === 'dark' ? 'dark' : 'light') : pref;
-  return { scheme, colors: scheme === 'dark' ? darkColors : lightColors };
+  const colors = scheme === 'dark' ? darkColors : lightColors;
+  return { scheme, colors, poster: colors.poster, paper: colors.paper };
 }

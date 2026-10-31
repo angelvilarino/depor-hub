@@ -8,7 +8,16 @@
   },
   "common": {
     "comingSoon": "Próximamente en un hito posterior de la Fase 1.",
-    "unofficial": "Proyecto de aficionados sin vinculación oficial con el Real Club Deportivo de La Coruña, S.A.D."
+    "close": "Cerrar",
+    "unofficial": "Proyecto de aficionados sin vinculación oficial con el Real Club Deportivo de La Coruña, S.A.D.",
+    "cancel": "Cancelar",
+    "back": "Volver",
+    "confidenceLevel": {
+      "verified": "verificado",
+      "cross_checked": "contrastado",
+      "single_source": "una fuente",
+      "estimated": "estimado"
+    }
   },
   "settings": {
     "title": "Ajustes",
@@ -34,8 +43,130 @@
     "ago_days": "hace {{n}} d",
     "error": "No se han podido cargar los datos.",
     "notConfigured": "Falta la URL de datos (EXPO_PUBLIC_DATA_BASE_URL).",
-    "retry": "Reintentar",
-    "seasonLine": "Temporada {{season}} · jornada {{matchday}}"
+    "retry": "Reintentar"
+  },
+  "home": {
+    "nextMatch": "Próximo partido",
+    "lastResult": "Último resultado",
+    "season": "La temporada",
+    "miniTable": "Clasificación",
+    "opponent": "El rival",
+    "formTitle": "Últimos 5 partidos",
+    "noNextMatch": "No hay próximos partidos.",
+    "noLastResult": "Todavía no hay resultados.",
+    "noStandings": "Clasificación no disponible.",
+    "seeFullTable": "Ver tabla completa",
+    "local": "Local",
+    "away": "Visitante",
+    "matchToday": "Hoy",
+    "daysUntil_one": "Falta {{count}} día",
+    "daysUntil_other": "Faltan {{count}} días",
+    "countdown": {
+      "days": "{{n}} d",
+      "hours": "{{n}} h",
+      "minutes": "{{n}} min",
+      "seconds": "{{n}} s",
+      "label": "Cuenta atrás: {{days}} días, {{hours}} horas y {{minutes}} minutos",
+      "labelWithSeconds": "Cuenta atrás: {{days}} días, {{hours}} horas, {{minutes}} minutos y {{seconds}} segundos",
+      "units": {
+        "days": "DÍAS",
+        "hours": "HORAS",
+        "minutes": "MIN",
+        "seconds": "SEG"
+      }
+    },
+    "howToGetThere": "Cómo llegar",
+    "mapError": "No se ha podido abrir el mapa.",
+    "seasonSummary": "Posición {{position}}, {{points}} puntos en {{played}} partidos: {{won}} victorias, {{drawn}} empates y {{lost}} derrotas. {{goalsFor}} goles a favor y {{goalsAgainst}} en contra, diferencia {{goalDifference}}.",
+    "stats": {
+      "position": "Posición",
+      "points": "Puntos",
+      "record": "G-E-P",
+      "goals": "GF-GC"
+    },
+    "headlines": "Titulares",
+    "openHeadline": "Abrir noticia: {{title}} ({{source}})",
+    "openError": "No se ha podido abrir la noticia.",
+    "seeAllHeadlines": "Ver todas",
+    "awaitingResult": "Pendiente de actualizar",
+    "phase": {
+      "postponed": "Aplazado",
+      "suspended": "Suspendido",
+      "cancelled": "Cancelado",
+      "unknown": "Estado no disponible"
+    },
+    "finalResult": "Resultado final",
+    "weather": {
+      "clear": "Despejado",
+      "cloudy": "Nubes",
+      "fog": "Niebla",
+      "drizzle": "Llovizna",
+      "rain": "Probabilidad de lluvia",
+      "snow": "Nieve",
+      "showers": "Chubascos",
+      "storm": "Tormenta",
+      "unknown": "Tiempo variable",
+      "precipitation": "{{n}} % lluvia",
+      "wind": "{{n}} km/h",
+      "attribution": "Datos: Open-Meteo",
+      "temperature": "{{n}} grados",
+      "hour": "Hora",
+      "expandHint": "Ver el pronóstico alrededor del inicio",
+      "cached": "Previsión guardada {{ago}}"
+    },
+    "rival": {
+      "position": "{{position}}º · {{points}} pts",
+      "form": "Racha",
+      "headToHead": "Histórico",
+      "headToHeadScope": "Todos los partidos oficiales · {{source}}",
+      "lastMeetings": "Últimos 5 cruces",
+      "coach": "Entrenador",
+      "missing": "Sin datos disponibles.",
+      "openProfile": "Abrir ficha del rival",
+      "points": "{{points}} puntos",
+      "goalsRecord": "{{goalsFor}} a favor · {{goalsAgainst}} en contra",
+      "headToHeadA11y": "Histórico: {{played}} partidos, {{won}} victorias, {{drawn}} empates, {{lost}} derrotas, goles {{goalsFor}}-{{goalsAgainst}}.",
+      "matchesShort": "PJ",
+      "goalsForShort": "GF",
+      "goalsAgainstShort": "GC",
+      "confidence": "Confianza: {{confidence}}",
+      "openSource": "Abrir la fuente de BDFutbol",
+      "sourceLink": "Ver fuente en BDFutbol",
+      "meetingsNote": "Escudos y marcador · del más reciente al más antiguo",
+      "coachSource": "Fuente: football-data.org",
+      "meetingA11y": "{{date}}, {{competition}}: {{home}} {{homeGoals}} a {{awayGoals}} {{away}}. Depor: {{result}}."
+    },
+    "seasonCard": {
+      "position": "Posición",
+      "points": "Puntos",
+      "record": "G-E-P",
+      "goals": "GF-GC",
+      "evolution": "Evolución de la posición",
+      "evolutionA11y": "Evolución de la posición por jornada: {{points}}.",
+      "form": "Últimos 5 partidos",
+      "formLegend": "G victoria · E empate · P derrota",
+      "formA11y": "{{result}} contra {{opponent}} el {{date}}",
+      "tableA11y": "Clasificación: {{position}}º, {{team}}, {{points}} puntos",
+      "formOrder": "Más antiguo → más reciente",
+      "formSelected": "Partido seleccionado",
+      "pointsPerGame": "Puntos / partido",
+      "chartPoint": "Jornada {{matchday}} · {{opponent}} · {{result}} · puesto {{position}} · {{points}} puntos",
+      "chartIncrement": "Jornada siguiente",
+      "chartDecrement": "Jornada anterior",
+      "best": "Mejor",
+      "worst": "Peor",
+      "matchday": "Jornada {{matchday}}",
+      "viewMatch": "Ver partido"
+    },
+    "postponedNotice": "Aplazado: {{teams}} ({{date}})",
+    "rivalProfile": "Ficha del rival",
+    "liveNow": "EN JUEGO",
+    "miniTableContext": "Dos puestos alrededor del Dépor"
+  },
+  "competition": {
+    "PD": "Primera División",
+    "SD": "Segunda División",
+    "CDR": "Copa del Rey"
   },
   "calendar": {
     "upcoming": "Próximos",
@@ -92,24 +223,69 @@
     "reminderNeedsTime": "El recordatorio estará disponible cuando se confirme la hora del partido.",
     "permissionDenied": "Activa las notificaciones de la app en los ajustes del sistema para recibir recordatorios.",
     "addToCalendar": "Añadir al calendario",
-    "addError": "No se ha podido abrir el calendario.",
-    "lineups": "Alineaciones y eventos"
+    "addError": "No se ha podido añadir el partido al calendario.",
+    "addErrorHint": "Prueba a compartir el calendario desde la pestaña Calendario.",
+    "lineups": "Alineaciones y eventos",
+    "calendarSaved": "Añadido al calendario",
+    "calendarShared": "Archivo de calendario compartido"
   },
   "reminder": {
     "channel": "Recordatorios de partido",
-    "dayBefore": "Mañana, {{time}}",
-    "hourBefore": "Empieza en 1 hora ({{time}})"
+    "title": "Recordarme",
+    "explanation": "Recibirás una notificación en este móvil. No necesita cuenta ni conexión.",
+    "offset": {
+      "day": "1 día antes",
+      "hour": "1 h antes",
+      "minutes": "15 min antes",
+      "start": "Al empezar"
+    },
+    "previewTitle": "Avisos que se programarán",
+    "previewEmpty": "Elige al menos un aviso.",
+    "past": "Ya ha pasado",
+    "save": "Guardar aviso",
+    "remove": "Quitar aviso",
+    "active": "Aviso: {{offsets}}",
+    "edit": "Editar",
+    "permissionDenied": "Las notificaciones están bloqueadas. Actívalas en los ajustes del sistema.",
+    "openSettings": "Abrir ajustes del sistema",
+    "globalOff": "Los recordatorios están desactivados en Ajustes.",
+    "enable": "Activar recordatorios",
+    "tbc": "Podrás activar el aviso cuando se confirme la hora.",
+    "body": {
+      "day": "Mañana, {{time}}",
+      "hour": "Empieza en 1 hora ({{time}})",
+      "minutes": "Empieza en 15 minutos ({{time}})",
+      "start": "El partido empieza ahora ({{time}})"
+    }
   },
   "team": {
     "coach": "Entrenador",
     "empty": "La plantilla no está disponible.",
-    "group": {
-      "GK": "Porteros",
-      "DF": "Defensas",
-      "MF": "Centrocampistas",
-      "FW": "Delanteros",
-      "OTHER": "Otros"
-    }
+    "searchPlaceholder": "Buscar por nombre o dorsal",
+    "searchClear": "Limpiar búsqueda",
+    "view": {
+      "grid": "Cuadrícula",
+      "list": "Lista"
+    },
+    "filters": {
+      "all": "Todos",
+      "GK": "POR",
+      "DF": "DEF",
+      "MF": "MED",
+      "FW": "DEL",
+      "OTHER": "OTR"
+    },
+    "summary_one": "{{count}} jugador",
+    "summary_other": "{{count}} jugadores",
+    "emptyFiltered": "Ningún jugador coincide con los filtros.",
+    "clearFilters": "Limpiar filtros",
+    "listHeader": {
+      "number": "#",
+      "player": "Jugador",
+      "age": "Edad"
+    },
+    "loaned": "Cedido",
+    "openCoach": "Abrir ficha del entrenador"
   },
   "player": {
     "title": "Jugador",
@@ -142,13 +318,11 @@
       "instagram": "Instagram",
       "tiktok": "TikTok"
     },
-    "photosTitle": "Fotos",
     "photoLicense": "Licencia: {{license}}",
     "photoSource": "Ver ficha de la foto",
     "photoAuthor": "Autoría: {{author}}",
     "photoNote": "Las fotos se enlazan desde su fuente original con atribución; no se redistribuyen.",
     "careerTitle": "Trayectoria",
-    "careerTotalsTitle": "Totales de carrera",
     "deporMatchesTitle": "Partidos con el Depor",
     "matchHome": "Local",
     "matchAway": "Visitante",
@@ -165,13 +339,6 @@
       "minutesShort": "min",
       "yellowCardsShort": "TA",
       "redCardsShort": "TR"
-    },
-    "sourceLine": "Fuente: {{sources}} · Confianza: {{confidence}}",
-    "confidence": {
-      "verified": "verificada",
-      "cross_checked": "contrastada",
-      "single_source": "una fuente",
-      "estimated": "estimación"
     },
     "pendingTitle": "Datos pendientes",
     "pendingBody": "Todavía no tenemos estos datos con una fuente fiable; no se inventan.",
@@ -192,7 +359,28 @@
       "weightKg": "Peso",
       "preferredFoot": "Pie dominante",
       "contractUntil": "Contrato"
-    }
+    },
+    "photoTitle": "Foto",
+    "photoClose": "Cerrar",
+    "photoOpen": "Ampliar foto",
+    "bioTitle": "Datos",
+    "viewMatch": "Abrir partido",
+    "scope": {
+      "depor": "Depor {{season}}",
+      "deporShort": "Depor",
+      "career": "Carrera"
+    },
+    "tabs": {
+      "summary": "Resumen",
+      "matches": "Partidos",
+      "career": "Carrera"
+    },
+    "loanFromValue": "Cedido por {{club}}",
+    "loanToValue": "Cedido a {{club}}",
+    "noSeasonStats": "Sin partidos con el Depor en esta temporada.",
+    "noStats": "Todavía no hay estadísticas con fuente fiable.",
+    "matchesEmpty": "No hay partidos registrados con el Depor.",
+    "careerEmpty": "Sin trayectoria registrada."
   },
   "country": {
     "Spain": "España",
@@ -231,5 +419,126 @@
     "Algeria": "Argelia",
     "Japan": "Japón",
     "United States": "Estados Unidos"
+  },
+  "coach": {
+    "title": "Entrenador",
+    "notFound": "No se ha encontrado la ficha del entrenador.",
+    "role": "Entrenador",
+    "personalTitle": "Datos personales",
+    "birth": "Nacimiento",
+    "birthPlace": "Lugar de nacimiento",
+    "nationality": "Nacionalidad",
+    "age": "Edad",
+    "since": "Desde",
+    "sinceValue": "En el Depor desde {{year}}",
+    "contract": "Contrato hasta",
+    "recordTitle": "Balance con el Depor",
+    "recordNote": "Calculado con los partidos terminados de la temporada publicada.",
+    "record": {
+      "played": "PJ",
+      "won": "G",
+      "drawn": "E",
+      "lost": "P",
+      "goalsFor": "GF",
+      "goalsAgainst": "GC",
+      "points": "Pts"
+    },
+    "careerTitle": "Trayectoria",
+    "careerCoach": "Entrenador",
+    "careerPlayer": "Jugador",
+    "careerEmpty": "Sin trayectoria registrada.",
+    "staffTitle": "Cuerpo técnico",
+    "staffNote": "Publicado por la web oficial del club.",
+    "staffRole": {
+      "assistant_coach": "Segundo entrenador",
+      "technical_assistant": "Asistente técnico",
+      "goalkeeping_coach": "Entrenador de porteros",
+      "fitness_coach": "Preparador físico",
+      "rehab_coach": "Readaptador físico",
+      "physiotherapist": "Fisioterapeuta",
+      "doctor": "Médico",
+      "nutritionist": "Nutricionista",
+      "psychologist": "Psicólogo",
+      "podiatrist": "Podólogo",
+      "analyst": "Analista",
+      "delegate": "Delegado",
+      "kit_manager": "Utillero"
+    },
+    "sourceNote": "Datos de Wikidata, Wikipedia y la web oficial del club."
+  },
+  "news": {
+    "searchOpen": "Buscar",
+    "searchClose": "Cerrar búsqueda",
+    "searchPlaceholder": "Buscar titulares, medio o etiqueta",
+    "searchClear": "Borrar búsqueda",
+    "filters": "Filtros",
+    "filtersTitle": "Filtros",
+    "sources": "Fuentes",
+    "noSources": "No hay fuentes con noticias.",
+    "filterSource": "{{source}}: {{count}} noticias",
+    "tagsTitle": "Etiquetas",
+    "noTags": "No hay etiquetas.",
+    "filterTag": "{{tag}}: {{count}} noticias",
+    "clearFilters": "Quitar filtros",
+    "clearFiltersCount": "Limpiar ({{count}})",
+    "activeFilters_one": "{{count}} filtro activo",
+    "activeFilters_other": "{{count}} filtros activos",
+    "group": {
+      "club": "Club",
+      "galicia": "Galicia",
+      "nacional": "Nacional"
+    },
+    "kind": {
+      "all": "Todo",
+      "article": "Artículos",
+      "video": "Vídeos"
+    },
+    "unread": "No leída",
+    "unreadCount": "{{count}} sin leer",
+    "markAllShort": "Marcar leídas",
+    "markAllTitle": "Marcar todas como leídas",
+    "markAllMessage": "Se marcarán {{count}} noticias como leídas. Puedes deshacerlo justo después.",
+    "markAllConfirm": "Marcar leídas",
+    "markedCount_one": "{{count}} noticia marcada como leída",
+    "markedCount_other": "{{count}} noticias marcadas como leídas",
+    "undo": "Deshacer",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "openItem": "Abrir noticia: {{title}} ({{source}})",
+    "openHint": "Se abre en el navegador de la app.",
+    "openError": "No se ha podido abrir el enlace.",
+    "openAlsoIn": "Abrir versión en {{source}}: {{title}}",
+    "alsoInCount_one": "+{{count}} medio",
+    "alsoInCount_other": "+{{count}} medios",
+    "emptyAll": "Todavía no hay noticias publicadas.",
+    "emptyFiltered": "No hay noticias con estos filtros.",
+    "count_one": "{{count}} noticia",
+    "count_other": "{{count}} noticias",
+    "socialTitle": "Redes oficiales",
+    "socialNote": "Perfiles verificados del club. No se cargan scripts ni se scrapean redes.",
+    "openProfile": "Abrir {{platform}} de {{name}}",
+    "openPin": "Abrir publicación: {{title}} ({{platform}})",
+    "pinsTitle": "Publicaciones destacadas",
+    "platforms": {
+      "x": "X",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "tiktok": "TikTok",
+      "facebook": "Facebook",
+      "whatsapp": "WhatsApp",
+      "twitch": "Twitch",
+      "bluesky": "Bluesky",
+      "threads": "Threads"
+    },
+    "tags": {
+      "fichajes": "Fichajes",
+      "cantera": "Cantera",
+      "lesiones": "Lesiones",
+      "partido": "Partido",
+      "aficion": "Afición",
+      "club": "Club",
+      "opinion": "Opinión"
+    },
+    "filterTagOnly": "Filtrar por {{tag}}"
   }
 }

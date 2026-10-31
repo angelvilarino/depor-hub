@@ -6,14 +6,14 @@ import { syncReminders } from './notifications';
 /** Sin UI: reprograma los recordatorios cada vez que cambian los datos o los ajustes. */
 export function ReminderSync() {
   const fixtures = useFixtures().data;
-  const { remindersEnabled, remindMatchIds, language } = useSettings();
+  const { remindersEnabled, remindMatches, language } = useSettings();
 
   useEffect(() => {
     if (!fixtures) return;
-    syncReminders(fixtures.matches, remindersEnabled ? remindMatchIds : []).catch(() => {
+    syncReminders(fixtures.matches, remindersEnabled ? remindMatches : {}).catch(() => {
       // Sin permisos o sin soporte (p. ej. web): no es crítico.
     });
-  }, [fixtures, remindersEnabled, remindMatchIds, language]);
+  }, [fixtures, remindersEnabled, remindMatches, language]);
 
   return null;
 }

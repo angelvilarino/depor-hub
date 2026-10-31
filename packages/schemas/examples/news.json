@@ -1,0 +1,66 @@
+{
+  "updatedAt": "2026-10-29T12:00:00Z",
+  "sources": [
+    {
+      "id": "youtube-club",
+      "name": "RC Deportivo (YouTube)",
+      "group": "club",
+      "kind": "video",
+      "homepage": "https://www.youtube.com/@rcdeportivo"
+    },
+    {
+      "id": "riazor",
+      "name": "Riazor.org",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.riazor.org/"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/"
+    },
+    {
+      "id": "marca",
+      "name": "Marca",
+      "group": "nacional",
+      "kind": "article",
+      "homepage": "https://www.marca.com/futbol/deportivo.html"
+    }
+  ],
+  "stories": [
+    {
+      "id": "ejemplo-1",
+      "title": "Titular sintético de ejemplo sobre un fichaje",
+      "url": "https://example.test/noticia",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-29T10:30:00Z",
+      "kind": "article",
+      "summary": "Extracto sintético publicado por el feed de ejemplo.",
+      "thumbnailUrl": "https://example.test/miniatura.jpg",
+      "tags": ["fichajes", "cantera"],
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "Otra versión sintética del mismo fichaje",
+          "url": "https://example.test/otra-version",
+          "publishedAt": "2026-10-29T11:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "ejemplo-2",
+      "title": "Vídeo sintético de ejemplo",
+      "url": "https://www.youtube.com/watch?v=ejemplo",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-29T09:00:00Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://example.test/video.jpg",
+      "tags": ["club"],
+      "alsoIn": []
+    }
+  ]
+}

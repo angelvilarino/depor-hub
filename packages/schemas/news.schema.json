@@ -1,0 +1,201 @@
+{
+  "$defs": {
+    "NewsAlsoIn": {
+      "additionalProperties": false,
+      "description": "Otra versi\u00f3n de la misma historia publicada por un medio distinto.",
+      "properties": {
+        "publishedAt": {
+          "title": "Publishedat",
+          "type": "string"
+        },
+        "sourceId": {
+          "title": "Sourceid",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sourceId",
+        "title",
+        "url",
+        "publishedAt"
+      ],
+      "title": "NewsAlsoIn",
+      "type": "object"
+    },
+    "NewsSource": {
+      "additionalProperties": false,
+      "description": "Medio curado que puede aparecer como representante o en `alsoIn` (ADR 0018).",
+      "properties": {
+        "group": {
+          "enum": [
+            "club",
+            "galicia",
+            "nacional"
+          ],
+          "title": "Group",
+          "type": "string"
+        },
+        "homepage": {
+          "title": "Homepage",
+          "type": "string"
+        },
+        "iconUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Iconurl"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "default": "article",
+          "enum": [
+            "article",
+            "video"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "group",
+        "homepage"
+      ],
+      "title": "NewsSource",
+      "type": "object"
+    },
+    "NewsStory": {
+      "additionalProperties": false,
+      "description": "Una historia, no un art\u00edculo suelto: representante + versiones en otros medios.\n\nSolo se publica lo que entrega el feed: t\u00edtulo, enlace, fecha, miniatura y extracto\ncorto. No se descarga ni se scrapea el cuerpo del art\u00edculo.",
+      "properties": {
+        "alsoIn": {
+          "items": {
+            "$ref": "#/$defs/NewsAlsoIn"
+          },
+          "title": "Alsoin",
+          "type": "array"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "default": "article",
+          "enum": [
+            "article",
+            "video"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "publishedAt": {
+          "title": "Publishedat",
+          "type": "string"
+        },
+        "sourceId": {
+          "title": "Sourceid",
+          "type": "string"
+        },
+        "summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Summary"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "thumbnailUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Thumbnailurl"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "sourceId",
+        "publishedAt"
+      ],
+      "title": "NewsStory",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Contrato de noticias v1 reescrito en ADR 0018 (ruptura consciente).",
+  "properties": {
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/NewsSource"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "stories": {
+      "items": {
+        "$ref": "#/$defs/NewsStory"
+      },
+      "title": "Stories",
+      "type": "array"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "sources",
+    "stories"
+  ],
+  "title": "News",
+  "type": "object"
+}

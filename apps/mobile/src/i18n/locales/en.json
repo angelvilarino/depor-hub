@@ -8,7 +8,16 @@
   },
   "common": {
     "comingSoon": "Coming in a later Phase 1 milestone.",
-    "unofficial": "Fan project with no official affiliation with Real Club Deportivo de La Coruña, S.A.D."
+    "close": "Close",
+    "unofficial": "Fan project with no official affiliation with Real Club Deportivo de La Coruña, S.A.D.",
+    "cancel": "Cancel",
+    "back": "Back",
+    "confidenceLevel": {
+      "verified": "verified",
+      "cross_checked": "cross-checked",
+      "single_source": "single source",
+      "estimated": "estimated"
+    }
   },
   "settings": {
     "title": "Settings",
@@ -34,8 +43,130 @@
     "ago_days": "{{n}} d ago",
     "error": "Couldn't load the data.",
     "notConfigured": "Data URL missing (EXPO_PUBLIC_DATA_BASE_URL).",
-    "retry": "Retry",
-    "seasonLine": "Season {{season}} · matchday {{matchday}}"
+    "retry": "Retry"
+  },
+  "home": {
+    "nextMatch": "Next match",
+    "lastResult": "Last result",
+    "season": "The season",
+    "miniTable": "Table",
+    "opponent": "The opponent",
+    "formTitle": "Last 5 matches",
+    "noNextMatch": "No upcoming matches.",
+    "noLastResult": "No results yet.",
+    "noStandings": "Table not available.",
+    "seeFullTable": "See full table",
+    "local": "Home",
+    "away": "Away",
+    "matchToday": "Today",
+    "daysUntil_one": "{{count}} day to go",
+    "daysUntil_other": "{{count}} days to go",
+    "countdown": {
+      "days": "{{n}}d",
+      "hours": "{{n}}h",
+      "minutes": "{{n}}m",
+      "seconds": "{{n}}s",
+      "label": "Countdown: {{days}} days, {{hours}} hours and {{minutes}} minutes",
+      "labelWithSeconds": "Countdown: {{days}} days, {{hours}} hours, {{minutes}} minutes and {{seconds}} seconds",
+      "units": {
+        "days": "DAYS",
+        "hours": "HRS",
+        "minutes": "MIN",
+        "seconds": "SEC"
+      }
+    },
+    "howToGetThere": "Get directions",
+    "mapError": "Couldn't open the map.",
+    "seasonSummary": "Position {{position}}, {{points}} points in {{played}} matches: {{won}} wins, {{drawn}} draws and {{lost}} losses. {{goalsFor}} goals for and {{goalsAgainst}} against, difference {{goalDifference}}.",
+    "stats": {
+      "position": "Position",
+      "points": "Points",
+      "record": "W-D-L",
+      "goals": "GF-GA"
+    },
+    "headlines": "Headlines",
+    "openHeadline": "Open story: {{title}} ({{source}})",
+    "openError": "Couldn't open the story.",
+    "seeAllHeadlines": "See all",
+    "awaitingResult": "Awaiting update",
+    "phase": {
+      "postponed": "Postponed",
+      "suspended": "Suspended",
+      "cancelled": "Cancelled",
+      "unknown": "Status unavailable"
+    },
+    "finalResult": "Final result",
+    "weather": {
+      "clear": "Clear",
+      "cloudy": "Cloudy",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "rain": "Rain chance",
+      "snow": "Snow",
+      "showers": "Showers",
+      "storm": "Storm",
+      "unknown": "Changeable",
+      "precipitation": "{{n}}% rain",
+      "wind": "{{n}} km/h",
+      "attribution": "Data: Open-Meteo",
+      "temperature": "{{n}} degrees",
+      "hour": "Hour",
+      "expandHint": "Show the forecast around kick-off",
+      "cached": "Saved forecast {{ago}}"
+    },
+    "rival": {
+      "position": "{{position}} · {{points}} pts",
+      "form": "Form",
+      "headToHead": "Head-to-head",
+      "headToHeadScope": "All official matches · {{source}}",
+      "lastMeetings": "Last 5 meetings",
+      "coach": "Coach",
+      "missing": "No data available.",
+      "openProfile": "Open opponent profile",
+      "points": "{{points}} points",
+      "goalsRecord": "{{goalsFor}} for · {{goalsAgainst}} against",
+      "headToHeadA11y": "Head to head: {{played}} matches, {{won}} wins, {{drawn}} draws, {{lost}} losses, goals {{goalsFor}}-{{goalsAgainst}}.",
+      "matchesShort": "Played",
+      "goalsForShort": "GF",
+      "goalsAgainstShort": "GA",
+      "confidence": "Confidence: {{confidence}}",
+      "openSource": "Open the BDFutbol source",
+      "sourceLink": "View source at BDFutbol",
+      "meetingsNote": "Crests and score · most recent first",
+      "coachSource": "Source: football-data.org",
+      "meetingA11y": "{{date}}, {{competition}}: {{home}} {{homeGoals}} to {{awayGoals}} {{away}}. Depor: {{result}}."
+    },
+    "seasonCard": {
+      "position": "Position",
+      "points": "Points",
+      "record": "W-D-L",
+      "goals": "GF-GA",
+      "evolution": "Position over time",
+      "evolutionA11y": "Position by matchday: {{points}}.",
+      "form": "Last 5 matches",
+      "formLegend": "W win · D draw · L loss",
+      "formA11y": "{{result}} against {{opponent}} on {{date}}",
+      "tableA11y": "Table: {{position}}, {{team}}, {{points}} points",
+      "formOrder": "Oldest → latest",
+      "formSelected": "Selected match",
+      "pointsPerGame": "Points / match",
+      "chartPoint": "Matchday {{matchday}} · {{opponent}} · {{result}} · position {{position}} · {{points}} points",
+      "chartIncrement": "Next matchday",
+      "chartDecrement": "Previous matchday",
+      "best": "Best",
+      "worst": "Worst",
+      "matchday": "Matchday {{matchday}}",
+      "viewMatch": "View match"
+    },
+    "postponedNotice": "Postponed: {{teams}} ({{date}})",
+    "rivalProfile": "Opponent profile",
+    "liveNow": "LIVE",
+    "miniTableContext": "Two places around Deportivo"
+  },
+  "competition": {
+    "PD": "La Liga",
+    "SD": "Segunda División",
+    "CDR": "Copa del Rey"
   },
   "calendar": {
     "upcoming": "Upcoming",
@@ -92,24 +223,69 @@
     "reminderNeedsTime": "Reminders will be available once the kick-off time is confirmed.",
     "permissionDenied": "Enable notifications for the app in system settings to get reminders.",
     "addToCalendar": "Add to calendar",
-    "addError": "Couldn't open the calendar.",
-    "lineups": "Line-ups and events"
+    "addError": "The match could not be added to your calendar.",
+    "addErrorHint": "Try sharing the calendar from the Calendar tab.",
+    "lineups": "Line-ups and events",
+    "calendarSaved": "Added to calendar",
+    "calendarShared": "Calendar file shared"
   },
   "reminder": {
     "channel": "Match reminders",
-    "dayBefore": "Tomorrow, {{time}}",
-    "hourBefore": "Kick-off in 1 hour ({{time}})"
+    "title": "Remind me",
+    "explanation": "You will get a notification on this phone. No account or connection needed.",
+    "offset": {
+      "day": "1 day before",
+      "hour": "1 hour before",
+      "minutes": "15 min before",
+      "start": "At kick-off"
+    },
+    "previewTitle": "Notifications to schedule",
+    "previewEmpty": "Choose at least one reminder.",
+    "past": "Already passed",
+    "save": "Save reminder",
+    "remove": "Remove reminder",
+    "active": "Reminder: {{offsets}}",
+    "edit": "Edit",
+    "permissionDenied": "Notifications are blocked. Enable them in system settings.",
+    "openSettings": "Open system settings",
+    "globalOff": "Reminders are turned off in Settings.",
+    "enable": "Turn reminders on",
+    "tbc": "You can set a reminder once the kick-off time is confirmed.",
+    "body": {
+      "day": "Tomorrow, {{time}}",
+      "hour": "Kick-off in 1 hour ({{time}})",
+      "minutes": "Kick-off in 15 minutes ({{time}})",
+      "start": "The match is starting now ({{time}})"
+    }
   },
   "team": {
     "coach": "Head coach",
     "empty": "Squad not available.",
-    "group": {
-      "GK": "Goalkeepers",
-      "DF": "Defenders",
-      "MF": "Midfielders",
-      "FW": "Forwards",
-      "OTHER": "Others"
-    }
+    "searchPlaceholder": "Search by name or number",
+    "searchClear": "Clear search",
+    "view": {
+      "grid": "Grid",
+      "list": "List"
+    },
+    "filters": {
+      "all": "All",
+      "GK": "GK",
+      "DF": "DEF",
+      "MF": "MID",
+      "FW": "FWD",
+      "OTHER": "OTH"
+    },
+    "summary_one": "{{count}} player",
+    "summary_other": "{{count}} players",
+    "emptyFiltered": "No player matches these filters.",
+    "clearFilters": "Clear filters",
+    "listHeader": {
+      "number": "#",
+      "player": "Player",
+      "age": "Age"
+    },
+    "loaned": "On loan",
+    "openCoach": "Open coach profile"
   },
   "player": {
     "title": "Player",
@@ -142,13 +318,11 @@
       "instagram": "Instagram",
       "tiktok": "TikTok"
     },
-    "photosTitle": "Photos",
     "photoLicense": "License: {{license}}",
     "photoSource": "View photo source",
     "photoAuthor": "Author: {{author}}",
     "photoNote": "Photos are linked from their original source with attribution; they are not redistributed.",
     "careerTitle": "Career",
-    "careerTotalsTitle": "Career totals",
     "deporMatchesTitle": "Matches with Depor",
     "matchHome": "Home",
     "matchAway": "Away",
@@ -165,13 +339,6 @@
       "minutesShort": "min",
       "yellowCardsShort": "YC",
       "redCardsShort": "RC"
-    },
-    "sourceLine": "Source: {{sources}} · Confidence: {{confidence}}",
-    "confidence": {
-      "verified": "verified",
-      "cross_checked": "cross-checked",
-      "single_source": "single source",
-      "estimated": "estimate"
     },
     "pendingTitle": "Pending data",
     "pendingBody": "We don't have these details from a reliable source yet; they are never made up.",
@@ -192,7 +359,28 @@
       "weightKg": "Weight",
       "preferredFoot": "Preferred foot",
       "contractUntil": "Contract"
-    }
+    },
+    "photoTitle": "Photo",
+    "photoClose": "Close",
+    "photoOpen": "Enlarge photo",
+    "bioTitle": "Details",
+    "viewMatch": "Open match",
+    "scope": {
+      "depor": "Depor {{season}}",
+      "deporShort": "Depor",
+      "career": "Career"
+    },
+    "tabs": {
+      "summary": "Summary",
+      "matches": "Matches",
+      "career": "Career"
+    },
+    "loanFromValue": "On loan from {{club}}",
+    "loanToValue": "On loan to {{club}}",
+    "noSeasonStats": "No matches for Depor this season.",
+    "noStats": "No statistics with a reliable source yet.",
+    "matchesEmpty": "No matches recorded for Depor.",
+    "careerEmpty": "No career recorded."
   },
   "country": {
     "Spain": "Spain",
@@ -231,5 +419,126 @@
     "Algeria": "Algeria",
     "Japan": "Japan",
     "United States": "United States"
+  },
+  "coach": {
+    "title": "Coach",
+    "notFound": "Coach profile not found.",
+    "role": "Head coach",
+    "personalTitle": "Personal details",
+    "birth": "Date of birth",
+    "birthPlace": "Place of birth",
+    "nationality": "Nationality",
+    "age": "Age",
+    "since": "Since",
+    "sinceValue": "At Depor since {{year}}",
+    "contract": "Contract until",
+    "recordTitle": "Record at Depor",
+    "recordNote": "Calculated from finished matches in the published season.",
+    "record": {
+      "played": "Pld",
+      "won": "W",
+      "drawn": "D",
+      "lost": "L",
+      "goalsFor": "GF",
+      "goalsAgainst": "GA",
+      "points": "Pts"
+    },
+    "careerTitle": "Career",
+    "careerCoach": "Coach",
+    "careerPlayer": "Player",
+    "careerEmpty": "No career recorded.",
+    "staffTitle": "Coaching staff",
+    "staffNote": "Published by the club's official website.",
+    "staffRole": {
+      "assistant_coach": "Assistant coach",
+      "technical_assistant": "Technical assistant",
+      "goalkeeping_coach": "Goalkeeping coach",
+      "fitness_coach": "Fitness coach",
+      "rehab_coach": "Rehab coach",
+      "physiotherapist": "Physiotherapist",
+      "doctor": "Doctor",
+      "nutritionist": "Nutritionist",
+      "psychologist": "Psychologist",
+      "podiatrist": "Podiatrist",
+      "analyst": "Analyst",
+      "delegate": "Delegate",
+      "kit_manager": "Kit manager"
+    },
+    "sourceNote": "Data from Wikidata, Wikipedia and the club's official website."
+  },
+  "news": {
+    "searchOpen": "Search",
+    "searchClose": "Close search",
+    "searchPlaceholder": "Search headlines, outlet or tag",
+    "searchClear": "Clear search",
+    "filters": "Filters",
+    "filtersTitle": "Filters",
+    "sources": "Outlets",
+    "noSources": "No outlets with stories.",
+    "filterSource": "{{source}}: {{count}} stories",
+    "tagsTitle": "Tags",
+    "noTags": "No tags.",
+    "filterTag": "{{tag}}: {{count}} stories",
+    "clearFilters": "Clear filters",
+    "clearFiltersCount": "Clear ({{count}})",
+    "activeFilters_one": "{{count}} active filter",
+    "activeFilters_other": "{{count}} active filters",
+    "group": {
+      "club": "Club",
+      "galicia": "Galicia",
+      "nacional": "National"
+    },
+    "kind": {
+      "all": "All",
+      "article": "Articles",
+      "video": "Videos"
+    },
+    "unread": "Unread",
+    "unreadCount": "{{count}} unread",
+    "markAllShort": "Mark read",
+    "markAllTitle": "Mark all as read",
+    "markAllMessage": "{{count}} stories will be marked as read. You can undo this right away.",
+    "markAllConfirm": "Mark read",
+    "markedCount_one": "{{count}} story marked as read",
+    "markedCount_other": "{{count}} stories marked as read",
+    "undo": "Undo",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "openItem": "Open story: {{title}} ({{source}})",
+    "openHint": "It opens in the app's browser.",
+    "openError": "Couldn't open the link.",
+    "openAlsoIn": "Open version in {{source}}: {{title}}",
+    "alsoInCount_one": "+{{count}} outlet",
+    "alsoInCount_other": "+{{count}} outlets",
+    "emptyAll": "No news published yet.",
+    "emptyFiltered": "No news matches these filters.",
+    "count_one": "{{count}} story",
+    "count_other": "{{count}} stories",
+    "socialTitle": "Official social accounts",
+    "socialNote": "Verified club accounts. No third-party scripts are loaded and nothing is scraped.",
+    "openProfile": "Open {{name}} on {{platform}}",
+    "openPin": "Open post: {{title}} ({{platform}})",
+    "pinsTitle": "Featured posts",
+    "platforms": {
+      "x": "X",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "tiktok": "TikTok",
+      "facebook": "Facebook",
+      "whatsapp": "WhatsApp",
+      "twitch": "Twitch",
+      "bluesky": "Bluesky",
+      "threads": "Threads"
+    },
+    "tags": {
+      "fichajes": "Transfers",
+      "cantera": "Academy",
+      "lesiones": "Injuries",
+      "partido": "Match",
+      "aficion": "Fans",
+      "club": "Club",
+      "opinion": "Opinion"
+    },
+    "filterTagOnly": "Filter by {{tag}}"
   }
 }

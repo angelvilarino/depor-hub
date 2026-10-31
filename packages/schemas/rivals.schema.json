@@ -1,0 +1,333 @@
+{
+  "$defs": {
+    "HeadToHead": {
+      "additionalProperties": false,
+      "description": "Balance hist\u00f3rico completo y los \u00faltimos cinco cruces (BDFutbol).",
+      "properties": {
+        "confidence": {
+          "default": "single_source",
+          "enum": [
+            "verified",
+            "cross_checked",
+            "single_source",
+            "estimated"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "drawn": {
+          "minimum": 0,
+          "title": "Drawn",
+          "type": "integer"
+        },
+        "goalsAgainst": {
+          "minimum": 0,
+          "title": "Goalsagainst",
+          "type": "integer"
+        },
+        "goalsFor": {
+          "minimum": 0,
+          "title": "Goalsfor",
+          "type": "integer"
+        },
+        "lost": {
+          "minimum": 0,
+          "title": "Lost",
+          "type": "integer"
+        },
+        "meetings": {
+          "items": {
+            "$ref": "#/$defs/HeadToHeadMeeting"
+          },
+          "title": "Meetings",
+          "type": "array"
+        },
+        "played": {
+          "minimum": 0,
+          "title": "Played",
+          "type": "integer"
+        },
+        "scope": {
+          "const": "all_official_matches",
+          "default": "all_official_matches",
+          "title": "Scope",
+          "type": "string"
+        },
+        "source": {
+          "default": "BDFutbol",
+          "title": "Source",
+          "type": "string"
+        },
+        "sourceUrl": {
+          "title": "Sourceurl",
+          "type": "string"
+        },
+        "won": {
+          "minimum": 0,
+          "title": "Won",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sourceUrl",
+        "played",
+        "won",
+        "drawn",
+        "lost",
+        "goalsFor",
+        "goalsAgainst"
+      ],
+      "title": "HeadToHead",
+      "type": "object"
+    },
+    "HeadToHeadMeeting": {
+      "additionalProperties": false,
+      "properties": {
+        "away": {
+          "title": "Away",
+          "type": "string"
+        },
+        "awayGoals": {
+          "minimum": 0,
+          "title": "Awaygoals",
+          "type": "integer"
+        },
+        "competition": {
+          "title": "Competition",
+          "type": "string"
+        },
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "deporResult": {
+          "enum": [
+            "W",
+            "D",
+            "L"
+          ],
+          "title": "Deporresult",
+          "type": "string"
+        },
+        "home": {
+          "title": "Home",
+          "type": "string"
+        },
+        "homeGoals": {
+          "minimum": 0,
+          "title": "Homegoals",
+          "type": "integer"
+        },
+        "round": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Round"
+        }
+      },
+      "required": [
+        "date",
+        "competition",
+        "home",
+        "away",
+        "homeGoals",
+        "awayGoals",
+        "deporResult"
+      ],
+      "title": "HeadToHeadMeeting",
+      "type": "object"
+    },
+    "KeyPlayer": {
+      "additionalProperties": false,
+      "description": "Contrato legado: la publicaci\u00f3n actual no incluye estad\u00edsticas individuales de rivales.",
+      "properties": {
+        "assists": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Assists"
+        },
+        "goals": {
+          "minimum": 0,
+          "title": "Goals",
+          "type": "integer"
+        },
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "playedMatches": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Playedmatches"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "goals"
+      ],
+      "title": "KeyPlayer",
+      "type": "object"
+    },
+    "Rival": {
+      "additionalProperties": false,
+      "properties": {
+        "bdfutbolId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bdfutbolid"
+        },
+        "coach": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Coach"
+        },
+        "headToHead": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HeadToHead"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "keyPlayers": {
+          "items": {
+            "$ref": "#/$defs/KeyPlayer"
+          },
+          "title": "Keyplayers",
+          "type": "array"
+        },
+        "team": {
+          "$ref": "#/$defs/TeamRef"
+        }
+      },
+      "required": [
+        "team"
+      ],
+      "title": "Rival",
+      "type": "object"
+    },
+    "TeamRef": {
+      "additionalProperties": false,
+      "properties": {
+        "crestUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cresturl"
+        },
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "shortName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shortname"
+        },
+        "tla": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tla"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "TeamRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "rivals": {
+      "items": {
+        "$ref": "#/$defs/Rival"
+      },
+      "title": "Rivals",
+      "type": "array"
+    },
+    "season": {
+      "title": "Season",
+      "type": "string"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "season"
+  ],
+  "title": "Rivals",
+  "type": "object"
+}

@@ -10,14 +10,34 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
+import yaml
+
 from . import models as m
+from . import rivals as rivals_ctx
 from . import source_models as s
 from . import transform as t
+from .cadence import is_due, load_fixtures, read_last_refresh, write_last_refresh
 from .client import Client
-from .enrich import bdfutbol, official, proposal, wikidata, wikipedia
+from .enrich import bdfutbol, crests, official, proposal, wikidata, wikipedia
+from .enrich import coach as coach_enrich
 from .enrich.http import PoliteClient, SourceError, contact_from_env
-from .extras import PlayerExtra, apply_extras, load_extras, reset_enriched, unknown_ids
-from .publish import write_if_changed
+from .extras import (
+    PlayerExtra,
+    apply_coach,
+    apply_extras,
+    load_coach,
+    load_extras,
+    reset_coach,
+    reset_enriched,
+    unknown_ids,
+)
+from .news import audit as news_audit
+from .news import ingest as news_ingest
+from .news.feeds import load_feeds
+from .news.http import NewsHttp
+from .news.relevance import build_index
+from .publish import write_if_changed, write_optional
+from .social import build_social, load_social, write_social
 
 COMPETITION = "PD"
 
@@ -34,18 +54,49 @@ def _client(raw_dir: Path | None) -> Client:
     )
 
 
+def _validate_ingest_integrity(standings: m.Standings, squad: m.Squad) -> None:
+    if len(standings.table) != 20:
+        raise SystemExit(
+            f"ERROR: clasificación incompleta ({len(standings.table)} filas; se esperaban 20); "
+            "no se publicaron datos"
+        )
+    if not squad.players:
+        raise SystemExit("ERROR: plantilla vacía; se conserva la publicación anterior")
+
+
 def _team_id() -> int | None:
     value = os.environ.get("DEPOR_TEAM_ID", "").strip()
     return int(value) if value else None
 
 
+def _gh_output(**values: str) -> None:
+    path = os.environ.get("GITHUB_OUTPUT")
+    if not path:
+        return
+    with open(path, "a", encoding="utf-8") as fh:
+        for key, value in values.items():
+            fh.write(f"{key}={value}\n")
+
+
 def cmd_ingest(args: argparse.Namespace) -> int:
+    # `--if-due` sale antes de tocar la red. `--force` salta la comprobación.
+    if args.if_due and not args.force:
+        now = datetime.now(UTC)
+        fixtures = load_fixtures(Path(args.fixtures))
+        last = read_last_refresh(Path(args.state))
+        if not is_due(fixtures, now, last):
+            print("changed=false due=false")
+            _gh_output(changed="false", refreshed="false")
+            return 0
+
     client = _client(Path(args.raw))
     comp = s.FDCompetition.model_validate(client.get(f"/competitions/{COMPETITION}"))
     if not comp.currentSeason:
         raise SystemExit("La API no informa de temporada actual")
     season = t.season_label(datetime.fromisoformat(comp.currentSeason.startDate).date())
-    standings_raw = s.FDStandings.model_validate(client.get(f"/competitions/{COMPETITION}/standings"))
+    standings_raw = s.FDStandings.model_validate(
+        client.get(f"/competitions/{COMPETITION}/standings")
+    )
     matches_raw = s.FDMatches.model_validate(client.get(f"/competitions/{COMPETITION}/matches"))
     teams_raw = s.FDTeams.model_validate(client.get(f"/competitions/{COMPETITION}/teams"))
 
@@ -60,31 +111,109 @@ def cmd_ingest(args: argparse.Namespace) -> int:
     squad = t.build_squad(team, now)
     # Datos manuales con fuente (dorsal, contrato, altura): solo rellenan huecos de la API (ADR 0007).
     extras = load_extras(Path(args.extras))
+    override_path = Path(args.overrides)
+    if override_path.exists():
+        overrides = proposal.load_manual(override_path)
+        # Manual overrides win over generated enrichments; football-data still wins
+        # because apply_extras only fills fields missing from the API model.
+        generated = proposal.load_manual(Path(args.extras))
+        merged = proposal.merge_extras(overrides, generated)
+        extras = {pid: PlayerExtra.model_validate(value) for pid, value in merged.items()}
     squad = apply_extras(squad, extras)
+    squad = apply_coach(squad, load_coach(Path(args.coach)))
     for pid in unknown_ids(squad, extras):
-        print(f"AVISO: {args.extras} menciona el id {pid}, que no está en la plantilla", file=sys.stderr)
+        print(
+            f"AVISO: {args.extras} menciona el id {pid}, que no está en la plantilla",
+            file=sys.stderr,
+        )
     meta = t.build_meta(comp, team, season, now)
 
-    if len(standings.table) != 20:
-        print(f"AVISO: la clasificación tiene {len(standings.table)} filas (se esperaban 20)", file=sys.stderr)
-    if not squad.players:
-        print("AVISO: plantilla vacía; se publica con players=[]", file=sys.stderr)
+    _validate_ingest_integrity(standings, squad)
 
     files = {
         "standings.json": t.dump(standings),
         "fixtures.json": t.dump(fixtures),
         "squad.json": t.dump(squad),
         "meta.json": t.dump(meta),
+        "season.json": t.dump(
+            t.build_season(matches_raw, fixtures, standings, team.id, season, now)
+        ),
     }
     digest = t.content_hash(files)
     files["meta.json"]["dataHash"] = digest
 
     changed = write_if_changed(Path(args.out), files, digest, force=args.force)
     print(f"changed={'true' if changed else 'false'} hash={digest}")
-    gh_out = os.environ.get("GITHUB_OUTPUT")
-    if gh_out:
-        with open(gh_out, "a", encoding="utf-8") as fh:
-            fh.write(f"changed={'true' if changed else 'false'}\n")
+    if args.if_due:
+        # Solo se actualiza el estado cuando se ha hecho una pasada real (aunque no cambie el contenido).
+        write_last_refresh(Path(args.state), datetime.now(UTC))
+        _gh_output(changed="true" if changed else "false", refreshed="true")
+    else:
+        _gh_output(changed="true" if changed else "false")
+    return 0
+
+
+def _bdfutbol_ids(path: Path) -> dict[int, str]:
+    raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    teams = raw.get("teams") or {}
+    return {int(team_id): str(bdf_id) for team_id, bdf_id in teams.items()}
+
+
+def cmd_rivals(args: argparse.Namespace) -> int:
+    """Publica rivals.json: histórico BDFutbol, entrenador y goleadores por rival."""
+    out_dir = Path(args.out)
+    fixtures = m.Fixtures.model_validate_json(Path(args.fixtures).read_text(encoding="utf-8"))
+    standings = (
+        m.Standings.model_validate_json(Path(args.standings).read_text(encoding="utf-8"))
+        if Path(args.standings).exists()
+        else None
+    )
+    meta = m.Meta.model_validate_json(Path(args.meta).read_text(encoding="utf-8"))
+    bdf_ids = _bdfutbol_ids(Path(args.bdfutbol_teams))
+
+    client = _client(Path(args.raw))
+    teams_raw = s.FDTeams.model_validate(client.get(f"/competitions/{COMPETITION}/teams"))
+
+    http = PoliteClient(
+        cache_dir=Path(args.raw) / "enrich" / "h2h",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    heads: dict[int, m.HeadToHead | None] = {}
+    try:
+        for opponent in rivals_ctx.opponents(fixtures, meta.team.id):
+            bdf_id = bdf_ids.get(opponent.id)
+            if not bdf_id:
+                print(f"AVISO: sin id de BDFutbol para {opponent.name}", file=sys.stderr)
+                heads[opponent.id] = None
+                continue
+            try:
+                heads[opponent.id] = rivals_ctx.fetch_head_to_head(http, bdf_id)
+            except SourceError as exc:
+                print(f"AVISO: sin histórico para {opponent.name}: {exc}", file=sys.stderr)
+                heads[opponent.id] = None
+    finally:
+        http.close()
+
+    now = _now()
+    data = rivals_ctx.build_rivals(
+        meta.season,
+        meta.team.id,
+        fixtures,
+        standings,
+        teams_raw.teams,
+        bdf_ids,
+        heads,
+        now,
+    )
+    digest = t.content_hash({"rivals.json": t.dump(data)})
+    changed = write_optional(out_dir, "rivals.json", t.dump(data), m.Rivals, force=args.force)
+    with_history = sum(1 for rival in data.rivals if rival.head_to_head)
+    print(
+        f"rivals={len(data.rivals)} con_historico={with_history} "
+        f"changed={'true' if changed else 'false'} hash={digest}"
+    )
     return 0
 
 
@@ -99,7 +228,9 @@ def cmd_probe(args: argparse.Namespace) -> int:
 
     comp = s.FDCompetition.model_validate(client.get(f"/competitions/{COMPETITION}"))
     cs = comp.currentSeason
-    print(f"\n== {comp.name} ==\nTemporada actual: {cs.startDate if cs else None} -> {cs.endDate if cs else None}")
+    print(
+        f"\n== {comp.name} ==\nTemporada actual: {cs.startDate if cs else None} -> {cs.endDate if cs else None}"
+    )
     print(f"Jornada actual: {cs.currentMatchday if cs else None}")
 
     st = s.FDStandings.model_validate(client.get(f"/competitions/{COMPETITION}/standings"))
@@ -109,8 +240,12 @@ def cmd_probe(args: argparse.Namespace) -> int:
     ms = s.FDMatches.model_validate(client.get(f"/competitions/{COMPETITION}/matches"))
     teams = s.FDTeams.model_validate(client.get(f"/competitions/{COMPETITION}/teams"))
     print(f"Partidos totales de la competición: {len(ms.matches)}; equipos: {len(teams.teams)}")
-    print(f"Equipos con escudo (crest): {sum(1 for x in teams.teams if x.crest)}/{len(teams.teams)}")
-    print(f"Equipos con estadio (venue): {sum(1 for x in teams.teams if x.venue)}/{len(teams.teams)}")
+    print(
+        f"Equipos con escudo (crest): {sum(1 for x in teams.teams if x.crest)}/{len(teams.teams)}"
+    )
+    print(
+        f"Equipos con estadio (venue): {sum(1 for x in teams.teams if x.venue)}/{len(teams.teams)}"
+    )
     print(f"Partidos con sede propia: {sum(1 for x in ms.matches if x.venue)}/{len(ms.matches)}")
     print(f"Partidos con árbitro: {sum(1 for x in ms.matches if x.referees)}/{len(ms.matches)}")
     try:
@@ -140,14 +275,161 @@ def cmd_probe(args: argparse.Namespace) -> int:
     return 0
 
 
+def _load_model(path: Path, model: type) -> object | None:
+    if not path.exists():
+        return None
+    return model.model_validate_json(path.read_text(encoding="utf-8"))
+
+
+def _news_index(squad: m.Squad | None, coach_name: str | None, fixtures: m.Fixtures | None):
+    opponents: list[str] = []
+    for match in fixtures.matches if fixtures else []:
+        opponents.extend([match.home.name, match.away.name])
+    return build_index(squad, coach_name=coach_name, opponents=opponents)
+
+
+def _coach_name(coach_path: Path, squad: m.Squad | None) -> str | None:
+    if coach_path.exists():
+        try:
+            data = yaml.safe_load(coach_path.read_text(encoding="utf-8")) or {}
+            name = (data.get("coach") or {}).get("name")
+            if name:
+                return str(name)
+        except (OSError, yaml.YAMLError):
+            pass
+    return squad.coach.name if squad and squad.coach else None
+
+
+def cmd_news_audit(args: argparse.Namespace) -> int:
+    feeds = load_feeds(Path(args.feeds))
+    squad = _load_model(Path(args.squad), m.Squad)
+    fixtures = _load_model(Path(args.fixtures), m.Fixtures)
+    coach_name = _coach_name(Path(args.coach), squad)
+    index = _news_index(squad, coach_name, fixtures)
+    http = NewsHttp(
+        cache_dir=Path(args.raw) / "news",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    try:
+        rows = news_audit.audit_feeds(feeds, http, include_disabled=args.all, index=index)
+    finally:
+        http.close()
+    print(news_audit.format_table(rows))
+    if args.write_docs:
+        if news_audit.update_catalog(Path(args.feeds), feeds, rows):
+            print(f"Catálogo actualizado: {args.feeds}")
+        news_audit.update_docs(Path(args.docs), rows)
+        print(f"Auditoría escrita en {args.docs}")
+    errors = sum(1 for row in rows if row.status == "error")
+    print(f"\nFeeds auditados: {len(rows)} · con error: {errors}")
+    return 0
+
+
+def cmd_news(args: argparse.Namespace) -> int:
+    feeds = load_feeds(Path(args.feeds))
+    squad = _load_model(Path(args.squad), m.Squad)
+    fixtures = _load_model(Path(args.fixtures), m.Fixtures)
+    coach_name = _coach_name(Path(args.coach), squad)
+    out_dir = Path(args.out)
+    existing = news_ingest.load_existing(out_dir / "news.json")
+    http = NewsHttp(
+        cache_dir=Path(args.raw) / "news",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    try:
+        result = news_ingest.run_ingest(
+            feeds=feeds,
+            http=http,
+            squad=squad,
+            coach_name=coach_name,
+            opponents=[
+                name
+                for match in (fixtures.matches if fixtures else [])
+                for name in (match.home.name, match.away.name)
+            ],
+            existing=existing,
+            now=datetime.now(UTC),
+            threshold=args.threshold,
+            dedupe_threshold=args.dedupe_threshold,
+            force=args.force,
+        )
+    except news_ingest.AllFeedsFailed as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        _gh_output(changed="false", failed="true")
+        return 1
+    finally:
+        http.close()
+
+    if args.report:
+        print(result.report.render())
+
+    if not args.dry_run and len(result.news.stories) < args.min_stories:
+        print(
+            f"ERROR: solo {len(result.news.stories)} historias; mínimo requerido "
+            f"{args.min_stories}. Se conserva news.json anterior.",
+            file=sys.stderr,
+        )
+        _gh_output(changed="false", failed="true")
+        return 1
+
+    changed = False
+    if not args.dry_run:
+        changed = news_ingest.write_news(out_dir, result, force=args.force)
+        if args.social:
+            social_config = load_social(Path(args.social))
+            social = build_social(
+                social_config,
+                datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            )
+            changed = write_social(out_dir, social, force=args.force) or changed
+    print(
+        f"changed={'true' if changed else 'false'} stories={len(result.news.stories)} "
+        f"sources={len(result.news.sources)} errors={len(result.errors)}"
+    )
+    for error in result.errors:
+        print(f"AVISO: {error}", file=sys.stderr)
+    _gh_output(changed="true" if changed else "false", failed="false")
+    return 0
+
+
+def cmd_social(args: argparse.Namespace) -> int:
+    config = load_social(Path(args.source))
+    social = build_social(config, datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    changed = False
+    if not args.dry_run:
+        changed = write_social(Path(args.out), social, force=args.force)
+    print(
+        f"changed={'true' if changed else 'false'} profiles={len(social.profiles)} "
+        f"pins={len(social.pins)} hash={social.data_hash}"
+    )
+    _gh_output(changed="true" if changed else "false")
+    return 0
+
+
 def cmd_schemas(args: argparse.Namespace) -> int:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    for name, model in m.FILES.items():
+    for name, model in {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}.items():
         schema = model.model_json_schema(by_alias=True)
         target = out / name.replace(".json", ".schema.json")
         target.write_text(json.dumps(schema, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print("Esquemas escritos en", out)
+    return 0
+
+
+def cmd_validate(args: argparse.Namespace) -> int:
+    directory = Path(args.data)
+    models = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}
+    missing = [name for name in models if not (directory / name).is_file()]
+    if missing:
+        raise SystemExit(f"Faltan JSON públicos requeridos: {', '.join(missing)}")
+    for name, model in models.items():
+        model.model_validate_json((directory / name).read_text(encoding="utf-8"))
+    print(f"Validación Pydantic correcta: {len(models)} JSON en {directory}")
     return 0
 
 
@@ -174,21 +456,23 @@ def _write_template(path: Path, squad: m.Squad) -> None:
         writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS)
         writer.writeheader()
         for player in squad.players:
-            writer.writerow({
-                "id": player.id,
-                "name": player.name,
-                "shirt_number": player.shirt_number or "",
-                "contract_until": player.contract_until or "",
-                "height_cm": player.height_cm or "",
-                "weight_kg": player.weight_kg or "",
-                "birth_place": player.birth_place or "",
-                "preferred_foot": player.preferred_foot or "",
-                "loan_from": player.loan_from or "",
-                "market_value_eur": player.market_value_eur or "",
-                "source": "",
-                "confidence": "single_source",
-                "captured_at": "",
-            })
+            writer.writerow(
+                {
+                    "id": player.id,
+                    "name": player.name,
+                    "shirt_number": player.shirt_number or "",
+                    "contract_until": player.contract_until or "",
+                    "height_cm": player.height_cm or "",
+                    "weight_kg": player.weight_kg or "",
+                    "birth_place": player.birth_place or "",
+                    "preferred_foot": player.preferred_foot or "",
+                    "loan_from": player.loan_from or "",
+                    "market_value_eur": player.market_value_eur or "",
+                    "source": "",
+                    "confidence": "single_source",
+                    "captured_at": "",
+                }
+            )
     print(f"Plantilla CSV escrita en {path} ({len(squad.players)} jugadores)")
 
 
@@ -225,7 +509,10 @@ def _import_csv(path: Path, extras_path: Path, squad: m.Squad) -> int:
                 continue
             pid = int(raw_id)
             if pid not in ids:
-                print(f"AVISO: el CSV menciona el id {pid}, que no está en la plantilla", file=sys.stderr)
+                print(
+                    f"AVISO: el CSV menciona el id {pid}, que no está en la plantilla",
+                    file=sys.stderr,
+                )
                 continue
             data = _clean_csv_row(row)
             if not data:
@@ -239,10 +526,14 @@ def _import_csv(path: Path, extras_path: Path, squad: m.Squad) -> int:
     return 0
 
 
-def _apply_to_public(squad_path: Path, extras_path: Path, out_dir: Path) -> bool:
+def _apply_to_public(
+    squad_path: Path, extras_path: Path, out_dir: Path, coach_path: Path | None = None
+) -> bool:
     squad = m.Squad.model_validate_json(squad_path.read_text(encoding="utf-8"))
     extras = load_extras(extras_path)
     updated = apply_extras(reset_enriched(squad), extras)
+    if coach_path is not None:
+        updated = apply_coach(reset_coach(updated), load_coach(coach_path))
     files: dict[str, dict] = {}
     for name in m.FILES:
         candidate = out_dir / name
@@ -279,9 +570,19 @@ def cmd_enrich(args: argparse.Namespace) -> int:
         interval=args.interval,
         offline=args.offline,
     )
+    crest_resolver: crests.CrestResolver | None = None
     try:
         bdf = None if args.no_bdfutbol else bdfutbol.BDFutbolClient(http)
         wd = None if args.no_wikidata else wikidata.WikidataClient(http)
+        if not args.no_crests:
+            crest_resolver = crests.CrestResolver(
+                http=http,
+                wikidata=wd,
+                fixtures_path=Path(args.fixtures),
+                overrides_path=Path(args.club_crests),
+                cache_path=Path(args.raw) / "enrich" / "crests.json",
+                use_wikidata=not args.no_wikidata,
+            )
         wiki_players: list[wikipedia.WikiPlayer] = []
         wiki_client: wikipedia.WikipediaClient | None = None
         if not args.no_wikipedia:
@@ -316,8 +617,11 @@ def cmd_enrich(args: argparse.Namespace) -> int:
             log=print,
             wiki_client=wiki_client,
             with_photos=not args.no_photos,
+            crest_resolver=crest_resolver,
         )
     finally:
+        if crest_resolver is not None:
+            crest_resolver.save()
         http.close()
 
     data = proposal.proposal_data(result, args.min_confidence)
@@ -328,6 +632,10 @@ def cmd_enrich(args: argparse.Namespace) -> int:
     )
     for field, count in coverage["fields"].items():
         print(f"  {field}: {count}/{coverage['players']}")
+    crest_coverage = coverage.get("crests") or {}
+    for label, key in (("carrera", "career"), ("partidos", "matches")):
+        values = crest_coverage.get(key) or {}
+        print(f"  escudos {label}: {values.get('resolved', 0)}/{values.get('total', 0)}")
 
     if args.dry_run:
         return 0
@@ -344,7 +652,84 @@ def cmd_enrich(args: argparse.Namespace) -> int:
         merged = proposal.merge_extras(manual, generated)
         proposal.write_extras(Path(args.extras), merged)
         print(f"Datos aplicados: {args.extras} ({len(generated)} jugadores)")
-        _apply_to_public(squad_path, Path(args.extras), Path(args.out))
+        _apply_to_public(squad_path, Path(args.extras), Path(args.out), Path(args.coach))
+    return 0
+
+
+def cmd_coach(args: argparse.Namespace) -> int:
+    """Descarga/actualiza la ficha del entrenador y el cuerpo técnico (ADR 0014)."""
+    http = PoliteClient(
+        cache_dir=Path(args.raw) / "enrich",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    try:
+        data = coach_enrich.fetch_coach(
+            http,
+            qid=args.qid,
+            wiki_lang=args.wiki_lang,
+            wiki_title=args.wiki_title,
+            official_team_url=args.official_team,
+            official_profile_url=args.official_profile,
+        )
+        if not args.no_crests:
+            resolver = crests.CrestResolver(
+                http=http,
+                fixtures_path=Path(args.fixtures),
+                overrides_path=Path(args.club_crests),
+                cache_path=Path(args.raw) / "enrich" / "crests.json",
+            )
+            try:
+                for entry in data.get("career") or []:
+                    entry["crest_url"] = resolver.resolve(entry["club"])
+            finally:
+                resolver.save()
+    finally:
+        http.close()
+
+    captured = datetime.now(UTC).strftime("%Y-%m-%d")
+    provenance = {
+        "birthDate": {
+            "source": f"Wikidata {args.qid} + Wikipedia ({args.wiki_lang})",
+            "confidence": "cross_checked",
+            "captured_at": captured,
+        },
+        "birthPlace": {
+            "source": f"Wikidata {args.qid} + Wikipedia ({args.wiki_lang})",
+            "confidence": "cross_checked",
+            "captured_at": captured,
+        },
+        "photoUrl": {
+            "source": "Web oficial del RC Deportivo",
+            "confidence": "verified",
+            "captured_at": captured,
+        },
+        "career": {
+            "source": f"Wikipedia ({args.wiki_lang})",
+            "confidence": "single_source",
+            "captured_at": captured,
+        },
+        "staff": {
+            "source": "Web oficial del RC Deportivo",
+            "confidence": "verified",
+            "captured_at": captured,
+        },
+    }
+    payload = {"coach": {**data, "provenance": provenance}}
+    text = yaml.safe_dump(payload, allow_unicode=True, sort_keys=False)
+    target = Path(args.out)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    changed = not target.exists() or target.read_text(encoding="utf-8") != text
+    if changed:
+        target.write_text(text, encoding="utf-8")
+    print(
+        f"Entrenador: {data.get('name')} · carrera: {len(data.get('career') or [])} · "
+        f"staff: {len(data.get('staff') or [])} · changed={'true' if changed else 'false'}"
+    )
+    print(f"Ficha escrita en {target}")
+    if args.apply:
+        _apply_to_public(Path(args.squad), Path(args.extras), Path(args.out_dir), target)
     return 0
 
 
@@ -357,19 +742,45 @@ def main(argv: list[str] | None = None) -> int:
         if name == "ingest":
             sp.add_argument("--out", default="data/public/v1")
             sp.add_argument("--extras", default="data/manual/squad_extras.yml")
+            sp.add_argument("--overrides", default="data/manual/squad_overrides.yml")
+            sp.add_argument("--coach", default="data/manual/coach.yml")
             sp.add_argument("--force", action="store_true")
+            sp.add_argument(
+                "--if-due",
+                action="store_true",
+                help="Refresca solo si toca según la ventana de partido y el último refresco",
+            )
+            sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+            sp.add_argument("--state", default="data/raw/ingest_state.json")
         sp.set_defaults(fn=fn)
     sp = sub.add_parser("schemas")
     sp.add_argument("--out", default="packages/schemas")
     sp.set_defaults(fn=cmd_schemas)
+    sp = sub.add_parser("validate", help="Valida todos los JSON públicos con Pydantic")
+    sp.add_argument("--data", default="data/public/v1")
+    sp.set_defaults(fn=cmd_validate)
+    sp = sub.add_parser("rivals", help="Publica el histórico y el contexto de los 19 rivales")
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--standings", default="data/public/v1/standings.json")
+    sp.add_argument("--meta", default="data/public/v1/meta.json")
+    sp.add_argument("--out", default="data/public/v1")
+    sp.add_argument("--raw", default="data/raw")
+    sp.add_argument("--bdfutbol-teams", default="data/manual/bdfutbol_teams.yml")
+    sp.add_argument("--interval", type=float, default=1.0)
+    sp.add_argument("--offline", action="store_true")
+    sp.add_argument("--force", action="store_true")
+    sp.set_defaults(fn=cmd_rivals)
     sp = sub.add_parser("enrich", help="Propone o aplica datos de BDFutbol/Wikidata/Wikipedia")
     sp.add_argument("--squad", default="data/public/v1/squad.json")
     sp.add_argument("--out", default="data/public/v1")
     sp.add_argument("--extras", default="data/manual/squad_extras.yml")
+    sp.add_argument("--coach", default="data/manual/coach.yml")
     sp.add_argument("--overrides", default="data/manual/squad_overrides.yml")
     sp.add_argument("--proposal", default="data/manual/squad_enrich.proposed.yml")
     sp.add_argument("--raw", default="data/raw")
-    sp.add_argument("--min-confidence", choices=list(proposal.CONFIDENCE_ORDER), default="single_source")
+    sp.add_argument(
+        "--min-confidence", choices=list(proposal.CONFIDENCE_ORDER), default="single_source"
+    )
     sp.add_argument("--dry-run", action="store_true")
     sp.add_argument("--apply", action="store_true")
     sp.add_argument("--limit", type=int, default=None)
@@ -383,9 +794,90 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--no-wikidata", action="store_true")
     sp.add_argument("--no-wikipedia", action="store_true")
     sp.add_argument("--no-photos", action="store_true")
+    sp.add_argument("--no-crests", action="store_true")
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--club-crests", default="data/manual/club_crests.yml")
     sp.add_argument("--export-template", default=None)
     sp.add_argument("--import-csv", default=None)
     sp.set_defaults(fn=cmd_enrich)
+    sp = sub.add_parser("coach", help="Actualiza la ficha del entrenador y el cuerpo técnico")
+    sp.add_argument("--out", default="data/manual/coach.yml")
+    sp.add_argument("--raw", default="data/raw")
+    sp.add_argument("--offline", action="store_true")
+    sp.add_argument("--interval", type=float, default=1.0)
+    sp.add_argument("--qid", default=coach_enrich.WIKIDATA_QID)
+    sp.add_argument("--wiki-lang", default=coach_enrich.WIKI_LANG)
+    sp.add_argument("--wiki-title", default=coach_enrich.WIKI_TITLE)
+    sp.add_argument("--official-team", default=official.TEAM_URL)
+    sp.add_argument(
+        "--official-profile",
+        default="https://www.rcdeportivo.es/es/jugadores/depor/antonio-hidalgo",
+    )
+    sp.add_argument("--no-crests", action="store_true")
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--club-crests", default="data/manual/club_crests.yml")
+    sp.add_argument("--apply", action="store_true")
+    sp.add_argument("--squad", default="data/public/v1/squad.json")
+    sp.add_argument("--extras", default="data/manual/squad_extras.yml")
+    sp.add_argument("--out-dir", default="data/public/v1")
+    sp.set_defaults(fn=cmd_coach)
+
+    sp = sub.add_parser("news", help="Ingiere feeds y publica news.json (ADR 0018)")
+    sp.add_argument("--feeds", default="data/manual/news_feeds.yml")
+    sp.add_argument("--squad", default="data/public/v1/squad.json")
+    sp.add_argument("--coach", default="data/manual/coach.yml")
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--out", default="data/public/v1")
+    sp.add_argument("--raw", default="data/raw")
+    sp.add_argument("--interval", type=float, default=1.0)
+    sp.add_argument("--threshold", type=int, default=None, help="Umbral de relevancia")
+    sp.add_argument("--dedupe-threshold", type=float, default=0.52)
+    sp.add_argument("--min-stories", type=int, default=5)
+    sp.add_argument("--social", default="data/manual/social_pins.yml")
+    sp.add_argument("--offline", action="store_true", help="Usa solo la caché local")
+    sp.add_argument("--force", action="store_true")
+    sp.add_argument("--dry-run", action="store_true")
+    sp.add_argument("--report", action="store_true", help="Imprime el informe de calibración")
+    sp.set_defaults(fn=cmd_news)
+    nsub = sp.add_subparsers(dest="news_cmd")
+    audit = nsub.add_parser("audit", help="Prueba los feeds y actualiza docs/sources.md")
+    audit.add_argument("--feeds", default="data/manual/news_feeds.yml")
+    audit.add_argument("--squad", default="data/public/v1/squad.json")
+    audit.add_argument("--coach", default="data/manual/coach.yml")
+    audit.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    audit.add_argument("--raw", default="data/raw")
+    audit.add_argument("--docs", default="docs/sources.md")
+    audit.add_argument("--interval", type=float, default=1.0)
+    audit.add_argument("--offline", action="store_true")
+    audit.add_argument("--all", action="store_true", help="Incluye feeds deshabilitados")
+    audit.add_argument("--write-docs", action="store_true")
+    audit.set_defaults(fn=cmd_news_audit)
+
+    news_ing = nsub.add_parser("ingest", help="Alias de `news` (compatibilidad)")
+    news_ing.add_argument("--feeds", default="data/manual/news_feeds.yml")
+    news_ing.add_argument("--squad", default="data/public/v1/squad.json")
+    news_ing.add_argument("--coach", default="data/manual/coach.yml")
+    news_ing.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    news_ing.add_argument("--out", default="data/public/v1")
+    news_ing.add_argument("--raw", default="data/raw")
+    news_ing.add_argument("--interval", type=float, default=1.0)
+    news_ing.add_argument("--threshold", type=int, default=None)
+    news_ing.add_argument("--dedupe-threshold", type=float, default=0.52)
+    news_ing.add_argument("--min-stories", type=int, default=5)
+    news_ing.add_argument("--social", default="data/manual/social_pins.yml")
+    news_ing.add_argument("--offline", action="store_true")
+    news_ing.add_argument("--force", action="store_true")
+    news_ing.add_argument("--dry-run", action="store_true")
+    news_ing.add_argument("--report", action="store_true")
+    news_ing.set_defaults(fn=cmd_news)
+
+    sp = sub.add_parser("social", help="Publica los perfiles y pins curados de redes")
+    sp.add_argument("--source", default="data/manual/social_pins.yml")
+    sp.add_argument("--out", default="data/public/v1")
+    sp.add_argument("--force", action="store_true")
+    sp.add_argument("--dry-run", action="store_true")
+    sp.set_defaults(fn=cmd_social)
+
     args = p.parse_args(argv)
     return args.fn(args)
 

@@ -1,5 +1,7 @@
 // Reglas de hora (docs/ESTADO.md): SCHEDULED = hora NO fijada (la API manda 00:00:00Z) -> solo fecha.
 // Cualquier otro estado trae hora real y se muestra en Europe/Madrid. No se inventan horas.
+import { capitalizeFirst } from './text';
+
 export const MADRID = 'Europe/Madrid';
 
 export const hasConfirmedTime = (status: string): boolean => status !== 'SCHEDULED';
@@ -25,6 +27,36 @@ export function formatMatchDate(
 export function formatMatchTime(utc: string, status: string, locale: string): string | null {
   if (!hasConfirmedTime(status)) return null;
   return new Intl.DateTimeFormat(locale, {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+    timeZone: MADRID,
+  }).format(new Date(utc));
+}
+
+/**
+ * Forma corta y capitalizada para la tarjeta: «Lunes 2 nov» (o «Monday 2 Nov»).
+ * En SCHEDULED se lee en UTC para no cambiar de día; en el resto, en Madrid.
+ */
+export function formatMatchDateShort(utc: string, status: string, locale: string): string {
+  const timeZone = zoneFor(status);
+  const parts = new Intl.DateTimeFormat(locale, {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'short',
+    timeZone,
+  }).formatToParts(new Date(utc));
+  const value = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((part) => part.type === type)?.value ?? '';
+  return capitalizeFirst(`${value('weekday')} ${value('day')} ${value('month')}`, locale);
+}
+
+/** Fecha y hora completas en Madrid para la vista previa de recordatorios. */
+export function formatReminderDateTime(utc: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,

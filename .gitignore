@@ -7,6 +7,7 @@ android/
 .env.*
 !.env.example
 __pycache__/
+*.egg-info/
 .venv/
 data/raw/*
 !data/raw/.gitkeep

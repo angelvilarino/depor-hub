@@ -7,8 +7,56 @@
     "since": "2025-07-01",
     "contractUntil": "2027",
     "provenance": {
-      "since": { "source": "Fuente de ejemplo", "confidence": "single_source", "capturedAt": "2026-10-25" }
-    }
+      "since": {
+        "source": "Fuente de ejemplo",
+        "confidence": "single_source",
+        "capturedAt": "2026-10-25"
+      }
+    },
+    "birthPlace": "Granollers",
+    "photoUrl": "https://example.com/entrenador.jpg",
+    "career": [
+      {
+        "club": "Club de Origen",
+        "crestUrl": null,
+        "role": "player",
+        "from": "1998",
+        "to": "2002",
+        "appearances": 84,
+        "goals": 9,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "Club Actual",
+        "crestUrl": null,
+        "role": "coach",
+        "from": "2025",
+        "to": null,
+        "appearances": null,
+        "goals": null,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      }
+    ],
+    "staff": [
+      {
+        "name": "Segundo Entrenador Ejemplo",
+        "role": "assistant_coach",
+        "photoUrl": null
+      },
+      {
+        "name": "Preparador Físico Ejemplo",
+        "role": "fitness_coach",
+        "photoUrl": null
+      }
+    ]
   },
   "players": [
     {
@@ -26,7 +74,11 @@
       "loanTo": null,
       "marketValueEur": 2500000,
       "weightKg": 74,
-      "social": { "x": "jugador_ejemplo", "instagram": "jugador.ejemplo", "tiktok": null },
+      "social": {
+        "x": "jugador_ejemplo",
+        "instagram": "jugador.ejemplo",
+        "tiktok": null
+      },
       "photos": [
         {
           "url": "https://cdn.bff.rcdeportivo.app/players/000000-large?v=21",
@@ -43,6 +95,7 @@
       "career": [
         {
           "club": "Club de Origen",
+          "crestUrl": "https://crests.football-data.org/77.png",
           "from": "2018",
           "to": "2022",
           "appearances": 84,
@@ -61,7 +114,8 @@
               "yellowCards": 3,
               "redCards": 0
             }
-          ]
+          ],
+          "role": "player"
         }
       ],
       "careerTotals": {
@@ -76,6 +130,7 @@
         {
           "date": "2026-09-13",
           "opponent": "Getafe",
+          "opponentCrestUrl": "https://crests.football-data.org/82.png",
           "competition": "LaLiga",
           "home": false,
           "teamGoals": 1,
@@ -90,9 +145,21 @@
         }
       ],
       "provenance": {
-        "heightCm": { "source": "Fuente de ejemplo", "confidence": "single_source", "capturedAt": "2026-10-25" },
-        "marketValueEur": { "source": "Estimación de ejemplo", "confidence": "estimated", "capturedAt": "2026-10-25" },
-        "career": { "source": "Fuente de ejemplo", "confidence": "single_source", "capturedAt": "2026-10-25" }
+        "heightCm": {
+          "source": "Fuente de ejemplo",
+          "confidence": "single_source",
+          "capturedAt": "2026-10-25"
+        },
+        "marketValueEur": {
+          "source": "Estimación de ejemplo",
+          "confidence": "estimated",
+          "capturedAt": "2026-10-25"
+        },
+        "career": {
+          "source": "Fuente de ejemplo",
+          "confidence": "single_source",
+          "capturedAt": "2026-10-25"
+        }
       }
     }
   ]

@@ -1,0 +1,174 @@
+{
+  "updatedAt": "2026-10-31T12:03:58Z",
+  "season": "2026-27",
+  "matchday": 11,
+  "team": {
+    "id": 560,
+    "name": "RC Deportivo La Coruña",
+    "shortName": "Deportivo",
+    "tla": "DEP",
+    "crestUrl": "https://crests.football-data.org/560.png"
+  },
+  "summary": {
+    "position": 11,
+    "points": 11,
+    "played": 10,
+    "won": 2,
+    "drawn": 5,
+    "lost": 3,
+    "goalsFor": 13,
+    "goalsAgainst": 13,
+    "goalDifference": 0
+  },
+  "form": [
+    {
+      "matchId": 564724,
+      "matchday": 10,
+      "date": "2026-10-24",
+      "opponent": {
+        "id": 78,
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL",
+        "crestUrl": "https://crests.football-data.org/78.png"
+      },
+      "home": false,
+      "scoreFor": 0,
+      "scoreAgainst": 1,
+      "result": "L"
+    },
+    {
+      "matchId": 564716,
+      "matchday": 9,
+      "date": "2026-10-16",
+      "opponent": {
+        "id": 88,
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV",
+        "crestUrl": "https://crests.football-data.org/88.png"
+      },
+      "home": true,
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "result": "D"
+    },
+    {
+      "matchId": 564707,
+      "matchday": 8,
+      "date": "2026-10-11",
+      "opponent": {
+        "id": 92,
+        "name": "Real Sociedad de Fútbol",
+        "shortName": "Real Sociedad",
+        "tla": "RSO",
+        "crestUrl": "https://crests.football-data.org/92.png"
+      },
+      "home": false,
+      "scoreFor": 2,
+      "scoreAgainst": 3,
+      "result": "L"
+    },
+    {
+      "matchId": 564695,
+      "matchday": 7,
+      "date": "2026-09-20",
+      "opponent": {
+        "id": 90,
+        "name": "Real Betis Balompié",
+        "shortName": "Real Betis",
+        "tla": "BET",
+        "crestUrl": "https://crests.football-data.org/90.png"
+      },
+      "home": true,
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "result": "D"
+    },
+    {
+      "matchId": 564679,
+      "matchday": 6,
+      "date": "2026-09-16",
+      "opponent": {
+        "id": 559,
+        "name": "Sevilla FC",
+        "shortName": "Sevilla FC",
+        "tla": "SEV",
+        "crestUrl": "https://crests.football-data.org/559.png"
+      },
+      "home": true,
+      "scoreFor": 0,
+      "scoreAgainst": 1,
+      "result": "L"
+    }
+  ],
+  "positionEvolution": [
+    {
+      "matchday": 1,
+      "position": 12,
+      "points": 1
+    },
+    {
+      "matchday": 2,
+      "position": 11,
+      "points": 2
+    },
+    {
+      "matchday": 3,
+      "position": 8,
+      "points": 5
+    },
+    {
+      "matchday": 4,
+      "position": 5,
+      "points": 8
+    },
+    {
+      "matchday": 5,
+      "position": 7,
+      "points": 9
+    },
+    {
+      "matchday": 6,
+      "position": 7,
+      "points": 9
+    },
+    {
+      "matchday": 7,
+      "position": 7,
+      "points": 10
+    },
+    {
+      "matchday": 8,
+      "position": 8,
+      "points": 10
+    },
+    {
+      "matchday": 9,
+      "position": 9,
+      "points": 11
+    },
+    {
+      "matchday": 10,
+      "position": 11,
+      "points": 11
+    }
+  ],
+  "provenance": {
+    "summary": {
+      "source": "football-data.org",
+      "confidence": "verified",
+      "capturedAt": "2026-10-31T12:03:58Z"
+    },
+    "form": {
+      "source": "football-data.org",
+      "confidence": "verified",
+      "capturedAt": "2026-10-31T12:03:58Z"
+    },
+    "positionEvolution": {
+      "source": "football-data.org (cálculo propio por jornada)",
+      "confidence": "estimated",
+      "capturedAt": "2026-10-31T12:03:58Z"
+    }
+  }
+}

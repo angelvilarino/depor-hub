@@ -1,0 +1,28 @@
+{
+  "updatedAt": "2026-10-29T10:50:11Z",
+  "dataHash": "6d62e8b25d3533e6",
+  "profiles": [
+    {
+      "id": "club-instagram",
+      "platform": "instagram",
+      "name": "RC Deportivo",
+      "url": "https://www.instagram.com/rcdeportivo/",
+      "handle": "@rcdeportivo"
+    },
+    {
+      "id": "club-x",
+      "platform": "x",
+      "name": "RC Deportivo",
+      "url": "https://x.com/RCDeportivo",
+      "handle": "@RCDeportivo"
+    },
+    {
+      "id": "club-youtube",
+      "platform": "youtube",
+      "name": "RC Deportivo",
+      "url": "https://www.youtube.com/@rcdeportivo",
+      "handle": "@rcdeportivo"
+    }
+  ],
+  "pins": []
+}

@@ -93,6 +93,7 @@ class PoliteClient:
         transport: httpx.BaseTransport | None = None,
         sleep: Callable[[float], None] = time.sleep,
         offline: bool = False,
+        cache_ttl: float = 24 * 60 * 60,
     ) -> None:
         self.cache_dir = Path(cache_dir) if cache_dir else None
         self.contact = contact
@@ -101,6 +102,7 @@ class PoliteClient:
         self.transport = transport
         self.sleep = sleep
         self.offline = offline
+        self.cache_ttl = cache_ttl
         self._last: dict[str, float] = {}
         self._robots: dict[str, str] = {}
         self.user_agent = DEFAULT_USER_AGENT.format(contact=contact)
@@ -126,6 +128,8 @@ class PoliteClient:
     def _read_cache(self, url: str) -> FetchResult | None:
         path = self._cache_path(url)
         if not path or not path.exists():
+            return None
+        if not self.offline and time.time() - path.stat().st_mtime > self.cache_ttl:
             return None
         return FetchResult(url=url, final_url=url, status=200, text=path.read_text("utf-8"), from_cache=True)
 
