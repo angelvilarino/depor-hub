@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import os
+import tempfile
 from collections import Counter
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -121,16 +123,25 @@ def load_existing(path: Path | str) -> m.News | None:
 
 def write_news(out_dir: Path | str, result: IngestResult, force: bool = False) -> bool:
     target = Path(out_dir)
-    if not force and not result.changed:
+    body = result.news.model_dump(mode="json", by_alias=True)
+    m.News.model_validate(body)
+    # `--force` bypasses HTTP validators in the fetch layer; it must not rewrite
+    # updatedAt or create a commit when the public story content is unchanged.
+    if not result.changed:
         return False
     target.mkdir(parents=True, exist_ok=True)
-    body = result.news.model_dump(mode="json", by_alias=True)
     text = json.dumps(body, ensure_ascii=False, indent=2) + "\n"
     path = target / "news.json"
     if not force and path.exists() and path.read_text(encoding="utf-8") == text:
         return False
-    path.write_text(text, encoding="utf-8")
-    m.News.model_validate_json(path.read_text(encoding="utf-8"))
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=target, delete=False) as fh:
+        temp = Path(fh.name)
+        fh.write(text)
+    try:
+        m.News.model_validate_json(temp.read_text(encoding="utf-8"))
+        os.replace(temp, path)
+    finally:
+        temp.unlink(missing_ok=True)
     return True
 
 

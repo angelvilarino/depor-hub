@@ -54,6 +54,16 @@ def _client(raw_dir: Path | None) -> Client:
     )
 
 
+def _validate_ingest_integrity(standings: m.Standings, squad: m.Squad) -> None:
+    if len(standings.table) != 20:
+        raise SystemExit(
+            f"ERROR: clasificación incompleta ({len(standings.table)} filas; se esperaban 20); "
+            "no se publicaron datos"
+        )
+    if not squad.players:
+        raise SystemExit("ERROR: plantilla vacía; se conserva la publicación anterior")
+
+
 def _team_id() -> int | None:
     value = os.environ.get("DEPOR_TEAM_ID", "").strip()
     return int(value) if value else None
@@ -101,6 +111,14 @@ def cmd_ingest(args: argparse.Namespace) -> int:
     squad = t.build_squad(team, now)
     # Datos manuales con fuente (dorsal, contrato, altura): solo rellenan huecos de la API (ADR 0007).
     extras = load_extras(Path(args.extras))
+    override_path = Path(args.overrides)
+    if override_path.exists():
+        overrides = proposal.load_manual(override_path)
+        # Manual overrides win over generated enrichments; football-data still wins
+        # because apply_extras only fills fields missing from the API model.
+        generated = proposal.load_manual(Path(args.extras))
+        merged = proposal.merge_extras(overrides, generated)
+        extras = {pid: PlayerExtra.model_validate(value) for pid, value in merged.items()}
     squad = apply_extras(squad, extras)
     squad = apply_coach(squad, load_coach(Path(args.coach)))
     for pid in unknown_ids(squad, extras):
@@ -110,13 +128,7 @@ def cmd_ingest(args: argparse.Namespace) -> int:
         )
     meta = t.build_meta(comp, team, season, now)
 
-    if len(standings.table) != 20:
-        print(
-            f"AVISO: la clasificación tiene {len(standings.table)} filas (se esperaban 20)",
-            file=sys.stderr,
-        )
-    if not squad.players:
-        print("AVISO: plantilla vacía; se publica con players=[]", file=sys.stderr)
+    _validate_ingest_integrity(standings, squad)
 
     files = {
         "standings.json": t.dump(standings),
@@ -355,6 +367,15 @@ def cmd_news(args: argparse.Namespace) -> int:
     if args.report:
         print(result.report.render())
 
+    if not args.dry_run and len(result.news.stories) < args.min_stories:
+        print(
+            f"ERROR: solo {len(result.news.stories)} historias; mínimo requerido "
+            f"{args.min_stories}. Se conserva news.json anterior.",
+            file=sys.stderr,
+        )
+        _gh_output(changed="false", failed="true")
+        return 1
+
     changed = False
     if not args.dry_run:
         changed = news_ingest.write_news(out_dir, result, force=args.force)
@@ -397,6 +418,18 @@ def cmd_schemas(args: argparse.Namespace) -> int:
         target = out / name.replace(".json", ".schema.json")
         target.write_text(json.dumps(schema, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print("Esquemas escritos en", out)
+    return 0
+
+
+def cmd_validate(args: argparse.Namespace) -> int:
+    directory = Path(args.data)
+    models = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}
+    missing = [name for name in models if not (directory / name).is_file()]
+    if missing:
+        raise SystemExit(f"Faltan JSON públicos requeridos: {', '.join(missing)}")
+    for name, model in models.items():
+        model.model_validate_json((directory / name).read_text(encoding="utf-8"))
+    print(f"Validación Pydantic correcta: {len(models)} JSON en {directory}")
     return 0
 
 
@@ -709,6 +742,7 @@ def main(argv: list[str] | None = None) -> int:
         if name == "ingest":
             sp.add_argument("--out", default="data/public/v1")
             sp.add_argument("--extras", default="data/manual/squad_extras.yml")
+            sp.add_argument("--overrides", default="data/manual/squad_overrides.yml")
             sp.add_argument("--coach", default="data/manual/coach.yml")
             sp.add_argument("--force", action="store_true")
             sp.add_argument(
@@ -722,6 +756,9 @@ def main(argv: list[str] | None = None) -> int:
     sp = sub.add_parser("schemas")
     sp.add_argument("--out", default="packages/schemas")
     sp.set_defaults(fn=cmd_schemas)
+    sp = sub.add_parser("validate", help="Valida todos los JSON públicos con Pydantic")
+    sp.add_argument("--data", default="data/public/v1")
+    sp.set_defaults(fn=cmd_validate)
     sp = sub.add_parser("rivals", help="Publica el histórico y el contexto de los 19 rivales")
     sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
     sp.add_argument("--standings", default="data/public/v1/standings.json")
@@ -795,6 +832,7 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--interval", type=float, default=1.0)
     sp.add_argument("--threshold", type=int, default=None, help="Umbral de relevancia")
     sp.add_argument("--dedupe-threshold", type=float, default=0.52)
+    sp.add_argument("--min-stories", type=int, default=5)
     sp.add_argument("--social", default="data/manual/social_pins.yml")
     sp.add_argument("--offline", action="store_true", help="Usa solo la caché local")
     sp.add_argument("--force", action="store_true")
@@ -825,6 +863,7 @@ def main(argv: list[str] | None = None) -> int:
     news_ing.add_argument("--interval", type=float, default=1.0)
     news_ing.add_argument("--threshold", type=int, default=None)
     news_ing.add_argument("--dedupe-threshold", type=float, default=0.52)
+    news_ing.add_argument("--min-stories", type=int, default=5)
     news_ing.add_argument("--social", default="data/manual/social_pins.yml")
     news_ing.add_argument("--offline", action="store_true")
     news_ing.add_argument("--force", action="store_true")

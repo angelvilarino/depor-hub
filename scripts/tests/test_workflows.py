@@ -26,6 +26,7 @@ def test_all_data_workflows_share_the_publish_lock():
         workflow = load(name)
         assert workflow["concurrency"]["group"] == "data-publish"
         assert workflow["concurrency"]["cancel-in-progress"] is False
+        assert workflow["jobs"]["refresh"]["timeout-minutes"] == (15 if name == "news-refresh.yml" else 10)
 
 
 def test_all_workflows_rebase_before_push_and_deploy_from_a_fresh_checkout():
@@ -34,6 +35,8 @@ def test_all_workflows_rebase_before_push_and_deploy_from_a_fresh_checkout():
         body = runs(workflow, "refresh")
         assert "git pull --rebase" in body
         assert "git push origin HEAD:main" in body
+        assert "attempt in 1 2 3" in body
+        assert "cli validate --data data/public/v1" in body
         deploy = workflow["jobs"]["deploy"]
         assert deploy["needs"] == "refresh"
         checkout = next(
@@ -52,10 +55,10 @@ def test_all_workflows_rebase_before_push_and_deploy_from_a_fresh_checkout():
         )
 
 
-def test_news_runs_every_six_hours_and_caches_the_feeds():
+def test_news_runs_every_thirty_minutes_and_caches_the_feeds():
     workflow = load("news-refresh.yml")
     crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
-    assert "37 */6 * * *" in crons
+    assert "*/30 * * * *" in crons
     body = runs(workflow, "refresh")
     assert "cli news" in body
     assert "force" in workflow["on"]["workflow_dispatch"]["inputs"]

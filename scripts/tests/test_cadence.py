@@ -48,13 +48,19 @@ def fixtures(*matches: m.Match) -> m.Fixtures:
 def test_in_window_is_true_around_kickoff():
     f = fixtures(match(1, "2026-11-02T20:00:00Z"))
     assert in_match_window(f, NOW)
-    assert in_match_window(f, datetime(2026, 11, 2, 23, 0, tzinfo=UTC))  # +3 h
+    assert in_match_window(f, datetime(2026, 11, 2, 22, 30, tzinfo=UTC))  # +150 min
 
 
 def test_outside_window_is_false():
     f = fixtures(match(1, "2026-11-02T20:00:00Z"))
     assert not in_match_window(f, datetime(2026, 11, 2, 18, 0, tzinfo=UTC))  # -2 h
-    assert not in_match_window(f, datetime(2026, 11, 2, 23, 31, tzinfo=UTC))  # +3 h 1 min
+    assert not in_match_window(f, datetime(2026, 11, 2, 22, 31, tzinfo=UTC))  # +151 min
+
+
+def test_scheduled_match_without_confirmed_kickoff_does_not_open_window():
+    f = fixtures(match(1, "2026-11-02T20:00:00Z", status="SCHEDULED"))
+    assert not in_match_window(f, datetime(2026, 11, 2, 18, 0, tzinfo=UTC))
+    assert not in_match_window(f, datetime(2026, 11, 2, 20, 0, tzinfo=UTC))
 
 
 def test_due_in_window_every_ten_minutes():

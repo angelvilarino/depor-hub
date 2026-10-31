@@ -128,7 +128,7 @@ describe('Home', () => {
 
     expect(screen.getByText('Clasificación')).toBeTruthy();
     expect(screen.getByText('Ver tabla completa')).toBeTruthy();
-    expect(screen.getByText('2026-27 · Jornada 10')).toBeTruthy();
+    expect(screen.getByText(`2026-27 · Jornada ${seasonData.matchday}`)).toBeTruthy();
     expect(screen.queryByText('Titulares')).toBeNull();
   });
 
@@ -171,7 +171,7 @@ describe('Home', () => {
     expect(screen.queryByText('Qué se juega')).toBeNull();
     expect(screen.queryByText('Histórico')).toBeNull();
     expect(screen.getByText('La temporada')).toBeTruthy();
-    expect(screen.getByText('2026-27 · Jornada 10')).toBeTruthy();
+    expect(screen.getByText(`2026-27 · Jornada ${seasonData.matchday}`)).toBeTruthy();
   });
 
   it('muestra el tiempo del estadio cuando la consulta devuelve datos', async () => {

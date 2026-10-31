@@ -12,8 +12,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 # Mismo grupo que Data refresh y News refresh (ADR 0017): los tres escriben en main
 # y despliegan Pages. Nunca se cancelan entre sí.
@@ -24,6 +22,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
     steps:
@@ -46,6 +45,8 @@ jobs:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
         run: python -m depor_hub.cli rivals --interval 1 ${{ inputs.force && '--force' || '' }}
+      - name: Validar todos los datos antes de publicar
+        run: python -m depor_hub.cli validate --data data/public/v1
       - name: Guardar caché de BDFutbol
         if: always()
         uses: actions/cache/save@v4
@@ -63,14 +64,24 @@ jobs:
             exit 0
           fi
           git commit -m "data(rivals): refresh $(date -u +%Y-%m-%dT%H:%MZ)"
-          git pull --rebase --autostash origin main
-          git push origin HEAD:main
+          pushed=false
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then pushed=true; break; fi
+            sleep "$((attempt * 2))"
+          done
+          [ "$pushed" = true ]
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
   deploy:
     needs: refresh
     if: needs.refresh.outputs.changed == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
@@ -82,6 +93,7 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
+          # deploy-pages sustituye Pages entero: siempre subimos el snapshot completo.
           path: data/public
       - id: deploy
         uses: actions/deploy-pages@v4

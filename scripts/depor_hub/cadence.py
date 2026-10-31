@@ -15,7 +15,7 @@ from pathlib import Path
 from . import models as m
 
 MATCH_WINDOW_BEFORE = timedelta(minutes=30)
-MATCH_WINDOW_AFTER = timedelta(hours=3)
+MATCH_WINDOW_AFTER = timedelta(minutes=150)
 IN_WINDOW_INTERVAL = timedelta(minutes=10)
 OUT_WINDOW_INTERVAL = timedelta(minutes=60)
 
@@ -30,7 +30,7 @@ def parse_utc(value: str) -> datetime:
 
 
 def in_match_window(fixtures: m.Fixtures, now: datetime) -> bool:
-    """¿Hay algún partido TIMED/en juego entre -30 min y +3 h del kickoff?"""
+    """¿Hay algún partido confirmado/en juego entre -30 min y +150 min del kickoff?"""
     for match in fixtures.matches:
         if match.status not in LIVE_STATUSES:
             continue

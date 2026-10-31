@@ -31,11 +31,20 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
   });
 
   it.each([
+    ['meta.json', Meta],
+    ['standings.json', Standings],
+    ['fixtures.json', Fixtures],
+    ['squad.json', Squad],
     ['news.json', News],
     ['social.json', SocialFeed],
     ['season.json', Season],
     ['rivals.json', Rivals],
   ] as const)('el publicado %s valida', (file, schema) => {
     expect(schema.safeParse(published(file)).success).toBe(true);
+  });
+
+  it('un campo aditivo en un documento publicado estricto se rechaza', () => {
+    const withExtra = { ...(published('news.json') as object), extraField: true };
+    expect(News.safeParse(withExtra).success).toBe(false);
   });
 });

@@ -8,6 +8,19 @@ export const GC_TIME = 7 * 24 * 60 * 60 * 1000; // la caché persistida vive 7 d
 const STALE_TIME = 5 * 60 * 1000;
 const NEWS_STALE_TIME = 10 * 60 * 1000; // las noticias cambian cada 30 min
 
+export async function optionalDocument<T>(name: string, read: () => Promise<T>): Promise<T | null> {
+  try {
+    return await read();
+  } catch (err) {
+    if (err instanceof DataError && err.kind === 'http' && err.status === 404) return null;
+    if (err instanceof DataError && err.kind === 'invalid') {
+      console.error(`Documento opcional ${name} inválido; se muestra vacío`, err);
+      return null;
+    }
+    throw err;
+  }
+}
+
 function useData<T extends z.ZodType>(name: string, schema: T) {
   return useQuery({
     // La URL forma parte de la clave: la caché de GitHub Pages no se mezcla con la local.
@@ -30,15 +43,7 @@ function useOptionalData<T extends z.ZodType>(
 ) {
   return useQuery({
     queryKey: ['data', DATA_BASE_URL, name],
-    queryFn: async () => {
-      try {
-        return await fetchData(name, schema);
-      } catch (err) {
-        // news.json aún no existe (H6): 404 = «sin titulares», no un error global.
-        if (err instanceof DataError && err.kind === 'http' && err.status === 404) return null;
-        throw err;
-      }
-    },
+    queryFn: () => optionalDocument(name, () => fetchData(name, schema)),
     staleTime: __DEV__ ? 0 : staleTime,
     gcTime: GC_TIME,
     retry: (count, err) =>
