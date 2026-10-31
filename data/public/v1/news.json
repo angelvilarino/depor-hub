@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T17:04:11Z",
+  "updatedAt": "2026-10-31T17:33:05Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "b56a1dc985c3d69f",
+      "title": "Aubameyang sigue acortando plazos en su recuperación: ya entrena con normalidad",
+      "url": "https://riazor.org/aubameyang-plazos-recuperacion-entrena-normalidad",
+      "sourceId": "riazor",
+      "publishedAt": "2026-10-31T17:00:40Z",
+      "kind": "article",
+      "summary": "Aubameyang se entrenó a ritmo normal en la mañana de este sábado y podría volver a los terrenos de juego antes del parón de selecciones…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "359a7f197c84754c",
       "title": "El retorno de Aubameyang está cerca: completa una nueva sesión de trabajo con el grupo",
@@ -473,7 +485,7 @@
       ]
     },
     {
-      "id": "a80879a1768c9aba",
+      "id": "99db1b1585443a93",
       "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
       "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
       "sourceId": "riazor",
