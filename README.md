@@ -8,11 +8,9 @@ App Expo (React Native + TypeScript) con datos públicos del Depor: Inicio con i
 - Python 3.12 para los scripts de ingesta.
 - git.
 
-Copia `DEPOR_HUB_CONTEXTO.md` a `docs/CONTEXTO.md` si aún no existe.
-
 ## Primera vez
 ```bash
-./setup.sh          # crea apps/mobile (Expo SDK estable), superpone la plantilla, instala y ejecuta lint/typecheck/tests
+npm ci              # instala las dependencias del monorepo y de apps/mobile
 npm run mobile      # sirve data/public en local y arranca Expo
 ```
 `npm run mobile` levanta un servidor estático de solo lectura sobre `data/public` (puerto 8000) y arranca Expo. La app deriva la URL del host de Metro, así que en desarrollo siempre enseña los datos locales; para apuntar a GitHub Pages, define `EXPO_PUBLIC_DATA_BASE_URL` en `apps/mobile/.env` (ver `.env.example`).
