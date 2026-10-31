@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T14:32:51Z",
+  "updatedAt": "2026-10-31T15:42:04Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
@@ -120,6 +120,25 @@
     {
       "position": 7,
       "team": {
+        "id": 558,
+        "name": "RC Celta de Vigo",
+        "shortName": "Celta",
+        "tla": "CEL",
+        "crestUrl": "https://crests.football-data.org/558.png"
+      },
+      "played": 11,
+      "won": 2,
+      "draw": 7,
+      "lost": 2,
+      "points": 13,
+      "goalsFor": 10,
+      "goalsAgainst": 7,
+      "goalDifference": 3,
+      "form": null
+    },
+    {
+      "position": 8,
+      "team": {
         "id": 263,
         "name": "Deportivo Alavés",
         "shortName": "Alavés",
@@ -137,7 +156,7 @@
       "form": null
     },
     {
-      "position": 8,
+      "position": 9,
       "team": {
         "id": 77,
         "name": "Athletic Club",
@@ -152,25 +171,6 @@
       "points": 12,
       "goalsFor": 12,
       "goalsAgainst": 9,
-      "goalDifference": 3,
-      "form": null
-    },
-    {
-      "position": 9,
-      "team": {
-        "id": 558,
-        "name": "RC Celta de Vigo",
-        "shortName": "Celta",
-        "tla": "CEL",
-        "crestUrl": "https://crests.football-data.org/558.png"
-      },
-      "played": 10,
-      "won": 2,
-      "draw": 6,
-      "lost": 2,
-      "points": 12,
-      "goalsFor": 10,
-      "goalsAgainst": 7,
       "goalDifference": 3,
       "form": null
     },
@@ -316,11 +316,11 @@
         "tla": "RAY",
         "crestUrl": "https://crests.football-data.org/87.png"
       },
-      "played": 9,
+      "played": 10,
       "won": 2,
-      "draw": 3,
+      "draw": 4,
       "lost": 4,
-      "points": 9,
+      "points": 10,
       "goalsFor": 12,
       "goalsAgainst": 20,
       "goalDifference": -8,
