@@ -100,4 +100,4 @@ jobs:
           # deploy-pages sustituye Pages entero: siempre subimos el snapshot completo.
           path: data/public
       - id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
