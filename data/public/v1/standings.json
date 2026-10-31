@@ -1,10 +1,29 @@
 {
-  "updatedAt": "2026-10-31T19:03:01Z",
+  "updatedAt": "2026-10-31T20:14:54Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
     {
       "position": 1,
+      "team": {
+        "id": 81,
+        "name": "FC Barcelona",
+        "shortName": "Barça",
+        "tla": "FCB",
+        "crestUrl": "https://crests.football-data.org/81.png"
+      },
+      "played": 11,
+      "won": 9,
+      "draw": 1,
+      "lost": 1,
+      "points": 28,
+      "goalsFor": 40,
+      "goalsAgainst": 11,
+      "goalDifference": 29,
+      "form": null
+    },
+    {
+      "position": 2,
       "team": {
         "id": 78,
         "name": "Club Atlético de Madrid",
@@ -20,25 +39,6 @@
       "goalsFor": 22,
       "goalsAgainst": 8,
       "goalDifference": 14,
-      "form": null
-    },
-    {
-      "position": 2,
-      "team": {
-        "id": 81,
-        "name": "FC Barcelona",
-        "shortName": "Barça",
-        "tla": "FCB",
-        "crestUrl": "https://crests.football-data.org/81.png"
-      },
-      "played": 10,
-      "won": 9,
-      "draw": 0,
-      "lost": 1,
-      "points": 27,
-      "goalsFor": 40,
-      "goalsAgainst": 11,
-      "goalDifference": 29,
       "form": null
     },
     {
@@ -75,8 +75,8 @@
       "lost": 2,
       "points": 23,
       "goalsFor": 18,
-      "goalsAgainst": 14,
-      "goalDifference": 4,
+      "goalsAgainst": 15,
+      "goalDifference": 3,
       "form": null
     },
     {
@@ -126,11 +126,11 @@
         "tla": "ALA",
         "crestUrl": "https://crests.football-data.org/263.png"
       },
-      "played": 10,
+      "played": 11,
       "won": 3,
-      "draw": 3,
+      "draw": 4,
       "lost": 4,
-      "points": 12,
+      "points": 13,
       "goalsFor": 14,
       "goalsAgainst": 11,
       "goalDifference": 3,
@@ -378,9 +378,9 @@
       "draw": 5,
       "lost": 6,
       "points": 5,
-      "goalsFor": 7,
+      "goalsFor": 8,
       "goalsAgainst": 21,
-      "goalDifference": -14,
+      "goalDifference": -13,
       "form": null
     }
   ]
