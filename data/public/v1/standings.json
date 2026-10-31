@@ -1,10 +1,29 @@
 {
-  "updatedAt": "2026-10-31T13:22:33Z",
+  "updatedAt": "2026-10-31T14:32:51Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
     {
       "position": 1,
+      "team": {
+        "id": 78,
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL",
+        "crestUrl": "https://crests.football-data.org/78.png"
+      },
+      "played": 11,
+      "won": 9,
+      "draw": 1,
+      "lost": 1,
+      "points": 28,
+      "goalsFor": 22,
+      "goalsAgainst": 8,
+      "goalDifference": 14,
+      "form": null
+    },
+    {
+      "position": 2,
       "team": {
         "id": 81,
         "name": "FC Barcelona",
@@ -20,25 +39,6 @@
       "goalsFor": 40,
       "goalsAgainst": 11,
       "goalDifference": 29,
-      "form": null
-    },
-    {
-      "position": 2,
-      "team": {
-        "id": 78,
-        "name": "Club Atlético de Madrid",
-        "shortName": "Atleti",
-        "tla": "ATL",
-        "crestUrl": "https://crests.football-data.org/78.png"
-      },
-      "played": 11,
-      "won": 8,
-      "draw": 2,
-      "lost": 1,
-      "points": 26,
-      "goalsFor": 20,
-      "goalsAgainst": 8,
-      "goalDifference": 12,
       "form": null
     },
     {
@@ -234,25 +234,6 @@
     {
       "position": 13,
       "team": {
-        "id": 88,
-        "name": "Levante UD",
-        "shortName": "Levante",
-        "tla": "LEV",
-        "crestUrl": "https://crests.football-data.org/88.png"
-      },
-      "played": 11,
-      "won": 2,
-      "draw": 5,
-      "lost": 4,
-      "points": 11,
-      "goalsFor": 16,
-      "goalsAgainst": 19,
-      "goalDifference": -3,
-      "form": null
-    },
-    {
-      "position": 14,
-      "team": {
         "id": 79,
         "name": "CA Osasuna",
         "shortName": "Osasuna",
@@ -270,7 +251,7 @@
       "form": null
     },
     {
-      "position": 15,
+      "position": 14,
       "team": {
         "id": 5335,
         "name": "Real Racing Club de Santander",
@@ -289,7 +270,7 @@
       "form": null
     },
     {
-      "position": 16,
+      "position": 15,
       "team": {
         "id": 285,
         "name": "Elche CF",
@@ -305,6 +286,25 @@
       "goalsFor": 14,
       "goalsAgainst": 17,
       "goalDifference": -3,
+      "form": null
+    },
+    {
+      "position": 16,
+      "team": {
+        "id": 88,
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV",
+        "crestUrl": "https://crests.football-data.org/88.png"
+      },
+      "played": 11,
+      "won": 2,
+      "draw": 4,
+      "lost": 5,
+      "points": 10,
+      "goalsFor": 16,
+      "goalsAgainst": 21,
+      "goalDifference": -5,
       "form": null
     },
     {
