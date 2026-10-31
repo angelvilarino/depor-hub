@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T20:14:54Z",
+  "updatedAt": "2026-10-31T21:23:06Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
@@ -13,13 +13,13 @@
         "crestUrl": "https://crests.football-data.org/81.png"
       },
       "played": 11,
-      "won": 9,
-      "draw": 1,
+      "won": 10,
+      "draw": 0,
       "lost": 1,
-      "points": 28,
-      "goalsFor": 40,
+      "points": 30,
+      "goalsFor": 44,
       "goalsAgainst": 11,
-      "goalDifference": 29,
+      "goalDifference": 33,
       "form": null
     },
     {
@@ -120,25 +120,6 @@
     {
       "position": 7,
       "team": {
-        "id": 263,
-        "name": "Deportivo Alavés",
-        "shortName": "Alavés",
-        "tla": "ALA",
-        "crestUrl": "https://crests.football-data.org/263.png"
-      },
-      "played": 11,
-      "won": 3,
-      "draw": 4,
-      "lost": 4,
-      "points": 13,
-      "goalsFor": 14,
-      "goalsAgainst": 11,
-      "goalDifference": 3,
-      "form": null
-    },
-    {
-      "position": 8,
-      "team": {
         "id": 77,
         "name": "Athletic Club",
         "shortName": "Athletic",
@@ -156,7 +137,7 @@
       "form": null
     },
     {
-      "position": 9,
+      "position": 8,
       "team": {
         "id": 94,
         "name": "Villarreal CF",
@@ -175,7 +156,7 @@
       "form": null
     },
     {
-      "position": 10,
+      "position": 9,
       "team": {
         "id": 558,
         "name": "RC Celta de Vigo",
@@ -191,6 +172,25 @@
       "goalsFor": 10,
       "goalsAgainst": 10,
       "goalDifference": 0,
+      "form": null
+    },
+    {
+      "position": 10,
+      "team": {
+        "id": 263,
+        "name": "Deportivo Alavés",
+        "shortName": "Alavés",
+        "tla": "ALA",
+        "crestUrl": "https://crests.football-data.org/263.png"
+      },
+      "played": 11,
+      "won": 3,
+      "draw": 3,
+      "lost": 5,
+      "points": 12,
+      "goalsFor": 14,
+      "goalsAgainst": 15,
+      "goalDifference": -1,
       "form": null
     },
     {
