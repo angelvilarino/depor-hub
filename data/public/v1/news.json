@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T01:04:08Z",
+  "updatedAt": "2026-11-01T04:33:04Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,30 @@
     }
   ],
   "stories": [
+    {
+      "id": "d2d47a1cca37b944",
+      "title": "Duelo de necesidad en Abanca Riazor",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/31/duelo-necesidad-abanca-riazor/00031793470296333752576.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-01T04:00:00Z",
+      "kind": "article",
+      "summary": "El Dépor, que suma seis jornadas sin vencer, recibe mañana a un Osasuna con carencias en las áreas y que solo ha sumado tres puntos a…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/zoCkrYG82Hod6CA1WMaZeRt3RIA=/768x/2026/10/31/00121793470622934340712/Foto/h_20261017_183817000.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "10092e584f3c227b",
+      "title": "Miguel Loureiro, la alternativa más fiable del Deportivo para frenar a Osasuna",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/miguel-loureiro-la-alternativa-mas-fiable-del-deportivo-para-frenar-a-osasuna-888212.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-01T04:00:00Z",
+      "kind": "article",
+      "summary": "Después de firmar contra el Atleti su primera gran actuación en Primera, el cercedense gana enteros para acompañar a Giménez en la zaga",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/31/6ae5f9f332f72.r_d.1612-1089-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "ae5672ca05ac078b",
       "title": "Al Dépor Abanca se le atraganta el Madrid CFF (2-1)",
@@ -543,22 +567,22 @@
       "publishedAt": "2026-10-29T08:00:38Z",
       "kind": "article",
       "summary": "El Deportivo inicia su participación en la Copa del Rey enfrentándose a un representante del fútbol modesto como el Auriense en un choque…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/KWOSO7f0V1gthO39Qa9Oud5J73I=/768x/2026/10/27/00121793117761899332653/Foto/Z6M2614.jpg",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/p_-r5_XL3WARKzYbZTRGmKtqzAU=/768x/2026/10/29/00121793312462396758550/Foto/efe_20261029_204517109.jpg",
       "tags": [
         "partido"
       ],
       "alsoIn": [
         {
           "sourceId": "la-voz",
-          "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
-          "publishedAt": "2026-10-27T16:17:00Z"
-        },
-        {
-          "sourceId": "la-voz",
           "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
           "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
           "publishedAt": "2026-10-29T22:32:00Z"
+        },
+        {
+          "sourceId": "la-voz",
+          "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
+          "publishedAt": "2026-10-27T16:17:00Z"
         },
         {
           "sourceId": "youtube-club",
