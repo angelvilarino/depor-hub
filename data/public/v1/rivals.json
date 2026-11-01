@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T12:04:42Z",
+  "updatedAt": "2026-11-01T06:27:25Z",
   "season": "2026-27",
   "rivals": [
     {
@@ -460,82 +460,6 @@
     },
     {
       "team": {
-        "id": 263,
-        "name": "Deportivo Alavés",
-        "shortName": "Alavés",
-        "tla": "ALA",
-        "crestUrl": "https://crests.football-data.org/263.png"
-      },
-      "bdfutbolId": "3",
-      "coach": "Quique Sanchez Flores",
-      "keyPlayers": [],
-      "headToHead": {
-        "scope": "all_official_matches",
-        "source": "BDFutbol",
-        "confidence": "single_source",
-        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=3",
-        "played": 60,
-        "won": 21,
-        "drawn": 15,
-        "lost": 24,
-        "goalsFor": 98,
-        "goalsAgainst": 82,
-        "meetings": [
-          {
-            "date": "2021-01-06",
-            "competition": "Copa del Rey",
-            "round": "Ronda 2",
-            "home": "Deportivo de La Coruña",
-            "away": "Alavés",
-            "homeGoals": 0,
-            "awayGoals": 1,
-            "deporResult": "L"
-          },
-          {
-            "date": "2018-02-17",
-            "competition": "Primera División",
-            "round": "Jornada 24",
-            "home": "Alavés",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 1,
-            "awayGoals": 0,
-            "deporResult": "L"
-          },
-          {
-            "date": "2017-09-20",
-            "competition": "Primera División",
-            "round": "Jornada 5",
-            "home": "Deportivo de La Coruña",
-            "away": "Alavés",
-            "homeGoals": 1,
-            "awayGoals": 0,
-            "deporResult": "W"
-          },
-          {
-            "date": "2017-02-18",
-            "competition": "Primera División",
-            "round": "Jornada 23",
-            "home": "Deportivo de La Coruña",
-            "away": "Alavés",
-            "homeGoals": 0,
-            "awayGoals": 1,
-            "deporResult": "L"
-          },
-          {
-            "date": "2017-01-11",
-            "competition": "Copa del Rey",
-            "round": "Octavos de final (vuelta)",
-            "home": "Alavés",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 1,
-            "awayGoals": 1,
-            "deporResult": "D"
-          }
-        ]
-      }
-    },
-    {
-      "team": {
         "id": 77,
         "name": "Athletic Club",
         "shortName": "Athletic",
@@ -606,6 +530,82 @@
             "homeGoals": 4,
             "awayGoals": 1,
             "deporResult": "L"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 94,
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL",
+        "crestUrl": "https://crests.football-data.org/94.png"
+      },
+      "bdfutbolId": "38",
+      "coach": "Inigo Perez",
+      "keyPlayers": [],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=38",
+        "played": 35,
+        "won": 14,
+        "drawn": 9,
+        "lost": 12,
+        "goalsFor": 45,
+        "goalsAgainst": 40,
+        "meetings": [
+          {
+            "date": "2026-09-05",
+            "competition": "Primera División",
+            "round": "Jornada 4",
+            "home": "Villarreal",
+            "away": "Deportivo de A Coruña",
+            "homeGoals": 2,
+            "awayGoals": 3,
+            "deporResult": "W"
+          },
+          {
+            "date": "2018-05-12",
+            "competition": "Primera División",
+            "round": "Jornada 37",
+            "home": "Deportivo de La Coruña",
+            "away": "Villarreal",
+            "homeGoals": 2,
+            "awayGoals": 4,
+            "deporResult": "L"
+          },
+          {
+            "date": "2018-01-07",
+            "competition": "Primera División",
+            "round": "Jornada 18",
+            "home": "Villarreal",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-05-14",
+            "competition": "Primera División",
+            "round": "Jornada 37",
+            "home": "Villarreal",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-01-14",
+            "competition": "Primera División",
+            "round": "Jornada 18",
+            "home": "Deportivo de La Coruña",
+            "away": "Villarreal",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
           }
         ]
       }
@@ -688,76 +688,152 @@
     },
     {
       "team": {
-        "id": 94,
-        "name": "Villarreal CF",
-        "shortName": "Villarreal",
-        "tla": "VIL",
-        "crestUrl": "https://crests.football-data.org/94.png"
+        "id": 263,
+        "name": "Deportivo Alavés",
+        "shortName": "Alavés",
+        "tla": "ALA",
+        "crestUrl": "https://crests.football-data.org/263.png"
       },
-      "bdfutbolId": "38",
-      "coach": "Inigo Perez",
+      "bdfutbolId": "3",
+      "coach": "Quique Sanchez Flores",
       "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
         "confidence": "single_source",
-        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=38",
-        "played": 35,
-        "won": 14,
-        "drawn": 9,
-        "lost": 12,
-        "goalsFor": 45,
-        "goalsAgainst": 40,
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=3",
+        "played": 60,
+        "won": 21,
+        "drawn": 15,
+        "lost": 24,
+        "goalsFor": 98,
+        "goalsAgainst": 82,
         "meetings": [
           {
-            "date": "2026-09-05",
-            "competition": "Primera División",
-            "round": "Jornada 4",
-            "home": "Villarreal",
-            "away": "Deportivo de A Coruña",
-            "homeGoals": 2,
-            "awayGoals": 3,
-            "deporResult": "W"
-          },
-          {
-            "date": "2018-05-12",
-            "competition": "Primera División",
-            "round": "Jornada 37",
+            "date": "2021-01-06",
+            "competition": "Copa del Rey",
+            "round": "Ronda 2",
             "home": "Deportivo de La Coruña",
-            "away": "Villarreal",
-            "homeGoals": 2,
-            "awayGoals": 4,
+            "away": "Alavés",
+            "homeGoals": 0,
+            "awayGoals": 1,
             "deporResult": "L"
           },
           {
-            "date": "2018-01-07",
+            "date": "2018-02-17",
             "competition": "Primera División",
-            "round": "Jornada 18",
-            "home": "Villarreal",
+            "round": "Jornada 24",
+            "home": "Alavés",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-09-20",
+            "competition": "Primera División",
+            "round": "Jornada 5",
+            "home": "Deportivo de La Coruña",
+            "away": "Alavés",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "W"
+          },
+          {
+            "date": "2017-02-18",
+            "competition": "Primera División",
+            "round": "Jornada 23",
+            "home": "Deportivo de La Coruña",
+            "away": "Alavés",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-01-11",
+            "competition": "Copa del Rey",
+            "round": "Octavos de final (vuelta)",
+            "home": "Alavés",
             "away": "Deportivo de La Coruña",
             "homeGoals": 1,
             "awayGoals": 1,
             "deporResult": "D"
-          },
+          }
+        ]
+      }
+    },
+    {
+      "team": {
+        "id": 87,
+        "name": "Rayo Vallecano de Madrid",
+        "shortName": "Rayo Vallecano",
+        "tla": "RAY",
+        "crestUrl": "https://crests.football-data.org/87.png"
+      },
+      "bdfutbolId": "5",
+      "coach": "Beñat San José",
+      "keyPlayers": [],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=5",
+        "played": 56,
+        "won": 26,
+        "drawn": 17,
+        "lost": 13,
+        "goalsFor": 85,
+        "goalsAgainst": 55,
+        "meetings": [
           {
-            "date": "2017-05-14",
-            "competition": "Primera División",
-            "round": "Jornada 37",
-            "home": "Villarreal",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 0,
-            "awayGoals": 0,
-            "deporResult": "D"
-          },
-          {
-            "date": "2017-01-14",
-            "competition": "Primera División",
-            "round": "Jornada 18",
+            "date": "2020-06-20",
+            "competition": "Segunda División",
+            "round": "Jornada 34",
             "home": "Deportivo de La Coruña",
-            "away": "Villarreal",
-            "homeGoals": 0,
-            "awayGoals": 0,
+            "away": "Rayo Vallecano",
+            "homeGoals": 3,
+            "awayGoals": 3,
             "deporResult": "D"
+          },
+          {
+            "date": "2019-09-01",
+            "competition": "Segunda División",
+            "round": "Jornada 3",
+            "home": "Rayo Vallecano",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 3,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-02-01",
+            "competition": "Primera División",
+            "round": "Jornada 22",
+            "home": "Deportivo de La Coruña",
+            "away": "Rayo Vallecano",
+            "homeGoals": 2,
+            "awayGoals": 2,
+            "deporResult": "D"
+          },
+          {
+            "date": "2015-09-14",
+            "competition": "Primera División",
+            "round": "Jornada 3",
+            "home": "Rayo Vallecano",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 3,
+            "deporResult": "W"
+          },
+          {
+            "date": "2015-01-30",
+            "competition": "Primera División",
+            "round": "Jornada 21",
+            "home": "Rayo Vallecano",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "W"
           }
         ]
       }
@@ -992,82 +1068,6 @@
     },
     {
       "team": {
-        "id": 88,
-        "name": "Levante UD",
-        "shortName": "Levante",
-        "tla": "LEV",
-        "crestUrl": "https://crests.football-data.org/88.png"
-      },
-      "bdfutbolId": "20",
-      "coach": "Luís Castro",
-      "keyPlayers": [],
-      "headToHead": {
-        "scope": "all_official_matches",
-        "source": "BDFutbol",
-        "confidence": "single_source",
-        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=20",
-        "played": 48,
-        "won": 20,
-        "drawn": 8,
-        "lost": 20,
-        "goalsFor": 65,
-        "goalsAgainst": 60,
-        "meetings": [
-          {
-            "date": "2026-10-16",
-            "competition": "Primera División",
-            "round": "Jornada 9",
-            "home": "Deportivo de A Coruña",
-            "away": "Levante",
-            "homeGoals": 1,
-            "awayGoals": 1,
-            "deporResult": "D"
-          },
-          {
-            "date": "2025-01-25",
-            "competition": "Segunda División",
-            "round": "Jornada 24",
-            "home": "Deportivo de La Coruña",
-            "away": "Levante",
-            "homeGoals": 1,
-            "awayGoals": 2,
-            "deporResult": "L"
-          },
-          {
-            "date": "2024-10-24",
-            "competition": "Segunda División",
-            "round": "Jornada 11",
-            "home": "Levante",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 2,
-            "awayGoals": 1,
-            "deporResult": "L"
-          },
-          {
-            "date": "2018-01-27",
-            "competition": "Primera División",
-            "round": "Jornada 21",
-            "home": "Deportivo de La Coruña",
-            "away": "Levante",
-            "homeGoals": 2,
-            "awayGoals": 2,
-            "deporResult": "D"
-          },
-          {
-            "date": "2017-08-26",
-            "competition": "Primera División",
-            "round": "Jornada 2",
-            "home": "Levante",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 2,
-            "awayGoals": 2,
-            "deporResult": "D"
-          }
-        ]
-      }
-    },
-    {
-      "team": {
         "id": 285,
         "name": "Elche CF",
         "shortName": "Elche",
@@ -1144,76 +1144,76 @@
     },
     {
       "team": {
-        "id": 87,
-        "name": "Rayo Vallecano de Madrid",
-        "shortName": "Rayo Vallecano",
-        "tla": "RAY",
-        "crestUrl": "https://crests.football-data.org/87.png"
+        "id": 88,
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV",
+        "crestUrl": "https://crests.football-data.org/88.png"
       },
-      "bdfutbolId": "5",
-      "coach": "Beñat San José",
+      "bdfutbolId": "20",
+      "coach": "Luís Castro",
       "keyPlayers": [],
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
         "confidence": "single_source",
-        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=5",
-        "played": 56,
-        "won": 26,
-        "drawn": 17,
-        "lost": 13,
-        "goalsFor": 85,
-        "goalsAgainst": 55,
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=20",
+        "played": 48,
+        "won": 20,
+        "drawn": 8,
+        "lost": 20,
+        "goalsFor": 65,
+        "goalsAgainst": 60,
         "meetings": [
           {
-            "date": "2020-06-20",
-            "competition": "Segunda División",
-            "round": "Jornada 34",
-            "home": "Deportivo de La Coruña",
-            "away": "Rayo Vallecano",
-            "homeGoals": 3,
-            "awayGoals": 3,
+            "date": "2026-10-16",
+            "competition": "Primera División",
+            "round": "Jornada 9",
+            "home": "Deportivo de A Coruña",
+            "away": "Levante",
+            "homeGoals": 1,
+            "awayGoals": 1,
             "deporResult": "D"
           },
           {
-            "date": "2019-09-01",
+            "date": "2025-01-25",
             "competition": "Segunda División",
-            "round": "Jornada 3",
-            "home": "Rayo Vallecano",
+            "round": "Jornada 24",
+            "home": "Deportivo de La Coruña",
+            "away": "Levante",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2024-10-24",
+            "competition": "Segunda División",
+            "round": "Jornada 11",
+            "home": "Levante",
             "away": "Deportivo de La Coruña",
-            "homeGoals": 3,
+            "homeGoals": 2,
             "awayGoals": 1,
             "deporResult": "L"
           },
           {
-            "date": "2016-02-01",
+            "date": "2018-01-27",
             "competition": "Primera División",
-            "round": "Jornada 22",
+            "round": "Jornada 21",
             "home": "Deportivo de La Coruña",
-            "away": "Rayo Vallecano",
+            "away": "Levante",
             "homeGoals": 2,
             "awayGoals": 2,
             "deporResult": "D"
           },
           {
-            "date": "2015-09-14",
+            "date": "2017-08-26",
             "competition": "Primera División",
-            "round": "Jornada 3",
-            "home": "Rayo Vallecano",
+            "round": "Jornada 2",
+            "home": "Levante",
             "away": "Deportivo de La Coruña",
-            "homeGoals": 1,
-            "awayGoals": 3,
-            "deporResult": "W"
-          },
-          {
-            "date": "2015-01-30",
-            "competition": "Primera División",
-            "round": "Jornada 21",
-            "home": "Rayo Vallecano",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 1,
+            "homeGoals": 2,
             "awayGoals": 2,
-            "deporResult": "W"
+            "deporResult": "D"
           }
         ]
       }
