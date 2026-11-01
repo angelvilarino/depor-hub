@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T18:32:45Z",
+  "updatedAt": "2026-11-01T19:04:11Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "ab6c7bbe84f45d9a",
+      "title": "Jagoba Arrasate: «Quiero un equipo valiente y que el Dépor sienta nuestra amenaza»",
+      "url": "https://riazor.org/jagoba-arrasate-equipo-valiente-depor-amenaza",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-01T19:00:29Z",
+      "kind": "article",
+      "summary": "El entrenador de Osasuna ha vuelto al club rojillo, donde es leyenda, después de la destitución de Luis Miguel Ramis hace tres semanas. La…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/rueda-de-prensa-jagoba-arrasate-.jpg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "8e47b72ce4e5868c",
       "title": "Leo Román se reencuentra con Arrasate, el técnico que le puso a prueba antes de confiar en él",
@@ -576,7 +590,7 @@
       "alsoIn": []
     },
     {
-      "id": "084e683fb37ee856",
+      "id": "ce2f40ca55db2419",
       "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
       "sourceId": "la-voz",
