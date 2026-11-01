@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T19:33:03Z",
+  "updatedAt": "2026-11-01T20:04:29Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,36 @@
     }
   ],
   "stories": [
+    {
+      "id": "3ea529b080fbab17",
+      "title": "Así fue el golazo con el que Manu Ferreiro inició el triunfo del Fabril en Zamora (VÍDEO)",
+      "url": "https://riazor.org/golazo-manu-ferreiro-triunfo-fabril-zamora-video",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-01T20:00:58Z",
+      "kind": "article",
+      "summary": "Manu Ferreiro, con un golpeo desde el medio del campo que por seguro será uno de los goles de la temporada, adelantó al Fabril en Zamora…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "bafe97c690568e77",
+      "title": "Crónica | El Fabril revive con personalidad en Zamora (1-3)",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-01/cronica-el-fabril-revive-con-personalidad-en-zamora-1-888395.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-01T19:46:44Z",
+      "kind": "article",
+      "summary": "El filial blanquiazul vuelve a la senda de la victoria con goles de Manu Ferreiro, Iker Gil y Martín Ochoa",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/01/6ae795e96bff2.r_d.543-720-0.jfif",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "ab6c7bbe84f45d9a",
       "title": "Jagoba Arrasate: «Quiero un equipo valiente y que el Dépor sienta nuestra amenaza»",
@@ -590,7 +620,7 @@
       "alsoIn": []
     },
     {
-      "id": "084e683fb37ee856",
+      "id": "ce2f40ca55db2419",
       "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
       "sourceId": "la-voz",
