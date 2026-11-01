@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T15:22:05Z",
+  "updatedAt": "2026-11-01T16:22:46Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
@@ -51,13 +51,13 @@
         "crestUrl": "https://crests.football-data.org/86.png"
       },
       "played": 11,
-      "won": 8,
-      "draw": 1,
+      "won": 9,
+      "draw": 0,
       "lost": 2,
-      "points": 25,
-      "goalsFor": 25,
+      "points": 27,
+      "goalsFor": 28,
       "goalsAgainst": 10,
-      "goalDifference": 15,
+      "goalDifference": 18,
       "form": null
     },
     {
@@ -234,25 +234,6 @@
     {
       "position": 13,
       "team": {
-        "id": 5335,
-        "name": "Real Racing Club de Santander",
-        "shortName": "Santander",
-        "tla": "SAN",
-        "crestUrl": "https://crests.football-data.org/5335.png"
-      },
-      "played": 11,
-      "won": 3,
-      "draw": 3,
-      "lost": 5,
-      "points": 12,
-      "goalsFor": 15,
-      "goalsAgainst": 26,
-      "goalDifference": -11,
-      "form": null
-    },
-    {
-      "position": 14,
-      "team": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
@@ -270,7 +251,7 @@
       "form": null
     },
     {
-      "position": 15,
+      "position": 14,
       "team": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
@@ -289,7 +270,7 @@
       "form": null
     },
     {
-      "position": 16,
+      "position": 15,
       "team": {
         "id": 79,
         "name": "CA Osasuna",
@@ -305,6 +286,25 @@
       "goalsFor": 10,
       "goalsAgainst": 20,
       "goalDifference": -10,
+      "form": null
+    },
+    {
+      "position": 16,
+      "team": {
+        "id": 5335,
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
+      },
+      "played": 11,
+      "won": 3,
+      "draw": 2,
+      "lost": 6,
+      "points": 11,
+      "goalsFor": 15,
+      "goalsAgainst": 29,
+      "goalDifference": -14,
       "form": null
     },
     {
