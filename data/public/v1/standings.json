@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T16:22:46Z",
+  "updatedAt": "2026-11-01T17:33:11Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
@@ -272,6 +272,25 @@
     {
       "position": 15,
       "team": {
+        "id": 285,
+        "name": "Elche CF",
+        "shortName": "Elche",
+        "tla": "ELC",
+        "crestUrl": "https://crests.football-data.org/285.png"
+      },
+      "played": 11,
+      "won": 2,
+      "draw": 5,
+      "lost": 4,
+      "points": 11,
+      "goalsFor": 14,
+      "goalsAgainst": 17,
+      "goalDifference": -3,
+      "form": null
+    },
+    {
+      "position": 16,
+      "team": {
         "id": 79,
         "name": "CA Osasuna",
         "shortName": "Osasuna",
@@ -289,7 +308,7 @@
       "form": null
     },
     {
-      "position": 16,
+      "position": 17,
       "team": {
         "id": 5335,
         "name": "Real Racing Club de Santander",
@@ -305,25 +324,6 @@
       "goalsFor": 15,
       "goalsAgainst": 29,
       "goalDifference": -14,
-      "form": null
-    },
-    {
-      "position": 17,
-      "team": {
-        "id": 285,
-        "name": "Elche CF",
-        "shortName": "Elche",
-        "tla": "ELC",
-        "crestUrl": "https://crests.football-data.org/285.png"
-      },
-      "played": 10,
-      "won": 2,
-      "draw": 4,
-      "lost": 4,
-      "points": 10,
-      "goalsFor": 14,
-      "goalsAgainst": 17,
-      "goalDifference": -3,
       "form": null
     },
     {
@@ -354,11 +354,11 @@
         "tla": "VAL",
         "crestUrl": "https://crests.football-data.org/95.png"
       },
-      "played": 10,
+      "played": 11,
       "won": 1,
-      "draw": 3,
+      "draw": 4,
       "lost": 6,
-      "points": 6,
+      "points": 7,
       "goalsFor": 7,
       "goalsAgainst": 17,
       "goalDifference": -10,
