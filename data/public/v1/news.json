@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T10:04:02Z",
+  "updatedAt": "2026-11-01T10:32:53Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "9d4fb62a2f1e8d04",
+      "title": "Rueda de prensa de Antonio Hidalgo previa al RC Deportivo - CA Osasuna",
+      "url": "https://youtube.com/watch?v=TlzTqDc63A0",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-01T10:00:17Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i1.ytimg.com/vi/TlzTqDc63A0/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "d0dc1d16ad83b7e1",
       "title": "Hidalgo y la vuelta de Aubameyang: \"No vamos a cometer ningún tipo de locura\"",
@@ -573,7 +587,7 @@
       ]
     },
     {
-      "id": "a80879a1768c9aba",
+      "id": "99db1b1585443a93",
       "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
       "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
       "sourceId": "riazor",
