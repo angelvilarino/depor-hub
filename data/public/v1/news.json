@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T13:04:23Z",
+  "updatedAt": "2026-11-01T13:32:38Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "3d1ac0e13e51df92",
+      "title": "Altas, bajas y posible once del Dépor ante el Osasuna: Adama o Luismi, con la incógnita de la vuelta de Aubameyang",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/altas-bajas-y-posible-once-del-depor-ante-el-osasuna-adama-o-luismi-con-la-incognita-de-la-vuelta-de-aubameyang-888355.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-01T13:03:59Z",
+      "kind": "article",
+      "summary": "Hidalgo no descarta que el gabonés entre en la lista después de completar una nueva sesión con el grupo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/27/6ae09f1859e77.r_d.1069-575-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "4863ca7bd1bd9358",
       "title": "Arrasate: \"El Dépor es un equipo bueno con balón, tenemos que lograr que no esté cómodo\"",
@@ -599,7 +611,7 @@
       ]
     },
     {
-      "id": "a80879a1768c9aba",
+      "id": "99db1b1585443a93",
       "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
       "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
       "sourceId": "riazor",
