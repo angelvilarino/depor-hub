@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T13:32:38Z",
+  "updatedAt": "2026-11-01T14:04:21Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "583ff7f2bc7bd634",
+      "title": "El árbitro del Dépor-Osasuna: de la despedida de Idiakez al incomprensible gol anulado en A Malata",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/el-arbitro-del-depor-osasuna-de-la-despedida-de-idiakez-al-incomprensible-gol-anulado-en-a-malata-888356.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-01T13:33:55Z",
+      "kind": "article",
+      "summary": "Jon Ander González dirigirá el encuentro de este lunes en Riazor su quinto encuentro al equipo blanquiazul",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/01/6ae73c3ca74c9.r_d.1511-899-0.JPG",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3d1ac0e13e51df92",
       "title": "Altas, bajas y posible once del Dépor ante el Osasuna: Adama o Luismi, con la incógnita de la vuelta de Aubameyang",
@@ -536,6 +550,33 @@
       "alsoIn": []
     },
     {
+      "id": "ce2f40ca55db2419",
+      "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-10-29T22:32:00Z",
+      "kind": "article",
+      "summary": "Adama Traoré, Noé Carrillo, Kevin y Asp Jensen destacaron en el encuentro de la Copa del Rey",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/p_-r5_XL3WARKzYbZTRGmKtqzAU=/768x/2026/10/29/00121793312462396758550/Foto/efe_20261029_204517109.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "riazor",
+          "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
+          "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
+          "publishedAt": "2026-10-29T08:00:38Z"
+        },
+        {
+          "sourceId": "youtube-club",
+          "title": "Presentación de Falas Dépor",
+          "url": "https://youtube.com/watch?v=Ozky7PXLueA",
+          "publishedAt": "2026-10-27T12:54:09Z"
+        }
+      ]
+    },
+    {
       "id": "8991b8351c07e90d",
       "title": "Las claves del Auriense-Deportivo (0-3): Las embestidas de Adama Traoré y el oportunismo de Asp Jensen",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/claves-auriense-deportivo-0-3-embestidas-adama-traore-oportunismo-asp-jensen/00031793312441541405546.htm",
@@ -607,39 +648,6 @@
           "title": "Así contamos el partido de Copa del Rey: Auriense 0 - 3 Dépor",
           "url": "https://lavozdegalicia.es/retransmision/deportes/2026/10/29/copa-rey-directo-auriense-depor/01071793296869160365783.htm",
           "publishedAt": "2026-10-29T21:52:00Z"
-        }
-      ]
-    },
-    {
-      "id": "99db1b1585443a93",
-      "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
-      "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-29T08:00:38Z",
-      "kind": "article",
-      "summary": "El Deportivo inicia su participación en la Copa del Rey enfrentándose a un representante del fútbol modesto como el Auriense en un choque…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/p_-r5_XL3WARKzYbZTRGmKtqzAU=/768x/2026/10/29/00121793312462396758550/Foto/efe_20261029_204517109.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
-          "publishedAt": "2026-10-29T22:32:00Z"
-        },
-        {
-          "sourceId": "la-voz",
-          "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
-          "publishedAt": "2026-10-27T16:17:00Z"
-        },
-        {
-          "sourceId": "youtube-club",
-          "title": "Presentación de Falas Dépor",
-          "url": "https://youtube.com/watch?v=Ozky7PXLueA",
-          "publishedAt": "2026-10-27T12:54:09Z"
         }
       ]
     },
