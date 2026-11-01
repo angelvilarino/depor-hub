@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T17:04:06Z",
+  "updatedAt": "2026-11-01T17:33:57Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "8e47b72ce4e5868c",
+      "title": "Leo Román se reencuentra con Arrasate, el técnico que le puso a prueba antes de confiar en él",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/leo-roman-se-reencuentra-con-arrasate-el-tecnico-que-le-puso-a-prueba-antes-de-confiar-en-el-888140.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-01T17:31:28Z",
+      "kind": "article",
+      "summary": "Leo Román, portero del Dépor, busca recuperar su mejor versión ante Arrasate, el técnico que no le regaló la titularidad en el Mallorca",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4f9ff7c1f9.r_d.1506-900-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "743040e4502cba83",
+      "title": "El Fabril viaja a Zamora con la lección del Extremadura para recuperar las sensaciones",
+      "url": "https://riazor.org/el-fabril-viaja-a-zamora-con-la-leccion-del-extremadura-para-recuperar-las-sensaciones",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-01T17:30:15Z",
+      "kind": "article",
+      "summary": "El Fabril visita al Zamora (18:45) 18º con 8 puntos y seis bajas. Manuel Pablo pide recuperar sensaciones y Óscar Cano saca a relucir a…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "583ff7f2bc7bd634",
       "title": "El árbitro del Dépor-Osasuna: de la despedida de Idiakez al incomprensible gol anulado en A Malata",
@@ -550,7 +576,7 @@
       "alsoIn": []
     },
     {
-      "id": "ce2f40ca55db2419",
+      "id": "084e683fb37ee856",
       "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
       "sourceId": "la-voz",
