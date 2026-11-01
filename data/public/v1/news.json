@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T20:04:29Z",
+  "updatedAt": "2026-11-01T20:32:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "3bc8d2067d1cd3b3",
+      "title": "El 1x1 del Zamora-Fabril: Manu Ferreiro agitó la varita en el Ruta de la Plata",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-01/el-1x1-del-zamora-fabril-manu-ferreiro-agito-la-varita-en-el-ruta-de-la-plata-888401.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-01T20:03:06Z",
+      "kind": "article",
+      "summary": "El futbolista de Castroverde recuperó la sonrisa en su primera titularidad tras la lesión",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/01/6ae79ab665f33.r_d.512-361-0.jpg",
+      "tags": [
+        "cantera",
+        "opinion"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3ea529b080fbab17",
       "title": "Así fue el golazo con el que Manu Ferreiro inició el triunfo del Fabril en Zamora (VÍDEO)",
@@ -620,7 +635,7 @@
       "alsoIn": []
     },
     {
-      "id": "ce2f40ca55db2419",
+      "id": "084e683fb37ee856",
       "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
       "sourceId": "la-voz",
