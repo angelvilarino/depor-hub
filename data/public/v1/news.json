@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T20:32:56Z",
+  "updatedAt": "2026-11-01T21:04:08Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "1ea807dce3113c93",
+      "title": "Hidalgo busca frenar ante Osasuna una racha que nunca había sufrido en el Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/hidalgo-busca-frenar-ante-osasuna-una-racha-que-nunca-habia-sufrido-en-el-depor-888127.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-01T20:33:58Z",
+      "kind": "article",
+      "summary": "El equipo coruñés enlaza seis jornadas sin ganar, una cifra que supera las dos peores series de Antonio Hidalgo como blanquiazul, ambas de…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4f045a7a2c.r_d.1432-684-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "3bc8d2067d1cd3b3",
       "title": "El 1x1 del Zamora-Fabril: Manu Ferreiro agitó la varita en el Ruta de la Plata",
@@ -635,7 +647,7 @@
       "alsoIn": []
     },
     {
-      "id": "084e683fb37ee856",
+      "id": "ce2f40ca55db2419",
       "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
       "sourceId": "la-voz",
