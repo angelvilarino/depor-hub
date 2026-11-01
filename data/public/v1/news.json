@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T12:33:10Z",
+  "updatedAt": "2026-11-01T13:04:23Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "4863ca7bd1bd9358",
+      "title": "Arrasate: \"El Dépor es un equipo bueno con balón, tenemos que lograr que no esté cómodo\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/arrasate-el-depor-es-un-equipo-bueno-con-balon-tenemos-que-lograr-que-no-este-comodo-888354.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-01T12:42:06Z",
+      "kind": "article",
+      "summary": "El técnico de Osasuna insiste en la necesidad de tener más presencia en ataque",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2025/09/11/68c202070c820.r_d.1037-1132-0.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "9d4fb62a2f1e8d04",
       "title": "Rueda de prensa de Antonio Hidalgo previa al RC Deportivo - CA Osasuna",
@@ -587,7 +599,7 @@
       ]
     },
     {
-      "id": "99db1b1585443a93",
+      "id": "a80879a1768c9aba",
       "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
       "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
       "sourceId": "riazor",
