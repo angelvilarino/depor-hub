@@ -486,6 +486,244 @@ class Squad(Public):
     players: list[Player]
 
 
+# --- H7: club (ADR 0025) -----------------------------------------------------
+# El contrato Club no publica fuente, confianza ni estado: esos datos viven en
+# data/manual/club.yml (comentarios) y docs/sources.md. La app no muestra procedencia.
+
+
+class ClubContact(Public):
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    address: Optional[str] = None
+
+
+class ClubIdentity(Public):
+    official_name: str
+    short_name: Optional[str] = None
+    founded_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+    city: Optional[str] = None
+    country: Optional[str] = None
+    colors: list[str] = Field(default_factory=list)
+    nicknames: list[str] = Field(default_factory=list)
+    motto: Optional[str] = None
+    president: Optional[str] = None
+    entity: Optional[str] = None
+    headquarters: Optional[str] = None
+    website: Optional[str] = None
+    contact: ClubContact = Field(default_factory=ClubContact)
+
+
+AnthemKind = Literal["oficial", "no_oficial", "popular"]
+
+
+class AnthemCredit(Public):
+    """Bloque de créditos de un himno (músicos, producción, grabación...).
+
+    `role` es una clave estable; la app la traduce y, si no la conoce, muestra el
+    texto original. `names` conserva una línea por persona o colaboración.
+    """
+
+    role: str
+    names: list[str] = Field(default_factory=list)
+    text: Optional[str] = None
+
+
+class Anthem(Public):
+    id: str
+    title: str
+    kind: Optional[AnthemKind] = None
+    authors: list[str] = Field(default_factory=list)
+    year: Optional[int] = Field(default=None, ge=1800, le=2100)
+    description: Optional[str] = None
+    lyrics: Optional[str] = None
+    audio_url: Optional[str] = None
+    credits: list[AnthemCredit] = Field(default_factory=list)
+
+
+class CrestVersion(Public):
+    id: str
+    year_from: int = Field(ge=1800, le=2100)
+    year_to: Optional[int] = Field(default=None, ge=1800, le=2100)
+    description: Optional[str] = None
+    image: Optional[str] = None  # ruta relativa a data/public/v1, no URL externa
+
+    @model_validator(mode="after")
+    def _years(self) -> CrestVersion:
+        if self.year_to is not None and self.year_to < self.year_from:
+            raise ValueError("yearTo no puede ser anterior a yearFrom")
+        return self
+
+
+KitType = Literal["home", "away", "third", "gk_home", "gk_away", "gk_third", "special"]
+
+
+class Kit(Public):
+    type: KitType
+    manufacturer: Optional[str] = None
+    chest_sponsor: Optional[str] = None
+    sleeve_sponsor: Optional[str] = None
+    back_sponsor: Optional[str] = None
+    colors: list[str] = Field(default_factory=list)
+    description: Optional[str] = None
+    image: Optional[str] = None  # ruta relativa a data/public/v1
+
+
+class SeasonKits(Public):
+    season: str  # AAAA-AA
+    kits: list[Kit] = Field(default_factory=list)
+
+    @field_validator("season")
+    @classmethod
+    def _season_format(cls, v: str) -> str:
+        if not re.fullmatch(r"\d{4}-\d{2}", v):
+            raise ValueError("season debe ser AAAA-AA (p. ej. 1999-00)")
+        return v
+
+
+class StadiumCoordinates(Public):
+    lat: float = Field(ge=-90, le=90)
+    lon: float = Field(ge=-180, le=180)
+
+
+class CapacityZone(Public):
+    zone: str
+    seats: int = Field(ge=0)
+
+
+class Capacity(Public):
+    total: int = Field(ge=0)
+    breakdown: list[CapacityZone] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _total_is_sum(self) -> Capacity:
+        if self.total != sum(zone.seats for zone in self.breakdown):
+            raise ValueError("capacity.total debe ser la suma del desglose")
+        return self
+
+
+class Stadium(Public):
+    name: str
+    address: Optional[str] = None
+    coordinates: Optional[StadiumCoordinates] = None
+    opened_on: Optional[str] = None  # AAAA-MM-DD
+    renovations: list[str] = Field(default_factory=list)
+    pitch: Optional[str] = None
+    dimensions: Optional[str] = None
+    access: Optional[str] = None
+    transport: Optional[str] = None
+    parking: Optional[str] = None
+    capacity: Optional[Capacity] = None
+    description: Optional[str] = None
+
+    @field_validator("opened_on")
+    @classmethod
+    def _full_date(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None:
+            datetime.strptime(v, "%Y-%m-%d")
+        return v
+
+
+class Price(Public):
+    label: str
+    price_eur: Optional[float] = Field(default=None, ge=0)
+    note: Optional[str] = None
+
+
+class Tickets(Public):
+    season: Optional[str] = None
+    zones: list[Price] = Field(default_factory=list)
+    purchase_url: Optional[str] = None
+    note: Optional[str] = None
+
+
+class ClubLink(Public):
+    id: str
+    label: str
+    url: str
+
+
+class Museum(Public):
+    name: Optional[str] = None
+    location: Optional[str] = None
+    description: Optional[str] = None
+    schedule: Optional[str] = None
+    prices: list[Price] = Field(default_factory=list)
+    links: list[ClubLink] = Field(default_factory=list)
+
+
+class TrainingCenter(Public):
+    name: Optional[str] = None
+    location: Optional[str] = None
+    description: Optional[str] = None
+    facilities: list[str] = Field(default_factory=list)
+    coordinates: Optional[StadiumCoordinates] = None
+
+
+class BoardMember(Public):
+    name: str
+    role: Optional[str] = None
+
+
+class Board(Public):
+    president: Optional[str] = None
+    members: list[BoardMember] = Field(default_factory=list)
+    sporting_director: Optional[str] = None
+    note: Optional[str] = None
+
+
+class Sponsors(Public):
+    principal: Optional[str] = None
+    technical: Optional[str] = None
+    official: list[str] = Field(default_factory=list)
+    collaborators: list[str] = Field(default_factory=list)
+    since_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+
+
+class Title(Public):
+    competition: str
+    years: list[int] = Field(default_factory=list)
+
+
+class Rivalry(Public):
+    rival: str
+    description: Optional[str] = None
+    since_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+
+
+class ClubLinks(Public):
+    website: Optional[str] = None
+    app: Optional[str] = None
+    x: Optional[str] = None
+    instagram: Optional[str] = None
+    tiktok: Optional[str] = None
+    youtube: Optional[str] = None
+    facebook: Optional[str] = None
+    twitch: Optional[str] = None
+    whatsapp: Optional[str] = None
+    store: Optional[str] = None
+    tickets: Optional[str] = None
+    museum: Optional[str] = None
+    others: list[ClubLink] = Field(default_factory=list)
+
+
+class Club(Public):
+    updated_at: IsoDateTime
+    identity: ClubIdentity
+    anthems: list[Anthem] = Field(default_factory=list)
+    crests: list[CrestVersion] = Field(default_factory=list)
+    kits: list[SeasonKits] = Field(default_factory=list)
+    stadium: Optional[Stadium] = None
+    tickets: Optional[Tickets] = None
+    museum: Optional[Museum] = None
+    training_center: Optional[TrainingCenter] = None
+    board: Optional[Board] = None
+    sponsors: Optional[Sponsors] = None
+    titles: list[Title] = Field(default_factory=list)
+    rivalries: list[Rivalry] = Field(default_factory=list)
+    facts: list[str] = Field(default_factory=list)
+    links: ClubLinks = Field(default_factory=ClubLinks)
+
+
 # nombre de fichero -> modelo
 FILES: dict[str, type[Public]] = {
     "meta.json": Meta,
@@ -493,7 +731,12 @@ FILES: dict[str, type[Public]] = {
     "fixtures.json": Fixtures,
     "squad.json": Squad,
     "season.json": Season,
+    "club.json": Club,
 }
+
+# Ficheros que alimentan meta.dataHash (solo datos deportivos). club.json tiene
+# su propia escritura idempotente y no debe cambiar el hash de la ingesta.
+SPORTS_FILES = ("meta.json", "standings.json", "fixtures.json", "squad.json", "season.json")
 
 # Contratos que aún no publica la ingesta (news.json llega en H6) pero que la app
 # ya puede leer de forma opcional. Se exportan igual para mantener Pydantic como origen.

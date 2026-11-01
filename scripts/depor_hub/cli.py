@@ -535,7 +535,7 @@ def _apply_to_public(
     if coach_path is not None:
         updated = apply_coach(reset_coach(updated), load_coach(coach_path))
     files: dict[str, dict] = {}
-    for name in m.FILES:
+    for name in m.SPORTS_FILES:
         candidate = out_dir / name
         if candidate.exists():
             files[name] = json.loads(candidate.read_text(encoding="utf-8"))

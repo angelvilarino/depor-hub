@@ -1,0 +1,1432 @@
+{
+  "$defs": {
+    "Anthem": {
+      "additionalProperties": false,
+      "properties": {
+        "audioUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Audiourl"
+        },
+        "authors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Authors",
+          "type": "array"
+        },
+        "credits": {
+          "items": {
+            "$ref": "#/$defs/AnthemCredit"
+          },
+          "title": "Credits",
+          "type": "array"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "anyOf": [
+            {
+              "enum": [
+                "oficial",
+                "no_oficial",
+                "popular"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Kind"
+        },
+        "lyrics": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lyrics"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "year": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Year"
+        }
+      },
+      "required": [
+        "id",
+        "title"
+      ],
+      "title": "Anthem",
+      "type": "object"
+    },
+    "AnthemCredit": {
+      "additionalProperties": false,
+      "description": "Bloque de cr\u00e9ditos de un himno (m\u00fasicos, producci\u00f3n, grabaci\u00f3n...).\n\n`role` es una clave estable; la app la traduce y, si no la conoce, muestra el\ntexto original. `names` conserva una l\u00ednea por persona o colaboraci\u00f3n.",
+      "properties": {
+        "names": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Names",
+          "type": "array"
+        },
+        "role": {
+          "title": "Role",
+          "type": "string"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text"
+        }
+      },
+      "required": [
+        "role"
+      ],
+      "title": "AnthemCredit",
+      "type": "object"
+    },
+    "Board": {
+      "additionalProperties": false,
+      "properties": {
+        "members": {
+          "items": {
+            "$ref": "#/$defs/BoardMember"
+          },
+          "title": "Members",
+          "type": "array"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "president": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "President"
+        },
+        "sportingDirector": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sportingdirector"
+        }
+      },
+      "title": "Board",
+      "type": "object"
+    },
+    "BoardMember": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "BoardMember",
+      "type": "object"
+    },
+    "Capacity": {
+      "additionalProperties": false,
+      "properties": {
+        "breakdown": {
+          "items": {
+            "$ref": "#/$defs/CapacityZone"
+          },
+          "title": "Breakdown",
+          "type": "array"
+        },
+        "total": {
+          "minimum": 0,
+          "title": "Total",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "total"
+      ],
+      "title": "Capacity",
+      "type": "object"
+    },
+    "CapacityZone": {
+      "additionalProperties": false,
+      "properties": {
+        "seats": {
+          "minimum": 0,
+          "title": "Seats",
+          "type": "integer"
+        },
+        "zone": {
+          "title": "Zone",
+          "type": "string"
+        }
+      },
+      "required": [
+        "zone",
+        "seats"
+      ],
+      "title": "CapacityZone",
+      "type": "object"
+    },
+    "ClubContact": {
+      "additionalProperties": false,
+      "properties": {
+        "address": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Address"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Email"
+        },
+        "phone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phone"
+        }
+      },
+      "title": "ClubContact",
+      "type": "object"
+    },
+    "ClubIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "city": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "City"
+        },
+        "colors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Colors",
+          "type": "array"
+        },
+        "contact": {
+          "$ref": "#/$defs/ClubContact"
+        },
+        "country": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Country"
+        },
+        "entity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity"
+        },
+        "foundedYear": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Foundedyear"
+        },
+        "headquarters": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Headquarters"
+        },
+        "motto": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Motto"
+        },
+        "nicknames": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Nicknames",
+          "type": "array"
+        },
+        "officialName": {
+          "title": "Officialname",
+          "type": "string"
+        },
+        "president": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "President"
+        },
+        "shortName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shortname"
+        },
+        "website": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Website"
+        }
+      },
+      "required": [
+        "officialName"
+      ],
+      "title": "ClubIdentity",
+      "type": "object"
+    },
+    "ClubLink": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "url"
+      ],
+      "title": "ClubLink",
+      "type": "object"
+    },
+    "ClubLinks": {
+      "additionalProperties": false,
+      "properties": {
+        "app": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "App"
+        },
+        "facebook": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Facebook"
+        },
+        "instagram": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Instagram"
+        },
+        "museum": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Museum"
+        },
+        "others": {
+          "items": {
+            "$ref": "#/$defs/ClubLink"
+          },
+          "title": "Others",
+          "type": "array"
+        },
+        "store": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Store"
+        },
+        "tickets": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tickets"
+        },
+        "tiktok": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tiktok"
+        },
+        "twitch": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Twitch"
+        },
+        "website": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Website"
+        },
+        "whatsapp": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Whatsapp"
+        },
+        "x": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "X"
+        },
+        "youtube": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Youtube"
+        }
+      },
+      "title": "ClubLinks",
+      "type": "object"
+    },
+    "CrestVersion": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "image": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Image"
+        },
+        "yearFrom": {
+          "maximum": 2100,
+          "minimum": 1800,
+          "title": "Yearfrom",
+          "type": "integer"
+        },
+        "yearTo": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Yearto"
+        }
+      },
+      "required": [
+        "id",
+        "yearFrom"
+      ],
+      "title": "CrestVersion",
+      "type": "object"
+    },
+    "Kit": {
+      "additionalProperties": false,
+      "properties": {
+        "backSponsor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Backsponsor"
+        },
+        "chestSponsor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chestsponsor"
+        },
+        "colors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Colors",
+          "type": "array"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "image": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Image"
+        },
+        "manufacturer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Manufacturer"
+        },
+        "sleeveSponsor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sleevesponsor"
+        },
+        "type": {
+          "enum": [
+            "home",
+            "away",
+            "third",
+            "gk_home",
+            "gk_away",
+            "gk_third",
+            "special"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "Kit",
+      "type": "object"
+    },
+    "Museum": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "links": {
+          "items": {
+            "$ref": "#/$defs/ClubLink"
+          },
+          "title": "Links",
+          "type": "array"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "prices": {
+          "items": {
+            "$ref": "#/$defs/Price"
+          },
+          "title": "Prices",
+          "type": "array"
+        },
+        "schedule": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schedule"
+        }
+      },
+      "title": "Museum",
+      "type": "object"
+    },
+    "Price": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "priceEur": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Priceeur"
+        }
+      },
+      "required": [
+        "label"
+      ],
+      "title": "Price",
+      "type": "object"
+    },
+    "Rivalry": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "rival": {
+          "title": "Rival",
+          "type": "string"
+        },
+        "sinceYear": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sinceyear"
+        }
+      },
+      "required": [
+        "rival"
+      ],
+      "title": "Rivalry",
+      "type": "object"
+    },
+    "SeasonKits": {
+      "additionalProperties": false,
+      "properties": {
+        "kits": {
+          "items": {
+            "$ref": "#/$defs/Kit"
+          },
+          "title": "Kits",
+          "type": "array"
+        },
+        "season": {
+          "title": "Season",
+          "type": "string"
+        }
+      },
+      "required": [
+        "season"
+      ],
+      "title": "SeasonKits",
+      "type": "object"
+    },
+    "Sponsors": {
+      "additionalProperties": false,
+      "properties": {
+        "collaborators": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Collaborators",
+          "type": "array"
+        },
+        "official": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Official",
+          "type": "array"
+        },
+        "principal": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Principal"
+        },
+        "sinceYear": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sinceyear"
+        },
+        "technical": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Technical"
+        }
+      },
+      "title": "Sponsors",
+      "type": "object"
+    },
+    "Stadium": {
+      "additionalProperties": false,
+      "properties": {
+        "access": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Access"
+        },
+        "address": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Address"
+        },
+        "capacity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Capacity"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "coordinates": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StadiumCoordinates"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "dimensions": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dimensions"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "openedOn": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Openedon"
+        },
+        "parking": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parking"
+        },
+        "pitch": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pitch"
+        },
+        "renovations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Renovations",
+          "type": "array"
+        },
+        "transport": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transport"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "Stadium",
+      "type": "object"
+    },
+    "StadiumCoordinates": {
+      "additionalProperties": false,
+      "properties": {
+        "lat": {
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Lat",
+          "type": "number"
+        },
+        "lon": {
+          "maximum": 180,
+          "minimum": -180,
+          "title": "Lon",
+          "type": "number"
+        }
+      },
+      "required": [
+        "lat",
+        "lon"
+      ],
+      "title": "StadiumCoordinates",
+      "type": "object"
+    },
+    "Tickets": {
+      "additionalProperties": false,
+      "properties": {
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "purchaseUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Purchaseurl"
+        },
+        "season": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Season"
+        },
+        "zones": {
+          "items": {
+            "$ref": "#/$defs/Price"
+          },
+          "title": "Zones",
+          "type": "array"
+        }
+      },
+      "title": "Tickets",
+      "type": "object"
+    },
+    "Title": {
+      "additionalProperties": false,
+      "properties": {
+        "competition": {
+          "title": "Competition",
+          "type": "string"
+        },
+        "years": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Years",
+          "type": "array"
+        }
+      },
+      "required": [
+        "competition"
+      ],
+      "title": "Title",
+      "type": "object"
+    },
+    "TrainingCenter": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StadiumCoordinates"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "facilities": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Facilities",
+          "type": "array"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        }
+      },
+      "title": "TrainingCenter",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "anthems": {
+      "items": {
+        "$ref": "#/$defs/Anthem"
+      },
+      "title": "Anthems",
+      "type": "array"
+    },
+    "board": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Board"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "crests": {
+      "items": {
+        "$ref": "#/$defs/CrestVersion"
+      },
+      "title": "Crests",
+      "type": "array"
+    },
+    "facts": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "identity": {
+      "$ref": "#/$defs/ClubIdentity"
+    },
+    "kits": {
+      "items": {
+        "$ref": "#/$defs/SeasonKits"
+      },
+      "title": "Kits",
+      "type": "array"
+    },
+    "links": {
+      "$ref": "#/$defs/ClubLinks"
+    },
+    "museum": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Museum"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "rivalries": {
+      "items": {
+        "$ref": "#/$defs/Rivalry"
+      },
+      "title": "Rivalries",
+      "type": "array"
+    },
+    "sponsors": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Sponsors"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "stadium": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Stadium"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "tickets": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Tickets"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "titles": {
+      "items": {
+        "$ref": "#/$defs/Title"
+      },
+      "title": "Titles",
+      "type": "array"
+    },
+    "trainingCenter": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TrainingCenter"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "identity"
+  ],
+  "title": "Club",
+  "type": "object"
+}

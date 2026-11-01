@@ -1,0 +1,155 @@
+{
+  "updatedAt": "2026-11-01T10:00:00Z",
+  "identity": {
+    "officialName": "Real Club Deportivo de La Coruña, S.A.D.",
+    "shortName": "RC Deportivo",
+    "foundedYear": 1906,
+    "city": "A Coruña",
+    "country": "España",
+    "colors": ["blanco", "azul"],
+    "nicknames": ["Dépor", "Blanquiazul"],
+    "motto": "Forza Dépor",
+    "president": "Presidente de ejemplo",
+    "entity": "S.A.D.",
+    "headquarters": "Calle de ejemplo, 1",
+    "website": "https://example.org/club",
+    "contact": {
+      "email": "info@example.org",
+      "phone": "+34 900 000 000",
+      "address": "Calle de ejemplo, 1"
+    }
+  },
+  "anthems": [
+    {
+      "id": "himno-ejemplo",
+      "title": "Himno de ejemplo",
+      "kind": "oficial",
+      "authors": ["Autor de ejemplo"],
+      "year": 2000,
+      "description": "Himno sintético para validar el contrato.",
+      "lyrics": "Primera estrofa de ejemplo\n\nSegunda estrofa de ejemplo",
+      "audioUrl": null,
+      "credits": [
+        {
+          "role": "musicians",
+          "names": ["Músico de ejemplo: voz"],
+          "text": null
+        }
+      ]
+    }
+  ],
+  "crests": [
+    {
+      "id": "escudo-1906",
+      "yearFrom": 1906,
+      "yearTo": 1920,
+      "description": "Versión sintética.",
+      "image": "img/club/escudos/1906.png"
+    }
+  ],
+  "kits": [
+    {
+      "season": "1999-00",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Fabricante de ejemplo",
+          "chestSponsor": "Patrocinador de ejemplo",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": ["blanco", "azul"],
+          "description": "Equipación sintética.",
+          "image": "img/club/equipaciones/1999-00/home.webp"
+        }
+      ]
+    }
+  ],
+  "stadium": {
+    "name": "Estadio de ejemplo",
+    "address": "Calle del estadio, 1",
+    "coordinates": { "lat": 43.0, "lon": -8.0 },
+    "openedOn": "1944-10-29",
+    "renovations": ["Remodelación de ejemplo"],
+    "pitch": "Césped natural",
+    "dimensions": "105 x 68 m",
+    "access": "Puerta principal",
+    "transport": "Autobús urbano",
+    "parking": "Aparcamiento de ejemplo",
+    "capacity": {
+      "total": 100,
+      "breakdown": [
+        { "zone": "Gradas", "seats": 60 },
+        { "zone": "Zona VIP", "seats": 40 }
+      ]
+    },
+    "description": "Estadio sintético."
+  },
+  "tickets": {
+    "season": "2026-27",
+    "zones": [{ "label": "Grada de ejemplo", "priceEur": 20.5, "note": null }],
+    "purchaseUrl": "https://example.org/entradas",
+    "note": "Precio sintético."
+  },
+  "museum": {
+    "name": "Museo de ejemplo",
+    "location": "Estadio de ejemplo",
+    "description": "Museo sintético.",
+    "schedule": "Todos los días",
+    "prices": [{ "label": "Entrada general", "priceEur": 5, "note": null }],
+    "links": [
+      {
+        "id": "museum",
+        "label": "Museo",
+        "url": "https://example.org/museo"
+      }
+    ]
+  },
+  "trainingCenter": {
+    "name": "Ciudad deportiva de ejemplo",
+    "location": "Abegondo",
+    "description": "Instalación sintética.",
+    "facilities": ["Campo 1", "Campo 2"],
+    "coordinates": { "lat": 43.1, "lon": -8.1 }
+  },
+  "board": {
+    "president": "Presidente de ejemplo",
+    "members": [
+      { "name": "Consejero de ejemplo", "role": "Consejero" }
+    ],
+    "sportingDirector": "Director deportivo de ejemplo",
+    "note": "Organigrama sintético."
+  },
+  "sponsors": {
+    "principal": "Patrocinador principal de ejemplo",
+    "technical": "Fabricante de ejemplo",
+    "official": ["Patrocinador oficial de ejemplo"],
+    "collaborators": ["Colaborador de ejemplo"],
+    "sinceYear": 2020
+  },
+  "titles": [
+    { "competition": "Competición de ejemplo", "years": [1999, 2000] }
+  ],
+  "rivalries": [
+    {
+      "rival": "Rival de ejemplo",
+      "description": "Rivalidad sintética.",
+      "sinceYear": 1920
+    }
+  ],
+  "facts": ["Dato curioso sintético."],
+  "links": {
+    "website": "https://example.org/club",
+    "app": "https://example.org/app",
+    "x": "https://x.com/example",
+    "instagram": "https://instagram.com/example",
+    "tiktok": "https://tiktok.com/@example",
+    "youtube": "https://youtube.com/@example",
+    "facebook": "https://facebook.com/example",
+    "twitch": null,
+    "whatsapp": null,
+    "store": "https://example.org/tienda",
+    "tickets": "https://example.org/entradas",
+    "museum": "https://example.org/museo",
+    "others": []
+  }
+}

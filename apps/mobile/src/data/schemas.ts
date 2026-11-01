@@ -322,13 +322,242 @@ export const SocialFeed = z.strictObject({
   pins: z.array(SocialPin).default([]),
 });
 
+// Club (H7, ADR 0025). El contrato no publica source/confidence/status: la app no
+// muestra procedencia. Todos los campos nuevos tienen default para tolerar un
+// club.json mínimo o una caché anterior.
+export const ClubContact = z.strictObject({
+  email: optionalNull(),
+  phone: optionalNull(),
+  address: optionalNull(),
+});
+
+export const ClubIdentity = z.strictObject({
+  officialName: z.string(),
+  shortName: optionalNull(),
+  foundedYear: z.number().int().min(1800).max(2100).nullable().default(null),
+  city: optionalNull(),
+  country: optionalNull(),
+  colors: z.array(z.string()).default([]),
+  nicknames: z.array(z.string()).default([]),
+  motto: optionalNull(),
+  president: optionalNull(),
+  entity: optionalNull(),
+  headquarters: optionalNull(),
+  website: optionalNull(),
+  contact: ClubContact.default({ email: null, phone: null, address: null }),
+});
+
+export const AnthemKind = z.enum(['oficial', 'no_oficial', 'popular']);
+
+export const AnthemCredit = z.strictObject({
+  role: z.string(),
+  names: z.array(z.string()).default([]),
+  text: optionalNull(),
+});
+
+export const Anthem = z.strictObject({
+  id: z.string(),
+  title: z.string(),
+  kind: AnthemKind.nullable().default(null),
+  authors: z.array(z.string()).default([]),
+  year: z.number().int().min(1800).max(2100).nullable().default(null),
+  description: optionalNull(),
+  // Letra completa con saltos de línea. null si el usuario no ha rellenado el .txt.
+  lyrics: optionalNull(),
+  audioUrl: optionalNull(),
+  credits: z.array(AnthemCredit).default([]),
+});
+
+export const CrestVersion = z.strictObject({
+  id: z.string(),
+  yearFrom: z.number().int().min(1800).max(2100),
+  yearTo: z.number().int().min(1800).max(2100).nullable().default(null),
+  description: optionalNull(),
+  // Ruta relativa a data/public/v1; no es una URL externa.
+  image: optionalNull(),
+});
+
+export const KitType = z.enum([
+  'home',
+  'away',
+  'third',
+  'gk_home',
+  'gk_away',
+  'gk_third',
+  'special',
+]);
+
+export const Kit = z.strictObject({
+  type: KitType,
+  manufacturer: optionalNull(),
+  chestSponsor: optionalNull(),
+  sleeveSponsor: optionalNull(),
+  backSponsor: optionalNull(),
+  colors: z.array(z.string()).default([]),
+  description: optionalNull(),
+  image: optionalNull(),
+});
+
+export const SeasonKits = z.strictObject({
+  season: z.string().regex(/^\d{4}-\d{2}$/),
+  kits: z.array(Kit).default([]),
+});
+
+export const StadiumCoordinates = z.strictObject({
+  lat: z.number().min(-90).max(90),
+  lon: z.number().min(-180).max(180),
+});
+
+export const CapacityZone = z.strictObject({
+  zone: z.string(),
+  seats: z.number().int().nonnegative(),
+});
+
+export const Capacity = z
+  .strictObject({
+    total: z.number().int().nonnegative(),
+    breakdown: z.array(CapacityZone).default([]),
+  })
+  .refine(
+    (value) => value.total === value.breakdown.reduce((sum, zone) => sum + zone.seats, 0),
+    'capacity.total debe ser la suma del desglose',
+  );
+
+export const Stadium = z.strictObject({
+  name: z.string(),
+  address: optionalNull(),
+  coordinates: StadiumCoordinates.nullable().default(null),
+  openedOn: optionalNull(),
+  renovations: z.array(z.string()).default([]),
+  pitch: optionalNull(),
+  dimensions: optionalNull(),
+  access: optionalNull(),
+  transport: optionalNull(),
+  parking: optionalNull(),
+  capacity: Capacity.nullable().default(null),
+  description: optionalNull(),
+});
+
+export const Price = z.strictObject({
+  label: z.string(),
+  priceEur: z.number().nonnegative().nullable().default(null),
+  note: optionalNull(),
+});
+
+export const Tickets = z.strictObject({
+  season: optionalNull(),
+  zones: z.array(Price).default([]),
+  purchaseUrl: optionalNull(),
+  note: optionalNull(),
+});
+
+export const ClubLink = z.strictObject({
+  id: z.string(),
+  label: z.string(),
+  url: z.string(),
+});
+
+export const Museum = z.strictObject({
+  name: optionalNull(),
+  location: optionalNull(),
+  description: optionalNull(),
+  schedule: optionalNull(),
+  prices: z.array(Price).default([]),
+  links: z.array(ClubLink).default([]),
+});
+
+export const TrainingCenter = z.strictObject({
+  name: optionalNull(),
+  location: optionalNull(),
+  description: optionalNull(),
+  facilities: z.array(z.string()).default([]),
+  coordinates: StadiumCoordinates.nullable().default(null),
+});
+
+export const BoardMember = z.strictObject({
+  name: z.string(),
+  role: optionalNull(),
+});
+
+export const Board = z.strictObject({
+  president: optionalNull(),
+  members: z.array(BoardMember).default([]),
+  sportingDirector: optionalNull(),
+  note: optionalNull(),
+});
+
+export const Sponsors = z.strictObject({
+  principal: optionalNull(),
+  technical: optionalNull(),
+  official: z.array(z.string()).default([]),
+  collaborators: z.array(z.string()).default([]),
+  sinceYear: z.number().int().min(1800).max(2100).nullable().default(null),
+});
+
+export const Title = z.strictObject({
+  competition: z.string(),
+  years: z.array(z.number().int()).default([]),
+});
+
+export const Rivalry = z.strictObject({
+  rival: z.string(),
+  description: optionalNull(),
+  sinceYear: z.number().int().min(1800).max(2100).nullable().default(null),
+});
+
+export const ClubLinks = z.strictObject({
+  website: optionalNull(),
+  app: optionalNull(),
+  x: optionalNull(),
+  instagram: optionalNull(),
+  tiktok: optionalNull(),
+  youtube: optionalNull(),
+  facebook: optionalNull(),
+  twitch: optionalNull(),
+  whatsapp: optionalNull(),
+  store: optionalNull(),
+  tickets: optionalNull(),
+  museum: optionalNull(),
+  others: z.array(ClubLink).default([]),
+});
+
+export const Club = z.strictObject({
+  updatedAt: iso,
+  identity: ClubIdentity,
+  anthems: z.array(Anthem).default([]),
+  crests: z.array(CrestVersion).default([]),
+  kits: z.array(SeasonKits).default([]),
+  stadium: Stadium.nullable().default(null),
+  tickets: Tickets.nullable().default(null),
+  museum: Museum.nullable().default(null),
+  trainingCenter: TrainingCenter.nullable().default(null),
+  board: Board.nullable().default(null),
+  sponsors: Sponsors.nullable().default(null),
+  titles: z.array(Title).default([]),
+  rivalries: z.array(Rivalry).default([]),
+  facts: z.array(z.string()).default([]),
+  links: ClubLinks.default({
+    website: null,
+    app: null,
+    x: null,
+    instagram: null,
+    tiktok: null,
+    youtube: null,
+    facebook: null,
+    twitch: null,
+    whatsapp: null,
+    store: null,
+    tickets: null,
+    museum: null,
+    others: [],
+  }),
+});
+
 export const StaffMember = z.strictObject({
   name: z.string(),
   role: z.string(),
   photoUrl: optionalNull(),
-});
-
-export const Coach = z
+});export const Coach = z
   .strictObject({
     name: z.string().nullable(),
     nationality: z.string().nullable(),
@@ -431,3 +660,24 @@ export type CareerTotalsT = z.infer<typeof CareerTotals>;
 export type PlayerMatchT = z.infer<typeof PlayerMatch>;
 export type ProvenanceT = z.infer<typeof Provenance>;
 export type ConfidenceT = z.infer<typeof Confidence>;
+export type ClubT = z.infer<typeof Club>;
+export type ClubIdentityT = z.infer<typeof ClubIdentity>;
+export type AnthemT = z.infer<typeof Anthem>;
+export type AnthemCreditT = z.infer<typeof AnthemCredit>;
+export type CrestVersionT = z.infer<typeof CrestVersion>;
+export type SeasonKitsT = z.infer<typeof SeasonKits>;
+export type KitT = z.infer<typeof Kit>;
+export type StadiumT = z.infer<typeof Stadium>;
+export type CapacityT = z.infer<typeof Capacity>;
+export type CapacityZoneT = z.infer<typeof CapacityZone>;
+export type TicketsT = z.infer<typeof Tickets>;
+export type MuseumT = z.infer<typeof Museum>;
+export type TrainingCenterT = z.infer<typeof TrainingCenter>;
+export type BoardT = z.infer<typeof Board>;
+export type BoardMemberT = z.infer<typeof BoardMember>;
+export type SponsorsT = z.infer<typeof Sponsors>;
+export type TitleT = z.infer<typeof Title>;
+export type RivalryT = z.infer<typeof Rivalry>;
+export type ClubLinksT = z.infer<typeof ClubLinks>;
+export type ClubLinkT = z.infer<typeof ClubLink>;
+export type PriceT = z.infer<typeof Price>;

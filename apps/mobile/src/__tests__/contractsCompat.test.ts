@@ -1,4 +1,4 @@
-import { Fixtures, Squad, Standings } from '@/data/schemas';
+import { Club, Fixtures, Squad, Standings } from '@/data/schemas';
 
 // JSON publicado ANTES de ADR 0006 (sin crestUrl/venue/referee): debe seguir validando.
 const oldTeam = { id: 1, name: 'A', shortName: null, tla: null };
@@ -151,6 +151,48 @@ describe('compatibilidad con JSON anterior a ADR 0014', () => {
     expect(r.data.coach?.career).toEqual([]);
     expect(r.data.coach?.staff).toEqual([]);
     expect(r.data.players[0]!.career[0]!.role).toBe('player');
+  });
+});
+
+describe('compatibilidad con JSON anterior a ADR 0025 (Club)', () => {
+  it('un club.json mínimo rellena arrays y objetos opcionales', () => {
+    const r = Club.safeParse({
+      updatedAt: '2026-11-01T10:00:00Z',
+      identity: { officialName: 'RC Deportivo' },
+    });
+    expect(r.success).toBe(true);
+    if (!r.success) return;
+    expect(r.data.identity.contact).toEqual({ email: null, phone: null, address: null });
+    expect(r.data.identity.colors).toEqual([]);
+    expect(r.data.anthems).toEqual([]);
+    expect(r.data.crests).toEqual([]);
+    expect(r.data.kits).toEqual([]);
+    expect(r.data.stadium).toBeNull();
+    expect(r.data.tickets).toBeNull();
+    expect(r.data.museum).toBeNull();
+    expect(r.data.trainingCenter).toBeNull();
+    expect(r.data.board).toBeNull();
+    expect(r.data.sponsors).toBeNull();
+    expect(r.data.titles).toEqual([]);
+    expect(r.data.rivalries).toEqual([]);
+    expect(r.data.facts).toEqual([]);
+    expect(r.data.links.website).toBeNull();
+    expect(r.data.links.others).toEqual([]);
+  });
+
+  it('rechaza una capacidad que no coincide con el desglose', () => {
+    const r = Club.safeParse({
+      updatedAt: '2026-11-01T10:00:00Z',
+      identity: { officialName: 'RC Deportivo' },
+      stadium: {
+        name: 'Riazor',
+        capacity: {
+          total: 10,
+          breakdown: [{ zone: 'Gradas', seats: 9 }],
+        },
+      },
+    });
+    expect(r.success).toBe(false);
   });
 });
 
