@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T14:14:13Z",
+  "updatedAt": "2026-11-01T15:22:05Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
@@ -50,11 +50,11 @@
         "tla": "RMA",
         "crestUrl": "https://crests.football-data.org/86.png"
       },
-      "played": 10,
+      "played": 11,
       "won": 8,
-      "draw": 0,
+      "draw": 1,
       "lost": 2,
-      "points": 24,
+      "points": 25,
       "goalsFor": 25,
       "goalsAgainst": 10,
       "goalDifference": 15,
@@ -82,25 +82,6 @@
     {
       "position": 5,
       "team": {
-        "id": 559,
-        "name": "Sevilla FC",
-        "shortName": "Sevilla FC",
-        "tla": "SEV",
-        "crestUrl": "https://crests.football-data.org/559.png"
-      },
-      "played": 11,
-      "won": 6,
-      "draw": 2,
-      "lost": 3,
-      "points": 20,
-      "goalsFor": 17,
-      "goalsAgainst": 16,
-      "goalDifference": 1,
-      "form": null
-    },
-    {
-      "position": 6,
-      "team": {
         "id": 92,
         "name": "Real Sociedad de Fútbol",
         "shortName": "Real Sociedad",
@@ -115,6 +96,25 @@
       "goalsFor": 19,
       "goalsAgainst": 18,
       "goalDifference": 1,
+      "form": null
+    },
+    {
+      "position": 6,
+      "team": {
+        "id": 559,
+        "name": "Sevilla FC",
+        "shortName": "Sevilla FC",
+        "tla": "SEV",
+        "crestUrl": "https://crests.football-data.org/559.png"
+      },
+      "played": 11,
+      "won": 5,
+      "draw": 2,
+      "lost": 4,
+      "points": 17,
+      "goalsFor": 17,
+      "goalsAgainst": 19,
+      "goalDifference": -2,
       "form": null
     },
     {
@@ -215,6 +215,44 @@
     {
       "position": 12,
       "team": {
+        "id": 82,
+        "name": "Getafe CF",
+        "shortName": "Getafe",
+        "tla": "GET",
+        "crestUrl": "https://crests.football-data.org/82.png"
+      },
+      "played": 11,
+      "won": 3,
+      "draw": 3,
+      "lost": 5,
+      "points": 12,
+      "goalsFor": 8,
+      "goalsAgainst": 16,
+      "goalDifference": -8,
+      "form": null
+    },
+    {
+      "position": 13,
+      "team": {
+        "id": 5335,
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
+      },
+      "played": 11,
+      "won": 3,
+      "draw": 3,
+      "lost": 5,
+      "points": 12,
+      "goalsFor": 15,
+      "goalsAgainst": 26,
+      "goalDifference": -11,
+      "form": null
+    },
+    {
+      "position": 14,
+      "team": {
         "id": 560,
         "name": "RC Deportivo La Coruña",
         "shortName": "Deportivo",
@@ -232,7 +270,7 @@
       "form": null
     },
     {
-      "position": 13,
+      "position": 15,
       "team": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
@@ -251,7 +289,7 @@
       "form": null
     },
     {
-      "position": 14,
+      "position": 16,
       "team": {
         "id": 79,
         "name": "CA Osasuna",
@@ -270,26 +308,7 @@
       "form": null
     },
     {
-      "position": 15,
-      "team": {
-        "id": 5335,
-        "name": "Real Racing Club de Santander",
-        "shortName": "Santander",
-        "tla": "SAN",
-        "crestUrl": "https://crests.football-data.org/5335.png"
-      },
-      "played": 10,
-      "won": 3,
-      "draw": 2,
-      "lost": 5,
-      "points": 11,
-      "goalsFor": 15,
-      "goalsAgainst": 26,
-      "goalDifference": -11,
-      "form": null
-    },
-    {
-      "position": 16,
+      "position": 17,
       "team": {
         "id": 285,
         "name": "Elche CF",
@@ -308,7 +327,7 @@
       "form": null
     },
     {
-      "position": 17,
+      "position": 18,
       "team": {
         "id": 88,
         "name": "Levante UD",
@@ -324,25 +343,6 @@
       "goalsFor": 16,
       "goalsAgainst": 21,
       "goalDifference": -5,
-      "form": null
-    },
-    {
-      "position": 18,
-      "team": {
-        "id": 82,
-        "name": "Getafe CF",
-        "shortName": "Getafe",
-        "tla": "GET",
-        "crestUrl": "https://crests.football-data.org/82.png"
-      },
-      "played": 11,
-      "won": 2,
-      "draw": 3,
-      "lost": 6,
-      "points": 9,
-      "goalsFor": 5,
-      "goalsAgainst": 16,
-      "goalDifference": -11,
       "form": null
     },
     {
