@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T12:04:37Z",
+  "updatedAt": "2026-11-01T13:13:17Z",
   "season": "2026-27",
   "matchday": 11,
   "table": [
@@ -107,11 +107,11 @@
         "tla": "SEV",
         "crestUrl": "https://crests.football-data.org/559.png"
       },
-      "played": 10,
+      "played": 11,
       "won": 5,
-      "draw": 2,
+      "draw": 3,
       "lost": 3,
-      "points": 17,
+      "points": 18,
       "goalsFor": 16,
       "goalsAgainst": 16,
       "goalDifference": 0,
@@ -335,11 +335,11 @@
         "tla": "GET",
         "crestUrl": "https://crests.football-data.org/82.png"
       },
-      "played": 10,
+      "played": 11,
       "won": 2,
-      "draw": 3,
+      "draw": 4,
       "lost": 5,
-      "points": 9,
+      "points": 10,
       "goalsFor": 5,
       "goalsAgainst": 15,
       "goalDifference": -10,
