@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T20:05:07Z",
+  "updatedAt": "2026-11-02T20:32:24Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,20 @@
   ],
   "stories": [
     {
+      "id": "83ea812e69f3f261",
+      "title": "En directo, Deportivo - Osasuna: Aubameyang vuelve a la convocatoria",
+      "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/02/directo-deportivo-osasuna/01071793643729133831384.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-02T20:31:00Z",
+      "kind": "article",
+      "summary": "La escuadra herculina recibe en Abanca Riazor a los rojillos en busca de romper la racha de seis duelos ligueros consecutivos sin ganar…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/2XgqwNzCHIk9gEo-Lqq0ZqplwXI=/768x/2026/09/23/00121790164202104526464/Foto/h_20260831_133513000.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "584d1aa20bb579ac",
       "title": "Aubameyang obra el milagro: alta médica y listo para reaparecer ante Osasuna",
       "url": "https://marca.com/futbol/deportivo/2026/11/02/aubameyang-obra-milagro-alta-medica-listo-reaparecer-osasuna.html",
@@ -65,20 +79,6 @@
       "summary": "El Dépor Museo y el Espacio Avenida de Abanca acogerán la primera edición de una cita que pondrá el valor el deportivismo desde todos los…",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/27/6ae0a20d54639.r_d.1500-1000-0.jpeg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "83ea812e69f3f261",
-      "title": "En directo, Deportivo - Osasuna: Aubameyang vuelve a la convocatoria",
-      "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/02/directo-deportivo-osasuna/01071793643729133831384.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-02T19:05:00Z",
-      "kind": "article",
-      "summary": "La escuadra herculina recibe en Abanca Riazor a los rojillos en busca de romper la racha de seis duelos ligueros consecutivos sin ganar",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/2XgqwNzCHIk9gEo-Lqq0ZqplwXI=/768x/2026/09/23/00121790164202104526464/Foto/h_20260831_133513000.jpg",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     },
     {
