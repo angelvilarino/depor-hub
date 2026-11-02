@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T04:33:06Z",
+  "updatedAt": "2026-11-02T06:09:37Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "2fcf2b9dd62e0f17",
+      "title": "Los lectores de Riazor.org divisan un once inicial sin grandes novedades para recibir a Osasuna en Riazor",
+      "url": "https://riazor.org/los-lectores-de-riazor-org-divisan-un-once-inicial-sin-grandes-novedades-para-recibir-a-osasuna-en-riazor",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-02T06:00:04Z",
+      "kind": "article",
+      "summary": "El Deportivo intentará poner fin a la racha de seis jornadas en liga sin conocer la victoria con un triunfo este lunes en Riazor ante un…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "be60cc2ec3fcb7b5",
       "title": "Un ataque que se apoye en más de dos apellidos",
@@ -794,6 +808,27 @@
       "alsoIn": []
     },
     {
+      "id": "9b1dc66ef5c66b9f",
+      "title": "Así contamos el partido de Copa del Rey: Auriense 0 - 3 Dépor",
+      "url": "https://lavozdegalicia.es/retransmision/deportes/2026/10/29/copa-rey-directo-auriense-depor/01071793296869160365783.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-10-29T21:52:00Z",
+      "kind": "article",
+      "summary": "La escuadra de Antonio Hidalgo supera, gracias a un doblete de Asp Jensen y un gol de Luismi Cruz, a un cuadro local que dejó una gran…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/arm4GIZKREBLsiTsqc8PGvW_t0M=/768x/2026/10/29/00121793307902630783390/Foto/fffsssaaa.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "riazor",
+          "title": "Así te contamos el Auriense 0–3 Deportivo | Final del partido, el Deportivo avanza a la segunda ronda de Copa",
+          "url": "https://riazor.org/auriense-deportivo-copa-del-rey-en-directo",
+          "publishedAt": "2026-10-29T18:30:29Z"
+        }
+      ]
+    },
+    {
       "id": "c8d3c8d9453ebf62",
       "title": "Auriense - Deportivo: resumen, resultado y goles",
       "url": "https://marca.com/futbol/copa-rey/2026/10/29/01-0105-20261029-24883-180-directo.html",
@@ -806,27 +841,6 @@
         "partido"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "9b1dc66ef5c66b9f",
-      "title": "Así te contamos el Auriense 0–3 Deportivo | Final del partido, el Deportivo avanza a la segunda ronda de Copa",
-      "url": "https://riazor.org/auriense-deportivo-copa-del-rey-en-directo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-29T18:30:29Z",
-      "kind": "article",
-      "summary": "El Deportivo cumplió ante el Auriense y estará en la segunda ronda de la Copa gracias a un doblete de Asp-Jensen y otro tanto de Luismi…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/arm4GIZKREBLsiTsqc8PGvW_t0M=/768x/2026/10/29/00121793307902630783390/Foto/fffsssaaa.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "Así contamos el partido de Copa del Rey: Auriense 0 - 3 Dépor",
-          "url": "https://lavozdegalicia.es/retransmision/deportes/2026/10/29/copa-rey-directo-auriense-depor/01071793296869160365783.htm",
-          "publishedAt": "2026-10-29T21:52:00Z"
-        }
-      ]
     },
     {
       "id": "60424e718f485087",
