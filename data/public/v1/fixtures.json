@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T17:52:13Z",
+  "updatedAt": "2026-11-02T19:03:15Z",
   "season": "2026-27",
   "matches": [
     {
@@ -341,7 +341,7 @@
       },
       "deporIsHome": true,
       "venue": "Estadio Abanca-Riazor",
-      "referee": null
+      "referee": "Jon González Esteban"
     },
     {
       "id": 564745,
