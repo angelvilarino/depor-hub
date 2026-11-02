@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T19:33:47Z",
+  "updatedAt": "2026-11-02T20:05:07Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,18 @@
   ],
   "stories": [
     {
+      "id": "584d1aa20bb579ac",
+      "title": "Aubameyang obra el milagro: alta médica y listo para reaparecer ante Osasuna",
+      "url": "https://marca.com/futbol/deportivo/2026/11/02/aubameyang-obra-milagro-alta-medica-listo-reaparecer-osasuna.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-02T19:47:02Z",
+      "kind": "article",
+      "summary": "El delantero ha superado los tests previos y es la novedad de la lista del Depor ante los rojillos",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/02/6ae8e8b0c0b86.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
       "id": "307a1760fb4c5e49",
       "title": "Ocho charlas en tres días: este es el programa completo de Falas Dépor",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/ocho-charlas-en-tres-dias-este-es-el-programa-completo-de-falas-depor-888613.html",
@@ -85,7 +97,7 @@
     },
     {
       "id": "4b28b42f4d494240",
-      "title": "Directo | Deportivo-Osasuna: Mella por Villares, único cambio en la alineación",
+      "title": "Directo | Deportivo-Osasuna: Rueda el balón en Riazor (0-0)",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/directo-deportivo-osasuna-sigue-la-previa-el-minuto-a-minuto-y-todo-lo-que-ocurra-en-riazor-888582.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-02T18:37:55Z",
