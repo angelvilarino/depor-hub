@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T21:33:41Z",
+  "updatedAt": "2026-11-02T22:04:48Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,28 @@
     }
   ],
   "stories": [
+    {
+      "id": "13547502dccb3846",
+      "title": "Crónica | El Dépor vuelve a ganar y a sonreír con Aubameyang (2-1)",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/cronica-el-depor-vuelve-a-ganar-y-a-sonreir-con-aubameyang-2-888579.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-02T22:01:04Z",
+      "kind": "article",
+      "summary": "El delantero gabonés regresó de su lesión y tuvo una participación decisiva en la remontada",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/02/6ae8f2024c61c.jpeg",
+      "tags": [
+        "partido",
+        "lesiones"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "marca",
+          "title": "El Deportivo vuelve a ganar en el regreso de Aubameyang",
+          "url": "https://marca.com/futbol/primera-division/cronica/2026/11/02/deportivo-vuelve-ganar-regreso-aubameyang.html",
+          "publishedAt": "2026-11-02T22:01:57Z"
+        }
+      ]
+    },
     {
       "id": "83ea812e69f3f261",
       "title": "En directo, Deportivo - Osasuna: Aubameyang vuelve a la convocatoria",
@@ -97,13 +119,13 @@
     },
     {
       "id": "4b28b42f4d494240",
-      "title": "Deportivo 1–1 Osasuna, en directo | Entra Aubameyang",
+      "title": "Así te contamos el Deportivo 2–1 Osasuna: Mario Soriano y Nsogno Bil, héroes en la remontada del Dépor",
       "url": "https://riazor.org/deportivo-osasuna-en-directo",
       "sourceId": "riazor",
       "publishedAt": "2026-11-02T18:30:03Z",
       "kind": "article",
       "summary": "Sigue en directo el Deportivo – Osasuna de LaLiga (lunes 2 de noviembre, 21:00 horas, Riazor): alineaciones, goles, resultado y minuto a…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/02/6ae8f1ff744b3.r_d.1500-998-0.jpeg",
+      "thumbnailUrl": null,
       "tags": [
         "partido"
       ],
