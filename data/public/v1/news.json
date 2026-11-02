@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T09:06:39Z",
+  "updatedAt": "2026-11-02T09:33:02Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,25 @@
   ],
   "stories": [
     {
+      "id": "78408f14eabc5a29",
+      "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/02/pepe-mel-uci-tras-operado-ictus-sevilla/00031793611396756290829.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-02T09:27:00Z",
+      "kind": "article",
+      "summary": "El exentrenador del Dépor, de 63 años, permanece ingresado en observación",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/b-6GFv3dV0IV0YP_m1m92HwMBeo=/768x/2026/11/02/00121793611562185445529/Foto/I10M9217.jpg",
+      "tags": [],
+      "alsoIn": [
+        {
+          "sourceId": "marca",
+          "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
+          "url": "https://marca.com/futbol/2026/11/02/pepe-mel-uci-operado-ictus-sevilla.html",
+          "publishedAt": "2026-11-01T23:37:11Z"
+        }
+      ]
+    },
+    {
       "id": "2fcf2b9dd62e0f17",
       "title": "Los lectores de Riazor.org divisan un once inicial sin grandes novedades para recibir a Osasuna en Riazor",
       "url": "https://riazor.org/los-lectores-de-riazor-org-divisan-un-once-inicial-sin-grandes-novedades-para-recibir-a-osasuna-en-riazor",
@@ -81,18 +100,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "78408f14eabc5a29",
-      "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
-      "url": "https://marca.com/futbol/2026/11/02/pepe-mel-uci-operado-ictus-sevilla.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-01T23:37:11Z",
-      "kind": "article",
-      "summary": "El exentrenador del Betis, Rayo, Málaga o Dépor, entre otros, permanece ingresado en observación",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2024/09/06/17161522568209.jpeg",
-      "tags": [],
       "alsoIn": []
     },
     {
@@ -742,7 +749,7 @@
       "alsoIn": []
     },
     {
-      "id": "ce2f40ca55db2419",
+      "id": "084e683fb37ee856",
       "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
       "sourceId": "la-voz",
