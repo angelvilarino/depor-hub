@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T21:04:38Z",
+  "updatedAt": "2026-11-02T21:33:41Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -97,17 +97,24 @@
     },
     {
       "id": "4b28b42f4d494240",
-      "title": "Directo | Deportivo-Osasuna: Rueda el balón en Riazor (0-0)",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/directo-deportivo-osasuna-sigue-la-previa-el-minuto-a-minuto-y-todo-lo-que-ocurra-en-riazor-888582.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-02T18:37:55Z",
+      "title": "Deportivo 1–1 Osasuna, en directo | Entra Aubameyang",
+      "url": "https://riazor.org/deportivo-osasuna-en-directo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-02T18:30:03Z",
       "kind": "article",
-      "summary": "El equipo coruñés busca poner fin a una racha de seis jornadas sin ganar en liga (21.00 horas)",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/02/6ae8bff59b774.png",
+      "summary": "Sigue en directo el Deportivo – Osasuna de LaLiga (lunes 2 de noviembre, 21:00 horas, Riazor): alineaciones, goles, resultado y minuto a…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/02/6ae8f1ff744b3.r_d.1500-998-0.jpeg",
       "tags": [
         "partido"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "Directo | Deportivo-Osasuna: Entra Aubameyang por Luismi (1-1)",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/directo-deportivo-osasuna-sigue-la-previa-el-minuto-a-minuto-y-todo-lo-que-ocurra-en-riazor-888582.html",
+          "publishedAt": "2026-11-02T18:37:55Z"
+        }
+      ]
     },
     {
       "id": "c1ca23b5ed3a55c9",
