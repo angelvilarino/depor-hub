@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T19:07:57Z",
+  "updatedAt": "2026-11-02T19:33:47Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,18 @@
   ],
   "stories": [
     {
+      "id": "307a1760fb4c5e49",
+      "title": "Ocho charlas en tres días: este es el programa completo de Falas Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/ocho-charlas-en-tres-dias-este-es-el-programa-completo-de-falas-depor-888613.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-02T19:22:12Z",
+      "kind": "article",
+      "summary": "El Dépor Museo y el Espacio Avenida de Abanca acogerán la primera edición de una cita que pondrá el valor el deportivismo desde todos los…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/27/6ae0a20d54639.r_d.1500-1000-0.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
       "id": "83ea812e69f3f261",
       "title": "En directo, Deportivo - Osasuna: Aubameyang vuelve a la convocatoria",
       "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/02/directo-deportivo-osasuna/01071793643729133831384.htm",
@@ -73,7 +85,7 @@
     },
     {
       "id": "4b28b42f4d494240",
-      "title": "Directo | Deportivo-Osasuna: sigue la previa, el minuto a minuto y todo lo que ocurra en Riazor",
+      "title": "Directo | Deportivo-Osasuna: Mella por Villares, único cambio en la alineación",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/directo-deportivo-osasuna-sigue-la-previa-el-minuto-a-minuto-y-todo-lo-que-ocurra-en-riazor-888582.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-02T18:37:55Z",
@@ -82,6 +94,21 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/02/6ae8bff59b774.png",
       "tags": [
         "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c1ca23b5ed3a55c9",
+      "title": "Aubameyang vuelve a una convocatoria seis semanas después",
+      "url": "https://riazor.org/aubameyang-vuelve-convocatoria-seis-semanas-despues",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-02T18:29:30Z",
+      "kind": "article",
+      "summary": "Aubameyang vuelve a una convoctaria este lunes ante Osasuna. Seis semanas después de su lesión podría tener minutos. La entrada Aubameyang…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido",
+        "lesiones"
       ],
       "alsoIn": []
     },
