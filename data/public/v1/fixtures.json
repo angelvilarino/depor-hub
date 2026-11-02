@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T20:52:10Z",
+  "updatedAt": "2026-11-02T21:03:10Z",
   "season": "2026-27",
   "matches": [
     {
@@ -335,8 +335,8 @@
       "score": {
         "home": 0,
         "away": 1,
-        "halfTimeHome": null,
-        "halfTimeAway": null,
+        "halfTimeHome": 0,
+        "halfTimeAway": 1,
         "winner": "AWAY_TEAM"
       },
       "deporIsHome": true,
