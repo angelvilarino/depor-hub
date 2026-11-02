@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T20:03:12Z",
+  "updatedAt": "2026-11-02T20:15:24Z",
   "season": "2026-27",
   "matches": [
     {
@@ -315,7 +315,7 @@
     {
       "id": 564731,
       "utcDate": "2026-11-02T20:00:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "matchday": 11,
       "stage": "REGULAR_SEASON",
       "home": {
@@ -333,11 +333,11 @@
         "crestUrl": "https://crests.football-data.org/79.png"
       },
       "score": {
-        "home": null,
-        "away": null,
+        "home": 0,
+        "away": 0,
         "halfTimeHome": null,
         "halfTimeAway": null,
-        "winner": null
+        "winner": "DRAW"
       },
       "deporIsHome": true,
       "venue": "Estadio Abanca-Riazor",
