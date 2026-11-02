@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T20:34:26Z",
+  "updatedAt": "2026-11-02T20:52:10Z",
   "season": "2026-27",
   "matches": [
     {
@@ -334,10 +334,10 @@
       },
       "score": {
         "home": 0,
-        "away": 0,
+        "away": 1,
         "halfTimeHome": null,
         "halfTimeAway": null,
-        "winner": "DRAW"
+        "winner": "AWAY_TEAM"
       },
       "deporIsHome": true,
       "venue": "Estadio Abanca-Riazor",

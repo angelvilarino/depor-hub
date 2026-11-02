@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T20:34:26Z",
+  "updatedAt": "2026-11-02T20:52:10Z",
   "season": "2026-27",
   "matchday": 11,
   "team": {
@@ -10,15 +10,15 @@
     "crestUrl": "https://crests.football-data.org/560.png"
   },
   "summary": {
-    "position": 9,
-    "points": 12,
+    "position": 14,
+    "points": 11,
     "played": 11,
     "won": 2,
-    "drawn": 6,
-    "lost": 3,
+    "drawn": 5,
+    "lost": 4,
     "goalsFor": 13,
-    "goalsAgainst": 13,
-    "goalDifference": 0
+    "goalsAgainst": 14,
+    "goalDifference": -1
   },
   "form": [
     {
@@ -158,17 +158,17 @@
     "summary": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-02T20:34:26Z"
+      "capturedAt": "2026-11-02T20:52:10Z"
     },
     "form": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-02T20:34:26Z"
+      "capturedAt": "2026-11-02T20:52:10Z"
     },
     "positionEvolution": {
       "source": "football-data.org (cálculo propio por jornada)",
       "confidence": "estimated",
-      "capturedAt": "2026-11-02T20:34:26Z"
+      "capturedAt": "2026-11-02T20:52:10Z"
     }
   }
 }
