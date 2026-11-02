@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T19:32:27Z",
+  "updatedAt": "2026-11-02T19:52:38Z",
   "season": "2026-27",
   "matchday": 11,
   "team": {
@@ -158,17 +158,17 @@
     "summary": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-02T19:32:27Z"
+      "capturedAt": "2026-11-02T19:52:38Z"
     },
     "form": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-02T19:32:27Z"
+      "capturedAt": "2026-11-02T19:52:38Z"
     },
     "positionEvolution": {
       "source": "football-data.org (cálculo propio por jornada)",
       "confidence": "estimated",
-      "capturedAt": "2026-11-02T19:32:27Z"
+      "capturedAt": "2026-11-02T19:52:38Z"
     }
   }
 }
