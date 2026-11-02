@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T22:04:48Z",
+  "updatedAt": "2026-11-02T22:33:09Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "7b148c8d555bc327",
+      "title": "Resumen del RC Deportivo 2 - 1 CA Osasuna",
+      "url": "https://youtube.com/watch?v=pmystsjdhc8",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-02T22:24:37Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i1.ytimg.com/vi/pmystsjdhc8/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "5d5f2fc00a47c3b8",
+      "title": "Mario Soriano explica su gol de falta: \"Lo hablamos Luismi y yo rápido y salió bien\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/mario-soriano-explica-su-gol-de-falta-lo-hablamos-luismi-y-yo-rapido-y-salio-bien-888667.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-02T22:19:20Z",
+      "kind": "article",
+      "summary": "El centrocampista del Deportivo recalcó que su equipo tuvo \"control\" en la primera parte y supo \"insistir\" para atacar \"bien\" en la segunda",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/02/6ae90c5c13fed.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "13547502dccb3846",
       "title": "Crónica | El Dépor vuelve a ganar y a sonreír con Aubameyang (2-1)",
@@ -119,7 +147,7 @@
     },
     {
       "id": "4b28b42f4d494240",
-      "title": "Así te contamos el Deportivo 2–1 Osasuna: Mario Soriano y Nsogno Bil, héroes en la remontada del Dépor",
+      "title": "Así te contamos el Deportivo 2–1 Osasuna: Mario Soriano y Nsongo Bil, héroes en la remontada del Dépor",
       "url": "https://riazor.org/deportivo-osasuna-en-directo",
       "sourceId": "riazor",
       "publishedAt": "2026-11-02T18:30:03Z",
