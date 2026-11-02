@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T17:33:43Z",
+  "updatedAt": "2026-11-02T18:06:02Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "ebdee3e5a6d8bd2d",
+      "title": "Deportivo de A Coruña - Osasuna: horario, dónde ver en TV y canal del partido de LaLiga EA Sports",
+      "url": "https://marca.com/futbol/primera-division/2026/11/02/deportivo-coruna-osasuna-horario-donde-ver-tv-canal-partido-laliga-ea-sports.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-02T18:00:21Z",
+      "kind": "article",
+      "summary": "Deportivo de A Coruña y Osasuna se enfrentan hoy lunes 2 de noviembre a las 21:00 horas en el estadio ABANCA-Riazor en el partido…",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/10/31/21347454434687.png",
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "b78711bfa524a074",
       "title": "Yeremay vuelve al radar de Luis de la Fuente",
@@ -761,7 +776,7 @@
       "alsoIn": []
     },
     {
-      "id": "084e683fb37ee856",
+      "id": "ce2f40ca55db2419",
       "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
       "sourceId": "la-voz",
