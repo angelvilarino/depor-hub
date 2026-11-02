@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T23:04:39Z",
+  "updatedAt": "2026-11-02T23:32:52Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,34 @@
   ],
   "stories": [
     {
+      "id": "da42e6660c979001",
+      "title": "Rueda de prensa de Antonio Hidalgo tras el RC Deportivo 2 - 1 CA Osasuna",
+      "url": "https://youtube.com/watch?v=Ei7p6QuxSlM",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-02T23:08:50Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i2.ytimg.com/vi/Ei7p6QuxSlM/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c7073def4d8dd316",
+      "title": "Comparecencia de Mario Soriano tras el RC Deportivo 2 - 1 CA Osasuna",
+      "url": "https://youtube.com/watch?v=6G6UmiVKV-4",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-02T23:08:47Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i3.ytimg.com/vi/6G6UmiVKV-4/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "61fca85e5187d604",
       "title": "DÉPOR vs CA Osasuna en DIRECTO | Dépor Live by Sotelo",
       "url": "https://youtube.com/watch?v=d78v9U9aVl8",
@@ -67,6 +95,21 @@
       "summary": "El entrenador del Deportivo hizo balance de la victoria ante Osasuna con los goles de Nsongo Bil y Mario Soriano en Riazor. La entrada…",
       "thumbnailUrl": null,
       "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "80e752a7f0cfbfb3",
+      "title": "El 1x1 del Dépor ante Osasuna: Loureiro y Quagliata ganan tiempo para la revolución Adama",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/el-1x1-del-depor-ante-osasuna-loureiro-y-quagliata-ganan-tiempo-para-la-revolucion-adama-888580.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-02T22:34:34Z",
+      "kind": "article",
+      "summary": "El extremo volvió a ser decisivo desde el banquillo en un partido con otro suspenso para Leo Román",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/02/6ae8f06a8bbc3.r_d.1455-1131-0.jpeg",
+      "tags": [
+        "opinion",
         "partido"
       ],
       "alsoIn": []
