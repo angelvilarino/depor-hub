@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T16:05:08Z",
+  "updatedAt": "2026-11-02T16:33:30Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "b78711bfa524a074",
+      "title": "Yeremay vuelve al radar de Luis de la Fuente",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/yeremay-vuelve-al-radar-de-luis-de-la-fuente-888568.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-02T16:30:09Z",
+      "kind": "article",
+      "summary": "El nombre del jugador del Dépor está incluido en la prelista de España antes del próximo parón por fechas FIFA",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/02/6ae8b6d099bf4.r_d.469-277-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "78408f14eabc5a29",
       "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
@@ -749,7 +761,7 @@
       "alsoIn": []
     },
     {
-      "id": "ce2f40ca55db2419",
+      "id": "084e683fb37ee856",
       "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
       "sourceId": "la-voz",
