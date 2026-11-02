@@ -12,6 +12,7 @@ from pathlib import Path
 
 import yaml
 
+from . import club as club_data
 from . import models as m
 from . import rivals as rivals_ctx
 from . import source_models as s
@@ -407,6 +408,46 @@ def cmd_social(args: argparse.Namespace) -> int:
         f"pins={len(social.pins)} hash={social.data_hash}"
     )
     _gh_output(changed="true" if changed else "false")
+    return 0
+
+
+def cmd_club(args: argparse.Namespace) -> int:
+    """Publica club.json desde el YAML curado y las letras de los himnos."""
+    changed, club = club_data.publish_club(
+        Path(args.config),
+        Path(args.anthems),
+        Path(args.out),
+        manual_dir=Path(args.manual),
+        force=args.force,
+    )
+    coverage = Path(args.coverage)
+    coverage.parent.mkdir(parents=True, exist_ok=True)
+    coverage.write_text(club_data.kits_coverage(club), encoding="utf-8")
+    with_lyrics = sum(1 for anthem in club.anthems if anthem.lyrics)
+    print(
+        f"changed={'true' if changed else 'false'} anthems={len(club.anthems)} "
+        f"lyrics={with_lyrics} crests={len(club.crests)} "
+        f"seasons={len(club.kits)} updatedAt={club.updated_at}"
+    )
+    print(f"Cobertura de equipaciones: {coverage}")
+    _gh_output(changed="true" if changed else "false")
+    return 0
+
+
+def cmd_club_images(args: argparse.Namespace) -> int:
+    stats = club_data.download_images(
+        Path(args.sources),
+        Path(args.out),
+        interval=args.interval,
+        force=args.force,
+        offline=args.offline,
+    )
+    size = club_data.images_size_mb(Path(args.out))
+    print(
+        f"images={stats['total']} written={stats['written']} unchanged={stats['unchanged']} "
+        f"missing={stats['missing']} failed={stats['failed']} total={size:.2f}MB"
+    )
+    _gh_output(changed="true" if stats["written"] else "false", images_mb=f"{size:.2f}")
     return 0
 
 
@@ -877,6 +918,23 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--force", action="store_true")
     sp.add_argument("--dry-run", action="store_true")
     sp.set_defaults(fn=cmd_social)
+
+    sp = sub.add_parser("club", help="Publica la ficha completa del club (ADR 0025)")
+    sp.add_argument("--config", default="data/manual/club.yml")
+    sp.add_argument("--anthems", default="data/manual/himnos")
+    sp.add_argument("--manual", default="data/manual")
+    sp.add_argument("--out", default="data/public/v1")
+    sp.add_argument("--coverage", default="docs/kits_coverage.md")
+    sp.add_argument("--force", action="store_true")
+    sp.set_defaults(fn=cmd_club)
+
+    sp = sub.add_parser("club-images", help="Descarga y normaliza las imágenes del club")
+    sp.add_argument("--sources", default="data/manual/club_images.yml")
+    sp.add_argument("--out", default="data/public/v1")
+    sp.add_argument("--interval", type=float, default=0.6)
+    sp.add_argument("--force", action="store_true")
+    sp.add_argument("--offline", action="store_true")
+    sp.set_defaults(fn=cmd_club_images)
 
     args = p.parse_args(argv)
     return args.fn(args)

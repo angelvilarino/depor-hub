@@ -1,0 +1,614 @@
+# Datos curados del club (H7, ADR 0025).
+#
+# Este fichero es la fuente de `club.json`. La procedencia y la confianza viven
+# aquí (comentarios y docs/sources.md), nunca en el contrato público: la app no
+# muestra fuentes ni insignias de verificación. Lo que no esté documentado se
+# deja en `null`; no se inventan dorsales, fechas, patrocinadores ni cifras.
+#
+# Las letras de los himnos NO se copian aquí: viven en data/manual/himnos/<id>.txt.
+# En «Voa» solo se publica el bloque posterior a la línea `Letra`; el resto del
+# fichero (créditos) se refleja en `credits`.
+#
+# Capacidad de Riazor: 32.490 gradas + 141 palco de honor + 385 palcos VIP +
+# 113 Área 1906 + 96 medios = 33.225. La suma se valida en el contrato.
+
+identity:
+  official_name: Real Club Deportivo de La Coruña, S.A.D.
+  short_name: RC Deportivo
+  founded_year: 1906
+  city: A Coruña
+  country: España
+  colors:
+    - blanco
+    - azul
+  nicknames:
+    - Dépor
+    - Súper Dépor
+    - Blanquiazul
+    - Herculinos
+    - Los Turcos
+  motto: null
+  president: Juan Carlos Escotet Rodríguez
+  entity: S.A.D.
+  headquarters: C/ Manuel Murguía, s/n, 15011 A Coruña
+  website: https://www.rcdeportivo.es
+  contact:
+    email: deportivo@rcdeportivo.es
+    phone: (+34) 981 259 500
+    address: C/ Manuel Murguía, s/n, 15011 A Coruña
+
+anthems:
+  - id: voa
+    title: Voa
+    kind: oficial
+    authors:
+      - Xoel López
+    year: 2026
+    description: >-
+      Himno oficial estrenado el 12 de agosto de 2026 en el estadio Abanca-Riazor,
+      durante el Trofeo Teresa Herrera, coincidiendo con el 120 aniversario del club.
+    lyrics: null
+    audio_url: null
+    credits:
+      - role: musicians
+        names:
+          - "Xoel López: voz principal, coros, guitarras eléctricas y sintes"
+          - "Adrián Seijas: batería, percusiones, coros y sintes"
+          - "Julián Seijas: bajo"
+          - "Belén Tajes: voces"
+          - "Antía Ameixeiras: voces y violín"
+          - "Sabela Caamaño: acordeón"
+          - "Cibrán Seixo: violín"
+          - "Brais Maceiras: gaita"
+          - "Susana Seivane: gaita"
+          - "Kilomberos de Monte Alto: percusión"
+          - "Xacarandaina: percusiones y coros"
+          - "Orquesta Sinfónica de Galicia: cuarteto de cuerda, metales y timbales"
+          - "Coro Juvenil Cantabile: coros"
+        text: null
+      - role: production
+        names:
+          - "Producido por Xoel López y Adrián Seijas"
+        text: null
+      - role: recording
+        names:
+          - "Grabado en Estudios El Jardín Botánico, Estudios Bruar y Estudios Mans"
+        text: null
+      - role: technicians
+        names:
+          - "Nicolás Vieites: ingeniero de grabación"
+          - "Pete Cunado: asistente de grabación"
+          - "José García: asistente de grabación"
+          - "Javier Justo: asistente de grabación"
+          - "David Greenbaum: ingeniero de mezcla y mastering"
+        text: null
+  - id: fillos-de-breogan
+    title: Fillos de Breogán
+    kind: no_oficial
+    authors:
+      - Jesús Suárez
+    year: 2020
+    description: >-
+      Canción de Jesús Suárez interpretada por Mar de Fondo, adoptada popularmente
+      como himno no oficial del deportivismo.
+    lyrics: null
+    audio_url: null
+    credits:
+      - role: performance
+        names:
+          - Mar de Fondo
+        text: null
+  - id: rock-del-deportivo
+    title: El Rock del Deportivo
+    kind: popular
+    authors:
+      - Gandy Cacahué
+    year: 1987
+    description: >-
+      Himno rockero de 1987, histórico en Riazor y todavía presente en la grada.
+    lyrics: null
+    audio_url: null
+    credits: []
+
+crests:
+  - id: escudo-1906
+    year_from: 1906
+    year_to: 1908
+    description: Monograma azul con las iniciales «SC» de la Sala Calvet.
+    image: img/club/escudos/1906.png
+  - id: escudo-1908
+    year_from: 1908
+    year_to: 1910
+    description: El monograma «SC» sobre un medallón circular con marco azul y hebilla.
+    image: img/club/escudos/1908.png
+  - id: escudo-1910
+    year_from: 1910
+    year_to: 1911
+    description: Escudo con corona y el texto «Deportivo Sala Calvet», con palos y raqueta cruzados.
+    image: img/club/escudos/1910.png
+  - id: escudo-1911
+    year_from: 1911
+    year_to: 1912
+    description: Se retiran los palos y la raqueta; quedan el medallón y la corona.
+    image: img/club/escudos/1911.png
+  - id: escudo-1912
+    year_from: 1912
+    year_to: 1928
+    description: Primer escudo con la bandera gallega, la cruz de Santiago y la corona real.
+    image: img/club/escudos/1912.png
+  - id: escudo-1928
+    year_from: 1928
+    year_to: 1931
+    description: Se reduce la corona superior para equilibrar el conjunto.
+    image: img/club/escudos/1928.png
+  - id: escudo-1931
+    year_from: 1931
+    year_to: 1941
+    description: Sin coronas durante la Segunda República; trazo más grueso y franja diagonal clara.
+    image: img/club/escudos/1931.png
+  - id: escudo-1941
+    year_from: 1941
+    year_to: 1955
+    description: Vuelven las dos coronas y se recupera el dorado.
+    image: img/club/escudos/1941.png
+  - id: escudo-1955
+    year_from: 1955
+    year_to: 1962
+    description: Regresan los perfiles dobles y la franja diagonal azul claro.
+    image: img/club/escudos/1955.png
+  - id: escudo-1962
+    year_from: 1962
+    year_to: 1973
+    description: Paleta azul en lugar de morada y corona superior más maciza.
+    image: img/club/escudos/1962.png
+  - id: escudo-1973
+    year_from: 1973
+    year_to: 1997
+    description: Se recupera el escudo clásico de los años cincuenta.
+    image: img/club/escudos/1973.png
+  - id: escudo-1997
+    year_from: 1997
+    year_to: 2000
+    description: Dorados más amarillos, rojo intenso y detalles turquesa.
+    image: img/club/escudos/1997.png
+  - id: escudo-2000
+    year_from: 2000
+    year_to: 2026
+    description: Regreso al escudo de doble perfil en oro claro y morado.
+    image: img/club/escudos/2000.png
+  - id: escudo-2026
+    year_from: 2026
+    year_to: null
+    description: >-
+      Actualización con florones, cruz y anillo ajustados y una referencia diagonal
+      a la Torre de Hércules.
+    image: img/club/escudos/2026.svg
+
+kits:
+  - season: "1985-86"
+    kits:
+      - type: home
+        manufacturer: Austral
+        chest_sponsor: Hotel Rías Altas
+        colors: [blanco, azul]
+  - season: "1986-87"
+    kits:
+      - type: home
+        manufacturer: Gilcor
+        chest_sponsor: La Coruña Despega
+        colors: [blanco, azul]
+  - season: "1987-88"
+    kits:
+      - type: home
+        manufacturer: Gilcor / Rafrei
+        colors: [blanco, azul]
+  - season: "1988-89"
+    kits:
+      - type: home
+        manufacturer: Rafrei
+        colors: [blanco, azul]
+  - season: "1989-90"
+    kits:
+      - type: home
+        manufacturer: Gilcor / Rafrei
+        chest_sponsor: Leyma
+        colors: [blanco, azul]
+  - season: "1990-91"
+    kits:
+      - type: home
+        manufacturer: Rox
+        chest_sponsor: Leyma
+        colors: [blanco, azul]
+  - season: "1991-92"
+    kits:
+      - type: home
+        manufacturer: Rox
+        chest_sponsor: Leyma
+        colors: [blanco, azul]
+  - season: "1992-93"
+    kits:
+      - type: home
+        manufacturer: Rox / Umbro
+        chest_sponsor: Ocaso / Feiraco
+        colors: [blanco, azul]
+  - season: "1993-94"
+    kits:
+      - type: home
+        manufacturer: Umbro
+        chest_sponsor: Feiraco
+        colors: [blanco, azul]
+  - season: "1994-95"
+    kits:
+      - type: home
+        manufacturer: Umbro
+        chest_sponsor: Feiraco / Galicia Calidade
+        colors: [blanco, azul]
+  - season: "1995-96"
+    kits:
+      - type: home
+        manufacturer: Umbro
+        chest_sponsor: Feiraco
+        colors: [blanco, azul]
+  - season: "1996-97"
+    kits:
+      - type: home
+        manufacturer: Umbro
+        chest_sponsor: Feiraco
+        colors: [blanco, azul]
+  - season: "1997-98"
+    kits:
+      - type: home
+        manufacturer: Adidas
+        chest_sponsor: Feiraco
+        colors: [blanco, azul]
+  - season: "1998-99"
+    kits:
+      - type: home
+        manufacturer: Adidas
+        chest_sponsor: Feiraco
+        colors: [blanco, azul]
+  - season: "1999-00"
+    kits:
+      - type: home
+        manufacturer: Adidas
+        chest_sponsor: Feiraco
+        colors: [blanco, azul]
+  - season: "2000-01"
+    kits:
+      - type: home
+        manufacturer: Adidas
+        chest_sponsor: Dreamcast
+        colors: [blanco, azul]
+  - season: "2001-02"
+    kits:
+      - type: home
+        manufacturer: Joma
+        chest_sponsor: Fadesa
+        colors: [blanco, azul]
+  - season: "2002-03"
+    kits:
+      - type: home
+        manufacturer: Joma
+        chest_sponsor: Fadesa
+        colors: [blanco, azul]
+  - season: "2003-04"
+    kits:
+      - type: home
+        manufacturer: Joma
+        chest_sponsor: Fadesa
+        colors: [blanco, azul]
+  - season: "2004-05"
+    kits:
+      - type: home
+        manufacturer: Joma
+        chest_sponsor: Fadesa
+        colors: [blanco, azul]
+  - season: "2005-06"
+    kits:
+      - type: home
+        manufacturer: Joma
+        chest_sponsor: Fadesa
+        colors: [blanco, azul]
+  - season: "2006-07"
+    kits:
+      - type: home
+        manufacturer: Joma
+        chest_sponsor: Fadesa
+        colors: [blanco, azul]
+  - season: "2007-08"
+    kits:
+      - type: home
+        manufacturer: Canterbury
+        chest_sponsor: Fadesa
+        colors: [blanco, azul]
+  - season: "2008-09"
+    kits:
+      - type: home
+        manufacturer: Canterbury
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2009-10"
+    kits:
+      - type: home
+        manufacturer: Lotto
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2010-11"
+    kits:
+      - type: home
+        manufacturer: Lotto
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2011-12"
+    kits:
+      - type: home
+        manufacturer: Lotto
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2012-13"
+    kits:
+      - type: home
+        manufacturer: Lotto
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2013-14"
+    kits:
+      - type: home
+        manufacturer: Lotto
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2014-15"
+    kits:
+      - type: home
+        manufacturer: Lotto
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2015-16"
+    kits:
+      - type: home
+        manufacturer: Lotto
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2016-17"
+    kits:
+      - type: home
+        manufacturer: Lotto
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2017-18"
+    kits:
+      - type: home
+        manufacturer: Macron
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2018-19"
+    kits:
+      - type: home
+        manufacturer: Macron
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2019-20"
+    kits:
+      - type: home
+        manufacturer: Macron
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2020-21"
+    kits:
+      - type: home
+        manufacturer: Macron
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2021-22"
+    kits:
+      - type: home
+        manufacturer: Kappa
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2022-23"
+    kits:
+      - type: home
+        manufacturer: Kappa
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2023-24"
+    kits:
+      - type: home
+        manufacturer: Kappa
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2024-25"
+    kits:
+      - type: home
+        manufacturer: Kappa
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2025-26"
+    kits:
+      - type: home
+        manufacturer: Kappa
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+  - season: "2026-27"
+    kits:
+      - type: home
+        manufacturer: Nike
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+        image: img/club/equipaciones/2026-27-home.jpg
+      - type: away
+        manufacturer: Nike
+        chest_sponsor: Estrella Galicia
+        colors: [negro, azul]
+      - type: third
+        manufacturer: Nike
+        chest_sponsor: Estrella Galicia
+        colors: [blanco, azul]
+
+stadium:
+  name: Estadio Abanca-Riazor
+  address: C/ Manuel Murguía, s/n, 15011 A Coruña
+  coordinates:
+    lat: 43.368667
+    lon: -8.417372
+  opened_on: "1944-10-29"
+  renovations:
+    - 1982, ampliación para el Mundial de España
+  pitch: Césped natural
+  dimensions: 105 x 68 m
+  access: Acceso por las puertas del estadio; el museo se visita desde el exterior.
+  transport: null
+  parking: null
+  capacity:
+    total: 33225
+    breakdown:
+      - zone: Gradas
+        seats: 32490
+      - zone: Palco de honor
+        seats: 141
+      - zone: Palcos VIP
+        seats: 385
+      - zone: Área 1906
+        seats: 113
+      - zone: Medios
+        seats: 96
+  description: >-
+    Estadio municipal inaugurado el 29 de octubre de 1944 y conocido como
+    Abanca-Riazor desde 2017. Acoge los partidos del primer equipo y el museo del club.
+
+tickets:
+  season: "2026-27"
+  zones: []
+  purchase_url: https://ticketing.rcdeportivo.es/
+  note: Entradas y abonos a la venta en la web oficial del club.
+
+museum:
+  name: Museo RC Deportivo
+  location: Estadio Abanca-Riazor
+  description: >-
+    Recorrido por la historia del club en las salas Blanca, Dorada y Azul, con más
+    de 250 piezas. Incluye visita guiada, libre y gratuita.
+  schedule: null
+  prices:
+    - label: Tour guiado
+      price_eur: null
+      note: Consultar precio y disponibilidad en la web oficial.
+    - label: Tour libre
+      price_eur: null
+      note: Consultar precio y disponibilidad en la web oficial.
+    - label: Tour gratuito
+      price_eur: null
+      note: Consultar condiciones en la web oficial.
+  links:
+    - id: entradas
+      label: Entradas del museo
+      url: https://ticketing.museo.rcdeportivo.es/es
+    - id: oficial
+      label: Museo y Tour
+      url: https://www.rcdeportivo.es/es/museo-and-tour
+
+training_center:
+  name: Dépor Training Center
+  location: Abegondo, A Coruña
+  description: >-
+    Proyecto de ciudad deportiva del club en Abegondo, concebido como «Onde nace
+    o futuro» para conectar la cantera con el primer equipo.
+  facilities:
+    - 140.000 m² de superficie
+    - 8 campos con las dimensiones de Riazor
+    - 3 campos de calentamiento
+    - Diseño del estudio Populous
+    - Energías renovables y reutilización de agua
+  coordinates: null
+
+board:
+  president: Juan Carlos Escotet Rodríguez
+  members:
+    - name: Michelle Clemente Escotet
+      role: Vicepresidenta
+    - name: Massimo Adalberto Benassi
+      role: Consejero delegado
+    - name: Carlos Alberto Ballesta Edreira
+      role: Consejero
+    - name: Benito Couceiro
+      role: Consejero
+    - name: Marta Fernández Currás
+      role: Consejera
+  sporting_director: null
+  note: Composición publicada por el club.
+
+sponsors:
+  principal: ABANCA
+  technical: Nike
+  official:
+    - Estrella Galicia
+    - Bualá
+    - Novomóvil BMW
+    - Fútbol Emotion
+    - FEIRACO
+    - Marineda City
+    - Laberit
+    - Sotelo
+    - HM Hospitales
+    - Total Renting
+    - Coca-Cola
+    - Coren
+    - MGS Seguros
+    - iO.GENIX
+    - Deputación da Coruña
+    - Xunta de Galicia
+    - Xacobeo
+  collaborators: []
+  since_year: null
+
+titles:
+  - competition: Primera División
+    years: [2000]
+  - competition: Copa del Rey
+    years: [1995, 2002]
+  - competition: Supercopa de España
+    years: [1995, 2000, 2002]
+  - competition: Concurso España
+    years: [1912]
+  - competition: Segunda División
+    years: [1962, 1964, 1966, 1968, 2012]
+  - competition: Primera Federación
+    years: [2024]
+  - competition: Tercera División
+    years: [1975]
+  - competition: Campeonato de Galicia
+    years: [1927, 1928, 1931, 1933, 1937, 1940]
+  - competition: Copa Galicia
+    years: [1946]
+
+rivalries:
+  - rival: RC Celta de Vigo
+    description: >-
+      El derbi gallego. Primer enfrentamiento en el campeonato gallego de 1923;
+      es el partido más repetido y tenso del fútbol gallego.
+    since_year: 1923
+
+facts:
+  - Fundado en 1906 en la Sala Calvet.
+  - Campeón de Liga en la temporada 1999-2000.
+  - Disputó cinco Ligas de Campeones consecutivas entre 2001 y 2005.
+  - Único club campeón de las tres primeras categorías del fútbol español.
+  - Riazor se inauguró el 29 de octubre de 1944.
+
+links:
+  website: https://www.rcdeportivo.es
+  app: https://www.rcdeportivo.es/es/app
+  x: https://x.com/RCDeportivo
+  instagram: https://www.instagram.com/rcdeportivo/
+  tiktok: https://www.tiktok.com/@rcdeportivo
+  youtube: https://www.youtube.com/@rcdeportivo
+  facebook: https://www.facebook.com/RCDeportivo/
+  twitch: null
+  whatsapp: null
+  store: https://deportienda.es/
+  tickets: https://ticketing.rcdeportivo.es/
+  museum: https://www.rcdeportivo.es/es/museo-and-tour
+  others:
+    - id: fundacion
+      label: Fundación RC Deportivo
+      url: https://www.rcdeportivo.es/es/fundacion

@@ -23,6 +23,20 @@ export const DATA_BASE_URL = CONFIGURED_DATA_BASE_URL || (__DEV__ ? localDevData
 /** Solo para diagnóstico: indica de dónde salen los datos. */
 export const USING_LOCAL_DATA = !CONFIGURED_DATA_BASE_URL && __DEV__;
 
+/**
+ * Resuelve una ruta relativa del contrato Club (`img/club/...`) contra la base
+ * de datos. Nunca se guardan URLs externas en club.json: si algún día llega una
+ * URL absoluta (datos antiguos), se respeta para no romper la caché.
+ */
+export function clubImageUrl(path: string | null | undefined): string | null {
+  const value = path?.trim();
+  if (!value) return null;
+  if (/^https?:\/\//i.test(value)) return value;
+  if (!DATA_BASE_URL) return null;
+  return `${DATA_BASE_URL.replace(/\/$/, '')}/${value.replace(/^\//, '')}`;
+}
+
+
 // Escudos de los equipos (ADR 0006): se cargan desde la URL de la API, nunca se almacenan en el repo.
 // Ponlo a false para volver a monogramas sin tocar nada más.
 export const SHOW_TEAM_CREST = true;

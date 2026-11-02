@@ -51,6 +51,18 @@ export default function RootLayout() {
           <Stack.Screen name="player/[id]" options={{ title: t('player.title'), headerBackTitle: t('tabs.team') }} />
           <Stack.Screen name="coach" options={{ title: t('coach.title'), headerBackTitle: t('tabs.team') }} />
           <Stack.Screen name="rival/[teamId]" options={{ title: t('home.rivalProfile') }} />
+          <Stack.Screen
+            name="club/[section]"
+            options={{ title: t('tabs.club'), headerBackTitle: t('tabs.club') }}
+          />
+          <Stack.Screen
+            name="club/himno/[id]"
+            options={{ title: t('club.sections.himnos.title'), headerBackTitle: t('tabs.club') }}
+          />
+          <Stack.Screen
+            name="about"
+            options={{ presentation: 'modal', title: t('about.title') }}
+          />
         </Stack>
       </DataProvider>
     </GestureHandlerRootView>

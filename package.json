@@ -11,6 +11,7 @@
   },
   "scripts": {
     "mobile": "node scripts/mobile.mjs",
+    "licenses": "node scripts/licenses.mjs",
     "lint": "npm run lint -w apps/mobile",
     "typecheck": "npm run typecheck -w apps/mobile",
     "test": "npm run test -w apps/mobile",

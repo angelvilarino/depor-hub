@@ -10,7 +10,16 @@
     "title": "Axustes",
     "reminders": "Lembretes de partido",
     "remindersOn": "Activados",
-    "remindersOff": "Desactivados"
+    "remindersOff": "Desactivados",
+    "data": "Datos",
+    "dataVersion": "Versión de datos",
+    "dataUpdatedAt": "Datos actualizados",
+    "clearCache": "Borrar caché de datos",
+    "clearCacheBusy": "Borrando…",
+    "clearCacheConfirmTitle": "¿Borrar a caché de datos?",
+    "clearCacheError": "Non se puido borrar a caché de datos.",
+    "about": "Acerca de",
+    "aboutHint": "Versión, licenzas e contacto"
   },
   "competition": {
     "PD": "Primeira División",
@@ -202,5 +211,76 @@
       "opinion": "Opinión"
     },
     "filterTagOnly": "Filtrar por {{tag}}"
+  },
+  "club": {
+    "founded": "Fundado en {{year}}",
+    "crestLabel": "Escudo do club",
+    "colors": "Cores",
+    "president": "Presidencia",
+    "headquarters": "Sede",
+    "facts": "Datos do club",
+    "explore": "Explorar o club",
+    "contact": "Contacto",
+    "empty": "Aínda non hai datos do club publicados.",
+    "noImage": "Sen imaxe",
+    "viewImage": "Ver imaxe ampliada de {{name}}",
+    "anthemKinds": {
+      "oficial": "Himno oficial",
+      "no_oficial": "Himno non oficial",
+      "popular": "Himno popular",
+      "unknown": "Himno"
+    },
+    "sections": {
+      "himnos": {
+        "title": "Himnos",
+        "subtitle": "Letras, autoría e créditos"
+      },
+      "escudo": {
+        "title": "Escudo",
+        "subtitle": "Todas as versións desde 1906"
+      },
+      "equipaciones": {
+        "title": "Equipacións",
+        "subtitle": "Tempadas, fabricantes e patrocinadores"
+      },
+      "estadio": {
+        "title": "Estadio",
+        "subtitle": "Aforo, acceso e mapa"
+      },
+      "museo": {
+        "title": "Museo",
+        "subtitle": "Historia, visitas e entradas"
+      },
+      "training": {
+        "title": "Cidade deportiva",
+        "subtitle": "Dépor Training Center"
+      },
+      "junta": {
+        "title": "Xunta e organigrama",
+        "subtitle": "Presidencia, consello e adestrador"
+      },
+      "patrocinadores": {
+        "title": "Patrocinadores",
+        "subtitle": "Apoios oficiais do club"
+      },
+      "titulos": {
+        "title": "Títulos",
+        "subtitle": "Palmarés por competición"
+      },
+      "rivalidades": {
+        "title": "Rivalidades",
+        "subtitle": "O derbi e a súa historia"
+      },
+      "redes": {
+        "title": "Redes e ligazóns",
+        "subtitle": "Canles oficiais e contacto"
+      },
+      "unknownTitle": "Club",
+      "unknown": "Esta sección do club non existe."
+    }
+  },
+  "about": {
+    "title": "Acerca de",
+    "app": "Depor Hub"
   }
 }

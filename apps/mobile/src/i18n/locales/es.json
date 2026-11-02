@@ -30,7 +30,19 @@
     "reminders": "Recordatorios de partido",
     "remindersOn": "Activados",
     "remindersOff": "Desactivados",
-    "version": "Versión de la app"
+    "version": "Versión de la app",
+    "data": "Datos",
+    "dataVersion": "Versión de datos",
+    "dataUpdatedAt": "Datos actualizados",
+    "clearCacheHint": "Elimina los datos descargados que guarda la app en este dispositivo. Se volverán a descargar cuando haya conexión.",
+    "clearCache": "Borrar caché de datos",
+    "clearCacheBusy": "Borrando…",
+    "clearCacheConfirmTitle": "¿Borrar la caché de datos?",
+    "clearCacheConfirm": "Se eliminarán los datos guardados en este dispositivo. No se borran tus ajustes ni los recordatorios.",
+    "clearCacheConfirmAction": "Borrar caché",
+    "clearCacheError": "No se ha podido borrar la caché de datos.",
+    "about": "Acerca de",
+    "aboutHint": "Versión, licencias y contacto"
   },
   "data": {
     "loading": "Cargando datos…",
@@ -540,5 +552,208 @@
       "opinion": "Opinión"
     },
     "filterTagOnly": "Filtrar por {{tag}}"
+  },
+  "club": {
+    "founded": "Fundado en {{year}}",
+    "crestLabel": "Escudo del club",
+    "colors": "Colores",
+    "president": "Presidencia",
+    "headquarters": "Sede",
+    "facts": "Datos del club",
+    "explore": "Explorar el club",
+    "contact": "Contacto",
+    "empty": "Todavía no hay datos del club publicados.",
+    "noImage": "Sin imagen",
+    "viewImage": "Ver imagen ampliada de {{name}}",
+    "anthemKinds": {
+      "oficial": "Himno oficial",
+      "no_oficial": "Himno no oficial",
+      "popular": "Himno popular",
+      "unknown": "Himno"
+    },
+    "kitTypes": {
+      "home": "Primera equipación",
+      "away": "Segunda equipación",
+      "third": "Tercera equipación",
+      "gk_home": "Portero · local",
+      "gk_away": "Portero · visitante",
+      "gk_third": "Portero · tercera",
+      "special": "Equipación especial"
+    },
+    "sections": {
+      "himnos": {
+        "title": "Himnos",
+        "subtitle": "Letras, autoría y créditos"
+      },
+      "escudo": {
+        "title": "Escudo",
+        "subtitle": "Todas las versiones desde 1906"
+      },
+      "equipaciones": {
+        "title": "Equipaciones",
+        "subtitle": "Temporadas, fabricantes y patrocinadores"
+      },
+      "estadio": {
+        "title": "Estadio",
+        "subtitle": "Aforo, acceso y mapa"
+      },
+      "museo": {
+        "title": "Museo",
+        "subtitle": "Historia, visitas y entradas"
+      },
+      "training": {
+        "title": "Ciudad deportiva",
+        "subtitle": "Dépor Training Center"
+      },
+      "junta": {
+        "title": "Junta y organigrama",
+        "subtitle": "Presidencia, consejo y entrenador"
+      },
+      "patrocinadores": {
+        "title": "Patrocinadores",
+        "subtitle": "Apoyos oficiales del club"
+      },
+      "titulos": {
+        "title": "Títulos",
+        "subtitle": "Palmarés por competición"
+      },
+      "rivalidades": {
+        "title": "Rivalidades",
+        "subtitle": "El derbi y su historia"
+      },
+      "redes": {
+        "title": "Redes y enlaces",
+        "subtitle": "Canales oficiales y contacto"
+      },
+      "unknownTitle": "Club",
+      "unknown": "Esta sección del club no existe."
+    },
+    "himnos": {
+      "empty": "No hay himnos documentados.",
+      "hasLyrics": "Letra disponible",
+      "noLyricsShort": "Letra pendiente",
+      "lyrics": "Letra",
+      "noLyrics": "La letra de este himno todavía no está disponible.",
+      "notFound": "No se ha encontrado este himno.",
+      "credits": "Créditos",
+      "readHint": "Texto seleccionable; se adapta al tamaño de letra del sistema.",
+      "share": "Compartir letra",
+      "shareError": "No se ha podido compartir la letra.",
+      "creditRoles": {
+        "musicians": "Músicos",
+        "production": "Producción",
+        "recording": "Grabación",
+        "technicians": "Equipo técnico",
+        "performance": "Interpretación",
+        "other": "Créditos"
+      }
+    },
+    "escudo": {
+      "empty": "No hay versiones del escudo documentadas.",
+      "introTitle": "La identidad blanquiazul",
+      "intro": "El escudo ha cambiado con el club: de las iniciales de la Sala Calvet a la bandera gallega, la cruz de Santiago y la corona. Cada versión conserva la huella de su época.",
+      "zoomHint": "Toca cualquier escudo para verlo en grande.",
+      "present": "actualidad",
+      "versionName": "Escudo de {{years}}"
+    },
+    "equipaciones": {
+      "empty": "No hay equipaciones documentadas.",
+      "intro": "Todas las temporadas documentadas, de la más reciente a la más antigua. Usa el selector para saltar de década.",
+      "sleeveSponsorValue": "Manga: {{name}}",
+      "backSponsorValue": "Espalda: {{name}}",
+      "colorsValue": "Colores: {{colors}}",
+      "jump": "Ir a la década de {{decade}}",
+      "kitCount_one": "1 equipación",
+      "kitCount_other": "{{count}} equipaciones"
+    },
+    "estadio": {
+      "empty": "No hay datos del estadio.",
+      "address": "Dirección",
+      "opened": "Inaugurado",
+      "pitch": "Césped",
+      "dimensions": "Dimensiones",
+      "openMap": "Abrir en el mapa",
+      "mapError": "No se ha podido abrir el mapa.",
+      "capacity": "Aforo",
+      "capacityTotal": "{{seats}} espectadores",
+      "zoneValue": "{{seats}} · {{share}} %",
+      "capacityNote": "El aforo total es la suma de todas las zonas, incluidos palcos y medios.",
+      "noCapacity": "Aforo no disponible.",
+      "renovations": "Reformas",
+      "visit": "Cómo llegar",
+      "access": "Acceso",
+      "transport": "Transporte",
+      "parking": "Aparcamiento"
+    },
+    "museo": {
+      "empty": "No hay datos del museo.",
+      "location": "Ubicación",
+      "schedule": "Horario",
+      "prices": "Visitas",
+      "links": "Enlaces"
+    },
+    "training": {
+      "empty": "No hay datos de la ciudad deportiva.",
+      "location": "Ubicación",
+      "openMap": "Abrir en el mapa",
+      "facilities": "Instalaciones"
+    },
+    "junta": {
+      "empty": "No hay datos de la junta directiva.",
+      "coach": "Entrenador",
+      "openCoach": "Ver la ficha de {{name}}",
+      "title": "Junta directiva",
+      "president": "Presidencia",
+      "members": "Consejo",
+      "sportingDirector": "Dirección deportiva"
+    },
+    "patrocinadores": {
+      "empty": "No hay patrocinadores documentados.",
+      "title": "Patrocinio",
+      "principal": "Patrocinador principal",
+      "technical": "Proveedor técnico",
+      "sinceLabel": "Desde",
+      "official": "Patrocinadores oficiales",
+      "collaborators": "Colaboradores",
+      "since": "{{year}}"
+    },
+    "titulos": {
+      "empty": "No hay títulos documentados.",
+      "title": "Palmarés",
+      "total": "{{total}} títulos en {{competitions}} competiciones.",
+      "count_one": "1 título",
+      "count_other": "{{count}} títulos"
+    },
+    "rivalidades": {
+      "empty": "No hay rivalidades documentadas.",
+      "since": "{{year}}",
+      "sinceLabel": "Desde"
+    },
+    "redes": {
+      "empty": "No hay enlaces oficiales documentados.",
+      "title": "Canales oficiales",
+      "other": "Más enlaces",
+      "contact": "Contacto",
+      "email": "Correo",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "website": "Web oficial",
+      "app": "App oficial",
+      "store": "Tienda oficial",
+      "tickets": "Entradas",
+      "museum": "Museo",
+      "count": "Enlaces"
+    }
+  },
+  "about": {
+    "title": "Acerca de",
+    "app": "Depor Hub",
+    "version": "Versión {{version}}",
+    "mission": "App de aficionados con datos públicos del Deportivo: partidos, plantilla, noticias y la historia del club. Sin cuentas, sin publicidad y sin claves privadas.",
+    "contact": "Contacto",
+    "contactHint": "Para avisos, correcciones o sugerencias.",
+    "contactLink": "Abrir las incidencias del proyecto",
+    "licenses": "Licencias de terceros",
+    "licensesIntro": "{{count}} paquetes de terceros agrupados en {{groups}} licencias, generados desde package-lock.json."
   }
 }

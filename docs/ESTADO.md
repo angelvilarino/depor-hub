@@ -1,13 +1,5 @@
-# Estado del proyecto — 31-oct-2026
-H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)** y **H6 (noticias, vídeos y redes curadas)** implementados; H4, H5 y H6 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5» y «Verificación H6»). Siguiente: H7 (club y legal).
-
-## Publicación H5/H6 — 31-oct-2026
-
-La rama `release/h5-h6-news` integra la implementación H5/H6 y los JSON adicionales sobre los seis commits de datos de `origin/main`. El cierre local incorpora publicación validada, cadencias revisadas, validación de contratos y workflows con publicación completa. **Producción sigue pendiente**: no se ha hecho merge; Pages, ejecuciones manuales y ejecuciones programadas deben verificarse después del merge autorizado. No interpretar el estado local como despliegue.
-
-Cadencias preparadas: datos cada 10 min (`--if-due`: cada 10 min durante [−30 min, +150 min] de partido confirmado y cada 60 min fuera); noticias cada 30 min (mínimo 5 historias); rivales una vez al día. Los tres workflows comparten `data-publish`, validan JSON antes del commit y despliegan `data/public` completo. Los commits del bot no disparan CI, así que cada workflow de datos valida por sí mismo.
-
-Pendiente aparte: formatear con Prettier 109 archivos; Expo doctor, comprobación de versiones SDK y análisis informativos de dependencias se reportan en CI.
+# Estado del proyecto — 02-nov-2026
+H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Siguiente: H8 (pulido).
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
@@ -16,7 +8,7 @@ Pendiente aparte: formatear con Prettier 109 archivos; Expo doctor, comprobació
 - Fuente del enriquecimiento: BDFutbol (carrera, temporadas, totales, dorsal actual, peso y partidos), Wikipedia ES/GL/EN (contrato, cesión, altura y contraste), Wikidata (lugar, altura, pie, dorsal, redes, alias y sitelinks), ficha oficial del club (altura, pie, foto y redes; autoritativa cuando existe) y overrides manuales para redes y cesión de salida. 37 conflictos visibles en `data/manual/squad_enrich.proposed.yml`: los aplicados llevan `applied` + `resolution`, los no aplicados quedan sin valor.
 - Dos fichas de Wikipedia con fecha de nacimiento distinta a la API (Lucas Noubi y Dani Barcia) se descartaron por identidad; su dorsal se recuperó de BDFutbol. No se empareja por nombre si hay fecha y no coincide.
 - Estados de partido: TIMED = hora confirmada; SCHEDULED = hora NO fijada (00:00:00Z). Solo fecha en SCHEDULED; hora en Europe/Madrid solo en TIMED. No inventar horas.
-- URL de datos: https://angelvilarino.github.io/depor-hub/v1 (meta, standings, fixtures, squad, season, news, rivals y social). Contrato v1 en packages/schemas (Pydantic origen, Zod espejo).
+- URL de datos: https://angelvilarino.github.io/depor-hub/v1 (meta, standings, fixtures, squad, news y social; los dos últimos opcionales). Contrato v1 en packages/schemas (Pydantic origen, Zod espejo).
 
 ## H3 — Calendario (hecho)
 Ver `docs/adr/0005-calendario-y-recordatorios.md` y `0006-escudos-sede-arbitro.md`.
@@ -100,11 +92,11 @@ Para revisar en iPhone: claro/oscuro, texto grande, reducir movimiento, resultad
 - **Retención y fallos:** 14 días y máximo 150 historias. Si una fuente falla, sus historias anteriores se conservan; si fallan todas, `AllFeedsFailed` hace que el CLI salga con código 1 y no se publica. La escritura es idempotente por hash y por texto exacto.
 - **Contrato:** se rompe `/v1/` de forma autorizada. `news.json` pasa a `{ updatedAt, sources, stories }`; `sources.json` desaparece. Pydantic → JSON Schema → Zod con `default`. `social.json` se sigue generando, pero Noticias ya no lo muestra.
 - **CLI:** `python -m depor_hub.cli news [--dry-run] [--offline] [--report] [--force] [--threshold N]`; `news audit` y el alias `news ingest` se mantienen.
-- **Workflow:** `news-refresh.yml` cada 30 min, `workflow_dispatch` con `force`, mínimo de cinco historias, `timeout-minutes`, caché `data/raw/news`, validación Pydantic, `concurrency.group: data-publish` y `cancel-in-progress: false`. Rebase/push reintentado; Pages recibe el directorio `data/public` completo. Fallos de fuentes parciales se registran; si ninguna funciona o el resultado es insuficiente, falla y conserva el JSON anterior.
+- **Workflow:** `news-refresh.yml` cada 6 h (`37 */6 * * *`), `workflow_dispatch` con `force`, `timeout-minutes`, caché `data/raw/news`, `concurrency.group: data-publish` y `cancel-in-progress: false`. Commit solo con cambios, `rebase` antes de publicar y deploy solo si cambió algo. Si no responde ninguna fuente, falla y no despliega.
 - **App:** `SectionList` por día en `Europe/Madrid`; cabecera que scrollea con recuento, no leídas y «Marcar leídas»; barra sticky con búsqueda expandible, Todo/Artículos/Vídeos, chips de grupo y filtros; hoja inferior de fuentes y etiquetas; tarjeta con monograma, título a 3 líneas, extracto a 2, miniatura de 72 px, dos etiquetas pulsables y `+N medios` desplegable. Leídos en Zustand con poda, confirmación y deshacer; contador <100 o `99+`; búsqueda con debounce sobre título/medio/etiquetas. Filtros no persistentes.
 - **Home:** cinco titulares, resueltos con `sources`, y «Ver todas».
 - **i18n:** ES y EN con paridad exacta; GL parcial con caída a ES.
-- **Pruebas:** en el cierre local del 31-oct, **161 pytest** y **245 tests / 29 suites** en la app, incluidos contrato compartido, relevancia, etiquetas, clústeres reales, retención, fallo parcial/total, estados de la pestaña, búsqueda, grupos, hoja de filtros, `alsoIn`, leídos con deshacer y apertura externa.
+- **Pruebas:** **154 pytest** y **204 tests / 26 suites** en la app, incluidos contrato compartido, relevancia, etiquetas, clústeres reales, retención, fallo parcial/total, estados de la pestaña, búsqueda, grupos, hoja de filtros, `alsoIn`, leídos con deshacer y apertura externa.
 
 ### Verificación H6
 ```bash
@@ -118,6 +110,32 @@ python -m depor_hub.cli news --offline
 
 Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda expandible, segmento Todo/Artículos/Vídeos, chips de grupo, hoja de fuentes y etiquetas, «Limpiar (n)», tarjeta con monograma/miniatura, despliegue de `+N medios`, abrir artículo y vídeo, marcar leídas con confirmación y deshacer, y Home con cinco titulares. Repetir con modo avión (caché visible con banner), con `news.json` ausente y con filtros que no dejen resultados.
 
+## H7 — Club, ajustes y acerca de (implementado, ADR 0025)
+
+- **Contrato `club.json`:** nuevo objeto raíz `{ updatedAt, identity, anthems, crests, kits, stadium, tickets, museum, trainingCenter, board, sponsors, titles, rivalries, facts, links }` (32 KB). Pydantic → JSON Schema → Zod con `default(null)`/`default([])`. Lo desconocido queda en `null`; **no hay campos ni distintivos de fuente, confianza o verificación** en el contrato ni en la interfaz. `club.json` se valida como el resto de ficheros, pero se excluye del `dataHash` deportivo (`SPORTS_FILES`): un cambio editorial no invalida la caché de clasificación/plantilla/partidos.
+- **Aforo coherente:** `Capacity.total` se valida contra la suma de `breakdown` en Pydantic y hay prueba equivalente en la app. Se publica **33.225** = 32.490 gradas + 141 palco de honor + 385 palcos VIP + 113 Área 1906 + 96 medios. No se suman zonas de pie ni cifras no documentadas.
+- **Imágenes locales:** 15 ficheros en `data/public/v1/img/club/` (14 escudos + la equipación local 2026-27) que suman **2.416.456 bytes (2,30 MiB)**. El contrato guarda rutas relativas (`img/club/escudos/1906.png`); `clubImageUrl` las resuelve contra la base de datos y `ClubImage` pinta un marcador del mismo tamaño si faltan o fallan. Los escudos se normalizan a 512 px PNG (el vigente, SVG oficial) y las equipaciones a JPEG de 900 px. `docs/kits_coverage.md` registra la cobertura real: 42 temporadas, 44 equipaciones y 1 con imagen.
+- **Himnos:** «Voa» (oficial, 2026, Xoel López y créditos), «Fillos de Breogán» (no oficial, 2020, Jesús Suárez / Mar de Fondo) y «El Rock del Deportivo» (popular/histórico, 1987, Gandy Cacahué). Las letras viven en `data/manual/himnos/<id>.txt`; si el fichero contiene una línea `Letra`, solo se publica el bloque posterior y los créditos se modelan en el YAML. Las líneas `#` son comentarios; sin texto, `lyrics` es `null`. La app lista y abre el detalle con letra seleccionable, escalado hasta 2× y hoja nativa de compartir; no hay audio.
+- **Pantallas:** pestaña Club con identidad, datos y accesos; ruta dinámica `/club/[section]` para himnos, escudo (línea temporal vertical y modal ampliado), equipaciones (SectionList por década con selector rápido, imagen o marcador, tipo, fabricante y patrocinadores), estadio (aforo total y por zona, mapa nativo con caída a Google Maps), museo, ciudad deportiva, junta (entrenador desde `squad.json`, sin duplicarlo), patrocinadores, títulos, rivalidades y redes/contacto. Todas cubren carga, vacío, error con reintento y offline con `FreshnessBanner`.
+- **Ajustes:** «Borrar caché de datos» elimina solo la caché persistida de TanStack Query (`persister.removeClient()` + clave de AsyncStorage), con confirmación, sin tocar ajustes ni recordatorios. Muestra versión de la app, `meta.dataHash`, `updatedAt` y enlace a Acerca de.
+- **Acerca de:** nombre y versión, aviso de proyecto no oficial, contacto (incidencias del proyecto) y licencias de terceros agrupadas. `npm run licenses` genera de forma determinista `apps/mobile/src/data/licenses.json` desde `package-lock.json`: **1.052 paquetes de producción en 16 grupos** (~93 KB, sin fecha). No se listan fuentes de datos.
+- **i18n:** ES/EN con **613 claves y paridad exacta**; GL parcial (212 claves) sin claves extra y con caída a ES. Letras y nombres propios no se traducen.
+- **Pruebas:** **174 pytest** y **261 tests / 30 suites** en la app. Cubren suma de aforo, agrupación por década, orden de temporadas, `clubImageUrl`, validación del `club.yml` y las letras reales, contrato compartido, idempotencia, fuentes de imagen y renders de Club, Himnos con y sin letra, Escudo, Equipaciones con imagen/marcador y Estadio.
+
+### Verificación H7
+```bash
+source .venv/bin/activate && ruff check scripts && pytest scripts
+python -m depor_hub.cli schemas && git diff --exit-code packages/schemas
+PATH=/opt/homebrew/opt/node@22/bin:$PATH npm run lint
+PATH=/opt/homebrew/opt/node@22/bin:$PATH npm run typecheck
+PATH=/opt/homebrew/opt/node@22/bin:$PATH npm test -- --ci
+python -m depor_hub.cli club                # segunda pasada: changed=false
+python -m depor_hub.cli club-images --offline
+npm run licenses                            # segunda pasada: sin cambios
+```
+
+Probar en iPhone: pestaña Club y todas sus secciones, modal del escudo, selector de década en Equipaciones, apertura del mapa, junta con enlace a `/coach`, compartir la letra de «Voa», ajustes con borrado de caché (confirmar que se conservan tema, idioma y recordatorios), Acerca de con licencias, y modo avión para comprobar la caché con banner. Repetir con `club.json` ausente y con imágenes bloqueadas para ver los marcadores.
+
 ## Reglas de trabajo que han evitado errores
 - Node 22 (nvm use 22) y venv Python 3.12 (.venv). Aplicar zips con `unzip -o X.zip -d .`, NUNCA reemplazando carpetas en Finder. Commit antes y después de cada hito.
 - Instalar dependencias de la app con `npm install -w apps/mobile <pkg>`; módulos nativos con `(cd apps/mobile && npx expo install <pkg>)`. Nunca `npx expo install -- -w ...`.
@@ -127,6 +145,4 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
 - Datos desconocidos = null. Escudos y fotos solo por URL externa con atribución (ADR 0006, 0009 y 0012); sin binarios de imágenes en el repo. Los hechos de fuentes externas no se inventan ni se completan por deducción. En escudos, una imagen apaisada de `P154` se descarta: es preferible un monograma a una foto pintada como escudo.
 
 ## Pendiente
-H7 club y legal, H8 pulido (reevaluar FlashList si la lista crece, revisión de los 37 conflictos, más tests de render y ampliar overrides de escudos con fuente real), H9 distribución. Antes del cierre de producción siguen pendientes PR/merge autorizado, workflows ejecutados en Actions, Pages con HTTP 200 en los ocho JSON y al menos dos ciclos por `schedule`. También quedan el dorsal 6 duplicado de Marc Casado/Noé Carrillo (requiere fuente del club), gallego 162/454, plegado ICS por octetos, serializar `syncReminders`, permiso de calendario, iconos/identidad DH, `eas.json`, `EXPO_PUBLIC_DATA_BASE_URL` de producción, parches Expo y reformateo Prettier (109 archivos; aparte).
-
-Huecos honestos que no se rellenan sin fuente fiable: peso de Ede Bright, Teun Gijselhart y Jonathan Asp-Jensen; redes de Teun Gijselhart (cedido al Al Ain, sin redes públicas aportadas); pie y peso de Teun ya resueltos con override contrastado. Escudos: los 6 rivales históricos de Segunda B (Covadonga, Linares, SD Logroñés, San Fernando CD, UD Logroñés y Zamora) siguen en `null`; no se rellenan sin URL y fuente verificables. El balance del entrenador solo cubre la temporada publicada y el staff depende del HTML oficial; el balance del próximo rival solo cubre la temporada publicada. Noticias: Riazor.org apenas ofrece miniatura en el feed y algunos medios pueden cambiar de WAF; `news audit` lo detecta. `social_pins.yml` no tiene pins verificados todavía y se añadirán por Pull Request con URL y fecha reales. Decisiones abiertas: contactar al club por el uso editorial de las fotos, los escudos y los titulares, nombre definitivo, identificadores com.deporhub.app provisionales y revisión de términos de BDFutbol y de los medios antes de una publicación a gran escala.
+H8 pulido (reevaluar FlashList si la lista crece, revisión de los 37 conflictos, más tests de render y ampliar overrides de escudos con fuente real) y H9 distribución; H7 queda pendiente de la verificación manual en dispositivo descrita arriba. Pendiente técnico de la fase actual: serializar `syncReminders`, revisar gallego 162/454, plegado ICS por octetos, permiso de calendario, `eas.json` y `EXPO_PUBLIC_DATA_BASE_URL` de producción; sincronizar la copia local con `origin/main` antes de cada sesión. Huecos honestos que no se rellenan sin fuente fiable: peso de Ede Bright, Teun Gijselhart y Jonathan Asp-Jensen; redes de Teun Gijselhart (cedido al Al Ain, sin redes públicas aportadas); pie y peso de Teun ya resueltos con override contrastado. Escudos: los 6 rivales históricos de Segunda B (Covadonga, Linares, SD Logroñés, San Fernando CD, UD Logroñés y Zamora) siguen en `null`; no se rellenan sin URL y fuente verificables. El balance del entrenador solo cubre la temporada publicada y el staff depende del HTML oficial; el balance del próximo rival solo cubre la temporada publicada. Noticias: Riazor.org apenas ofrece miniatura en el feed y algunos medios pueden cambiar de WAF; `news audit` lo detecta. `social_pins.yml` no tiene pins verificados todavía y se añadirán por Pull Request con URL y fecha reales. Decisiones abiertas: contactar al club por el uso editorial de las fotos, los escudos y los titulares, nombre definitivo, identificadores com.deporhub.app provisionales y revisión de términos de BDFutbol y de los medios antes de una publicación a gran escala.

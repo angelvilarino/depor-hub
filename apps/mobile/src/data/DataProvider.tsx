@@ -1,22 +1,15 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
-import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
 import { QueryClient, focusManager, onlineManager } from '@tanstack/react-query';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { type ReactNode, useEffect, useState } from 'react';
 import { AppState } from 'react-native';
+import { persister } from './persister';
 import { GC_TIME } from './queries';
 
 // Estado de red real (por defecto React Query asume "online" en móvil).
 onlineManager.setEventListener((setOnline) =>
   NetInfo.addEventListener((state) => setOnline(!!state.isConnected)),
 );
-
-const persister = createAsyncStoragePersister({
-  storage: AsyncStorage,
-  key: 'deporhub-query-cache',
-  throttleTime: 1000,
-});
 
 export function DataProvider({ children }: { children: ReactNode }) {
   const [client] = useState(

@@ -6,7 +6,7 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 
 | Fuente | Aporta | Términos / robots | Frecuencia | Estado |
 |---|---|---|---|---|
-| **football-data.org** (plan gratuito) | Clasificación, partidos, plantilla y entrenador (PD) | Pendiente de revisar términos y atribución | Adaptativa: cada 10 min entre −30 min y +150 min del kickoff confirmado; cada 60 min fuera (ADR 0015/0025). Escribe solo si cambia el contenido | En uso. Cobertura 2026-27 en «Sondeo» |
+| **football-data.org** (plan gratuito) | Clasificación, partidos, plantilla y entrenador (PD) | Pendiente de revisar términos y atribución | Adaptativa: cada 10 min entre −30 min y +3 h del kickoff; cada 60 min fuera (ADR 0015). Escribe solo si cambia el contenido | En uso. Cobertura 2026-27 en «Sondeo» |
 | **BDFutbol** (`bdfutbol.com`) | Trayectoria por club y temporada, totales, dorsal de la temporada actual, partidos con el Depor (minutos, goles, tarjetas, marcador) | `robots.txt` permite `/es/`; HTML público. Reutilización pendiente de revisión; solo se guardan hechos, no se redistribuye HTML | Manual / `enrich`; caché en `data/raw/enrich/` | En uso. HTTP 200 en las pruebas del 25-oct-2026 |
 | **Wikipedia ES/EN** (`es.wikipedia.org`, `en.wikipedia.org`) | Dorsal, contrato, procedencia, cesión, altura, peso y lugar de nacimiento; trayectoria del entrenador como jugador y como entrenador | CC BY-SA; se extraen hechos, no texto | Manual / `enrich` | En uso. Se recorren los sitelinks ES/GL/EN de Wikidata; la fecha de nacimiento desambigua |
 | **Wikidata** (`www.wikidata.org`, API de entidades) | Lugar de nacimiento, altura, pie (`P8006`), dorsal con `P54=Q8760`, redes, alias, imagen (`P18`) y sitelinks; entrenador `Q602465` (`P569`, `P19`, `P27`) | CC0 | Manual / `enrich` | En uso |
@@ -16,7 +16,9 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 | `data/manual/club_crests.yml` | Escudos que no resuelven fixtures ni Wikidata | Solo URL y fuente reales; nunca se inventa ni se deduce un id | Manual | En uso (RB Leipzig, escudo apaisado) |
 | `data/manual/coach.yml` | Salida generada de la ficha del entrenador y del cuerpo técnico | Se revisa antes de aplicar; no se inventan etapas ni miembros | Manual / `coach` | En uso (Antonio Hidalgo, 15 etapas, 21 miembros) |
 | **RSS/Atom de medios y YouTube** | Titular, fuente, fecha, miniatura y resumen tal como los publica el feed; nunca el cuerpo del artículo | Solo lo que el feed entrega; User-Agent identificable, 1 s por dominio y `ETag`/`If-Modified-Since`. Los 403/406/429 se documentan y no se rodean | Cada 30 min; 14 días de ventana | En uso: 5 fuentes curadas y 0 errores en la calibración del 29-oct-2026 (tabla en «Noticias») |
-| `data/manual/club.yml` | Datos del club | Elaboración propia con fuente | Manual | H7 |
+| `data/manual/club.yml` | Identidad, himnos (metadatos y créditos), escudos, equipaciones, estadio y aforo, museo, ciudad deportiva, junta, patrocinadores, títulos, rivalidades, hechos y enlaces | Elaboración propia con fuente en cada bloque; el contrato público no expone procedencia | Manual / `club` | En uso (H7). 42 temporadas, 44 equipaciones, 14 escudos |
+| `data/manual/himnos/*.txt` | Letras de los himnos tal como las publica el club; solo se publica el bloque posterior a `Letra` | Texto público; los créditos se modelan en `club.yml`, no se mezclan con la letra | Manual / `club` | En uso (H7). «Voa», «Fillos de Breogán» y «El Rock del Deportivo» |
+| `data/manual/club_images.yml` | URLs y fuente de los 14 escudos históricos y de la equipación local 2026-27 | Solo para imágenes de consulta pública; se normalizan y se guardan en local con la ruta relativa | Manual / `club-images` | En uso (H7). 15 ficheros, 2.416.456 bytes |
 
 ### Fuentes descartadas para el enriquecimiento (H4)
 
@@ -85,7 +87,7 @@ La deduplicación agrupa la misma historia entre medios (±48 h, similitud base 
 
 ### Cadencia
 
-`news-refresh.yml` corre cada 30 minutos (`*/30 * * * *`) y también por `workflow_dispatch` con `force`. Comparte el grupo `data-publish`, valida los ocho JSON con Pydantic, rebasea y reintenta el push hasta tres veces. Despliega el directorio completo de `data/public` solo si hay cambios. Si ninguna fuente responde o quedan menos de cinco historias, falla y no pisa el `news.json` anterior.
+`news-refresh.yml` corre cada 6 horas (`37 */6 * * *`) y también por `workflow_dispatch` con `force`. Comparte el grupo `data-publish` con `Data refresh`, hace `rebase` antes de publicar y despliega Pages solo si hay cambios. Si ninguna fuente responde, el workflow falla y no pisa el `news.json` anterior.
 
 ### Límites
 
@@ -95,7 +97,7 @@ YouTube es la única fuente sin miniaturas propias en todos los ítems (solo alg
 
 `python -m depor_hub.cli ingest --if-due` decide antes de tocar la red:
 
-- **Ventana de partido:** desde 30 min antes del kickoff hasta 150 min después, para `TIMED`, `IN_PLAY` y `PAUSED`. `SCHEDULED` sin hora confirmada no abre ventana. Refresco cada 10 min.
+- **Ventana de partido:** desde 30 min antes del kickoff hasta 3 h después, para `TIMED`, `IN_PLAY` y `PAUSED`. Refresco cada 10 min.
 - **Fuera de la ventana:** refresco cada 60 min.
 - **Sin fixtures o sin estado previo:** refresca.
 - **Si no toca:** termina con `changed=false due=false` y no hace peticiones.
@@ -166,6 +168,32 @@ Reglas conservadoras:
 - La caché `data/raw/enrich/crests.json` guarda también los `null` y se invalida por `mtime` de fixtures/overrides. Antes de una pasada online real hay que borrarla si se hicieron pasadas `--offline`.
 - Los escudos son **marcas de sus clubes**. El usuario asume el riesgo de usarlos como ilustración editorial; no se usa el escudo del Depor como logo de la app. Si Wikimedia limita el hotlinking o cambia sus términos, se deja de usar esa vía y se avisa.
 - No se guardan binarios: solo URLs externas y, si aplica, su atribución.
+
+## Club (H7, ADR 0025)
+
+La ficha del club se cura a mano en `data/manual/club.yml`; cada bloque lleva su fuente en comentarios y en esta tabla, pero **el contrato público no expone fuente, confianza ni estado**. Lo que no está documentado queda en `null`; no se completan fechas, dorsales, patrocinadores ni equipaciones por deducción.
+
+| Bloque | Fuente | Límite |
+|---|---|---|
+| Identidad, fundación, colores, apodos, presidencia, sede y contacto | Web oficial del club y datos societarios publicados | Sin lema documentado: `motto: null`. El contacto es el publicado por el club |
+| Himnos y créditos | Páginas oficiales del club y notas de estreno; créditos de «Voa» revisados en el YAML | La letra se lee de `data/manual/himnos/<id>.txt`; solo se publica el bloque posterior a `Letra`. Sin audio |
+| Escudos históricos | 1000logos para las 14 versiones y la web de identidad corporativa para el vigente (SVG) | Los escudos son marcas del club; uso editorial y pendiente de revisión de términos de 1000logos |
+| Equipaciones | Recopilación de temporadas publicadas (fabricante, patrocinador y colores) | 42 temporadas y 44 equipaciones; solo la local 2026-27 tiene imagen real. El resto se publica sin `image` |
+| Estadio y aforo | Datos públicos de Riazor y del club | Total **33.225** = 32.490 gradas + 141 palco de honor + 385 palcos VIP + 113 Área 1906 + 96 medios; la suma se valida en el contrato |
+| Museo, visitas y entradas | `ticketing.museo.rcdeportivo.es` y `rcdeportivo.es/es/museo-and-tour` | Precios y horarios pueden cambiar; la app enlaza a la fuente |
+| Ciudad deportiva | Proyecto y datos publicados del Dépor Training Center en Abegondo | 140.000 m², 8 campos de tamaño Riazor y 3 de calentamiento, diseño Populous. Sin coordenadas verificadas: `coordinates: null` |
+| Junta y organigrama | Comunicaciones oficiales del club | El entrenador **no se duplica**: la app lo lee de `squad.json` y enlaza a `/coach` |
+| Patrocinadores | Web y camisetas oficiales de la temporada | ABANCA principal, Nike técnico y lista de patrocinadores oficiales; no se incluyen acuerdos no publicados |
+| Títulos y rivalidades | Palmarés y hechos publicados por el club y prensa | Se agrupan por competición y año; no se añaden títulos no documentados |
+| Enlaces y redes | Canales oficiales verificados | WhatsApp y twitch solo si el club los publica; el resto queda `null` |
+
+Reglas:
+
+- Las **únicas imágenes binarias del repositorio** son las del club: `data/public/v1/img/club/` (15 ficheros, 2.416.456 bytes). Se normalizan con Pillow (escudos a 512 px PNG con alfa; equipaciones a JPEG de 900 px) y se sirven desde la misma base de datos que el JSON. El contrato solo guarda rutas relativas.
+- `data/manual/club_images.yml` es la lista revisable de fuentes; si una URL deja de responder, la imagen local se conserva y la app muestra un marcador si falta. No se hotlinkea ninguna imagen del club desde la app.
+- `docs/kits_coverage.md` se regenera con `python -m depor_hub.cli club` y deja a la vista cuántas equipaciones tienen imagen (1 de 44).
+- `club.json` no entra en el `dataHash` deportivo; se valida como los demás ficheros y se escribe de forma idempotente (sin cambios, conserva `updatedAt`).
+- Las licencias de terceros de la app se generan con `npm run licenses` desde `package-lock.json` (1.052 paquetes de producción en 16 grupos) y se muestran en Acerca de. No se publica un listado de fuentes de datos en la app.
 
 ## Entrenador y cuerpo técnico
 
@@ -243,9 +271,12 @@ python -m depor_hub.cli news                         # publica news.json
 python -m depor_hub.cli news --report                # informe de relevancia y clústeres
 python -m depor_hub.cli news --offline               # repite desde data/raw/news sin red
 python -m depor_hub.cli social                       # regenera social.json desde social_pins.yml
+python -m depor_hub.cli club                         # publica club.json y docs/kits_coverage.md
+python -m depor_hub.cli club-images                  # descarga y normaliza las imágenes locales del club
+python -m depor_hub.cli club-images --offline        # comprueba las imágenes presentes sin red
 ```
 
-El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 30 minutos y comparte con `Data refresh` y `Rivals refresh` el grupo `data-publish`. Los tres validan antes del commit, reintentan el push tras rebase y despliegan el directorio `data/public` completo solo cuando hay cambios.
+El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 6 horas y comparte con `Data refresh` el grupo `data-publish`. Los dos hacen rebase antes de empujar y despliegan Pages solo cuando hay cambios.
 
 El workflow `Enrich proposal` (`.github/workflows/enrich.yml`) es manual y solo sube el informe como artefacto. No hace commit.
 

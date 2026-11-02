@@ -1,0 +1,1261 @@
+{
+  "updatedAt": "2026-11-01T10:14:07Z",
+  "identity": {
+    "officialName": "Real Club Deportivo de La Coruña, S.A.D.",
+    "shortName": "RC Deportivo",
+    "foundedYear": 1906,
+    "city": "A Coruña",
+    "country": "España",
+    "colors": [
+      "blanco",
+      "azul"
+    ],
+    "nicknames": [
+      "Dépor",
+      "Súper Dépor",
+      "Blanquiazul",
+      "Herculinos",
+      "Los Turcos"
+    ],
+    "motto": null,
+    "president": "Juan Carlos Escotet Rodríguez",
+    "entity": "S.A.D.",
+    "headquarters": "C/ Manuel Murguía, s/n, 15011 A Coruña",
+    "website": "https://www.rcdeportivo.es",
+    "contact": {
+      "email": "deportivo@rcdeportivo.es",
+      "phone": "(+34) 981 259 500",
+      "address": "C/ Manuel Murguía, s/n, 15011 A Coruña"
+    }
+  },
+  "anthems": [
+    {
+      "id": "voa",
+      "title": "Voa",
+      "kind": "oficial",
+      "authors": [
+        "Xoel López"
+      ],
+      "year": 2026,
+      "description": "Himno oficial estrenado el 12 de agosto de 2026 en el estadio Abanca-Riazor, durante el Trofeo Teresa Herrera, coincidiendo con el 120 aniversario del club.",
+      "lyrics": "Voa\nVoa\nContra o vento\nDépor, voa\nE nós ao teu carón\n\nLa, la, la, la, la, la, la\nLa, la, la, la, la, la, la\nLa, la, la, la, la, la, la\nDé!\n\nSe sentes\nBater as ondas\nTremer os muros\nAo teu redor\nColle a miña man e voa\n\nSe sentes\nMarchar o soño\nMedrarei unha ilusión\nEu soñarei por ti\n\nNos ollos dos nosos fillos\nDende o ceo, os nosos avós\nFaro que alumea o mundo\nXuntos nun só corazón\n\nVoa\nVoa\nContra o vento\nDépor, voa\n\nVoa\nVoa\nContra o vento\nSempre voa\nE nós ao teu carón\n\nDé\n\nCarmiña, Carmela\nTen un sentimento\nQue é branco e azul\nÉ de sal e vento\n\nÉ de sal e vento\nÉ branco e azul\nCarmiña, Carmela\nTen un sentimento\n\n(Sempre ao teu carón)\nTi es orde e es talento\nTi es todo, e ti somos nós\n\n(Sempre ao teu carón)\nTodos nun único canto\nO latexo de Riazor\n\nVoa\nVoa\nContra o vento\nDépor, voa\n\nVoa\nVoa\nContra o vento\nSempre voa\n\nE nós ao teu carón\n\n(La, la, la, la, la, la, la) FOR!\n(La, la, la, la, la, la, la) ZA!\n(La, la, la, la, la, la, la) DÉ!\n(La, la, la, la, la, la, la) POR!",
+      "audioUrl": null,
+      "credits": [
+        {
+          "role": "musicians",
+          "names": [
+            "Xoel López: voz principal, coros, guitarras eléctricas y sintes",
+            "Adrián Seijas: batería, percusiones, coros y sintes",
+            "Julián Seijas: bajo",
+            "Belén Tajes: voces",
+            "Antía Ameixeiras: voces y violín",
+            "Sabela Caamaño: acordeón",
+            "Cibrán Seixo: violín",
+            "Brais Maceiras: gaita",
+            "Susana Seivane: gaita",
+            "Kilomberos de Monte Alto: percusión",
+            "Xacarandaina: percusiones y coros",
+            "Orquesta Sinfónica de Galicia: cuarteto de cuerda, metales y timbales",
+            "Coro Juvenil Cantabile: coros"
+          ],
+          "text": null
+        },
+        {
+          "role": "production",
+          "names": [
+            "Producido por Xoel López y Adrián Seijas"
+          ],
+          "text": null
+        },
+        {
+          "role": "recording",
+          "names": [
+            "Grabado en Estudios El Jardín Botánico, Estudios Bruar y Estudios Mans"
+          ],
+          "text": null
+        },
+        {
+          "role": "technicians",
+          "names": [
+            "Nicolás Vieites: ingeniero de grabación",
+            "Pete Cunado: asistente de grabación",
+            "José García: asistente de grabación",
+            "Javier Justo: asistente de grabación",
+            "David Greenbaum: ingeniero de mezcla y mastering"
+          ],
+          "text": null
+        }
+      ]
+    },
+    {
+      "id": "fillos-de-breogan",
+      "title": "Fillos de Breogán",
+      "kind": "no_oficial",
+      "authors": [
+        "Jesús Suárez"
+      ],
+      "year": 2020,
+      "description": "Canción de Jesús Suárez interpretada por Mar de Fondo, adoptada popularmente como himno no oficial del deportivismo.",
+      "lyrics": "Penso en ti mentras camiño\npola beiriña do mar\nxa vou escoitando o ruxido\ndos que che levan a gañar.\n\nE ali arredor desa praia\nQue o nome lle deu ó teu lar\nAs ondas berran na néboa\nQue sempre con nos ficarás.\n\nLevas o azul do ceo\nO branco da espuma do mar\nVives no meu pensamento\nE nos daqueles que por ti loitarán\n\nE ainda que pasen os anos\ne o tempo non nos deixe voltar\neu sempre levarei no peito\nbranquiazul nada máis.\n\nNaciches nesta cidade\nonde Hercules se forxou\nseu faro debuxa o camiño\no camino para ser campión.\n\nESTRIBILLO\n\nTela forza dun heroe\ne eu teño no corazon\nas gorxas dos irmans que berran\nForza Depor Campion.",
+      "audioUrl": null,
+      "credits": [
+        {
+          "role": "performance",
+          "names": [
+            "Mar de Fondo"
+          ],
+          "text": null
+        }
+      ]
+    },
+    {
+      "id": "rock-del-deportivo",
+      "title": "El Rock del Deportivo",
+      "kind": "popular",
+      "authors": [
+        "Gandy Cacahué"
+      ],
+      "year": 1987,
+      "description": "Himno rockero de 1987, histórico en Riazor y todavía presente en la grada.",
+      "lyrics": "Vamos !!!\n\nY digo Deportivo,\nvamos a ganar este partido\nY digo de Primera\nel Deportivo es directivo\nVivo- Vivo- Vivo\n\nVamos a ganar,\nla afición os va a apoyar\nY a ayudar y a chillar y a acompañar\nPero no hagáis el canelo\nQue no nos tomen mas el pelo,\nPelo, pelo...\n\nY digo Deportivo\nvamos a ganar este partido\nY digo Deportivo\nvamos a ganar este partido\nY digo Deportivo\nvamos a ganar este partido\n\nDe Europa,\nel Deportivo es directivo\nVivo - Vivo- Vivo\n\nY digo Deportivo,\nvamos a ganar este partido\nDeportivo,\nvamos a ganar este partido\nY digo Deportivo,\nvamos a ganar este partido\nY digo Deportivo\nY digo Deportivo\nY digo Deportivo\n\nDe el mundo\nel Deportivo es directivo\nVivo - Vivo - Vivo\n\n(Aupa deportivo,\nDepor, depor...\nDeportivo, deportivo...\n¡Forza Depor! oe!)",
+      "audioUrl": null,
+      "credits": []
+    }
+  ],
+  "crests": [
+    {
+      "id": "escudo-1906",
+      "yearFrom": 1906,
+      "yearTo": 1908,
+      "description": "Monograma azul con las iniciales «SC» de la Sala Calvet.",
+      "image": "img/club/escudos/1906.png"
+    },
+    {
+      "id": "escudo-1908",
+      "yearFrom": 1908,
+      "yearTo": 1910,
+      "description": "El monograma «SC» sobre un medallón circular con marco azul y hebilla.",
+      "image": "img/club/escudos/1908.png"
+    },
+    {
+      "id": "escudo-1910",
+      "yearFrom": 1910,
+      "yearTo": 1911,
+      "description": "Escudo con corona y el texto «Deportivo Sala Calvet», con palos y raqueta cruzados.",
+      "image": "img/club/escudos/1910.png"
+    },
+    {
+      "id": "escudo-1911",
+      "yearFrom": 1911,
+      "yearTo": 1912,
+      "description": "Se retiran los palos y la raqueta; quedan el medallón y la corona.",
+      "image": "img/club/escudos/1911.png"
+    },
+    {
+      "id": "escudo-1912",
+      "yearFrom": 1912,
+      "yearTo": 1928,
+      "description": "Primer escudo con la bandera gallega, la cruz de Santiago y la corona real.",
+      "image": "img/club/escudos/1912.png"
+    },
+    {
+      "id": "escudo-1928",
+      "yearFrom": 1928,
+      "yearTo": 1931,
+      "description": "Se reduce la corona superior para equilibrar el conjunto.",
+      "image": "img/club/escudos/1928.png"
+    },
+    {
+      "id": "escudo-1931",
+      "yearFrom": 1931,
+      "yearTo": 1941,
+      "description": "Sin coronas durante la Segunda República; trazo más grueso y franja diagonal clara.",
+      "image": "img/club/escudos/1931.png"
+    },
+    {
+      "id": "escudo-1941",
+      "yearFrom": 1941,
+      "yearTo": 1955,
+      "description": "Vuelven las dos coronas y se recupera el dorado.",
+      "image": "img/club/escudos/1941.png"
+    },
+    {
+      "id": "escudo-1955",
+      "yearFrom": 1955,
+      "yearTo": 1962,
+      "description": "Regresan los perfiles dobles y la franja diagonal azul claro.",
+      "image": "img/club/escudos/1955.png"
+    },
+    {
+      "id": "escudo-1962",
+      "yearFrom": 1962,
+      "yearTo": 1973,
+      "description": "Paleta azul en lugar de morada y corona superior más maciza.",
+      "image": "img/club/escudos/1962.png"
+    },
+    {
+      "id": "escudo-1973",
+      "yearFrom": 1973,
+      "yearTo": 1997,
+      "description": "Se recupera el escudo clásico de los años cincuenta.",
+      "image": "img/club/escudos/1973.png"
+    },
+    {
+      "id": "escudo-1997",
+      "yearFrom": 1997,
+      "yearTo": 2000,
+      "description": "Dorados más amarillos, rojo intenso y detalles turquesa.",
+      "image": "img/club/escudos/1997.png"
+    },
+    {
+      "id": "escudo-2000",
+      "yearFrom": 2000,
+      "yearTo": 2026,
+      "description": "Regreso al escudo de doble perfil en oro claro y morado.",
+      "image": "img/club/escudos/2000.png"
+    },
+    {
+      "id": "escudo-2026",
+      "yearFrom": 2026,
+      "yearTo": null,
+      "description": "Actualización con florones, cruz y anillo ajustados y una referencia diagonal a la Torre de Hércules.",
+      "image": "img/club/escudos/2026.svg"
+    }
+  ],
+  "kits": [
+    {
+      "season": "1985-86",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Austral",
+          "chestSponsor": "Hotel Rías Altas",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1986-87",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Gilcor",
+          "chestSponsor": "La Coruña Despega",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1987-88",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Gilcor / Rafrei",
+          "chestSponsor": null,
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1988-89",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Rafrei",
+          "chestSponsor": null,
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1989-90",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Gilcor / Rafrei",
+          "chestSponsor": "Leyma",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1990-91",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Rox",
+          "chestSponsor": "Leyma",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1991-92",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Rox",
+          "chestSponsor": "Leyma",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1992-93",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Rox / Umbro",
+          "chestSponsor": "Ocaso / Feiraco",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1993-94",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Umbro",
+          "chestSponsor": "Feiraco",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1994-95",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Umbro",
+          "chestSponsor": "Feiraco / Galicia Calidade",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1995-96",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Umbro",
+          "chestSponsor": "Feiraco",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1996-97",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Umbro",
+          "chestSponsor": "Feiraco",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1997-98",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Adidas",
+          "chestSponsor": "Feiraco",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1998-99",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Adidas",
+          "chestSponsor": "Feiraco",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "1999-00",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Adidas",
+          "chestSponsor": "Feiraco",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2000-01",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Adidas",
+          "chestSponsor": "Dreamcast",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2001-02",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Joma",
+          "chestSponsor": "Fadesa",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2002-03",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Joma",
+          "chestSponsor": "Fadesa",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2003-04",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Joma",
+          "chestSponsor": "Fadesa",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2004-05",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Joma",
+          "chestSponsor": "Fadesa",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2005-06",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Joma",
+          "chestSponsor": "Fadesa",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2006-07",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Joma",
+          "chestSponsor": "Fadesa",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2007-08",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Canterbury",
+          "chestSponsor": "Fadesa",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2008-09",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Canterbury",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2009-10",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Lotto",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2010-11",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Lotto",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2011-12",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Lotto",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2012-13",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Lotto",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2013-14",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Lotto",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2014-15",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Lotto",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2015-16",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Lotto",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2016-17",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Lotto",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2017-18",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Macron",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2018-19",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Macron",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2019-20",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Macron",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2020-21",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Macron",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2021-22",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Kappa",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2022-23",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Kappa",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2023-24",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Kappa",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2024-25",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Kappa",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2025-26",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Kappa",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "season": "2026-27",
+      "kits": [
+        {
+          "type": "home",
+          "manufacturer": "Nike",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": "img/club/equipaciones/2026-27-home.jpg"
+        },
+        {
+          "type": "away",
+          "manufacturer": "Nike",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "negro",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        },
+        {
+          "type": "third",
+          "manufacturer": "Nike",
+          "chestSponsor": "Estrella Galicia",
+          "sleeveSponsor": null,
+          "backSponsor": null,
+          "colors": [
+            "blanco",
+            "azul"
+          ],
+          "description": null,
+          "image": null
+        }
+      ]
+    }
+  ],
+  "stadium": {
+    "name": "Estadio Abanca-Riazor",
+    "address": "C/ Manuel Murguía, s/n, 15011 A Coruña",
+    "coordinates": {
+      "lat": 43.368667,
+      "lon": -8.417372
+    },
+    "openedOn": "1944-10-29",
+    "renovations": [
+      "1982, ampliación para el Mundial de España"
+    ],
+    "pitch": "Césped natural",
+    "dimensions": "105 x 68 m",
+    "access": "Acceso por las puertas del estadio; el museo se visita desde el exterior.",
+    "transport": null,
+    "parking": null,
+    "capacity": {
+      "total": 33225,
+      "breakdown": [
+        {
+          "zone": "Gradas",
+          "seats": 32490
+        },
+        {
+          "zone": "Palco de honor",
+          "seats": 141
+        },
+        {
+          "zone": "Palcos VIP",
+          "seats": 385
+        },
+        {
+          "zone": "Área 1906",
+          "seats": 113
+        },
+        {
+          "zone": "Medios",
+          "seats": 96
+        }
+      ]
+    },
+    "description": "Estadio municipal inaugurado el 29 de octubre de 1944 y conocido como Abanca-Riazor desde 2017. Acoge los partidos del primer equipo y el museo del club."
+  },
+  "tickets": {
+    "season": "2026-27",
+    "zones": [],
+    "purchaseUrl": "https://ticketing.rcdeportivo.es/",
+    "note": "Entradas y abonos a la venta en la web oficial del club."
+  },
+  "museum": {
+    "name": "Museo RC Deportivo",
+    "location": "Estadio Abanca-Riazor",
+    "description": "Recorrido por la historia del club en las salas Blanca, Dorada y Azul, con más de 250 piezas. Incluye visita guiada, libre y gratuita.",
+    "schedule": null,
+    "prices": [
+      {
+        "label": "Tour guiado",
+        "priceEur": null,
+        "note": "Consultar precio y disponibilidad en la web oficial."
+      },
+      {
+        "label": "Tour libre",
+        "priceEur": null,
+        "note": "Consultar precio y disponibilidad en la web oficial."
+      },
+      {
+        "label": "Tour gratuito",
+        "priceEur": null,
+        "note": "Consultar condiciones en la web oficial."
+      }
+    ],
+    "links": [
+      {
+        "id": "entradas",
+        "label": "Entradas del museo",
+        "url": "https://ticketing.museo.rcdeportivo.es/es"
+      },
+      {
+        "id": "oficial",
+        "label": "Museo y Tour",
+        "url": "https://www.rcdeportivo.es/es/museo-and-tour"
+      }
+    ]
+  },
+  "trainingCenter": {
+    "name": "Dépor Training Center",
+    "location": "Abegondo, A Coruña",
+    "description": "Proyecto de ciudad deportiva del club en Abegondo, concebido como «Onde nace o futuro» para conectar la cantera con el primer equipo.",
+    "facilities": [
+      "140.000 m² de superficie",
+      "8 campos con las dimensiones de Riazor",
+      "3 campos de calentamiento",
+      "Diseño del estudio Populous",
+      "Energías renovables y reutilización de agua"
+    ],
+    "coordinates": null
+  },
+  "board": {
+    "president": "Juan Carlos Escotet Rodríguez",
+    "members": [
+      {
+        "name": "Michelle Clemente Escotet",
+        "role": "Vicepresidenta"
+      },
+      {
+        "name": "Massimo Adalberto Benassi",
+        "role": "Consejero delegado"
+      },
+      {
+        "name": "Carlos Alberto Ballesta Edreira",
+        "role": "Consejero"
+      },
+      {
+        "name": "Benito Couceiro",
+        "role": "Consejero"
+      },
+      {
+        "name": "Marta Fernández Currás",
+        "role": "Consejera"
+      }
+    ],
+    "sportingDirector": null,
+    "note": "Composición publicada por el club."
+  },
+  "sponsors": {
+    "principal": "ABANCA",
+    "technical": "Nike",
+    "official": [
+      "Estrella Galicia",
+      "Bualá",
+      "Novomóvil BMW",
+      "Fútbol Emotion",
+      "FEIRACO",
+      "Marineda City",
+      "Laberit",
+      "Sotelo",
+      "HM Hospitales",
+      "Total Renting",
+      "Coca-Cola",
+      "Coren",
+      "MGS Seguros",
+      "iO.GENIX",
+      "Deputación da Coruña",
+      "Xunta de Galicia",
+      "Xacobeo"
+    ],
+    "collaborators": [],
+    "sinceYear": null
+  },
+  "titles": [
+    {
+      "competition": "Primera División",
+      "years": [
+        2000
+      ]
+    },
+    {
+      "competition": "Copa del Rey",
+      "years": [
+        1995,
+        2002
+      ]
+    },
+    {
+      "competition": "Supercopa de España",
+      "years": [
+        1995,
+        2000,
+        2002
+      ]
+    },
+    {
+      "competition": "Concurso España",
+      "years": [
+        1912
+      ]
+    },
+    {
+      "competition": "Segunda División",
+      "years": [
+        1962,
+        1964,
+        1966,
+        1968,
+        2012
+      ]
+    },
+    {
+      "competition": "Primera Federación",
+      "years": [
+        2024
+      ]
+    },
+    {
+      "competition": "Tercera División",
+      "years": [
+        1975
+      ]
+    },
+    {
+      "competition": "Campeonato de Galicia",
+      "years": [
+        1927,
+        1928,
+        1931,
+        1933,
+        1937,
+        1940
+      ]
+    },
+    {
+      "competition": "Copa Galicia",
+      "years": [
+        1946
+      ]
+    }
+  ],
+  "rivalries": [
+    {
+      "rival": "RC Celta de Vigo",
+      "description": "El derbi gallego. Primer enfrentamiento en el campeonato gallego de 1923; es el partido más repetido y tenso del fútbol gallego.",
+      "sinceYear": 1923
+    }
+  ],
+  "facts": [
+    "Fundado en 1906 en la Sala Calvet.",
+    "Campeón de Liga en la temporada 1999-2000.",
+    "Disputó cinco Ligas de Campeones consecutivas entre 2001 y 2005.",
+    "Único club campeón de las tres primeras categorías del fútbol español.",
+    "Riazor se inauguró el 29 de octubre de 1944."
+  ],
+  "links": {
+    "website": "https://www.rcdeportivo.es",
+    "app": "https://www.rcdeportivo.es/es/app",
+    "x": "https://x.com/RCDeportivo",
+    "instagram": "https://www.instagram.com/rcdeportivo/",
+    "tiktok": "https://www.tiktok.com/@rcdeportivo",
+    "youtube": "https://www.youtube.com/@rcdeportivo",
+    "facebook": "https://www.facebook.com/RCDeportivo/",
+    "twitch": null,
+    "whatsapp": null,
+    "store": "https://deportienda.es/",
+    "tickets": "https://ticketing.rcdeportivo.es/",
+    "museum": "https://www.rcdeportivo.es/es/museo-and-tour",
+    "others": [
+      {
+        "id": "fundacion",
+        "label": "Fundación RC Deportivo",
+        "url": "https://www.rcdeportivo.es/es/fundacion"
+      }
+    ]
+  }
+}

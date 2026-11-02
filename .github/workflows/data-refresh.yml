@@ -47,6 +47,15 @@ jobs:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
         run: python -m depor_hub.cli ingest --if-due ${{ inputs.force && '--force' || '' }}
+      - name: Publicar la ficha del club
+        run: python -m depor_hub.cli club
+      - name: Imágenes del club (solo si faltan)
+        run: |
+          if [ -d data/public/v1/img/club ]; then
+            python -m depor_hub.cli club-images --offline
+          else
+            python -m depor_hub.cli club-images
+          fi
       - name: Guardar el último refresco
         if: steps.ingest.outputs.refreshed == 'true'
         uses: actions/cache/save@v4

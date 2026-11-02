@@ -30,7 +30,19 @@
     "reminders": "Match reminders",
     "remindersOn": "On",
     "remindersOff": "Off",
-    "version": "App version"
+    "version": "App version",
+    "data": "Data",
+    "dataVersion": "Data version",
+    "dataUpdatedAt": "Data updated",
+    "clearCacheHint": "Removes the downloaded data stored on this device. It will be downloaded again when online.",
+    "clearCache": "Clear data cache",
+    "clearCacheBusy": "Clearing…",
+    "clearCacheConfirmTitle": "Clear the data cache?",
+    "clearCacheConfirm": "Data stored on this device will be removed. Your settings and reminders are kept.",
+    "clearCacheConfirmAction": "Clear cache",
+    "clearCacheError": "The data cache could not be cleared.",
+    "about": "About",
+    "aboutHint": "Version, licences and contact"
   },
   "data": {
     "loading": "Loading data…",
@@ -540,5 +552,208 @@
       "opinion": "Opinion"
     },
     "filterTagOnly": "Filter by {{tag}}"
+  },
+  "club": {
+    "founded": "Founded in {{year}}",
+    "crestLabel": "Club crest",
+    "colors": "Colours",
+    "president": "President",
+    "headquarters": "Headquarters",
+    "facts": "Club facts",
+    "explore": "Explore the club",
+    "contact": "Contact",
+    "empty": "No club data has been published yet.",
+    "noImage": "No image",
+    "viewImage": "View enlarged image of {{name}}",
+    "anthemKinds": {
+      "oficial": "Official anthem",
+      "no_oficial": "Unofficial anthem",
+      "popular": "Popular anthem",
+      "unknown": "Anthem"
+    },
+    "kitTypes": {
+      "home": "Home kit",
+      "away": "Away kit",
+      "third": "Third kit",
+      "gk_home": "Goalkeeper · home",
+      "gk_away": "Goalkeeper · away",
+      "gk_third": "Goalkeeper · third",
+      "special": "Special kit"
+    },
+    "sections": {
+      "himnos": {
+        "title": "Anthems",
+        "subtitle": "Lyrics, authors and credits"
+      },
+      "escudo": {
+        "title": "Crest",
+        "subtitle": "Every version since 1906"
+      },
+      "equipaciones": {
+        "title": "Kits",
+        "subtitle": "Seasons, makers and sponsors"
+      },
+      "estadio": {
+        "title": "Stadium",
+        "subtitle": "Capacity, access and map"
+      },
+      "museo": {
+        "title": "Museum",
+        "subtitle": "History, visits and tickets"
+      },
+      "training": {
+        "title": "Training centre",
+        "subtitle": "Dépor Training Center"
+      },
+      "junta": {
+        "title": "Board and staff",
+        "subtitle": "President, board and head coach"
+      },
+      "patrocinadores": {
+        "title": "Sponsors",
+        "subtitle": "Official club partners"
+      },
+      "titulos": {
+        "title": "Honours",
+        "subtitle": "Titles by competition"
+      },
+      "rivalidades": {
+        "title": "Rivalries",
+        "subtitle": "The derby and its history"
+      },
+      "redes": {
+        "title": "Social and links",
+        "subtitle": "Official channels and contact"
+      },
+      "unknownTitle": "Club",
+      "unknown": "This club section does not exist."
+    },
+    "himnos": {
+      "empty": "No anthems have been documented.",
+      "hasLyrics": "Lyrics available",
+      "noLyricsShort": "Lyrics pending",
+      "lyrics": "Lyrics",
+      "noLyrics": "The lyrics for this anthem are not available yet.",
+      "notFound": "This anthem could not be found.",
+      "credits": "Credits",
+      "readHint": "Selectable text that follows the system font size.",
+      "share": "Share lyrics",
+      "shareError": "The lyrics could not be shared.",
+      "creditRoles": {
+        "musicians": "Musicians",
+        "production": "Production",
+        "recording": "Recording",
+        "technicians": "Technical team",
+        "performance": "Performance",
+        "other": "Credits"
+      }
+    },
+    "escudo": {
+      "empty": "No crest versions have been documented.",
+      "introTitle": "The blue and white identity",
+      "intro": "The crest has changed with the club: from the Sala Calvet initials to the Galician flag, the cross of Saint James and the crown. Each version keeps the mark of its time.",
+      "zoomHint": "Tap any crest to see it full size.",
+      "present": "present",
+      "versionName": "{{years}} crest"
+    },
+    "equipaciones": {
+      "empty": "No kits have been documented.",
+      "intro": "Every documented season, newest first. Use the selector to jump between decades.",
+      "sleeveSponsorValue": "Sleeve: {{name}}",
+      "backSponsorValue": "Back: {{name}}",
+      "colorsValue": "Colours: {{colors}}",
+      "kitCount_one": "1 kit",
+      "kitCount_other": "{{count}} kits",
+      "jump": "Jump to the {{decade}}"
+    },
+    "estadio": {
+      "empty": "No stadium data.",
+      "address": "Address",
+      "opened": "Opened",
+      "pitch": "Pitch",
+      "dimensions": "Dimensions",
+      "openMap": "Open in maps",
+      "mapError": "The map could not be opened.",
+      "capacity": "Capacity",
+      "capacityTotal": "{{seats}} spectators",
+      "zoneValue": "{{seats}} · {{share}}%",
+      "capacityNote": "Total capacity is the sum of every zone, including boxes and media.",
+      "noCapacity": "Capacity not available.",
+      "renovations": "Renovations",
+      "visit": "Getting there",
+      "access": "Access",
+      "transport": "Transport",
+      "parking": "Parking"
+    },
+    "museo": {
+      "empty": "No museum data.",
+      "location": "Location",
+      "schedule": "Opening hours",
+      "prices": "Visits",
+      "links": "Links"
+    },
+    "training": {
+      "empty": "No training centre data.",
+      "location": "Location",
+      "openMap": "Open in maps",
+      "facilities": "Facilities"
+    },
+    "junta": {
+      "empty": "No board data.",
+      "coach": "Head coach",
+      "openCoach": "Open {{name}}'s profile",
+      "title": "Board of directors",
+      "president": "President",
+      "members": "Board",
+      "sportingDirector": "Sporting director"
+    },
+    "patrocinadores": {
+      "empty": "No sponsors have been documented.",
+      "title": "Sponsorship",
+      "principal": "Main sponsor",
+      "technical": "Kit supplier",
+      "sinceLabel": "Since",
+      "official": "Official sponsors",
+      "collaborators": "Partners",
+      "since": "{{year}}"
+    },
+    "titulos": {
+      "empty": "No honours have been documented.",
+      "title": "Honours",
+      "total": "{{total}} titles across {{competitions}} competitions.",
+      "count_one": "1 title",
+      "count_other": "{{count}} titles"
+    },
+    "rivalidades": {
+      "empty": "No rivalries have been documented.",
+      "since": "{{year}}",
+      "sinceLabel": "Since"
+    },
+    "redes": {
+      "empty": "No official links have been documented.",
+      "title": "Official channels",
+      "other": "More links",
+      "contact": "Contact",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "website": "Official website",
+      "app": "Official app",
+      "store": "Official store",
+      "tickets": "Tickets",
+      "museum": "Museum",
+      "count": "Links"
+    }
+  },
+  "about": {
+    "title": "About",
+    "app": "Depor Hub",
+    "version": "Version {{version}}",
+    "mission": "A fan app with public Deportivo data: matches, squad, news and club history. No accounts, no ads and no private keys.",
+    "contact": "Contact",
+    "contactHint": "For reports, corrections or suggestions.",
+    "contactLink": "Open the project issues",
+    "licenses": "Third-party licences",
+    "licensesIntro": "{{count}} third-party packages grouped into {{groups}} licences, generated from package-lock.json."
   }
 }
