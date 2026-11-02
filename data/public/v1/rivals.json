@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T06:27:25Z",
+  "updatedAt": "2026-11-02T06:36:50Z",
   "season": "2026-27",
   "rivals": [
     {
@@ -840,6 +840,82 @@
     },
     {
       "team": {
+        "id": 82,
+        "name": "Getafe CF",
+        "shortName": "Getafe",
+        "tla": "GET",
+        "crestUrl": "https://crests.football-data.org/82.png"
+      },
+      "bdfutbolId": "16",
+      "coach": "Pepe Bordalás",
+      "keyPlayers": [],
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=16",
+        "played": 25,
+        "won": 7,
+        "drawn": 9,
+        "lost": 9,
+        "goalsFor": 26,
+        "goalsAgainst": 36,
+        "meetings": [
+          {
+            "date": "2026-09-13",
+            "competition": "Primera División",
+            "round": "Jornada 5",
+            "home": "Getafe",
+            "away": "Deportivo de A Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2018-02-28",
+            "competition": "Primera División",
+            "round": "Jornada 26",
+            "home": "Getafe",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 3,
+            "awayGoals": 0,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-09-30",
+            "competition": "Primera División",
+            "round": "Jornada 7",
+            "home": "Deportivo de La Coruña",
+            "away": "Getafe",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "W"
+          },
+          {
+            "date": "2016-05-01",
+            "competition": "Primera División",
+            "round": "Jornada 36",
+            "home": "Deportivo de La Coruña",
+            "away": "Getafe",
+            "homeGoals": 0,
+            "awayGoals": 2,
+            "deporResult": "L"
+          },
+          {
+            "date": "2015-12-30",
+            "competition": "Primera División",
+            "round": "Jornada 17",
+            "home": "Getafe",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          }
+        ]
+      }
+    },
+    {
+      "team": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
         "shortName": "Espanyol",
@@ -1213,82 +1289,6 @@
             "away": "Deportivo de La Coruña",
             "homeGoals": 2,
             "awayGoals": 2,
-            "deporResult": "D"
-          }
-        ]
-      }
-    },
-    {
-      "team": {
-        "id": 82,
-        "name": "Getafe CF",
-        "shortName": "Getafe",
-        "tla": "GET",
-        "crestUrl": "https://crests.football-data.org/82.png"
-      },
-      "bdfutbolId": "16",
-      "coach": "Pepe Bordalás",
-      "keyPlayers": [],
-      "headToHead": {
-        "scope": "all_official_matches",
-        "source": "BDFutbol",
-        "confidence": "single_source",
-        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=16",
-        "played": 25,
-        "won": 7,
-        "drawn": 9,
-        "lost": 9,
-        "goalsFor": 26,
-        "goalsAgainst": 36,
-        "meetings": [
-          {
-            "date": "2026-09-13",
-            "competition": "Primera División",
-            "round": "Jornada 5",
-            "home": "Getafe",
-            "away": "Deportivo de A Coruña",
-            "homeGoals": 1,
-            "awayGoals": 1,
-            "deporResult": "D"
-          },
-          {
-            "date": "2018-02-28",
-            "competition": "Primera División",
-            "round": "Jornada 26",
-            "home": "Getafe",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 3,
-            "awayGoals": 0,
-            "deporResult": "L"
-          },
-          {
-            "date": "2017-09-30",
-            "competition": "Primera División",
-            "round": "Jornada 7",
-            "home": "Deportivo de La Coruña",
-            "away": "Getafe",
-            "homeGoals": 2,
-            "awayGoals": 1,
-            "deporResult": "W"
-          },
-          {
-            "date": "2016-05-01",
-            "competition": "Primera División",
-            "round": "Jornada 36",
-            "home": "Deportivo de La Coruña",
-            "away": "Getafe",
-            "homeGoals": 0,
-            "awayGoals": 2,
-            "deporResult": "L"
-          },
-          {
-            "date": "2015-12-30",
-            "competition": "Primera División",
-            "round": "Jornada 17",
-            "home": "Getafe",
-            "away": "Deportivo de La Coruña",
-            "homeGoals": 0,
-            "awayGoals": 0,
             "deporResult": "D"
           }
         ]
