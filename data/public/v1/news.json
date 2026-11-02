@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T00:11:35Z",
+  "updatedAt": "2026-11-02T04:33:06Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "be60cc2ec3fcb7b5",
+      "title": "Un ataque que se apoye en más de dos apellidos",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/un-ataque-que-se-apoye-en-mas-de-dos-apellidos-888421.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-02T03:15:00Z",
+      "kind": "article",
+      "summary": "Nsongo y Aubameyang capitalizan casi la mitad de los remates del Deportivo y del peligro generado en juego dinámico",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/01/6ae781e27de00.r_d.1386-1228-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "13e2a8058ced0a51",
+      "title": "Altimira amenaza la jerarquía de Ximo Navarro en el lateral del Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/altimira-amenaza-la-jerarquia-de-ximo-navarro-en-el-lateral-del-depor-888111.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-02T03:15:00Z",
+      "kind": "article",
+      "summary": "El notable partido de Altimira ante el Atlético y los 90 minutos de Ximo Navarro en Copa reabren la disputa por el puesto",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4e9682220e.r_d.1642-1403-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "78408f14eabc5a29",
       "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
