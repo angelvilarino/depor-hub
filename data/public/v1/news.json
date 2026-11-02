@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T18:32:59Z",
+  "updatedAt": "2026-11-02T19:07:57Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,48 @@
     }
   ],
   "stories": [
+    {
+      "id": "83ea812e69f3f261",
+      "title": "En directo, Deportivo - Osasuna: Aubameyang vuelve a la convocatoria",
+      "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/02/directo-deportivo-osasuna/01071793643729133831384.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-02T19:05:00Z",
+      "kind": "article",
+      "summary": "La escuadra herculina recibe en Abanca Riazor a los rojillos en busca de romper la racha de seis duelos ligueros consecutivos sin ganar",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/2XgqwNzCHIk9gEo-Lqq0ZqplwXI=/768x/2026/09/23/00121790164202104526464/Foto/h_20260831_133513000.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "aa1384553c5dd4c0",
+      "title": "Ya es oficial: Aubameyang vuelve a la convocatoria del Deportivo 43 días después",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/ya-es-oficial-aubameyang-vuelve-a-la-convocatoria-del-deportivo-43-dias-despues-888609.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-02T19:01:54Z",
+      "kind": "article",
+      "summary": "El gabonés arrancará el Dépor-Osasuna desde el banquillo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/21/6ad9077204eef.r_d.2584-699-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "4b28b42f4d494240",
+      "title": "Directo | Deportivo-Osasuna: sigue la previa, el minuto a minuto y todo lo que ocurra en Riazor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/directo-deportivo-osasuna-sigue-la-previa-el-minuto-a-minuto-y-todo-lo-que-ocurra-en-riazor-888582.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-02T18:37:55Z",
+      "kind": "article",
+      "summary": "El equipo coruñés busca poner fin a una racha de seis jornadas sin ganar en liga (21.00 horas)",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/02/6ae8bff59b774.png",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "ebdee3e5a6d8bd2d",
       "title": "Deportivo de A Coruña - Osasuna: horario, dónde ver en TV y canal del partido de LaLiga EA Sports",
@@ -1202,31 +1244,6 @@
       ]
     },
     {
-      "id": "084e683fb37ee856",
-      "title": "Presentación de Falas Dépor",
-      "url": "https://youtube.com/watch?v=Ozky7PXLueA",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-27T12:54:09Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/Ozky7PXLueA/hqdefault.jpg",
-      "tags": [],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
-          "publishedAt": "2026-10-29T22:32:00Z"
-        },
-        {
-          "sourceId": "riazor",
-          "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
-          "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
-          "publishedAt": "2026-10-29T08:00:38Z"
-        }
-      ]
-    },
-    {
       "id": "fe74cb262e6f6675",
       "title": "Aubameyang se entrena por primera vez con el grupo en el Deportivo",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/aubameyang-entrena-primera-vez-grupo-deportivo/00031793105340659910943.htm",
@@ -1616,6 +1633,20 @@
       "tags": [
         "fichajes",
         "club"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "61fca85e5187d604",
+      "title": "DÉPOR vs CA Osasuna en DIRECTO | Dépor Live by Sotelo",
+      "url": "https://youtube.com/watch?v=d78v9U9aVl8",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-10-20T09:19:19Z",
+      "kind": "video",
+      "summary": "Vive en directo el partido entre el Dépor y el Osasuna perteneciente a la jornada 11 de LaLiga.",
+      "thumbnailUrl": "https://i1.ytimg.com/vi/d78v9U9aVl8/hqdefault.jpg",
+      "tags": [
+        "partido"
       ],
       "alsoIn": []
     }
