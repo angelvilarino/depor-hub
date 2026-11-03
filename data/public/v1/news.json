@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T08:06:30Z",
+  "updatedAt": "2026-11-03T09:04:54Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "50ec0577993a83a7",
+      "title": "Galería | Búscate en las gradas de Riazor durante el Dépor-Osasuna",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/galeria-buscate-en-las-gradas-de-riazor-durante-el-depor-osasuna-888683.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-03T08:38:58Z",
+      "kind": "article",
+      "summary": "Todas las imágenes de la afición del Deportivo en Riazor durante el partido ante Osasuna de la jornada 11 de LaLiga EA Sports",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6ae99c5d0b874.r_d.1549-1129-0.jpg",
+      "tags": [
+        "aficion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3e84f27cb09b9ab1",
       "title": "Adama Traoré, una pesadilla para Arrasate: «Es un especialista y hoy ha sido determinante»",
