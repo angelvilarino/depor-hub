@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T10:04:14Z",
+  "updatedAt": "2026-11-03T10:33:14Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "ab9b914b021e0894",
+      "title": "Jesús de Miguel, un coleccionista de ascensos que tuvo en el Dépor a su rival más recurrente",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/rivales/2026-11-03/jesus-de-miguel-un-coleccionista-de-ascensos-que-tuvo-en-el-depor-a-su-rival-mas-recurrente-888688.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-03T10:26:32Z",
+      "kind": "article",
+      "summary": "El delantero fallecido de forma trágica fue autor de uno de los goles del playoff blanquiazul ante el Castellón en la 2022-23",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6ae9afd9a5dd0.r_d.1525-1172-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "1f64db628238a89d",
       "title": "1×1: Vota a los jugadores y a Antonio Hidalgo en el Deportivo – Osasuna",
