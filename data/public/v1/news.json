@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T12:06:32Z",
+  "updatedAt": "2026-11-03T14:04:38Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "6a79f59bc4e587b5",
+      "title": "‘No Aubameyang, no party’ para el Deportivo: «Es alguien especial para nosotros»",
+      "url": "https://riazor.org/no-aubameyang-no-party-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-03T14:00:11Z",
+      "kind": "article",
+      "summary": "El Deportivo consiguió romper su mala racha de seis jornadas sin ganar coincidiendo con la vuelta de Aubameyang tras su lesión. La entrada…",
+      "thumbnailUrl": null,
+      "tags": [
+        "lesiones"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3505d984728d0c2e",
       "title": "Cinco apuntes del Dépor-Osasuna: un plan ajustable y un Adama en la manga",
