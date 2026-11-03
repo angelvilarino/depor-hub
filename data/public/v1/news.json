@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T15:04:36Z",
+  "updatedAt": "2026-11-03T17:04:35Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "275475cec3a0db4d",
+      "title": "En vídeo: la charla de Roberto Cabellud y un frustrado Lucas Noubi tras el Dépor-Osasuna",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/en-video-la-charla-de-roberto-cabellud-y-un-frustrado-lucas-noubi-tras-el-depor-osasuna-888697.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-03T16:47:04Z",
+      "kind": "article",
+      "summary": "El preparador físico Roberto Cabellud y Lucas Noubi mantuvieron una charla sobre el césped de Riazor tras el Dépor-Osasuna",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/03/FCvG6F8Cdsr_jxKob774P.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "6a79f59bc4e587b5",
       "title": "‘No Aubameyang, no party’ para el Deportivo: «Es alguien especial para nosotros»",
