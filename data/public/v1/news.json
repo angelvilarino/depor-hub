@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T09:04:54Z",
+  "updatedAt": "2026-11-03T10:04:14Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "1f64db628238a89d",
+      "title": "1×1: Vota a los jugadores y a Antonio Hidalgo en el Deportivo – Osasuna",
+      "url": "https://riazor.org/1x1-vota-jugadores-hidalgo-deportivo-osasuna",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-03T10:00:35Z",
+      "kind": "article",
+      "summary": "El Deportivo remontó ante Osasuna gracias a los goles de Mario Soriano y Nsongo Bil. Vota a los jugadores y a Antonio Hidalgo en este…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "50ec0577993a83a7",
       "title": "Galería | Búscate en las gradas de Riazor durante el Dépor-Osasuna",
