@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T10:33:14Z",
+  "updatedAt": "2026-11-03T12:06:32Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "3505d984728d0c2e",
+      "title": "Cinco apuntes del Dépor-Osasuna: un plan ajustable y un Adama en la manga",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/cinco-apuntes-del-depor-osasuna-un-plan-ajustable-y-un-adama-en-la-manga-888687.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-03T11:54:15Z",
+      "kind": "article",
+      "summary": "Repasamos las cinco claves de la victoria del Deportivo ante Osasuna en la jornada 11 de LaLiga EA Sports",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6ae9abc76cc43.r_d.1455-1439-0.jpg",
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "ab9b914b021e0894",
       "title": "Jesús de Miguel, un coleccionista de ascensos que tuvo en el Dépor a su rival más recurrente",
@@ -255,23 +270,22 @@
     },
     {
       "id": "13547502dccb3846",
-      "title": "Crónica | El Dépor vuelve a ganar y a sonreír con Aubameyang (2-1)",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/cronica-el-depor-vuelve-a-ganar-y-a-sonreir-con-aubameyang-2-888579.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-02T22:01:04Z",
+      "title": "El Deportivo vuelve a ganar en el regreso de Aubameyang",
+      "url": "https://marca.com/futbol/primera-division/cronica/2026/11/02/deportivo-vuelve-ganar-regreso-aubameyang.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-02T22:01:57Z",
       "kind": "article",
-      "summary": "El delantero gabonés regresó de su lesión y tuvo una participación decisiva en la remontada",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/02/6ae8f2024c61c.jpeg",
+      "summary": "La milagrosa recuperación del gabonés impulsa al Deportivo a una sufrida remontada ante Osasuna con goles de Soriano y Nsongo",
+      "thumbnailUrl": null,
       "tags": [
-        "partido",
-        "lesiones"
+        "partido"
       ],
       "alsoIn": [
         {
-          "sourceId": "marca",
-          "title": "El Deportivo vuelve a ganar en el regreso de Aubameyang",
-          "url": "https://marca.com/futbol/primera-division/cronica/2026/11/02/deportivo-vuelve-ganar-regreso-aubameyang.html",
-          "publishedAt": "2026-11-02T22:01:57Z"
+          "sourceId": "dxt-campeon",
+          "title": "Crónica | El Dépor vuelve a ganar y a sonreír con Aubameyang (2-1)",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/cronica-el-depor-vuelve-a-ganar-y-a-sonreir-con-aubameyang-2-888579.html",
+          "publishedAt": "2026-11-02T22:01:04Z"
         }
       ]
     },
