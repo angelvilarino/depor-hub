@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T18:34:44Z",
+  "updatedAt": "2026-11-03T20:33:30Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,20 @@
   ],
   "stories": [
     {
+      "id": "8b7fb35e300154ed",
+      "title": "Victoria balsámica ante el Osasuna que vuelve a instaurar la ilusión inicial",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/03/victoria-balsamica-ante-osasuna-vuelve-instaurar-ilusion-inicial/00031793734864535653775.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-03T19:46:00Z",
+      "kind": "article",
+      "summary": "La recuperación de Aubameyang multiplica la amenaza ofensiva del Dépor",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/-9Jp4FQMX9ufQTutCYQAV5HWN-0=/768x/2026/11/03/00121793734623659937410/Foto/i_20261102_231936002.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "275475cec3a0db4d",
       "title": "En vídeo: la charla de Roberto Cabellud y un frustrado Lucas Noubi tras el Dépor-Osasuna",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/en-video-la-charla-de-roberto-cabellud-y-un-frustrado-lucas-noubi-tras-el-depor-osasuna-888697.html",
@@ -63,11 +77,18 @@
       "publishedAt": "2026-11-03T14:00:11Z",
       "kind": "article",
       "summary": "El Deportivo consiguió romper su mala racha de seis jornadas sin ganar coincidiendo con la vuelta de Aubameyang tras su lesión. La entrada…",
-      "thumbnailUrl": null,
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/oXL6cJifPJCkdLoJqJcRYMvyLSM=/768x/2026/11/03/00121793734862358832282/Foto/j_20261103_203505000.jpg",
       "tags": [
         "lesiones"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "Aubameyang-Adama, una conexión especial para el Deportivo",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/03/auba/00031793734413213948950.htm",
+          "publishedAt": "2026-11-03T19:45:00Z"
+        }
+      ]
     },
     {
       "id": "3505d984728d0c2e",
