@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T04:33:18Z",
+  "updatedAt": "2026-11-03T06:07:00Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "3167cd2d4ff5ac79",
+      "title": "La conversación de Luismi y Soriano antes del gol: «Le he dicho que mirase la de tocarla y tirar rápido porque Osasuna no estaba atento»",
+      "url": "https://riazor.org/conversacion-luismi-soriano-gol-tocarla-tirar",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-03T06:00:00Z",
+      "kind": "article",
+      "summary": "Mario Soriano, en zona mixta, desgranó como fue la conversación que tuvo con Luismi antes de marcar gol en la victoria del Deportivo ante…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "517d76bfe26c81bc",
       "title": "El Deportivo regala un crédito extra a Leo Román",
