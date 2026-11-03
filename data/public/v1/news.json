@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T00:10:27Z",
+  "updatedAt": "2026-11-03T04:33:18Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "517d76bfe26c81bc",
+      "title": "El Deportivo regala un crédito extra a Leo Román",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/el-deportivo-regala-un-credito-extra-a-leo-roman-888677.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-03T04:00:00Z",
+      "kind": "article",
+      "summary": "Un nuevo error del portero conduce a un gol en contra, pero el equipo remonta y arropa al ibicenco",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6ae920cb7f432.r_d.1417-1123-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "1753eee4b59137e0",
+      "title": "Aubameyang y Adama, una amistad que ya da puntos en el Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/aubameyang-y-adama-una-amistad-que-ya-da-puntos-en-el-depor-888678.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-03T04:00:00Z",
+      "kind": "article",
+      "summary": "Los dos atacantes, que ya coincidieron en el Barça, participaron por primera vez de forma conjunta en un gol blanquiazul, en el 2-1 de Bil…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/03/6ae91ffaa0133.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "da42e6660c979001",
       "title": "Rueda de prensa de Antonio Hidalgo tras el RC Deportivo 2 - 1 CA Osasuna",
