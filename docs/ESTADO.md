@@ -110,7 +110,7 @@ python -m depor_hub.cli news --offline
 
 Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda expandible, segmento Todo/Artículos/Vídeos, chips de grupo, hoja de fuentes y etiquetas, «Limpiar (n)», tarjeta con monograma/miniatura, despliegue de `+N medios`, abrir artículo y vídeo, marcar leídas con confirmación y deshacer, y Home con cinco titulares. Repetir con modo avión (caché visible con banner), con `news.json` ausente y con filtros que no dejen resultados.
 
-## H7 — Club, ajustes y acerca de (implementado, ADR 0025)
+## H7 — Club, ajustes y acerca de (implementado, ADR 0026)
 
 - **Contrato `club.json`:** nuevo objeto raíz `{ updatedAt, identity, anthems, crests, kits, stadium, tickets, museum, trainingCenter, board, sponsors, titles, rivalries, facts, links }` (32 KB). Pydantic → JSON Schema → Zod con `default(null)`/`default([])`. Lo desconocido queda en `null`; **no hay campos ni distintivos de fuente, confianza o verificación** en el contrato ni en la interfaz. `club.json` se valida como el resto de ficheros, pero se excluye del `dataHash` deportivo (`SPORTS_FILES`): un cambio editorial no invalida la caché de clasificación/plantilla/partidos.
 - **Aforo coherente:** `Capacity.total` se valida contra la suma de `breakdown` en Pydantic y hay prueba equivalente en la app. Se publica **33.225** = 32.490 gradas + 141 palco de honor + 385 palcos VIP + 113 Área 1906 + 96 medios. No se suman zonas de pie ni cifras no documentadas.

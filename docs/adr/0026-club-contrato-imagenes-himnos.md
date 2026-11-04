@@ -1,4 +1,4 @@
-# ADR 0025 — Club: contrato, imágenes locales e himnos
+# ADR 0026 — Club: contrato, imágenes locales e himnos
 
 - **Estado:** aceptado
 - **Fecha:** 2026-11-02

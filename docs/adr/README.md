@@ -7,3 +7,4 @@ Las decisiones numeradas conservan el orden histórico de asignación. El númer
 | 0003–0012 | Esquemas, datos, calendario, enriquecimiento y fichas |
 | 0014–0024 | Entrenador, equipo, inicio, noticias, rivales e identidad |
 | [0025](0025-publicacion-y-compatibilidad.md) | Publicación fiable, cadencias y compatibilidad |
+| [0026](0026-club-contrato-imagenes-himnos.md) | Club: contrato, imágenes locales e himnos |
