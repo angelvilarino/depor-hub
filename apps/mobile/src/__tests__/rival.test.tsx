@@ -11,7 +11,9 @@ const read = (name: string): unknown => JSON.parse(fs.readFileSync(path.join(dat
 const metaData = Meta.parse(read('meta.json'));
 const standingsData = Standings.parse(read('standings.json'));
 const baseRivals = Rivals.parse(read('rivals.json'));
-let mockTeamId = String(baseRivals.rivals[0]!.team.id);
+// Se elige un rival con histórico real para no depender del orden del JSON.
+const featuredRival = baseRivals.rivals.find((rival) => rival.headToHead !== null) ?? baseRivals.rivals[0]!;
+let mockTeamId = String(featuredRival.team.id);
 let mockMeta: unknown;
 let mockRivals: unknown;
 let mockStandings: unknown;
@@ -48,11 +50,15 @@ beforeEach(() => {
   mockStandings = query(standingsData);
   mockRivals = query({
     ...baseRivals,
-    rivals: baseRivals.rivals.map((rival, index) => index === 0 ? {
-      ...rival,
-      coach: 'Entrenador de prueba',
-      keyPlayers: [{ id: 99, name: 'Jugador individual oculto', goals: 99, assists: 20, playedMatches: 30 }],
-    } : rival),
+    rivals: baseRivals.rivals.map((rival) =>
+      rival.team.id === featuredRival.team.id
+        ? {
+            ...rival,
+            coach: 'Entrenador de prueba',
+            keyPlayers: [{ id: 99, name: 'Jugador individual oculto', goals: 99, assists: 20, playedMatches: 30 }],
+          }
+        : rival,
+    ),
   });
 });
 

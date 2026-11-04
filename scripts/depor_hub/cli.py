@@ -160,6 +160,25 @@ def _bdfutbol_ids(path: Path) -> dict[int, str]:
     return {int(team_id): str(bdf_id) for team_id, bdf_id in teams.items()}
 
 
+def _keep_previous_rivals(out_dir: Path, with_history: int) -> bool:
+    """Evita publicar un rivals.json sin histórico encima de uno que sí lo tenía.
+
+    BDFutbol puede cambiar el HTML o bloquear una pasada: publicar 19 rivales con
+    `headToHead=null` borraría datos verificados. En ese caso se conserva el fichero
+    anterior y el comando termina con error para que el workflow lo señale.
+    """
+    if with_history > 0:
+        return False
+    path = out_dir / "rivals.json"
+    if not path.exists():
+        return False
+    try:
+        previous = m.Rivals.model_validate_json(path.read_text(encoding="utf-8"))
+    except ValueError:
+        return False
+    return any(rival.head_to_head is not None for rival in previous.rivals)
+
+
 def cmd_rivals(args: argparse.Namespace) -> int:
     """Publica rivals.json: histórico BDFutbol, entrenador y goleadores por rival."""
     out_dir = Path(args.out)
@@ -209,8 +228,15 @@ def cmd_rivals(args: argparse.Namespace) -> int:
         now,
     )
     digest = t.content_hash({"rivals.json": t.dump(data)})
-    changed = write_optional(out_dir, "rivals.json", t.dump(data), m.Rivals, force=args.force)
     with_history = sum(1 for rival in data.rivals if rival.head_to_head)
+    if _keep_previous_rivals(out_dir, with_history) and not args.force:
+        print(
+            f"ERROR: rivals.json tendría 0/{len(data.rivals)} con histórico; "
+            "se conserva la publicación anterior. Usa --force para sobrescribir.",
+            file=sys.stderr,
+        )
+        return 2
+    changed = write_optional(out_dir, "rivals.json", t.dump(data), m.Rivals, force=args.force)
     print(
         f"rivals={len(data.rivals)} con_historico={with_history} "
         f"changed={'true' if changed else 'false'} hash={digest}"

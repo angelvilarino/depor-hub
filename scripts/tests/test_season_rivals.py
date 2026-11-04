@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import json
+
 import pytest
 
+from depor_hub import cli
 from depor_hub import models as m
 from depor_hub import rivals as r
 from depor_hub import source_models as s
@@ -248,3 +251,37 @@ def test_build_rivals_without_sources_keeps_nulls():
     assert rival.key_players == []
     assert rival.head_to_head is None
     assert rival.bdfutbol_id is None
+
+
+def test_keep_previous_rivals_blocks_publishing_zero_history(tmp_path):
+    head = m.HeadToHead(
+        source_url="https://example.test/vs",
+        played=1,
+        won=0,
+        drawn=0,
+        lost=1,
+        goals_for=0,
+        goals_against=1,
+    )
+    previous = m.Rivals(
+        updated_at=NOW,
+        season="2026-27",
+        rivals=[m.Rival(team=team_ref(TEAM_B), head_to_head=head)],
+    )
+    path = tmp_path / "rivals.json"
+    path.write_text(json.dumps(t.dump(previous), ensure_ascii=False), encoding="utf-8")
+
+    assert cli._keep_previous_rivals(tmp_path, 0) is True
+    assert cli._keep_previous_rivals(tmp_path, 1) is False
+
+    path.write_text(
+        json.dumps(
+            t.dump(m.Rivals(updated_at=NOW, season="2026-27", rivals=[m.Rival(team=team_ref(TEAM_B))])),
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    assert cli._keep_previous_rivals(tmp_path, 0) is False
+
+    missing = tmp_path / "sin-datos"
+    assert cli._keep_previous_rivals(missing, 0) is False
