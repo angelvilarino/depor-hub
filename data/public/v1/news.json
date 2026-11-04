@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T12:34:23Z",
+  "updatedAt": "2026-11-04T17:04:26Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "890a6613ddc51187",
+      "title": "Así remontó el Dépor ante Osasuna: jugar por fuera y el caos como herramienta",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/asi-remonto-el-depor-ante-osasuna-jugar-por-fuera-y-el-caos-como-herramienta-889003.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T17:02:32Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul firmó una gran primera mitad a través de su buena circulación ofensiva, pero fue el juego exterior el que le dio el…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/04/6aeb64afdaaae.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "2093624e482a14e6",
       "title": "Galería de imágenes del Deportivo – Osasuna: Por fin salió cara",
