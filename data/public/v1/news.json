@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T12:06:25Z",
+  "updatedAt": "2026-11-04T12:34:23Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "2093624e482a14e6",
+      "title": "Galería de imágenes del Deportivo – Osasuna: Por fin salió cara",
+      "url": "https://riazor.org/galeria-imagenes-deportivo-osasuna-fin-salio-cara",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-04T12:30:27Z",
+      "kind": "article",
+      "summary": "Repasamos en imágenes la remontada del Deportivo ante Osasuna. Mario Soriano y Nsongo Bil marcaron para dejar los tres puntos en Riazor…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "b4575374cdd31a31",
+      "title": "El día en el que Angeliño fue el cuarto lateral izquierdo del Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/el-dia-en-el-que-angelino-fue-el-cuarto-lateral-izquierdo-del-depor-888911.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T12:23:23Z",
+      "kind": "article",
+      "summary": "Ante Osasuna, Hidalgo utilizó a tres futbolistas en su posición antes que al jugador de Coristanco que apenas suma 69 minutos en Liga",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeafc0303285.r_d.1496-1153-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "84a281e950b92b8f",
       "title": "Domingos Duarte alucinó con Riazor: \"¿Cómo puede tener un equipo en Segunda un estadio así?\"",
