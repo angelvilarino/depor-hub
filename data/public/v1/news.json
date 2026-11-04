@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T17:04:26Z",
+  "updatedAt": "2026-11-04T18:05:07Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,48 @@
     }
   ],
   "stories": [
+    {
+      "id": "580ead80ada952f9",
+      "title": "Once jornadas sin una portería a cero: la asignatura pendiente del Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/once-jornadas-sin-una-porteria-a-cero-la-asignatura-pendiente-del-depor-889020.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T17:58:59Z",
+      "kind": "article",
+      "summary": "La última vez que el equipo coruñés protagonizó una serie peor en Primera fue en la 2015-16, con 19 jornadas seguidas encajando",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb6ef72753e.r_d.1673-1199-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "edc653c567ca6af1",
+      "title": "«Aubameyang a sus 37 años devora cada momento que está viviendo en A Coruña»: las claves de Manu Sánchez tras el Deportivo – Osasuna",
+      "url": "https://riazor.org/aubameyang-devora-momento-claves-deportivo-osasuna",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-04T17:41:32Z",
+      "kind": "article",
+      "summary": "El extécnico del Dépor ABANCA analiza las claves de la victoria del Deportivo ante Osasuna para romper la mala racha en liga. La entrada…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "bb909bec8c96e9f1",
+      "title": "Iker Gil ya tiene su primera recompensa",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-04/iker-gil-ya-tiene-su-primera-recompensa-888963.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T17:34:36Z",
+      "kind": "article",
+      "summary": "Volvió a Abegondo en 2025 para jugar en el Juvenil A, pese a contar con propuestas de otros clubes, y en Zamora marcó su primer gol con el…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb455168b57.r_d.544-714-0.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "890a6613ddc51187",
       "title": "Así remontó el Dépor ante Osasuna: jugar por fuera y el caos como herramienta",
