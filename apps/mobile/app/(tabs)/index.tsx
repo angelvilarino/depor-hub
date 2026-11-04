@@ -57,7 +57,7 @@ export default function Home() {
   const teamId = meta.data?.team.id ?? null;
 
   const next = useMemo(() => selectNextMatch(matches), [matches]);
-  const last = useMemo(() => selectLastResult(matches), [matches]);
+  const last = useMemo(() => selectLastResult(matches, now), [matches, now]);
   const postponed = useMemo(() => selectPostponedNotice(matches), [matches]);
   const form = useMemo(() => recentForm(matches), [matches]);
   const formMatches = useMemo(() => recentFormMatches(matches, 100), [matches]);

@@ -140,6 +140,12 @@ describe('lógica de la Home', () => {
       match(3, '2026-11-05T20:00:00Z', 'POSTPONED'),
     ];
     expect(selectLastResult(matches)?.id).toBe(2);
+    expect(
+      selectLastResult(
+        [...matches, match(4, '2026-12-01T20:00:00Z', 'FINISHED', depor, osasuna, [3, 0])],
+        Date.parse('2026-10-25T10:00:00Z'),
+      )?.id,
+    ).toBe(2);
     expect(selectLastResult([])).toBeNull();
   });
 

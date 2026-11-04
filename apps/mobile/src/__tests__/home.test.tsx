@@ -89,7 +89,7 @@ beforeAll(async () => {
 });
 
 beforeEach(() => {
-  mockNow = Date.parse('2026-10-25T10:00:00Z');
+  mockNow = Date.parse('2026-11-03T10:00:00Z');
   mockMeta = query(metaData);
   mockStandings = query(standingsData);
   mockFixtures = query(fixturesData);
@@ -104,25 +104,27 @@ describe('Home', () => {
     await render(<Home />);
 
     expect(screen.getByText('Resultado final')).toBeTruthy();
-    expect(screen.getAllByText('1–0').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('2–1').length).toBeGreaterThan(0);
 
     expect(screen.getByText('Próximo partido')).toBeTruthy();
-    expect(screen.getByText(/Jornada 11 · Primera División/)).toBeTruthy();
-    expect(screen.getAllByText('Osasuna').length).toBeGreaterThan(0);
+    expect(screen.getByText(/Jornada 12 · Primera División/)).toBeTruthy();
+    expect(screen.getAllByText('Espanyol').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Local').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Visitante').length).toBeGreaterThan(0);
-    expect(screen.getByLabelText(/Lunes 2 nov\. 21:00/)).toBeTruthy();
-    expect(screen.getByText('Estadio Abanca-Riazor')).toBeTruthy();
+    expect(screen.getByLabelText(/Sábado 7 nov\. 16:15/)).toBeTruthy();
+    expect(screen.getByText('RCDE Stadium')).toBeTruthy();
 
     expect(screen.getByText('El rival')).toBeTruthy();
-    expect(screen.getByText('Luis Ramis')).toBeTruthy();
+    expect(screen.getByText('Manolo González')).toBeTruthy();
     expect(screen.getByText('Histórico')).toBeTruthy();
-    expect(screen.getByLabelText(/80 partidos, 38 victorias, 14 empates, 28 derrotas/)).toBeTruthy();
+    expect(
+      screen.getByLabelText(/104 partidos, 35 victorias, 28 empates, 41 derrotas/),
+    ).toBeTruthy();
     expect(screen.queryByText('Qué se juega')).toBeNull();
 
     expect(screen.getByText('La temporada')).toBeTruthy();
-    expect(screen.getByText('2-5-3')).toBeTruthy();
-    expect(screen.getByText('13-13')).toBeTruthy();
+    expect(screen.getByText('3-5-3')).toBeTruthy();
+    expect(screen.getByText('15-14')).toBeTruthy();
     expect(screen.getByText('G victoria · E empate · P derrota')).toBeTruthy();
     expect(screen.getByText('Evolución de la posición')).toBeTruthy();
 

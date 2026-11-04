@@ -67,9 +67,17 @@ export function selectPostponedNotice(matches: MatchT[]): MatchT | null {
   return Date.parse(postponed.utcDate) <= Date.parse(next.utcDate) ? postponed : null;
 }
 
-/** El último resultado es el más reciente de splitMatches().results. */
-export function selectLastResult(matches: MatchT[]): MatchT | null {
-  return splitMatches(matches).results[0] ?? null;
+/**
+ * El último resultado es el más reciente de splitMatches().results que ya empezó.
+ * Un FINISHED con hora futura (dato erróneo o de otra temporada) no es un resultado.
+ */
+export function selectLastResult(
+  matches: MatchT[],
+  nowMs = Number.POSITIVE_INFINITY,
+): MatchT | null {
+  return (
+    splitMatches(matches).results.find((match) => Date.parse(match.utcDate) <= nowMs) ?? null
+  );
 }
 
 /**
