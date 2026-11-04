@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T19:33:31Z",
+  "updatedAt": "2026-11-04T21:04:26Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "9f9eab6cd01c0396",
+      "title": "El caño de Miguel Loureiro recibe su homenaje en el vestuario del Dépor: \"La samba de Loureirinho\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/el-cano-de-miguel-loureiro-recibe-su-homenaje-en-el-vestuario-del-depor-la-samba-de-loureirinho-889090.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T20:32:57Z",
+      "kind": "article",
+      "summary": "Mario Soriano reveló una publicación con el detalle de los jugadores del Dépor a Miguel Loureiro tras su regate ante Osasuna",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb92ab15fa3.r_d.1573-916-0.jpg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "866d1a361502a58b",
       "title": "Vuelve Auba y Casadó da un paso adelante: acelera en su recuperación y ya se entrena con el grupo",
