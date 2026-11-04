@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T04:04:57Z",
+  "updatedAt": "2026-11-04T04:33:24Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,30 @@
     }
   ],
   "stories": [
+    {
+      "id": "9165fc302232cb1e",
+      "title": "Mario Soriano, el arquitecto del Deportivo que ahora también tira 'a trallón'",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/mario-soriano-el-arquitecto-del-deportivo-que-ahora-tambien-tira-a-trallon-888808.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T04:00:00Z",
+      "kind": "article",
+      "summary": "Abrió el camino de la remontada ante Osasuna con un disparo desde fuera del área, un arte que está convirtiendo en especialidad",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6aea245ba0f01.r_d.1709-1294-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "8555c5f1c77efbe3",
+      "title": "Eder Sarabia debutará con el Espanyol ante el Dépor desde la lejanía",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/rivales/2026-11-04/eder-sarabia-debutara-con-el-espanyol-ante-el-depor-desde-la-lejania-888850.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T04:00:00Z",
+      "kind": "article",
+      "summary": "El técnico vasco no podrá sentarse en el banquillo en el encuentro del próximo sábado",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6aea3976ef74c.r_d.1776-681-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "8b7fb35e300154ed",
       "title": "Victoria balsámica ante el Osasuna que vuelve a instaurar la ilusión inicial",
