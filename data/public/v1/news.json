@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T18:05:07Z",
+  "updatedAt": "2026-11-04T19:33:31Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,30 @@
     }
   ],
   "stories": [
+    {
+      "id": "866d1a361502a58b",
+      "title": "Vuelve Auba y Casadó da un paso adelante: acelera en su recuperación y ya se entrena con el grupo",
+      "url": "https://riazor.org/vuelve-auba-casado-recuperacion-entrena-grupo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-04T19:30:16Z",
+      "kind": "article",
+      "summary": "Marc Casadó completó el entrenamiento de este martes a ritmo normal. Ede y Eddahchouri son los dos únicos deportivistas que se mantienen…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "ae019ee747f95cc6",
+      "title": "Así fue el Dépor 2 -1 CA Osasuna desde dentro | INSIDE DÉPOR",
+      "url": "https://youtube.com/watch?v=e-Gtbl59hg8",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-04T19:28:19Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i2.ytimg.com/vi/e-Gtbl59hg8/hqdefault.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "580ead80ada952f9",
       "title": "Once jornadas sin una portería a cero: la asignatura pendiente del Dépor",
