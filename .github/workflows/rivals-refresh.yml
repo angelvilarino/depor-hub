@@ -65,8 +65,12 @@ jobs:
           fi
           git commit -m "data(rivals): refresh $(date -u +%Y-%m-%dT%H:%MZ)"
           pushed=false
-          for attempt in 1 2 3; do
-            git pull --rebase origin main
+          for attempt in 1 2 3 4 5; do
+            if ! git pull --rebase origin main; then
+              git rebase --abort 2>/dev/null || true
+              sleep "$((attempt * 2))"
+              continue
+            fi
             if git push origin HEAD:main; then pushed=true; break; fi
             sleep "$((attempt * 2))"
           done
@@ -77,6 +81,9 @@ jobs:
     needs: refresh
     if: needs.refresh.outputs.changed == 'true'
     runs-on: ubuntu-latest
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     timeout-minutes: 10
     permissions:
       contents: read

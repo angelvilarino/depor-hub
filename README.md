@@ -43,6 +43,7 @@ python -m depor_hub.cli social                      # regenera social.json desde
 python -m depor_hub.cli club                        # publica club.json y docs/kits_coverage.md
 python -m depor_hub.cli club-images                 # descarga y normaliza las imágenes locales del club
 python -m depor_hub.cli club-images --offline       # comprueba las imágenes ya presentes sin red
+python -m depor_hub.cli status                      # resume la salud del pipeline (ADR 0027)
 ```
 
 El enriquecimiento usa BDFutbol (carrera, temporadas, totales, peso y partidos), Wikipedia ES/GL/EN (dorsal, contrato, cesión, altura), Wikidata (lugar, altura, pie, dorsal y redes) y la ficha oficial del club (altura, pie, foto y redes; autoritativa cuando existe). Cada dato va con fuente y confianza; los conflictos quedan visibles en `data/manual/squad_enrich.proposed.yml`. La foto de perfil es siempre la que publica el club, enlazada con crédito editorial y sin guardar binarios. Las cesiones de salida (`loanTo`) y las redes que no publica ninguna fuente automática viven en `data/manual/squad_overrides.yml` (`--overrides`).
@@ -75,4 +76,4 @@ python -m depor_hub.cli club                # idempotente: la segunda pasada da 
 Ver `.env.example`. El token de football-data.org vive solo en GitHub Secrets (`FOOTBALL_DATA_TOKEN`). `CONTACT_EMAIL` se configura como variable de Actions para el User-Agent de las peticiones.
 
 ## Estado
-H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario), H4 (plantilla + ficha enriquecida, rediseño de Equipo/ficha, escudos de clubes, entrenador y cuerpo técnico), H5.3 (Inicio Cartel + Prensa, ficha de rival e historias agrupadas), H6 (noticias, vídeos y redes curadas) y H7 (club, ajustes y acerca de) hechos. Siguiente: H8 (pulido). Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/).
+H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario), H4 (plantilla + ficha enriquecida, rediseño de Equipo/ficha, escudos de clubes, entrenador y cuerpo técnico), H5.3 (Inicio Cartel + Prensa, ficha de rival e historias agrupadas), H6 (noticias, vídeos y redes curadas) y H7 (club, ajustes y acerca de) hechos. Fase 2: H0.1 (sincronización con `main`) y H0.2 (salud del pipeline y `status.json`) hechos. Siguiente: Hito 1 (ciclo de partido). Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/) y operación en [`docs/operations.md`](docs/operations.md).

@@ -480,7 +480,8 @@ def cmd_club_images(args: argparse.Namespace) -> int:
 def cmd_schemas(args: argparse.Namespace) -> int:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    for name, model in {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}.items():
+    models = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES, **m.STATUS_FILES}
+    for name, model in models.items():
         schema = model.model_json_schema(by_alias=True)
         target = out / name.replace(".json", ".schema.json")
         target.write_text(json.dumps(schema, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -498,6 +499,152 @@ def cmd_validate(args: argparse.Namespace) -> int:
         model.model_validate_json((directory / name).read_text(encoding="utf-8"))
     print(f"Validación Pydantic correcta: {len(models)} JSON en {directory}")
     return 0
+
+
+# Orden e importancia de los ficheros que resume status.json. Los opcionales
+# pueden faltar sin marcar el pipeline como roto (la app ya tolera su 404).
+_STATUS_DATA_FILES: tuple[tuple[str, bool], ...] = (
+    ("meta.json", True),
+    ("standings.json", True),
+    ("fixtures.json", True),
+    ("squad.json", True),
+    ("season.json", True),
+    ("club.json", False),
+    ("news.json", False),
+    ("rivals.json", False),
+    ("social.json", False),
+)
+
+_STATUS_WORKFLOWS: tuple[tuple[str, str], ...] = (
+    ("Data refresh", "data-refresh.yml"),
+    ("News refresh", "news-refresh.yml"),
+    ("Rivals refresh", "rivals-refresh.yml"),
+)
+
+
+def _age_minutes(value: object, now: datetime) -> int | None:
+    if not isinstance(value, str):
+        return None
+    try:
+        captured = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if captured.tzinfo is None:
+        captured = captured.replace(tzinfo=UTC)
+    return max(0, int((now - captured).total_seconds() // 60))
+
+
+def _status_file(path: Path, name: str, required: bool, now: datetime) -> m.StatusFile:
+    if not path.is_file():
+        return m.StatusFile(
+            name=name,
+            present=False,
+            detail="no publicado" if not required else "falta un fichero requerido",
+        )
+    try:
+        body = json.loads(path.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        return m.StatusFile(name=name, present=True, detail="JSON ilegible")
+    if not isinstance(body, dict):
+        return m.StatusFile(name=name, present=True, detail="JSON inesperado")
+    detail = None
+    updated_at = body.get("updatedAt")
+    if not isinstance(updated_at, str):
+        detail = "sin updatedAt"
+        updated_at = None
+    elif _age_minutes(updated_at, now) is None:
+        detail = "updatedAt inválido"
+        updated_at = None
+    if name == "news.json":
+        stories = body.get("stories")
+        sources = body.get("sources")
+        if isinstance(stories, list) and isinstance(sources, list):
+            detail = f"{len(stories)} historias · {len(sources)} fuentes"
+    if name == "fixtures.json":
+        matches = body.get("matches")
+        if isinstance(matches, list):
+            detail = f"{len(matches)} partidos"
+    if name == "rivals.json":
+        rivals = body.get("rivals")
+        if isinstance(rivals, list):
+            with_history = sum(
+                1 for rival in rivals if isinstance(rival, dict) and rival.get("headToHead")
+            )
+            detail = f"{len(rivals)} rivales · {with_history} con histórico"
+    return m.StatusFile(
+        name=name,
+        present=True,
+        updated_at=updated_at,
+        age_minutes=_age_minutes(updated_at, now),
+        detail=detail,
+    )
+
+
+def _status_workflows(runs: list[dict[str, object]]) -> list[m.StatusWorkflow]:
+    out: list[m.StatusWorkflow] = []
+    for name, filename in _STATUS_WORKFLOWS:
+        candidates = [
+            run
+            for run in runs
+            if str(run.get("path", "")).endswith(f"/{filename}")
+            and run.get("conclusion") is not None
+        ]
+        latest = max(candidates, key=lambda run: str(run.get("updated_at", "")), default=None)
+        out.append(
+            m.StatusWorkflow(
+                name=name,
+                file=filename,
+                conclusion=str(latest["conclusion"]) if latest else None,
+                updated_at=str(latest["updated_at"]) if latest and latest.get("updated_at") else None,
+                url=str(latest["html_url"]) if latest and latest.get("html_url") else None,
+            )
+        )
+    return out
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    """Resume el estado publicado y la última pasada de cada workflow (ADR 0027)."""
+    now = datetime.now(UTC)
+    data_dir = Path(args.data)
+    files = [
+        _status_file(data_dir / name, name, required, now)
+        for name, required in _STATUS_DATA_FILES
+    ]
+    runs: list[dict[str, object]] = []
+    if args.runs:
+        raw = json.loads(Path(args.runs).read_text(encoding="utf-8"))
+        value = raw.get("workflow_runs") if isinstance(raw, dict) else raw
+        if isinstance(value, list):
+            runs = [run for run in value if isinstance(run, dict)]
+    workflows = _status_workflows(runs) if runs else []
+
+    # Un fichero opcional ausente no rompe la app; los requeridos sí.
+    required_missing = any(
+        not file.present and name not in {"club.json", "news.json", "rivals.json", "social.json"}
+        for file, (name, _) in zip(files, _STATUS_DATA_FILES, strict=True)
+    )
+    workflows_ok = not workflows or all(workflow.conclusion == "success" for workflow in workflows)
+    status = m.Status(
+        updated_at=now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        commit=args.commit or None,
+        ok=not required_missing and workflows_ok,
+        files=files,
+        workflows=workflows,
+    )
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    temp = out.with_name(f".{out.name}.tmp")
+    temp.write_text(
+        json.dumps(t.dump(status), ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    m.Status.model_validate_json(temp.read_text(encoding="utf-8"))
+    os.replace(temp, out)
+    print(
+        f"status ok={'true' if status.ok else 'false'} "
+        f"files={len(files)} workflows={len(workflows)} out={out}"
+    )
+    return 0 if status.ok or args.soft else 1
+
 
 
 CSV_FIELDS = [
@@ -826,6 +973,17 @@ def main(argv: list[str] | None = None) -> int:
     sp = sub.add_parser("validate", help="Valida todos los JSON públicos con Pydantic")
     sp.add_argument("--data", default="data/public/v1")
     sp.set_defaults(fn=cmd_validate)
+    sp = sub.add_parser("status", help="Genera status.json para la rama status (ADR 0027)")
+    sp.add_argument("--data", default="data/public/v1")
+    sp.add_argument("--runs", default=None, help="JSON de /actions/runs con workflow_runs")
+    sp.add_argument("--out", default="status.json")
+    sp.add_argument("--commit", default=os.environ.get("GITHUB_SHA", ""))
+    sp.add_argument(
+        "--soft",
+        action="store_true",
+        help="Sale con 0 aunque el estado sea rojo (lo usa health.yml para publicarlo)",
+    )
+    sp.set_defaults(fn=cmd_status)
     sp = sub.add_parser("rivals", help="Publica el histórico y el contexto de los 19 rivales")
     sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
     sp.add_argument("--standings", default="data/public/v1/standings.json")

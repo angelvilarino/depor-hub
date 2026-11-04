@@ -724,6 +724,40 @@ class Club(Public):
     links: ClubLinks = Field(default_factory=ClubLinks)
 
 
+class StatusFile(Public):
+    """Estado de un JSON publicado, sin inferir salud por su antigüedad."""
+
+    name: str
+    present: bool
+    updated_at: Optional[IsoDateTime] = None
+    age_minutes: Optional[int] = Field(default=None, ge=0)
+    detail: Optional[str] = None
+
+
+class StatusWorkflow(Public):
+    """Última ejecución completada de un workflow de datos."""
+
+    name: str
+    file: str
+    conclusion: Optional[str] = None
+    updated_at: Optional[IsoDateTime] = None
+    url: Optional[str] = None
+
+
+class Status(Public):
+    """Diagnóstico operativo publicado en la rama `status` (ADR 0027).
+
+    No sustituye a `meta.json` ni a `news.json`: solo dice qué se publicó, cuándo
+    y cómo terminó la última pasada de cada workflow. La app no depende de él.
+    """
+
+    updated_at: IsoDateTime
+    commit: Optional[str] = None
+    ok: bool
+    files: list[StatusFile] = Field(default_factory=list)
+    workflows: list[StatusWorkflow] = Field(default_factory=list)
+
+
 # nombre de fichero -> modelo
 FILES: dict[str, type[Public]] = {
     "meta.json": Meta,
@@ -749,4 +783,10 @@ NEWS_FILES: dict[str, type[Public]] = {
 # opcional, igual que news.json, y funciona con 404 o con una caché anterior.
 EXTRA_FILES: dict[str, type[Public]] = {
     "rivals.json": Rivals,
+}
+
+# Diagnóstico operativo (ADR 0027): se publica en la rama `status`, no en Pages.
+# Se genera su esquema con el resto, pero `validate` no lo exige en data/public/v1.
+STATUS_FILES: dict[str, type[Public]] = {
+    "status.json": Status,
 }

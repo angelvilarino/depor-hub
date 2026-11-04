@@ -87,7 +87,7 @@ La deduplicación agrupa la misma historia entre medios (±48 h, similitud base 
 
 ### Cadencia
 
-`news-refresh.yml` corre cada 6 horas (`37 */6 * * *`) y también por `workflow_dispatch` con `force`. Comparte el grupo `data-publish` con `Data refresh`, hace `rebase` antes de publicar y despliega Pages solo si hay cambios. Si ninguna fuente responde, el workflow falla y no pisa el `news.json` anterior.
+`news-refresh.yml` corre cada 30 minutos (`*/30 * * * *`) y también por `workflow_dispatch` con `force`. Tiene su propio grupo `news-publish` para no esperar a un refresco de datos lento, hace `rebase` antes de publicar con cinco reintentos y despliega Pages solo si hay cambios (los deploys se serializan en `pages-deploy`). Si ninguna fuente responde, el workflow falla y no pisa el `news.json` anterior.
 
 ### Límites
 
@@ -276,7 +276,7 @@ python -m depor_hub.cli club-images                  # descarga y normaliza las 
 python -m depor_hub.cli club-images --offline        # comprueba las imágenes presentes sin red
 ```
 
-El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 6 horas y comparte con `Data refresh` el grupo `data-publish`. Los dos hacen rebase antes de empujar y despliegan Pages solo cuando hay cambios.
+El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 30 minutos y usa el grupo `news-publish`, separado de `data-publish`. Todos hacen rebase antes de empujar, reintentan cinco veces y despliegan Pages solo cuando hay cambios; los deploys se serializan en `pages-deploy`.
 
 El workflow `Enrich proposal` (`.github/workflows/enrich.yml`) es manual y solo sube el informe como artefacto. No hace commit.
 

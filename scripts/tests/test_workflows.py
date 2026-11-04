@@ -21,11 +21,16 @@ def runs(workflow: dict, job: str) -> str:
     return "\n".join(str(step.get("run", "")) for step in steps(workflow, job))
 
 
-def test_all_data_workflows_share_the_publish_lock():
-    for name in ("data-refresh.yml", "news-refresh.yml", "rivals-refresh.yml"):
+def test_data_and_rivals_share_the_publish_lock_and_news_has_its_own():
+    for name in ("data-refresh.yml", "rivals-refresh.yml"):
         workflow = load(name)
         assert workflow["concurrency"]["group"] == "data-publish"
         assert workflow["concurrency"]["cancel-in-progress"] is False
+    news = load("news-refresh.yml")
+    assert news["concurrency"]["group"] == "news-publish"
+    assert news["concurrency"]["cancel-in-progress"] is False
+    for name in ("data-refresh.yml", "news-refresh.yml", "rivals-refresh.yml"):
+        workflow = load(name)
         assert workflow["jobs"]["refresh"]["timeout-minutes"] == (15 if name == "news-refresh.yml" else 10)
 
 
@@ -34,11 +39,14 @@ def test_all_workflows_rebase_before_push_and_deploy_from_a_fresh_checkout():
         workflow = load(name)
         body = runs(workflow, "refresh")
         assert "git pull --rebase" in body
+        assert "git rebase --abort" in body
         assert "git push origin HEAD:main" in body
-        assert "attempt in 1 2 3" in body
+        assert "attempt in 1 2 3 4 5" in body
         assert "cli validate --data data/public/v1" in body
         deploy = workflow["jobs"]["deploy"]
         assert deploy["needs"] == "refresh"
+        assert deploy["concurrency"]["group"] == "pages-deploy"
+        assert deploy["concurrency"]["cancel-in-progress"] is False
         checkout = next(
             step for step in deploy["steps"] if str(step.get("uses", "")).startswith("actions/checkout")
         )
@@ -53,6 +61,21 @@ def test_all_workflows_rebase_before_push_and_deploy_from_a_fresh_checkout():
             str(step.get("uses", "")).startswith("actions/deploy-pages")
             for step in deploy["steps"]
         )
+
+
+def test_health_publishes_status_on_its_own_branch():
+    workflow = load("health.yml")
+    crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
+    assert "*/30 * * * *" in crons
+    assert workflow["concurrency"]["group"] == "status-publish"
+    assert workflow["permissions"]["contents"] == "write"
+    assert workflow["permissions"]["actions"] == "read"
+    body = runs(workflow, "status")
+    assert "cli status" in body
+    assert "--soft" in body
+    assert "actions/runs" in body
+    assert "HEAD:status" in body
+    assert "deploy-pages" not in body
 
 
 def test_news_runs_every_thirty_minutes_and_caches_the_feeds():

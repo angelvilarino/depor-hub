@@ -1,0 +1,161 @@
+{
+  "$defs": {
+    "StatusFile": {
+      "additionalProperties": false,
+      "description": "Estado de un JSON publicado, sin inferir salud por su antig\u00fcedad.",
+      "properties": {
+        "ageMinutes": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ageminutes"
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detail"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "present": {
+          "title": "Present",
+          "type": "boolean"
+        },
+        "updatedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updatedat"
+        }
+      },
+      "required": [
+        "name",
+        "present"
+      ],
+      "title": "StatusFile",
+      "type": "object"
+    },
+    "StatusWorkflow": {
+      "additionalProperties": false,
+      "description": "\u00daltima ejecuci\u00f3n completada de un workflow de datos.",
+      "properties": {
+        "conclusion": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Conclusion"
+        },
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "updatedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updatedat"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        }
+      },
+      "required": [
+        "name",
+        "file"
+      ],
+      "title": "StatusWorkflow",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Diagn\u00f3stico operativo publicado en la rama `status` (ADR 0027).\n\nNo sustituye a `meta.json` ni a `news.json`: solo dice qu\u00e9 se public\u00f3, cu\u00e1ndo\ny c\u00f3mo termin\u00f3 la \u00faltima pasada de cada workflow. La app no depende de \u00e9l.",
+  "properties": {
+    "commit": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Commit"
+    },
+    "files": {
+      "items": {
+        "$ref": "#/$defs/StatusFile"
+      },
+      "title": "Files",
+      "type": "array"
+    },
+    "ok": {
+      "title": "Ok",
+      "type": "boolean"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    },
+    "workflows": {
+      "items": {
+        "$ref": "#/$defs/StatusWorkflow"
+      },
+      "title": "Workflows",
+      "type": "array"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "ok"
+  ],
+  "title": "Status",
+  "type": "object"
+}

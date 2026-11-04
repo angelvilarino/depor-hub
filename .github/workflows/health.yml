@@ -1,0 +1,63 @@
+name: Health
+
+on:
+  schedule:
+    # Cada 30 min: refleja el estado del pipeline aunque Pages o un workflow fallen.
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+# La rama status solo la escribe este workflow. No compite con data-publish:
+# así un refresco lento no retrasa el diagnóstico ni al contrario.
+concurrency:
+  group: status-publish
+  cancel-in-progress: false
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/pyproject.toml
+      - run: pip install -e scripts
+      - name: Leer los últimos runs de los workflows de datos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl --fail --silent --show-error \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs?per_page=50" \
+            -o "$RUNNER_TEMP/runs.json"
+      - name: Construir status.json
+        # --soft publica también un estado rojo: el diagnóstico no debe desaparecer
+        # justo cuando algo falla.
+        run: |
+          python -m depor_hub.cli status \
+            --data data/public/v1 \
+            --runs "$RUNNER_TEMP/runs.json" \
+            --out "$RUNNER_TEMP/status.json" \
+            --commit "$GITHUB_SHA" \
+            --soft
+      - name: Publicar en la rama status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "depor-hub-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan status-publish
+          git rm -rf . >/dev/null 2>&1 || true
+          cp "$RUNNER_TEMP/status.json" status.json
+          git add status.json
+          git commit -m "status: $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push --force origin HEAD:status

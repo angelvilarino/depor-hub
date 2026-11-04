@@ -624,6 +624,30 @@ export const Squad = z.strictObject({
   players: z.array(Player),
 });
 
+export const StatusFile = z.strictObject({
+  name: z.string(),
+  present: z.boolean(),
+  updatedAt: optionalNull(),
+  ageMinutes: optionalInt(),
+  detail: optionalNull(),
+});
+
+export const StatusWorkflow = z.strictObject({
+  name: z.string(),
+  file: z.string(),
+  conclusion: optionalNull(),
+  updatedAt: optionalNull(),
+  url: optionalNull(),
+});
+
+export const Status = z.strictObject({
+  updatedAt: iso,
+  commit: optionalNull(),
+  ok: z.boolean(),
+  files: z.array(StatusFile).default([]),
+  workflows: z.array(StatusWorkflow).default([]),
+});
+
 export type MetaT = z.infer<typeof Meta>;
 export type StandingsT = z.infer<typeof Standings>;
 export type StandingRowT = z.infer<typeof StandingRow>;
@@ -681,3 +705,6 @@ export type RivalryT = z.infer<typeof Rivalry>;
 export type ClubLinksT = z.infer<typeof ClubLinks>;
 export type ClubLinkT = z.infer<typeof ClubLink>;
 export type PriceT = z.infer<typeof Price>;
+export type StatusFileT = z.infer<typeof StatusFile>;
+export type StatusWorkflowT = z.infer<typeof StatusWorkflow>;
+export type StatusT = z.infer<typeof Status>;
