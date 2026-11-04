@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T04:33:24Z",
+  "updatedAt": "2026-11-04T06:07:09Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "ae7f25bf1260d573",
+      "title": "Mario Soriano vuelve a brillar en Riazor: las notas del Deportivo – Osasuna",
+      "url": "https://riazor.org/mario-soriano-vuelve-a-brillar-en-riazor-las-notas-del-deportivo-osasuna",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-04T06:00:06Z",
+      "kind": "article",
+      "summary": "Estas son las notas de los jugadores y el cuerpo técnico blanquiazul en el Deportivo - Osasuna de la jornada 11 de LaLiga EA Sports. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "9165fc302232cb1e",
       "title": "Mario Soriano, el arquitecto del Deportivo que ahora también tira 'a trallón'",
