@@ -24,6 +24,20 @@ curl -fsS https://raw.githubusercontent.com/angelvilarino/depor-hub/status/statu
   cambios.
 - `workflows[].url` enlaza a la ejecución concreta.
 
+## Snapshots de partidos
+
+`data-refresh.yml` ejecuta `python -m depor_hub.cli snapshots` después de la
+ingesta. Cada partido `FINISHED` o `AWARDED` con marcador final deja un fichero
+inmutable en `data/public/v1/snapshots/<season>/<matchId>.json` (ADR 0028). Si un
+resultado publicado necesita corrección, se ejecuta manualmente:
+
+```bash
+python -m depor_hub.cli snapshots --force
+```
+
+El snapshot corregido se revisa y se commitea como cualquier otro dato. No se
+borran snapshots automáticamente: son el archivo de la ficha de partido.
+
 ## Cron externo de respaldo
 
 GitHub Actions no garantiza la puntualidad de `schedule` y, en repositorios con

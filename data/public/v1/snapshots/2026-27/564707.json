@@ -1,0 +1,34 @@
+{
+  "matchId": 564707,
+  "season": "2026-27",
+  "capturedAt": "2026-11-04T09:44:45Z",
+  "source": "football-data.org",
+  "status": "FINISHED",
+  "utcDate": "2026-10-11T14:15:00Z",
+  "matchday": 8,
+  "stage": "REGULAR_SEASON",
+  "home": {
+    "id": 92,
+    "name": "Real Sociedad de Fútbol",
+    "shortName": "Real Sociedad",
+    "tla": "RSO",
+    "crestUrl": "https://crests.football-data.org/92.png"
+  },
+  "away": {
+    "id": 560,
+    "name": "RC Deportivo La Coruña",
+    "shortName": "Deportivo",
+    "tla": "DEP",
+    "crestUrl": "https://crests.football-data.org/560.png"
+  },
+  "score": {
+    "home": 3,
+    "away": 2,
+    "halfTimeHome": 2,
+    "halfTimeAway": 0,
+    "winner": "HOME_TEAM"
+  },
+  "deporIsHome": false,
+  "venue": "Estadio Municipal de Anoeta",
+  "referee": "Miguel Sesma Espinosa"
+}

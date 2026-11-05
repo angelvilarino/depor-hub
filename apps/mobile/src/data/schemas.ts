@@ -245,6 +245,25 @@ export const Fixtures = z.strictObject({
   matches: z.array(Match),
 });
 
+// Snapshot congelado de un partido terminado (ADR 0028). Se escribe una sola vez y
+// solo contiene datos publicados por la fuente: sin eventos, alineaciones ni estadísticas.
+export const MatchSnapshot = z.strictObject({
+  matchId: z.number().int(),
+  season: z.string(),
+  capturedAt: iso,
+  source: z.string().default('football-data.org'),
+  status: z.enum(['FINISHED', 'AWARDED']),
+  utcDate: iso,
+  matchday: optionalInt(),
+  stage: optionalNull(),
+  home: TeamRef,
+  away: TeamRef,
+  score: Score,
+  deporIsHome: z.boolean(),
+  venue: optionalNull(),
+  referee: optionalNull(),
+});
+
 // Noticias (ADR 0018): una historia puede tener versiones en varios medios. El contrato
 // rompe el anterior `items`/`meta`; la app se actualiza al mismo tiempo que el JSON.
 export const NewsGroup = z.enum(['club', 'galicia', 'nacional']);
@@ -672,6 +691,7 @@ export type SocialPinT = z.infer<typeof SocialPin>;
 export type SocialFeedT = z.infer<typeof SocialFeed>;
 export type SquadT = z.infer<typeof Squad>;
 export type MatchT = z.infer<typeof Match>;
+export type MatchSnapshotT = z.infer<typeof MatchSnapshot>;
 export type PlayerT = z.infer<typeof Player>;
 export type TeamRefT = z.infer<typeof TeamRef>;
 export type CoachT = z.infer<typeof Coach>;

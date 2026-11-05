@@ -11,6 +11,7 @@ import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
 import { StandingsTable } from '@/components/StandingsTable';
 import { useFixtures, useMeta, useStandings } from '@/data/queries';
 import { groupByMonth, splitMatches } from '@/features/calendar/logic';
+import { useNow } from '@/features/home/useNow';
 import { shareIcs } from '@/features/calendar/system';
 import { spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
@@ -33,8 +34,12 @@ export default function CalendarScreen() {
   // URL para que el enlace funcione aunque la pantalla ya estuviera montada.
   const tab: Tab = isTab(tabParam) ? tabParam : 'upcoming';
   const setTab = (next: Tab) => router.setParams({ tab: next });
+  const now = useNow(60_000);
 
-  const { upcoming, results } = useMemo(() => splitMatches(fixtures.data?.matches ?? []), [fixtures.data]);
+  const { upcoming, results } = useMemo(
+    () => splitMatches(fixtures.data?.matches ?? [], now),
+    [fixtures.data, now],
+  );
   const query = tab === 'standings' ? standings : fixtures;
   const refreshing = fixtures.isRefetching || standings.isRefetching;
   const refresh = () => { void fixtures.refetch(); void standings.refetch(); void meta.refetch(); };

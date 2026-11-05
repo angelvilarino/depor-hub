@@ -47,6 +47,8 @@ jobs:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
         run: python -m depor_hub.cli ingest --if-due ${{ inputs.force && '--force' || '' }}
+      - name: Congelar snapshots de partidos terminados
+        run: python -m depor_hub.cli snapshots
       - name: Publicar la ficha del club
         run: python -m depor_hub.cli club
       - name: Imágenes del club (solo si faltan)

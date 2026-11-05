@@ -238,6 +238,12 @@
     "addError": "The match could not be added to your calendar.",
     "addErrorHint": "Try sharing the calendar from the Calendar tab.",
     "lineups": "Line-ups and events",
+    "liveNow": "LIVE",
+    "finished": "Final result",
+    "detailUnavailable": "Line-ups, events and statistics unavailable",
+    "detailUnavailableHint": "The current source only publishes the score, status and match data. Events and statistics are not inferred from the result.",
+    "liveUnavailable": "Live updates only cover the score and status; this source does not provide events, line-ups or statistics.",
+    "dataSource": "Score and status: football-data.org",
     "calendarSaved": "Added to calendar",
     "calendarShared": "Calendar file shared"
   },

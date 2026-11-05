@@ -14,6 +14,17 @@ describe('calendar logic', () => {
     expect(results.map((m) => m.id)).toEqual([1, 2]);
   });
 
+  it('no presenta como resultado un FINISHED con hora futura', () => {
+    const future = makeMatch({
+      id: 6,
+      utcDate: '2026-12-01T19:00:00Z',
+      status: 'FINISHED',
+      score: { home: 1, away: 0, halfTimeHome: null, halfTimeAway: null, winner: 'HOME_TEAM' },
+    });
+    const { results } = splitMatches([fin, future], Date.parse('2026-11-04T10:00:00Z'));
+    expect(results.map((m) => m.id)).toEqual([1]);
+  });
+
   it('agrupa por mes manteniendo el orden', () => {
     const groups = groupByMonth([next, later]);
     expect(groups.map((g) => g.key)).toEqual(['2026-10', '2026-11']);

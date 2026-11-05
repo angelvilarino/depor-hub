@@ -7,9 +7,12 @@ import { BodyText, Card, Screen } from '@/components/Screen';
 import { EmptyState, LoadingState } from '@/components/StateViews';
 import { TeamCrest } from '@/components/TeamCrest';
 import type { MatchT } from '@/data/schemas';
-import { useFixtures } from '@/data/queries';
-import { isFinished, teamName } from '@/features/calendar/logic';
+import { useFixtures, useMatchSnapshot, useMeta } from '@/data/queries';
+import { teamName } from '@/features/calendar/logic';
+import { matchPhase } from '@/features/home/logic';
+import { snapshotToMatch } from '@/features/match/snapshot';
 import { useMatchActions } from '@/features/home/useMatchActions';
+import { useNow } from '@/features/home/useNow';
 import { ReminderSheet } from '@/features/reminders/ReminderSheet';
 import { spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
@@ -30,14 +33,20 @@ export default function MatchDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { t } = useTranslation();
   const fixtures = useFixtures();
-  const match = fixtures.data?.matches.find((m) => String(m.id) === id);
+  const meta = useMeta();
+  const season = fixtures.data?.season ?? meta.data?.season ?? null;
+  const snapshot = useMatchSnapshot(season, id);
+  const match =
+    fixtures.data?.matches.find((m) => String(m.id) === id) ??
+    (snapshot.data ? snapshotToMatch(snapshot.data) : undefined);
+  const waiting = !match && (fixtures.isPending || (season !== null && snapshot.isPending));
   const screenOptions = <Stack.Screen options={{ title: t('match.title') }} />;
 
   if (!match) {
     return (
       <Screen>
         {screenOptions}
-        {fixtures.isPending ? <LoadingState /> : <EmptyState message={t('match.notFound')} />}
+        {waiting ? <LoadingState /> : <EmptyState message={t('match.notFound')} />}
       </Screen>
     );
   }
@@ -71,13 +80,24 @@ function MatchDetailBody({ match }: { match: MatchT }) {
   } = useMatchActions(match);
 
   const locale = i18n.language;
-  const finished = isFinished(match);
+  const now = useNow(60_000);
+  const phase = matchPhase(match, now);
+  const live = phase === 'live';
+  const finished = phase === 'finished';
+  const canPlan = phase === 'upcoming' || phase === 'tbc';
   const referee = match.referee ?? null;
   const hasScore = match.score.home !== null && match.score.away !== null;
   const ht =
     match.score.halfTimeHome !== null && match.score.halfTimeAway !== null
       ? `${match.score.halfTimeHome}–${match.score.halfTimeAway}`
       : null;
+  const statusLabel = live
+    ? t('match.liveNow')
+    : finished
+      ? t('match.finished')
+      : phase === 'awaiting_result'
+        ? t('home.awaitingResult')
+        : t(`calendar.status.${match.status}`, { defaultValue: match.status });
 
   const side = (team: typeof match.home) => (
     <View style={styles.side}>
@@ -100,7 +120,18 @@ function MatchDetailBody({ match }: { match: MatchT }) {
           </Text>
           {side(match.away)}
         </View>
-        <BodyText muted>{t(`calendar.status.${match.status}`, { defaultValue: match.status })}</BodyText>
+        <View style={styles.statusRow}>
+          {live ? <View style={[styles.liveDot, { backgroundColor: colors.danger }]} /> : null}
+          <Text
+            style={{
+              color: live ? colors.danger : colors.textMuted,
+              fontSize: 14,
+              fontWeight: live ? '800' : '400',
+            }}
+          >
+            {statusLabel}
+          </Text>
+        </View>
       </Card>
 
       <Card>
@@ -112,7 +143,7 @@ function MatchDetailBody({ match }: { match: MatchT }) {
         <InfoRow label={t('match.halfTime')} value={ht} />
       </Card>
 
-      {!finished && (
+      {canPlan ? (
         <Card>
           {remindable ? (
             <Button
@@ -144,11 +175,14 @@ function MatchDetailBody({ match }: { match: MatchT }) {
             />
           ) : null}
         </Card>
-      )}
+      ) : null}
 
       <Card>
-        <BodyText>{t('match.lineups')}</BodyText>
-        <BodyText muted>{t('common.comingSoon')}</BodyText>
+        <BodyText>{t('match.detailUnavailable')}</BodyText>
+        <BodyText muted>
+          {live ? t('match.liveUnavailable') : t('match.detailUnavailableHint')}
+        </BodyText>
+        <BodyText muted>{t('match.dataSource')}</BodyText>
       </Card>
     </Screen>
   );
@@ -160,4 +194,6 @@ const styles = StyleSheet.create({
   team: { fontSize: 16, fontWeight: '700', textAlign: 'center' },
   score: { fontSize: 28, fontWeight: '700' },
   infoRow: { gap: 2 },
+  statusRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.xs },
+  liveDot: { width: 8, height: 8, borderRadius: 4 },
 });

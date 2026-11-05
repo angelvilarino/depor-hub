@@ -6,11 +6,16 @@ const HIDDEN = new Set(['CANCELLED']);
 
 export const isFinished = (m: MatchT): boolean => DONE.has(m.status);
 
-/** Próximos (asc, incluye en juego/aplazados) y resultados (desc). */
-export function splitMatches(matches: MatchT[]): { upcoming: MatchT[]; results: MatchT[] } {
+/** Próximos (asc, incluye en juego/aplazados) y resultados (desc, ya empezados). */
+export function splitMatches(
+  matches: MatchT[],
+  nowMs = Number.POSITIVE_INFINITY,
+): { upcoming: MatchT[]; results: MatchT[] } {
   const byDate = (a: MatchT, b: MatchT) => Date.parse(a.utcDate) - Date.parse(b.utcDate);
   const upcoming = matches.filter((m) => !isFinished(m) && !HIDDEN.has(m.status)).sort(byDate);
-  const results = matches.filter(isFinished).sort((a, b) => byDate(b, a));
+  const results = matches
+    .filter((m) => isFinished(m) && Date.parse(m.utcDate) <= nowMs)
+    .sort((a, b) => byDate(b, a));
   return { upcoming, results };
 }
 

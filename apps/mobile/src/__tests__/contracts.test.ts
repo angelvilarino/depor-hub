@@ -1,6 +1,17 @@
 import fs from 'fs';
 import path from 'path';
-import { Club, Fixtures, Meta, News, Rivals, Season, SocialFeed, Squad, Standings } from '@/data/schemas';
+import {
+  Club,
+  Fixtures,
+  MatchSnapshot,
+  Meta,
+  News,
+  Rivals,
+  Season,
+  SocialFeed,
+  Squad,
+  Standings,
+} from '@/data/schemas';
 
 // Los MISMOS ejemplos los valida Pydantic en scripts/tests: si divergen, falla uno de los dos CI.
 const dir = path.resolve(__dirname, '../../../../packages/schemas/examples');
@@ -22,6 +33,7 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
     ['season.json', Season],
     ['rivals.json', Rivals],
     ['club.json', Club],
+    ['snapshot.json', MatchSnapshot],
   ] as const)('%s valida', (file, schema) => {
     expect(schema.safeParse(load(file)).success).toBe(true);
   });
@@ -43,6 +55,16 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
     ['club.json', Club],
   ] as const)('el publicado %s valida', (file, schema) => {
     expect(schema.safeParse(published(file)).success).toBe(true);
+  });
+
+  it('los snapshots publicados validan', () => {
+    const snapshotsDir = path.resolve(publishedDir, 'snapshots/2026-27');
+    const files = fs.readdirSync(snapshotsDir).filter((name) => name.endsWith('.json'));
+    expect(files.length).toBeGreaterThan(0);
+    for (const file of files) {
+      const body = JSON.parse(fs.readFileSync(path.join(snapshotsDir, file), 'utf8'));
+      expect(MatchSnapshot.safeParse(body).success).toBe(true);
+    }
   });
 
   it('un campo aditivo en un documento publicado estricto se rechaza', () => {

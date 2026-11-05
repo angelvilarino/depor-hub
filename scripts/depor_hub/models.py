@@ -229,6 +229,36 @@ class Fixtures(Public):
     matches: list[Match]
 
 
+class MatchSnapshot(Public):
+    """Foto congelada de un partido terminado (ADR 0028).
+
+    Se escribe una sola vez, cuando el partido ya tiene marcador final. Sirve para
+    que una ficha antigua siga disponible aunque el partido desaparezca de la API.
+    No contiene eventos, alineaciones ni estadísticas: esos datos no se inventan.
+    """
+
+    match_id: int
+    season: str
+    captured_at: IsoDateTime
+    source: str = "football-data.org"
+    status: Literal["FINISHED", "AWARDED"]
+    utc_date: IsoDateTime
+    matchday: Optional[int] = None
+    stage: Optional[str] = None
+    home: TeamRef
+    away: TeamRef
+    score: Score
+    depor_is_home: bool
+    venue: Optional[str] = None
+    referee: Optional[str] = None
+
+    @model_validator(mode="after")
+    def _has_final_score(self) -> MatchSnapshot:
+        if self.score.home is None or self.score.away is None:
+            raise ValueError("un snapshot solo se crea con marcador final")
+        return self
+
+
 NewsKind = Literal["article", "video"]
 NewsGroup = Literal["club", "galicia", "nacional"]
 
@@ -789,4 +819,10 @@ EXTRA_FILES: dict[str, type[Public]] = {
 # Se genera su esquema con el resto, pero `validate` no lo exige en data/public/v1.
 STATUS_FILES: dict[str, type[Public]] = {
     "status.json": Status,
+}
+
+# Snapshot congelado de un partido terminado (ADR 0028). El fichero real vive en
+# data/public/v1/snapshots/<season>/<matchId>.json; este nombre solo genera el esquema.
+SNAPSHOT_FILES: dict[str, type[Public]] = {
+    "snapshot.json": MatchSnapshot,
 }

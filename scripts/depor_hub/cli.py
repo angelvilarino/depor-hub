@@ -244,6 +244,44 @@ def cmd_rivals(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_snapshots(args: argparse.Namespace) -> int:
+    """Congela una foto por partido terminado; nunca la reescribe sin `--force`."""
+    fixtures = m.Fixtures.model_validate_json(Path(args.fixtures).read_text(encoding="utf-8"))
+    out_dir = Path(args.out) / fixtures.season.replace("/", "-")
+    created = skipped = 0
+    for match in fixtures.matches:
+        if match.status not in {"FINISHED", "AWARDED"}:
+            continue
+        if match.score.home is None or match.score.away is None:
+            continue
+        target = out_dir / f"{match.id}.json"
+        if target.exists() and not args.force:
+            skipped += 1
+            continue
+        snapshot = m.MatchSnapshot(
+            match_id=match.id,
+            season=fixtures.season,
+            captured_at=_now(),
+            status=match.status,
+            utc_date=match.utc_date,
+            matchday=match.matchday,
+            stage=match.stage,
+            home=match.home,
+            away=match.away,
+            score=match.score,
+            depor_is_home=match.depor_is_home,
+            venue=match.venue,
+            referee=match.referee,
+        )
+        if write_optional(out_dir, target.name, t.dump(snapshot), m.MatchSnapshot, force=args.force):
+            created += 1
+    print(
+        f"season={fixtures.season} created={created} skipped={skipped} "
+        f"out={out_dir}"
+    )
+    return 0
+
+
 def cmd_probe(args: argparse.Namespace) -> int:
     """Informe de cobertura con TU token. No escribe datos públicos."""
     client = _client(Path(args.raw))
@@ -480,7 +518,7 @@ def cmd_club_images(args: argparse.Namespace) -> int:
 def cmd_schemas(args: argparse.Namespace) -> int:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    models = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES, **m.STATUS_FILES}
+    models = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES, **m.STATUS_FILES, **m.SNAPSHOT_FILES}
     for name, model in models.items():
         schema = model.model_json_schema(by_alias=True)
         target = out / name.replace(".json", ".schema.json")
@@ -984,6 +1022,11 @@ def main(argv: list[str] | None = None) -> int:
         help="Sale con 0 aunque el estado sea rojo (lo usa health.yml para publicarlo)",
     )
     sp.set_defaults(fn=cmd_status)
+    sp = sub.add_parser("snapshots", help="Congela un snapshot por partido terminado (ADR 0028)")
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--out", default="data/public/v1/snapshots")
+    sp.add_argument("--force", action="store_true", help="Reescribe snapshots existentes")
+    sp.set_defaults(fn=cmd_snapshots)
     sp = sub.add_parser("rivals", help="Publica el histórico y el contexto de los 19 rivales")
     sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
     sp.add_argument("--standings", default="data/public/v1/standings.json")

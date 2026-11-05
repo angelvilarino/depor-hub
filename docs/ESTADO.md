@@ -1,5 +1,5 @@
 # Estado del proyecto — 04-nov-2026
-H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`) y H0.2 (salud del pipeline + `status.json`) hechos.
+H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta) y H3.5 (snapshots congelados) hechos. Pendientes de la fase: logos de fuentes (H2), proxy en directo (Worker) y Hito 4 en modo directo.
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
@@ -25,6 +25,38 @@ H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calend
 - `status.json` distingue presencia de ficheros y conclusión de workflows; la antigüedad es informativa, no un veredicto. `cmd_status` sale con código 1 si el estado es rojo y `--soft` permite publicarlo igualmente.
 - News tiene su propio grupo de concurrencia (`news-publish`) para no esperar a Data. Los tres deploys comparten `pages-deploy`. El push reintenta 5 veces con `git rebase --abort` ante conflictos transitorios.
 - Respaldo de cron externo documentado en [`docs/operations.md`](operations.md); el token vive fuera del repositorio.
+
+## Hito 1 — Ficha de partido y ciclo de vida (hecho, ADR 0028)
+
+- La ficha `/match/[id]` distingue **próximo**, **en juego**, **terminado** y
+  **pendiente de actualizar** con `matchPhase`. Solo los partidos futuros ofrecen
+  recordatorio y calendario; un `TIMED` ya pasado no se presenta como futuro ni
+  como resultado.
+- Un partido terminado muestra marcador, descanso, sede, árbitro y jornada, pero
+  **no inventa** eventos, alineaciones ni estadísticas: una tarjeta explica que
+  la fuente actual solo publica marcador y estado, y atribuye los datos a
+  football-data.org. En directo se actualizan marcador y estado, nada más.
+- Calendario e Inicio usan el mismo `now` para no mostrar como resultado un
+  `FINISHED` con hora futura.
+
+## H3.5 — Snapshots congelados (hecho)
+
+- `python -m depor_hub.cli snapshots` escribe un JSON por partido `FINISHED` o
+  `AWARDED` con marcador final en `data/public/v1/snapshots/<season>/<matchId>.json`.
+  `data-refresh.yml` lo ejecuta tras la ingesta, antes de validar y publicar.
+- El contrato `MatchSnapshot` (Pydantic → JSON Schema → Zod) solo contiene lo que
+  publica la fuente: equipos, marcador, fecha, jornada, fase, sede, árbitro y
+  `deporIsHome`. Los campos desconocidos quedan en `null`.
+- Los snapshots son **inmutables**: una segunda pasada los omite y solo `--force`
+  los reescribe. Si el partido ya no está en `fixtures.json`, la app lee el
+  snapshot; si el snapshot no existe (404) o no valida, muestra el vacío de
+  siempre. La app nunca depende de que el snapshot exista.
+- Generados **11 snapshots** de la temporada 2026-27 en la primera pasada.
+- Pruebas nuevas: congelación, idempotencia, `--force`, validación del ejemplo,
+  snapshots publicados y fallback de la ficha sin partido en `fixtures.json`.
+- Verificación: `ruff`, **188 pytest**, `typecheck`, `lint`, **277 tests / 33
+  suites** y esquemas regenerados sin diferencias.
+- Decisiones en [`docs/adr/0028-snapshots-partidos-terminados.md`](adr/0028-snapshots-partidos-terminados.md).
 
 
 ## H3 — Calendario (hecho)

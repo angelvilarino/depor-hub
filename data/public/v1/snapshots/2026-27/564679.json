@@ -1,0 +1,34 @@
+{
+  "matchId": 564679,
+  "season": "2026-27",
+  "capturedAt": "2026-11-04T09:44:45Z",
+  "source": "football-data.org",
+  "status": "FINISHED",
+  "utcDate": "2026-09-16T17:00:00Z",
+  "matchday": 6,
+  "stage": "REGULAR_SEASON",
+  "home": {
+    "id": 560,
+    "name": "RC Deportivo La Coruña",
+    "shortName": "Deportivo",
+    "tla": "DEP",
+    "crestUrl": "https://crests.football-data.org/560.png"
+  },
+  "away": {
+    "id": 559,
+    "name": "Sevilla FC",
+    "shortName": "Sevilla FC",
+    "tla": "SEV",
+    "crestUrl": "https://crests.football-data.org/559.png"
+  },
+  "score": {
+    "home": 0,
+    "away": 1,
+    "halfTimeHome": 0,
+    "halfTimeAway": 0,
+    "winner": "AWAY_TEAM"
+  },
+  "deporIsHome": true,
+  "venue": "Estadio Abanca-Riazor",
+  "referee": "Alejandro Hernández Hernández"
+}
