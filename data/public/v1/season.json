@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-05T07:32:38Z",
+  "updatedAt": "2026-11-05T08:42:04Z",
   "season": "2026-27",
-  "matchday": 11,
+  "matchday": 12,
   "team": {
     "id": 560,
     "name": "RC Deportivo La Coruña",
@@ -163,17 +163,17 @@
     "summary": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-05T07:32:38Z"
+      "capturedAt": "2026-11-05T08:42:04Z"
     },
     "form": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-05T07:32:38Z"
+      "capturedAt": "2026-11-05T08:42:04Z"
     },
     "positionEvolution": {
       "source": "football-data.org (cálculo propio por jornada)",
       "confidence": "estimated",
-      "capturedAt": "2026-11-05T07:32:38Z"
+      "capturedAt": "2026-11-05T08:42:04Z"
     }
   }
 }
