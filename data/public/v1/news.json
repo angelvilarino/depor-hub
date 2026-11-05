@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T23:32:50Z",
+  "updatedAt": "2026-11-05T04:33:13Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "efa721dd7f9d2532",
+      "title": "El Dépor de Hidalgo protagoniza el segundo mejor arranque de la historia reciente blanquiazul en Primera",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/el-depor-de-hidalgo-protagoniza-el-segundo-mejor-arranque-de-la-historia-reciente-blanquiazul-en-primera-888985.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-05T04:00:00Z",
+      "kind": "article",
+      "summary": "Solo el equipo de Víctor Sánchez del Amo en la 2015-16 había llegado más lejos tras once jornadas en las últimas siete campañas en la…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb561f6489c.r_d.1284-762-0.jpg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "018e6c0dd6002e72",
+      "title": "Los centros ya tienen sentido en el Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/los-centros-ya-tienen-sentido-en-el-depor-889093.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-05T04:00:00Z",
+      "kind": "article",
+      "summary": "El equipo coruñés firmó su récord del curso ante Osasuna (30) y marcó de esta forma; una muestra del valor de este recurso en el actual…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb96111a1b2.r_d.1216-1285-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "9f9eab6cd01c0396",
       "title": "El caño de Miguel Loureiro recibe su homenaje en el vestuario del Dépor: \"La samba de Loureirinho\"",
