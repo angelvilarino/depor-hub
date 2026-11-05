@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T15:33:22Z",
+  "updatedAt": "2026-11-05T16:32:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,48 @@
     }
   ],
   "stories": [
+    {
+      "id": "9f1dba91012c433a",
+      "title": "El Espanyol – Dépor se jugará con homenaje a Jesús de Miguel: ofrenda, minuto de silencio y pausa en el minuto 9",
+      "url": "https://riazor.org/espanyol-depor-jugara-homenaje-jesus-miguel-ofrenda-minuto-silencio-pausa",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-05T16:32:51Z",
+      "kind": "article",
+      "summary": "LaLiga, RFEF y Liga F mantienen la jornada pese a la petición de la AFE. El Espanyol - Dépor del sábado tendrá homenaje a Jesús de Miguel…",
+      "thumbnailUrl": null,
+      "tags": [
+        "club",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "14866f4d17cb68c9",
+      "title": "Marisa explica su buen momento de forma con el Dépor ABANCA: «He venido del Mundial con un plus de confianza»",
+      "url": "https://riazor.org/marisa-depor-abanca-venido-mundial-plus-confianza",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-05T16:00:34Z",
+      "kind": "article",
+      "summary": "Marisa ha sido escogida como mejor jugadora del mes en el Dépor ABANCA. En tres partidos tras su regreso del Mundial anotó dos goles y dio…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "dea57a9932461cb0",
+      "title": "Dépor-Osasuna: tres puntos de ofensiva",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/05/depor-osasuna-tres-puntos-ofensiva/00031793890825356112268.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-05T15:07:00Z",
+      "kind": "article",
+      "summary": null,
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/FaVTxF-mkrqtZ797Rq3mPuxIsaE=/768x/2026/11/05/00121793891163049890163/Foto/i_20261102_233230002.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "fc329796602a452c",
       "title": "Quagliata: «El partido contra el Espanyol es difícil, pero podemos ganar a cualquiera»",
@@ -2199,18 +2241,6 @@
       "kind": "article",
       "summary": "Diego Villares analizó en La Tribu el duelo su equipo y el de Simeone, la exigencia de Primera División y sus sensaciones ante el Real…",
       "thumbnailUrl": "https://s1.dmcdn.net/v/gJvKQ1gsmgFwgalSo/x1080",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "87d5f328d023f93a",
-      "title": "Entrevista a Mario Soriano: “Si sales al campo y no disfrutas es que algo no va bien”",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-23/entrevista-a-mario-soriano-si-sales-al-campo-y-no-disfrutas-es-que-algo-no-va-bien-886519.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-23T03:00:00Z",
-      "kind": "article",
-      "summary": "El centrocampista del Dépor se enfrenta este sábado al equipo en el que se formó, el Atlético. Una cita sobre la que reflexiona y abre el…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/22/6ada5de270099.r_d.1437-1042-0.jpg",
       "tags": [],
       "alsoIn": []
     }
