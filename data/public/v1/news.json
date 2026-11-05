@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T14:04:50Z",
+  "updatedAt": "2026-11-05T15:04:40Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "fc329796602a452c",
+      "title": "Quagliata: «El partido contra el Espanyol es difícil, pero podemos ganar a cualquiera»",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/05/quagliata-partido-contra-espanyol-dificil-podemos-ganar-/00031793884568599309518.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-05T14:04:00Z",
+      "kind": "article",
+      "summary": "El lateral italiano, mejor jugador del Dépor del mes de octubre, elogió a Yeremay y Aubameyang y defendió a Leo Román: «El otro día…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/5f51xj9I0QUYJM9fCrLXDqjcs4s=/768x/2026/11/05/00121793886122164743471/Foto/h_20261017_183501000.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "78822378e57b838c",
       "title": "Quagliata sobre la posible llamada de la selección: «Pienso en conseguir puntos con el Dépor, que para mí es lo más importante»",
