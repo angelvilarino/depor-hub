@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T20:04:56Z",
+  "updatedAt": "2026-11-05T23:04:22Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "b5274c73775be80a",
+      "title": "Italia convoca a Lorenzo Amatucci para su selección sub-21, con la que podría medirse a otro deportivista",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/italia-convoca-a-lorenzo-amatucci-para-su-seleccion-sub-21-con-la-que-podria-medirse-a-otro-deportivista-889315.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-05T20:57:38Z",
+      "kind": "article",
+      "summary": "Jugará dos amistosos, ante Francia en la localidad natal de Aubameyang, y frente a la Bélgica de Lucas Noubi",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/09/12/6aa5a252b8fb6.r_d.1573-1143-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "0da0f5c822f562f7",
       "title": "La madurez de Edu Expósito en Abegondo: «Si el Dépor hubiese ascendido a Primera en Mallorca, él sería hoy jugador franquicia del equipo»",
@@ -2222,21 +2234,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i3.ytimg.com/vi/zQyWSvYcU7E/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4e0f19d833cbe7a9",
-      "title": "Rueda de prensa de Alberto Rodríguez previa al Dépor ABANCA - Alavés",
-      "url": "https://youtube.com/watch?v=f5N6B2eAt6g",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-23T11:35:44Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i3.ytimg.com/vi/f5N6B2eAt6g/hqdefault.jpg",
       "tags": [
         "cantera",
         "partido"
