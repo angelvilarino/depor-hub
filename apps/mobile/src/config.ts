@@ -20,6 +20,10 @@ function localDevDataBaseUrl(): string {
 
 export const DATA_BASE_URL = CONFIGURED_DATA_BASE_URL || (__DEV__ ? localDevDataBaseUrl() : '');
 
+// Proxy de solo lectura para el marcador en directo (Hito 4). Vacío = sin directo:
+// la app usa solo los datos estáticos. El token vive en el Worker, nunca aquí.
+export const LIVE_BASE_URL = process.env.EXPO_PUBLIC_LIVE_BASE_URL?.trim() ?? '';
+
 /** Solo para diagnóstico: indica de dónde salen los datos. */
 export const USING_LOCAL_DATA = !CONFIGURED_DATA_BASE_URL && __DEV__;
 

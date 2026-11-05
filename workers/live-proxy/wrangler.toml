@@ -1,0 +1,8 @@
+name = "depor-hub-live"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+# El token NUNCA va aquí: se guarda con `wrangler secret put FOOTBALL_DATA_TOKEN`.
+[vars]
+FOOTBALL_DATA_COMPETITION = "PD"

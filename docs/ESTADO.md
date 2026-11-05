@@ -1,5 +1,5 @@
 # Estado del proyecto — 04-nov-2026
-H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados) y H2 (iconos de fuentes) hechos. Pendientes de la fase: proxy en directo (Worker) y Hito 4 en modo directo.
+H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados), H2 (iconos de fuentes) y el proxy en directo (Worker + fusión en la app) hechos. Pendiente para cerrar el Hito 4: desplegar el Worker y definir `EXPO_PUBLIC_LIVE_BASE_URL`.
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
@@ -54,7 +54,7 @@ H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calend
 - Generados **11 snapshots** de la temporada 2026-27 en la primera pasada.
 - Pruebas nuevas: congelación, idempotencia, `--force`, validación del ejemplo,
   snapshots publicados y fallback de la ficha sin partido en `fixtures.json`.
-- Verificación: `ruff`, **188 pytest**, `typecheck`, `lint`, **277 tests / 33
+- Verificación: `ruff`, **188 pytest**, `typecheck`, `lint`, **281 tests / 34
   suites** y esquemas regenerados sin diferencias.
 - Decisiones en [`docs/adr/0028-snapshots-partidos-terminados.md`](adr/0028-snapshots-partidos-terminados.md).
 
@@ -69,6 +69,26 @@ H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calend
 - Una prueba exige icono https en las cinco fuentes activas y comprueba que el
   pipeline lo publica. Decisiones en
   [`docs/adr/0029-iconos-fuentes-noticias.md`](adr/0029-iconos-fuentes-noticias.md).
+
+## Hito 4 — Directo (implementado, pendiente de desplegar)
+
+- `workers/live-proxy` es un Cloudflare Worker de solo lectura con una única
+  ruta `GET /v1/fixtures.json` que devuelve el mismo contrato que la app, solo
+  con los partidos del Depor. El token de football-data.org vive como secreto del
+  Worker y nunca en el bundle. Cachea 60 s en el edge; la app refresca cada 60 s.
+- La transformación publica equipos, marcador final y de descanso, estado,
+  jornada, fase, sede, árbitro y `deporIsHome`. **No publica ni deduce eventos,
+  alineaciones o estadísticas.**
+- `mergeFixtures` superpone por `id` los partidos del proxy sobre la publicación
+  estática. Un fallo, una URL ausente o un proxy más antiguo que la publicación
+  se ignoran: la app conserva lo estático y nunca retrocede un resultado.
+- Sin `EXPO_PUBLIC_LIVE_BASE_URL` no hay ninguna petición en directo. El modo
+  terminado sigue funcionando con snapshots (ADR 0028).
+- Pruebas: 4 del Worker (filtro, orden, marcador ausente, árbitro y temporada) y
+  4 de fusión en la app. Decisiones en
+  [`docs/adr/0030-proxy-directo-worker.md`](adr/0030-proxy-directo-worker.md).
+- **Pendiente:** desplegar con `wrangler` y definir la variable en el entorno de
+  build. No hay cuenta/token de Cloudflare en esta sesión.
 
 
 ## H3 — Calendario (hecho)

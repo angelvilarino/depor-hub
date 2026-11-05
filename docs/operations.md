@@ -24,6 +24,31 @@ curl -fsS https://raw.githubusercontent.com/angelvilarino/depor-hub/status/statu
   cambios.
 - `workflows[].url` enlaza a la ejecución concreta.
 
+## Proxy en directo
+
+`workers/live-proxy` es un Worker de solo lectura que devuelve
+`/v1/fixtures.json` con el mismo contrato que la app. El token de
+football-data.org es un secreto del Worker, nunca del bundle. Cachea 60 s en el
+edge y la app refresca cada 60 s.
+
+```bash
+cd workers/live-proxy
+npm install
+npx wrangler login
+npx wrangler secret put FOOTBALL_DATA_TOKEN
+npx wrangler deploy
+```
+
+Comprobación:
+
+```bash
+curl -fsS https://<worker>.workers.dev/v1/fixtures.json | jq '.season, (.matches | length)'
+```
+
+Sin `EXPO_PUBLIC_LIVE_BASE_URL` la app no hace peticiones en directo y usa solo
+los datos publicados. Si el Worker falla, la app conserva lo estático. Decisiones
+en [`adr/0030-proxy-directo-worker.md`](adr/0030-proxy-directo-worker.md).
+
 ## Snapshots de partidos
 
 `data-refresh.yml` ejecuta `python -m depor_hub.cli snapshots` después de la

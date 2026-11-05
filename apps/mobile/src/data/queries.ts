@@ -1,7 +1,9 @@
+import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { z } from 'zod';
-import { DATA_BASE_URL } from '@/config';
+import { DATA_BASE_URL, LIVE_BASE_URL } from '@/config';
 import { DataError, fetchData } from './api';
+import { mergeFixtures } from './live';
 import {
   Club,
   Fixtures,
@@ -69,7 +71,30 @@ function useOptionalData<T extends z.ZodType>(
 
 export const useMeta = () => useData('meta.json', Meta);
 export const useStandings = () => useData('standings.json', Standings);
-export const useFixtures = () => useData('fixtures.json', Fixtures);
+
+// El proxy en directo comparte contrato con fixtures.json. La caché de 60 s y el
+// refetch de 60 s bastan para el plan gratuito; sin URL no se hace ninguna petición.
+const useLiveFixtures = () =>
+  useQuery({
+    queryKey: ['live', LIVE_BASE_URL, 'fixtures.json'],
+    queryFn: () => fetchData('fixtures.json', Fixtures, LIVE_BASE_URL),
+    enabled: Boolean(LIVE_BASE_URL),
+    staleTime: 30_000,
+    gcTime: 5 * 60 * 1000,
+    refetchInterval: 60_000,
+    refetchIntervalInBackground: false,
+    retry: 1,
+  });
+
+export function useFixtures() {
+  const published = useData('fixtures.json', Fixtures);
+  const live = useLiveFixtures();
+  const data = useMemo(() => mergeFixtures(published.data, live.data), [published.data, live.data]);
+  const refetch = async () => {
+    await Promise.allSettled([published.refetch(), live.refetch()]);
+  };
+  return { ...published, data, refetch };
+}
 export const useSquad = () => useData('squad.json', Squad);
 export const useNews = () => useOptionalData('news.json', News, NEWS_STALE_TIME);
 export const useSocial = () => useOptionalData('social.json', SocialFeed, NEWS_STALE_TIME);

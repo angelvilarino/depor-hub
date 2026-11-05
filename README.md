@@ -15,7 +15,7 @@ Copia `DEPOR_HUB_CONTEXTO.md` a `docs/CONTEXTO.md` si aún no existe.
 ./setup.sh          # crea apps/mobile (Expo SDK estable), superpone la plantilla, instala y ejecuta lint/typecheck/tests
 npm run mobile      # sirve data/public en local y arranca Expo
 ```
-`npm run mobile` levanta un servidor estático de solo lectura sobre `data/public` (puerto 8000) y arranca Expo. La app deriva la URL del host de Metro, así que en desarrollo siempre enseña los datos locales; para apuntar a GitHub Pages, define `EXPO_PUBLIC_DATA_BASE_URL` en `apps/mobile/.env` (ver `.env.example`).
+`npm run mobile` levanta un servidor estático de solo lectura sobre `data/public` (puerto 8000) y arranca Expo. La app deriva la URL del host de Metro, así que en desarrollo siempre enseña los datos locales; para apuntar a GitHub Pages, define `EXPO_PUBLIC_DATA_BASE_URL` en `apps/mobile/.env` (ver `.env.example`). El marcador en directo es opcional: define `EXPO_PUBLIC_LIVE_BASE_URL` con la URL del Worker de `workers/live-proxy`; sin ella no se hacen peticiones en directo.
 
 El proyecto usa **Expo SDK 58** (React Native 0.88), el SDK que soporta Expo Go actualmente. Para probar en iPhone con un SDK recién salido, Expo Go de la App Store puede ir por detrás: usa un development build (EAS) o `eas go`.
 
@@ -70,10 +70,11 @@ python -m depor_hub.cli schemas && git diff --exit-code packages/schemas
 npm run lint && npm run typecheck && npm test
 npm run licenses && git diff --exit-code apps/mobile/src/data/licenses.json
 python -m depor_hub.cli club                # idempotente: la segunda pasada da changed=false
+(cd workers/live-proxy && npm test)         # pruebas del proxy en directo
 ```
 
 ## Secretos
 Ver `.env.example`. El token de football-data.org vive solo en GitHub Secrets (`FOOTBALL_DATA_TOKEN`). `CONTACT_EMAIL` se configura como variable de Actions para el User-Agent de las peticiones.
 
 ## Estado
-H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario), H4 (plantilla + ficha enriquecida, rediseño de Equipo/ficha, escudos de clubes, entrenador y cuerpo técnico), H5.3 (Inicio Cartel + Prensa, ficha de rival e historias agrupadas), H6 (noticias, vídeos y redes curadas) y H7 (club, ajustes y acerca de) hechos. Fase 2: H0.1 (sincronización con `main`), H0.2 (salud del pipeline y `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados de partidos terminados) y H2 (iconos de fuentes) hechos. Siguiente: proxy en directo con Cloudflare Worker y Hito 4 en modo directo. Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/) y operación en [`docs/operations.md`](docs/operations.md).
+H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario), H4 (plantilla + ficha enriquecida, rediseño de Equipo/ficha, escudos de clubes, entrenador y cuerpo técnico), H5.3 (Inicio Cartel + Prensa, ficha de rival e historias agrupadas), H6 (noticias, vídeos y redes curadas) y H7 (club, ajustes y acerca de) hechos. Fase 2: H0.1 (sincronización con `main`), H0.2 (salud del pipeline y `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados de partidos terminados), H2 (iconos de fuentes) y el proxy en directo (Cloudflare Worker + fusión en la app) hechos. Para cerrar el Hito 4 falta desplegar el Worker y definir `EXPO_PUBLIC_LIVE_BASE_URL`; mientras tanto la app funciona con los datos estáticos y los snapshots. Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/) y operación en [`docs/operations.md`](docs/operations.md).

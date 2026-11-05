@@ -11,3 +11,4 @@ Las decisiones numeradas conservan el orden histórico de asignación. El númer
 | [0027](0027-salud-pipeline-status.md) | Salud del pipeline y `status.json` en la rama `status` |
 | [0028](0028-snapshots-partidos-terminados.md) | Snapshots congelados de partidos terminados |
 | [0029](0029-iconos-fuentes-noticias.md) | Iconos oficiales de las fuentes de noticias |
+| [0030](0030-proxy-directo-worker.md) | Proxy de lectura para el marcador en directo |
