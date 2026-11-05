@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T13:04:55Z",
+  "updatedAt": "2026-11-05T14:04:50Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -45,15 +45,24 @@
   "stories": [
     {
       "id": "78822378e57b838c",
-      "title": "Quagliata: \"No pienso en la selección, pienso en trabajar y conseguir puntos con el Dépor\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/quagliata-no-pienso-en-la-seleccion-pienso-en-trabajar-y-conseguir-puntos-con-el-depor-889159.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-05T12:43:50Z",
+      "title": "Quagliata sobre la posible llamada de la selección: «Pienso en conseguir puntos con el Dépor, que para mí es lo más importante»",
+      "url": "https://riazor.org/quagliata-seleccion-no-pienso-eso-depor-importante",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-05T14:00:28Z",
       "kind": "article",
-      "summary": "El lateral italiano agradece el premio al Jugador Estrella Galicia de octubre, pero pone en valor el esfuerzo colectivo",
+      "summary": "Quaglita -en rueda de prensa tras recibir el premio a jugador del mes en el Deportivo- mostró su apoyo públicamente a Leo Román…",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/01/6abeb282d604e.jpg",
-      "tags": [],
-      "alsoIn": []
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "Quagliata: \"No pienso en la selección, pienso en trabajar y conseguir puntos con el Dépor\"",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/quagliata-no-pienso-en-la-seleccion-pienso-en-trabajar-y-conseguir-puntos-con-el-depor-889159.html",
+          "publishedAt": "2026-11-05T12:43:50Z"
+        }
+      ]
     },
     {
       "id": "fdc846b2dd83ca9e",
