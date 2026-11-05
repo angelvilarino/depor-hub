@@ -10,3 +10,4 @@ Las decisiones numeradas conservan el orden histórico de asignación. El númer
 | [0026](0026-club-contrato-imagenes-himnos.md) | Club: contrato, imágenes locales e himnos |
 | [0027](0027-salud-pipeline-status.md) | Salud del pipeline y `status.json` en la rama `status` |
 | [0028](0028-snapshots-partidos-terminados.md) | Snapshots congelados de partidos terminados |
+| [0029](0029-iconos-fuentes-noticias.md) | Iconos oficiales de las fuentes de noticias |

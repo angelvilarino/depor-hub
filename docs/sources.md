@@ -81,7 +81,7 @@ La deduplicación agrupa la misma historia entre medios (±48 h, similitud base 
 
 ### Contrato
 
-`news.json` pasa a `{ updatedAt, sources, stories }`. Cada historia incluye `id`, `title`, `url`, `sourceId`, `publishedAt`, `kind`, `summary`, `thumbnailUrl`, `tags` y `alsoIn`. Las fuentes incluyen `iconUrl` opcional; se usa solo si se configura una URL verificada, sin rastrear la portada. Por defecto se genera un monograma con color estable. `sources.json` desaparece: las fuentes viajan dentro de `news.json` para resolver nombre, grupo y monograma. Pydantic genera el JSON Schema y el espejo Zod de la app.
+`news.json` pasa a `{ updatedAt, sources, stories }`. Cada historia incluye `id`, `title`, `url`, `sourceId`, `publishedAt`, `kind`, `summary`, `thumbnailUrl`, `tags` y `alsoIn`. Las fuentes incluyen `iconUrl` opcional; el catálogo declara el favicon o `apple-touch-icon` oficial ya verificado, sin rastrear la portada (ADR 0029). Si el icono falta o falla, se genera un monograma con color estable. `sources.json` desaparece: las fuentes viajan dentro de `news.json` para resolver nombre, grupo y monograma. Pydantic genera el JSON Schema y el espejo Zod de la app.
 
 `social.json` sigue publicándose desde `data/manual/social_pins.yml`, pero la pestaña Noticias ya no lo muestra: los perfiles verificados quedan para una futura sección social.
 

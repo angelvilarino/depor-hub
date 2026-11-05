@@ -30,8 +30,10 @@ export function NewsStoryCard({ story, sources, read, onOpen, onTag, now }: Prop
   const { colors } = useTheme();
   const [expanded, setExpanded] = useState(false);
   const [failedImage, setFailedImage] = useState(false);
+  const [failedIcon, setFailedIcon] = useState(false);
   const source = sources.find((item) => item.id === story.sourceId);
   const name = source?.name ?? story.sourceId;
+  const iconUrl = failedIcon ? null : source?.iconUrl;
   const age = newsAge(story.publishedAt, now);
   const relative = t(`data.ago_${age.unit}`, { n: age.n });
   const tags = story.tags.slice(0, 2);
@@ -57,10 +59,31 @@ export function NewsStoryCard({ story, sources, read, onOpen, onTag, now }: Prop
       >
         <View style={styles.text}>
           <View style={styles.meta}>
-            <View style={[styles.monogram, { backgroundColor: colors.primary }]}>
-              <Text style={{ color: colors.onPrimary, fontSize: 11, fontWeight: '700' }}>
-                {sourceMonogram(name)}
-              </Text>
+            <View
+              accessibilityElementsHidden
+              importantForAccessibility="no-hide-descendants"
+              style={[
+                styles.monogram,
+                {
+                  backgroundColor: iconUrl ? colors.surface : colors.primary,
+                  borderColor: colors.border,
+                  borderWidth: iconUrl ? StyleSheet.hairlineWidth : 0,
+                },
+              ]}
+            >
+              {iconUrl ? (
+                <Image
+                  source={{ uri: iconUrl }}
+                  cachePolicy="memory-disk"
+                  contentFit="contain"
+                  onError={() => setFailedIcon(true)}
+                  style={styles.sourceLogo}
+                />
+              ) : (
+                <Text style={{ color: colors.onPrimary, fontSize: 11, fontWeight: '700' }}>
+                  {sourceMonogram(name)}
+                </Text>
+              )}
             </View>
             <Text
               numberOfLines={1}
@@ -201,7 +224,9 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden',
   },
+  sourceLogo: { width: 21, height: 21 },
   dot: { width: 6, height: 6, borderRadius: 3, marginLeft: 'auto' },
   thumb: { width: 72, height: 72, borderRadius: radius.sm },
   footer: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },

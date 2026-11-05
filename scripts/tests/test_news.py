@@ -142,6 +142,9 @@ def test_committed_catalog_has_five_active_sources():
     assert len(active) == 5
     assert {feed.group for feed in active} == {"club", "galicia", "nacional"}
     assert sum(1 for feed in active if feed.group == "galicia") == 3
+    # H2: cada fuente activa publica un icono oficial verificado; sin icono, la app
+    # cae al monograma, pero el catálogo no debe dejar huecos sin documentar.
+    assert all(feed.icon_url and feed.icon_url.startswith("https://") for feed in active)
 
 
 # --- normalización y parseo -------------------------------------------------
@@ -673,7 +676,12 @@ def test_ingest_publishes_the_source_catalog():
     result = news_ingest.run_ingest(
         feeds=[
             feed("nacional", group="nacional", priority=40),
-            feed("local", group="galicia", priority=10),
+            feed(
+                "local",
+                group="galicia",
+                priority=10,
+                iconUrl="https://local.example.test/icon.png",
+            ),
         ],
         http=FakeHttp({"nacional": body("atom_basic.xml"), "local": body("rss_basic.xml")}),
         squad=None,
@@ -684,6 +692,8 @@ def test_ingest_publishes_the_source_catalog():
     )
     assert [source.group for source in result.news.sources] == ["galicia", "nacional"]
     assert all(source.homepage.startswith("https://") for source in result.news.sources)
+    assert result.news.sources[0].icon_url == "https://local.example.test/icon.png"
+    assert result.news.sources[1].icon_url is None
 
 
 def test_ingest_report_has_calibration_sections():

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T10:04:55Z",
+  "updatedAt": "2026-11-05T10:14:40Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -7,7 +7,7 @@
       "group": "club",
       "kind": "video",
       "homepage": "https://www.youtube.com/@rcdeportivo",
-      "iconUrl": null
+      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
     },
     {
       "id": "riazor",
@@ -15,7 +15,7 @@
       "group": "galicia",
       "kind": "article",
       "homepage": "https://www.riazor.org/",
-      "iconUrl": null
+      "iconUrl": "https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png"
     },
     {
       "id": "dxt-campeon",
@@ -23,7 +23,7 @@
       "group": "galicia",
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
-      "iconUrl": null
+      "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
     },
     {
       "id": "la-voz",
@@ -31,7 +31,7 @@
       "group": "galicia",
       "kind": "article",
       "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": null
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     },
     {
       "id": "marca",
@@ -39,7 +39,7 @@
       "group": "nacional",
       "kind": "article",
       "homepage": "https://www.marca.com/futbol/deportivo.html",
-      "iconUrl": null
+      "iconUrl": "https://www.marca.com/apple-touch-icon.png"
     }
   ],
   "stories": [

@@ -32,6 +32,9 @@ class FeedConfig(BaseModel):
     priority: int = Field(default=50, ge=0, le=1000)
     feed_url: str = Field(alias="feedUrl")
     homepage: str
+    # Icono oficial ya verificado (favicon/touch icon). Es opcional: sin él la app
+    # pinta un monograma estable. No se rastrea la portada para descubrirlo.
+    icon_url: str | None = None
     kind: NewsKind = "article"
     enabled: bool = True
     depor_specific: bool = False
@@ -44,9 +47,11 @@ class FeedConfig(BaseModel):
             raise ValueError("id debe ser minúsculas, sin espacios")
         return value
 
-    @field_validator("feed_url", "homepage")
+    @field_validator("feed_url", "homepage", "icon_url")
     @classmethod
-    def _http_url(cls, value: str) -> str:
+    def _http_url(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
         parsed = urlparse(value)
         if parsed.scheme not in {"http", "https"} or not parsed.netloc:
             raise ValueError("la URL debe ser http(s)")

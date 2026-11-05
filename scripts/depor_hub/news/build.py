@@ -98,6 +98,7 @@ def build_news(
             group=feed.group,  # type: ignore[arg-type]
             kind=feed.kind,  # type: ignore[arg-type]
             homepage=feed.homepage,
+            icon_url=feed.icon_url,
         )
         for feed in feeds
         if feed.enabled

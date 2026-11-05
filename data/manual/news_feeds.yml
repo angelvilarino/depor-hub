@@ -12,6 +12,7 @@ feeds:
     priority: 5
     feedUrl: https://www.youtube.com/feeds/videos.xml?channel_id=UCY2s1XaPzO60Hu6M_YZCTgA
     homepage: https://www.youtube.com/@rcdeportivo
+    iconUrl: https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj
     kind: video
     enabled: true
     depor_specific: true
@@ -23,6 +24,7 @@ feeds:
     priority: 10
     feedUrl: https://www.riazor.org/feed/
     homepage: https://www.riazor.org/
+    iconUrl: https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png
     kind: article
     enabled: true
     depor_specific: true
@@ -34,6 +36,7 @@ feeds:
     priority: 20
     feedUrl: https://dxtcampeon.elidealgallego.com/rss
     homepage: https://dxtcampeon.elidealgallego.com/
+    iconUrl: https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico
     kind: article
     enabled: true
     depor_specific: true
@@ -45,6 +48,7 @@ feeds:
     priority: 30
     feedUrl: https://www.lavozdegalicia.es/temas/deportivo/index.xml
     homepage: https://www.lavozdegalicia.es/temas/deportivo/
+    iconUrl: https://www.lavozdegalicia.es/favicon.ico
     kind: article
     enabled: true
     depor_specific: true
@@ -56,6 +60,7 @@ feeds:
     priority: 40
     feedUrl: https://www.marca.com/rss/googlenews/futbol/deportivo.xml
     homepage: https://www.marca.com/futbol/deportivo.html
+    iconUrl: https://www.marca.com/apple-touch-icon.png
     kind: article
     enabled: true
     depor_specific: false

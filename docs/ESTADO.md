@@ -1,5 +1,5 @@
 # Estado del proyecto — 04-nov-2026
-H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta) y H3.5 (snapshots congelados) hechos. Pendientes de la fase: logos de fuentes (H2), proxy en directo (Worker) y Hito 4 en modo directo.
+H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados) y H2 (iconos de fuentes) hechos. Pendientes de la fase: proxy en directo (Worker) y Hito 4 en modo directo.
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
@@ -57,6 +57,18 @@ H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calend
 - Verificación: `ruff`, **188 pytest**, `typecheck`, `lint`, **277 tests / 33
   suites** y esquemas regenerados sin diferencias.
 - Decisiones en [`docs/adr/0028-snapshots-partidos-terminados.md`](adr/0028-snapshots-partidos-terminados.md).
+
+## H2 — Iconos de las fuentes de noticias (hecho)
+
+- Las cinco fuentes activas declaran en `data/manual/news_feeds.yml` un
+  `iconUrl` oficial verificado (favicon o `apple-touch-icon` del propio medio).
+  `build_news` lo copia a `news.json`; el contrato no cambia.
+- La tarjeta de Noticias y la portada cargan el icono con caché de imagen y
+  caen al monograma estable si falta, falla o el medio lo retira. No se rastrean
+  portadas ni se descargan logos al repositorio.
+- Una prueba exige icono https en las cinco fuentes activas y comprueba que el
+  pipeline lo publica. Decisiones en
+  [`docs/adr/0029-iconos-fuentes-noticias.md`](adr/0029-iconos-fuentes-noticias.md).
 
 
 ## H3 — Calendario (hecho)
@@ -116,7 +128,7 @@ Probar en iPhone: `npm run mobile` (sirve `data/public` en local), pestaña Equi
 - **Próximo partido:** cartel simétrico, casillas de cuenta atrás con segundos en componente aislado, estados en juego/pendiente/final y acciones de recordatorio/calendario. El tiempo previsto se presenta como talón horario con icono SVG, temperatura, barra de lluvia, viento y detalle ±3 h cuando existe; atribución Open-Meteo, datos cacheados con antigüedad y límites de coordenadas/horizonte.
 - **Rival:** resumen tocable y ficha `/rival/[teamId]`; enseña entrenador de football-data.org, forma, BDFutbol H2H total con barra G/E/P, confianza y fuente enlazada, y hasta cinco cruces con escudos. No se publican `keyPlayers`: quedan vacíos en el JSON publicado y los clientes viejos siguen pudiendo leer el campo. Se decidió omitir estadísticas y fotos individuales de la plantilla rival porque no se eligió una fuente gratuita fiable que cubra 2026/27.
 - **Temporada:** cabecera con temporada/jornada; resumen compacto sin repetir posición y puntos de la mini-tabla; cinco cromos con escudo del rival, resultado en letra y selección por defecto del más reciente. El detalle y punto del gráfico se sincronizan; el gráfico SVG permite arrastrar y ofrece acciones accesibles de jornada anterior/siguiente. La mini-tabla vive en una segunda tarjeta para acortar el bloque. Sin datos opcionales, se ocultan detalle y gráfico y se conserva el resumen derivado de clasificación/fixtures.
-- **Noticias en Inicio:** una destacada con miniatura del feed o monograma, cuatro filas, fuente y hora relativa; `alsoIn` se despliega y enlaza a los otros medios. No se scrapean páginas ni iconos de medios: `iconUrl` es opcional para futuras URLs verificadas. El algoritmo agrupa nombres de eventos compartidos en títulos/extractos dentro de 48 h; las tres entradas reales de Falas Dépor se publican como una sola historia. El test de Alberto Molina confirma que «Deportivo» y el apellido/homonimia no bastan: se rechaza como irrelevante.
+- **Noticias en Inicio:** una destacada con miniatura del feed o monograma, cuatro filas, fuente y hora relativa; `alsoIn` se despliega y enlaza a los otros medios. No se scrapean páginas: `iconUrl` usa el favicon oficial verificado (ADR 0029) y cae al monograma si falla. El algoritmo agrupa nombres de eventos compartidos en títulos/extractos dentro de 48 h; las tres entradas reales de Falas Dépor se publican como una sola historia. El test de Alberto Molina confirma que «Deportivo» y el apellido/homonimia no bastan: se rechaza como irrelevante.
 - **Contrato y privacidad:** se retira `whatIsAtStake` del modelo, esquema y datos nuevos; Zod y Pydantic ignoran esa clave al leer cachés H5.2 antiguos. No se añadió `API_FOOTBALL_KEY` ni se incorporó una clave al bundle.
 - **Pruebas H5:** cobertura añadida de contraste AA por parada de degradado/monograma, selección pura de puntos del gráfico, interacción de racha y marcador, fecha relativa, compatibilidad del contrato, Home y ficha de rival sin estadísticas individuales.
 
