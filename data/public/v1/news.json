@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T16:32:56Z",
+  "updatedAt": "2026-11-05T17:33:06Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "b66851e78c5851cb",
+      "title": "El Dépor ya conoce la nueva fecha para la tercera eliminatoria copera",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-05/el-depor-ya-conoce-la-nueva-fecha-para-la-tercera-eliminatoria-copera-889239.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-05T17:25:55Z",
+      "kind": "article",
+      "summary": "El conjunto dirigido por Alberto Rodríguez aplaza la cita ante el CE Europa una semana",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2025/10/06/68e3dbb2c5897.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "9f1dba91012c433a",
       "title": "El Espanyol – Dépor se jugará con homenaje a Jesús de Miguel: ofrenda, minuto de silencio y pausa en el minuto 9",
@@ -2230,18 +2242,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "f008805c9b633b5e",
-      "title": "El aviso del capitán del Deportivo antes de enfrentarse al Atlético",
-      "url": "https://marca.com/radio/2026/10/23/aviso-capitan-deportivo-enfrentarse-atletico.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-10-23T07:23:16Z",
-      "kind": "article",
-      "summary": "Diego Villares analizó en La Tribu el duelo su equipo y el de Simeone, la exigencia de Primera División y sus sensaciones ante el Real…",
-      "thumbnailUrl": "https://s1.dmcdn.net/v/gJvKQ1gsmgFwgalSo/x1080",
-      "tags": [],
       "alsoIn": []
     }
   ]
