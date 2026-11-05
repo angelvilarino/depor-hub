@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T08:06:44Z",
+  "updatedAt": "2026-11-05T10:04:55Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "c2fba810a7376487",
+      "title": "Edu Expósito, el primer daño colateral de la debacle del Dépor en Mallorca en 2019",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/edu-exposito-el-primer-dano-colateral-de-la-debacle-del-depor-en-mallorca-en-889136.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-05T10:00:21Z",
+      "kind": "article",
+      "summary": "Edu Expósito fue la primera venta del Dépor tras no conseguir el ascenso a Primera en Mallorca en la temporada 2018-19",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/05/6aec517e0e251.r_d.1435-918-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "efa721dd7f9d2532",
       "title": "El Dépor de Hidalgo protagoniza el segundo mejor arranque de la historia reciente blanquiazul en Primera",
