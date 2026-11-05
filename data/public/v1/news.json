@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T08:06:15Z",
+  "updatedAt": "2026-11-05T10:04:55Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,178 @@
     }
   ],
   "stories": [
+    {
+      "id": "c2fba810a7376487",
+      "title": "Edu Expósito, el primer daño colateral de la debacle del Dépor en Mallorca en 2019",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/edu-exposito-el-primer-dano-colateral-de-la-debacle-del-depor-en-mallorca-en-889136.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-05T10:00:21Z",
+      "kind": "article",
+      "summary": "Edu Expósito fue la primera venta del Dépor tras no conseguir el ascenso a Primera en Mallorca en la temporada 2018-19",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/05/6aec517e0e251.r_d.1435-918-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "efa721dd7f9d2532",
+      "title": "El Dépor de Hidalgo protagoniza el segundo mejor arranque de la historia reciente blanquiazul en Primera",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/el-depor-de-hidalgo-protagoniza-el-segundo-mejor-arranque-de-la-historia-reciente-blanquiazul-en-primera-888985.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-05T04:00:00Z",
+      "kind": "article",
+      "summary": "Solo el equipo de Víctor Sánchez del Amo en la 2015-16 había llegado más lejos tras once jornadas en las últimas siete campañas en la…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb561f6489c.r_d.1284-762-0.jpg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "018e6c0dd6002e72",
+      "title": "Los centros ya tienen sentido en el Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/los-centros-ya-tienen-sentido-en-el-depor-889093.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-05T04:00:00Z",
+      "kind": "article",
+      "summary": "El equipo coruñés firmó su récord del curso ante Osasuna (30) y marcó de esta forma; una muestra del valor de este recurso en el actual…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb96111a1b2.r_d.1216-1285-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "9f9eab6cd01c0396",
+      "title": "El caño de Miguel Loureiro recibe su homenaje en el vestuario del Dépor: \"La samba de Loureirinho\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/el-cano-de-miguel-loureiro-recibe-su-homenaje-en-el-vestuario-del-depor-la-samba-de-loureirinho-889090.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T20:32:57Z",
+      "kind": "article",
+      "summary": "Mario Soriano reveló una publicación con el detalle de los jugadores del Dépor a Miguel Loureiro tras su regate ante Osasuna",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb92ab15fa3.r_d.1573-916-0.jpg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "866d1a361502a58b",
+      "title": "Vuelve Auba y Casadó da un paso adelante: acelera en su recuperación y ya se entrena con el grupo",
+      "url": "https://riazor.org/vuelve-auba-casado-recuperacion-entrena-grupo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-04T19:30:16Z",
+      "kind": "article",
+      "summary": "Marc Casadó completó el entrenamiento de este martes a ritmo normal. Ede y Eddahchouri son los dos únicos deportivistas que se mantienen…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "ae019ee747f95cc6",
+      "title": "Así fue el Dépor 2 -1 CA Osasuna desde dentro | INSIDE DÉPOR",
+      "url": "https://youtube.com/watch?v=e-Gtbl59hg8",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-04T19:28:19Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i2.ytimg.com/vi/e-Gtbl59hg8/hqdefault.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "580ead80ada952f9",
+      "title": "Once jornadas sin una portería a cero: la asignatura pendiente del Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/once-jornadas-sin-una-porteria-a-cero-la-asignatura-pendiente-del-depor-889020.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T17:58:59Z",
+      "kind": "article",
+      "summary": "La última vez que el equipo coruñés protagonizó una serie peor en Primera fue en la 2015-16, con 19 jornadas seguidas encajando",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb6ef72753e.r_d.1673-1199-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "edc653c567ca6af1",
+      "title": "«Aubameyang a sus 37 años devora cada momento que está viviendo en A Coruña»: las claves de Manu Sánchez tras el Deportivo – Osasuna",
+      "url": "https://riazor.org/aubameyang-devora-momento-claves-deportivo-osasuna",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-04T17:41:32Z",
+      "kind": "article",
+      "summary": "El extécnico del Dépor ABANCA analiza las claves de la victoria del Deportivo ante Osasuna para romper la mala racha en liga. La entrada…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "bb909bec8c96e9f1",
+      "title": "Iker Gil ya tiene su primera recompensa",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-04/iker-gil-ya-tiene-su-primera-recompensa-888963.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T17:34:36Z",
+      "kind": "article",
+      "summary": "Volvió a Abegondo en 2025 para jugar en el Juvenil A, pese a contar con propuestas de otros clubes, y en Zamora marcó su primer gol con el…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeb455168b57.r_d.544-714-0.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "890a6613ddc51187",
+      "title": "Así remontó el Dépor ante Osasuna: jugar por fuera y el caos como herramienta",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/asi-remonto-el-depor-ante-osasuna-jugar-por-fuera-y-el-caos-como-herramienta-889003.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T17:02:32Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul firmó una gran primera mitad a través de su buena circulación ofensiva, pero fue el juego exterior el que le dio el…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/04/6aeb64afdaaae.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "2093624e482a14e6",
+      "title": "Galería de imágenes del Deportivo – Osasuna: Por fin salió cara",
+      "url": "https://riazor.org/galeria-imagenes-deportivo-osasuna-fin-salio-cara",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-04T12:30:27Z",
+      "kind": "article",
+      "summary": "Repasamos en imágenes la remontada del Deportivo ante Osasuna. Mario Soriano y Nsongo Bil marcaron para dejar los tres puntos en Riazor…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "b4575374cdd31a31",
+      "title": "El día en el que Angeliño fue el cuarto lateral izquierdo del Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/el-dia-en-el-que-angelino-fue-el-cuarto-lateral-izquierdo-del-depor-888911.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T12:23:23Z",
+      "kind": "article",
+      "summary": "Ante Osasuna, Hidalgo utilizó a tres futbolistas en su posición antes que al jugador de Coristanco que apenas suma 69 minutos en Liga",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/04/6aeafc0303285.r_d.1496-1153-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "84a281e950b92b8f",
+      "title": "Domingos Duarte alucinó con Riazor: \"¿Cómo puede tener un equipo en Segunda un estadio así?\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-04/domingos-duarte-alucino-con-riazor-como-puede-tener-un-equipo-en-segunda-un-estadio-asi-888910.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-04T09:14:35Z",
+      "kind": "article",
+      "summary": "El portugués recuerda en una entrevista en Post United su año en el Dépor",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2025/09/11/68c1f5a5c032f.jpeg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "9ab5b56b5d67c4e9",
       "title": "El Dépor volvió a ganar y Riazor a sonreír: ¡Búscate en nuestra galería de público del Deportivo – Osasuna!",
@@ -2003,36 +2175,6 @@
       "summary": "\"La visita al Metropolitano es un buen test para el Dépor\", confirma el de Arguineguín",
       "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/09/16/6aaabdc16a336.jpeg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "b7c266bf8d1fe3ea",
-      "title": "Rueda de prensa de Lucía Pardo previa al Dépor ABANCA - Deportivo Alavés",
-      "url": "https://youtube.com/watch?v=Bws6oPOE7vM",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-21T11:43:22Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i3.ytimg.com/vi/Bws6oPOE7vM/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "67535efac59a565b",
-      "title": "José María Giménez: “Cuando fiché por el Depor pedí que no hubiese cláusula de cedido”",
-      "url": "https://marca.com/futbol/deportivo/2026/10/21/jose-maria-gimenez-fiche-depor-pedi-hubiese-clausula-cedido.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-10-21T11:15:10Z",
-      "kind": "article",
-      "summary": "El uruguayo podrá jugar ante sus ex en el Metropolitano - se siente muy a gusto en La Coruña: “Es una ciudad que enamora”.",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/06/25/6a3d76bbdbf7a.jpeg",
-      "tags": [
-        "fichajes",
-        "club"
-      ],
       "alsoIn": []
     }
   ]
