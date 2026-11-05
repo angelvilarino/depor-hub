@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T18:05:37Z",
+  "updatedAt": "2026-11-05T20:04:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "0da0f5c822f562f7",
+      "title": "La madurez de Edu Expósito en Abegondo: «Si el Dépor hubiese ascendido a Primera en Mallorca, él sería hoy jugador franquicia del equipo»",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/05/madurez-edu-exposito-abegondo-depor-hubiese-ascendido-primera-mallorca-edu-seria-hoy-jugador-franquicia-equipo/00031793907424594647322.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-05T19:54:00Z",
+      "kind": "article",
+      "summary": "El centrocampista, ahora buque insignia del Espanyol, se reencuentra con su Deportivo: «Llegó siendo un niño y salió siendo un profesional…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/sYOPPJkChc5Yoz0VHNVZC2N-uHY=/768x/2026/11/05/00121793907242137259874/Foto/I16F9110.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "9cf8e60a3b14c42a",
       "title": "Cinco victorias en 2026: el dato del Espanyol del que el Dépor no debe fiarse",
@@ -1097,7 +1111,7 @@
       "sourceId": "youtube-club",
       "publishedAt": "2026-10-31T19:42:59Z",
       "kind": "video",
-      "summary": "Dos acciones de Ubamba en la segunda mitad dieron la remontada al cuadro local",
+      "summary": null,
       "thumbnailUrl": "https://i4.ytimg.com/vi/sdPW5gooxC0/hqdefault.jpg",
       "tags": [
         "cantera",
@@ -2223,21 +2237,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i3.ytimg.com/vi/f5N6B2eAt6g/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "a671704981b90079",
-      "title": "Rueda de prensa de Manuel Pablo previa al Fabril - CD Extremadura",
-      "url": "https://youtube.com/watch?v=0Hbdu_4lu_c",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-23T11:16:00Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i1.ytimg.com/vi/0Hbdu_4lu_c/hqdefault.jpg",
       "tags": [
         "cantera",
         "partido"
