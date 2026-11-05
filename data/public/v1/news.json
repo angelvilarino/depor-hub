@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T11:04:22Z",
+  "updatedAt": "2026-11-05T12:35:18Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "fdc846b2dd83ca9e",
+      "title": "La primera medida de Sarabia en el Espanyol: una hora de vídeo para «analizar muy bien al Dépor»",
+      "url": "https://riazor.org/primera-medida-sarabia-espanyol-analizar-depor",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-05T12:24:09Z",
+      "kind": "article",
+      "summary": "Eder Sarabia, en la rueda de prensa de su presentación, reconoció que en sus primeros días al frente del Espanyol le está dando prioridad…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/f09f8ea5-eder-sarabia-presen.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "c2fba810a7376487",
       "title": "Edu Expósito, el primer daño colateral de la debacle del Dépor en Mallorca en 2019",
