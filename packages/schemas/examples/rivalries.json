@@ -1,0 +1,64 @@
+{
+  "updatedAt": "2026-11-06T00:00:00Z",
+  "rivalries": [
+    {
+      "rival": "Rival de ejemplo",
+      "rivalBdfutbolId": "99",
+      "description": "Rivalidad sintética.",
+      "sinceYear": 1920,
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=99",
+        "played": 10,
+        "won": 5,
+        "drawn": 3,
+        "lost": 2,
+        "goalsFor": 15,
+        "goalsAgainst": 10,
+        "meetings": [
+          {
+            "date": "2020-01-01",
+            "competition": "Competición de ejemplo",
+            "round": "Jornada 1",
+            "home": "Club de ejemplo",
+            "away": "Rival de ejemplo",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "W"
+          }
+        ]
+      },
+      "iconicMatches": [
+        {
+          "date": "1995-06-27",
+          "competition": "Competición de ejemplo",
+          "round": "Final",
+          "home": "Club de ejemplo",
+          "away": "Rival de ejemplo",
+          "homeGoals": 2,
+          "awayGoals": 1,
+          "note": "Partido sintético.",
+          "sourceUrl": "https://example.org/final"
+        }
+      ],
+      "facts": [
+        {
+          "text": "Dato histórico sintético.",
+          "provenance": {
+            "source": "Fuente de ejemplo",
+            "confidence": "cross_checked",
+            "capturedAt": "2026-11-06"
+          }
+        }
+      ],
+      "media": [],
+      "provenance": {
+        "source": "Fuente de ejemplo",
+        "confidence": "cross_checked",
+        "capturedAt": "2026-11-06"
+      }
+    }
+  ]
+}

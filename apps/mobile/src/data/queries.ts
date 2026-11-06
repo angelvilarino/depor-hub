@@ -12,10 +12,12 @@ import {
   Meta,
   News,
   Rivals,
+  Rivalries,
   Season,
   SocialFeed,
   Squad,
   Standings,
+  Titles,
 } from './schemas';
 
 export const GC_TIME = 7 * 24 * 60 * 60 * 1000; // la caché persistida vive 7 días
@@ -122,3 +124,8 @@ export const useMatchDetail = (season: string | null, matchId: string) =>
 // club.json es opcional para tolerar una caché anterior a H7; un 404 se pinta
 // como estado vacío, no como error global.
 export const useClub = () => useOptionalData('club.json', Club, NEWS_STALE_TIME);
+// Ampliaciones editoriales opcionales (H1). Un 404 significa "sin datos": la app
+// sigue usando el bloque breve de club.json y no pinta un error global.
+export const useTitles = () => useOptionalData('titles.json', Titles, NEWS_STALE_TIME);
+export const useRivalries = () =>
+  useOptionalData('rivalries.json', Rivalries, NEWS_STALE_TIME);

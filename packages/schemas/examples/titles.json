@@ -1,0 +1,35 @@
+{
+  "updatedAt": "2026-11-06T00:00:00Z",
+  "editions": [
+    {
+      "competition": "Competición de ejemplo",
+      "year": 2000,
+      "season": "1999-00",
+      "scope": "national",
+      "finalMatch": {
+        "date": "2000-06-30",
+        "competition": "Competición de ejemplo 1999-00",
+        "round": "Final",
+        "home": "Club de ejemplo",
+        "away": "Rival de ejemplo",
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "venue": "Estadio de ejemplo",
+        "note": "Partido sintético.",
+        "sourceUrl": "https://example.org/final"
+      },
+      "topScorers": [
+        { "player": "Jugador de ejemplo", "goals": 2, "note": null }
+      ],
+      "squad": [
+        { "name": "Jugador de ejemplo", "role": "delantero", "appearances": 1, "goals": 2 }
+      ],
+      "note": "Edición sintética.",
+      "provenance": {
+        "source": "Fuente de ejemplo",
+        "confidence": "cross_checked",
+        "capturedAt": "2026-11-06"
+      }
+    }
+  ]
+}

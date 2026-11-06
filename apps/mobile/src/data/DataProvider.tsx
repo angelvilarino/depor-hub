@@ -28,7 +28,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
       persistOptions={{
         persister,
         maxAge: GC_TIME,
-        buster: 'data-v6', // v6: noticias por historia y fuentes curadas (ADR 0018)
+        buster: 'data-v7', // v7: club ampliado (ADR 0032); v6: noticias por historia y fuentes curadas (ADR 0018)
         dehydrateOptions: { shouldDehydrateQuery: (q) => q.state.status === 'success' },
       }}
     >

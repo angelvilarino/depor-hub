@@ -6,8 +6,14 @@
     "foundedYear": 1906,
     "city": "A Coruña",
     "country": "España",
-    "colors": ["blanco", "azul"],
-    "nicknames": ["Dépor", "Blanquiazul"],
+    "colors": [
+      "blanco",
+      "azul"
+    ],
+    "nicknames": [
+      "Dépor",
+      "Blanquiazul"
+    ],
     "motto": "Forza Dépor",
     "president": "Presidente de ejemplo",
     "entity": "S.A.D.",
@@ -24,7 +30,9 @@
       "id": "himno-ejemplo",
       "title": "Himno de ejemplo",
       "kind": "oficial",
-      "authors": ["Autor de ejemplo"],
+      "authors": [
+        "Autor de ejemplo"
+      ],
       "year": 2000,
       "description": "Himno sintético para validar el contrato.",
       "lyrics": "Primera estrofa de ejemplo\n\nSegunda estrofa de ejemplo",
@@ -32,10 +40,34 @@
       "credits": [
         {
           "role": "musicians",
-          "names": ["Músico de ejemplo: voz"],
+          "names": [
+            "Músico de ejemplo: voz"
+          ],
           "text": null
         }
-      ]
+      ],
+      "media": {
+        "url": "https://example.org/media/himno.jpg",
+        "kind": "photo",
+        "width": 1200,
+        "height": 800,
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "author": "Autoría de ejemplo",
+        "credit": "Foto de ejemplo · Autoría de ejemplo",
+        "sourceUrl": "https://example.org/himno",
+        "origin": "commons",
+        "verifiedAt": "2026-11-06"
+      },
+      "lyricsRights": {
+        "status": "unknown",
+        "holder": "Titular de ejemplo",
+        "license": "Uso editorial; sin licencia de reutilización",
+        "licenseUrl": null,
+        "sourceUrl": "https://example.org/himno",
+        "note": "Metadatos sintéticos.",
+        "verifiedAt": "2026-11-06"
+      }
     }
   ],
   "crests": [
@@ -44,7 +76,8 @@
       "yearFrom": 1906,
       "yearTo": 1920,
       "description": "Versión sintética.",
-      "image": "img/club/escudos/1906.png"
+      "image": "img/club/escudos/1906.png",
+      "media": null
     }
   ],
   "kits": [
@@ -57,9 +90,13 @@
           "chestSponsor": "Patrocinador de ejemplo",
           "sleeveSponsor": null,
           "backSponsor": null,
-          "colors": ["blanco", "azul"],
+          "colors": [
+            "blanco",
+            "azul"
+          ],
           "description": "Equipación sintética.",
-          "image": "img/club/equipaciones/1999-00/home.webp"
+          "image": "img/club/equipaciones/1999-00/home.webp",
+          "media": null
         }
       ]
     }
@@ -67,9 +104,14 @@
   "stadium": {
     "name": "Estadio de ejemplo",
     "address": "Calle del estadio, 1",
-    "coordinates": { "lat": 43.0, "lon": -8.0 },
+    "coordinates": {
+      "lat": 43.0,
+      "lon": -8.0
+    },
     "openedOn": "1944-10-29",
-    "renovations": ["Remodelación de ejemplo"],
+    "renovations": [
+      "Remodelación de ejemplo"
+    ],
     "pitch": "Césped natural",
     "dimensions": "105 x 68 m",
     "access": "Puerta principal",
@@ -78,15 +120,59 @@
     "capacity": {
       "total": 100,
       "breakdown": [
-        { "zone": "Gradas", "seats": 60 },
-        { "zone": "Zona VIP", "seats": 40 }
+        {
+          "zone": "Gradas",
+          "seats": 60
+        },
+        {
+          "zone": "Zona VIP",
+          "seats": 40
+        }
       ]
     },
-    "description": "Estadio sintético."
+    "description": "Estadio sintético.",
+    "schedule": {
+      "days": "Lunes a viernes",
+      "hours": "09:00-20:00",
+      "note": "Horario sintético.",
+      "sourceUrl": "https://example.org/estadio",
+      "verifiedAt": "2026-11-06"
+    },
+    "accessDetails": {
+      "publicTransport": "Autobús de ejemplo",
+      "parking": "Aparcamiento de ejemplo",
+      "accessibility": "Acceso adaptado de ejemplo",
+      "note": null,
+      "sourceUrl": "https://example.org/estadio"
+    },
+    "capacityAlternatives": [
+      {
+        "label": "Configuración de ejemplo",
+        "total": 90,
+        "note": null,
+        "sourceUrl": "https://example.org/estadio"
+      }
+    ],
+    "tenants": [
+      {
+        "club": "Club de ejemplo",
+        "fromYear": 1944,
+        "toYear": null,
+        "note": null,
+        "sourceUrl": "https://example.org/estadio"
+      }
+    ],
+    "media": []
   },
   "tickets": {
     "season": "2026-27",
-    "zones": [{ "label": "Grada de ejemplo", "priceEur": 20.5, "note": null }],
+    "zones": [
+      {
+        "label": "Grada de ejemplo",
+        "priceEur": 20.5,
+        "note": null
+      }
+    ],
     "purchaseUrl": "https://example.org/entradas",
     "note": "Precio sintético."
   },
@@ -95,7 +181,13 @@
     "location": "Estadio de ejemplo",
     "description": "Museo sintético.",
     "schedule": "Todos los días",
-    "prices": [{ "label": "Entrada general", "priceEur": 5, "note": null }],
+    "prices": [
+      {
+        "label": "Entrada general",
+        "priceEur": 5,
+        "note": null
+      }
+    ],
     "links": [
       {
         "id": "museum",
@@ -108,13 +200,22 @@
     "name": "Ciudad deportiva de ejemplo",
     "location": "Abegondo",
     "description": "Instalación sintética.",
-    "facilities": ["Campo 1", "Campo 2"],
-    "coordinates": { "lat": 43.1, "lon": -8.1 }
+    "facilities": [
+      "Campo 1",
+      "Campo 2"
+    ],
+    "coordinates": {
+      "lat": 43.1,
+      "lon": -8.1
+    }
   },
   "board": {
     "president": "Presidente de ejemplo",
     "members": [
-      { "name": "Consejero de ejemplo", "role": "Consejero" }
+      {
+        "name": "Consejero de ejemplo",
+        "role": "Consejero"
+      }
     ],
     "sportingDirector": "Director deportivo de ejemplo",
     "note": "Organigrama sintético."
@@ -122,12 +223,35 @@
   "sponsors": {
     "principal": "Patrocinador principal de ejemplo",
     "technical": "Fabricante de ejemplo",
-    "official": ["Patrocinador oficial de ejemplo"],
-    "collaborators": ["Colaborador de ejemplo"],
-    "sinceYear": 2020
+    "official": [
+      "Patrocinador oficial de ejemplo"
+    ],
+    "collaborators": [
+      "Colaborador de ejemplo"
+    ],
+    "sinceYear": 2020,
+    "details": [
+      {
+        "name": "Patrocinador principal de ejemplo",
+        "role": "principal",
+        "category": "banca",
+        "sinceYear": 2020,
+        "untilYear": null,
+        "url": "https://example.org/patrocinador",
+        "note": null,
+        "sourceUrl": "https://example.org/club",
+        "verifiedAt": "2026-11-06"
+      }
+    ]
   },
   "titles": [
-    { "competition": "Competición de ejemplo", "years": [1999, 2000] }
+    {
+      "competition": "Competición de ejemplo",
+      "years": [
+        1999,
+        2000
+      ]
+    }
   ],
   "rivalries": [
     {
@@ -136,7 +260,9 @@
       "sinceYear": 1920
     }
   ],
-  "facts": ["Dato curioso sintético."],
+  "facts": [
+    "Dato curioso sintético."
+  ],
   "links": {
     "website": "https://example.org/club",
     "app": "https://example.org/app",
@@ -151,5 +277,6 @@
     "tickets": "https://example.org/entradas",
     "museum": "https://example.org/museo",
     "others": []
-  }
+  },
+  "media": []
 }

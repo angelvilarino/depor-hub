@@ -1,0 +1,367 @@
+{
+  "$defs": {
+    "FinalMatch": {
+      "additionalProperties": false,
+      "properties": {
+        "away": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Away"
+        },
+        "awayGoals": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Awaygoals"
+        },
+        "competition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Competition"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date"
+        },
+        "home": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Home"
+        },
+        "homeGoals": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Homegoals"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "round": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Round"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "venue": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Venue"
+        }
+      },
+      "title": "FinalMatch",
+      "type": "object"
+    },
+    "GoalScorer": {
+      "additionalProperties": false,
+      "properties": {
+        "goals": {
+          "minimum": 0,
+          "title": "Goals",
+          "type": "integer"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "player": {
+          "title": "Player",
+          "type": "string"
+        }
+      },
+      "required": [
+        "player",
+        "goals"
+      ],
+      "title": "GoalScorer",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "description": "De d\u00f3nde sale un dato y con qu\u00e9 confianza (ADR 0008).",
+      "properties": {
+        "capturedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Capturedat"
+        },
+        "confidence": {
+          "default": "single_source",
+          "enum": [
+            "verified",
+            "cross_checked",
+            "single_source",
+            "estimated"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "TitleEdition": {
+      "additionalProperties": false,
+      "description": "Una edici\u00f3n concreta de un t\u00edtulo, con detalle opcional y procedencia.\n\nLa app puede seguir usando `Club.titles` (agrupado por competici\u00f3n). Este\ncontrato a\u00f1ade la edici\u00f3n individual sin romper el bloque legado.",
+      "properties": {
+        "competition": {
+          "title": "Competition",
+          "type": "string"
+        },
+        "finalMatch": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FinalMatch"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "enum": [
+                "national",
+                "regional",
+                "international",
+                "other"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope"
+        },
+        "season": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Season"
+        },
+        "squad": {
+          "items": {
+            "$ref": "#/$defs/TitleSquadMember"
+          },
+          "title": "Squad",
+          "type": "array"
+        },
+        "topScorers": {
+          "items": {
+            "$ref": "#/$defs/GoalScorer"
+          },
+          "title": "Topscorers",
+          "type": "array"
+        },
+        "year": {
+          "maximum": 2100,
+          "minimum": 1800,
+          "title": "Year",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "competition",
+        "year",
+        "provenance"
+      ],
+      "title": "TitleEdition",
+      "type": "object"
+    },
+    "TitleSquadMember": {
+      "additionalProperties": false,
+      "properties": {
+        "appearances": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Appearances"
+        },
+        "goals": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Goals"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "TitleSquadMember",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "editions": {
+      "items": {
+        "$ref": "#/$defs/TitleEdition"
+      },
+      "title": "Editions",
+      "type": "array"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt"
+  ],
+  "title": "Titles",
+  "type": "object"
+}

@@ -1,0 +1,530 @@
+{
+  "$defs": {
+    "HeadToHead": {
+      "additionalProperties": false,
+      "description": "Balance hist\u00f3rico completo y los \u00faltimos cinco cruces (BDFutbol).",
+      "properties": {
+        "confidence": {
+          "default": "single_source",
+          "enum": [
+            "verified",
+            "cross_checked",
+            "single_source",
+            "estimated"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "drawn": {
+          "minimum": 0,
+          "title": "Drawn",
+          "type": "integer"
+        },
+        "goalsAgainst": {
+          "minimum": 0,
+          "title": "Goalsagainst",
+          "type": "integer"
+        },
+        "goalsFor": {
+          "minimum": 0,
+          "title": "Goalsfor",
+          "type": "integer"
+        },
+        "lost": {
+          "minimum": 0,
+          "title": "Lost",
+          "type": "integer"
+        },
+        "meetings": {
+          "items": {
+            "$ref": "#/$defs/HeadToHeadMeeting"
+          },
+          "title": "Meetings",
+          "type": "array"
+        },
+        "played": {
+          "minimum": 0,
+          "title": "Played",
+          "type": "integer"
+        },
+        "scope": {
+          "const": "all_official_matches",
+          "default": "all_official_matches",
+          "title": "Scope",
+          "type": "string"
+        },
+        "source": {
+          "default": "BDFutbol",
+          "title": "Source",
+          "type": "string"
+        },
+        "sourceUrl": {
+          "title": "Sourceurl",
+          "type": "string"
+        },
+        "won": {
+          "minimum": 0,
+          "title": "Won",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sourceUrl",
+        "played",
+        "won",
+        "drawn",
+        "lost",
+        "goalsFor",
+        "goalsAgainst"
+      ],
+      "title": "HeadToHead",
+      "type": "object"
+    },
+    "HeadToHeadMeeting": {
+      "additionalProperties": false,
+      "properties": {
+        "away": {
+          "title": "Away",
+          "type": "string"
+        },
+        "awayGoals": {
+          "minimum": 0,
+          "title": "Awaygoals",
+          "type": "integer"
+        },
+        "competition": {
+          "title": "Competition",
+          "type": "string"
+        },
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "deporResult": {
+          "enum": [
+            "W",
+            "D",
+            "L"
+          ],
+          "title": "Deporresult",
+          "type": "string"
+        },
+        "home": {
+          "title": "Home",
+          "type": "string"
+        },
+        "homeGoals": {
+          "minimum": 0,
+          "title": "Homegoals",
+          "type": "integer"
+        },
+        "round": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Round"
+        }
+      },
+      "required": [
+        "date",
+        "competition",
+        "home",
+        "away",
+        "homeGoals",
+        "awayGoals",
+        "deporResult"
+      ],
+      "title": "HeadToHeadMeeting",
+      "type": "object"
+    },
+    "MediaRef": {
+      "additionalProperties": false,
+      "description": "Referencia a un medio externo con su licencia y atribuci\u00f3n.\n\nRegla del proyecto: las im\u00e1genes nuevas no se copian al repositorio. Se\npublica la URL original, el cr\u00e9dito y la licencia; si no hay licencia de\nreutilizaci\u00f3n, se dice expl\u00edcitamente. `verifiedAt` es la fecha en la que se\ncomprob\u00f3 que la URL segu\u00eda viva, no la fecha del dato deportivo.",
+      "properties": {
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Author"
+        },
+        "credit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Credit"
+        },
+        "height": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Height"
+        },
+        "kind": {
+          "default": "photo",
+          "enum": [
+            "photo",
+            "video",
+            "audio",
+            "document"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "licenseUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Licenseurl"
+        },
+        "origin": {
+          "default": "other",
+          "enum": [
+            "commons",
+            "club_official",
+            "press",
+            "other"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "verifiedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verifiedat"
+        },
+        "width": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Width"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "MediaRef",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "description": "De d\u00f3nde sale un dato y con qu\u00e9 confianza (ADR 0008).",
+      "properties": {
+        "capturedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Capturedat"
+        },
+        "confidence": {
+          "default": "single_source",
+          "enum": [
+            "verified",
+            "cross_checked",
+            "single_source",
+            "estimated"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "RivalryDetail": {
+      "additionalProperties": false,
+      "description": "Rivalidad con narrativa, cruces ic\u00f3nicos y balance hist\u00f3rico opcional.\n\nNo sustituye a `Club.rivalries`; lo ampl\u00eda en un fichero opcional. El balance\nlo rellena el pipeline desde BDFutbol y conserva su propia fuente.",
+      "properties": {
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "facts": {
+          "items": {
+            "$ref": "#/$defs/RivalryFact"
+          },
+          "title": "Facts",
+          "type": "array"
+        },
+        "headToHead": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HeadToHead"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "iconicMatches": {
+          "items": {
+            "$ref": "#/$defs/RivalryMeeting"
+          },
+          "title": "Iconicmatches",
+          "type": "array"
+        },
+        "media": {
+          "items": {
+            "$ref": "#/$defs/MediaRef"
+          },
+          "title": "Media",
+          "type": "array"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "rival": {
+          "title": "Rival",
+          "type": "string"
+        },
+        "rivalBdfutbolId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rivalbdfutbolid"
+        },
+        "sinceYear": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sinceyear"
+        }
+      },
+      "required": [
+        "rival",
+        "provenance"
+      ],
+      "title": "RivalryDetail",
+      "type": "object"
+    },
+    "RivalryFact": {
+      "additionalProperties": false,
+      "properties": {
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "provenance"
+      ],
+      "title": "RivalryFact",
+      "type": "object"
+    },
+    "RivalryMeeting": {
+      "additionalProperties": false,
+      "properties": {
+        "away": {
+          "title": "Away",
+          "type": "string"
+        },
+        "awayGoals": {
+          "minimum": 0,
+          "title": "Awaygoals",
+          "type": "integer"
+        },
+        "competition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Competition"
+        },
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "home": {
+          "title": "Home",
+          "type": "string"
+        },
+        "homeGoals": {
+          "minimum": 0,
+          "title": "Homegoals",
+          "type": "integer"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "round": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Round"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        }
+      },
+      "required": [
+        "date",
+        "home",
+        "away",
+        "homeGoals",
+        "awayGoals"
+      ],
+      "title": "RivalryMeeting",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "rivalries": {
+      "items": {
+        "$ref": "#/$defs/RivalryDetail"
+      },
+      "title": "Rivalries",
+      "type": "array"
+    },
+    "updatedAt": {
+      "title": "Updatedat",
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt"
+  ],
+  "title": "Rivalries",
+  "type": "object"
+}

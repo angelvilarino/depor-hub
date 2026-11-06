@@ -74,6 +74,28 @@
           "default": null,
           "title": "Lyrics"
         },
+        "lyricsRights": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AnthemLyricsRights"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "media": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MediaRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "title": {
           "title": "Title",
           "type": "string"
@@ -132,6 +154,97 @@
         "role"
       ],
       "title": "AnthemCredit",
+      "type": "object"
+    },
+    "AnthemLyricsRights": {
+      "additionalProperties": false,
+      "description": "Situaci\u00f3n legal de una letra publicada.\n\n`unknown` es un estado honesto, no una licencia. Mientras no haya permiso\nexpreso, la app puede mostrar la letra con uso editorial y atribuci\u00f3n, pero\nel proyecto no afirma que sea reutilizable.",
+      "properties": {
+        "holder": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Holder"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "licenseUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Licenseurl"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "licensed",
+            "public_domain",
+            "permission_granted",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "verifiedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verifiedat"
+        }
+      },
+      "title": "AnthemLyricsRights",
       "type": "object"
     },
     "Board": {
@@ -230,6 +343,51 @@
         "total"
       ],
       "title": "Capacity",
+      "type": "object"
+    },
+    "CapacityAlternative": {
+      "additionalProperties": false,
+      "description": "Aforo alternativo publicado por otra fuente (conciertos, configuraci\u00f3n UEFA...).",
+      "properties": {
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "total": {
+          "minimum": 0,
+          "title": "Total",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "label",
+        "total"
+      ],
+      "title": "CapacityAlternative",
       "type": "object"
     },
     "CapacityZone": {
@@ -649,6 +807,17 @@
           "default": null,
           "title": "Image"
         },
+        "media": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MediaRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "yearFrom": {
           "maximum": 2100,
           "minimum": 1800,
@@ -747,6 +916,17 @@
           "default": null,
           "title": "Manufacturer"
         },
+        "media": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MediaRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "sleeveSponsor": {
           "anyOf": [
             {
@@ -777,6 +957,141 @@
         "type"
       ],
       "title": "Kit",
+      "type": "object"
+    },
+    "MediaRef": {
+      "additionalProperties": false,
+      "description": "Referencia a un medio externo con su licencia y atribuci\u00f3n.\n\nRegla del proyecto: las im\u00e1genes nuevas no se copian al repositorio. Se\npublica la URL original, el cr\u00e9dito y la licencia; si no hay licencia de\nreutilizaci\u00f3n, se dice expl\u00edcitamente. `verifiedAt` es la fecha en la que se\ncomprob\u00f3 que la URL segu\u00eda viva, no la fecha del dato deportivo.",
+      "properties": {
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Author"
+        },
+        "credit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Credit"
+        },
+        "height": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Height"
+        },
+        "kind": {
+          "default": "photo",
+          "enum": [
+            "photo",
+            "video",
+            "audio",
+            "document"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "licenseUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Licenseurl"
+        },
+        "origin": {
+          "default": "other",
+          "enum": [
+            "commons",
+            "club_official",
+            "press",
+            "other"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "verifiedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verifiedat"
+        },
+        "width": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Width"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "MediaRef",
       "type": "object"
     },
     "Museum": {
@@ -948,6 +1263,121 @@
       "title": "SeasonKits",
       "type": "object"
     },
+    "Sponsor": {
+      "additionalProperties": false,
+      "description": "Patrocinio con su papel, vigencia y fuente. No sustituye a `Sponsors.official`.",
+      "properties": {
+        "category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Category"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "role": {
+          "default": "official",
+          "enum": [
+            "principal",
+            "technical",
+            "official",
+            "collaborator",
+            "other"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "sinceYear": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sinceyear"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "untilYear": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Untilyear"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        },
+        "verifiedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verifiedat"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "Sponsor",
+      "type": "object"
+    },
     "Sponsors": {
       "additionalProperties": false,
       "properties": {
@@ -956,6 +1386,13 @@
             "type": "string"
           },
           "title": "Collaborators",
+          "type": "array"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/$defs/Sponsor"
+          },
+          "title": "Details",
           "type": "array"
         },
         "official": {
@@ -1022,6 +1459,17 @@
           "default": null,
           "title": "Access"
         },
+        "accessDetails": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VenueAccess"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "address": {
           "anyOf": [
             {
@@ -1044,6 +1492,13 @@
             }
           ],
           "default": null
+        },
+        "capacityAlternatives": {
+          "items": {
+            "$ref": "#/$defs/CapacityAlternative"
+          },
+          "title": "Capacityalternatives",
+          "type": "array"
         },
         "coordinates": {
           "anyOf": [
@@ -1079,6 +1534,13 @@
           ],
           "default": null,
           "title": "Dimensions"
+        },
+        "media": {
+          "items": {
+            "$ref": "#/$defs/MediaRef"
+          },
+          "title": "Media",
+          "type": "array"
         },
         "name": {
           "title": "Name",
@@ -1127,6 +1589,24 @@
           "title": "Renovations",
           "type": "array"
         },
+        "schedule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VenueSchedule"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "tenants": {
+          "items": {
+            "$ref": "#/$defs/Tenure"
+          },
+          "title": "Tenants",
+          "type": "array"
+        },
         "transport": {
           "anyOf": [
             {
@@ -1167,6 +1647,73 @@
         "lon"
       ],
       "title": "StadiumCoordinates",
+      "type": "object"
+    },
+    "Tenure": {
+      "additionalProperties": false,
+      "description": "Club o entidad que usa el estadio, con su periodo documentado.",
+      "properties": {
+        "club": {
+          "title": "Club",
+          "type": "string"
+        },
+        "fromYear": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fromyear"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "toYear": {
+          "anyOf": [
+            {
+              "maximum": 2100,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Toyear"
+        }
+      },
+      "required": [
+        "club"
+      ],
+      "title": "Tenure",
       "type": "object"
     },
     "Tickets": {
@@ -1300,6 +1847,140 @@
       },
       "title": "TrainingCenter",
       "type": "object"
+    },
+    "VenueAccess": {
+      "additionalProperties": false,
+      "properties": {
+        "accessibility": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Accessibility"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "parking": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parking"
+        },
+        "publicTransport": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publictransport"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        }
+      },
+      "title": "VenueAccess",
+      "type": "object"
+    },
+    "VenueSchedule": {
+      "additionalProperties": false,
+      "properties": {
+        "days": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Days"
+        },
+        "hours": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hours"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "verifiedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verifiedat"
+        }
+      },
+      "title": "VenueSchedule",
+      "type": "object"
     }
   },
   "additionalProperties": false,
@@ -1348,6 +2029,13 @@
     },
     "links": {
       "$ref": "#/$defs/ClubLinks"
+    },
+    "media": {
+      "items": {
+        "$ref": "#/$defs/MediaRef"
+      },
+      "title": "Media",
+      "type": "array"
     },
     "museum": {
       "anyOf": [
