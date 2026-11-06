@@ -1,5 +1,5 @@
-# Estado del proyecto — 05-nov-2026
-H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados), H2 (iconos de fuentes), el detalle de partido con BDFutbol (ADR 0031) y el proxy en directo (Worker + fusión en la app) hechos. Pendiente para cerrar el Hito 4: desplegar el Worker y definir `EXPO_PUBLIC_LIVE_BASE_URL`.
+# Estado del proyecto — 06-nov-2026
+H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados), H2 (iconos de fuentes), el detalle de partido con BDFutbol (ADR 0031), el proxy en directo (Worker + fusión en la app) y **H7.1 (club ampliado, ADR 0032)** hechos. Pendiente para cerrar el Hito 4: desplegar el Worker y definir `EXPO_PUBLIC_LIVE_BASE_URL`.
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
@@ -228,6 +228,15 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
 - **Acerca de:** nombre y versión, aviso de proyecto no oficial, contacto (incidencias del proyecto) y licencias de terceros agrupadas. `npm run licenses` genera de forma determinista `apps/mobile/src/data/licenses.json` desde `package-lock.json`: **1.052 paquetes de producción en 16 grupos** (~93 KB, sin fecha). No se listan fuentes de datos.
 - **i18n:** ES/EN con **613 claves y paridad exacta**; GL parcial (212 claves) sin claves extra y con caída a ES. Letras y nombres propios no se traducen.
 - **Pruebas:** **174 pytest** y **261 tests / 30 suites** en la app. Cubren suma de aforo, agrupación por década, orden de temporadas, `clubImageUrl`, validación del `club.yml` y las letras reales, contrato compartido, idempotencia, fuentes de imagen y renders de Club, Himnos con y sin letra, Escudo, Equipaciones con imagen/marcador y Estadio.
+
+### H7.1 — Club ampliado: títulos, rivalidades y medios (hecho, ADR 0032)
+
+- **Contrato aditivo:** `Anthem.media`, `Anthem.lyricsRights`, `CrestVersion.media`, `Kit.media`, `Stadium.schedule/accessDetails/capacityAlternatives/tenants/media`, `Sponsors.details` y `Club.media`. Los campos legados (`image`, `lyrics`, `official`...) no cambian. Pydantic → JSON Schema → Zod con `default(null)`/`default([])`.
+- **Derechos de las letras:** las tres letras se mantienen con `lyricsRights.status = unknown`, titular, licencia de uso editorial, nota y `verifiedAt`. No se afirma permiso de reutilización.
+- **Ficheros opcionales:** `titles.json` (21 ediciones; finales de Copa 1995 y 2002 con fuente) y `rivalries.json` (6 rivalidades con balance de BDFutbol: Celta 133 partidos, Compostela 11, Oviedo 99, Sporting 96, Racing de Ferrol 41, Lugo 18). `validate` los acepta ausentes (404 = sin datos); `useTitles`/`useRivalries` los leen de forma opcional.
+- **Pipelines:** `club titles` compara con la tabla «Títulos» de BDFutbol y escribe `data/manual/titles.proposed.yml` sin aplicar; `club rivalries` rellena `headToHead` con `PoliteClient` y conserva el JSON anterior si no hay ningún balance; `club probe-media` sondea URLs externas y escribe `data/manual/club_media.proposed.yml` sin copiar binarios.
+- **Ids verificados de BDFutbol:** Compostela `e12`, Oviedo `e28`, Sporting `e34`, Racing de Ferrol `e48`, Lugo `e76`; Celta `e11`. Documentados en `data/manual/bdfutbol_teams.yml`.
+- **Pruebas:** 26 pruebas de club (incluye títulos, propuesta, rivalidades, idempotencia y sondeo con `httpx.MockTransport`); `pytest` completo y `npm test` en verde. `club` sigue siendo idempotente (`changed=false` en la segunda pasada).
 
 ### Verificación H7
 ```bash

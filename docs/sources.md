@@ -252,6 +252,26 @@ La salida de `enrich` cuenta solo lo generado: los overrides se suman al aplicar
 
 - Escudo 20/20 equipos; estadio 20/20 equipos; sede por partido 0/380 (se usa el estadio del local); árbitro 73/380 partidos.
 
+## Club: títulos, rivalidades y medios (ADR 0032)
+
+- **Palmarés**: `data/manual/club.yml` (lista breve) y `data/manual/titles.yml`
+  (21 ediciones). Las Copas de 1995 y 2002 se contrastaron con Wikipedia; el
+  resto conserva el palmarés curado. `club titles` compara con la tabla
+  «Títulos» de BDFutbol (`https://www.bdfutbol.com/es/e/e13.html`) y escribe
+  `data/manual/titles.proposed.yml`; nunca aplica cambios sola.
+- **Rivalidades**: `data/manual/rivalries.yml` con seis rivales. El balance se
+  obtiene de `https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=<id>` con
+  `PoliteClient` (caché, robots.txt, 1 s/host) y se publica en
+  `rivalries.json`. Ids verificados: Celta 11, Compostela 12, Oviedo 28,
+  Sporting 34, Racing de Ferrol 48, Lugo 76.
+- **Medios**: `data/manual/club_media.yml` está vacío a propósito. `club
+  probe-media` solo comprueba URLs candidatas y escribe
+  `data/manual/club_media.proposed.yml`; una entrada solo se aplica a mano con
+  licencia y crédito revisados. No se copian binarios nuevos al repositorio.
+- **Letras**: se mantienen las tres letras actuales con
+  `lyricsRights.status = unknown`, titular, nota de uso editorial y fecha de
+  comprobación. No se afirma permiso de reutilización.
+
 ## Comandos
 
 ```bash
@@ -274,6 +294,10 @@ python -m depor_hub.cli social                       # regenera social.json desd
 python -m depor_hub.cli club                         # publica club.json y docs/kits_coverage.md
 python -m depor_hub.cli club-images                  # descarga y normaliza las imágenes locales del club
 python -m depor_hub.cli club-images --offline        # comprueba las imágenes presentes sin red
+python -m depor_hub.cli club titles                  # publica titles.json y propone diferencias desde BDFutbol
+python -m depor_hub.cli club titles --offline        # compara con la caché de BDFutbol, sin red
+python -m depor_hub.cli club rivalries               # publica rivalries.json con el balance de BDFutbol
+python -m depor_hub.cli club probe-media             # sondea URLs externas y escribe club_media.proposed.yml
 ```
 
 El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 30 minutos y usa el grupo `news-publish`, separado de `data-publish`. Todos hacen rebase antes de empujar, reintentan cinco veces y despliegan Pages solo cuando hay cambios; los deploys se serializan en `pages-deploy`.

@@ -9,7 +9,7 @@ GitHub Pages sustituye el despliegue completo al publicar un artefacto. Los work
 
 ## Decisiones
 
-- Los workflows `Data refresh`, `News refresh` y `Rivals refresh` comparten el grupo `data-publish`, validan los ocho JSON públicos con Pydantic antes del commit y hacen rebase/push con hasta tres intentos.
+- Los workflows `Data refresh`, `News refresh` y `Rivals refresh` comparten el grupo `data-publish`, validan los JSON públicos con Pydantic antes del commit y hacen rebase/push con hasta tres intentos. `titles.json` y `rivalries.json` son opcionales: se validan si existen y su ausencia no bloquea la publicación.
 - Todo despliegue sube el `data/public` completo desde un checkout nuevo de `main`.
 - Datos y clasificación se consultan cada 10 minutos. La ingesta refresca cada 10 minutos dentro de [−30 min, +150 min] de un kickoff confirmado/en juego, y cada hora fuera. Una hora redonda en estado `SCHEDULED` no confirma el kickoff y no abre la ventana.
 - Noticias se consultan cada 30 minutos. El proceso respeta feeds, `robots.txt`, pausas por dominio y validadores HTTP; un fallo parcial conserva las historias disponibles. Si todas las fuentes fallan o quedan menos de cinco historias, falla sin reemplazar el JSON anterior.

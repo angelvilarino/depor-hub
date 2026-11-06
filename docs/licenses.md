@@ -29,8 +29,12 @@ El texto completo de la licencia MIT de la plantilla está en `apps/mobile/LICEN
 | **Wikipedia / Wikidata / Commons** | CC BY-SA / CC0 según la ficha | Fichas de jugador, entrenador y escudos (ADR 0008, 0009, 0012) |
 | **Web oficial del club** | Uso editorial; sin licencia de reutilización | Crédito «© RC Deportivo de La Coruña» en las fotos |
 | **RSS/Atom de medios y YouTube** | Solo titular, enlace, fecha, miniatura y resumen tal como los publica el feed | Nombre del medio y enlace al original |
+| **Letras de himnos** | Uso editorial; `lyricsRights.status = unknown` hasta permiso expreso | Autoría y titular en `club.json` (`lyricsRights`) |
+| **Medios externos nuevos** | Solo URL, licencia y crédito; no se copian binarios | `credit` + enlace a `sourceUrl` |
 
 No se copian binarios de imágenes ni HTML de terceros al repositorio. Las fotos y escudos se enlazan por URL y conservan su crédito. Los datos desconocidos se publican como `null`; no se completan por deducción.
+
+Las tres letras publicadas (`Voa`, `Fillos de Breogán` y `El Rock del Deportivo`) se mantienen por decisión del responsable. `club.json` las acompaña de `lyricsRights` con estado `unknown`, titular, nota de uso editorial y `verifiedAt`; la app no las presenta como reutilizables. Si se obtiene permiso, se actualiza el estado y la licencia en `data/manual/club.yml`.
 
 ## Marcas
 

@@ -59,10 +59,18 @@ Las imágenes del club se guardan en el repositorio y se sirven desde `data/publ
 - La app lista los himnos con indicador de letra disponible y abre `/club/himno/[id]`; la letra es seleccionable, escala con el tamaño de fuente del sistema hasta 2× y se comparte con la hoja nativa (`Share`). No hay audio ni reproductor.
 - Las letras y los nombres propios no se traducen. La interfaz sí: ES/EN con paridad exacta y GL parcial sin claves extra.
 
+## Ampliación posterior
+
+El [ADR 0032](0032-club-datos-ampliados.md) amplía este contrato de forma aditiva:
+`media` y `lyricsRights` en himnos, `media` en escudos/equipaciones, detalle de
+estadio y patrocinios, y los ficheros opcionales `titles.json` y `rivalries.json`.
+Las letras se mantienen con `lyricsRights.status = unknown` y atribución. El
+bloque `Club` sigue sin `source`/`confidence`/`provenance`; esos metadatos viven
+en los ficheros opcionales y en el YAML.
+
 ## Consecuencias
 
-- El Club funciona sin conexión con la caché persistida de TanStack Query y muestra `FreshnessBanner`; todas las pantallas cubren carga, vacío, error con reintento y sin datos.
-- Las imágenes quedan versionadas y son auditables, a cambio de 2,30 MiB en el repositorio y de un paso de normalización con Pillow en los scripts.
+- El Club funciona sin conexión con la caché persistida de TanStack Query y muestra `FreshnessBanner`; todas las pantallas cubren carga, vacío, error con reintento y sin datos.- Las imágenes quedan versionadas y son auditables, a cambio de 2,30 MiB en el repositorio y de un paso de normalización con Pillow en los scripts.
 - La app no hace hotlinking de escudos ni de equipaciones del club. Las imágenes externas de H4 (fotos de jugador y escudos de rivales) mantienen su tratamiento y atribución.
 - El contrato no expone procedencia, pero cualquier revisión editorial puede auditarse en `data/manual/club.yml`, `club_images.yml`, `docs/sources.md` y `docs/kits_coverage.md`.
 - `npm run licenses` genera `apps/mobile/src/data/licenses.json` de forma determinista desde `package-lock.json` (1.052 paquetes de producción en 16 grupos). La pantalla Acerca de lo muestra agrupado y sin fecha de generación.
