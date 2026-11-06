@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T16:04:51Z",
+  "updatedAt": "2026-11-06T16:33:00Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "8e0bd051ff19bfa0",
+      "title": "David Gordo, sobre Mella: «Nunca pensó que podría jugar de lateral y lo está haciendo muy bien»",
+      "url": "https://riazor.org/david-gordo-sobre-mella-nunca-penso-que-podria-jugar-de-lateral-y-lo-esta-haciendo-muy-bien",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-06T16:18:47Z",
+      "kind": "article",
+      "summary": "David Gordo, seleccionador sub-21, explica la convocatoria de David Mella y destaca su adaptación al lateral en el Deportivo: «Lo está…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "80d833ff2aa2701b",
       "title": "El árbitro del Espanyol-Dépor: el que más tarjetas rojas muestra y el tercero que más penaltis señala en esta Liga",
@@ -2221,20 +2235,6 @@
       "kind": "article",
       "summary": "El equipo de Antonio Hidalgo suma seis jornadas sin conocer la victoria. Una situación similar a la vivida la temporada pasada. La entrada…",
       "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4a5d81da8a9f10a6",
-      "title": "Cedidos del Dépor: Gijselhart, eliminado de la Copa; y el Huesca de Diego Gómez pierde dos puntos en el 95",
-      "url": "https://riazor.org/cedidos-depor-gijselhart-eliminado-copa",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-26T09:15:47Z",
-      "kind": "article",
-      "summary": "Repasamos la jornada de los cedidos por el Deportivo. Solo Gijselhart, Diego Gómez, Hugo Torres y Lucas Castro tuvieron minutos este fin…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/10/d8b4d8a8d8a7d8a8-d8a7-1.jpg",
       "tags": [
         "partido"
       ],
