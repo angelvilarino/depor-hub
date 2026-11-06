@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T12:06:38Z",
+  "updatedAt": "2026-11-06T15:33:30Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "626f87512a4afb1e",
+      "title": "Altas, bajas y posible once del Dépor ante el Espanyol: mantener lo que funciona o reforzar la medular",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/altas-bajas-y-posible-once-del-depor-ante-el-espanyol-mantener-lo-que-funciona-o-reforzar-la-medular-889240.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-06T15:05:20Z",
+      "kind": "article",
+      "summary": "El buen partido ante Osasuna invita a Hidalgo a mantener el bloque, aunque la llegada de Eder Sarabia introduce incertidumbre en el…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/05/6aecc701ce367.r_d.1450-1028-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "83bc2f6944aa94b1",
       "title": "David Mella, convocado con España sub-21… como defensa",
@@ -275,7 +289,7 @@
       "publishedAt": "2026-11-05T14:00:28Z",
       "kind": "article",
       "summary": "Quaglita -en rueda de prensa tras recibir el premio a jugador del mes en el Deportivo- mostró su apoyo públicamente a Leo Román…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/01/6abeb282d604e.jpg",
+      "thumbnailUrl": null,
       "tags": [
         "partido"
       ],
@@ -2222,21 +2236,6 @@
       "summary": "El Dépor chuta más desde que falta la estrella y tiene más goles esperados, pero el bache de efectividad le condena y solo ha sumado un…",
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/k7IOVxqs8aQiSqIG_FK6YiOtsNY=/768x/2026/10/25/00121792957562309456539/Foto/j_20261024_232459000.jpg",
       "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ce2dd8be0ae22920",
-      "title": "Rueda de prensa de Alberto Rodríguez tras el Dépor ABANCA 2 - 1 Deportivo Alavés",
-      "url": "https://youtube.com/watch?v=iGaf_gDWReE",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-25T17:09:24Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i2.ytimg.com/vi/iGaf_gDWReE/hqdefault.jpg",
-      "tags": [
-        "cantera",
         "partido"
       ],
       "alsoIn": []
