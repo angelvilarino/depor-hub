@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from dataclasses import dataclass, field
 from datetime import date
 from urllib.parse import quote
@@ -447,6 +448,479 @@ class BDFutbolClient:
         document = self.http.get(f"{BASE}/es/p/{candidate.bdf_id}.html").text
         return parse_matches(document)
 
+    def schedule(self, season: str) -> list[ScheduleMatch]:
+        document = self.http.get(f"{BASE}/es/t/t{season}.html").text
+        return parse_schedule(document)
+
+    def match_detail(self, bdf_id: str) -> MatchDetailData:
+        url = f"{BASE}/es/p/p.php?id={bdf_id}"
+        document = self.http.get(url).text
+        return parse_match_detail(document, bdf_id, url)
+
+
+# --- Calendario y detalle de partido (ADR 0031) ------------------------------
+#
+# La ficha de partido de BDFutbol publica alineaciones, goles, tarjetas y cambios
+# en HTML. Se interpretan esos hechos y no se deduce nada que no esté escrito:
+# una sustitución solo se empareja cuando hay exactamente un jugador que sale y
+# otro que entra en el mismo minuto. Las fotos, escudos y textos no se publican.
+
+
+@dataclass(frozen=True)
+class ScheduleMatch:
+    bdf_id: str | None
+    date: str
+    matchday: int | None
+    home: str
+    away: str
+
+
+@dataclass(frozen=True)
+class LineupPlayer:
+    name: str
+    shirt_number: int | None
+    bdfutbol_id: str | None
+
+
+@dataclass
+class LineupData:
+    coach: str | None = None
+    starters: list[LineupPlayer] = field(default_factory=list)
+    substitutes: list[LineupPlayer] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class GoalEvent:
+    minute: int
+    minute_label: str
+    team: str
+    player: str
+    own_goal: bool = False
+    penalty: bool = False
+    score_home: int | None = None
+    score_away: int | None = None
+
+
+@dataclass(frozen=True)
+class CardEvent:
+    minute: int
+    minute_label: str
+    team: str
+    player: str
+    kind: str
+
+
+@dataclass(frozen=True)
+class SubstitutionEvent:
+    minute: int
+    minute_label: str
+    team: str
+    player_out: str | None = None
+    player_in: str | None = None
+
+
+@dataclass
+class MatchDetailData:
+    bdfutbol_id: str
+    url: str
+    competition: str | None
+    matchday: int | None
+    date: str | None
+    venue: str | None
+    referee: str | None
+    home_name: str
+    away_name: str
+    home_bdf_id: str | None
+    away_bdf_id: str | None
+    score_home: int | None
+    score_away: int | None
+    home_lineup: LineupData
+    away_lineup: LineupData
+    goals: list[GoalEvent]
+    cards: list[CardEvent]
+    substitutions: list[SubstitutionEvent]
+
+
+_TEAM_STOPWORDS = {
+    "a",
+    "balompie",
+    "ca",
+    "cd",
+    "cf",
+    "club",
+    "de",
+    "del",
+    "deportivo",
+    "el",
+    "fc",
+    "futbol",
+    "la",
+    "las",
+    "los",
+    "rc",
+    "rcd",
+    "sd",
+    "sad",
+    "ud",
+}
+
+
+def team_key(name: str) -> frozenset[str]:
+    """Clave de equipo tolerante a acentos y sufijos societarios."""
+    decomposed = unicodedata.normalize("NFKD", name)
+    plain = "".join(ch for ch in decomposed if not unicodedata.combining(ch))
+    words = re.sub(r"[^a-z0-9 ]", " ", plain.lower()).split()
+    return frozenset(word for word in words if word and word not in _TEAM_STOPWORDS)
+
+
+def same_team(left: str, right: str) -> bool:
+    """Dos nombres designan el mismo equipo si uno contiene al otro.
+
+    «RC Deportivo La Coruña» y «Deportivo de A Coruña» comparten la clave
+    suficiente; «Real Madrid» y «Atlético de Madrid» no, porque solo coinciden
+    en una palabra genérica.
+    """
+    a, b = team_key(left), team_key(right)
+    if not a or not b:
+        return False
+    return a <= b or b <= a or len(a & b) >= 2
+
+
+def parse_schedule(document: str) -> list[ScheduleMatch]:
+    """Partidos del calendario de una temporada, con su id de BDFutbol si existe."""
+    out: list[ScheduleMatch] = []
+    for row_match in re.finditer(r"<tr([^>]*)>(.*?)</tr>", document, re.S):
+        attrs, body = row_match.groups()
+        if "jornadai" not in attrs:
+            continue
+        matchday_match = re.search(r"data-jornada=['\"](\d+)['\"]", attrs)
+        cells = re.findall(r"<td[^>]*>(.*?)</td>", body, re.S)
+        if len(cells) < 4:
+            continue
+        raw_date = strip_tags(cells[0])
+        date_match = re.match(r"(\d{2})/(\d{2})/(\d{4})", raw_date)
+        if not date_match:
+            continue
+        day, month, year = date_match.groups()
+        link = re.search(r"p\.php\?id=(\d+)", body)
+        out.append(
+            ScheduleMatch(
+                bdf_id=link.group(1) if link else None,
+                date=f"{year}-{month}-{day}",
+                matchday=int(matchday_match.group(1)) if matchday_match else None,
+                home=strip_tags(cells[1]),
+                away=strip_tags(cells[3]),
+            )
+        )
+    return out
+
+
+def find_schedule_match(
+    schedule: list[ScheduleMatch],
+    home: str,
+    away: str,
+    iso_date: str,
+    max_days: int = 3,
+) -> ScheduleMatch | None:
+    """Empareja un partido de football-data con el calendario de BDFutbol.
+
+    Se exigen los dos equipos y una fecha a menos de `max_days` días. Si hay
+    empate entre dos candidatos, no se elige ninguno: es preferible no publicar
+    detalle a publicar el partido equivocado.
+    """
+    try:
+        target = date.fromisoformat(iso_date)
+    except ValueError:
+        return None
+    candidates: list[tuple[int, ScheduleMatch]] = []
+    for row in schedule:
+        if not row.bdf_id or not same_team(home, row.home) or not same_team(away, row.away):
+            continue
+        try:
+            delta = abs((date.fromisoformat(row.date) - target).days)
+        except ValueError:
+            continue
+        if delta <= max_days:
+            candidates.append((delta, row))
+    if not candidates:
+        return None
+    candidates.sort(key=lambda item: item[0])
+    if len(candidates) > 1 and candidates[0][0] == candidates[1][0]:
+        return None
+    return candidates[0][1]
+
+
+def _header_value(document: str, label: str) -> str | None:
+    index = document.find(f">{label}<")
+    if index < 0:
+        return None
+    chunk = document[index : index + 900]
+    match = re.search(
+        r"font-weight-bold[^>]*>\s*(?:<a[^>]*>)?(.*?)(?:</a>)?\s*</div>", chunk, re.S
+    )
+    if not match:
+        return None
+    value = normalize_space(strip_tags(match.group(1)))
+    return value or None
+
+
+def _player_rows(table_html: str) -> list[tuple[LineupPlayer, tuple[tuple[str, str], ...]]]:
+    """Filas de una alineación con sus eventos (clase, minuto) tal como aparecen."""
+    rows: list[tuple[LineupPlayer, tuple[tuple[str, str], ...]]] = []
+    for row_match in re.finditer(r"<tr[^>]*>(.*?)</tr>", table_html, re.S):
+        row = row_match.group(1)
+        link = re.search(
+            r"<a href=['\"]\.\./j/j(\d+)\.html['\"]>(.*?)</a>", row, re.S
+        )
+        if not link:
+            continue
+        cells = re.findall(r"<td[^>]*>(.*?)</td>", row, re.S)
+        number = _first_int(strip_tags(cells[0])) if cells else None
+        events: list[tuple[str, str]] = []
+        for event_match in re.finditer(
+            r'<div class="([A-Za-z0-9]+)" title="[^"]*"\s*></div>\s*([0-9]+(?:\+[0-9]+)?)?',
+            row,
+        ):
+            kind, minute = event_match.groups()
+            if kind in {"Surt", "Entra", "G", "GP", "GPP", "TG", "TG2", "TV"} and minute:
+                events.append((kind, minute))
+        rows.append(
+            (
+                LineupPlayer(
+                    name=normalize_space(strip_tags(link.group(2))),
+                    shirt_number=number,
+                    bdfutbol_id=link.group(1),
+                ),
+                tuple(events),
+            )
+        )
+    return rows
+
+
+def _parse_lineup(table_html: str) -> tuple[LineupData, list[tuple[LineupPlayer, tuple[tuple[str, str], ...]]]]:
+    rows = _player_rows(table_html)
+    coach_match = re.search(
+        r"<a href=['\"]\.\./l/l\d+\.html['\"]>(.*?)</a>", table_html, re.S
+    )
+    coach = normalize_space(strip_tags(coach_match.group(1))) if coach_match else None
+    return (
+        LineupData(
+            coach=coach or None,
+            starters=[player for player, _ in rows],
+            substitutes=[],
+        ),
+        rows,
+    )
+
+
+def _goal_timeline(document: str) -> list[GoalEvent]:
+    start = document.find('<div class="row pt-1 pt-md-3 pb-2 text-center')
+    if start < 0:
+        return []
+    end = document.find('<div class="row pt-1 pb-4 d-md-none">', start)
+    segment = document[start : end if end > start else start + 20000]
+    home_start = segment.find('<div class="text-right">')
+    referee_start = segment.find('<div class="col-sm-auto', home_start)
+    away_start = segment.find('<div class="text-left">', referee_start)
+    if home_start < 0 or away_start < 0:
+        return []
+    home_end = referee_start if referee_start > home_start else away_start
+    chunks = (("home", segment[home_start:home_end]), ("away", segment[away_start:]))
+    out: list[GoalEvent] = []
+    for side, chunk in chunks:
+        for goal_match in re.finditer(r'<div class="text-blanc">(.*?)</div>', chunk, re.S):
+            body = goal_match.group(1)
+            score = re.search(r"<span[^>]*>(\d+)\s*-\s*(\d+)</span>", body)
+            player = re.search(r"<a[^>]*>(.*?)</a>", body, re.S)
+            minute = re.search(r"(\d+(?:\+\d+)?)'", body)
+            if not (score and player and minute):
+                continue
+            out.append(
+                GoalEvent(
+                    minute=_first_int(minute.group(1)) or 0,
+                    minute_label=minute.group(1),
+                    team=side,
+                    player=normalize_space(strip_tags(player.group(1))),
+                    own_goal="(pp)" in body,
+                    penalty="(pen)" in body,
+                    score_home=int(score.group(1)),
+                    score_away=int(score.group(2)),
+                )
+            )
+    return out
+
+
+def _match_moment(minute_label: str) -> int:
+    return _first_int(minute_label) or 0
+
+
+def _split_tables(fragment: str) -> list[str]:
+    return re.findall(r"<table[^>]*>.*?</table>", fragment, re.S)
+
+
+def parse_match_detail(document: str, bdf_id: str, url: str) -> MatchDetailData:
+    """Interpreta la ficha de un partido: cabecera, alineaciones y eventos."""
+    competition = _header_value(document, "Competición")
+    matchday_text = _header_value(document, "Jornada")
+    matchday = _first_int(matchday_text) if matchday_text else None
+    venue = _header_value(document, "Estadio")
+    raw_date = _header_value(document, "Fecha")
+    iso_date = None
+    if raw_date:
+        date_match = re.search(r"(\d{2})/(\d{2})/(\d{4})", raw_date)
+        if date_match:
+            day, month, year = date_match.groups()
+            iso_date = f"{year}-{month}-{day}"
+    referee = None
+    referee_match = re.search(
+        r"<a href=['\"]\.\./r/r\d+\.html['\"]>(.*?)</a>", document, re.S
+    )
+    if referee_match:
+        referee = normalize_space(strip_tags(referee_match.group(1))) or None
+
+    heading = re.search(r'<h1 class="m-0".*?</h1>', document, re.S)
+    if not heading:
+        raise SourceError("no se pudo interpretar la cabecera del partido de BDFutbol")
+    teams: list[tuple[str, str]] = []
+    seen_ids: set[str] = set()
+    for team_id, name in re.findall(
+        r"<a href='\.\./e/e(\d+)\.html'>(.*?)</a>", heading.group(0), re.S
+    ):
+        if team_id in seen_ids:
+            continue
+        seen_ids.add(team_id)
+        teams.append((team_id, normalize_space(strip_tags(name))))
+    if len(teams) < 2:
+        raise SourceError("la ficha del partido no identifica a los dos equipos")
+    scores = [int(value) for value in re.findall(
+        r"resultat-partit[^>]*>\s*(\d+)\s*<", heading.group(0)
+    )]
+    score_home = scores[0] if len(scores) > 0 else None
+    score_away = scores[1] if len(scores) > 1 else None
+
+    home_lineup = LineupData()
+    away_lineup = LineupData()
+    player_rows: list[tuple[str, list[tuple[LineupPlayer, tuple[tuple[str, str], ...]]]]] = [
+        ("home", []),
+        ("away", []),
+    ]
+    subs_index = document.find("<h2>Suplentes</h2>")
+    coaches_index = document.find("<h2>Entrenadores</h2>")
+    if subs_index > 0 and coaches_index > subs_index:
+        starter_tables = _split_tables(document[:subs_index])[-2:]
+        substitute_tables = _split_tables(document[subs_index:coaches_index])[:2]
+        coach_tables = _split_tables(document[coaches_index:])[:2]
+        for index, table in enumerate(substitute_tables):
+            lineup, rows = _parse_lineup(table)
+            lineup.substitutes = [player for player, _ in rows]
+            player_rows[index][1].extend(rows)
+            if index == 0:
+                home_lineup.substitutes = lineup.substitutes
+            else:
+                away_lineup.substitutes = lineup.substitutes
+        for index, table in enumerate(starter_tables):
+            lineup, rows = _parse_lineup(table)
+            player_rows[index][1].extend(rows)
+            if index == 0:
+                home_lineup.starters = lineup.starters
+            else:
+                away_lineup.starters = lineup.starters
+        for index, table in enumerate(coach_tables):
+            lineup, _ = _parse_lineup(table)
+            if index == 0:
+                home_lineup.coach = lineup.coach
+            else:
+                away_lineup.coach = lineup.coach
+
+    goals = _goal_timeline(document)
+    cards: list[CardEvent] = []
+    substitution_raw: dict[str, list[tuple[str, str]]] = {"home": [], "away": []}
+    for side, rows in player_rows:
+        for player, events in rows:
+            for kind, minute_label in events:
+                if kind in {"TG", "TG2", "TV"}:
+                    cards.append(
+                        CardEvent(
+                            minute=_match_moment(minute_label),
+                            minute_label=minute_label,
+                            team=side,
+                            player=player.name,
+                            kind={"TG": "yellow", "TG2": "second_yellow", "TV": "red"}[kind],
+                        )
+                    )
+                elif kind in {"Surt", "Entra"}:
+                    substitution_raw[side].append((kind, f"{minute_label}|{player.name}"))
+
+    substitutions: list[SubstitutionEvent] = []
+    for side, items in substitution_raw.items():
+        grouped: dict[str, list[tuple[str, str]]] = {}
+        for kind, payload in items:
+            minute_label, _, name = payload.partition("|")
+            grouped.setdefault(minute_label, []).append((kind, name))
+        for minute_label, group in grouped.items():
+            outs = [name for kind, name in group if kind == "Surt"]
+            ins = [name for kind, name in group if kind == "Entra"]
+            if len(outs) == 1 and len(ins) == 1:
+                substitutions.append(
+                    SubstitutionEvent(
+                        minute=_match_moment(minute_label),
+                        minute_label=minute_label,
+                        team=side,
+                        player_out=outs[0],
+                        player_in=ins[0],
+                    )
+                )
+            else:
+                # Sin emparejamiento inequívoco se publican las dos mitades por
+                # separado; nunca se inventa qué jugador sustituye a cuál.
+                for name in outs:
+                    substitutions.append(
+                        SubstitutionEvent(
+                            minute=_match_moment(minute_label),
+                            minute_label=minute_label,
+                            team=side,
+                            player_out=name,
+                        )
+                    )
+                for name in ins:
+                    substitutions.append(
+                        SubstitutionEvent(
+                            minute=_match_moment(minute_label),
+                            minute_label=minute_label,
+                            team=side,
+                            player_in=name,
+                        )
+                    )
+
+    def sort_key(item: GoalEvent | CardEvent | SubstitutionEvent) -> tuple[int, int]:
+        parts = item.minute_label.split("+")
+        return (int(parts[0]), int(parts[1]) if len(parts) > 1 else 0)
+
+    goals.sort(key=sort_key)
+    cards.sort(key=sort_key)
+    substitutions.sort(key=sort_key)
+
+    return MatchDetailData(
+        bdfutbol_id=bdf_id,
+        url=url,
+        competition=competition,
+        matchday=matchday,
+        date=iso_date,
+        venue=venue,
+        referee=referee,
+        home_name=teams[0][1],
+        away_name=teams[1][1],
+        home_bdf_id=teams[0][0],
+        away_bdf_id=teams[1][0],
+        score_home=score_home,
+        score_away=score_away,
+        home_lineup=home_lineup,
+        away_lineup=away_lineup,
+        goals=goals,
+        cards=cards,
+        substitutions=substitutions,
+    )
+
 
 def _fetched_at() -> str:
     return date.today().isoformat()
@@ -456,12 +930,24 @@ __all__ = [
     "BASE",
     "BDFutbolClient",
     "Candidate",
+    "CardEvent",
     "CareerEntryData",
+    "GoalEvent",
+    "LineupData",
+    "LineupPlayer",
     "MatchData",
+    "MatchDetailData",
     "Profile",
+    "ScheduleMatch",
     "SeasonRow",
+    "SubstitutionEvent",
     "choose_candidate",
+    "find_schedule_match",
+    "parse_match_detail",
     "parse_matches",
     "parse_profile",
+    "parse_schedule",
     "parse_search",
+    "same_team",
+    "team_key",
 ]

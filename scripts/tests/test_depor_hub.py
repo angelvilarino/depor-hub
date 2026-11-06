@@ -89,10 +89,16 @@ def test_hash_ignores_timestamps_but_not_content():
 
 
 @pytest.mark.parametrize(
-    "name", [*m.FILES, *m.NEWS_FILES, *m.EXTRA_FILES, *m.SNAPSHOT_FILES]
+    "name", [*m.FILES, *m.NEWS_FILES, *m.EXTRA_FILES, *m.SNAPSHOT_FILES, *m.MATCH_DETAIL_FILES]
 )
 def test_examples_validate(name):
-    model = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES, **m.SNAPSHOT_FILES}[name]
+    model = {
+        **m.FILES,
+        **m.NEWS_FILES,
+        **m.EXTRA_FILES,
+        **m.SNAPSHOT_FILES,
+        **m.MATCH_DETAIL_FILES,
+    }[name]
     model.model_validate_json((EXAMPLES / name).read_text(encoding="utf-8"))
 
 

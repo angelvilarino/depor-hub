@@ -259,6 +259,109 @@ class MatchSnapshot(Public):
         return self
 
 
+# --- Detalle de partido (ADR 0031) -------------------------------------------
+# Documento por partido terminado con alineaciones y eventos publicados por BDFutbol.
+# No se publican fotos, escudos ni textos de la fuente; los datos desconocidos son null.
+
+
+MatchSide = Literal["home", "away"]
+MatchCardKind = Literal["yellow", "red", "second_yellow"]
+
+
+class MatchDetailTeam(Public):
+    name: str
+    bdfutbol_id: Optional[int] = Field(default=None, ge=1)
+
+
+class MatchDetailPlayer(Public):
+    name: str
+    shirt_number: Optional[int] = Field(default=None, ge=0)
+    bdfutbol_id: Optional[int] = Field(default=None, ge=1)
+
+
+class MatchDetailLineup(Public):
+    coach: Optional[str] = None
+    starters: list[MatchDetailPlayer] = Field(default_factory=list)
+    substitutes: list[MatchDetailPlayer] = Field(default_factory=list)
+
+
+class MatchDetailLineups(Public):
+    home: MatchDetailLineup = Field(default_factory=MatchDetailLineup)
+    away: MatchDetailLineup = Field(default_factory=MatchDetailLineup)
+
+
+class MatchDetailScoreAfter(Public):
+    home: int = Field(ge=0)
+    away: int = Field(ge=0)
+
+
+class MatchDetailGoal(Public):
+    minute: int = Field(ge=0)
+    minute_label: str
+    team: MatchSide
+    player: str
+    own_goal: bool = False
+    penalty: bool = False
+    score_after: Optional[MatchDetailScoreAfter] = None
+
+
+class MatchDetailCard(Public):
+    minute: int = Field(ge=0)
+    minute_label: str
+    team: MatchSide
+    player: str
+    kind: MatchCardKind
+
+
+class MatchDetailSubstitution(Public):
+    minute: int = Field(ge=0)
+    minute_label: str
+    team: MatchSide
+    player_out: Optional[str] = None
+    player_in: Optional[str] = None
+
+    @model_validator(mode="after")
+    def _has_player(self) -> MatchDetailSubstitution:
+        if not self.player_out and not self.player_in:
+            raise ValueError("una sustitución debe indicar al menos un jugador")
+        return self
+
+
+class MatchDetail(Public):
+    """Alineaciones y eventos de un partido terminado (ADR 0031).
+
+    `matchId` es el identificador de football-data.org que usa la app; el resto
+    procede de BDFutbol. No hay estadísticas, fotos ni datos deducidos: si la
+    fuente no publica un evento, no aparece.
+    """
+
+    match_id: int
+    season: str
+    source: str = "BDFutbol"
+    source_url: str
+    bdfutbol_id: int = Field(ge=1)
+    captured_at: IsoDateTime
+    competition: Optional[str] = None
+    matchday: Optional[int] = Field(default=None, ge=0)
+    date: str  # AAAA-MM-DD
+    venue: Optional[str] = None
+    referee: Optional[str] = None
+    home: MatchDetailTeam
+    away: MatchDetailTeam
+    depor_is_home: bool
+    score: Score
+    lineups: MatchDetailLineups = Field(default_factory=MatchDetailLineups)
+    goals: list[MatchDetailGoal] = Field(default_factory=list)
+    cards: list[MatchDetailCard] = Field(default_factory=list)
+    substitutions: list[MatchDetailSubstitution] = Field(default_factory=list)
+
+    @field_validator("date")
+    @classmethod
+    def _full_date(cls, v: str) -> str:
+        datetime.strptime(v, "%Y-%m-%d")
+        return v
+
+
 NewsKind = Literal["article", "video"]
 NewsGroup = Literal["club", "galicia", "nacional"]
 
@@ -825,4 +928,10 @@ STATUS_FILES: dict[str, type[Public]] = {
 # data/public/v1/snapshots/<season>/<matchId>.json; este nombre solo genera el esquema.
 SNAPSHOT_FILES: dict[str, type[Public]] = {
     "snapshot.json": MatchSnapshot,
+}
+
+# Detalle de un partido terminado (ADR 0031). El fichero real vive en
+# data/public/v1/match-details/<season>/<matchId>.json.
+MATCH_DETAIL_FILES: dict[str, type[Public]] = {
+    "match-detail.json": MatchDetail,
 }

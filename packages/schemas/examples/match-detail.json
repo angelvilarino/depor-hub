@@ -1,0 +1,459 @@
+{
+  "matchId": 564635,
+  "season": "2026-27",
+  "source": "BDFutbol",
+  "sourceUrl": "https://www.bdfutbol.com/es/p/p.php?id=32382",
+  "bdfutbolId": 32382,
+  "capturedAt": "2026-11-05T10:33:42Z",
+  "competition": "Primera División",
+  "matchday": 1,
+  "date": "2026-08-17",
+  "venue": "Riazor (A Coruña)",
+  "referee": "Hernández Maeso",
+  "home": {
+    "name": "Deportivo de A Coruña",
+    "bdfutbolId": 13
+  },
+  "away": {
+    "name": "Elche",
+    "bdfutbolId": 42
+  },
+  "deporIsHome": true,
+  "score": {
+    "home": 1,
+    "away": 1,
+    "halfTimeHome": null,
+    "halfTimeAway": null,
+    "winner": "DRAW"
+  },
+  "lineups": {
+    "home": {
+      "coach": "Antonio Hidalgo",
+      "starters": [
+        {
+          "name": "Leo Román",
+          "shirtNumber": 13,
+          "bdfutbolId": 23528
+        },
+        {
+          "name": "Alti",
+          "shirtNumber": 2,
+          "bdfutbolId": 43226
+        },
+        {
+          "name": "Ede",
+          "shirtNumber": 22,
+          "bdfutbolId": 24338
+        },
+        {
+          "name": "Noubi",
+          "shirtNumber": 4,
+          "bdfutbolId": 64146
+        },
+        {
+          "name": "Ximo",
+          "shirtNumber": 23,
+          "bdfutbolId": 300415
+        },
+        {
+          "name": "Quagliata",
+          "shirtNumber": 12,
+          "bdfutbolId": 28400
+        },
+        {
+          "name": "Jensen",
+          "shirtNumber": 18,
+          "bdfutbolId": 712787
+        },
+        {
+          "name": "Amatucci",
+          "shirtNumber": 16,
+          "bdfutbolId": 51748
+        },
+        {
+          "name": "Soriano",
+          "shirtNumber": 21,
+          "bdfutbolId": 26683
+        },
+        {
+          "name": "Aubameyang",
+          "shirtNumber": 7,
+          "bdfutbolId": 98023
+        },
+        {
+          "name": "Nsongo",
+          "shirtNumber": 32,
+          "bdfutbolId": 209558
+        }
+      ],
+      "substitutes": [
+        {
+          "name": "Mella",
+          "shirtNumber": 11,
+          "bdfutbolId": 13605
+        },
+        {
+          "name": "Luismi Cruz",
+          "shirtNumber": 19,
+          "bdfutbolId": 21679
+        },
+        {
+          "name": "Eddahchouri",
+          "shirtNumber": 9,
+          "bdfutbolId": 40919
+        },
+        {
+          "name": "Villares",
+          "shirtNumber": 8,
+          "bdfutbolId": 20846
+        },
+        {
+          "name": "Kevin Sánchez",
+          "shirtNumber": 33,
+          "bdfutbolId": 1085673
+        },
+        {
+          "name": "Germán",
+          "shirtNumber": 1,
+          "bdfutbolId": 301798
+        },
+        {
+          "name": "Ferllo",
+          "shirtNumber": 25,
+          "bdfutbolId": 21334
+        },
+        {
+          "name": "Loureiro",
+          "shirtNumber": 15,
+          "bdfutbolId": 21263
+        },
+        {
+          "name": "Angeliño",
+          "shirtNumber": 24,
+          "bdfutbolId": 84096
+        },
+        {
+          "name": "Comas",
+          "shirtNumber": 3,
+          "bdfutbolId": 26745
+        },
+        {
+          "name": "Riki",
+          "shirtNumber": 14,
+          "bdfutbolId": 20892
+        },
+        {
+          "name": "Gijselhart",
+          "shirtNumber": 34,
+          "bdfutbolId": 702533
+        }
+      ]
+    },
+    "away": {
+      "coach": "Anselmi",
+      "starters": [
+        {
+          "name": "Dituro",
+          "shirtNumber": 1,
+          "bdfutbolId": 201004
+        },
+        {
+          "name": "Sangaré",
+          "shirtNumber": 2,
+          "bdfutbolId": 111252
+        },
+        {
+          "name": "Chust",
+          "shirtNumber": 23,
+          "bdfutbolId": 23943
+        },
+        {
+          "name": "Redondo",
+          "shirtNumber": 5,
+          "bdfutbolId": 34187
+        },
+        {
+          "name": "Affengruber",
+          "shirtNumber": 22,
+          "bdfutbolId": 1078912
+        },
+        {
+          "name": "Valera",
+          "shirtNumber": 11,
+          "bdfutbolId": 25939
+        },
+        {
+          "name": "Houary",
+          "shirtNumber": 29,
+          "bdfutbolId": 306204
+        },
+        {
+          "name": "Aguado",
+          "shirtNumber": 8,
+          "bdfutbolId": 23483
+        },
+        {
+          "name": "Martim Neto",
+          "shirtNumber": 16,
+          "bdfutbolId": 42882
+        },
+        {
+          "name": "Villar",
+          "shirtNumber": 12,
+          "bdfutbolId": 23117
+        },
+        {
+          "name": "Fer Niño",
+          "shirtNumber": 14,
+          "bdfutbolId": 27657
+        }
+      ],
+      "substitutes": [
+        {
+          "name": "Tete Morente",
+          "shirtNumber": 20,
+          "bdfutbolId": 23370
+        },
+        {
+          "name": "Padilla",
+          "shirtNumber": 30,
+          "bdfutbolId": 715835
+        },
+        {
+          "name": "Cepeda",
+          "shirtNumber": 21,
+          "bdfutbolId": 722878
+        },
+        {
+          "name": "Morcillo",
+          "shirtNumber": 47,
+          "bdfutbolId": 209444
+        },
+        {
+          "name": "Konare",
+          "shirtNumber": 36,
+          "bdfutbolId": 209291
+        },
+        {
+          "name": "Iturbe",
+          "shirtNumber": 43,
+          "bdfutbolId": 40607
+        },
+        {
+          "name": "Barzic",
+          "shirtNumber": 26,
+          "bdfutbolId": 13684
+        },
+        {
+          "name": "Bigas",
+          "shirtNumber": 6,
+          "bdfutbolId": 301062
+        },
+        {
+          "name": "Buonanotte",
+          "shirtNumber": 10,
+          "bdfutbolId": 55002
+        },
+        {
+          "name": "Ponce",
+          "shirtNumber": 9,
+          "bdfutbolId": 27077
+        },
+        {
+          "name": "Josan",
+          "shirtNumber": 17,
+          "bdfutbolId": 402377
+        },
+        {
+          "name": "Nordin",
+          "shirtNumber": 33,
+          "bdfutbolId": 34862
+        }
+      ]
+    }
+  },
+  "goals": [
+    {
+      "minute": 21,
+      "minuteLabel": "21",
+      "team": "home",
+      "player": "Aubameyang",
+      "ownGoal": false,
+      "penalty": false,
+      "scoreAfter": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    {
+      "minute": 76,
+      "minuteLabel": "76",
+      "team": "away",
+      "player": "Aguado",
+      "ownGoal": false,
+      "penalty": false,
+      "scoreAfter": {
+        "home": 1,
+        "away": 1
+      }
+    }
+  ],
+  "cards": [
+    {
+      "minute": 26,
+      "minuteLabel": "26",
+      "team": "home",
+      "player": "Ximo",
+      "kind": "yellow"
+    },
+    {
+      "minute": 45,
+      "minuteLabel": "45+1",
+      "team": "home",
+      "player": "Amatucci",
+      "kind": "yellow"
+    },
+    {
+      "minute": 67,
+      "minuteLabel": "67",
+      "team": "away",
+      "player": "Villar",
+      "kind": "yellow"
+    },
+    {
+      "minute": 88,
+      "minuteLabel": "88",
+      "team": "away",
+      "player": "Konare",
+      "kind": "yellow"
+    }
+  ],
+  "substitutions": [
+    {
+      "minute": 60,
+      "minuteLabel": "60",
+      "team": "home",
+      "playerOut": "Jensen",
+      "playerIn": null
+    },
+    {
+      "minute": 60,
+      "minuteLabel": "60",
+      "team": "home",
+      "playerOut": "Nsongo",
+      "playerIn": null
+    },
+    {
+      "minute": 60,
+      "minuteLabel": "60",
+      "team": "home",
+      "playerOut": null,
+      "playerIn": "Eddahchouri"
+    },
+    {
+      "minute": 60,
+      "minuteLabel": "60",
+      "team": "home",
+      "playerOut": null,
+      "playerIn": "Villares"
+    },
+    {
+      "minute": 60,
+      "minuteLabel": "60",
+      "team": "away",
+      "playerOut": "Redondo",
+      "playerIn": null
+    },
+    {
+      "minute": 60,
+      "minuteLabel": "60",
+      "team": "away",
+      "playerOut": "Martim Neto",
+      "playerIn": null
+    },
+    {
+      "minute": 60,
+      "minuteLabel": "60",
+      "team": "away",
+      "playerOut": null,
+      "playerIn": "Tete Morente"
+    },
+    {
+      "minute": 60,
+      "minuteLabel": "60",
+      "team": "away",
+      "playerOut": null,
+      "playerIn": "Cepeda"
+    },
+    {
+      "minute": 69,
+      "minuteLabel": "69",
+      "team": "away",
+      "playerOut": "Fer Niño",
+      "playerIn": "Konare"
+    },
+    {
+      "minute": 71,
+      "minuteLabel": "71",
+      "team": "home",
+      "playerOut": "Alti",
+      "playerIn": null
+    },
+    {
+      "minute": 71,
+      "minuteLabel": "71",
+      "team": "home",
+      "playerOut": "Soriano",
+      "playerIn": null
+    },
+    {
+      "minute": 71,
+      "minuteLabel": "71",
+      "team": "home",
+      "playerOut": null,
+      "playerIn": "Mella"
+    },
+    {
+      "minute": 71,
+      "minuteLabel": "71",
+      "team": "home",
+      "playerOut": null,
+      "playerIn": "Luismi Cruz"
+    },
+    {
+      "minute": 81,
+      "minuteLabel": "81",
+      "team": "away",
+      "playerOut": "Valera",
+      "playerIn": null
+    },
+    {
+      "minute": 81,
+      "minuteLabel": "81",
+      "team": "away",
+      "playerOut": "Houary",
+      "playerIn": null
+    },
+    {
+      "minute": 81,
+      "minuteLabel": "81",
+      "team": "away",
+      "playerOut": null,
+      "playerIn": "Padilla"
+    },
+    {
+      "minute": 81,
+      "minuteLabel": "81",
+      "team": "away",
+      "playerOut": null,
+      "playerIn": "Morcillo"
+    },
+    {
+      "minute": 85,
+      "minuteLabel": "85",
+      "team": "home",
+      "playerOut": "Aubameyang",
+      "playerIn": "Kevin Sánchez"
+    }
+  ]
+}

@@ -12,3 +12,4 @@ Las decisiones numeradas conservan el orden histórico de asignación. El númer
 | [0028](0028-snapshots-partidos-terminados.md) | Snapshots congelados de partidos terminados |
 | [0029](0029-iconos-fuentes-noticias.md) | Iconos oficiales de las fuentes de noticias |
 | [0030](0030-proxy-directo-worker.md) | Proxy de lectura para el marcador en directo |
+| [0031](0031-detalle-partido-bdfutbol.md) | Detalle de partido con BDFutbol |

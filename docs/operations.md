@@ -63,6 +63,30 @@ python -m depor_hub.cli snapshots --force
 El snapshot corregido se revisa y se commitea como cualquier otro dato. No se
 borran snapshots automáticamente: son el archivo de la ficha de partido.
 
+## Detalle de partido con BDFutbol
+
+`data-refresh.yml` ejecuta `python -m depor_hub.cli match-details` después de los
+snapshots. El comando crea un fichero por partido `FINISHED` o `AWARDED` en
+`data/public/v1/match-details/<season>/<matchId>.json` (ADR 0031). Si el fichero
+existe, se omite; no se pide de nuevo la ficha a BDFutbol.
+
+```bash
+python -m depor_hub.cli match-details            # crea solo los que falten
+python -m depor_hub.cli match-details --offline  # repite desde data/raw/enrich/match-details
+python -m depor_hub.cli match-details --force    # reescribe todos y revisa el diff
+```
+
+- Solo se publican alineaciones, entrenadores, goles, tarjetas y cambios. No hay
+  fotos, escudos, textos ni estadísticas, y no se deducen eventos del marcador.
+- Si BDFutbol no tiene la ficha o no se puede emparejar el partido, el comando
+  imprime un `AVISO` y termina con código 0: el detalle es opcional y no debe
+  bloquear la publicación de fixtures, snapshots o club. Tampoco se publica si
+  el marcador de BDFutbol difiere del publicado.
+- Corregir un detalle publicado requiere `--force`, revisar el diff y commitear.
+- El riesgo legal asumido y sus límites están en
+  [`bdfutbol-legal-risk.md`](bdfutbol-legal-risk.md) y
+  [`adr/0031-detalle-partido-bdfutbol.md`](adr/0031-detalle-partido-bdfutbol.md).
+
 ## Cron externo de respaldo
 
 GitHub Actions no garantiza la puntualidad de `schedule` y, en repositorios con

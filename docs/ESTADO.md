@@ -1,5 +1,5 @@
-# Estado del proyecto — 04-nov-2026
-H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados), H2 (iconos de fuentes) y el proxy en directo (Worker + fusión en la app) hechos. Pendiente para cerrar el Hito 4: desplegar el Worker y definir `EXPO_PUBLIC_LIVE_BASE_URL`.
+# Estado del proyecto — 05-nov-2026
+H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados), H2 (iconos de fuentes), el detalle de partido con BDFutbol (ADR 0031) y el proxy en directo (Worker + fusión en la app) hechos. Pendiente para cerrar el Hito 4: desplegar el Worker y definir `EXPO_PUBLIC_LIVE_BASE_URL`.
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
 - Acceso a PD (LaLiga) 2026-27; sin Copa del Rey. Depor: id 560, tla DEP.
@@ -57,6 +57,32 @@ H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calend
 - Verificación: `ruff`, **188 pytest**, `typecheck`, `lint`, **281 tests / 34
   suites** y esquemas regenerados sin diferencias.
 - Decisiones en [`docs/adr/0028-snapshots-partidos-terminados.md`](adr/0028-snapshots-partidos-terminados.md).
+
+## Detalle de partido con BDFutbol (hecho, ADR 0031)
+
+- `python -m depor_hub.cli match-details` publica un JSON por partido terminado
+  en `data/public/v1/match-details/<season>/<matchId>.json`, con el `id` de
+  football-data.org como clave. `data-refresh.yml` lo ejecuta tras los snapshots.
+- Incluye alineaciones (titulares, suplentes y entrenador), goles (con penalti,
+  propia puerta y marcador posterior), tarjetas y cambios. **No** incluye fotos,
+  escudos, textos, estadísticas ni eventos deducidos. Lo desconocido es `null`.
+- El emparejamiento con BDFutbol exige los dos equipos y una fecha a menos de
+  tres días; si hay empate entre candidatos no se publica detalle. Si el
+  marcador de BDFutbol no coincide con el publicado en `fixtures.json`, tampoco
+  se publica. Una sustitución solo se empareja cuando hay exactamente un jugador
+  que sale y otro que entra en el mismo minuto; si no, se publican las dos
+  mitades por separado.
+- Escritura única: una segunda pasada omite los ficheros existentes; solo
+  `--force` los reescribe. Si BDFutbol no tiene la ficha, el comando avisa pero
+  **no bloquea** la publicación de fixtures, snapshots o club.
+- La app lee el detalle con `useMatchDetail` y lo pinta solo en partidos
+  terminados. Un 404 o un JSON inválido vuelven al aviso honesto de siempre; el
+  directo sigue mostrando únicamente marcador y estado.
+- Riesgo legal: el responsable asumió el riesgo el 05-nov-2026 (opción C del
+  [informe](bdfutbol-legal-risk.md)); se publican solo hechos y se atribuye la
+  fuente.
+- Generados **11 detalles** de 2026-27. Pruebas en
+  `scripts/tests/test_match_details.py` y `matchDetail.test.tsx`.
 
 ## H2 — Iconos de las fuentes de noticias (hecho)
 

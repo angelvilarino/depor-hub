@@ -1,0 +1,491 @@
+{
+  "$defs": {
+    "MatchDetailCard": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "yellow",
+            "red",
+            "second_yellow"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "minute": {
+          "minimum": 0,
+          "title": "Minute",
+          "type": "integer"
+        },
+        "minuteLabel": {
+          "title": "Minutelabel",
+          "type": "string"
+        },
+        "player": {
+          "title": "Player",
+          "type": "string"
+        },
+        "team": {
+          "enum": [
+            "home",
+            "away"
+          ],
+          "title": "Team",
+          "type": "string"
+        }
+      },
+      "required": [
+        "minute",
+        "minuteLabel",
+        "team",
+        "player",
+        "kind"
+      ],
+      "title": "MatchDetailCard",
+      "type": "object"
+    },
+    "MatchDetailGoal": {
+      "additionalProperties": false,
+      "properties": {
+        "minute": {
+          "minimum": 0,
+          "title": "Minute",
+          "type": "integer"
+        },
+        "minuteLabel": {
+          "title": "Minutelabel",
+          "type": "string"
+        },
+        "ownGoal": {
+          "default": false,
+          "title": "Owngoal",
+          "type": "boolean"
+        },
+        "penalty": {
+          "default": false,
+          "title": "Penalty",
+          "type": "boolean"
+        },
+        "player": {
+          "title": "Player",
+          "type": "string"
+        },
+        "scoreAfter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MatchDetailScoreAfter"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "team": {
+          "enum": [
+            "home",
+            "away"
+          ],
+          "title": "Team",
+          "type": "string"
+        }
+      },
+      "required": [
+        "minute",
+        "minuteLabel",
+        "team",
+        "player"
+      ],
+      "title": "MatchDetailGoal",
+      "type": "object"
+    },
+    "MatchDetailLineup": {
+      "additionalProperties": false,
+      "properties": {
+        "coach": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Coach"
+        },
+        "starters": {
+          "items": {
+            "$ref": "#/$defs/MatchDetailPlayer"
+          },
+          "title": "Starters",
+          "type": "array"
+        },
+        "substitutes": {
+          "items": {
+            "$ref": "#/$defs/MatchDetailPlayer"
+          },
+          "title": "Substitutes",
+          "type": "array"
+        }
+      },
+      "title": "MatchDetailLineup",
+      "type": "object"
+    },
+    "MatchDetailLineups": {
+      "additionalProperties": false,
+      "properties": {
+        "away": {
+          "$ref": "#/$defs/MatchDetailLineup"
+        },
+        "home": {
+          "$ref": "#/$defs/MatchDetailLineup"
+        }
+      },
+      "title": "MatchDetailLineups",
+      "type": "object"
+    },
+    "MatchDetailPlayer": {
+      "additionalProperties": false,
+      "properties": {
+        "bdfutbolId": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bdfutbolid"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "shirtNumber": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shirtnumber"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "MatchDetailPlayer",
+      "type": "object"
+    },
+    "MatchDetailScoreAfter": {
+      "additionalProperties": false,
+      "properties": {
+        "away": {
+          "minimum": 0,
+          "title": "Away",
+          "type": "integer"
+        },
+        "home": {
+          "minimum": 0,
+          "title": "Home",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "home",
+        "away"
+      ],
+      "title": "MatchDetailScoreAfter",
+      "type": "object"
+    },
+    "MatchDetailSubstitution": {
+      "additionalProperties": false,
+      "properties": {
+        "minute": {
+          "minimum": 0,
+          "title": "Minute",
+          "type": "integer"
+        },
+        "minuteLabel": {
+          "title": "Minutelabel",
+          "type": "string"
+        },
+        "playerIn": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Playerin"
+        },
+        "playerOut": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Playerout"
+        },
+        "team": {
+          "enum": [
+            "home",
+            "away"
+          ],
+          "title": "Team",
+          "type": "string"
+        }
+      },
+      "required": [
+        "minute",
+        "minuteLabel",
+        "team"
+      ],
+      "title": "MatchDetailSubstitution",
+      "type": "object"
+    },
+    "MatchDetailTeam": {
+      "additionalProperties": false,
+      "properties": {
+        "bdfutbolId": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bdfutbolid"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "MatchDetailTeam",
+      "type": "object"
+    },
+    "Score": {
+      "additionalProperties": false,
+      "properties": {
+        "away": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Away"
+        },
+        "halfTimeAway": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Halftimeaway"
+        },
+        "halfTimeHome": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Halftimehome"
+        },
+        "home": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Home"
+        },
+        "winner": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Winner"
+        }
+      },
+      "title": "Score",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Alineaciones y eventos de un partido terminado (ADR 0031).\n\n`matchId` es el identificador de football-data.org que usa la app; el resto\nprocede de BDFutbol. No hay estad\u00edsticas, fotos ni datos deducidos: si la\nfuente no publica un evento, no aparece.",
+  "properties": {
+    "away": {
+      "$ref": "#/$defs/MatchDetailTeam"
+    },
+    "bdfutbolId": {
+      "minimum": 1,
+      "title": "Bdfutbolid",
+      "type": "integer"
+    },
+    "capturedAt": {
+      "title": "Capturedat",
+      "type": "string"
+    },
+    "cards": {
+      "items": {
+        "$ref": "#/$defs/MatchDetailCard"
+      },
+      "title": "Cards",
+      "type": "array"
+    },
+    "competition": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Competition"
+    },
+    "date": {
+      "title": "Date",
+      "type": "string"
+    },
+    "deporIsHome": {
+      "title": "Deporishome",
+      "type": "boolean"
+    },
+    "goals": {
+      "items": {
+        "$ref": "#/$defs/MatchDetailGoal"
+      },
+      "title": "Goals",
+      "type": "array"
+    },
+    "home": {
+      "$ref": "#/$defs/MatchDetailTeam"
+    },
+    "lineups": {
+      "$ref": "#/$defs/MatchDetailLineups"
+    },
+    "matchId": {
+      "title": "Matchid",
+      "type": "integer"
+    },
+    "matchday": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Matchday"
+    },
+    "referee": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Referee"
+    },
+    "score": {
+      "$ref": "#/$defs/Score"
+    },
+    "season": {
+      "title": "Season",
+      "type": "string"
+    },
+    "source": {
+      "default": "BDFutbol",
+      "title": "Source",
+      "type": "string"
+    },
+    "sourceUrl": {
+      "title": "Sourceurl",
+      "type": "string"
+    },
+    "substitutions": {
+      "items": {
+        "$ref": "#/$defs/MatchDetailSubstitution"
+      },
+      "title": "Substitutions",
+      "type": "array"
+    },
+    "venue": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Venue"
+    }
+  },
+  "required": [
+    "matchId",
+    "season",
+    "sourceUrl",
+    "bdfutbolId",
+    "capturedAt",
+    "date",
+    "home",
+    "away",
+    "deporIsHome",
+    "score"
+  ],
+  "title": "MatchDetail",
+  "type": "object"
+}

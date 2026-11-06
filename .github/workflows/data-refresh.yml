@@ -49,6 +49,10 @@ jobs:
         run: python -m depor_hub.cli ingest --if-due ${{ inputs.force && '--force' || '' }}
       - name: Congelar snapshots de partidos terminados
         run: python -m depor_hub.cli snapshots
+      - name: Publicar alineaciones y eventos de partidos terminados
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+        run: python -m depor_hub.cli match-details
       - name: Publicar la ficha del club
         run: python -m depor_hub.cli club
       - name: Imágenes del club (solo si faltan)

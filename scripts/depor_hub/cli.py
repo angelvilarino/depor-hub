@@ -282,6 +282,204 @@ def cmd_snapshots(args: argparse.Namespace) -> int:
     return 0
 
 
+def _detail_player(player: bdfutbol.LineupPlayer) -> m.MatchDetailPlayer:
+    return m.MatchDetailPlayer(
+        name=player.name,
+        shirt_number=player.shirt_number,
+        bdfutbol_id=int(player.bdfutbol_id) if player.bdfutbol_id else None,
+    )
+
+
+def _detail_lineup(lineup: bdfutbol.LineupData) -> m.MatchDetailLineup:
+    return m.MatchDetailLineup(
+        coach=lineup.coach,
+        starters=[_detail_player(player) for player in lineup.starters],
+        substitutes=[_detail_player(player) for player in lineup.substitutes],
+    )
+
+
+def _detail_score(data: bdfutbol.MatchDetailData) -> m.Score:
+    winner = None
+    if data.score_home is not None and data.score_away is not None:
+        winner = (
+            "HOME_TEAM"
+            if data.score_home > data.score_away
+            else "AWAY_TEAM"
+            if data.score_away > data.score_home
+            else "DRAW"
+        )
+    return m.Score(
+        home=data.score_home,
+        away=data.score_away,
+        half_time_home=None,
+        half_time_away=None,
+        winner=winner,
+    )
+
+
+def _build_match_detail(
+    match: m.Match, season: str, data: bdfutbol.MatchDetailData
+) -> m.MatchDetail:
+    return m.MatchDetail(
+        match_id=match.id,
+        season=season,
+        source_url=data.url,
+        bdfutbol_id=int(data.bdfutbol_id),
+        captured_at=_now(),
+        competition=data.competition,
+        matchday=data.matchday,
+        date=data.date or match.utc_date[:10],
+        venue=data.venue,
+        referee=data.referee,
+        home=m.MatchDetailTeam(
+            name=data.home_name,
+            bdfutbol_id=int(data.home_bdf_id) if data.home_bdf_id else None,
+        ),
+        away=m.MatchDetailTeam(
+            name=data.away_name,
+            bdfutbol_id=int(data.away_bdf_id) if data.away_bdf_id else None,
+        ),
+        depor_is_home=match.depor_is_home,
+        score=_detail_score(data),
+        lineups=m.MatchDetailLineups(
+            home=_detail_lineup(data.home_lineup),
+            away=_detail_lineup(data.away_lineup),
+        ),
+        goals=[
+            m.MatchDetailGoal(
+                minute=goal.minute,
+                minute_label=goal.minute_label,
+                team=goal.team,  # type: ignore[arg-type]
+                player=goal.player,
+                own_goal=goal.own_goal,
+                penalty=goal.penalty,
+                score_after=(
+                    m.MatchDetailScoreAfter(home=goal.score_home, away=goal.score_away)
+                    if goal.score_home is not None and goal.score_away is not None
+                    else None
+                ),
+            )
+            for goal in data.goals
+        ],
+        cards=[
+            m.MatchDetailCard(
+                minute=card.minute,
+                minute_label=card.minute_label,
+                team=card.team,  # type: ignore[arg-type]
+                player=card.player,
+                kind=card.kind,  # type: ignore[arg-type]
+            )
+            for card in data.cards
+        ],
+        substitutions=[
+            m.MatchDetailSubstitution(
+                minute=sub.minute,
+                minute_label=sub.minute_label,
+                team=sub.team,  # type: ignore[arg-type]
+                player_out=sub.player_out,
+                player_in=sub.player_in,
+            )
+            for sub in data.substitutions
+        ],
+    )
+
+
+def cmd_match_details(args: argparse.Namespace) -> int:
+    """Publica alineaciones y eventos de los partidos terminados (ADR 0031)."""
+    fixtures = m.Fixtures.model_validate_json(Path(args.fixtures).read_text(encoding="utf-8"))
+    season = fixtures.season.replace("/", "-")
+    out_dir = Path(args.out) / season
+    pending: list[tuple[m.Match, Path]] = []
+    skipped = 0
+    for match in fixtures.matches:
+        if match.status not in {"FINISHED", "AWARDED"}:
+            continue
+        target = out_dir / f"{match.id}.json"
+        if target.exists() and not args.force:
+            skipped += 1
+            continue
+        pending.append((match, target))
+
+    if not pending:
+        print(f"season={season} created=0 skipped={skipped} unresolved=0 out={out_dir}")
+        return 0
+
+    http = PoliteClient(
+        cache_dir=Path(args.raw) / "enrich" / "match-details",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    created = unresolved = 0
+    try:
+        client = bdfutbol.BDFutbolClient(http)
+        try:
+            schedule = client.schedule(season)
+        except SourceError as exc:
+            print(f"AVISO: no se pudo leer el calendario de BDFutbol: {exc}", file=sys.stderr)
+            return 0
+        for match, target in pending:
+            row = bdfutbol.find_schedule_match(
+                schedule, match.home.name, match.away.name, match.utc_date[:10]
+            )
+            if row is None or row.bdf_id is None:
+                unresolved += 1
+                print(
+                    f"AVISO: sin partido de BDFutbol para {match.id} "
+                    f"({match.home.name} - {match.away.name}, {match.utc_date[:10]})",
+                    file=sys.stderr,
+                )
+                continue
+            try:
+                data = client.match_detail(row.bdf_id)
+            except SourceError as exc:
+                unresolved += 1
+                print(f"AVISO: no se pudo leer el partido {row.bdf_id}: {exc}", file=sys.stderr)
+                continue
+            if not (
+                data.home_lineup.starters
+                or data.away_lineup.starters
+                or data.goals
+                or data.cards
+                or data.substitutions
+            ):
+                unresolved += 1
+                print(
+                    f"AVISO: la ficha {row.bdf_id} no contiene alineaciones ni eventos; "
+                    "no se publica un detalle vacío",
+                    file=sys.stderr,
+                )
+                continue
+            if (
+                data.score_home is not None
+                and data.score_away is not None
+                and match.score.home is not None
+                and match.score.away is not None
+                and (data.score_home, data.score_away) != (match.score.home, match.score.away)
+            ):
+                unresolved += 1
+                print(
+                    f"AVISO: el marcador de BDFutbol ({data.score_home}-{data.score_away}) "
+                    f"no coincide con el publicado ({match.score.home}-{match.score.away}) "
+                    f"para {match.id}; no se publica detalle",
+                    file=sys.stderr,
+                )
+                continue
+            detail = _build_match_detail(match, fixtures.season, data)
+            if write_optional(out_dir, target.name, t.dump(detail), m.MatchDetail, force=args.force):
+                created += 1
+    finally:
+        http.close()
+
+    print(
+        f"season={season} created={created} skipped={skipped} "
+        f"unresolved={unresolved} out={out_dir}"
+    )
+    # El detalle es opcional: no debe impedir que se publiquen fixtures, snapshots
+    # o el club si BDFutbol no tiene todavía la ficha de un partido.
+    return 0
+
+
 def cmd_probe(args: argparse.Namespace) -> int:
     """Informe de cobertura con TU token. No escribe datos públicos."""
     client = _client(Path(args.raw))
@@ -518,7 +716,14 @@ def cmd_club_images(args: argparse.Namespace) -> int:
 def cmd_schemas(args: argparse.Namespace) -> int:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    models = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES, **m.STATUS_FILES, **m.SNAPSHOT_FILES}
+    models = {
+        **m.FILES,
+        **m.NEWS_FILES,
+        **m.EXTRA_FILES,
+        **m.STATUS_FILES,
+        **m.SNAPSHOT_FILES,
+        **m.MATCH_DETAIL_FILES,
+    }
     for name, model in models.items():
         schema = model.model_json_schema(by_alias=True)
         target = out / name.replace(".json", ".schema.json")
@@ -536,6 +741,16 @@ def cmd_validate(args: argparse.Namespace) -> int:
     for name, model in models.items():
         model.model_validate_json((directory / name).read_text(encoding="utf-8"))
     print(f"Validación Pydantic correcta: {len(models)} JSON en {directory}")
+    extras = 0
+    for folder, model in (
+        ("snapshots", m.MatchSnapshot),
+        ("match-details", m.MatchDetail),
+    ):
+        for target in sorted((directory / folder).glob("*/*.json")):
+            model.model_validate_json(target.read_text(encoding="utf-8"))
+            extras += 1
+    if extras:
+        print(f"Además, {extras} snapshots/detalles de partido válidos")
     return 0
 
 
@@ -1027,6 +1242,17 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--out", default="data/public/v1/snapshots")
     sp.add_argument("--force", action="store_true", help="Reescribe snapshots existentes")
     sp.set_defaults(fn=cmd_snapshots)
+    sp = sub.add_parser(
+        "match-details",
+        help="Publica alineaciones y eventos de los partidos terminados (ADR 0031)",
+    )
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--out", default="data/public/v1/match-details")
+    sp.add_argument("--raw", default="data/raw")
+    sp.add_argument("--interval", type=float, default=1.0)
+    sp.add_argument("--offline", action="store_true")
+    sp.add_argument("--force", action="store_true", help="Reescribe detalles existentes")
+    sp.set_defaults(fn=cmd_match_details)
     sp = sub.add_parser("rivals", help="Publica el histórico y el contexto de los 19 rivales")
     sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
     sp.add_argument("--standings", default="data/public/v1/standings.json")

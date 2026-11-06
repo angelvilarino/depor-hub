@@ -44,8 +44,9 @@ cuesta 19 $/mes. El objetivo de la fase es coste cero.
 - Si football-data cae, la app conserva el último dato estático; el Worker
   responde `502` y no se inventa un resultado.
 - El plan gratuito de Workers (100.000 peticiones/día) sobra para este uso.
-- Sigue sin haber eventos, alineaciones o estadísticas: la ficha mantiene el
-  aviso de disponibilidad (ADR 0028).
+- El directo sigue sin eventos, alineaciones o estadísticas. El detalle de los
+  partidos **terminados** es otra pieza independiente (ADR 0031); este Worker no
+  lo sirve ni lo modifica.
 
 ## Alternativas descartadas
 
@@ -71,4 +72,5 @@ npx wrangler deploy
 ```
 
 y definir `EXPO_PUBLIC_LIVE_BASE_URL` en el entorno de build. Mientras no exista,
-el Hito 4 queda en modo terminado (snapshots), no en modo directo.
+el Hito 4 queda en modo terminado (snapshots y detalle de BDFutbol, ADR 0031), no
+en modo directo.

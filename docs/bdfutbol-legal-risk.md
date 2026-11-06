@@ -3,9 +3,13 @@
 - **Fecha:** 2026-11-05
 - **Alcance:** uso actual de BDFutbol en `depor_hub.enrich` y propuesta de usarlo
   para eventos, alineaciones y estadísticas en la ficha de partido.
-- **Estado:** informe previo a cualquier implementación nueva. **No es
-  asesoramiento jurídico.** Antes de publicar a gran escala o monetizar, debe
-  revisarlo un profesional con la normativa y los contratos aplicables.
+- **Estado:** informe previo a la implementación nueva. **No es
+  asesoramiento jurídico.** Decisión del responsable el **05-nov-2026: opción C,
+  asumir el riesgo**, limitada a hechos deportivos y sin copiar HTML, fotos,
+  escudos ni textos. Implementado en el
+  [ADR 0031](adr/0031-detalle-partido-bdfutbol.md). Antes de publicar a gran
+  escala o monetizar, debe revisarlo un profesional con la normativa y los
+  contratos aplicables.
 
 ## Resumen ejecutivo
 
@@ -94,8 +98,12 @@ Mientras no exista, la ficha sigue en modo degradado honesto (ADR 0028).
 - **Riesgo:** alto. Es un conjunto sustancial y sistemático de la base, y es
   exactamente lo que BDFutbol comercializa. Además, la ficha ya declara
   honestamente que esos datos no están disponibles.
-- **Decisión:** **no implementar** mientras no haya autorización/licencia. No se
-  debe usar scraping «de prueba» ni ocultar la fuente.
+- **Decisión recomendada en este informe:** **no implementar** mientras no haya
+  autorización/licencia. No se debe usar scraping «de prueba» ni ocultar la
+  fuente. **Decisión finalmente adoptada por el responsable:** asumir el riesgo
+  (opción C), con las mitigaciones del
+  [ADR 0031](adr/0031-detalle-partido-bdfutbol.md) y sin publicar HTML, fotos,
+  escudos, textos ni estadísticas.
 
 ### 3. Fotos, escudos y textos
 
@@ -126,16 +134,21 @@ Mientras no exista, la ficha sigue en modo degradado honesto (ADR 0028).
 5. **Revisar el enriquecimiento actual** si no hay respuesta favorable: es el
    uso con más exposición porque ya está publicado.
 
-## Decisión pendiente
+## Decisión adoptada (05-nov-2026)
 
-El responsable del proyecto debe elegir:
+El responsable del proyecto eligió la **opción C: asumir el riesgo** para el
+detalle de partidos terminados, con estas condiciones:
 
-- **A. Solo autorización/licencia:** no se amplía BDFutbol hasta tener permiso
-  escrito o contrato. Es la opción recomendada.
-- **B. Retirar también el enriquecimiento:** máxima prudencia, pero obliga a
-  reconstruir la ficha de jugador con otras fuentes.
-- **C. Asumir el riesgo:** no recomendado para una publicación a gran escala ni
-  para monetización.
+- Solo se publican **hechos deportivos** (alineaciones, entrenadores, goles,
+  tarjetas y cambios). No se copian HTML, textos, fotos ni escudos.
+- La fuente se atribuye en la ficha y en cada JSON (`source`, `sourceUrl`).
+- No se publican estadísticas ni se deducen eventos del marcador.
+- Si BDFutbol bloquea el acceso o cambia sus condiciones, se retira el paso del
+  workflow y la app sigue funcionando con marcador, estado y snapshots.
+
+La recomendación técnica de este informe sigue siendo la **opción A**
+(autorización escrita o API v2). La opción C es una decisión de producto del
+responsable, no una conclusión jurídica de este documento.
 
 Este informe no sustituye la revisión de un abogado. Las URLs y condiciones
 citadas se comprobaron el 05-nov-2026 y pueden cambiar.
