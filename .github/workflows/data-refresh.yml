@@ -62,6 +62,14 @@ jobs:
           else
             python -m depor_hub.cli club-images
           fi
+      - name: Títulos del club (propuesta fuera del árbol publicado)
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+        run: python -m depor_hub.cli club titles --proposal data/raw/titles.proposed.yml
+      - name: Rivalidades del club (balance BDFutbol)
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+        run: python -m depor_hub.cli club rivalries
       - name: Guardar el último refresco
         if: steps.ingest.outputs.refreshed == 'true'
         uses: actions/cache/save@v4
