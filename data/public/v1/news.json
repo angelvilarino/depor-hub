@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T15:33:30Z",
+  "updatedAt": "2026-11-06T16:04:51Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "80d833ff2aa2701b",
+      "title": "El árbitro del Espanyol-Dépor: el que más tarjetas rojas muestra y el tercero que más penaltis señala en esta Liga",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/el-arbitro-del-espanyol-depor-el-que-mas-tarjetas-rojas-muestra-y-el-tercero-que-mas-penaltis-senala-en-esta-liga-889412.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-06T15:39:37Z",
+      "kind": "article",
+      "summary": "Alejandro Quintero dirigirá por primera vez un partido del equipo coruñés",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/06/6aedf387bd28c.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "626f87512a4afb1e",
       "title": "Altas, bajas y posible once del Dépor ante el Espanyol: mantener lo que funciona o reforzar la medular",
@@ -2221,20 +2235,6 @@
       "kind": "article",
       "summary": "Repasamos la jornada de los cedidos por el Deportivo. Solo Gijselhart, Diego Gómez, Hugo Torres y Lucas Castro tuvieron minutos este fin…",
       "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/10/d8b4d8a8d8a7d8a8-d8a7-1.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "461bb55c9133ef8d",
-      "title": "La portería rival se hace más pequeña sin Aubameyang",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/25/porteria-rival-pequena-aubameyang/00031792957365093582746.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-10-26T04:00:00Z",
-      "kind": "article",
-      "summary": "El Dépor chuta más desde que falta la estrella y tiene más goles esperados, pero el bache de efectividad le condena y solo ha sumado un…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/k7IOVxqs8aQiSqIG_FK6YiOtsNY=/768x/2026/10/25/00121792957562309456539/Foto/j_20261024_232459000.jpg",
       "tags": [
         "partido"
       ],
