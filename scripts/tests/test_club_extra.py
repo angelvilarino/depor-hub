@@ -157,6 +157,25 @@ def test_publish_rivalries_is_idempotent(tmp_path: Path):
     assert (tmp_path / "rivalries.json").read_text(encoding="utf-8") == original
 
 
+def test_publish_rivalries_keeps_the_previous_file_without_balance(tmp_path: Path):
+    first = publish_rivalries(
+        MANUAL / "rivalries.yml", tmp_path, StubHttp(H2H_HTML), NOW  # type: ignore[arg-type]
+    )
+    assert first[0] is True
+    original = (tmp_path / "rivalries.json").read_text(encoding="utf-8")
+
+    # Una pasada sin tabla de balance no debe borrar el histórico ya verificado.
+    second = publish_rivalries(
+        MANUAL / "rivalries.yml",
+        tmp_path,
+        StubHttp("<html></html>"),  # type: ignore[arg-type]
+        "2026-12-01T00:00:00Z",
+    )
+    assert second[0] is False
+    assert all(rivalry.head_to_head is not None for rivalry in second[1].rivalries)
+    assert (tmp_path / "rivalries.json").read_text(encoding="utf-8") == original
+
+
 def _png() -> bytes:
     image = Image.new("RGB", (40, 30), (255, 255, 255))
     buffer = io.BytesIO()
