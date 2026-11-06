@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T19:03:41Z",
+  "updatedAt": "2026-11-06T19:33:09Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "e032d39874750dbf",
+      "title": "Edu Expósito y los otros viejos conocidos del Dépor en el Espanyol",
+      "url": "https://riazor.org/edu-exposito-otros-viejos-conocidos-depor-espanyol",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-06T19:30:43Z",
+      "kind": "article",
+      "summary": "El Deportivo se reencontrará este sábado con Edu Expósito -exjugador blanquiazul- y tres futbolistas que ya le hicieron gol la temporada…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "e12ad619f4271707",
       "title": "Sarabia, sobre Aubameyang: \"Sorprende el rendimiento que tiene a su edad. Después de la lesión, igual no está al 100%, o eso espero\"",
@@ -637,6 +651,25 @@
       "alsoIn": []
     },
     {
+      "id": "6a79f59bc4e587b5",
+      "title": "Aubameyang-Adama, una conexión especial para el Deportivo",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/03/auba/00031793734413213948950.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-03T19:45:00Z",
+      "kind": "article",
+      "summary": "El equipo cuenta con un balance goleador positivo cuando coinciden ariete y extremo, que establecieron una gran relación tras su paso por…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/oXL6cJifPJCkdLoJqJcRYMvyLSM=/768x/2026/11/03/00121793734862358832282/Foto/j_20261103_203505000.jpg",
+      "tags": [],
+      "alsoIn": [
+        {
+          "sourceId": "riazor",
+          "title": "‘No Aubameyang, no party’ para el Deportivo: «Es alguien especial para nosotros»",
+          "url": "https://riazor.org/no-aubameyang-no-party-deportivo",
+          "publishedAt": "2026-11-03T14:00:11Z"
+        }
+      ]
+    },
+    {
       "id": "275475cec3a0db4d",
       "title": "En vídeo: la charla de Roberto Cabellud y un frustrado Lucas Noubi tras el Dépor-Osasuna",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/en-video-la-charla-de-roberto-cabellud-y-un-frustrado-lucas-noubi-tras-el-depor-osasuna-888697.html",
@@ -647,27 +680,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/03/FCvG6F8Cdsr_jxKob774P.jpeg",
       "tags": [],
       "alsoIn": []
-    },
-    {
-      "id": "6a79f59bc4e587b5",
-      "title": "‘No Aubameyang, no party’ para el Deportivo: «Es alguien especial para nosotros»",
-      "url": "https://riazor.org/no-aubameyang-no-party-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-03T14:00:11Z",
-      "kind": "article",
-      "summary": "El Deportivo consiguió romper su mala racha de seis jornadas sin ganar coincidiendo con la vuelta de Aubameyang tras su lesión. La entrada…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/oXL6cJifPJCkdLoJqJcRYMvyLSM=/768x/2026/11/03/00121793734862358832282/Foto/j_20261103_203505000.jpg",
-      "tags": [
-        "lesiones"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "Aubameyang-Adama, una conexión especial para el Deportivo",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/03/auba/00031793734413213948950.htm",
-          "publishedAt": "2026-11-03T19:45:00Z"
-        }
-      ]
     },
     {
       "id": "3505d984728d0c2e",
@@ -2218,20 +2230,6 @@
       "tags": [
         "partido",
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "11f08e2c90532f25",
-      "title": "La emoción de Lucía Pardo tras su primer gol en Riazor: «No sabía que se podía tener el corazón tan roto y lleno de amor a la vez»",
-      "url": "https://riazor.org/emocion-lucia-pardo-gol-riazor-corazon-roto-amor",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-27T06:00:13Z",
-      "kind": "article",
-      "summary": "La atacante del Dépor habló en sus redes sociales sobre la pérdida de su perro Darko y su dedicatoria tras anotar el gol de la victoria en…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }
