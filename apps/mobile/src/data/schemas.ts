@@ -264,6 +264,86 @@ export const MatchSnapshot = z.strictObject({
   referee: optionalNull(),
 });
 
+// Detalle de partido (ADR 0031). Solo hechos publicados por BDFutbol: alineaciones,
+// goles, tarjetas y cambios. Sin estadísticas, fotos ni eventos deducidos.
+export const MatchSide = z.enum(['home', 'away']);
+export const MatchCardKind = z.enum(['yellow', 'red', 'second_yellow']);
+
+export const MatchDetailTeam = z.strictObject({
+  name: z.string(),
+  bdfutbolId: z.number().int().positive().nullable().default(null),
+});
+
+export const MatchDetailPlayer = z.strictObject({
+  name: z.string(),
+  shirtNumber: z.number().int().nonnegative().nullable().default(null),
+  bdfutbolId: z.number().int().positive().nullable().default(null),
+});
+
+export const MatchDetailLineup = z.strictObject({
+  coach: optionalNull(),
+  starters: z.array(MatchDetailPlayer).default([]),
+  substitutes: z.array(MatchDetailPlayer).default([]),
+});
+
+export const MatchDetailLineups = z.strictObject({
+  home: MatchDetailLineup,
+  away: MatchDetailLineup,
+});
+
+export const MatchDetailScoreAfter = z.strictObject({
+  home: z.number().int().nonnegative(),
+  away: z.number().int().nonnegative(),
+});
+
+export const MatchDetailGoal = z.strictObject({
+  minute: z.number().int().nonnegative(),
+  minuteLabel: z.string(),
+  team: MatchSide,
+  player: z.string(),
+  ownGoal: z.boolean().default(false),
+  penalty: z.boolean().default(false),
+  scoreAfter: MatchDetailScoreAfter.nullable().default(null),
+});
+
+export const MatchDetailCard = z.strictObject({
+  minute: z.number().int().nonnegative(),
+  minuteLabel: z.string(),
+  team: MatchSide,
+  player: z.string(),
+  kind: MatchCardKind,
+});
+
+export const MatchDetailSubstitution = z.strictObject({
+  minute: z.number().int().nonnegative(),
+  minuteLabel: z.string(),
+  team: MatchSide,
+  playerOut: optionalNull(),
+  playerIn: optionalNull(),
+});
+
+export const MatchDetail = z.strictObject({
+  matchId: z.number().int(),
+  season: z.string(),
+  source: z.string().default('BDFutbol'),
+  sourceUrl: z.string(),
+  bdfutbolId: z.number().int().positive(),
+  capturedAt: iso,
+  competition: optionalNull(),
+  matchday: optionalInt(),
+  date: z.string(),
+  venue: optionalNull(),
+  referee: optionalNull(),
+  home: MatchDetailTeam,
+  away: MatchDetailTeam,
+  deporIsHome: z.boolean(),
+  score: Score,
+  lineups: MatchDetailLineups,
+  goals: z.array(MatchDetailGoal).default([]),
+  cards: z.array(MatchDetailCard).default([]),
+  substitutions: z.array(MatchDetailSubstitution).default([]),
+});
+
 // Noticias (ADR 0018): una historia puede tener versiones en varios medios. El contrato
 // rompe el anterior `items`/`meta`; la app se actualiza al mismo tiempo que el JSON.
 export const NewsGroup = z.enum(['club', 'galicia', 'nacional']);
@@ -692,6 +772,15 @@ export type SocialFeedT = z.infer<typeof SocialFeed>;
 export type SquadT = z.infer<typeof Squad>;
 export type MatchT = z.infer<typeof Match>;
 export type MatchSnapshotT = z.infer<typeof MatchSnapshot>;
+export type MatchSideT = z.infer<typeof MatchSide>;
+export type MatchCardKindT = z.infer<typeof MatchCardKind>;
+export type MatchDetailT = z.infer<typeof MatchDetail>;
+export type MatchDetailTeamT = z.infer<typeof MatchDetailTeam>;
+export type MatchDetailPlayerT = z.infer<typeof MatchDetailPlayer>;
+export type MatchDetailLineupT = z.infer<typeof MatchDetailLineup>;
+export type MatchDetailGoalT = z.infer<typeof MatchDetailGoal>;
+export type MatchDetailCardT = z.infer<typeof MatchDetailCard>;
+export type MatchDetailSubstitutionT = z.infer<typeof MatchDetailSubstitution>;
 export type PlayerT = z.infer<typeof Player>;
 export type TeamRefT = z.infer<typeof TeamRef>;
 export type CoachT = z.infer<typeof Coach>;

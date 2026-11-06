@@ -7,6 +7,7 @@ import { mergeFixtures } from './live';
 import {
   Club,
   Fixtures,
+  MatchDetail,
   MatchSnapshot,
   Meta,
   News,
@@ -106,6 +107,15 @@ export const useMatchSnapshot = (season: string | null, matchId: string) =>
   useOptionalData(
     season ? `snapshots/${season}/${matchId}.json` : '',
     MatchSnapshot,
+    NEWS_STALE_TIME,
+    Boolean(season && matchId),
+  );
+// Alineaciones y eventos del partido terminado (ADR 0031). Es opcional: si aún no
+// se ha publicado la ficha, la app sigue mostrando el marcador sin inventar nada.
+export const useMatchDetail = (season: string | null, matchId: string) =>
+  useOptionalData(
+    season ? `match-details/${season}/${matchId}.json` : '',
+    MatchDetail,
     NEWS_STALE_TIME,
     Boolean(season && matchId),
   );

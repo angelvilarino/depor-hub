@@ -6,6 +6,7 @@ import { makeMatch } from '@/test-utils/matches';
 let mockMatch = makeMatch();
 let mockFixtures: { season: string; matches: (typeof mockMatch)[] } | null = null;
 let mockSnapshot: Record<string, unknown> | null = null;
+let mockDetail: Record<string, unknown> | null = null;
 const mockNow = Date.parse('2026-11-04T10:00:00Z');
 
 jest.mock('expo-router', () => ({
@@ -27,6 +28,12 @@ jest.mock('@/data/queries', () => ({
   useMeta: () => ({ data: { season: '2026-27' } }),
   useMatchSnapshot: () => ({
     data: mockSnapshot,
+    isPending: false,
+    isFetching: false,
+    isError: false,
+  }),
+  useMatchDetail: () => ({
+    data: mockDetail,
     isPending: false,
     isFetching: false,
     isError: false,
@@ -67,6 +74,7 @@ beforeAll(async () => {
 beforeEach(() => {
   mockFixtures = null;
   mockSnapshot = null;
+  mockDetail = null;
 });
 
 describe('Ficha de partido', () => {
@@ -82,7 +90,7 @@ describe('Ficha de partido', () => {
 
     expect(screen.getByText('Resultado final')).toBeTruthy();
     expect(screen.getByText('2 – 1')).toBeTruthy();
-    expect(screen.getByText('Alineaciones, eventos y estadísticas no disponibles')).toBeTruthy();
+    expect(screen.getByText('Alineaciones y eventos no disponibles')).toBeTruthy();
     expect(screen.getByText(/No se deducen eventos ni estadísticas/)).toBeTruthy();
     expect(screen.getByText('Marcador y estado: football-data.org')).toBeTruthy();
     expect(screen.queryByText('Recordarme')).toBeNull();
@@ -143,7 +151,83 @@ describe('Ficha de partido', () => {
     expect(screen.getByText('Resultado final')).toBeTruthy();
     expect(screen.getByText('1 – 1')).toBeTruthy();
     expect(screen.getByText('Francisco Hernández Maeso')).toBeTruthy();
-    expect(screen.getByText('Alineaciones, eventos y estadísticas no disponibles')).toBeTruthy();
+    expect(screen.getByText('Alineaciones y eventos no disponibles')).toBeTruthy();
+  });
+
+  it('con ficha de BDFutbol muestra alineaciones y eventos sin inventar nada', async () => {
+    mockMatch = makeMatch({
+      id: 564635,
+      status: 'FINISHED',
+      utcDate: '2026-08-17T19:00:00Z',
+      score: { home: 1, away: 1, halfTimeHome: null, halfTimeAway: null, winner: 'DRAW' },
+    });
+    mockDetail = {
+      matchId: 564635,
+      season: '2026-27',
+      source: 'BDFutbol',
+      sourceUrl: 'https://www.bdfutbol.com/es/p/p.php?id=32382',
+      bdfutbolId: 32382,
+      capturedAt: '2026-11-04T09:44:45Z',
+      competition: 'Primera División',
+      matchday: 1,
+      date: '2026-08-17',
+      venue: 'Riazor',
+      referee: 'Hernández Maeso',
+      home: { name: 'Deportivo de A Coruña', bdfutbolId: 13 },
+      away: { name: 'Elche', bdfutbolId: 42 },
+      deporIsHome: true,
+      score: { home: 1, away: 1, halfTimeHome: null, halfTimeAway: null, winner: 'DRAW' },
+      lineups: {
+        home: {
+          coach: 'Antonio Hidalgo',
+          starters: [{ name: 'Aubameyang', shirtNumber: 9, bdfutbolId: 100 }],
+          substitutes: [{ name: 'Eddahchouri', shirtNumber: 19, bdfutbolId: 101 }],
+        },
+        away: {
+          coach: 'Anselmi',
+          starters: [{ name: 'Aguado', shirtNumber: 7, bdfutbolId: 200 }],
+          substitutes: [],
+        },
+      },
+      goals: [
+        {
+          minute: 21,
+          minuteLabel: '21',
+          team: 'home',
+          player: 'Aubameyang',
+          ownGoal: false,
+          penalty: true,
+          scoreAfter: { home: 1, away: 0 },
+        },
+      ],
+      cards: [
+        { minute: 65, minuteLabel: '65', team: 'away', player: 'Redondo', kind: 'yellow' },
+      ],
+      substitutions: [
+        {
+          minute: 60,
+          minuteLabel: '60',
+          team: 'home',
+          playerOut: 'Jensen',
+          playerIn: 'Eddahchouri',
+        },
+      ],
+    };
+
+    await render(<MatchDetail />);
+
+    expect(screen.getByText('Alineaciones y eventos')).toBeTruthy();
+    expect(screen.getByText('Entrenador: Antonio Hidalgo')).toBeTruthy();
+    expect(screen.getByText('9 · Aubameyang')).toBeTruthy();
+    expect(screen.getByText('19 · Eddahchouri')).toBeTruthy();
+    expect(screen.getByText('Goles')).toBeTruthy();
+    expect(screen.getByText(/Aubameyang \(penalti\)/)).toBeTruthy();
+    expect(screen.getByText('Tarjetas')).toBeTruthy();
+    expect(screen.getByText(/Redondo \(amarilla\)/)).toBeTruthy();
+    expect(screen.getByText('Cambios')).toBeTruthy();
+    expect(screen.getByText(/Jensen → Eddahchouri/)).toBeTruthy();
+    expect(screen.getByText('Alineaciones y eventos: BDFutbol')).toBeTruthy();
+    expect(screen.queryByText('Alineaciones y eventos no disponibles')).toBeNull();
   });
 
   it('un TIMED ya pasado no se presenta como futuro ni como resultado', async () => {
