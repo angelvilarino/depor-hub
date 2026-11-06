@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T23:04:22Z",
+  "updatedAt": "2026-11-06T04:33:08Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,30 @@
     }
   ],
   "stories": [
+    {
+      "id": "de06c8db7039d494",
+      "title": "Hidalgo amplía el repertorio táctico del Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/hidalgo-amplia-el-repertorio-tactico-del-depor-889189.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-06T04:00:00Z",
+      "kind": "article",
+      "summary": "Antonio Hidalgo introdujo ante Osasuna variantes en la ocupación de los espacios y los roles de sus jugadores para adaptarse a cada momento",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/05/6aec8f8f1cc18.r_d.1315-1921-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "267d8c30d6afb3ba",
+      "title": "Lucas Noubi busca de nuevo el oásis de Bégica sub-21",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/lucas-noubi-busca-de-nuevo-el-oasis-de-begica-sub-889223.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-06T04:00:00Z",
+      "kind": "article",
+      "summary": "El seleccionador Gill Swerts publica este viernes la lista, en la que el central espera estar a pesar de perder su puesto en el Dépor",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/08/27/6a907a2993160.r_d.1810-995-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "b5274c73775be80a",
       "title": "Italia convoca a Lorenzo Amatucci para su selección sub-21, con la que podría medirse a otro deportivista",
@@ -2207,35 +2231,6 @@
       "summary": null,
       "thumbnailUrl": "https://i2.ytimg.com/vi/yNLAdQ3BguU/hqdefault.jpg",
       "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "f90352866b11f259",
-      "title": "El Dépor cae con honor en el Metropolitano: 1-0",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/24/depor-cae-honor-metropolitano-1-0/00031792876310740279905.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-10-24T21:13:00Z",
-      "kind": "article",
-      "summary": "Plantó cara al Atlético y mereció sumar al menos un punto, tras perdonar dos grandes ocasiones de gol que Oblak detuvo milagrosamente bajo…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/m9LHWv47x-q1jgHEYHjWwq2UK6M=/768x/2026/10/24/00121792874822128873954/Foto/j_20261024_214032000.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "32122f2c8092e4db",
-      "title": "Rueda de prensa de Manuel Pablo tras el Fabril 0 - 5 CD Extremadura",
-      "url": "https://youtube.com/watch?v=zQyWSvYcU7E",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-24T13:50:53Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i3.ytimg.com/vi/zQyWSvYcU7E/hqdefault.jpg",
-      "tags": [
-        "cantera",
         "partido"
       ],
       "alsoIn": []
