@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T11:32:53Z",
+  "updatedAt": "2026-11-06T12:06:38Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -45,17 +45,24 @@
   "stories": [
     {
       "id": "83bc2f6944aa94b1",
-      "title": "David Mella se gana la llamada de España sub-21 como defensa",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/david-mella-se-gana-la-llamada-de-espana-sub-21-como-defensa-889361.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-06T11:22:17Z",
+      "title": "David Mella, convocado con España sub-21… como defensa",
+      "url": "https://riazor.org/david-mella-espana-sub-21-defensa",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-06T11:49:43Z",
       "kind": "article",
-      "summary": "El canterano del Deportivo recibe su primera convocatoria y oposita a acudir al Europeo de la categoría",
+      "summary": "El futbolista del Deportivo aparece en la lista de convocados como defensa después de haber jugado eventualmente como lateral. La entrada…",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2025/10/07/5xznkn6lfmgh2w9qg.jpg",
       "tags": [
         "partido"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "David Mella se gana la llamada de España sub-21 como defensa",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/david-mella-se-gana-la-llamada-de-espana-sub-21-como-defensa-889361.html",
+          "publishedAt": "2026-11-06T11:22:17Z"
+        }
+      ]
     },
     {
       "id": "e8bdafac17c4819c",
