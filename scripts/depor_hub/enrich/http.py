@@ -36,8 +36,22 @@ class FetchResult:
     from_cache: bool = False
 
 
+@dataclass(frozen=True)
+class FetchBinaryResult:
+    url: str
+    final_url: str
+    status: int
+    content: bytes
+    content_type: str
+    from_cache: bool = False
+
+
 def _cache_name(url: str) -> str:
     return hashlib.sha256(url.encode("utf-8")).hexdigest() + ".txt"
+
+
+def _cache_name_binary(url: str) -> str:
+    return hashlib.sha256(url.encode("utf-8")).hexdigest() + ".bin"
 
 
 def _host(url: str) -> str:
@@ -138,6 +152,29 @@ class PoliteClient:
         if path:
             path.write_text(text, encoding="utf-8")
 
+    def _cache_path_binary(self, url: str) -> Path | None:
+        return self.cache_dir / _cache_name_binary(url) if self.cache_dir else None
+
+    def _read_cache_binary(self, url: str) -> FetchBinaryResult | None:
+        path = self._cache_path_binary(url)
+        if not path or not path.exists():
+            return None
+        if not self.offline and time.time() - path.stat().st_mtime > self.cache_ttl:
+            return None
+        return FetchBinaryResult(
+            url=url,
+            final_url=url,
+            status=200,
+            content=path.read_bytes(),
+            content_type="application/octet-stream",
+            from_cache=True,
+        )
+
+    def _write_cache_binary(self, url: str, content: bytes) -> None:
+        path = self._cache_path_binary(url)
+        if path:
+            path.write_bytes(content)
+
     def _throttle(self, host: str) -> None:
         last = self._last.get(host)
         if last is not None:
@@ -211,6 +248,53 @@ class PoliteClient:
             return json.loads(result.text)
         except json.JSONDecodeError as exc:
             raise SourceError(f"JSON inválido en {url}") from exc
+
+    def get_binary(
+        self, url: str, *, cache: bool = True, check_robots: bool = True
+    ) -> FetchBinaryResult:
+        """GET binario con la misma caché, robots.txt, ritmo y bloqueos que `get`."""
+        if cache:
+            cached = self._read_cache_binary(url)
+            if cached:
+                return cached
+        if self.offline:
+            raise SourceBlocked(f"sin caché para {url} (modo offline)")
+        if check_robots:
+            path = urlparse(url).path or "/"
+            if not _robots_allows(self._robots_for(url), path, "*"):
+                raise SourceBlocked(f"robots.txt no permite {path} en {_host(url)}")
+
+        self._throttle(_host(url))
+        last_error: Exception | None = None
+        for attempt in range(3):
+            try:
+                response = self._client.get(url)
+            except httpx.HTTPError as exc:
+                last_error = exc
+                if attempt < 2:
+                    self.sleep(1.0 + attempt)
+                    continue
+                raise SourceError(f"error de red en {url}: {exc}") from exc
+            if response.status_code in {403, 429} or response.status_code == 202:
+                retry = response.headers.get("Retry-After")
+                detail = f"Retry-After={retry}" if retry else "sin Retry-After"
+                raise SourceBlocked(f"{response.status_code} en {url} ({detail}); no se insiste")
+            if response.status_code in {500, 502, 503, 504} and attempt < 2:
+                self.sleep(1.0 + attempt)
+                continue
+            if response.status_code >= 400:
+                raise SourceError(f"{response.status_code} en {url}")
+            content = response.content
+            if cache:
+                self._write_cache_binary(url, content)
+            return FetchBinaryResult(
+                url=url,
+                final_url=str(response.url),
+                status=response.status_code,
+                content=content,
+                content_type=response.headers.get("Content-Type", ""),
+            )
+        raise SourceError(f"no se pudo leer {url}: {last_error}")
 
 
 def contact_from_env() -> str:

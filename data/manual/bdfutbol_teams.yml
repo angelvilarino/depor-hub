@@ -26,3 +26,20 @@ teams:
   80: "14"    # RCD Espanyol de Barcelona
   95: "36"    # Valencia CF
   84: "23"    # Málaga CF
+
+# Rivales históricos que no están en la temporada 2026-27. No se mezclan en
+# `teams` porque esa clave la consume `rivals` con ids de football-data.org.
+# Se verificaron abriendo cada ficha y contrastando el nombre largo:
+#   https://www.bdfutbol.com/es/e/e12.html  SD Compostela
+#   https://www.bdfutbol.com/es/e/e28.html  Real Oviedo
+#   https://www.bdfutbol.com/es/e/e34.html  Real Sporting de Gijón
+#   https://www.bdfutbol.com/es/e/e48.html  Racing Club de Ferrol
+#   https://www.bdfutbol.com/es/e/e76.html  CD Lugo
+# Celta (e11) ya está en `teams` y se reutiliza para el derbi.
+historic_rivals:
+  12: "SD Compostela"
+  28: "Real Oviedo"
+  34: "Real Sporting de Gijón"
+  48: "Racing Club de Ferrol"
+  76: "CD Lugo"
+

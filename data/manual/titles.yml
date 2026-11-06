@@ -1,0 +1,283 @@
+# Ediciones individuales del palmarés (H1, ampliación aditiva de club.json).
+#
+# Este fichero alimenta `titles.json`. No se aplica solo: el comando
+# `python -m depor_hub.cli club titles` compara BDFutbol con estas ediciones y
+# escribe las diferencias en `data/manual/titles.proposed.yml` para revisión.
+#
+# Cada edición conserva su procedencia. `confidence` solo puede ser
+# verified/cross_checked/single_source/estimated. Lo que no esté documentado se
+# deja en null/[]; no se inventan goleadores, alineaciones ni marcadores.
+
+editions:
+- competition: Primera División
+  year: 2000
+  season: 1999-00
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: Temporada 1999-2000.
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Copa del Rey
+  year: 1995
+  season: 1994-95
+  scope: national
+  final_match:
+    date: '1995-06-27'
+    competition: Copa del Rey 1994-95
+    round: Final
+    home: RC Deportivo de La Coruña
+    away: Valencia CF
+    home_goals: 2
+    away_goals: 1
+    venue: Estadio Santiago Bernabéu, Madrid
+    note: Final suspendida por la lluvia el 24 de junio y reanudada el 27 de junio.
+    source_url: https://en.wikipedia.org/wiki/1995_Copa_del_Rey_final
+  top_scorers: []
+  squad: []
+  note: Primera Copa del Rey del club.
+  provenance:
+    source: Wikipedia (final de la Copa del Rey de 1995)
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Copa del Rey
+  year: 2002
+  season: 2001-02
+  scope: national
+  final_match:
+    date: '2002-03-06'
+    competition: Copa del Rey 2001-02
+    round: Final
+    home: Real Madrid CF
+    away: RC Deportivo de La Coruña
+    home_goals: 1
+    away_goals: 2
+    venue: Estadio Santiago Bernabéu, Madrid
+    note: 'El Centenariazo: el Dépor ganó la final del centenario del Real Madrid.'
+    source_url: https://en.wikipedia.org/wiki/2002_Copa_del_Rey_final
+  top_scorers: []
+  squad: []
+  note: El Centenariazo.
+  provenance:
+    source: Wikipedia (final de la Copa del Rey de 2002)
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Supercopa de España
+  year: 1995
+  season: 1995-96
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Supercopa de España
+  year: 2000
+  season: 2000-01
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Supercopa de España
+  year: 2002
+  season: 2002-03
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Concurso España
+  year: 1912
+  season: null
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Segunda División
+  year: 1962
+  season: null
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Segunda División
+  year: 1964
+  season: null
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Segunda División
+  year: 1966
+  season: null
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Segunda División
+  year: 1968
+  season: null
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Segunda División
+  year: 2012
+  season: null
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Primera Federación
+  year: 2024
+  season: null
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Tercera División
+  year: 1975
+  season: null
+  scope: national
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Campeonato de Galicia
+  year: 1927
+  season: null
+  scope: regional
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Campeonato de Galicia
+  year: 1928
+  season: null
+  scope: regional
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Campeonato de Galicia
+  year: 1931
+  season: null
+  scope: regional
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Campeonato de Galicia
+  year: 1933
+  season: null
+  scope: regional
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Campeonato de Galicia
+  year: 1937
+  season: null
+  scope: regional
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Campeonato de Galicia
+  year: 1940
+  season: null
+  scope: regional
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'
+- competition: Copa Galicia
+  year: 1946
+  season: null
+  scope: regional
+  final_match: null
+  top_scorers: []
+  squad: []
+  note: null
+  provenance:
+    source: Palmarés curado en data/manual/club.yml
+    confidence: cross_checked
+    captured_at: '2026-11-06'

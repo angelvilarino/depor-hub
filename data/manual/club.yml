@@ -49,6 +49,16 @@ anthems:
       durante el Trofeo Teresa Herrera, coincidiendo con el 120 aniversario del club.
     lyrics: null
     audio_url: null
+    lyrics_rights:
+      status: unknown
+      holder: Xoel López / RC Deportivo de La Coruña
+      license: Uso editorial; sin licencia de reutilización
+      license_url: null
+      source_url: https://www.rcdeportivo.es
+      note: >-
+        Letra y créditos tomados de la web oficial del club. Se mantiene por
+        interés editorial y documental; no se afirma permiso de reutilización.
+      verified_at: "2026-11-06"
     credits:
       - role: musicians
         names:
@@ -93,6 +103,16 @@ anthems:
       como himno no oficial del deportivismo.
     lyrics: null
     audio_url: null
+    lyrics_rights:
+      status: unknown
+      holder: Jesús Suárez / Mar de Fondo
+      license: Uso editorial; sin licencia de reutilización
+      license_url: null
+      source_url: null
+      note: >-
+        Letra y créditos documentados por el club y la prensa. Se mantiene por
+        interés editorial; no se afirma permiso de reutilización.
+      verified_at: "2026-11-06"
     credits:
       - role: performance
         names:
@@ -108,6 +128,16 @@ anthems:
       Himno rockero de 1987, histórico en Riazor y todavía presente en la grada.
     lyrics: null
     audio_url: null
+    lyrics_rights:
+      status: unknown
+      holder: Gandy Cacahué
+      license: Uso editorial; sin licencia de reutilización
+      license_url: null
+      source_url: null
+      note: >-
+        Letra y créditos documentados por el club y la prensa. Se mantiene por
+        interés editorial; no se afirma permiso de reutilización.
+      verified_at: "2026-11-06"
     credits: []
 
 crests:
@@ -475,6 +505,16 @@ stadium:
   description: >-
     Estadio municipal inaugurado el 29 de octubre de 1944 y conocido como
     Abanca-Riazor desde 2017. Acoge los partidos del primer equipo y el museo del club.
+  schedule: null
+  access_details: null
+  capacity_alternatives: []
+  tenants:
+    - club: RC Deportivo de La Coruña
+      from_year: 1944
+      to_year: null
+      note: Primer equipo y filial.
+      source_url: https://www.rcdeportivo.es
+  media: []
 
 tickets:
   season: "2026-27"
@@ -560,6 +600,25 @@ sponsors:
     - Xacobeo
   collaborators: []
   since_year: null
+  details:
+    - name: ABANCA
+      role: principal
+      category: banca
+      since_year: null
+      until_year: null
+      url: https://www.abanca.com
+      note: Patrocinador principal y titular de los derechos de nombre del estadio.
+      source_url: https://www.rcdeportivo.es
+      verified_at: "2026-11-06"
+    - name: Nike
+      role: technical
+      category: equipación
+      since_year: 2026
+      until_year: null
+      url: https://www.nike.com
+      note: Proveedor técnico desde la temporada 2026-27.
+      source_url: https://www.rcdeportivo.es
+      verified_at: "2026-11-06"
 
 titles:
   - competition: Primera División

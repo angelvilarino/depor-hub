@@ -646,6 +646,54 @@ class ClubIdentity(Public):
     contact: ClubContact = Field(default_factory=ClubContact)
 
 
+MediaKind = Literal["photo", "video", "audio", "document"]
+MediaOrigin = Literal["commons", "club_official", "press", "other"]
+
+
+class MediaRef(Public):
+    """Referencia a un medio externo con su licencia y atribución.
+
+    Regla del proyecto: las imágenes nuevas no se copian al repositorio. Se
+    publica la URL original, el crédito y la licencia; si no hay licencia de
+    reutilización, se dice explícitamente. `verifiedAt` es la fecha en la que se
+    comprobó que la URL seguía viva, no la fecha del dato deportivo.
+    """
+
+    url: str
+    kind: MediaKind = "photo"
+    width: Optional[int] = Field(default=None, ge=0)
+    height: Optional[int] = Field(default=None, ge=0)
+    license: Optional[str] = None
+    license_url: Optional[str] = None
+    author: Optional[str] = None
+    credit: Optional[str] = None
+    source_url: Optional[str] = None
+    origin: MediaOrigin = "other"
+    verified_at: Optional[str] = None
+
+
+LyricsRightsStatus = Literal[
+    "licensed", "public_domain", "permission_granted", "unknown"
+]
+
+
+class AnthemLyricsRights(Public):
+    """Situación legal de una letra publicada.
+
+    `unknown` es un estado honesto, no una licencia. Mientras no haya permiso
+    expreso, la app puede mostrar la letra con uso editorial y atribución, pero
+    el proyecto no afirma que sea reutilizable.
+    """
+
+    status: LyricsRightsStatus = "unknown"
+    holder: Optional[str] = None
+    license: Optional[str] = None
+    license_url: Optional[str] = None
+    source_url: Optional[str] = None
+    note: Optional[str] = None
+    verified_at: Optional[str] = None
+
+
 AnthemKind = Literal["oficial", "no_oficial", "popular"]
 
 
@@ -671,6 +719,8 @@ class Anthem(Public):
     lyrics: Optional[str] = None
     audio_url: Optional[str] = None
     credits: list[AnthemCredit] = Field(default_factory=list)
+    media: Optional[MediaRef] = None
+    lyrics_rights: Optional[AnthemLyricsRights] = None
 
 
 class CrestVersion(Public):
@@ -679,6 +729,7 @@ class CrestVersion(Public):
     year_to: Optional[int] = Field(default=None, ge=1800, le=2100)
     description: Optional[str] = None
     image: Optional[str] = None  # ruta relativa a data/public/v1, no URL externa
+    media: Optional[MediaRef] = None
 
     @model_validator(mode="after")
     def _years(self) -> CrestVersion:
@@ -699,6 +750,7 @@ class Kit(Public):
     colors: list[str] = Field(default_factory=list)
     description: Optional[str] = None
     image: Optional[str] = None  # ruta relativa a data/public/v1
+    media: Optional[MediaRef] = None
 
 
 class SeasonKits(Public):
@@ -721,6 +773,41 @@ class StadiumCoordinates(Public):
 class CapacityZone(Public):
     zone: str
     seats: int = Field(ge=0)
+
+
+class CapacityAlternative(Public):
+    """Aforo alternativo publicado por otra fuente (conciertos, configuración UEFA...)."""
+
+    label: str
+    total: int = Field(ge=0)
+    note: Optional[str] = None
+    source_url: Optional[str] = None
+
+
+class VenueSchedule(Public):
+    days: Optional[str] = None
+    hours: Optional[str] = None
+    note: Optional[str] = None
+    source_url: Optional[str] = None
+    verified_at: Optional[str] = None
+
+
+class VenueAccess(Public):
+    public_transport: Optional[str] = None
+    parking: Optional[str] = None
+    accessibility: Optional[str] = None
+    note: Optional[str] = None
+    source_url: Optional[str] = None
+
+
+class Tenure(Public):
+    """Club o entidad que usa el estadio, con su periodo documentado."""
+
+    club: str
+    from_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+    to_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+    note: Optional[str] = None
+    source_url: Optional[str] = None
 
 
 class Capacity(Public):
@@ -747,6 +834,11 @@ class Stadium(Public):
     parking: Optional[str] = None
     capacity: Optional[Capacity] = None
     description: Optional[str] = None
+    schedule: Optional[VenueSchedule] = None
+    access_details: Optional[VenueAccess] = None
+    capacity_alternatives: list[CapacityAlternative] = Field(default_factory=list)
+    tenants: list[Tenure] = Field(default_factory=list)
+    media: list[MediaRef] = Field(default_factory=list)
 
     @field_validator("opened_on")
     @classmethod
@@ -804,12 +896,30 @@ class Board(Public):
     note: Optional[str] = None
 
 
+SponsorRole = Literal["principal", "technical", "official", "collaborator", "other"]
+
+
+class Sponsor(Public):
+    """Patrocinio con su papel, vigencia y fuente. No sustituye a `Sponsors.official`."""
+
+    name: str
+    role: SponsorRole = "official"
+    category: Optional[str] = None
+    since_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+    until_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+    url: Optional[str] = None
+    note: Optional[str] = None
+    source_url: Optional[str] = None
+    verified_at: Optional[str] = None
+
+
 class Sponsors(Public):
     principal: Optional[str] = None
     technical: Optional[str] = None
     official: list[str] = Field(default_factory=list)
     collaborators: list[str] = Field(default_factory=list)
     since_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+    details: list[Sponsor] = Field(default_factory=list)
 
 
 class Title(Public):
@@ -817,10 +927,115 @@ class Title(Public):
     years: list[int] = Field(default_factory=list)
 
 
+TitleScope = Literal["national", "regional", "international", "other"]
+
+
+class GoalScorer(Public):
+    player: str
+    goals: int = Field(ge=0)
+    note: Optional[str] = None
+
+
+class FinalMatch(Public):
+    date: Optional[str] = None  # AAAA-MM-DD
+    competition: Optional[str] = None
+    round_: Optional[str] = Field(default=None, alias="round")
+    home: Optional[str] = None
+    away: Optional[str] = None
+    home_goals: Optional[int] = Field(default=None, ge=0)
+    away_goals: Optional[int] = Field(default=None, ge=0)
+    venue: Optional[str] = None
+    note: Optional[str] = None
+    source_url: Optional[str] = None
+
+    @field_validator("date")
+    @classmethod
+    def _full_date(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None:
+            datetime.strptime(v, "%Y-%m-%d")
+        return v
+
+
+class TitleSquadMember(Public):
+    name: str
+    role: Optional[str] = None
+    appearances: Optional[int] = Field(default=None, ge=0)
+    goals: Optional[int] = Field(default=None, ge=0)
+
+
+class TitleEdition(Public):
+    """Una edición concreta de un título, con detalle opcional y procedencia.
+
+    La app puede seguir usando `Club.titles` (agrupado por competición). Este
+    contrato añade la edición individual sin romper el bloque legado.
+    """
+
+    competition: str
+    year: int = Field(ge=1800, le=2100)
+    season: Optional[str] = None
+    scope: Optional[TitleScope] = None
+    final_match: Optional[FinalMatch] = None
+    top_scorers: list[GoalScorer] = Field(default_factory=list)
+    squad: list[TitleSquadMember] = Field(default_factory=list)
+    note: Optional[str] = None
+    provenance: Provenance
+
+
+class Titles(Public):
+    updated_at: IsoDateTime
+    editions: list[TitleEdition] = Field(default_factory=list)
+
+
 class Rivalry(Public):
     rival: str
     description: Optional[str] = None
     since_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+
+
+class RivalryMeeting(Public):
+    date: str  # AAAA-MM-DD
+    competition: Optional[str] = None
+    round_: Optional[str] = Field(default=None, alias="round")
+    home: str
+    away: str
+    home_goals: int = Field(ge=0)
+    away_goals: int = Field(ge=0)
+    note: Optional[str] = None
+    source_url: Optional[str] = None
+
+    @field_validator("date")
+    @classmethod
+    def _full_date(cls, v: str) -> str:
+        datetime.strptime(v, "%Y-%m-%d")
+        return v
+
+
+class RivalryFact(Public):
+    text: str
+    provenance: Provenance
+
+
+class RivalryDetail(Public):
+    """Rivalidad con narrativa, cruces icónicos y balance histórico opcional.
+
+    No sustituye a `Club.rivalries`; lo amplía en un fichero opcional. El balance
+    lo rellena el pipeline desde BDFutbol y conserva su propia fuente.
+    """
+
+    rival: str
+    rival_bdfutbol_id: Optional[str] = None
+    description: Optional[str] = None
+    since_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+    head_to_head: Optional[HeadToHead] = None
+    iconic_matches: list[RivalryMeeting] = Field(default_factory=list)
+    facts: list[RivalryFact] = Field(default_factory=list)
+    media: list[MediaRef] = Field(default_factory=list)
+    provenance: Provenance
+
+
+class Rivalries(Public):
+    updated_at: IsoDateTime
+    rivalries: list[RivalryDetail] = Field(default_factory=list)
 
 
 class ClubLinks(Public):
@@ -855,6 +1070,7 @@ class Club(Public):
     rivalries: list[Rivalry] = Field(default_factory=list)
     facts: list[str] = Field(default_factory=list)
     links: ClubLinks = Field(default_factory=ClubLinks)
+    media: list[MediaRef] = Field(default_factory=list)
 
 
 class StatusFile(Public):
@@ -914,9 +1130,16 @@ NEWS_FILES: dict[str, type[Public]] = {
 
 # Contexto que se publica en su propio comando (rivals.json): la app lo trata como
 # opcional, igual que news.json, y funciona con 404 o con una caché anterior.
+# `titles.json` y `rivalries.json` son ampliaciones editoriales opcionales: si no
+# existen, la app sigue leyendo `club.json`.
 EXTRA_FILES: dict[str, type[Public]] = {
     "rivals.json": Rivals,
+    "titles.json": Titles,
+    "rivalries.json": Rivalries,
 }
+
+# Ficheros de EXTRA_FILES que no son obligatorios en `validate`: 404 = sin datos.
+OPTIONAL_FILES: frozenset[str] = frozenset({"titles.json", "rivalries.json"})
 
 # Diagnóstico operativo (ADR 0027): se publica en la rama `status`, no en Pages.
 # Se genera su esquema con el resto, pero `validate` no lo exige en data/public/v1.

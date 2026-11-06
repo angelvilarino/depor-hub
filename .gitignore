@@ -11,5 +11,8 @@ __pycache__/
 .venv/
 data/raw/*
 !data/raw/.gitkeep
+# Propuestas generadas por `club titles` / `club probe-media`: se revisan en local
+# y nunca se aplican solas, así que no ensucian el árbol ni el historial.
+data/manual/*.proposed.yml
 *.log
 .DS_Store

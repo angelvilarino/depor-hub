@@ -1,0 +1,24 @@
+# Candidatos de medios externos para el club (H1).
+#
+# `python -m depor_hub.cli club probe-media` comprueba cada URL con
+# PoliteClient (robots.txt, caché y 1 s/host) y escribe el resultado en
+# data/manual/club_media.proposed.yml. NO copia binarios al repositorio ni
+# modifica club.yml: una entrada solo se aplica a mano, con licencia y crédito
+# revisados.
+#
+# Formato de cada entrada:
+#   - id: nombre-estable
+#     url: https://...
+#     kind: photo | video | audio | document
+#     origin: commons | club_official | press | other
+#     license: CC BY-SA 4.0 | Uso editorial... | null
+#     license_url: https://...
+#     author: Nombre
+#     credit: Texto visible de atribución
+#     source_url: https://...
+#
+# No se añaden URLs sin una fuente y una licencia verificables. Las imágenes
+# locales existentes (escudos y equipación 2026-27) se mantienen en
+# club_images.yml y no se duplican aquí.
+
+media: []

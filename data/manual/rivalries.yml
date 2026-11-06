@@ -1,0 +1,103 @@
+# Rivalidades ampliadas (H1, fichero opcional rivalries.json).
+#
+# `club.yml` conserva la lista breve que ya usa la app. Este fichero añade
+# narrativa, cruces icónicos y el balance histórico. El comando
+# `python -m depor_hub.cli club rivalries` rellena `head_to_head` desde
+# BDFutbol con PoliteClient (caché, robots.txt y 1 s/host) y publica
+# `rivalries.json`; nunca modifica este YAML.
+#
+# Los ids de BDFutbol se comprobaron abriendo cada ficha y contrastando el
+# nombre largo del club (2026-11-06):
+#   Celta          https://www.bdfutbol.com/es/e/e11.html
+#   Compostela     https://www.bdfutbol.com/es/e/e12.html
+#   Oviedo         https://www.bdfutbol.com/es/e/e28.html
+#   Sporting       https://www.bdfutbol.com/es/e/e34.html
+#   Racing Ferrol  https://www.bdfutbol.com/es/e/e48.html
+#   Lugo           https://www.bdfutbol.com/es/e/e76.html
+#
+# Cada entrada declara su procedencia. `confidence` solo puede ser
+# verified/cross_checked/single_source/estimated. Lo que no esté documentado se
+# deja en null/[]; no se inventan marcadores, fechas ni goleadores.
+
+rivalries:
+  - rival: RC Celta de Vigo
+    rival_bdfutbol_id: "11"
+    description: >-
+      El derbi gallego. Primer enfrentamiento en el campeonato gallego de 1923;
+      es el partido más repetido y tenso del fútbol gallego.
+    since_year: 1923
+    head_to_head: null
+    iconic_matches: []
+    facts: []
+    media: []
+    provenance:
+      source: BDFutbol y hemeroteca del derbi gallego
+      confidence: cross_checked
+      captured_at: "2026-11-06"
+  - rival: SD Compostela
+    rival_bdfutbol_id: "12"
+    description: >-
+      Rivalidad gallega de los años noventa; ambos clubes coincidieron en
+      Primera División en la temporada 1994-95.
+    since_year: null
+    head_to_head: null
+    iconic_matches: []
+    facts: []
+    media: []
+    provenance:
+      source: BDFutbol
+      confidence: single_source
+      captured_at: "2026-11-06"
+  - rival: Real Oviedo
+    rival_bdfutbol_id: "28"
+    description: >-
+      Enfrentamientos históricos en Primera y Segunda División.
+    since_year: null
+    head_to_head: null
+    iconic_matches: []
+    facts: []
+    media: []
+    provenance:
+      source: BDFutbol
+      confidence: single_source
+      captured_at: "2026-11-06"
+  - rival: Real Sporting de Gijón
+    rival_bdfutbol_id: "34"
+    description: >-
+      Rivalidad deportiva del norte; enfrentamientos históricos en Primera y
+      Segunda División.
+    since_year: null
+    head_to_head: null
+    iconic_matches: []
+    facts: []
+    media: []
+    provenance:
+      source: BDFutbol
+      confidence: single_source
+      captured_at: "2026-11-06"
+  - rival: Racing Club de Ferrol
+    rival_bdfutbol_id: "48"
+    description: >-
+      Derbi gallego; enfrentamientos en Segunda y Segunda División B.
+    since_year: null
+    head_to_head: null
+    iconic_matches: []
+    facts: []
+    media: []
+    provenance:
+      source: BDFutbol
+      confidence: single_source
+      captured_at: "2026-11-06"
+  - rival: CD Lugo
+    rival_bdfutbol_id: "76"
+    description: >-
+      Rival gallego; enfrentamientos en Segunda y Segunda División B.
+    since_year: null
+    head_to_head: null
+    iconic_matches: []
+    facts: []
+    media: []
+    provenance:
+      source: BDFutbol
+      confidence: single_source
+      captured_at: "2026-11-06"

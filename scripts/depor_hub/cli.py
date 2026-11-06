@@ -13,6 +13,7 @@ from pathlib import Path
 import yaml
 
 from . import club as club_data
+from . import club_extra
 from . import models as m
 from . import rivals as rivals_ctx
 from . import source_models as s
@@ -713,6 +714,87 @@ def cmd_club_images(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_club_titles(args: argparse.Namespace) -> int:
+    """Publica titles.json y escribe una propuesta desde BDFutbol (sin aplicarla)."""
+    changed, titles = club_extra.publish_titles(
+        Path(args.titles), Path(args.out), force=args.force
+    )
+    conflicts = only_in_source = only_in_curated = 0
+    if not args.no_proposal:
+        http = PoliteClient(
+            cache_dir=Path(args.raw) / "enrich" / "titles",
+            contact=contact_from_env(),
+            interval=args.interval,
+            offline=args.offline,
+        )
+        try:
+            html = http.get(args.bdfutbol).text
+            proposed = club_extra.parse_bdfutbol_titles(html, args.bdfutbol)
+            proposal = club_extra.write_titles_proposal(
+                Path(args.proposal), titles, proposed, args.bdfutbol
+            )
+            conflicts = len(proposal["conflicts"])
+            only_in_source = len(proposal["only_in_source"])
+            only_in_curated = len(proposal["only_in_curated"])
+        except SourceError as exc:
+            print(f"AVISO: no se pudo comparar con BDFutbol: {exc}", file=sys.stderr)
+        finally:
+            http.close()
+    print(
+        f"changed={'true' if changed else 'false'} editions={len(titles.editions)} "
+        f"conflicts={conflicts} onlyInSource={only_in_source} onlyInCurated={only_in_curated}"
+    )
+    _gh_output(changed="true" if changed else "false")
+    return 0
+
+
+def cmd_club_rivalries(args: argparse.Namespace) -> int:
+    """Publica rivalries.json rellenando el balance histórico desde BDFutbol."""
+    http = PoliteClient(
+        cache_dir=Path(args.raw) / "enrich" / "club-rivalries",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    try:
+        changed, rivalries = club_extra.publish_rivalries(
+            Path(args.rivalries), Path(args.out), http, force=args.force
+        )
+    finally:
+        http.close()
+    with_history = sum(1 for item in rivalries.rivalries if item.head_to_head)
+    print(
+        f"changed={'true' if changed else 'false'} rivalries={len(rivalries.rivalries)} "
+        f"withHistory={with_history}"
+    )
+    _gh_output(changed="true" if changed else "false")
+    return 0
+
+
+def cmd_club_probe_media(args: argparse.Namespace) -> int:
+    """Sondea URLs externas y escribe una propuesta de medios, sin tocar club.yml."""
+    http = PoliteClient(
+        cache_dir=Path(args.raw) / "enrich" / "club-media",
+        contact=contact_from_env(),
+        interval=args.interval,
+        offline=args.offline,
+    )
+    try:
+        result = club_extra.probe_media(Path(args.sources), http)
+    finally:
+        http.close()
+    club_extra.write_media_proposal(Path(args.proposal), result)
+    ok = sum(1 for item in result["items"] if item.get("status") == "ok")
+    blocked = sum(1 for item in result["items"] if item.get("status") == "blocked")
+    failed = sum(1 for item in result["items"] if item.get("status") == "error")
+    print(
+        f"media={len(result['items'])} ok={ok} blocked={blocked} failed={failed} "
+        f"proposal={args.proposal}"
+    )
+    _gh_output(changed="true" if ok else "false")
+    return 0
+
+
 def cmd_schemas(args: argparse.Namespace) -> int:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -735,12 +817,21 @@ def cmd_schemas(args: argparse.Namespace) -> int:
 def cmd_validate(args: argparse.Namespace) -> int:
     directory = Path(args.data)
     models = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}
-    missing = [name for name in models if not (directory / name).is_file()]
+    missing = [
+        name
+        for name in models
+        if name not in m.OPTIONAL_FILES and not (directory / name).is_file()
+    ]
     if missing:
         raise SystemExit(f"Faltan JSON públicos requeridos: {', '.join(missing)}")
+    validated = 0
     for name, model in models.items():
-        model.model_validate_json((directory / name).read_text(encoding="utf-8"))
-    print(f"Validación Pydantic correcta: {len(models)} JSON en {directory}")
+        target = directory / name
+        if not target.is_file():
+            continue  # opcional ausente: la app lo trata como 404
+        model.model_validate_json(target.read_text(encoding="utf-8"))
+        validated += 1
+    print(f"Validación Pydantic correcta: {validated} JSON en {directory}")
     extras = 0
     for folder, model in (
         ("snapshots", m.MatchSnapshot),
@@ -766,6 +857,8 @@ _STATUS_DATA_FILES: tuple[tuple[str, bool], ...] = (
     ("news.json", False),
     ("rivals.json", False),
     ("social.json", False),
+    ("titles.json", False),
+    ("rivalries.json", False),
 )
 
 _STATUS_WORKFLOWS: tuple[tuple[str, str], ...] = (
@@ -824,6 +917,19 @@ def _status_file(path: Path, name: str, required: bool, now: datetime) -> m.Stat
                 1 for rival in rivals if isinstance(rival, dict) and rival.get("headToHead")
             )
             detail = f"{len(rivals)} rivales · {with_history} con histórico"
+    if name == "titles.json":
+        editions = body.get("editions")
+        if isinstance(editions, list):
+            detail = f"{len(editions)} ediciones"
+    if name == "rivalries.json":
+        rivalries = body.get("rivalries")
+        if isinstance(rivalries, list):
+            with_history = sum(
+                1
+                for rivalry in rivalries
+                if isinstance(rivalry, dict) and rivalry.get("headToHead")
+            )
+            detail = f"{len(rivalries)} rivalidades · {with_history} con histórico"
     return m.StatusFile(
         name=name,
         present=True,
@@ -873,7 +979,16 @@ def cmd_status(args: argparse.Namespace) -> int:
 
     # Un fichero opcional ausente no rompe la app; los requeridos sí.
     required_missing = any(
-        not file.present and name not in {"club.json", "news.json", "rivals.json", "social.json"}
+        not file.present
+        and name
+        not in {
+            "club.json",
+            "news.json",
+            "rivals.json",
+            "social.json",
+            "titles.json",
+            "rivalries.json",
+        }
         for file, (name, _) in zip(files, _STATUS_DATA_FILES, strict=True)
     )
     workflows_ok = not workflows or all(workflow.conclusion == "success" for workflow in workflows)
@@ -1380,6 +1495,41 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--coverage", default="docs/kits_coverage.md")
     sp.add_argument("--force", action="store_true")
     sp.set_defaults(fn=cmd_club)
+    club_sub = sp.add_subparsers(dest="club_command")
+
+    titles = club_sub.add_parser("titles", help="Publica titles.json y propone desde BDFutbol")
+    titles.add_argument("--titles", default="data/manual/titles.yml")
+    titles.add_argument("--out", default="data/public/v1")
+    titles.add_argument("--proposal", default="data/manual/titles.proposed.yml")
+    titles.add_argument("--bdfutbol", default="https://www.bdfutbol.com/es/e/e13.html")
+    titles.add_argument("--raw", default="data/raw")
+    titles.add_argument("--interval", type=float, default=1.0)
+    titles.add_argument("--force", action="store_true")
+    titles.add_argument("--offline", action="store_true")
+    titles.add_argument("--no-proposal", action="store_true")
+    titles.set_defaults(fn=cmd_club_titles)
+
+    rivalries = club_sub.add_parser(
+        "rivalries", help="Publica rivalries.json con el balance de BDFutbol"
+    )
+    rivalries.add_argument("--rivalries", default="data/manual/rivalries.yml")
+    rivalries.add_argument("--out", default="data/public/v1")
+    rivalries.add_argument("--raw", default="data/raw")
+    rivalries.add_argument("--interval", type=float, default=1.0)
+    rivalries.add_argument("--force", action="store_true")
+    rivalries.add_argument("--offline", action="store_true")
+    rivalries.set_defaults(fn=cmd_club_rivalries)
+
+    probe_media = club_sub.add_parser(
+        "probe-media", help="Sondea URLs externas y escribe una propuesta de medios"
+    )
+    probe_media.add_argument("--sources", default="data/manual/club_media.yml")
+    probe_media.add_argument("--out", default="data/public/v1")
+    probe_media.add_argument("--proposal", default="data/manual/club_media.proposed.yml")
+    probe_media.add_argument("--raw", default="data/raw")
+    probe_media.add_argument("--interval", type=float, default=1.0)
+    probe_media.add_argument("--offline", action="store_true")
+    probe_media.set_defaults(fn=cmd_club_probe_media)
 
     sp = sub.add_parser("club-images", help="Descarga y normaliza las imágenes del club")
     sp.add_argument("--sources", default="data/manual/club_images.yml")
