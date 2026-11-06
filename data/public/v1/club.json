@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T10:14:07Z",
+  "updatedAt": "2026-11-06T13:19:38Z",
   "identity": {
     "officialName": "Real Club Deportivo de La Coruña, S.A.D.",
     "shortName": "RC Deportivo",
@@ -85,7 +85,17 @@
           ],
           "text": null
         }
-      ]
+      ],
+      "media": null,
+      "lyricsRights": {
+        "status": "unknown",
+        "holder": "Xoel López / RC Deportivo de La Coruña",
+        "license": "Uso editorial; sin licencia de reutilización",
+        "licenseUrl": null,
+        "sourceUrl": "https://www.rcdeportivo.es",
+        "note": "Letra y créditos tomados de la web oficial del club. Se mantiene por interés editorial y documental; no se afirma permiso de reutilización.",
+        "verifiedAt": "2026-11-06"
+      }
     },
     {
       "id": "fillos-de-breogan",
@@ -106,7 +116,17 @@
           ],
           "text": null
         }
-      ]
+      ],
+      "media": null,
+      "lyricsRights": {
+        "status": "unknown",
+        "holder": "Jesús Suárez / Mar de Fondo",
+        "license": "Uso editorial; sin licencia de reutilización",
+        "licenseUrl": null,
+        "sourceUrl": null,
+        "note": "Letra y créditos documentados por el club y la prensa. Se mantiene por interés editorial; no se afirma permiso de reutilización.",
+        "verifiedAt": "2026-11-06"
+      }
     },
     {
       "id": "rock-del-deportivo",
@@ -119,7 +139,17 @@
       "description": "Himno rockero de 1987, histórico en Riazor y todavía presente en la grada.",
       "lyrics": "Vamos !!!\n\nY digo Deportivo,\nvamos a ganar este partido\nY digo de Primera\nel Deportivo es directivo\nVivo- Vivo- Vivo\n\nVamos a ganar,\nla afición os va a apoyar\nY a ayudar y a chillar y a acompañar\nPero no hagáis el canelo\nQue no nos tomen mas el pelo,\nPelo, pelo...\n\nY digo Deportivo\nvamos a ganar este partido\nY digo Deportivo\nvamos a ganar este partido\nY digo Deportivo\nvamos a ganar este partido\n\nDe Europa,\nel Deportivo es directivo\nVivo - Vivo- Vivo\n\nY digo Deportivo,\nvamos a ganar este partido\nDeportivo,\nvamos a ganar este partido\nY digo Deportivo,\nvamos a ganar este partido\nY digo Deportivo\nY digo Deportivo\nY digo Deportivo\n\nDe el mundo\nel Deportivo es directivo\nVivo - Vivo - Vivo\n\n(Aupa deportivo,\nDepor, depor...\nDeportivo, deportivo...\n¡Forza Depor! oe!)",
       "audioUrl": null,
-      "credits": []
+      "credits": [],
+      "media": null,
+      "lyricsRights": {
+        "status": "unknown",
+        "holder": "Gandy Cacahué",
+        "license": "Uso editorial; sin licencia de reutilización",
+        "licenseUrl": null,
+        "sourceUrl": null,
+        "note": "Letra y créditos documentados por el club y la prensa. Se mantiene por interés editorial; no se afirma permiso de reutilización.",
+        "verifiedAt": "2026-11-06"
+      }
     }
   ],
   "crests": [
@@ -128,98 +158,112 @@
       "yearFrom": 1906,
       "yearTo": 1908,
       "description": "Monograma azul con las iniciales «SC» de la Sala Calvet.",
-      "image": "img/club/escudos/1906.png"
+      "image": "img/club/escudos/1906.png",
+      "media": null
     },
     {
       "id": "escudo-1908",
       "yearFrom": 1908,
       "yearTo": 1910,
       "description": "El monograma «SC» sobre un medallón circular con marco azul y hebilla.",
-      "image": "img/club/escudos/1908.png"
+      "image": "img/club/escudos/1908.png",
+      "media": null
     },
     {
       "id": "escudo-1910",
       "yearFrom": 1910,
       "yearTo": 1911,
       "description": "Escudo con corona y el texto «Deportivo Sala Calvet», con palos y raqueta cruzados.",
-      "image": "img/club/escudos/1910.png"
+      "image": "img/club/escudos/1910.png",
+      "media": null
     },
     {
       "id": "escudo-1911",
       "yearFrom": 1911,
       "yearTo": 1912,
       "description": "Se retiran los palos y la raqueta; quedan el medallón y la corona.",
-      "image": "img/club/escudos/1911.png"
+      "image": "img/club/escudos/1911.png",
+      "media": null
     },
     {
       "id": "escudo-1912",
       "yearFrom": 1912,
       "yearTo": 1928,
       "description": "Primer escudo con la bandera gallega, la cruz de Santiago y la corona real.",
-      "image": "img/club/escudos/1912.png"
+      "image": "img/club/escudos/1912.png",
+      "media": null
     },
     {
       "id": "escudo-1928",
       "yearFrom": 1928,
       "yearTo": 1931,
       "description": "Se reduce la corona superior para equilibrar el conjunto.",
-      "image": "img/club/escudos/1928.png"
+      "image": "img/club/escudos/1928.png",
+      "media": null
     },
     {
       "id": "escudo-1931",
       "yearFrom": 1931,
       "yearTo": 1941,
       "description": "Sin coronas durante la Segunda República; trazo más grueso y franja diagonal clara.",
-      "image": "img/club/escudos/1931.png"
+      "image": "img/club/escudos/1931.png",
+      "media": null
     },
     {
       "id": "escudo-1941",
       "yearFrom": 1941,
       "yearTo": 1955,
       "description": "Vuelven las dos coronas y se recupera el dorado.",
-      "image": "img/club/escudos/1941.png"
+      "image": "img/club/escudos/1941.png",
+      "media": null
     },
     {
       "id": "escudo-1955",
       "yearFrom": 1955,
       "yearTo": 1962,
       "description": "Regresan los perfiles dobles y la franja diagonal azul claro.",
-      "image": "img/club/escudos/1955.png"
+      "image": "img/club/escudos/1955.png",
+      "media": null
     },
     {
       "id": "escudo-1962",
       "yearFrom": 1962,
       "yearTo": 1973,
       "description": "Paleta azul en lugar de morada y corona superior más maciza.",
-      "image": "img/club/escudos/1962.png"
+      "image": "img/club/escudos/1962.png",
+      "media": null
     },
     {
       "id": "escudo-1973",
       "yearFrom": 1973,
       "yearTo": 1997,
       "description": "Se recupera el escudo clásico de los años cincuenta.",
-      "image": "img/club/escudos/1973.png"
+      "image": "img/club/escudos/1973.png",
+      "media": null
     },
     {
       "id": "escudo-1997",
       "yearFrom": 1997,
       "yearTo": 2000,
       "description": "Dorados más amarillos, rojo intenso y detalles turquesa.",
-      "image": "img/club/escudos/1997.png"
+      "image": "img/club/escudos/1997.png",
+      "media": null
     },
     {
       "id": "escudo-2000",
       "yearFrom": 2000,
       "yearTo": 2026,
       "description": "Regreso al escudo de doble perfil en oro claro y morado.",
-      "image": "img/club/escudos/2000.png"
+      "image": "img/club/escudos/2000.png",
+      "media": null
     },
     {
       "id": "escudo-2026",
       "yearFrom": 2026,
       "yearTo": null,
       "description": "Actualización con florones, cruz y anillo ajustados y una referencia diagonal a la Torre de Hércules.",
-      "image": "img/club/escudos/2026.svg"
+      "image": "img/club/escudos/2026.svg",
+      "media": null
     }
   ],
   "kits": [
@@ -237,7 +281,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -255,7 +300,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -273,7 +319,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -291,7 +338,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -309,7 +357,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -327,7 +376,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -345,7 +395,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -363,7 +414,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -381,7 +433,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -399,7 +452,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -417,7 +471,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -435,7 +490,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -453,7 +509,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -471,7 +528,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -489,7 +547,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -507,7 +566,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -525,7 +585,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -543,7 +604,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -561,7 +623,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -579,7 +642,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -597,7 +661,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -615,7 +680,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -633,7 +699,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -651,7 +718,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -669,7 +737,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -687,7 +756,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -705,7 +775,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -723,7 +794,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -741,7 +813,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -759,7 +832,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -777,7 +851,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -795,7 +870,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -813,7 +889,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -831,7 +908,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -849,7 +927,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -867,7 +946,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -885,7 +965,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -903,7 +984,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -921,7 +1003,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -939,7 +1022,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -957,7 +1041,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     },
@@ -975,7 +1060,8 @@
             "azul"
           ],
           "description": null,
-          "image": "img/club/equipaciones/2026-27-home.jpg"
+          "image": "img/club/equipaciones/2026-27-home.jpg",
+          "media": null
         },
         {
           "type": "away",
@@ -988,7 +1074,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         },
         {
           "type": "third",
@@ -1001,7 +1088,8 @@
             "azul"
           ],
           "description": null,
-          "image": null
+          "image": null,
+          "media": null
         }
       ]
     }
@@ -1047,7 +1135,20 @@
         }
       ]
     },
-    "description": "Estadio municipal inaugurado el 29 de octubre de 1944 y conocido como Abanca-Riazor desde 2017. Acoge los partidos del primer equipo y el museo del club."
+    "description": "Estadio municipal inaugurado el 29 de octubre de 1944 y conocido como Abanca-Riazor desde 2017. Acoge los partidos del primer equipo y el museo del club.",
+    "schedule": null,
+    "accessDetails": null,
+    "capacityAlternatives": [],
+    "tenants": [
+      {
+        "club": "RC Deportivo de La Coruña",
+        "fromYear": 1944,
+        "toYear": null,
+        "note": "Primer equipo y filial.",
+        "sourceUrl": "https://www.rcdeportivo.es"
+      }
+    ],
+    "media": []
   },
   "tickets": {
     "season": "2026-27",
@@ -1153,7 +1254,31 @@
       "Xacobeo"
     ],
     "collaborators": [],
-    "sinceYear": null
+    "sinceYear": null,
+    "details": [
+      {
+        "name": "ABANCA",
+        "role": "principal",
+        "category": "banca",
+        "sinceYear": null,
+        "untilYear": null,
+        "url": "https://www.abanca.com",
+        "note": "Patrocinador principal y titular de los derechos de nombre del estadio.",
+        "sourceUrl": "https://www.rcdeportivo.es",
+        "verifiedAt": "2026-11-06"
+      },
+      {
+        "name": "Nike",
+        "role": "technical",
+        "category": "equipación",
+        "sinceYear": 2026,
+        "untilYear": null,
+        "url": "https://www.nike.com",
+        "note": "Proveedor técnico desde la temporada 2026-27.",
+        "sourceUrl": "https://www.rcdeportivo.es",
+        "verifiedAt": "2026-11-06"
+      }
+    ]
   },
   "titles": [
     {
@@ -1257,5 +1382,6 @@
         "url": "https://www.rcdeportivo.es/es/fundacion"
       }
     ]
-  }
+  },
+  "media": []
 }

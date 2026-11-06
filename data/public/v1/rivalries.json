@@ -1,0 +1,473 @@
+{
+  "updatedAt": "2026-11-06T13:16:53Z",
+  "rivalries": [
+    {
+      "rival": "RC Celta de Vigo",
+      "rivalBdfutbolId": "11",
+      "description": "El derbi gallego. Primer enfrentamiento en el campeonato gallego de 1923; es el partido más repetido y tenso del fútbol gallego.",
+      "sinceYear": 1923,
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=11",
+        "played": 133,
+        "won": 49,
+        "drawn": 32,
+        "lost": 52,
+        "goalsFor": 194,
+        "goalsAgainst": 202,
+        "meetings": [
+          {
+            "date": "2018-05-05",
+            "competition": "Primera División",
+            "round": "Jornada 36",
+            "home": "Celta de Vigo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2017-12-23",
+            "competition": "Primera División",
+            "round": "Jornada 17",
+            "home": "Deportivo de La Coruña",
+            "away": "Celta de Vigo",
+            "homeGoals": 1,
+            "awayGoals": 3,
+            "deporResult": "L"
+          },
+          {
+            "date": "2017-03-19",
+            "competition": "Primera División",
+            "round": "Jornada 28",
+            "home": "Deportivo de La Coruña",
+            "away": "Celta de Vigo",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-10-23",
+            "competition": "Primera División",
+            "round": "Jornada 9",
+            "home": "Celta de Vigo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 4,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2016-04-02",
+            "competition": "Primera División",
+            "round": "Jornada 31",
+            "home": "Celta de Vigo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          }
+        ]
+      },
+      "iconicMatches": [],
+      "facts": [],
+      "media": [],
+      "provenance": {
+        "source": "BDFutbol y hemeroteca del derbi gallego",
+        "confidence": "cross_checked",
+        "capturedAt": "2026-11-06"
+      }
+    },
+    {
+      "rival": "SD Compostela",
+      "rivalBdfutbolId": "12",
+      "description": "Rivalidad gallega de los años noventa; ambos clubes coincidieron en Primera División en la temporada 1994-95.",
+      "sinceYear": null,
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=12",
+        "played": 11,
+        "won": 6,
+        "drawn": 3,
+        "lost": 2,
+        "goalsFor": 11,
+        "goalsAgainst": 12,
+        "meetings": [
+          {
+            "date": "2003-10-07",
+            "competition": "Copa del Rey",
+            "round": "Treintaidosavos de Final",
+            "home": "Compostela",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "W"
+          },
+          {
+            "date": "1998-05-10",
+            "competition": "Primera División",
+            "round": "Jornada 37",
+            "home": "Deportivo de La Coruña",
+            "away": "Compostela",
+            "homeGoals": 2,
+            "awayGoals": 6,
+            "deporResult": "L"
+          },
+          {
+            "date": "1997-12-21",
+            "competition": "Primera División",
+            "round": "Jornada 18",
+            "home": "Compostela",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "1997-04-16",
+            "competition": "Primera División",
+            "round": "Jornada 34",
+            "home": "Deportivo de La Coruña",
+            "away": "Compostela",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "W"
+          },
+          {
+            "date": "1996-11-16",
+            "competition": "Primera División",
+            "round": "Jornada 13",
+            "home": "Compostela",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          }
+        ]
+      },
+      "iconicMatches": [],
+      "facts": [],
+      "media": [],
+      "provenance": {
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "capturedAt": "2026-11-06"
+      }
+    },
+    {
+      "rival": "Real Oviedo",
+      "rivalBdfutbolId": "28",
+      "description": "Enfrentamientos históricos en Primera y Segunda División.",
+      "sinceYear": null,
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=28",
+        "played": 99,
+        "won": 42,
+        "drawn": 32,
+        "lost": 25,
+        "goalsFor": 156,
+        "goalsAgainst": 139,
+        "meetings": [
+          {
+            "date": "2025-03-02",
+            "competition": "Segunda División",
+            "round": "Jornada 29",
+            "home": "Oviedo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 2,
+            "deporResult": "W"
+          },
+          {
+            "date": "2024-08-17",
+            "competition": "Segunda División",
+            "round": "Jornada 1",
+            "home": "Deportivo de La Coruña",
+            "away": "Oviedo",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2020-06-17",
+            "competition": "Segunda División",
+            "round": "Jornada 33",
+            "home": "Oviedo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 2,
+            "deporResult": "D"
+          },
+          {
+            "date": "2019-08-18",
+            "competition": "Segunda División",
+            "round": "Jornada 1",
+            "home": "Deportivo de La Coruña",
+            "away": "Oviedo",
+            "homeGoals": 3,
+            "awayGoals": 2,
+            "deporResult": "W"
+          },
+          {
+            "date": "2019-03-31",
+            "competition": "Segunda División",
+            "round": "Jornada 32",
+            "home": "Oviedo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          }
+        ]
+      },
+      "iconicMatches": [],
+      "facts": [],
+      "media": [],
+      "provenance": {
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "capturedAt": "2026-11-06"
+      }
+    },
+    {
+      "rival": "Real Sporting de Gijón",
+      "rivalBdfutbolId": "34",
+      "description": "Rivalidad deportiva del norte; enfrentamientos históricos en Primera y Segunda División.",
+      "sinceYear": null,
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=34",
+        "played": 96,
+        "won": 39,
+        "drawn": 27,
+        "lost": 30,
+        "goalsFor": 140,
+        "goalsAgainst": 138,
+        "meetings": [
+          {
+            "date": "2026-03-28",
+            "competition": "Segunda División",
+            "round": "Jornada 32",
+            "home": "Sporting de Gijón",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2025-09-06",
+            "competition": "Segunda División",
+            "round": "Jornada 4",
+            "home": "Deportivo de La Coruña",
+            "away": "Sporting de Gijón",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "W"
+          },
+          {
+            "date": "2025-05-10",
+            "competition": "Segunda División",
+            "round": "Jornada 39",
+            "home": "Sporting de Gijón",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 2,
+            "awayGoals": 1,
+            "deporResult": "L"
+          },
+          {
+            "date": "2024-11-24",
+            "competition": "Segunda División",
+            "round": "Jornada 16",
+            "home": "Deportivo de La Coruña",
+            "away": "Sporting de Gijón",
+            "homeGoals": 1,
+            "awayGoals": 1,
+            "deporResult": "D"
+          },
+          {
+            "date": "2020-06-14",
+            "competition": "Segunda División",
+            "round": "Jornada 32",
+            "home": "Deportivo de La Coruña",
+            "away": "Sporting de Gijón",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          }
+        ]
+      },
+      "iconicMatches": [],
+      "facts": [],
+      "media": [],
+      "provenance": {
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "capturedAt": "2026-11-06"
+      }
+    },
+    {
+      "rival": "Racing Club de Ferrol",
+      "rivalBdfutbolId": "48",
+      "description": "Derbi gallego; enfrentamientos en Segunda y Segunda División B.",
+      "sinceYear": null,
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=48",
+        "played": 41,
+        "won": 20,
+        "drawn": 10,
+        "lost": 11,
+        "goalsFor": 53,
+        "goalsAgainst": 36,
+        "meetings": [
+          {
+            "date": "2025-03-29",
+            "competition": "Segunda División",
+            "round": "Jornada 33",
+            "home": "Racing de Ferrol",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 1,
+            "deporResult": "W"
+          },
+          {
+            "date": "2024-09-01",
+            "competition": "Segunda División",
+            "round": "Jornada 3",
+            "home": "Deportivo de La Coruña",
+            "away": "Racing de Ferrol",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "W"
+          },
+          {
+            "date": "2023-04-16",
+            "competition": "1ª RFEF",
+            "round": "Jornada 32",
+            "home": "Racing de Ferrol",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "2022-12-11",
+            "competition": "1ª RFEF",
+            "round": "Jornada 16",
+            "home": "Deportivo de La Coruña",
+            "away": "Racing de Ferrol",
+            "homeGoals": 2,
+            "awayGoals": 0,
+            "deporResult": "W"
+          },
+          {
+            "date": "2022-03-05",
+            "competition": "1ª RFEF",
+            "round": "Jornada 26",
+            "home": "Deportivo de La Coruña",
+            "away": "Racing de Ferrol",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          }
+        ]
+      },
+      "iconicMatches": [],
+      "facts": [],
+      "media": [],
+      "provenance": {
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "capturedAt": "2026-11-06"
+      }
+    },
+    {
+      "rival": "CD Lugo",
+      "rivalBdfutbolId": "76",
+      "description": "Rival gallego; enfrentamientos en Segunda y Segunda División B.",
+      "sinceYear": null,
+      "headToHead": {
+        "scope": "all_official_matches",
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "sourceUrl": "https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=76",
+        "played": 18,
+        "won": 8,
+        "drawn": 7,
+        "lost": 3,
+        "goalsFor": 31,
+        "goalsAgainst": 10,
+        "meetings": [
+          {
+            "date": "2024-03-03",
+            "competition": "1ª RFEF",
+            "round": "Jornada 26",
+            "home": "Deportivo de La Coruña",
+            "away": "Lugo",
+            "homeGoals": 4,
+            "awayGoals": 1,
+            "deporResult": "W"
+          },
+          {
+            "date": "2023-09-02",
+            "competition": "1ª RFEF",
+            "round": "Jornada 2",
+            "home": "Lugo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 3,
+            "deporResult": "W"
+          },
+          {
+            "date": "2020-03-01",
+            "competition": "Segunda División",
+            "round": "Jornada 30",
+            "home": "Deportivo de La Coruña",
+            "away": "Lugo",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "2019-12-01",
+            "competition": "Segunda División",
+            "round": "Jornada 18",
+            "home": "Lugo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 0,
+            "awayGoals": 0,
+            "deporResult": "D"
+          },
+          {
+            "date": "2019-05-19",
+            "competition": "Segunda División",
+            "round": "Jornada 39",
+            "home": "Lugo",
+            "away": "Deportivo de La Coruña",
+            "homeGoals": 1,
+            "awayGoals": 0,
+            "deporResult": "L"
+          }
+        ]
+      },
+      "iconicMatches": [],
+      "facts": [],
+      "media": [],
+      "provenance": {
+        "source": "BDFutbol",
+        "confidence": "single_source",
+        "capturedAt": "2026-11-06"
+      }
+    }
+  ]
+}

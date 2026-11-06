@@ -7,10 +7,12 @@ import {
   Meta,
   News,
   Rivals,
+  Rivalries,
   Season,
   SocialFeed,
   Squad,
   Standings,
+  Titles,
 } from '@/data/schemas';
 
 // Los MISMOS ejemplos los valida Pydantic en scripts/tests: si divergen, falla uno de los dos CI.
@@ -33,6 +35,8 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
     ['season.json', Season],
     ['rivals.json', Rivals],
     ['club.json', Club],
+    ['titles.json', Titles],
+    ['rivalries.json', Rivalries],
     ['snapshot.json', MatchSnapshot],
   ] as const)('%s valida', (file, schema) => {
     expect(schema.safeParse(load(file)).success).toBe(true);
@@ -53,6 +57,8 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
     ['season.json', Season],
     ['rivals.json', Rivals],
     ['club.json', Club],
+    ['titles.json', Titles],
+    ['rivalries.json', Rivalries],
   ] as const)('el publicado %s valida', (file, schema) => {
     expect(schema.safeParse(published(file)).success).toBe(true);
   });
