@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T16:33:00Z",
+  "updatedAt": "2026-11-06T18:07:17Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "ff8400274b3638f2",
+      "title": "David Mella se hace hueco en la sub-21 y oposita para el próximo Europeo",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/06/david-mella-hueco-sub-21-oposita-proximo-europeo/00031793986425233945586.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-06T17:36:00Z",
+      "kind": "article",
+      "summary": "El futbolista del Dépor ha sido convocado como defensa para los amistosos frente a Japón y Albania: «En la vida pensó que podría jugar de…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/xP2ROa0zGRqY6rgelQjc6K8-BCI=/768x/2026/11/06/00121793986322183219915/Foto/h_20261103_144138000.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "4dd84130ee0e77ac",
+      "title": "El Dépor visita a un Espanyol en reconstrucción tras la llegada de Eder Sarabia",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/06/depor-visita-espanyol-reconstruccion-tras-llegada-eder-sarabia/00031793985869083985690.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-06T17:33:00Z",
+      "kind": "article",
+      "summary": "El cuadro perico, en el puesto 14 de la clasificación, no gana como local desde la primera jornada de Liga ante el Levante",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/qOaAEaUTHrnrK-f7KlILT43gZr0=/768x/2026/11/06/00121793986262553276607/Foto/efe_20261104_162126868.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "8e0bd051ff19bfa0",
       "title": "David Gordo, sobre Mella: «Nunca pensó que podría jugar de lateral y lo está haciendo muy bien»",
@@ -2207,35 +2233,6 @@
       "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/10/son-de-riazor-atletico-1-0-deportivo-1600x900-1.jpg",
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "14d090603250f9a9",
-      "title": "«Apostar por la cantera es esto: si crees tienes que mantener la confianza; la mía es plena»: las claves de Manu Sánchez tras el Atlético – Deportivo",
-      "url": "https://riazor.org/apostar-cantera-esto-claves-atletico-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-26T15:32:58Z",
-      "kind": "article",
-      "summary": "El extécnico del Dépor ABANCA analiza las claves de la derrota del Deportivo ante el Atlético y reivindica el papel de la cantera. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ae7b2ebd3fcb1876",
-      "title": "La Copa del Rey, punto de inflexión para un Dépor en busca de una alegría",
-      "url": "https://riazor.org/copa-rey-punto-inflexion-depor-busca-alegria",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-26T11:00:27Z",
-      "kind": "article",
-      "summary": "El equipo de Antonio Hidalgo suma seis jornadas sin conocer la victoria. Una situación similar a la vivida la temporada pasada. La entrada…",
-      "thumbnailUrl": null,
-      "tags": [
         "partido"
       ],
       "alsoIn": []
