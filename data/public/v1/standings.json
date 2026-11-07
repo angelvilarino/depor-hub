@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T17:22:27Z",
+  "updatedAt": "2026-11-07T18:23:35Z",
   "season": "2026-27",
   "matchday": 12,
   "table": [
@@ -126,11 +126,11 @@
         "tla": "ATH",
         "crestUrl": "https://crests.football-data.org/77.png"
       },
-      "played": 10,
+      "played": 11,
       "won": 4,
-      "draw": 3,
+      "draw": 4,
       "lost": 3,
-      "points": 15,
+      "points": 16,
       "goalsFor": 14,
       "goalsAgainst": 10,
       "goalDifference": 4,
@@ -297,11 +297,11 @@
         "tla": "OSA",
         "crestUrl": "https://crests.football-data.org/79.png"
       },
-      "played": 11,
+      "played": 12,
       "won": 3,
-      "draw": 2,
+      "draw": 3,
       "lost": 6,
-      "points": 11,
+      "points": 12,
       "goalsFor": 11,
       "goalsAgainst": 22,
       "goalDifference": -11,
