@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T06:06:15Z",
+  "updatedAt": "2026-11-07T11:03:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "04ec49c576cf2d22",
+      "title": "Eder Sarabia: «En los últimos metros, quitando a los grandes, el Dépor es uno de los equipos con más talento»",
+      "url": "https://riazor.org/eder-sarabia-ultimos-metros-grandes-depor-talento",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-07T11:00:12Z",
+      "kind": "article",
+      "summary": "El entrenador del Espanyol, recién llegado a Barcelona, dejó unas buenas palabras sobre el Deportivo antes del partido de este sábado. La…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/f09f8ea5-eder-sarabia-roda-d.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "b75284dc7225af65",
       "title": "Los lectores de Riazor.org apuestan por dar continuidad al mismo once inicial para visitar al Espanyol",
@@ -2171,37 +2185,6 @@
     },
     {
       "id": "a80879a1768c9aba",
-      "title": "Presentación de Falas Dépor",
-      "url": "https://youtube.com/watch?v=Ozky7PXLueA",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-27T12:54:09Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/Ozky7PXLueA/hqdefault.jpg",
-      "tags": [],
-      "alsoIn": [
-        {
-          "sourceId": "riazor",
-          "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
-          "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
-          "publishedAt": "2026-10-29T08:00:38Z"
-        },
-        {
-          "sourceId": "la-voz",
-          "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
-          "publishedAt": "2026-10-29T22:32:00Z"
-        },
-        {
-          "sourceId": "la-voz",
-          "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
-          "publishedAt": "2026-10-27T16:17:00Z"
-        }
-      ]
-    },
-    {
-      "id": "99db1b1585443a93",
       "title": "Presentación de Falas Dépor",
       "url": "https://youtube.com/watch?v=Ozky7PXLueA",
       "sourceId": "youtube-club",
