@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T16:03:43Z",
+  "updatedAt": "2026-11-07T16:14:54Z",
   "season": "2026-27",
   "matches": [
     {
@@ -346,7 +346,7 @@
     {
       "id": 564745,
       "utcDate": "2026-11-07T15:15:00Z",
-      "status": "IN_PLAY",
+      "status": "PAUSED",
       "matchday": 12,
       "stage": "REGULAR_SEASON",
       "home": {
@@ -366,8 +366,8 @@
       "score": {
         "home": 0,
         "away": 0,
-        "halfTimeHome": null,
-        "halfTimeAway": null,
+        "halfTimeHome": 0,
+        "halfTimeAway": 0,
         "winner": "DRAW"
       },
       "deporIsHome": false,
