@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T13:13:53Z",
+  "updatedAt": "2026-11-07T14:22:32Z",
   "season": "2026-27",
   "matches": [
     {
@@ -372,7 +372,7 @@
       },
       "deporIsHome": false,
       "venue": "RCDE Stadium",
-      "referee": null
+      "referee": "Alejandro Quintero González"
     },
     {
       "id": 564755,

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T13:13:53Z",
+  "updatedAt": "2026-11-07T14:22:32Z",
   "season": "2026-27",
   "matchday": 12,
   "table": [
@@ -264,8 +264,8 @@
       "draw": 3,
       "lost": 6,
       "points": 12,
-      "goalsFor": 15,
-      "goalsAgainst": 29,
+      "goalsFor": 16,
+      "goalsAgainst": 30,
       "goalDifference": -14,
       "form": null
     },
@@ -378,8 +378,8 @@
       "draw": 6,
       "lost": 6,
       "points": 6,
-      "goalsFor": 8,
-      "goalsAgainst": 21,
+      "goalsFor": 9,
+      "goalsAgainst": 22,
       "goalDifference": -13,
       "form": null
     }
