@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T17:03:56Z",
+  "updatedAt": "2026-11-07T17:32:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,46 @@
     }
   ],
   "stories": [
+    {
+      "id": "19a6d791d7509086",
+      "title": "Leo Román: «Cuando no estuve acertado, el equipo me arropó»",
+      "url": "https://riazor.org/leo-roman-cuando-no-estuve-acertado-el-equipo-me-arropo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-07T17:27:18Z",
+      "kind": "article",
+      "summary": "Leo Román fue el mejor jugador del Deportivo ante el Espanyol. Consiguió dejar la portería a cero y con dos grandes paradas sostuvo el…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "b9a5cdc9d351c938",
+      "title": "Leo Román, MVP del partido con dos grandes paradas",
+      "url": "https://marca.com/futbol/deportivo/2026/11/07/leo-roman-mvp-partido-dos-grandes-paradas.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-07T17:27:12Z",
+      "kind": "article",
+      "summary": "Primera vez que el Dépor mantiene la portería a cero",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/07/6aef5f5d30b40.png",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c7d249691c0a76d8",
+      "title": "Crónica | Punto y aparte para el Dépor ante el Espanyol (0-0)",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/cronica-punto-y-aparte-para-el-depor-ante-el-espanyol-0-889599.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T17:17:37Z",
+      "kind": "article",
+      "summary": "Crónica y resultado del Espanyol-Dépor de la jornada 12 de LaLiga EA Sports",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef5d03a982f.r_d.1500-1000-0.JPG",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "581afd380844e741",
       "title": "Así fue el homenaje a Jesús de Miguel en el RCDE Stadium durante el Espanyol-Dépor",
@@ -2131,60 +2171,6 @@
         "partido"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "d3330a013230953b",
-      "title": "Hidalgo y los lesionados del Dépor: \"Aubameyang está cerca, bastante cerca; a Zaka le vi las agujas que tiene en la mano y...\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-28/hidalgo-y-los-lesionados-del-depor-aubameyang-esta-cerca-bastante-cerca-a-zaka-le-vi-las-agujas-que-tiene-en-la-mano-y-887549.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-28T08:55:46Z",
-      "kind": "article",
-      "summary": "Antonio Hidalgo habló sobre el estreno del Dépor en Copa del Rey ante el Auriense este jueves en O Couto",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/16/6ad29d668b0c1.jpg",
-      "tags": [
-        "lesiones",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "feee537df4bd2808",
-      "title": "Auriense – Deportivo: entradas, precios y cómo llegar al partido de Copa del Rey",
-      "url": "https://riazor.org/auriense-deportivo-entradas-precios-y-como-llegar-al-partido-de-copa-del-rey",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-27T19:21:39Z",
-      "kind": "article",
-      "summary": "El Dépor debuta en Copa en O Couto el jueves 29 (21:00). Entradas de 20 a 45 euros, dónde comprarlas, reservas para grupos y cómo viajar…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "f7119dd58880ceee",
-      "title": "Presentación de Falas Dépor",
-      "url": "https://youtube.com/watch?v=Ozky7PXLueA",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-27T12:54:09Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/Ozky7PXLueA/hqdefault.jpg",
-      "tags": [],
-      "alsoIn": [
-        {
-          "sourceId": "riazor",
-          "title": "Falas Dépor: el Deportivo celebra sus 120 años con un foro cultural gratuito del 13 al 15 de noviembre",
-          "url": "https://riazor.org/falas-depor-deportivo-celebra-120-anos-foro-cultural-gratuito-noviembre",
-          "publishedAt": "2026-10-27T16:53:54Z"
-        },
-        {
-          "sourceId": "la-voz",
-          "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
-          "publishedAt": "2026-10-27T16:17:00Z"
-        }
-      ]
     }
   ]
 }
