@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T16:32:45Z",
+  "updatedAt": "2026-11-07T17:03:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,8 +44,22 @@
   ],
   "stories": [
     {
+      "id": "581afd380844e741",
+      "title": "Así fue el homenaje a Jesús de Miguel en el RCDE Stadium durante el Espanyol-Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/asi-fue-el-homenaje-a-jesus-de-miguel-en-el-rcde-stadium-durane-el-espanyol-depor-889616.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T16:35:46Z",
+      "kind": "article",
+      "summary": "Jugadores de Espanyol y Deportivo participaron en un recuerdo al delantero que tuvo varios momentos especialmente emotivos antes y después…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/07/6aef523c2bc97.JPG",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "9af707d9ef236ec6",
-      "title": "Espanyol-Dépor en directo: Comienza la segunda parte, Luismi y Yeremay dejan su sitio a Villares y Aubameyang (0-0)",
+      "title": "Espanyol-Dépor en directo: Diez minutos para llegar al final del partido (0-0)",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/directo-sigue-todo-lo-que-ocurre-en-el-espanyol-deportivo-previa-y-minuto-a-minuto-889593.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-07T13:40:59Z",
@@ -2169,31 +2183,6 @@
           "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
           "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
           "publishedAt": "2026-10-27T16:17:00Z"
-        }
-      ]
-    },
-    {
-      "id": "ce2f40ca55db2419",
-      "title": "Presentación de Falas Dépor",
-      "url": "https://youtube.com/watch?v=Ozky7PXLueA",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-27T12:54:09Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/Ozky7PXLueA/hqdefault.jpg",
-      "tags": [],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
-          "publishedAt": "2026-10-29T22:32:00Z"
-        },
-        {
-          "sourceId": "riazor",
-          "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
-          "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
-          "publishedAt": "2026-10-29T08:00:38Z"
         }
       ]
     }
