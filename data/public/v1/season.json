@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T17:02:48Z",
+  "updatedAt": "2026-11-07T17:22:27Z",
   "season": "2026-27",
   "matchday": 12,
   "team": {
@@ -21,6 +21,22 @@
     "goalDifference": 1
   },
   "form": [
+    {
+      "matchId": 564745,
+      "matchday": 12,
+      "date": "2026-11-07",
+      "opponent": {
+        "id": 80,
+        "name": "RCD Espanyol de Barcelona",
+        "shortName": "Espanyol",
+        "tla": "ESP",
+        "crestUrl": "https://crests.football-data.org/80.png"
+      },
+      "home": false,
+      "scoreFor": 0,
+      "scoreAgainst": 0,
+      "result": "D"
+    },
     {
       "matchId": 564731,
       "matchday": 11,
@@ -84,22 +100,6 @@
       "scoreFor": 2,
       "scoreAgainst": 3,
       "result": "L"
-    },
-    {
-      "matchId": 564695,
-      "matchday": 7,
-      "date": "2026-09-20",
-      "opponent": {
-        "id": 90,
-        "name": "Real Betis Balompié",
-        "shortName": "Real Betis",
-        "tla": "BET",
-        "crestUrl": "https://crests.football-data.org/90.png"
-      },
-      "home": true,
-      "scoreFor": 1,
-      "scoreAgainst": 1,
-      "result": "D"
     }
   ],
   "positionEvolution": [
@@ -157,23 +157,28 @@
       "matchday": 11,
       "position": 8,
       "points": 14
+    },
+    {
+      "matchday": 12,
+      "position": 8,
+      "points": 15
     }
   ],
   "provenance": {
     "summary": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-07T17:02:48Z"
+      "capturedAt": "2026-11-07T17:22:27Z"
     },
     "form": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-07T17:02:48Z"
+      "capturedAt": "2026-11-07T17:22:27Z"
     },
     "positionEvolution": {
       "source": "football-data.org (cálculo propio por jornada)",
       "confidence": "estimated",
-      "capturedAt": "2026-11-07T17:02:48Z"
+      "capturedAt": "2026-11-07T17:22:27Z"
     }
   }
 }
