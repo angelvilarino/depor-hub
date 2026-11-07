@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T19:03:44Z",
+  "updatedAt": "2026-11-07T19:32:54Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,33 @@
     }
   ],
   "stories": [
+    {
+      "id": "b84118bc601d0351",
+      "title": "Marc Casadó reaparece 48 días después en territorio hostil: \"Los rivales saben quién viene de lesión y dónde la tiene\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/marc-casado-reaparece-48-dias-despues-en-territorio-hostil-los-rivales-saben-quien-viene-de-lesion-y-donde-la-tiene-889654.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T19:28:24Z",
+      "kind": "article",
+      "summary": "El centrocampista volvió ante el Espanyol tras superar su lesión de clavícula. La afición local le recibió con una sonora pitada",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef79e5ca72b.r_d.582-316-0.jpeg",
+      "tags": [
+        "lesiones",
+        "aficion"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "6084887cfc0041ba",
+      "title": "Leo Román recupera el honor: «A veces el fútbol te castiga y no sabes por qué»",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/07/leo-roman-recupera-honor-veces-futbol-castiga-sabes-/00031794078256162902378.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-07T19:08:00Z",
+      "kind": "article",
+      "summary": "«Cuando no he estado acertado, el equipo me ha arropado; hoy les hacía falta yo y he querido estar a la altura», verbalizó aliviado el…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/UxJdxReNLWX0QwIuOUsBYkLcxrs=/768x/2026/11/07/00121794078362780139458/Foto/eup_20261107_165533601.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "cbad39051171c1d7",
       "title": "Casadó celebra su rápida vuelta: «La recuperación ha ido bien, lo importante es ayudar al equipo»",
@@ -311,7 +338,7 @@
     },
     {
       "id": "e0fff7242339db3d",
-      "title": "Entrevista a Alberto Lopo: “Siento envidia sana al ver lo bien que está ahora el Dépor”",
+      "title": "Alberto Lopo: “Siento envidia sana al ver lo bien que está ahora el Dépor”",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/alberto-lopo-siento-envidia-sana-al-ver-lo-bien-que-esta-ahora-el-depor-889528.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-07T04:00:00Z",
@@ -1330,25 +1357,6 @@
       "alsoIn": []
     },
     {
-      "id": "78408f14eabc5a29",
-      "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/02/pepe-mel-uci-tras-operado-ictus-sevilla/00031793611396756290829.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-02T09:27:00Z",
-      "kind": "article",
-      "summary": "El exentrenador del Dépor, de 63 años, permanece ingresado en observación",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/b-6GFv3dV0IV0YP_m1m92HwMBeo=/768x/2026/11/02/00121793611562185445529/Foto/I10M9217.jpg",
-      "tags": [],
-      "alsoIn": [
-        {
-          "sourceId": "marca",
-          "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
-          "url": "https://marca.com/futbol/2026/11/02/pepe-mel-uci-operado-ictus-sevilla.html",
-          "publishedAt": "2026-11-01T23:37:11Z"
-        }
-      ]
-    },
-    {
       "id": "2fcf2b9dd62e0f17",
       "title": "Los lectores de Riazor.org divisan un once inicial sin grandes novedades para recibir a Osasuna en Riazor",
       "url": "https://riazor.org/los-lectores-de-riazor-org-divisan-un-once-inicial-sin-grandes-novedades-para-recibir-a-osasuna-en-riazor",
@@ -1387,6 +1395,25 @@
         "partido"
       ],
       "alsoIn": []
+    },
+    {
+      "id": "78408f14eabc5a29",
+      "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
+      "url": "https://marca.com/futbol/2026/11/02/pepe-mel-uci-operado-ictus-sevilla.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-01T23:37:11Z",
+      "kind": "article",
+      "summary": "El exentrenador del Betis, Rayo, Málaga o Dépor, entre otros, permanece ingresado en observación",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2024/09/06/17161522568209.jpeg",
+      "tags": [],
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/02/pepe-mel-uci-tras-operado-ictus-sevilla/00031793611396756290829.htm",
+          "publishedAt": "2026-11-02T09:27:00Z"
+        }
+      ]
     },
     {
       "id": "d14ba4969b879daf",
@@ -2147,30 +2174,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "60424e718f485087",
-      "title": "Cómo llegar a O Couto para el Auriense – Dépor: cortes de tráfico desde las 18:30 y plazas sin aparcamiento",
-      "url": "https://riazor.org/como-llegar-a-o-couto-para-el-auriense-depor-cortes-de-trafico-desde-las-1830-y-plazas-sin-aparcamiento",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-29T06:00:50Z",
-      "kind": "article",
-      "summary": "Cortes de tráfico en O Couto desde las 18:30 por el Auriense - Dépor: rúa Ervedelo y Carlos Maside cerradas y aparcamiento prohibido en…",
-      "thumbnailUrl": null,
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "bd4cf310c582fd3b",
-      "title": "El Dépor no estará solo en O Couto: \"Mi ilusión es llegar a la final en La Cartuja\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-29/el-depor-no-estara-solo-en-o-couto-mi-ilusion-es-llegar-a-la-final-en-la-cartuja-887643.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-29T04:00:00Z",
-      "kind": "article",
-      "summary": "Miembros de la peña Verín viven con ilusión la visita copera, recuerdan la eliminación de 2024 y sueñan con llegar lejos en el torneo",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/28/6ae232a331982.r_d.902-1367-0.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]
