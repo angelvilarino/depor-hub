@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T12:04:36Z",
+  "updatedAt": "2026-11-07T13:13:53Z",
   "season": "2026-27",
   "matchday": 12,
   "table": [
@@ -253,6 +253,25 @@
     {
       "position": 14,
       "team": {
+        "id": 5335,
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
+      },
+      "played": 12,
+      "won": 3,
+      "draw": 3,
+      "lost": 6,
+      "points": 12,
+      "goalsFor": 15,
+      "goalsAgainst": 29,
+      "goalDifference": -14,
+      "form": null
+    },
+    {
+      "position": 15,
+      "team": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
         "shortName": "Espanyol",
@@ -270,7 +289,7 @@
       "form": null
     },
     {
-      "position": 15,
+      "position": 16,
       "team": {
         "id": 79,
         "name": "CA Osasuna",
@@ -286,25 +305,6 @@
       "goalsFor": 11,
       "goalsAgainst": 22,
       "goalDifference": -11,
-      "form": null
-    },
-    {
-      "position": 16,
-      "team": {
-        "id": 5335,
-        "name": "Real Racing Club de Santander",
-        "shortName": "Santander",
-        "tla": "SAN",
-        "crestUrl": "https://crests.football-data.org/5335.png"
-      },
-      "played": 11,
-      "won": 3,
-      "draw": 2,
-      "lost": 6,
-      "points": 11,
-      "goalsFor": 15,
-      "goalsAgainst": 29,
-      "goalDifference": -14,
       "form": null
     },
     {
@@ -373,11 +373,11 @@
         "tla": "MAL",
         "crestUrl": "https://crests.football-data.org/84.png"
       },
-      "played": 11,
+      "played": 12,
       "won": 0,
-      "draw": 5,
+      "draw": 6,
       "lost": 6,
-      "points": 5,
+      "points": 6,
       "goalsFor": 8,
       "goalsAgainst": 21,
       "goalDifference": -13,
