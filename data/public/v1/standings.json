@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T19:32:37Z",
+  "updatedAt": "2026-11-07T20:41:53Z",
   "season": "2026-27",
   "matchday": 12,
   "table": [
@@ -25,6 +25,25 @@
     {
       "position": 2,
       "team": {
+        "id": 86,
+        "name": "Real Madrid CF",
+        "shortName": "Real Madrid",
+        "tla": "RMA",
+        "crestUrl": "https://crests.football-data.org/86.png"
+      },
+      "played": 12,
+      "won": 10,
+      "draw": 0,
+      "lost": 2,
+      "points": 30,
+      "goalsFor": 30,
+      "goalsAgainst": 10,
+      "goalDifference": 20,
+      "form": null
+    },
+    {
+      "position": 3,
+      "team": {
         "id": 78,
         "name": "Club Atlético de Madrid",
         "shortName": "Atleti",
@@ -39,25 +58,6 @@
       "goalsFor": 22,
       "goalsAgainst": 8,
       "goalDifference": 14,
-      "form": null
-    },
-    {
-      "position": 3,
-      "team": {
-        "id": 86,
-        "name": "Real Madrid CF",
-        "shortName": "Real Madrid",
-        "tla": "RMA",
-        "crestUrl": "https://crests.football-data.org/86.png"
-      },
-      "played": 11,
-      "won": 9,
-      "draw": 0,
-      "lost": 2,
-      "points": 27,
-      "goalsFor": 28,
-      "goalsAgainst": 10,
-      "goalDifference": 18,
       "form": null
     },
     {
@@ -354,14 +354,14 @@
         "tla": "VAL",
         "crestUrl": "https://crests.football-data.org/95.png"
       },
-      "played": 11,
+      "played": 12,
       "won": 2,
       "draw": 3,
-      "lost": 6,
+      "lost": 7,
       "points": 9,
       "goalsFor": 8,
-      "goalsAgainst": 17,
-      "goalDifference": -9,
+      "goalsAgainst": 19,
+      "goalDifference": -11,
       "form": null
     },
     {
