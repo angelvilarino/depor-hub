@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T18:04:37Z",
+  "updatedAt": "2026-11-07T18:32:52Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,41 @@
     }
   ],
   "stories": [
+    {
+      "id": "39f71d335576d74f",
+      "title": "Rueda de prensa de Antonio Hidalgo tras el RCD Espanyol 0 - 0 RC Deportivo",
+      "url": "https://youtube.com/watch?v=MDOBcfeOflA",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-07T18:21:37Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i2.ytimg.com/vi/MDOBcfeOflA/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "943fbd2d4f7a8758",
+      "title": "Antonio Hidalgo: \"No ha sido nuestro mejor día, pero el equipo siempre compite y nos ha dado para sumar\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/antonio-hidalgo-no-ha-sido-nuestro-mejor-dia-pero-el-equipo-siempre-compite-y-nos-ha-dado-para-sumar-889629.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T18:06:07Z",
+      "kind": "article",
+      "summary": "El técnico del Deportivo reconoció el mal encuentro sin balón y dio valor a los ajustes y al partido de Leo Román: \"Lo necesitaba\"",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef66f61833e.r_d.1009-637-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "El Deportivo suda otro punto de mérito ante el Espanyol: 0 - 0",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/07/deportivo-suda-punto-merito-ante-espanyol-0-0/00031794071610867107217.htm",
+          "publishedAt": "2026-11-07T17:14:00Z"
+        }
+      ]
+    },
     {
       "id": "02bf22de3cbea96e",
       "title": "El «1x1» del Deportivo en el empate ante el Espanyol",
@@ -164,18 +199,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "943fbd2d4f7a8758",
-      "title": "El Deportivo suda otro punto de mérito ante el Espanyol: 0 - 0",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/07/deportivo-suda-punto-merito-ante-espanyol-0-0/00031794071610867107217.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-07T17:14:00Z",
-      "kind": "article",
-      "summary": "Tres paradas de Leo Román sostuvieron al equipo coruñés de un encuentro en el que cedió la iniciativa al rival y buscó aprovecharse de…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/JVc4jID8StX3eHLbXeR0rY4QHsY=/768x/2026/11/07/00121794071642950313175/Foto/j_20261107_171959000.jpg",
-      "tags": [],
       "alsoIn": []
     },
     {
@@ -2156,20 +2179,6 @@
           "publishedAt": "2026-10-28T15:30:03Z"
         }
       ]
-    },
-    {
-      "id": "da39ec1422064f25",
-      "title": "La Liga denuncia ante Antiviolencia diez infracciones en San Mamés en el Athletic-Getafe",
-      "url": "https://dxtcampeon.elidealgallego.com/mas-futbol/2026-10-28/la-liga-denuncia-ante-antiviolencia-diez-infracciones-en-san-mames-en-el-athletic-getafe-887680.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-28T19:16:16Z",
-      "kind": "article",
-      "summary": "Uno de los episodios recogidos en el informe alude a unos cánticos contra el Zaragoza, por los que el Dépor ya fue sancionado por hechos…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/28/6ae240a0d3d3a.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
     }
   ]
 }
