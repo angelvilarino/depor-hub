@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T22:33:00Z",
+  "updatedAt": "2026-11-07T23:03:53Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,27 +43,6 @@
     }
   ],
   "stories": [
-    {
-      "id": "5b169b27abe699b0",
-      "title": "Resumen del RCD Espanyol 0 - 0 RC Deportivo",
-      "url": "https://youtube.com/watch?v=ZFtBr5-07kQ",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-07T22:10:08Z",
-      "kind": "video",
-      "summary": "El 'efecto Sarabia' se notó, pero se quedó a medias. El Espanyo, con un buen primer tiempo, no pudo con el Dépor en el estreno del nuevo…",
-      "thumbnailUrl": "https://i3.ytimg.com/vi/ZFtBr5-07kQ/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "marca",
-          "title": "Espanyol 0-0 Deportivo | Resumen",
-          "url": "https://marca.com/futbol/primera-division/2026/11/07/espanyol-0-0-deportivo-resumen-video.html",
-          "publishedAt": "2026-11-07T17:36:27Z"
-        }
-      ]
-    },
     {
       "id": "fc2dedea07f0e97e",
       "title": "RCD Espanyol vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
@@ -224,6 +203,27 @@
         "partido"
       ],
       "alsoIn": []
+    },
+    {
+      "id": "5b169b27abe699b0",
+      "title": "Espanyol 0-0 Deportivo | Resumen",
+      "url": "https://marca.com/futbol/primera-division/2026/11/07/espanyol-0-0-deportivo-resumen-video.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-07T17:36:27Z",
+      "kind": "article",
+      "summary": "El 'efecto Sarabia' se notó, pero se quedó a medias. El Espanyo, con un buen primer tiempo, no pudo con el Dépor en el estreno del nuevo…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "youtube-club",
+          "title": "Resumen del RCD Espanyol 0 - 0 RC Deportivo",
+          "url": "https://youtube.com/watch?v=ZFtBr5-07kQ",
+          "publishedAt": "2026-11-07T22:10:08Z"
+        }
+      ]
     },
     {
       "id": "936cca1b11e9f78f",
