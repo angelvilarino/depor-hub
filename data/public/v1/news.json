@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T18:32:52Z",
+  "updatedAt": "2026-11-07T19:03:44Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,48 @@
     }
   ],
   "stories": [
+    {
+      "id": "cbad39051171c1d7",
+      "title": "Casadó celebra su rápida vuelta: «La recuperación ha ido bien, lo importante es ayudar al equipo»",
+      "url": "https://riazor.org/casado-celebra-rapida-vuelta",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-07T19:00:20Z",
+      "kind": "article",
+      "summary": "Marc Casadó valora en DAZN su regreso tras la lesión, el recibimiento en el campo del Espanyol y la acción final: «los rivales saben quién…",
+      "thumbnailUrl": null,
+      "tags": [
+        "lesiones"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "d7e9ba79030dadb3",
+      "title": "Eder Sarabia, tras el Espanyol-Dépor: \"Fuimos superiores en todo y claramente hemos merecido ganar\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/eder-sarabia-fuimos-superiores-en-todo-y-claramente-hemos-merecido-ganar-889645.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T18:53:59Z",
+      "kind": "article",
+      "summary": "El técnico bilbaíno analizó en rueda de prensa el empate sin goles ante el Deportivo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef73ab72a7d.r_d.956-295-0.png",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e85618d8604f68d1",
+      "title": "Comparecencia de Leo Román tras el RCD Espanyol 0 - 0 RC Deportivo",
+      "url": "https://youtube.com/watch?v=OaM9FEeVp9U",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-07T18:34:30Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/OaM9FEeVp9U/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "39f71d335576d74f",
       "title": "Rueda de prensa de Antonio Hidalgo tras el RCD Espanyol 0 - 0 RC Deportivo",
@@ -2130,55 +2172,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/28/6ae232a331982.r_d.902-1367-0.jpg",
       "tags": [],
       "alsoIn": []
-    },
-    {
-      "id": "2f4f36afc53f0338",
-      "title": "Previa | Al Dépor le toca volver a honrar la Copa desde el otro lado",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-29/previa-al-depor-le-toca-volver-a-honrar-la-copa-desde-el-otro-lado-887623.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-29T04:00:00Z",
-      "kind": "article",
-      "summary": "Previa de la primera eliminatoria de la Copa del Rey que enfrenta al Deportivo y al Auriense en O Couto",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/06/6ac4e1fe14af2.r_d.1131-1122-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "10b1fdbac7adb4e6",
-      "title": "Otra oportunidad para Kevin en el Deportivo",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/28/oportunidad-kevin-deportivo/00031793215642864351420.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-10-29T04:00:00Z",
-      "kind": "article",
-      "summary": "La última jugada ante el Atlético causó dolor en el Dépor y en su protagonista, pero el fútbol le puede conceder hoy en la Copa ante el…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/IRpVN99iISiE89uyROz7KJoWYCY=/768x/2026/10/28/00121793215562421902228/Foto/h_20260813_121704000.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "8a95d4d5a9148982",
-      "title": "Auriense – Dépor: horario, televisión y cómo ver online la primera ronda de la Copa del Rey",
-      "url": "https://riazor.org/auriense-depor-horario-television-y-como-ver-online-la-primera-ronda-de-la-copa-del-rey",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-28T19:48:43Z",
-      "kind": "article",
-      "summary": "Horario, televisión y cómo ver online el Auriense - Dépor de Copa del Rey: jueves 29 de octubre, 21:00, en M+ LaLiga 2 y LaLiga 4, y en…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "dxt-campeon",
-          "title": "Cómo y dónde ver el Auriense-Dépor: horario y TV de la Copa del Rey",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-28/como-y-donde-ver-el-auriense-depor-horario-y-tv-de-la-copa-del-rey-887609.html",
-          "publishedAt": "2026-10-28T15:30:03Z"
-        }
-      ]
     }
   ]
 }
