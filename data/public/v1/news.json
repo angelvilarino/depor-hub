@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T20:32:56Z",
+  "updatedAt": "2026-11-07T04:32:57Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,30 @@
     }
   ],
   "stories": [
+    {
+      "id": "ecefa1452fef4fc4",
+      "title": "El último baile deportivista en la carretera de Sarriá",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/historia/2026-11-07/el-ultimo-baile-deportivista-en-la-carretera-de-sarria-889424.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T04:00:00Z",
+      "kind": "article",
+      "summary": "El próximo mes de marzo se cumplirán 30 años de la última visita coruñesa al viejo templo perico, en la que el Dépor del profesor Silva se…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/06/6aedfa3d7480d.r_d.1292-764-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "e0fff7242339db3d",
+      "title": "Alberto Lopo: “Siento envidia sana al ver lo bien que está ahora el Dépor”",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/alberto-lopo-siento-envidia-sana-al-ver-lo-bien-que-esta-ahora-el-depor-889528.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T04:00:00Z",
+      "kind": "article",
+      "summary": "El exfutbolista del equipo coruñés y de su rival de hoy, ahora entrenador, repasa su trayectoria y admite que le gustaría volver a…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2025/09/11/68c201faa6a9e.r_d.460-277-0.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "b24ff05db8aa7269",
       "title": "La previa del Espanyol-Dépor | Un partido para recordar y una victoria para confirmar",
@@ -2204,32 +2228,6 @@
       "kind": "article",
       "summary": "Solo participó de algunos ejercicios y luego siguió con su trabajo personalizado",
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/QIBGvFIXce1Kxb3qgPlXqXvnfpQ=/768x/2026/10/27/00121793105402609953528/Foto/h_20260902_193542000.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "0624105fcbee0697",
-      "title": "La Copa y Kevin Sánchez: de estreno soñado a oportunidad de redención con el Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-27/la-copa-y-kevin-sanchez-de-estreno-sonado-a-oportunidad-de-redencion-con-el-depor-887354.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-27T11:00:40Z",
-      "kind": "article",
-      "summary": "Kevin Sánchez debutó con el Dépor en la Copa del Rey y marcó en su estreno, ahora busca redimirse tras su error ante el Atlético",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/27/6ae0654b610ac.r_d.665-913-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "0ff3156c231f1228",
-      "title": "Nsongo Bil repite con la selección absoluta de Camerún",
-      "url": "https://riazor.org/nsongo-bil-repite-seleccion-absoluta-camerun",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-27T10:30:09Z",
-      "kind": "article",
-      "summary": "Nsongo Bil ha vuelto a ser citado por la selección absoluta de Camerún. El deportivista vivirá su segunda aventura internacional en el…",
-      "thumbnailUrl": null,
       "tags": [],
       "alsoIn": []
     }
