@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T14:03:45Z",
+  "updatedAt": "2026-11-07T14:32:34Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "9af707d9ef236ec6",
+      "title": "Espanyol-Dépor en directo: Hidalgo repite once y Casadó entra en la lista",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/directo-sigue-todo-lo-que-ocurre-en-el-espanyol-deportivo-previa-y-minuto-a-minuto-889593.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T13:40:59Z",
+      "kind": "article",
+      "summary": "El conjunto coruñés busca mantenerse en la senda de la victoria ante un rival que estrena entrenador: Eder Sarabia",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/07/6aef1ea7bfb18.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "04ec49c576cf2d22",
       "title": "Eder Sarabia: «En los últimos metros, quitando a los grandes, el Dépor es uno de los equipos con más talento»",
@@ -2180,37 +2194,6 @@
           "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
           "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
           "publishedAt": "2026-10-29T08:00:38Z"
-        }
-      ]
-    },
-    {
-      "id": "a80879a1768c9aba",
-      "title": "Presentación de Falas Dépor",
-      "url": "https://youtube.com/watch?v=Ozky7PXLueA",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-27T12:54:09Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/Ozky7PXLueA/hqdefault.jpg",
-      "tags": [],
-      "alsoIn": [
-        {
-          "sourceId": "riazor",
-          "title": "Los lectores de Riazor.org ven el estreno en Copa como la gran oportunidad para ver en acción a los menos habituales y algunos fabrilistas",
-          "url": "https://riazor.org/los-lectores-de-riazor-org-ven-el-estreno-en-copa-como-la-gran-oportunidad-para-ver-en-accion-a-los-menos-habituales-y-algunos-fabrilistas",
-          "publishedAt": "2026-10-29T08:00:38Z"
-        },
-        {
-          "sourceId": "la-voz",
-          "title": "El «1x1» del Deportivo en la victoria contra el Auriense",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/29/1x1-deportivo-victoria-contra-auriense/00031793312973214229476.htm",
-          "publishedAt": "2026-10-29T22:32:00Z"
-        },
-        {
-          "sourceId": "la-voz",
-          "title": "El Deportivo organizará en noviembre un ciclo de tertulias sobre su historia",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/depor-organizara-noviembre-ciclo-tertulias-sobre-historia/00031793117222385246410.htm",
-          "publishedAt": "2026-10-27T16:17:00Z"
         }
       ]
     }
