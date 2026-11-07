@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T14:22:32Z",
+  "updatedAt": "2026-11-07T14:52:25Z",
   "season": "2026-27",
   "matchday": 12,
   "table": [
@@ -158,6 +158,25 @@
     {
       "position": 9,
       "team": {
+        "id": 5335,
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
+      },
+      "played": 12,
+      "won": 4,
+      "draw": 2,
+      "lost": 6,
+      "points": 14,
+      "goalsFor": 17,
+      "goalsAgainst": 30,
+      "goalDifference": -13,
+      "form": null
+    },
+    {
+      "position": 10,
+      "team": {
         "id": 263,
         "name": "Deportivo Alavés",
         "shortName": "Alavés",
@@ -175,7 +194,7 @@
       "form": null
     },
     {
-      "position": 10,
+      "position": 11,
       "team": {
         "id": 94,
         "name": "Villarreal CF",
@@ -194,7 +213,7 @@
       "form": null
     },
     {
-      "position": 11,
+      "position": 12,
       "team": {
         "id": 558,
         "name": "RC Celta de Vigo",
@@ -213,7 +232,7 @@
       "form": null
     },
     {
-      "position": 12,
+      "position": 13,
       "team": {
         "id": 87,
         "name": "Rayo Vallecano de Madrid",
@@ -232,7 +251,7 @@
       "form": null
     },
     {
-      "position": 13,
+      "position": 14,
       "team": {
         "id": 82,
         "name": "Getafe CF",
@@ -248,25 +267,6 @@
       "goalsFor": 8,
       "goalsAgainst": 16,
       "goalDifference": -8,
-      "form": null
-    },
-    {
-      "position": 14,
-      "team": {
-        "id": 5335,
-        "name": "Real Racing Club de Santander",
-        "shortName": "Santander",
-        "tla": "SAN",
-        "crestUrl": "https://crests.football-data.org/5335.png"
-      },
-      "played": 12,
-      "won": 3,
-      "draw": 3,
-      "lost": 6,
-      "points": 12,
-      "goalsFor": 16,
-      "goalsAgainst": 30,
-      "goalDifference": -14,
       "form": null
     },
     {
@@ -375,12 +375,12 @@
       },
       "played": 12,
       "won": 0,
-      "draw": 6,
-      "lost": 6,
-      "points": 6,
+      "draw": 5,
+      "lost": 7,
+      "points": 5,
       "goalsFor": 9,
-      "goalsAgainst": 22,
-      "goalDifference": -13,
+      "goalsAgainst": 23,
+      "goalDifference": -14,
       "form": null
     }
   ]
