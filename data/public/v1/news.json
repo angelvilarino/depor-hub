@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T17:32:56Z",
+  "updatedAt": "2026-11-07T18:04:37Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,75 @@
   ],
   "stories": [
     {
+      "id": "02bf22de3cbea96e",
+      "title": "El «1x1» del Deportivo en el empate ante el Espanyol",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/07/1x1-deportivo-empate-ante-espanyol/00031794073642617374749.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-07T17:51:00Z",
+      "kind": "article",
+      "summary": "Leo Román destacó como el mejor en un partido en el que Altimira y Yeremay estuvieron discretos",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/iRi4NkIvfUaHLElkOAP8I0i9maY=/768x/2026/11/07/00121794073742479682154/Foto/eup_20261107_160833662.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "7ad0ef5338e49bb0",
+      "title": "Hidalgo: “Leo Román nos ha sostenido en el partido”",
+      "url": "https://marca.com/futbol/deportivo/2026/11/07/hidalgo-leo-roman-sostenido-partido.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-07T17:48:55Z",
+      "kind": "article",
+      "summary": "Destacó la actuación de su guardameta y se mostró satisfecho con el empate",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/10/16/6ad29cd74035b.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "bef3f74490ba20ff",
+      "title": "El 1x1 del Dépor ante el Espanyol: Leo Román empieza a saldar su deuda",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/el-1x1-del-depor-ante-el-espanyol-leo-roman-empieza-a-saldar-su-deuda-889601.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T17:42:35Z",
+      "kind": "article",
+      "summary": "Valoración uno por uno y notas de los jugadores del Dépor en su partido contra el Espanyol de LaLiga EA Sports",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef4e6caa51d.r_d.1456-1015-0.JPG",
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "5b169b27abe699b0",
+      "title": "Espanyol 0-0 Deportivo | Resumen",
+      "url": "https://marca.com/futbol/primera-division/2026/11/07/espanyol-0-0-deportivo-resumen-video.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-07T17:36:27Z",
+      "kind": "article",
+      "summary": "El 'efecto Sarabia' se notó, pero se quedó a medias. El Espanyo, con un buen primer tiempo, no pudo con el Dépor en el estreno del nuevo…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "936cca1b11e9f78f",
+      "title": "Leo Román, MVP del Espanyol-Dépor: \"Hoy al equipo yo le hacía falta y he intentado estar a la altura\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/leo-roman-mvp-del-espanyol-depor-hoy-al-equipo-yo-le-hacia-falta-y-he-intentado-estar-a-la-altura-889628.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-07T17:33:16Z",
+      "kind": "article",
+      "summary": "El guardameta realizó una gran actuación ante el conjunto perico y los blanquiazules firmaron su primera portería a cero de la temporada",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef5e3a610b6.r_d.1566-967-0.JPG",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
       "id": "19a6d791d7509086",
       "title": "Leo Román: «Cuando no estuve acertado, el equipo me arropó»",
       "url": "https://riazor.org/leo-roman-cuando-no-estuve-acertado-el-equipo-me-arropo",
@@ -70,6 +139,20 @@
       "alsoIn": []
     },
     {
+      "id": "d3899178c59d4e01",
+      "title": "Así te contamos el empate entre Espanyol y Deportivo en el RCDE Stadium (0-0)",
+      "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/07/directo-espanyol-deportivo-hidalgo-repite-once-osasuna/01071794059842292912513.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-07T17:20:00Z",
+      "kind": "article",
+      "summary": "Los blanquiazules no pasaron de las tablas en un partido muy intenso y con grandes ocasiones para los dos equipos, con Leo Román como…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/HV7M3w44JtnxR5l7zQf5aawpHss=/768x/2026/11/07/00121794068582985186361/Foto/j_20261107_171900000.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "c7d249691c0a76d8",
       "title": "Crónica | Punto y aparte para el Dépor ante el Espanyol (0-0)",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/cronica-punto-y-aparte-para-el-depor-ante-el-espanyol-0-889599.html",
@@ -81,6 +164,18 @@
       "tags": [
         "partido"
       ],
+      "alsoIn": []
+    },
+    {
+      "id": "943fbd2d4f7a8758",
+      "title": "El Deportivo suda otro punto de mérito ante el Espanyol: 0 - 0",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/07/deportivo-suda-punto-merito-ante-espanyol-0-0/00031794071610867107217.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-07T17:14:00Z",
+      "kind": "article",
+      "summary": "Tres paradas de Leo Román sostuvieron al equipo coruñés de un encuentro en el que cedió la iniciativa al rival y buscó aprovecharse de…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/JVc4jID8StX3eHLbXeR0rY4QHsY=/768x/2026/11/07/00121794071642950313175/Foto/j_20261107_171959000.jpg",
+      "tags": [],
       "alsoIn": []
     },
     {
@@ -2071,102 +2166,6 @@
       "kind": "article",
       "summary": "Uno de los episodios recogidos en el informe alude a unos cánticos contra el Zaragoza, por los que el Dépor ya fue sancionado por hechos…",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/28/6ae240a0d3d3a.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "9e0a4ffddcb486ab",
-      "title": "Eder Sarabia sustituye a Manolo González al frente del banquillo del Espanyol y debutará ante el Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/rivales/2026-10-28/eder-sarabia-sustituye-a-manolo-gonzalez-al-frente-del-banquillo-del-espanyol-y-debutara-ante-el-depor-887651.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-28T18:16:01Z",
-      "kind": "article",
-      "summary": "El técnico vasco debutará en el RCDE contra el Deportivo",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2025/09/11/68c1f7c517e2c.jpeg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "f3bc48f37db80607",
-      "title": "Cómo un meme de Mbappé puede afectar al Celta y al Dépor",
-      "url": "https://lavozdegalicia.es/noticia/deportes/2026/10/28/meme-mbappe-puede-afectar-celta-depor/00031793209639990122289.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-10-28T18:00:01Z",
-      "kind": "article",
-      "summary": null,
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/fbzXnLdjBzmpbSPMdtJl2Z3Z51M=/768x/2026/10/28/00121793210342390877532/Foto/efe_20261028_055856538.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "c9b272348fbbd2a2",
-      "title": "Hidalgo y la cantera: ¿cuántos jugadores del Fabril entran en la convocatoria de Copa?",
-      "url": "https://riazor.org/hidalgo-cantera-jugadores-fabril-convocatoria-copa",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-28T17:48:00Z",
-      "kind": "article",
-      "summary": "Rubén López, Martín Ochoa, Yayo, Kevin y Noé se entrenan con el primer equipo y apuntan a ser convocados para el partido de Copa ante el…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido",
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "de9847656eeede28",
-      "title": "El posible once del Deportivo ante el Auriense en Copa del Rey: rotación masiva",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-28/el-posible-once-del-deportivo-ante-el-auriense-en-copa-del-rey-rotacion-masiva-887631.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-28T17:21:44Z",
-      "kind": "article",
-      "summary": "Cinco jugadores del Fabril apuntan a ir convocados a O Couto",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/28/6ae22e2e17e45.r_d.1530-1034-0.jpg",
-      "tags": [
-        "partido",
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "22e28963677407c1",
-      "title": "Adrià Altimira, protagonista de la primera entrevista de la temporada en RiazorTV",
-      "url": "https://riazor.org/adria-altimira-protagonista-primera-entrevista-temporada-riazortv",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-28T14:45:35Z",
-      "kind": "article",
-      "summary": "Adrià Altimira, en RiazorTV: la titularidad, la roja ante el Valencia, la renovación hasta 2029 y el Deportivo - Osasuna del lunes…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/05/deportivo-andorra-altimira-celebracion.png",
-      "tags": [
-        "fichajes"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "949a8c19642bd837",
-      "title": "El dilema de Hidalgo con Adama Traoré: «¿Cuándo es más diferencial un jugador, del 1 al 60 o del 60 al 90?»",
-      "url": "https://riazor.org/dilema-hidalgo-adama-traore-diferencial-1-60",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-28T09:19:57Z",
-      "kind": "article",
-      "summary": "El técnico catalán, en rueda de prensa, habló de la situación de Adama Traoré y su aporte como revulsivo al equipo. La entrada El dilema…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e64f8cea83a05888",
-      "title": "Rueda de prensa de Antonio Hidalgo previa al Auriense CA - RC Deportivo",
-      "url": "https://youtube.com/watch?v=IEHzMWdpPA4",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-28T09:18:00Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i2.ytimg.com/vi/IEHzMWdpPA4/hqdefault.jpg",
       "tags": [
         "partido"
       ],
