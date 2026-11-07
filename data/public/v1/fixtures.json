@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T15:13:28Z",
+  "updatedAt": "2026-11-07T15:32:36Z",
   "season": "2026-27",
   "matches": [
     {
@@ -346,7 +346,7 @@
     {
       "id": 564745,
       "utcDate": "2026-11-07T15:15:00Z",
-      "status": "TIMED",
+      "status": "IN_PLAY",
       "matchday": 12,
       "stage": "REGULAR_SEASON",
       "home": {
@@ -364,11 +364,11 @@
         "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
-        "home": null,
-        "away": null,
+        "home": 0,
+        "away": 0,
         "halfTimeHome": null,
         "halfTimeAway": null,
-        "winner": null
+        "winner": "DRAW"
       },
       "deporIsHome": false,
       "venue": "RCDE Stadium",
