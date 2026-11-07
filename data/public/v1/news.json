@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T04:32:57Z",
+  "updatedAt": "2026-11-07T06:06:15Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "b75284dc7225af65",
+      "title": "Los lectores de Riazor.org apuestan por dar continuidad al mismo once inicial para visitar al Espanyol",
+      "url": "https://riazor.org/los-lectores-de-riazor-org-apuestan-por-dar-continuidad-al-mismo-once-inicial-para-visitar-al-espanyol",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-07T06:00:28Z",
+      "kind": "article",
+      "summary": "El Deportivo visita este sábado al Espanyol con la intención de sumar un nuevo triunfo que le permita afrontar el parón instalado en la…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "ecefa1452fef4fc4",
       "title": "El último baile deportivista en la carretera de Sarriá",
@@ -2218,18 +2230,6 @@
           "publishedAt": "2026-10-27T16:17:00Z"
         }
       ]
-    },
-    {
-      "id": "fe74cb262e6f6675",
-      "title": "Aubameyang se entrena por primera vez con el grupo en el Deportivo",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/27/aubameyang-entrena-primera-vez-grupo-deportivo/00031793105340659910943.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-10-27T12:50:00Z",
-      "kind": "article",
-      "summary": "Solo participó de algunos ejercicios y luego siguió con su trabajo personalizado",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/QIBGvFIXce1Kxb3qgPlXqXvnfpQ=/768x/2026/10/27/00121793105402609953528/Foto/h_20260902_193542000.jpg",
-      "tags": [],
-      "alsoIn": []
     }
   ]
 }
