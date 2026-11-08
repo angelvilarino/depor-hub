@@ -94,10 +94,26 @@ describe('pestaña Club', () => {
     expect(screen.getByText('Explorar el club')).toBeTruthy();
     expect(screen.getByText('Himnos')).toBeTruthy();
     expect(screen.getByText('Equipaciones')).toBeTruthy();
-    expect(screen.getByText('Estadio')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Estadio' })).toBeTruthy();
 
     fireEvent.press(screen.getByText('Himnos'));
     expect(mockPush).toHaveBeenCalledWith('/club/himnos');
+  });
+
+  it('reúne hitos verificados en una cronología filtrable por sección', async () => {
+    await render(<ClubScreen />);
+
+    expect(screen.getByText('Cronología del club')).toBeTruthy();
+    expect(screen.getByText('Escudo 1906–1908')).toBeTruthy();
+    expect(screen.getByText('Inauguración de Estadio Abanca-Riazor')).toBeTruthy();
+    expect(screen.getByText('Composición actual de la junta')).toBeTruthy();
+    expect(screen.getByText('Acuerdo con Nike')).toBeTruthy();
+
+    fireEvent.press(screen.getByRole('button', { name: 'Filtrar cronología: Títulos' }));
+    await waitFor(() => {
+      expect(screen.queryByText('Escudo 1906–1908')).toBeNull();
+      expect(screen.getAllByText('Copa del Rey').length).toBeGreaterThan(0);
+    });
   });
 
   it('cubre las 42 temporadas y las 44 equipaciones con imagen o patrón de respaldo', () => {

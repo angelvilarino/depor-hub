@@ -11,7 +11,7 @@ import { CLUB_SECTIONS, currentCrest, formatSeats, titleTotal, type ClubSectionI
 import { useTheme } from '@/theme/useTheme';
 import { spacing, radius } from '@/theme/tokens';
 import { clubImageUrl } from '@/config';
-import { HeroHeader, SectionHeader, StatCounter, Timeline } from '@/components/club/Editorial';
+import { HeroHeader, SectionHeader, StatCounter, Timeline, type TimelineEntry } from '@/components/club/Editorial';
 
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
 function sectionBadge(club: ClubT, id: ClubSectionId, locale: string, rivalryCount: number): string | null {
@@ -50,12 +50,74 @@ export default function ClubScreen() {
           const place = [identity.city, identity.country].filter(Boolean).join(', ');
           const founded = identity.foundedYear ? t('club.founded', { year: identity.foundedYear }) : null;
           const subtitle = [founded, place].filter(Boolean).join(' · ');
-          const sectionsTimeline = club.crests.map((item) => ({
-            year: String(item.yearFrom),
-            title: `${item.yearFrom}–${item.yearTo ?? t('club.present')}`,
-            detail: item.description,
-            category: t('club.sections.escudo.title'),
-          })).slice(-4).reverse();
+          const timelineEntries: TimelineEntry[] = [
+            ...club.crests.map((item) => ({
+              year: String(item.yearFrom),
+              title: t('club.timelineEvents.crest', {
+                years: `${item.yearFrom}–${item.yearTo ?? t('club.present')}`,
+              }),
+              detail: item.description,
+              category: t('club.timelineCategories.crest'),
+            })),
+            ...(club.stadium
+              ? [
+                  ...(club.stadium.openedOn
+                    ? [{
+                        year: club.stadium.openedOn.slice(0, 4),
+                        title: t('club.timelineEvents.stadiumOpening', { name: club.stadium.name }),
+                        detail: club.stadium.openedOn,
+                        category: t('club.timelineCategories.stadium'),
+                      }]
+                    : []),
+                  ...club.stadium.renovations.flatMap((renovation) => {
+                    const year = renovation.match(/^\d{4}/)?.[0];
+                    return year
+                      ? [{
+                          year,
+                          title: t('club.timelineEvents.stadiumRenovation'),
+                          detail: renovation,
+                          category: t('club.timelineCategories.stadium'),
+                        }]
+                      : [];
+                  }),
+                ]
+              : []),
+            ...club.titles.flatMap((title) =>
+              title.years.map((year) => ({
+                year: String(year),
+                title: t('club.timelineEvents.title', { competition: title.competition }),
+                category: t('club.timelineCategories.titles'),
+              })),
+            ),
+            ...(club.sponsors?.details ?? [])
+              .filter((sponsor) => (
+                sponsor.status === 'verified'
+                && (sponsor.sinceYear !== null || sponsor.untilYear !== null)
+              ))
+              .map((sponsor) => ({
+                year: sponsor.sinceYear && sponsor.untilYear
+                  ? `${sponsor.sinceYear}–${sponsor.untilYear}`
+                  : sponsor.sinceYear
+                    ? `${sponsor.sinceYear}–${t('club.present')}`
+                    : t('club.patrocinadores.until', { year: sponsor.untilYear }),
+                title: t('club.timelineEvents.sponsor', { name: sponsor.name }),
+                detail: t(`club.patrocinadores.roles.${sponsor.role}`),
+                category: t('club.timelineCategories.sponsors'),
+              })),
+            ...(club.board && (club.board.president || club.board.members.length || club.board.sportingDirector)
+              ? [{
+                  year: t('club.present'),
+                  title: t('club.timelineEvents.board'),
+                  detail: club.board.note,
+                  category: t('club.timelineCategories.board'),
+                }]
+              : []),
+          ].sort((a, b) => {
+            const yearA = Number.parseInt(a.year, 10);
+            const yearB = Number.parseInt(b.year, 10);
+            return (Number.isNaN(yearA) ? Number.POSITIVE_INFINITY : yearA)
+              - (Number.isNaN(yearB) ? Number.POSITIVE_INFINITY : yearB);
+          });
           const stats = [
             identity.foundedYear ? { value: identity.foundedYear, label: t('club.stats.founded') } : null,
             club.kits.length ? { value: club.kits.length, label: t('club.stats.kitSeasons') } : null,
@@ -76,7 +138,7 @@ export default function ClubScreen() {
                 {identity.headquarters ? <View style={styles.identityItem}><Text style={styles.label}>{t('club.headquarters')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.headquarters}</Text></View> : null}
               </View>
             </Card>
-            {sectionsTimeline.length ? <Card><SectionHeader title={t('club.timeline')} subtitle={t('club.timelineSubtitle')} icon="time-outline" /><Timeline entries={sectionsTimeline} /></Card> : null}
+            {timelineEntries.length ? <Card><SectionHeader title={t('club.timeline')} subtitle={t('club.timelineSubtitle')} icon="time-outline" /><Timeline entries={timelineEntries} filters /></Card> : null}
             <Card>
               <SectionHeader title={t('club.explore')} subtitle={t('club.exploreSubtitle')} icon="compass-outline" />
               <View style={styles.sectionGrid}>

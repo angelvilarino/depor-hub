@@ -585,8 +585,25 @@
     "explore": "Explorar el club",
     "contact": "Contacto",
     "identity": "Identidad del club",
-    "timeline": "Momentos de identidad",
-    "timelineSubtitle": "Un club en evolución",
+    "timeline": "Cronología del club",
+    "timelineSubtitle": "Escudo, estadio, títulos, acuerdos y junta",
+    "timelineCategories": {
+      "crest": "Escudo",
+      "stadium": "Estadio",
+      "titles": "Títulos",
+      "sponsors": "Patrocinadores",
+      "board": "Junta"
+    },
+    "timelineFilterAll": "Filtrar cronología: todas las secciones",
+    "timelineFilterCategory": "Filtrar cronología: {{category}}",
+    "timelineEvents": {
+      "crest": "Escudo {{years}}",
+      "stadiumOpening": "Inauguración de {{name}}",
+      "stadiumRenovation": "Reforma del estadio",
+      "title": "{{competition}}",
+      "sponsor": "Acuerdo con {{name}}",
+      "board": "Composición actual de la junta"
+    },
     "exploreSubtitle": "Historia, equipo y patrimonio",
     "present": "actualidad",
     "mediaCredit": "Crédito de imagen",

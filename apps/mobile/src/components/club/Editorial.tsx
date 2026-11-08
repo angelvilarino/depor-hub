@@ -68,7 +68,7 @@ export function Timeline({ entries, filters = false }: { entries: TimelineEntry[
   const categories = [...new Set(entries.map((entry) => entry.category).filter((x): x is string => Boolean(x)))];
   const visible = entries.filter((entry) => !category || entry.category === category);
   return <View style={{ gap: spacing.sm }}>
-    {filters && categories.length ? <View style={styles.chips}>{[null, ...categories].map((item) => <Pressable key={item ?? 'all'} accessibilityRole="button" accessibilityState={{ selected: category === item }} onPress={() => setCategory(item)} style={[styles.filterChip, { backgroundColor: category === item ? colors.primary : colors.surface, borderColor: colors.border }]}><Text style={{ color: category === item ? colors.onPrimary : colors.text }}>{item ?? t('club.titulos.all')}</Text></Pressable>)}</View> : null}
+    {filters && categories.length ? <View style={styles.chips}>{[null, ...categories].map((item) => <Pressable key={item ?? 'all'} accessibilityRole="button" accessibilityLabel={item ? t('club.timelineFilterCategory', { category: item }) : t('club.timelineFilterAll')} accessibilityState={{ selected: category === item }} onPress={() => setCategory(item)} style={[styles.filterChip, { backgroundColor: category === item ? colors.primary : colors.surface, borderColor: colors.border }]}><Text style={{ color: category === item ? colors.onPrimary : colors.text }}>{item ?? t('club.titulos.all')}</Text></Pressable>)}</View> : null}
     {visible.map((entry, index) => {
       const key = `${entry.year}-${entry.title}`;
       const isOpen = expanded === key;
@@ -174,8 +174,8 @@ const styles = StyleSheet.create({
   heroChipText: { color: '#fff', fontSize: 12, fontWeight: '700' },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   stat: { minWidth: 94, flexGrow: 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, padding: spacing.sm, gap: 2 },
-  filterChip: { paddingHorizontal: spacing.sm, minHeight: 40, justifyContent: 'center', borderRadius: radius.pill, borderWidth: StyleSheet.hairlineWidth },
-  timelineRow: { flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
+  filterChip: { paddingHorizontal: spacing.sm, minHeight: 44, justifyContent: 'center', borderRadius: radius.pill, borderWidth: StyleSheet.hairlineWidth },
+  timelineRow: { minHeight: 44, flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
   timelineAxis: { width: 16, alignItems: 'center', alignSelf: 'stretch' }, dot: { width: 10, height: 10, borderRadius: 5, marginTop: 4 }, line: { width: 2, flex: 1, marginTop: 3 },
   credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 8, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: radius.pill }, creditText: { color: '#fff', fontSize: 11 },
   inlineCredit: { position: 'relative', top: 0, right: 0, alignSelf: 'flex-start', marginTop: spacing.xs },

@@ -585,8 +585,25 @@
     "explore": "Explore the club",
     "contact": "Contact",
     "identity": "Club identity",
-    "timeline": "Identity through time",
-    "timelineSubtitle": "A club in motion",
+    "timeline": "Club timeline",
+    "timelineSubtitle": "Crest, stadium, honours, sponsors and board",
+    "timelineCategories": {
+      "crest": "Crest",
+      "stadium": "Stadium",
+      "titles": "Honours",
+      "sponsors": "Sponsors",
+      "board": "Board"
+    },
+    "timelineFilterAll": "Filter timeline: all sections",
+    "timelineFilterCategory": "Filter timeline: {{category}}",
+    "timelineEvents": {
+      "crest": "Crest {{years}}",
+      "stadiumOpening": "{{name}} opens",
+      "stadiumRenovation": "Stadium renovation",
+      "title": "{{competition}}",
+      "sponsor": "Agreement with {{name}}",
+      "board": "Current board composition"
+    },
     "exploreSubtitle": "History, team and heritage",
     "present": "present",
     "mediaCredit": "Image credit",

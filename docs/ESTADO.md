@@ -245,10 +245,11 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
 - **Himnos:** «Voa» tiene una acción de reproducción externa a su publicación oficial; se verifica `origin=club_official` y `status=verified`. No se carga WebView. La app oculta letras sin un estado de derechos autorizado.
 - **Estadio y museo:** aforo animado con fuente/confianza; capacidad oficial corregida a 32.490, cronología de inauguración/reforma y acceso nativo a mapas. El museo ofrece mapas y galería modal solo para fotos verificadas con crédito; no hay fotos u horarios verificados, así que se ocultan la galería vacía y el estado Abierto/Cerrado.
 - **Junta y patrocinadores:** organigrama visual con iniciales, consejo publicado y entrenador enlazado desde `squad.json`; dirección deportiva ausente oculta. Patrocinadores agrupados por papel con monogramas. La cronología solo incluye acuerdos con fechas verificadas (Nike desde 2026); no se inventa la antigüedad de ABANCA.
-- **Validación Junta/Patrocinadores:** Node 22 `typecheck`, `lint` y suite móvil (34 suites, 299 pruebas); claves ES/EN en paridad (699/699). No cambia el contrato.
+- **Cronología transversal:** filtros por escudo, estadio, títulos, patrocinadores y junta; usa años explícitos de los datos publicados. Los acuerdos sin tenencia verificada quedan fuera. Los controles de filtro cumplen 44 pt.
+- **Validación del rediseño Club:** Node 22 `typecheck`, `lint` y suite móvil (34 suites, 300 pruebas); claves ES/EN en paridad (712/712). El hito de cronología no cambia el contrato.
 - **Validación del hito de equipaciones:** `.venv/bin/python -m pytest scripts/tests/test_club.py` (17 passed), `python -m depor_hub.cli club`, y Node 22 `typecheck`, `lint`, tests (34 suites / 294 passed).
 - **Validación del escudo:** render de comparación, años y créditos; visor modal; Node 22 `typecheck`, `lint`, tests (34 suites / 294 passed) y 17 pruebas Python del publicador.
-- **Pendiente para los siguientes hitos:** fotos históricas fiables, fotos verificadas del museo, presidentes en línea de tiempo, completar atributos/galerías de venues y probar visualmente ajustes y el conjunto en iPhone. H7.3 no cierra toda la especificación editorial.
+- **Pendiente para los siguientes hitos:** fotos históricas fiables, fotos verificadas del museo, completar atributos/galerías de venues y probar visualmente ajustes y el conjunto en iPhone. H7.4 no cierra toda la especificación editorial.
 
 ### Verificación H7
 ```bash
