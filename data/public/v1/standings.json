@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T12:36:06Z",
+  "updatedAt": "2026-11-08T13:42:03Z",
   "season": "2026-27",
   "matchday": 12,
   "table": [
@@ -69,11 +69,11 @@
         "tla": "BET",
         "crestUrl": "https://crests.football-data.org/90.png"
       },
-      "played": 11,
+      "played": 12,
       "won": 7,
-      "draw": 2,
+      "draw": 3,
       "lost": 2,
-      "points": 23,
+      "points": 24,
       "goalsFor": 18,
       "goalsAgainst": 15,
       "goalDifference": 3,
@@ -316,11 +316,11 @@
         "tla": "ELC",
         "crestUrl": "https://crests.football-data.org/285.png"
       },
-      "played": 11,
+      "played": 12,
       "won": 2,
-      "draw": 4,
+      "draw": 5,
       "lost": 5,
-      "points": 10,
+      "points": 11,
       "goalsFor": 14,
       "goalsAgainst": 18,
       "goalDifference": -4,
