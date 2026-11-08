@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T18:04:32Z",
+  "updatedAt": "2026-11-08T20:32:51Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "05443ba41d02888f",
+      "title": "Hidalgo espía al Celta en Balaídos",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-08/hidalgo-espia-al-celta-en-balaidos-889848.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-08T20:23:42Z",
+      "kind": "article",
+      "summary": "El técnico blanquiazul acudió al estadio vigués para presenciar el duelo entre el Levante y el equipo celeste, rival del Dépor el próximo…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af0d80510e87.r_d.527-992-0.jpeg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "e532899f6c79d377",
       "title": "Leo Román, conde de Barcelona: las notas del Espanyol – Deportivo",
@@ -2149,21 +2163,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i4.ytimg.com/vi/cyOaLcavZEI/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "b666d209ff6055b6",
-      "title": "Rueda de prensa de Alberto Rodríguez previa al Madrid CFF - Dépor ABANCA",
-      "url": "https://youtube.com/watch?v=ZjMNM7y-rVQ",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-30T11:24:13Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i3.ytimg.com/vi/ZjMNM7y-rVQ/hqdefault.jpg",
       "tags": [
         "cantera",
         "partido"
