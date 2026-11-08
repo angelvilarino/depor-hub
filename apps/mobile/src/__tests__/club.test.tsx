@@ -305,13 +305,33 @@ describe('secciones del Club', () => {
     await waitFor(() => expect(screen.queryByTestId('club-photo-fullscreen-viewer')).toBeNull());
   });
 
-  it('toma el entrenador de squad.json en la junta directiva', async () => {
+  it('representa la junta como organigrama con avatares de iniciales', async () => {
     mockParams = { section: 'junta' };
     await render(<ClubSectionScreen />);
 
+    expect(screen.getByText('Juan Carlos Escotet Rodríguez')).toBeTruthy();
+    expect(screen.getByText('JC', { includeHiddenElements: true })).toBeTruthy();
+    expect(screen.getByText('Consejo')).toBeTruthy();
+    expect(screen.getByText('Michelle Clemente Escotet')).toBeTruthy();
+    expect(screen.getByText('MC', { includeHiddenElements: true })).toBeTruthy();
+    expect(screen.queryByText('Dirección deportiva')).toBeNull();
     expect(screen.getByText('Antonio Hidalgo')).toBeTruthy();
     fireEvent.press(screen.getByText('Antonio Hidalgo'));
     expect(mockPush).toHaveBeenCalledWith('/coach');
+  });
+
+  it('ordena patrocinadores por categoría y limita la cronología a tenencias verificadas', async () => {
+    mockParams = { section: 'patrocinadores' };
+    await render(<ClubSectionScreen />);
+
+    expect(screen.getByText('Patrocinador principal')).toBeTruthy();
+    expect(screen.getByText('Proveedor técnico')).toBeTruthy();
+    expect(screen.getByText('Patrocinadores oficiales')).toBeTruthy();
+    expect(screen.getByText('ABANCA')).toBeTruthy();
+    expect(screen.getByText('AB')).toBeTruthy();
+    expect(screen.getByText('2026–actualidad')).toBeTruthy();
+    expect(screen.getAllByText('Nike')).toHaveLength(2);
+    expect(screen.getAllByText('ABANCA')).toHaveLength(1);
   });
 
   it('muestra detalles de finales verificadas cuando están publicados', async () => {

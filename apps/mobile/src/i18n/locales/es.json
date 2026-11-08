@@ -764,6 +764,7 @@
       "title": "Junta directiva",
       "president": "Presidencia",
       "members": "Consejo",
+      "member": "Consejero/a",
       "sportingDirector": "Dirección deportiva"
     },
     "patrocinadores": {
@@ -774,7 +775,16 @@
       "sinceLabel": "Desde",
       "official": "Patrocinadores oficiales",
       "collaborators": "Colaboradores",
-      "since": "{{year}}"
+      "other": "Otros acuerdos",
+      "timeline": "Vigencia de acuerdos verificados",
+      "until": "Hasta {{year}}",
+      "roles": {
+        "principal": "Patrocinador principal",
+        "technical": "Proveedor técnico",
+        "official": "Patrocinador oficial",
+        "collaborator": "Colaborador",
+        "other": "Acuerdo"
+      }
     },
     "titulos": {
       "empty": "No hay títulos documentados.",

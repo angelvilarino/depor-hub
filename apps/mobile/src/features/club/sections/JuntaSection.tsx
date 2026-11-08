@@ -10,88 +10,142 @@ import { radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { MutedText, SectionTitle } from './ui';
 
+function initialsFor(name: string) {
+  const words = name.trim().split(/\s+/).filter(Boolean);
+  return words.slice(0, 2).map((word) => Array.from(word)[0] ?? '').join('').toLocaleUpperCase();
+}
+
+function PersonNode({
+  name,
+  role,
+  onPress,
+}: {
+  name: string;
+  role: string;
+  onPress?: () => void;
+}) {
+  const { colors } = useTheme();
+  const content = (
+    <>
+      <View
+        accessibilityElementsHidden
+        importantForAccessibility="no-hide-descendants"
+        style={[styles.avatar, { backgroundColor: colors.primary }]}
+      >
+        <Text style={{ color: colors.onPrimary, fontSize: 14, fontWeight: '800' }}>
+          {initialsFor(name)}
+        </Text>
+      </View>
+      <View style={styles.personText}>
+        <Text style={{ color: colors.textMuted, fontSize: 13, fontWeight: '600' }}>{role}</Text>
+        <Text style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>{name}</Text>
+      </View>
+      {onPress ? <Ionicons name="chevron-forward" size={20} color={colors.textMuted} /> : null}
+    </>
+  );
+
+  if (onPress) {
+    return (
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`${role}: ${name}`}
+        onPress={onPress}
+        style={({ pressed }) => [styles.personNode, pressed && { opacity: 0.7 }]}
+      >
+        {content}
+      </Pressable>
+    );
+  }
+
+  return (
+    <View accessible accessibilityLabel={`${role}: ${name}`} style={styles.personNode}>
+      {content}
+    </View>
+  );
+}
+
+function Connector() {
+  const { colors } = useTheme();
+  return <View accessibilityElementsHidden style={[styles.connector, { backgroundColor: colors.border }]} />;
+}
+
 export function JuntaSection({ club }: { club: ClubT }) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const squad = useSquad();
   const coach = squad.data?.coach?.name ?? null;
   const board = club.board;
+  const hasPresident = Boolean(board?.president);
+  const hasMembers = Boolean(board?.members.length);
+  const hasDirector = Boolean(board?.sportingDirector);
+  const hasBoard = hasPresident || hasMembers || hasDirector;
 
-  if (!board && !coach) {
+  if (!hasBoard && !coach) {
     return squad.isPending ? <LoadingState /> : <EmptyState message={t('club.junta.empty')} />;
   }
 
   return (
-    <View style={{ gap: spacing.md }}>
-      {coach ? (
-        <Card>
-          <SectionTitle>{t('club.junta.coach')}</SectionTitle>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={t('club.junta.openCoach', { name: coach })}
-            onPress={() => router.push('/coach')}
-            style={styles.person}
-          >
-            <Text style={{ color: colors.text, fontSize: 17, fontWeight: '700', flex: 1 }}>
-              {coach}
+    <Card>
+      <SectionTitle>{t('club.junta.title')}</SectionTitle>
+      <View style={styles.orgChart}>
+        {board?.president ? <PersonNode name={board.president} role={t('club.junta.president')} /> : null}
+        {hasPresident && (hasMembers || hasDirector || coach) ? <Connector /> : null}
+        {hasMembers ? (
+          <>
+            <Text accessibilityRole="header" style={{ color: colors.textMuted, fontSize: 13, fontWeight: '700' }}>
+              {t('club.junta.members')}
             </Text>
-            <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
-          </Pressable>
-        </Card>
-      ) : null}
-
-      {board ? (
-        <Card>
-          <SectionTitle>{t('club.junta.title')}</SectionTitle>
-          {board.president ? (
-            <View style={{ gap: 2 }}>
-              <Text style={{ color: colors.textMuted, fontSize: 13, fontWeight: '600' }}>
-                {t('club.junta.president')}
-              </Text>
-              <Text style={{ color: colors.text, fontSize: 17, fontWeight: '800' }}>
-                {board.president}
-              </Text>
-            </View>
-          ) : null}
-          {board.members.length > 0 ? (
-            <View style={{ gap: spacing.sm }}>
-              <Text style={{ color: colors.textMuted, fontSize: 13, fontWeight: '600' }}>
-                {t('club.junta.members')}
-              </Text>
-              {board.members.map((member) => (
-                <View key={`${member.name}-${member.role ?? ''}`} style={styles.member}>
-                  <Text style={{ color: colors.text, fontSize: 15, fontWeight: '600' }}>
-                    {member.name}
-                  </Text>
-                  {member.role ? (
-                    <Text style={{ color: colors.textMuted, fontSize: 13 }}>{member.role}</Text>
-                  ) : null}
-                </View>
+            <View style={[styles.members, { borderLeftColor: colors.border }]}>
+              {(board?.members ?? []).map((member) => (
+                <PersonNode
+                  key={`${member.name}-${member.role ?? ''}`}
+                  name={member.name}
+                  role={member.role ?? t('club.junta.member')}
+                />
               ))}
             </View>
-          ) : null}
-          {board.sportingDirector ? (
-            <View style={{ gap: 2 }}>
-              <Text style={{ color: colors.textMuted, fontSize: 13, fontWeight: '600' }}>
-                {t('club.junta.sportingDirector')}
-              </Text>
-              <Text style={{ color: colors.text, fontSize: 15 }}>{board.sportingDirector}</Text>
-            </View>
-          ) : null}
-          {board.note ? <MutedText>{board.note}</MutedText> : null}
-        </Card>
-      ) : null}
-    </View>
+          </>
+        ) : null}
+        {hasMembers && (hasDirector || coach) ? <Connector /> : null}
+        {board?.sportingDirector ? (
+          <PersonNode name={board.sportingDirector} role={t('club.junta.sportingDirector')} />
+        ) : null}
+        {hasDirector && coach ? <Connector /> : null}
+        {coach ? (
+          <PersonNode
+            name={coach}
+            role={t('club.junta.coach')}
+            onPress={() => router.push('/coach')}
+          />
+        ) : null}
+      </View>
+      {board?.note ? <MutedText>{board.note}</MutedText> : null}
+    </Card>
   );
 }
 
 const styles = StyleSheet.create({
-  person: {
-    minHeight: 44,
+  orgChart: { gap: spacing.sm },
+  connector: { width: 2, height: spacing.md, marginLeft: 19 },
+  members: {
+    gap: spacing.xs,
+    borderLeftWidth: 2,
+    borderRadius: radius.sm,
+    paddingLeft: spacing.md,
+  },
+  personNode: {
+    minHeight: 48,
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
     borderRadius: radius.sm,
   },
-  member: { gap: 2 },
+  personText: { flex: 1, gap: 2 },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: radius.pill,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

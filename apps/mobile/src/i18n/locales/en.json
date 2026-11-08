@@ -764,6 +764,7 @@
       "title": "Board of directors",
       "president": "President",
       "members": "Board",
+      "member": "Board member",
       "sportingDirector": "Sporting director"
     },
     "patrocinadores": {
@@ -774,7 +775,16 @@
       "sinceLabel": "Since",
       "official": "Official sponsors",
       "collaborators": "Partners",
-      "since": "{{year}}"
+      "other": "Other agreements",
+      "timeline": "Verified agreement tenures",
+      "until": "Until {{year}}",
+      "roles": {
+        "principal": "Main sponsor",
+        "technical": "Kit supplier",
+        "official": "Official sponsor",
+        "collaborator": "Partner",
+        "other": "Agreement"
+      }
     },
     "titulos": {
       "empty": "No honours have been documented.",

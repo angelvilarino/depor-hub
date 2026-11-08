@@ -182,8 +182,8 @@ La ficha del club se cura a mano en `data/manual/club.yml`; cada bloque lleva su
 | Estadio y aforo | [Página oficial del Estadio Abanca-Riazor](https://www.rcdeportivo.es/es/estadio-abanca-riazor); capacidad contrastada con [Wikipedia](https://es.wikipedia.org/wiki/Estadio_de_Riazor) | **32.490 localidades sentadas**. Los 34.611 mencionados en notas anteriores no tienen fuente identificada y no se publican; tampoco se suman los sectores específicos sin confirmar que sean adicionales |
 | Museo, visitas y entradas | `ticketing.museo.rcdeportivo.es` y `rcdeportivo.es/es/museo-and-tour` | Horarios no verificados: no se calcula estado Abierto/Cerrado. La galería solo muestra fotos verificadas con crédito |
 | Ciudad deportiva | Proyecto y datos publicados del Dépor Training Center en Abegondo | 140.000 m², 8 campos de tamaño Riazor y 3 de calentamiento, diseño Populous. Sin coordenadas verificadas: `coordinates: null` |
-| Junta y organigrama | Comunicaciones oficiales del club | El entrenador **no se duplica**: la app lo lee de `squad.json` y enlaza a `/coach` |
-| Patrocinadores | Web y camisetas oficiales de la temporada | ABANCA principal, Nike técnico y lista de patrocinadores oficiales; no se incluyen acuerdos no publicados |
+| Junta y organigrama | Comunicaciones oficiales del club y `squad.json` | Organigrama presidencial → consejo publicado → dirección deportiva (solo si consta) → entrenador. El entrenador se lee de `squad.json` y enlaza a `/coach`; las iniciales sustituyen a fotos ausentes |
+| Patrocinadores | Web oficial y camisetas oficiales de la temporada | Rejilla por principal, proveedor técnico, oficiales y colaboradores, con monogramas sin logos. La cronología solo muestra tenencias con fecha y estado verificados: Nike desde 2026; ABANCA no tiene fecha de inicio verificada |
 | Títulos y rivalidades | Palmarés y hechos publicados por el club y prensa | Se agrupan por competición y año; no se añaden títulos no documentados |
 | Enlaces y redes | Canales oficiales verificados | WhatsApp y twitch solo si el club los publica; el resto queda `null` |
 
