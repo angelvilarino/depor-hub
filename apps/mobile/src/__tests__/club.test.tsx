@@ -372,10 +372,21 @@ describe('secciones del Club', () => {
 
   it('muestra el balance enlazado del derbi gallego', async () => {
     mockParams = { section: 'rivalidades' };
+    const linking = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined);
     await render(<ClubSectionScreen />);
     expect(screen.getByText('RC Celta de Vigo')).toBeTruthy();
     expect(screen.getAllByText('Balance en BDFutbol').length).toBeGreaterThan(0);
     expect(screen.getByText('Goles: 194 a favor · 202 en contra · BDFutbol')).toBeTruthy();
+    expect(screen.getAllByText('Enfrentamientos').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Celta de Vigo 1–1 Deportivo de La Coruña').length).toBeGreaterThan(0);
+    expect(screen.queryByText('Partidos míticos')).toBeNull();
+    fireEvent.press(screen.getAllByRole('link', { name: 'Balance en BDFutbol' })[0]!);
+    await waitFor(() => {
+      expect(linking).toHaveBeenCalledWith(
+        'https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=11',
+      );
+    });
+    linking.mockRestore();
   });
 });
 
