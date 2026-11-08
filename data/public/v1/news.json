@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T15:32:39Z",
+  "updatedAt": "2026-11-08T16:04:06Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "bb8ab90e0a0f491b",
+      "title": "El detalle de Bil Nsongo con una leyenda del fútbol de Camerún",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/08/detalle-bil-nsongo-leyenda-futbol-camerun/00031794151895879880117.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-08T15:59:00Z",
+      "kind": "article",
+      "summary": "El delantero del Deportivo regaló al mítico portero del Espanyol una camiseta suya tras el partido en el RCDE Stadium",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/oPL4Y9dltslLPmvaMQtP2VsRnIQ=/768x/2026/11/08/00121794151856578246122/Foto/NBTNK.jpg",
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "53b2962f93107fbb",
       "title": "Noé Carrillo, de estreno con golazo en la visita del Fabril al Arenas de Getxo (VÍDEO)",
@@ -2151,20 +2166,6 @@
       "thumbnailUrl": null,
       "tags": [
         "aficion",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "b9831a879307b704",
-      "title": "Noé Carrillo: «Para ganarme un puesto en la plantilla tengo que dar uno o dos pasos más»",
-      "url": "https://riazor.org/noe-carrillo-ganarme-plantilla-uno-dos-pasos-mas",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-30T06:00:08Z",
-      "kind": "article",
-      "summary": "Noé Carrillo fue protagonista en la zona mixta tras su estreno en la presente temporada con el primer equipo, en la primera ronda de Copa…",
-      "thumbnailUrl": null,
-      "tags": [
         "partido"
       ],
       "alsoIn": []
