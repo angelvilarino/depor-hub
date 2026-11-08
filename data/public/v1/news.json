@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T08:05:50Z",
+  "updatedAt": "2026-11-08T10:04:07Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "dd153a733680e186",
+      "title": "El Fabril visita a un Arenas Club colista pero con dos victorias seguidas",
+      "url": "https://riazor.org/el-fabril-visita-a-un-arenas-club-colista-pero-con-dos-victorias-seguidas",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-08T10:00:21Z",
+      "kind": "article",
+      "summary": "El Fabril juega el domingo 8 de noviembre a las 12:00 en Fadura ante el Arenas Club, colista con 8 puntos y dos triunfos seguidos. Bajas…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "fb3979df0fce2f2f",
       "title": "Leo Román le devuelve el abrazo al Dépor",
@@ -2159,20 +2174,6 @@
       "summary": "La inteligencia de Noé Carrillo, la pelea de Kevin y el guante de Angeliño en los córneres también fueron determinantes",
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/IM647Bcf4QCdld-G1eVNtcCW26Y=/768x/2026/10/29/00121793312462049571229/Foto/efe_20261029_204710492.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "1f7ecc6a1b6bcabe",
-      "title": "El Dépor pasa de ronda ante un digno Auriense",
-      "url": "https://marca.com/futbol/copa-rey/cronica/2026/10/29/depor-pasa-ronda-digno-auriense.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-10-29T21:58:50Z",
-      "kind": "article",
-      "summary": "Los ourensanos, cinco categorías menos que los coruñeses, disputaron un meritorio partido que se decidió con un doblete de Jensen y otro…",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/10/30/gTSPg1guzM5wlH5MV.jpeg",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
