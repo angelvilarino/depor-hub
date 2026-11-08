@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
-import { HeroHeader, PhotoGallery } from '@/components/club/Editorial';
+import { ConfidenceBadge, HeroHeader, PhotoGallery, StatCounter, Timeline } from '@/components/club/Editorial';
 import { Card } from '@/components/Screen';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
@@ -10,7 +10,8 @@ import { capacityShare, formatDate, formatSeats } from '@/features/club/logic';
 import { openMapLocation } from '@/features/club/openMap';
 import { spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
-import { Bullets, InfoRow, MutedText, SectionTitle } from './ui';
+import { openExternal } from '@/utils/openExternal';
+import { InfoRow, MutedText, SectionTitle } from './ui';
 
 export function EstadioSection({ club }: { club: ClubT }) {
   const { t, i18n } = useTranslation();
@@ -23,9 +24,20 @@ export function EstadioSection({ club }: { club: ClubT }) {
   const locale = i18n.language;
   const opened = formatDate(stadium.openedOn, locale);
   const capacity = stadium.capacity;
-  const total = capacity ? formatSeats(capacity.total, locale) : null;
   const coordinates = stadium.coordinates;
   const verifiedPhotos = stadium.media.filter((media) => media.kind === 'photo' && media.status === 'verified');
+  const verifiedAlternatives = stadium.capacityAlternatives.filter((alternative) => Boolean(alternative.sourceUrl));
+  const capacitySourceUrl = capacity?.sourceUrl;
+  const timelineEntries = [
+    ...(stadium.openedOn
+      ? [{ year: stadium.openedOn.slice(0, 4), title: t('club.estadio.inauguration'), detail: opened }]
+      : []),
+    ...stadium.renovations.map((detail) => ({
+      year: detail.match(/^\d{4}/)?.[0] ?? t('club.estadio.unknownYear'),
+      title: t('club.estadio.renovationEntry'),
+      detail,
+    })),
+  ];
 
   const openMap = async () => {
     if (!coordinates) return;
@@ -51,7 +63,7 @@ export function EstadioSection({ club }: { club: ClubT }) {
         <InfoRow label={t('club.estadio.pitch')} value={stadium.pitch} />
         <InfoRow label={t('club.estadio.dimensions')} value={stadium.dimensions} />
         {coordinates ? (
-          <Button label={t('club.estadio.openMap')} onPress={() => void openMap()} />
+          <Button label={t('club.estadio.visit')} onPress={() => void openMap()} />
         ) : null}
         {mapFailed ? <MutedText>{t('club.estadio.mapError')}</MutedText> : null}
       </Card>
@@ -60,53 +72,93 @@ export function EstadioSection({ club }: { club: ClubT }) {
         <SectionTitle>{t('club.estadio.capacity')}</SectionTitle>
         {capacity ? (
           <View style={{ gap: spacing.md }}>
-            <Text
-              accessibilityLabel={t('club.estadio.capacityTotal', { seats: total ?? '' })}
-              style={{ color: colors.text, fontSize: 32, fontWeight: '800' }}
-            >
-              {total}
-            </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 14 }}>
-              {t('club.estadio.capacityTotal', { seats: total ?? '' })}
-            </Text>
-            <View style={{ gap: spacing.sm }}>
-              {capacity.breakdown.map((zone) => {
-                const share = capacityShare(zone.seats, capacity.total);
-                return (
-                  <View key={zone.zone} style={{ gap: spacing.xs }}>
-                    <View style={styles.zoneRow}>
-                      <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }}>
-                        {zone.zone}
-                      </Text>
-                      <Text style={{ color: colors.textMuted, fontSize: 14 }}>
-                        {t('club.estadio.zoneValue', {
-                          seats: formatSeats(zone.seats, locale),
-                          share: Math.round(share),
-                        })}
-                      </Text>
+            <StatCounter value={capacity.total} label={t('club.estadio.spectators')} locale={locale} />
+            {capacity.breakdown.length > 1 ? (
+              <View style={{ gap: spacing.sm }}>
+                {capacity.breakdown.map((zone) => {
+                  const share = capacityShare(zone.seats, capacity.total);
+                  return (
+                    <View key={zone.zone} style={{ gap: spacing.xs }}>
+                      <View style={styles.zoneRow}>
+                        <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }}>
+                          {zone.zone}
+                        </Text>
+                        <Text style={{ color: colors.textMuted, fontSize: 14 }}>
+                          {t('club.estadio.zoneValue', {
+                            seats: formatSeats(zone.seats, locale),
+                            share: Math.round(share),
+                          })}
+                        </Text>
+                      </View>
+                      <View style={[styles.barTrack, { backgroundColor: colors.background }]}>
+                        <View
+                          style={[styles.barFill, { backgroundColor: colors.primary, width: `${share}%` }]}
+                        />
+                      </View>
                     </View>
-                    <View style={[styles.barTrack, { backgroundColor: colors.background }]}>
-                      <View
-                        style={[styles.barFill, { backgroundColor: colors.primary, width: `${share}%` }]}
-                      />
-                    </View>
-                  </View>
-                );
-              })}
-            </View>
+                  );
+                })}
+              </View>
+            ) : null}
             <Text style={{ color: colors.textMuted, fontSize: 13 }}>
               {t('club.estadio.capacityNote')}
             </Text>
+            {capacitySourceUrl ? (
+              <Button
+                label={t('club.estadio.capacitySource', {
+                  confidence: t(`common.confidenceLevel.${capacity.confidence}`),
+                })}
+                variant="secondary"
+                onPress={() => {
+                  void openExternal(capacitySourceUrl).then((opened) => {
+                    if (!opened) Alert.alert(t('club.estadio.sourceError'));
+                  });
+                }}
+              />
+            ) : null}
+            <ConfidenceBadge label={t('club.estadio.capacityConfidence')} status={capacity.status} />
           </View>
         ) : (
           <MutedText>{t('club.estadio.noCapacity')}</MutedText>
         )}
       </Card>
 
-      {stadium.renovations.length > 0 ? (
+      {verifiedAlternatives.length > 0 ? (
         <Card>
-          <SectionTitle>{t('club.estadio.renovations')}</SectionTitle>
-          <Bullets items={stadium.renovations} />
+          <SectionTitle>{t('club.estadio.capacityAlternatives')}</SectionTitle>
+          {verifiedAlternatives.map((alternative) => {
+            const sourceUrl = alternative.sourceUrl;
+            return (
+              <View key={`${alternative.label}-${alternative.total}`} style={{ gap: spacing.xs }}>
+                <Text style={{ color: colors.text, fontWeight: '700' }}>
+                  {alternative.label} · {formatSeats(alternative.total, locale)}
+                </Text>
+                {alternative.note ? <MutedText>{alternative.note}</MutedText> : null}
+                <ConfidenceBadge
+                  label={t('club.estadio.capacityConfidence')}
+                  status={alternative.status}
+                />
+                {sourceUrl ? (
+                  <Button
+                    label={t('club.estadio.alternativeSource')}
+                    variant="secondary"
+                    onPress={() => {
+                      void openExternal(sourceUrl).then((opened) => {
+                        if (!opened) Alert.alert(t('club.estadio.sourceError'));
+                      });
+                    }}
+                  />
+                ) : null}
+              </View>
+            );
+          })}
+        </Card>
+      ) : null}
+
+      {timelineEntries.length > 0 ? (
+        <Card>
+          <SectionTitle>{t('club.estadio.history')}</SectionTitle>
+          <Timeline entries={timelineEntries} />
         </Card>
       ) : null}
 

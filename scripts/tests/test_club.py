@@ -44,23 +44,30 @@ def test_real_club_validates_and_publishes_expected_sections():
     assert club.links.website == "https://www.rcdeportivo.es"
 
 
-def test_capacity_total_is_the_sum_of_every_zone():
+def test_capacity_is_official_total_and_does_not_double_count_areas():
     capacity = real_club().stadium.capacity
     assert capacity is not None
-    assert capacity.total == 33225
+    assert capacity.total == 32490
     assert capacity.total == sum(zone.seats for zone in capacity.breakdown)
     assert {zone.zone: zone.seats for zone in capacity.breakdown} == {
-        "Gradas": 32490,
-        "Palco de honor": 141,
-        "Palcos VIP": 385,
-        "Área 1906": 113,
-        "Medios": 96,
+        "Localidades sentadas": 32490,
     }
+    assert capacity.source_url == "https://www.rcdeportivo.es/es/estadio-abanca-riazor"
+    assert capacity.confidence == "cross_checked"
+    assert capacity.status == "verified"
 
 
 def test_capacity_contract_rejects_a_broken_breakdown():
     with pytest.raises(ValidationError, match="suma del desglose"):
         m.Capacity(total=10, breakdown=[m.CapacityZone(zone="Gradas", seats=9)])
+
+
+def test_added_capacity_and_museum_fields_keep_legacy_defaults():
+    capacity = m.Capacity(total=0)
+    assert capacity.source_url is None
+    assert capacity.confidence == "single_source"
+    assert capacity.status == "pending_verification"
+    assert m.Museum().media == []
 
 
 def test_anthem_lyrics_only_publish_the_block_after_letra():
@@ -97,7 +104,7 @@ def test_read_lyrics_ignores_comments_and_empty_files(tmp_path: Path):
     assert read_lyrics(with_marker) == "Estrofa uno\n\nEstrofa dos"
 
 
-def test_contract_has_no_source_confidence_or_verification_fields():
+def test_contract_publishes_provenance_only_for_capacity():
     payload = real_club().model_dump(by_alias=True, mode="json")
 
     def keys(value):
@@ -108,6 +115,14 @@ def test_contract_has_no_source_confidence_or_verification_fields():
         elif isinstance(value, list):
             for child in value:
                 yield from keys(child)
+
+    capacity = payload["stadium"]["capacity"]
+    assert capacity["sourceUrl"] == "https://www.rcdeportivo.es/es/estadio-abanca-riazor"
+    assert capacity["confidence"] == "cross_checked"
+    assert capacity["status"] == "verified"
+    capacity.pop("sourceUrl")
+    capacity.pop("confidence")
+    capacity.pop("status")
 
     forbidden = {"source", "confidence", "verification", "verified", "provenance"}
     assert forbidden.isdisjoint(set(keys(payload)))

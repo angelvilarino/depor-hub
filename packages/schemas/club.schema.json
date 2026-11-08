@@ -333,6 +333,38 @@
           "title": "Breakdown",
           "type": "array"
         },
+        "confidence": {
+          "default": "single_source",
+          "enum": [
+            "verified",
+            "cross_checked",
+            "single_source",
+            "estimated"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "status": {
+          "default": "pending_verification",
+          "enum": [
+            "verified",
+            "pending_verification"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
         "total": {
           "minimum": 0,
           "title": "Total",
@@ -1145,6 +1177,13 @@
           ],
           "default": null,
           "title": "Location"
+        },
+        "media": {
+          "items": {
+            "$ref": "#/$defs/MediaRef"
+          },
+          "title": "Media",
+          "type": "array"
         },
         "name": {
           "anyOf": [

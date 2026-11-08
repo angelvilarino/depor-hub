@@ -9,8 +9,9 @@
 # En «Voa» solo se publica el bloque posterior a la línea `Letra`; el resto del
 # fichero (créditos) se refleja en `credits`.
 #
-# Capacidad de Riazor: 32.490 gradas + 141 palco de honor + 385 palcos VIP +
-# 113 Área 1906 + 96 medios = 33.225. La suma se valida en el contrato.
+# El club publica 32.490 espectadores, todos sentados. También desglosa
+# localidades de palco/VIP/Área 1906 y puestos de medios, pero no aclara si se
+# suman al aforo; no se agregan ni se presentan como zonas independientes.
 
 identity:
   official_name: Real Club Deportivo de La Coruña, S.A.D.
@@ -662,18 +663,13 @@ stadium:
   transport: null
   parking: null
   capacity:
-    total: 33225
+    total: 32490
     breakdown:
-      - zone: Gradas
+      - zone: Localidades sentadas
         seats: 32490
-      - zone: Palco de honor
-        seats: 141
-      - zone: Palcos VIP
-        seats: 385
-      - zone: Área 1906
-        seats: 113
-      - zone: Medios
-        seats: 96
+    source_url: https://www.rcdeportivo.es/es/estadio-abanca-riazor
+    confidence: cross_checked
+    status: verified
   description: >-
     Estadio municipal inaugurado el 29 de octubre de 1944 y conocido como
     Abanca-Riazor desde 2017. Acoge los partidos del primer equipo y el museo del club.
@@ -702,6 +698,7 @@ museum:
     Recorrido por la historia del club en las salas Blanca, Dorada y Azul, con más
     de 250 piezas. Incluye visita guiada, libre y gratuita.
   schedule: null
+  media: []
   prices:
     - label: Tour guiado
       price_eur: null

@@ -129,7 +129,10 @@
           "zone": "Zona VIP",
           "seats": 40
         }
-      ]
+      ],
+      "sourceUrl": "https://example.org/estadio",
+      "confidence": "cross_checked",
+      "status": "verified"
     },
     "description": "Estadio sintético.",
     "schedule": {
@@ -186,6 +189,7 @@
     "location": "Estadio de ejemplo",
     "description": "Museo sintético.",
     "schedule": "Todos los días",
+    "media": [],
     "prices": [
       {
         "label": "Entrada general",

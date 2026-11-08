@@ -27,25 +27,24 @@ const read = (name: string): unknown =>
 const club = Club.parse(read('club.json'));
 
 describe('lógica del Club', () => {
-  it('valida el club.json real y sus cifras de aforo', () => {
+  it('valida el club.json real y el aforo verificado del estadio', () => {
     expect(club.stadium?.capacity).not.toBeNull();
     const capacity = club.stadium!.capacity!;
-    expect(capacity.total).toBe(33225);
+    expect(capacity.total).toBe(32490);
     expect(capacitySum(capacity)).toBe(capacity.total);
     expect(capacity.breakdown.map((zone) => zone.zone)).toEqual([
-      'Gradas',
-      'Palco de honor',
-      'Palcos VIP',
-      'Área 1906',
-      'Medios',
+      'Localidades sentadas',
     ]);
+    expect(capacity.sourceUrl).toBe('https://www.rcdeportivo.es/es/estadio-abanca-riazor');
+    expect(capacity.confidence).toBe('cross_checked');
+    expect(capacity.status).toBe('verified');
   });
 
   it('calcula el porcentaje de cada zona sin salirse de 0-100', () => {
-    expect(capacityShare(32490, 33225)).toBeCloseTo(97.79, 1);
-    expect(capacityShare(0, 33225)).toBe(0);
+    expect(capacityShare(32490, 32490)).toBe(100);
+    expect(capacityShare(0, 32490)).toBe(0);
     expect(capacityShare(10, 0)).toBe(0);
-    expect(capacityShare(40000, 33225)).toBe(100);
+    expect(capacityShare(40000, 32490)).toBe(100);
   });
 
   it('ordena temporadas y agrupa por décadas de la más reciente a la más antigua', () => {

@@ -1,13 +1,13 @@
 # ADR 0026 — Club: contrato, imágenes locales e himnos
 
-- **Estado:** aceptado
+- **Estado:** aceptado; aforo/procedencia supersedidos parcialmente por ADR 0034
 - **Fecha:** 2026-11-02
 
 ## Contexto
 
 H7 cierra la pestaña Club con identidad, himnos, escudo histórico, equipaciones, estadio, museo, ciudad deportiva, junta, patrocinadores, títulos, rivalidades y enlaces. La app necesitaba datos que hasta ahora no tenían contrato (`club.json`) y una forma de servir imágenes propias sin depender de dominios externos ni reutilizar la capa de escudos remotos de H4. Además, las letras de los himnos se copian de páginas del club con formato libre y no deben publicarse con créditos mezclados ni con datos inventados.
 
-La ficha es editorial y no lleva procedencia visible: el usuario pidió expresamente que el contrato y la interfaz no muestren fuente, confianza ni estado de verificación.
+La ficha es editorial y originalmente no llevaba procedencia visible: el usuario pidió expresamente que el contrato y la interfaz no mostrasen fuente, confianza ni estado de verificación. La política del aforo se actualizó después en ADR 0034.
 
 ## Decisión
 
@@ -32,7 +32,7 @@ Reglas del contrato:
 
 - Todo campo desconocido es `null` (o lista vacía) y nunca se deduce. No se inventan dorsales, fechas, patrocinadores, equipaciones ni cifras.
 - No existen campos `source`, `confidence`, `verified`, `provenance` ni equivalentes. La trazabilidad vive en comentarios de `data/manual/club.yml`, en `data/manual/club_images.yml` y en `docs/sources.md`.
-- `Capacity.total` se valida contra la suma de `breakdown`; el modelo y la app comparten la misma garantía. Se publica **33.225** = 32.490 gradas + 141 palco de honor + 385 palcos VIP + 113 Área 1906 + 96 medios.
+- `Capacity.total` se valida contra la suma de `breakdown`; el modelo y la app comparten la misma garantía. La cifra original de **33.225** fue retirada al confirmarse que podía sumar sectores ya incluidos en el total oficial. El valor vigente (**32.490**, con fuente y confianza visibles) se define en ADR 0034.
 - `season` debe cumplir `AAAA-AA`. El orden de publicación es estable y ascendente; la app agrupa por década y ofrece un selector rápido.
 - `updatedAt` solo cambia si cambia el contenido. `publish_club` compara el JSON anterior ignorando `updatedAt`, reutiliza la marca previa y devuelve `changed=false` cuando no hay diferencias.
 - `club.json` está en `FILES` para validarse y publicarse, pero se excluye del `dataHash` deportivo (`SPORTS_FILES`): un cambio editorial del club no invalida la caché de clasificación, plantilla o partidos.

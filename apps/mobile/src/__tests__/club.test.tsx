@@ -16,6 +16,7 @@ const titlesData = JSON.parse(fs.readFileSync(path.join(dataDir, 'titles.json'),
 const rivalriesData = JSON.parse(fs.readFileSync(path.join(dataDir, 'rivalries.json'), 'utf8'));
 
 let mockParams: Record<string, string> = {};
+let mockReducedMotion = false;
 const mockPush = jest.fn();
 const mockUseClub = jest.fn();
 const mockUseSquad = jest.fn();
@@ -46,6 +47,9 @@ jest.mock('@/theme/useTheme', () => {
   const { lightColors } = jest.requireActual('@/theme/tokens');
   return { useTheme: () => ({ scheme: 'light', colors: lightColors }) };
 });
+jest.mock('@/theme/useReducedMotion', () => ({
+  useReducedMotion: () => mockReducedMotion,
+}));
 
 const query = (data: unknown) => ({
   data,
@@ -69,6 +73,7 @@ beforeAll(async () => {
 
 beforeEach(() => {
   mockParams = {};
+  mockReducedMotion = false;
   mockPush.mockReset();
   mockUseClub.mockReset();
   mockUseSquad.mockReset();
@@ -200,19 +205,104 @@ describe('secciones del Club', () => {
     expect(screen.getAllByText('Ilustración', { includeHiddenElements: true }).length).toBeGreaterThan(0);
   });
 
-  it('muestra el aforo desglosado y abre el mapa nativo', async () => {
+  it('muestra el aforo verificado, su fuente, la historia y abre el mapa nativo', async () => {
     mockParams = { section: 'estadio' };
+    mockReducedMotion = true;
     const linking = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined);
     await render(<ClubSectionScreen />);
 
-    expect(screen.getByText('33.225')).toBeTruthy();
-    expect(screen.getByText('Gradas')).toBeTruthy();
-    expect(screen.getByText('Palco de honor')).toBeTruthy();
+    expect(screen.getByLabelText('32.490 espectadores')).toBeTruthy();
+    expect(screen.getByText('32.490')).toBeTruthy();
+    expect(screen.getByText('Fuente oficial · Confianza: contrastado')).toBeTruthy();
+    expect(screen.getByText('1944')).toBeTruthy();
+    expect(screen.getByText('Inauguración de Riazor')).toBeTruthy();
+    expect(screen.queryByText('Cifras alternativas publicadas')).toBeNull();
 
-    fireEvent.press(screen.getByText('Abrir en el mapa'));
+    fireEvent.press(screen.getAllByRole('button', { name: 'Cómo llegar' })[0]!);
     await waitFor(() => expect(linking).toHaveBeenCalled());
     expect(String(linking.mock.calls[0]?.[0])).toContain('maps.apple.com');
     linking.mockRestore();
+  });
+
+  it('presenta cifras alternativas solo si incluyen fuente', async () => {
+    mockParams = { section: 'estadio' };
+    mockUseClub.mockReturnValueOnce(
+      query({
+        ...clubData,
+        stadium: {
+          ...clubData.stadium!,
+          capacityAlternatives: [
+            {
+              label: 'Configuración sintética',
+              total: 20000,
+              note: 'Cifra exclusivamente sintética.',
+              sourceUrl: 'https://example.org/capacity',
+              status: 'pending_verification',
+            },
+            {
+              label: 'Sin fuente',
+              total: 35000,
+              note: null,
+              sourceUrl: null,
+              status: 'pending_verification',
+            },
+          ],
+        },
+      }),
+    );
+    await render(<ClubSectionScreen />);
+
+    expect(screen.getByText('Cifras alternativas publicadas')).toBeTruthy();
+    expect(screen.getByText('Configuración sintética · 20.000')).toBeTruthy();
+    expect(screen.queryByText('Sin fuente · 35.000')).toBeNull();
+  });
+
+  it('usa la ubicación del estadio para llegar al museo y oculta el horario desconocido', async () => {
+    mockParams = { section: 'museo' };
+    const linking = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined);
+    await render(<ClubSectionScreen />);
+
+    expect(screen.queryByText('Horario')).toBeNull();
+    expect(screen.queryByText('Abierto')).toBeNull();
+    expect(screen.queryByText('Cerrado')).toBeNull();
+    fireEvent.press(screen.getByLabelText('Cómo llegar'));
+    await waitFor(() => expect(linking).toHaveBeenCalled());
+    expect(String(linking.mock.calls[0]?.[0])).toContain('maps.apple.com');
+    linking.mockRestore();
+  });
+
+  it('muestra en el museo solo fotos verificadas con crédito y visor', async () => {
+    mockParams = { section: 'museo' };
+    const photo = {
+      url: 'https://example.org/museum.jpg',
+      kind: 'photo',
+      origin: 'club_official',
+      status: 'verified',
+      credit: 'Foto de ejemplo',
+      sourceUrl: 'https://example.org/museum',
+    };
+    const pendingPhoto = {
+      ...photo,
+      url: 'https://example.org/unverified.jpg',
+      status: 'pending_verification',
+      credit: 'Foto sin verificar',
+    };
+    mockUseClub.mockReturnValueOnce(
+      query({
+        ...clubData,
+        museum: { ...clubData.museum!, media: [photo, pendingPhoto] },
+      }),
+    );
+    await render(<ClubSectionScreen />);
+
+    fireEvent.press(screen.getByLabelText('Ver imagen ampliada de Foto de ejemplo'));
+    expect(screen.queryByLabelText('Ver imagen ampliada de Foto sin verificar')).toBeNull();
+    expect(screen.getAllByLabelText('Crédito de imagen: Foto de ejemplo').length).toBeGreaterThan(0);
+    await waitFor(() => {
+      expect(screen.getByTestId('club-photo-fullscreen-viewer')).toBeTruthy();
+    });
+    fireEvent.press(screen.getByTestId('club-photo-fullscreen-close-action'));
+    await waitFor(() => expect(screen.queryByTestId('club-photo-fullscreen-viewer')).toBeNull());
   });
 
   it('toma el entrenador de squad.json en la junta directiva', async () => {

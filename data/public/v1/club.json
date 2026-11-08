@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T17:31:39Z",
+  "updatedAt": "2026-11-08T17:39:22Z",
   "identity": {
     "officialName": "Real Club Deportivo de La Coruña, S.A.D.",
     "shortName": "RC Deportivo",
@@ -1319,29 +1319,16 @@
     "transport": null,
     "parking": null,
     "capacity": {
-      "total": 33225,
+      "total": 32490,
       "breakdown": [
         {
-          "zone": "Gradas",
+          "zone": "Localidades sentadas",
           "seats": 32490
-        },
-        {
-          "zone": "Palco de honor",
-          "seats": 141
-        },
-        {
-          "zone": "Palcos VIP",
-          "seats": 385
-        },
-        {
-          "zone": "Área 1906",
-          "seats": 113
-        },
-        {
-          "zone": "Medios",
-          "seats": 96
         }
-      ]
+      ],
+      "sourceUrl": "https://www.rcdeportivo.es/es/estadio-abanca-riazor",
+      "confidence": "cross_checked",
+      "status": "verified"
     },
     "description": "Estadio municipal inaugurado el 29 de octubre de 1944 y conocido como Abanca-Riazor desde 2017. Acoge los partidos del primer equipo y el museo del club.",
     "schedule": null,
@@ -1370,6 +1357,7 @@
     "location": "Estadio Abanca-Riazor",
     "description": "Recorrido por la historia del club en las salas Blanca, Dorada y Azul, con más de 250 piezas. Incluye visita guiada, libre y gratuita.",
     "schedule": null,
+    "media": [],
     "prices": [
       {
         "label": "Tour guiado",

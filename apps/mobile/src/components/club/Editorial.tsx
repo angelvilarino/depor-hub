@@ -42,7 +42,7 @@ export function SectionHeader({ title, subtitle, icon }: { title: string; subtit
   return <View style={styles.sectionHeader}>{icon ? <Ionicons name={icon} size={23} color={colors.primary} /> : null}<View style={{ flex: 1 }}><Text accessibilityRole="header" style={{ color: colors.text, fontSize: 21, fontWeight: '800' }}>{title}</Text>{subtitle ? <Text style={{ color: colors.textMuted, fontSize: 14, fontFamily: 'SourceSerif4-SemiBold' }}>{subtitle}</Text> : null}</View></View>;
 }
 
-export function StatCounter({ value, label, suffix }: { value: number; label: string; suffix?: string }) {
+export function StatCounter({ value, label, suffix, locale }: { value: number; label: string; suffix?: string; locale?: string }) {
   const reduceMotion = useReducedMotion();
   const animated = useMemo(() => new Animated.Value(0), []);
   const [shown, setShown] = useState(0);
@@ -55,7 +55,8 @@ export function StatCounter({ value, label, suffix }: { value: number; label: st
   }, [animated, reduceMotion, value]);
   const { colors } = useTheme();
   const displayed = reduceMotion ? value : shown;
-  return <View style={[styles.stat, { backgroundColor: colors.surface, borderColor: colors.border }]}><Text accessibilityLabel={`${new Intl.NumberFormat().format(value)}${suffix ?? ''} ${label}`} style={{ color: colors.primary, fontSize: 25, fontWeight: '900' }}>{new Intl.NumberFormat().format(displayed)}{suffix ?? ''}</Text><Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '600' }}>{label}</Text></View>;
+  const formatter = new Intl.NumberFormat(locale);
+  return <View style={[styles.stat, { backgroundColor: colors.surface, borderColor: colors.border }]}><Text accessibilityLabel={`${formatter.format(value)}${suffix ?? ''} ${label}`} style={{ color: colors.primary, fontSize: 25, fontWeight: '900' }}>{formatter.format(displayed)}{suffix ?? ''}</Text><Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '600' }}>{label}</Text></View>;
 }
 
 export type TimelineEntry = { year: string; title: string; detail?: string | null; category?: string };
@@ -93,13 +94,33 @@ export function PhotoGallery({ photos }: { photos: MediaRefT[] }) {
     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: spacing.sm }}>
       {usable.map((photo, index) => <GalleryThumb key={`${photo.url}-${index}`} photo={photo} label={t('club.viewImage', { name: photo.credit ?? photo.author ?? `${index + 1}` })} borderColor={colors.border} onPress={() => setSelected(photo)} />)}
     </ScrollView>
-    <Modal visible={selected !== null} transparent animationType="fade" onRequestClose={() => setSelected(null)}>
+    <Modal
+      visible={selected !== null}
+      transparent
+      animationType="fade"
+      presentationStyle="overFullScreen"
+      onRequestClose={() => setSelected(null)}
+    >
       <View style={styles.galleryBackdrop}>
-        <Pressable accessibilityRole="button" accessibilityLabel={t('common.close')} onPress={() => setSelected(null)} style={StyleSheet.absoluteFill} />
-        {selected ? <View accessibilityViewIsModal style={{ width, height: height * 0.85, justifyContent: 'center', alignItems: 'center', gap: spacing.md }}>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={t('common.close')}
+          testID="club-photo-fullscreen-close"
+          onPress={() => setSelected(null)}
+          style={StyleSheet.absoluteFill}
+        />
+        {selected ? <View accessibilityViewIsModal testID="club-photo-fullscreen-viewer" style={{ width, height: height * 0.85, justifyContent: 'center', alignItems: 'center', gap: spacing.md }}>
           <ModalPhoto key={selected.url} photo={selected} width={width - spacing.lg * 2} height={height * 0.68} />
           <MediaCredit media={selected} />
-          <Pressable accessibilityRole="button" onPress={() => setSelected(null)} style={styles.galleryClose}><Ionicons name="close" size={24} color="#fff" /><Text style={{ color: '#fff', fontWeight: '700' }}>{t('common.close')}</Text></Pressable>
+          <Pressable
+            accessibilityRole="button"
+            testID="club-photo-fullscreen-close-action"
+            onPress={() => setSelected(null)}
+            style={styles.galleryClose}
+          >
+            <Ionicons name="close" size={24} color="#fff" />
+            <Text style={{ color: '#fff', fontWeight: '700' }}>{t('common.close')}</Text>
+          </Pressable>
         </View> : null}
       </View>
     </Modal>
@@ -132,10 +153,14 @@ export function MapActions({ latitude, longitude, label }: { latitude: number; l
     try {
       await Linking.openURL(mapUrl(latitude, longitude, label, Platform.OS));
     } catch {
-      await Linking.openURL(webMapUrl(latitude, longitude));
+      try {
+        await Linking.openURL(webMapUrl(latitude, longitude));
+      } catch {
+        Alert.alert(t('club.mapError'));
+      }
     }
   };
-  return <Pressable accessibilityRole="button" onPress={() => void open()} style={[styles.mapAction, { backgroundColor: colors.primary }]}><Ionicons name="navigate-outline" size={18} color={colors.onPrimary} /><Text style={{ color: colors.onPrimary, fontWeight: '700' }}>{t('club.mapActions')}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" accessibilityLabel={t('club.mapActions')} onPress={() => void open()} style={[styles.mapAction, { backgroundColor: colors.primary }]}><Ionicons name="navigate-outline" size={18} color={colors.onPrimary} /><Text style={{ color: colors.onPrimary, fontWeight: '700' }}>{t('club.mapActions')}</Text></Pressable>;
 }
 
 const styles = StyleSheet.create({

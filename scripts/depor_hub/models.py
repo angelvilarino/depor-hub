@@ -620,8 +620,7 @@ class Squad(Public):
 
 
 # --- H7: club (ADR 0025) -----------------------------------------------------
-# El contrato Club no publica fuente, confianza ni estado: esos datos viven en
-# data/manual/club.yml (comentarios) y docs/sources.md. La app no muestra procedencia.
+# Los campos de procedencia se publican solo donde la app los muestra, como el aforo.
 
 
 class ClubContact(Public):
@@ -821,6 +820,9 @@ class Tenure(Public):
 class Capacity(Public):
     total: int = Field(ge=0)
     breakdown: list[CapacityZone] = Field(default_factory=list)
+    source_url: Optional[str] = None
+    confidence: Confidence = "single_source"
+    status: DataStatus = "pending_verification"
 
     @model_validator(mode="after")
     def _total_is_sum(self) -> Capacity:
@@ -880,6 +882,7 @@ class Museum(Public):
     location: Optional[str] = None
     description: Optional[str] = None
     schedule: Optional[str] = None
+    media: list[MediaRef] = Field(default_factory=list)
     prices: list[Price] = Field(default_factory=list)
     links: list[ClubLink] = Field(default_factory=list)
 

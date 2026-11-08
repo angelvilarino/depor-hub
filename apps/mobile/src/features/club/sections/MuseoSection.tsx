@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/Screen';
-import { HeroHeader, MapActions } from '@/components/club/Editorial';
+import { HeroHeader, MapActions, PhotoGallery } from '@/components/club/Editorial';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
 import { formatPrice } from '@/features/club/logic';
@@ -18,9 +18,20 @@ export function MuseoSection({ club }: { club: ClubT }) {
 
   if (!museum) return <EmptyState message={t('club.museo.empty')} />;
 
+  const verifiedPhotos = museum.media.filter(
+    (media) => media.kind === 'photo' && media.status === 'verified',
+  );
+
   return (
     <View style={{ gap: spacing.md }}>
-      <HeroHeader title={museum.name ?? t('club.sections.museo.title')} subtitle={museum.location} icon="business-outline" />
+      <HeroHeader
+        title={museum.name ?? t('club.sections.museo.title')}
+        subtitle={museum.location}
+        icon="business-outline"
+        image={verifiedPhotos[0]?.url}
+        credit={verifiedPhotos[0]}
+      />
+      <PhotoGallery photos={verifiedPhotos} />
       <Card>
         {museum.description ? (
           <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>

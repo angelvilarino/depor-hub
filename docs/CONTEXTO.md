@@ -636,7 +636,7 @@ La UI muestra un icono de confianza y la fuente.
 
 ### 15.1 Hechos verificados (20-oct-2026)
 - **Categoría:** el Depor juega la temporada 2026-27 en **Primera División (LaLiga)**, tras ascender en 2025-26 con Antonio Hidalgo como entrenador. Es su primera temporada en Primera desde 2017-18. (Fuentes con datos parcialmente contradictorios sobre la clasificación puntual: obtenerla siempre de la API, no de webs de terceros.)
-- **Estadio:** denominación actual "Estadio Abanca-Riazor". La capacidad aparece con valores distintos según fuente (≈32.490 vs 34.611): ejemplo de dato a cruzar con fuente oficial y marcar con nivel de confianza.
+- **Estadio:** denominación actual "Estadio Abanca-Riazor". La web oficial publica 32.490 localidades sentadas y coincide con Wikipedia; 34.611 no tiene una fuente identificada y no se utiliza.
 - **football-data.org (plan gratuito):** 12 competiciones incluida La Liga (`PD`), 10 peticiones/minuto, marcadores con retraso, sin alineaciones/tarjetas/estadísticas de partido en el plan gratuito. Cubre calendario, resultados y clasificación; **no vale para directo ni para stats por jugador**.
 - **API-Football (plan gratuito):** 100 peticiones/día, 10/min, todos los endpoints pero con **temporadas disponibles limitadas** (comprobar con una clave real si incluye 2026-27 antes de depender de ella).
 - **Decisión provisional:** football-data.org como fuente principal de calendario/resultados/clasificación (cron, cacheado); API-Football como complemento puntual (alineaciones, eventos de partidos recientes) con presupuesto diario de peticiones; histórico vía CSV/BDFutbol/Wikipedia.

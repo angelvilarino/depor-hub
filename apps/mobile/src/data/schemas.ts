@@ -591,6 +591,9 @@ export const Capacity = z
   .strictObject({
     total: z.number().int().nonnegative(),
     breakdown: z.array(CapacityZone).default([]),
+    sourceUrl: optionalNull(),
+    confidence: Confidence.default('single_source'),
+    status: DataStatus.default('pending_verification'),
   })
   .refine(
     (value) => value.total === value.breakdown.reduce((sum, zone) => sum + zone.seats, 0),
@@ -641,6 +644,7 @@ export const Museum = z.strictObject({
   location: optionalNull(),
   description: optionalNull(),
   schedule: optionalNull(),
+  media: z.array(MediaRef).default([]),
   prices: z.array(Price).default([]),
   links: z.array(ClubLink).default([]),
 });

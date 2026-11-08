@@ -180,6 +180,25 @@ describe('compatibilidad con JSON anterior a ADR 0025 (Club)', () => {
     expect(r.data.links.others).toEqual([]);
   });
 
+  it('rellena los defaults aditivos del aforo y la galería del museo', () => {
+    const r = Club.safeParse({
+      updatedAt: '2026-11-01T10:00:00Z',
+      identity: { officialName: 'RC Deportivo' },
+      stadium: { name: 'Riazor', capacity: { total: 0 } },
+      museum: {},
+    });
+    expect(r.success).toBe(true);
+    if (!r.success) return;
+    expect(r.data.stadium?.capacity).toEqual({
+      total: 0,
+      breakdown: [],
+      sourceUrl: null,
+      confidence: 'single_source',
+      status: 'pending_verification',
+    });
+    expect(r.data.museum?.media).toEqual([]);
+  });
+
   it('rechaza una capacidad que no coincide con el desglose', () => {
     const r = Club.safeParse({
       updatedAt: '2026-11-01T10:00:00Z',

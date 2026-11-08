@@ -8,7 +8,7 @@ de datos configurada.
 Reglas de este módulo:
 - lo desconocido se queda en `null` y no se inventa;
 - `updatedAt` solo cambia cuando cambia el contenido (escritura idempotente);
-- el contrato no publica fuente, confianza ni estado de verificación.
+- solo se publica procedencia contractual cuando la interfaz la presenta.
 """
 
 from __future__ import annotations
