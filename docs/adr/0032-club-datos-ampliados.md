@@ -88,7 +88,22 @@ y temporada.
   escriben en `data/manual/titles.proposed.yml`; **nunca se aplican solas**. El
   parser descarta premios individuales (Pichichi, Zamora) y normaliza los nombres
   de competición. BDFutbol no cubre competiciones regionales: esas ediciones
-  aparecen como `only_in_curated` y se conservan.
+  aparecen como `only_in_curated` y se conservan. Cada título propuesto conserva
+  la URL de su temporada de BDFutbol.
+- `python -m depor_hub.cli club titles --details` añade una propuesta de finales,
+  goleadores y plantillas. Para cada edición con temporada conocida abre la ficha
+  de temporada (`t{season}{team}.html`), localiza la página de la competición
+  (`aCOP`, `aSUP`), lee las filas `Final` y la ficha del partido (fecha, equipos,
+  marcador, sede, árbitro y goles con minuto) y extrae la plantilla de
+  `table#taulaplantilla` (PJ y G; en porteros, G son goles encajados y se ignora).
+  Los goleadores de la plantilla se publican como `top_scorers` de la temporada.
+  Las finales de Copa se contrastan con el wikitext de Wikipedia. La comparación
+  normaliza equipos, personas y sede; si hay diferencias, la edición queda como
+  `conflict` y los candidatos se listan en la propuesta. `--max-editions` limita
+  el número de ediciones y `--no-wikipedia` omite el contraste. El modo pesado es
+  manual: el workflow de 10 minutos mantiene solo la comparación de palmarés.
+  Las finales a doble partido (Supercopa) se listan como `final_matches` y no se
+  comparan como final única.
 - `python -m depor_hub.cli club rivalries` publica `rivalries.json` y rellena
   `headToHead` desde BDFutbol con `PoliteClient` (caché, robots.txt y 1 s/host).
   Si ninguna fuente devuelve balance, conserva el `rivalries.json` anterior para
@@ -113,7 +128,11 @@ búsqueda automática: un homónimo produciría un balance equivocado.
 - `titles.json`: 21 ediciones; las Copas de 1995 y 2002 y la Liga 2000 quedan
   `verified` con final, marcador, sede, goleadores con minuto, árbitro,
   entrenador y fuente (Wikipedia contrastada con BDFutbol). El resto conserva el
-  palmarés curado con `pending_verification`.
+  palmarés curado con `pending_verification`. `--details` no cambia este fichero:
+  deja las plantillas y goleadores propuestos en `titles.proposed.yml` para
+  revisión. En la pasada real, las Copas de 1995 y 2002 salen como `conflict`
+  por las diferencias de minuto documentadas; las plantillas de las seis
+  ediciones con temporada se leen correctamente.
 - `rivalries.json`: 6 rivalidades (Celta, Compostela, Oviedo, Sporting, Racing de
   Ferrol y Lugo) con balance histórico de BDFutbol. El Celta queda `verified` y
   `derbi`; Racing de Ferrol es `derbi`; el resto es `historico` y
