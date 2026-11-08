@@ -177,7 +177,7 @@ La ficha del club se cura a mano en `data/manual/club.yml`; cada bloque lleva su
 |---|---|---|
 | Identidad, fundación, colores, apodos, presidencia, sede y contacto | Web oficial del club y datos societarios publicados | Sin lema documentado: `motto: null`. El contacto es el publicado por el club |
 | Himnos y créditos | Páginas oficiales del club y notas de estreno; créditos de «Voa» revisados en el YAML | La letra se lee de `data/manual/himnos/<id>.txt`; solo se publica el bloque posterior a `Letra`. Sin audio |
-| Escudos históricos | 1000logos para las 14 versiones y la web de identidad corporativa para el vigente (SVG) | Los escudos son marcas del club; uso editorial y pendiente de revisión de términos de 1000logos |
+| Escudos históricos | 1000logos para 13 versiones y la web de identidad corporativa para el vigente (SVG) | Las 14 versiones enlazan su fuente en `MediaCredit`; la licencia de reutilización de 1000logos y la de la imagen oficial no están verificadas |
 | Equipaciones | Recopilación de temporadas publicadas (fabricante, patrocinador y colores); foto de producto de la tienda oficial para la local 2026-27 | 42 temporadas y 44 equipaciones: 1 foto con URL verificada y crédito visible (Deportienda; derechos reservados) y 43 ilustraciones SVG; no se asignan fotos históricas sin temporada comprobada |
 | Estadio y aforo | Datos públicos de Riazor y del club | Total **33.225** = 32.490 gradas + 141 palco de honor + 385 palcos VIP + 113 Área 1906 + 96 medios; la suma se valida en el contrato |
 | Museo, visitas y entradas | `ticketing.museo.rcdeportivo.es` y `rcdeportivo.es/es/museo-and-tour` | Precios y horarios pueden cambiar; la app enlaza a la fuente |

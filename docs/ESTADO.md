@@ -240,10 +240,12 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
 
 ### H7.2 — Revisión editorial inicial del Club (implementado parcialmente, ADR 0033)
 - **Base compartida:** nuevos `HeroHeader`, `StatCounter` compatible con Reducir movimiento, `Timeline` filtrable/expandible, `PhotoGallery` con modal, `MediaCredit`, `ConfidenceBadge` y `MapActions`. La portada ahora presenta cabecera editorial, cifras, identidad jerarquizada y mosaico de secciones; incluye siempre el aviso no oficial.
+- **Escudo:** 14 versiones con años/contexto, comparación seleccionable antes/después entre versiones adyacentes y visor modal a pantalla completa. Cada versión muestra `MediaCredit`; las 13 fuentes de 1000logos quedan marcadas con licencia no verificada (no se afirma permiso de reutilización).
 - **Equipaciones:** filtro por tipo y SectionList por década; las ilustraciones existentes se etiquetan explícitamente «Ilustración». Cobertura regenerada: **1 foto verificada** (Deportienda, temporada 2026-27, HTTP 200 `image/jpeg`, crédito visible y derechos reservados) y **43 ilustraciones SVG**. No se encontró una fuente fiable que atribuya imágenes históricas a temporada, así que no se reasignaron.
 - **Himnos:** «Voa» tiene una acción de reproducción externa a su publicación oficial; se verifica `origin=club_official` y `status=verified`. No se carga WebView. La app oculta letras sin un estado de derechos autorizado.
 - **Estadio, museo y ciudad deportiva:** cabeceras editoriales con respaldo de degradado/icono; galería preparada para medios verificados del estadio; el Museo usa `MapActions` cuando hay coordenadas. El contrato actual no contiene horarios verificados ni medios del Museo, así que el estado Abierto/Cerrado y la galería del Museo no se muestran.
 - **Validación del hito de equipaciones:** `.venv/bin/python -m pytest scripts/tests/test_club.py` (17 passed), `python -m depor_hub.cli club`, y Node 22 `typecheck`, `lint`, tests (34 suites / 294 passed).
+- **Validación del escudo:** render de comparación, años y créditos; visor modal; Node 22 `typecheck`, `lint`, tests (34 suites / 294 passed) y 17 pruebas Python del publicador.
 - **Pendiente para los siguientes hitos:** fotos históricas fiables, galería del Museo (el contrato no tiene campo multimedia), organigrama visual y presidentes en línea de tiempo, completar atributos/galerías de venues y probar visualmente ajustes y el conjunto en iPhone. H7.2 no cierra toda la especificación editorial.
 
 ### Verificación H7

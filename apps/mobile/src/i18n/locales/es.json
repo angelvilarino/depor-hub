@@ -696,7 +696,12 @@
       "intro": "El escudo ha cambiado con el club: de las iniciales de la Sala Calvet a la bandera gallega, la cruz de Santiago y la corona. Cada versión conserva la huella de su época.",
       "zoomHint": "Toca cualquier escudo para verlo en grande.",
       "present": "actualidad",
-      "versionName": "Escudo de {{years}}"
+      "versionName": "Escudo de {{years}}",
+      "compare": "Comparar transición",
+      "compareTransition": "Comparar {{before}} con {{after}}",
+      "comparisonTitle": "Antes y después",
+      "before": "Antes · {{years}}",
+      "after": "Después · {{years}}"
     },
     "equipaciones": {
       "empty": "No hay equipaciones documentadas.",

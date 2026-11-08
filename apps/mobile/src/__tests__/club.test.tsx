@@ -140,13 +140,28 @@ describe('secciones del Club', () => {
     mockParams = { section: 'escudo' };
     await render(<ClubSectionScreen />);
 
+    expect(clubData.crests).toHaveLength(14);
     expect(screen.getByText('1906-1908')).toBeTruthy();
     expect(screen.getByText('2026-actualidad')).toBeTruthy();
+    expect(
+      screen.getAllByLabelText(
+        'Crédito de imagen: Fuente: 1000logos.net · Licencia no verificada',
+      ),
+    ).toHaveLength(13);
+
+    fireEvent.press(
+      screen.getByLabelText('Comparar 1906-1908 con 1908-1910'),
+    );
+    await waitFor(() => {
+      expect(screen.getByText('Antes · 1906-1908')).toBeTruthy();
+      expect(screen.getByText('Después · 1908-1910')).toBeTruthy();
+    });
 
     fireEvent.press(screen.getByLabelText('Ver imagen ampliada de Escudo de 1906-1908'));
     await waitFor(() => {
       expect(screen.getAllByText('1906-1908').length).toBeGreaterThan(1);
     });
+    expect(screen.getByTestId('crest-fullscreen-viewer')).toBeTruthy();
     expect(screen.getByText('Cerrar')).toBeTruthy();
   });
 

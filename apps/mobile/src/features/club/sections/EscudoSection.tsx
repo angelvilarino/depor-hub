@@ -4,6 +4,7 @@ import { Modal, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'r
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { ClubImage } from '@/components/club/ClubImage';
+import { MediaCredit } from '@/components/club/Editorial';
 import { Card } from '@/components/Screen';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT, CrestVersionT } from '@/data/schemas';
@@ -15,9 +16,10 @@ import { SectionTitle } from './ui';
 export function EscudoSection({ club }: { club: ClubT }) {
   const { t } = useTranslation();
   const { colors } = useTheme();
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const [selected, setSelected] = useState<CrestVersionT | null>(null);
-  const modalSize = Math.max(160, Math.min(width - 96, 360));
+  const [comparisonIndex, setComparisonIndex] = useState<number | null>(null);
+  const modalSize = Math.max(160, Math.min(width - 32, height - 200, 640));
 
   if (club.crests.length === 0) {
     return <EmptyState message={t('club.escudo.empty')} />;
@@ -37,6 +39,7 @@ export function EscudoSection({ club }: { club: ClubT }) {
         {club.crests.map((crest, index) => {
           const first = index === 0;
           const last = index === club.crests.length - 1;
+          const nextCrest = club.crests[index + 1];
           const years = crestYearRange(crest, t('club.escudo.present'));
           const name = t('club.escudo.versionName', { years });
           return (
@@ -46,36 +49,88 @@ export function EscudoSection({ club }: { club: ClubT }) {
                 {!last ? <View style={[styles.line, styles.lineBottom, { backgroundColor: colors.border }]} /> : null}
                 <View style={[styles.dot, { backgroundColor: colors.primary }]} />
               </View>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel={t('club.viewImage', { name })}
-                onPress={() => setSelected(crest)}
-                style={[
-                  styles.card,
-                  { backgroundColor: colors.surface, borderColor: colors.border },
-                ]}
-              >
-                <ClubImage path={crest.image} label={name} width={92} height={92} />
-                <View style={styles.text}>
-                  <Text style={{ color: colors.text, fontSize: 17, fontWeight: '800' }}>{years}</Text>
-                  {crest.description ? (
-                    <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 20 }}>
-                      {crest.description}
+              <View style={styles.entry}>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={t('club.viewImage', { name })}
+                  onPress={() => setSelected(crest)}
+                  style={[
+                    styles.card,
+                    { backgroundColor: colors.surface, borderColor: colors.border },
+                  ]}
+                >
+                  <ClubImage path={crest.image} label={name} width={92} height={92} />
+                  <View style={styles.text}>
+                    <Text style={{ color: colors.text, fontSize: 17, fontWeight: '800' }}>{years}</Text>
+                    {crest.description ? (
+                      <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 20 }}>
+                        {crest.description}
+                      </Text>
+                    ) : null}
+                  </View>
+                  <Ionicons name="expand-outline" size={20} color={colors.textMuted} />
+                </Pressable>
+                {crest.media ? <MediaCredit media={crest.media} inline /> : null}
+                {!last && nextCrest ? (
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={t('club.escudo.compareTransition', {
+                      before: years,
+                      after: crestYearRange(nextCrest, t('club.escudo.present')),
+                    })}
+                    onPress={() => setComparisonIndex(index)}
+                    style={styles.compareAction}
+                  >
+                    <Ionicons name="git-compare-outline" size={18} color={colors.primary} />
+                    <Text style={{ color: colors.primary, fontWeight: '700' }}>
+                      {t('club.escudo.compare')}
                     </Text>
-                  ) : null}
-                </View>
-                <Ionicons name="expand-outline" size={20} color={colors.textMuted} />
-              </Pressable>
+                  </Pressable>
+                ) : null}
+              </View>
             </View>
           );
         })}
       </View>
+
+      {comparisonIndex !== null && club.crests[comparisonIndex + 1] ? (
+        <Card>
+          <SectionTitle>{t('club.escudo.comparisonTitle')}</SectionTitle>
+          <View style={styles.comparisonRow}>
+            {club.crests.slice(comparisonIndex, comparisonIndex + 2).map(
+              (crest, index) => {
+                const years = crestYearRange(crest, t('club.escudo.present'));
+                return (
+                  <View key={crest.id} style={styles.comparisonVersion}>
+                    <Text style={{ color: colors.text, fontWeight: '700', textAlign: 'center' }}>
+                      {t(index === 0 ? 'club.escudo.before' : 'club.escudo.after', { years })}
+                    </Text>
+                    <ClubImage
+                      path={crest.image}
+                      label={t('club.escudo.versionName', { years })}
+                      width={Math.min(110, (width - spacing.lg * 3) / 2)}
+                      height={Math.min(110, (width - spacing.lg * 3) / 2)}
+                    />
+                    {crest.description ? (
+                      <Text style={{ color: colors.textMuted, fontSize: 12, textAlign: 'center' }}>
+                        {crest.description}
+                      </Text>
+                    ) : null}
+                    {crest.media ? <MediaCredit media={crest.media} inline /> : null}
+                  </View>
+                );
+              },
+            )}
+          </View>
+        </Card>
+      ) : null}
 
       <Modal
         visible={selected !== null}
         transparent
         animationType="fade"
         onRequestClose={() => setSelected(null)}
+        presentationStyle="overFullScreen"
       >
         <View style={styles.backdrop}>
           <Pressable
@@ -87,7 +142,8 @@ export function EscudoSection({ club }: { club: ClubT }) {
           {selected ? (
             <View
               accessibilityViewIsModal
-              style={[styles.modal, { backgroundColor: colors.surface, borderColor: colors.border }]}
+              testID="crest-fullscreen-viewer"
+              style={[styles.fullscreenViewer, { backgroundColor: colors.surface }]}
             >
               <ClubImage
                 path={selected.image}
@@ -105,6 +161,7 @@ export function EscudoSection({ club }: { club: ClubT }) {
                   {selected.description}
                 </Text>
               ) : null}
+              {selected.media ? <MediaCredit media={selected.media} inline /> : null}
               <Button label={t('common.close')} onPress={() => setSelected(null)} />
             </View>
           ) : null}
@@ -117,6 +174,7 @@ export function EscudoSection({ club }: { club: ClubT }) {
 const styles = StyleSheet.create({
   timeline: { gap: spacing.sm },
   row: { flexDirection: 'row', gap: spacing.sm },
+  entry: { flex: 1, gap: spacing.xs },
   rail: { width: 22, alignItems: 'center', justifyContent: 'center' },
   line: { position: 'absolute', width: 2, left: 10 },
   lineTop: { top: 0, height: '50%' },
@@ -132,20 +190,22 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
   },
   text: { flex: 1, gap: spacing.xs },
+  compareAction: { minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  comparisonRow: { flexDirection: 'row', justifyContent: 'space-around', gap: spacing.sm },
+  comparisonVersion: { flex: 1, alignItems: 'center', gap: spacing.xs },
   backdrop: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.72)',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: spacing.lg,
   },
-  modal: {
+  fullscreenViewer: {
     width: '100%',
-    maxWidth: 420,
+    height: '100%',
     padding: spacing.lg,
     gap: spacing.md,
-    borderRadius: radius.lg,
     borderWidth: StyleSheet.hairlineWidth,
     alignItems: 'center',
+    justifyContent: 'center',
   },
 });

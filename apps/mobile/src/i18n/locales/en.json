@@ -696,7 +696,12 @@
       "intro": "The crest has changed with the club: from the Sala Calvet initials to the Galician flag, the cross of Saint James and the crown. Each version keeps the mark of its time.",
       "zoomHint": "Tap any crest to see it full size.",
       "present": "present",
-      "versionName": "{{years}} crest"
+      "versionName": "{{years}} crest",
+      "compare": "Compare transition",
+      "compareTransition": "Compare {{before}} with {{after}}",
+      "comparisonTitle": "Before and after",
+      "before": "Before · {{years}}",
+      "after": "After · {{years}}"
     },
     "equipaciones": {
       "empty": "No kits have been documented.",
