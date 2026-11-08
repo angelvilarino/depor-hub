@@ -255,19 +255,26 @@ La salida de `enrich` cuenta solo lo generado: los overrides se suman al aplicar
 ## Club: títulos, rivalidades y medios (ADR 0032)
 
 - **Palmarés**: `data/manual/club.yml` (lista breve) y `data/manual/titles.yml`
-  (21 ediciones). Las Copas de 1995 y 2002 se contrastaron con Wikipedia; el
-  resto conserva el palmarés curado. `club titles` compara con la tabla
+  (21 ediciones). Las Copas de 1995 y 2002 y la Liga 2000 quedan `verified` con
+  goleadores, minuto, árbitro y entrenador contrastados; el resto conserva el
+  palmarés curado con `pending_verification`. `club titles` compara con la tabla
   «Títulos» de BDFutbol (`https://www.bdfutbol.com/es/e/e13.html`) y escribe
   `data/manual/titles.proposed.yml`; nunca aplica cambios sola.
 - **Rivalidades**: `data/manual/rivalries.yml` con seis rivales. El balance se
   obtiene de `https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=<id>` con
   `PoliteClient` (caché, robots.txt, 1 s/host) y se publica en
   `rivalries.json`. Ids verificados: Celta 11, Compostela 12, Oviedo 28,
-  Sporting 34, Racing de Ferrol 48, Lugo 76.
-- **Medios**: `data/manual/club_media.yml` está vacío a propósito. `club
-  probe-media` solo comprueba URLs candidatas y escribe
-  `data/manual/club_media.proposed.yml`; una entrada solo se aplica a mano con
-  licencia y crédito revisados. No se copian binarios nuevos al repositorio.
+  Sporting 34, Racing de Ferrol 48, Lugo 76. El Celta queda `verified`; el resto
+  de narrativa conserva `pending_verification`.
+- **Medios**: `club probe-media` recorre todas las URLs de imagen/vídeo de
+  `club.yml`, `titles.yml`, `rivalries.yml` y las fuentes externas de
+  `club_images.yml`, además de las rutas locales de `data/public/v1`. Hace HEAD
+  (estado, MIME y tamaño) y un GET mínimo para las imágenes (dimensiones); nunca
+  descarga binarios al repositorio. El informe `data/manual/club_media.proposed.yml`
+  distingue `ok`/`local`/`broken`/`blocked`/`missing` con origen y contexto, y
+  esta página registra las URLs rotas o bloqueadas. Una URL rota se queda en
+  `null`: no se sustituye ni se inventa otra; solo se aplica a mano con licencia
+  y crédito revisados.
 - **Letras**: se mantienen las tres letras actuales con
   `lyricsRights.status = unknown`, titular, nota de uso editorial y fecha de
   comprobación. No se afirma permiso de reutilización.
@@ -297,7 +304,7 @@ python -m depor_hub.cli club-images --offline        # comprueba las imágenes p
 python -m depor_hub.cli club titles                  # publica titles.json y propone diferencias desde BDFutbol
 python -m depor_hub.cli club titles --offline        # compara con la caché de BDFutbol, sin red
 python -m depor_hub.cli club rivalries               # publica rivalries.json con el balance de BDFutbol
-python -m depor_hub.cli club probe-media             # sondea URLs externas y escribe club_media.proposed.yml
+python -m depor_hub.cli club probe-media             # sondea todos los medios y registra fallos en docs/sources.md
 ```
 
 El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 30 minutos y usa el grupo `news-publish`, separado de `data-publish`. Todos hacen rebase antes de empujar, reintentan cinco veces y despliegan Pages solo cuando hay cambios; los deploys se serializan en `pages-deploy`.
@@ -312,4 +319,12 @@ npm run mobile
 
 Arranca Expo y un servidor estático de solo lectura sobre `data/public` (puerto 8000). La app deriva la URL del host de Metro; no hay IPs fijas. Para usar los datos publicados, define `EXPO_PUBLIC_DATA_BASE_URL` en `apps/mobile/.env`. Detalles en `docs/adr/0009-fotos-y-fuente-oficial.md`.
 
+<!-- club-media:start -->
+### Sondeo de medios del club — 2026-11-08T10:33:57Z
 
+Generado por `python -m depor_hub.cli club probe-media`. No sustituye ninguna URL: las rotas quedan en `null` y se listan aquí.
+
+OK: **15** · locales: **0** · rotas: **0** · bloqueadas: **0** · ausentes: **0**
+
+Sin URLs rotas, bloqueadas ni ficheros locales ausentes en el último sondeo.
+<!-- club-media:end -->

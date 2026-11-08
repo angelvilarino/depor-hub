@@ -303,8 +303,210 @@ def publish_rivalries(
 
 # --- Sondeo de medios -------------------------------------------------------
 
+_CLUB_MEDIA_START = "<!-- club-media:start -->"
+_CLUB_MEDIA_END = "<!-- club-media:end -->"
+_IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".avif", ".svg"}
+_VIDEO_EXTENSIONS = {".mp4", ".webm", ".mov", ".m3u8"}
+_AUDIO_EXTENSIONS = {".mp3", ".m4a", ".ogg", ".wav"}
+_SVG_WIDTH = re.compile(r'<svg[^>]*\bwidth=["\']([\d.]+)')
+_SVG_HEIGHT = re.compile(r'<svg[^>]*\bheight=["\']([\d.]+)')
+_SVG_VIEWBOX = re.compile(r'<svg[^>]*\bviewBox=["\']([\d.\-\s]+)["\']')
+
+
+def _kind_from_path(value: str) -> str:
+    suffix = Path(value).suffix.lower()
+    if suffix in _VIDEO_EXTENSIONS:
+        return "video"
+    if suffix in _AUDIO_EXTENSIONS:
+        return "audio"
+    if suffix in _IMAGE_EXTENSIONS:
+        return "photo"
+    return "document"
+
+
+def _slug(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-") or "media"
+
+
+def _merge_candidate(
+    candidates: list[dict[str, Any]], candidate: dict[str, Any]
+) -> None:
+    """Une la misma ruta/URL declarada por club.yml y club_images.yml."""
+    for existing in candidates:
+        same_path = (
+            candidate.get("path")
+            and existing.get("path") == candidate.get("path")
+        )
+        same_url = candidate.get("url") and existing.get("url") == candidate.get("url")
+        if not (same_path or same_url):
+            continue
+        for key, value in candidate.items():
+            if value not in (None, "", []) and existing.get(key) in (None, "", []):
+                existing[key] = value
+        return
+    candidates.append(candidate)
+
+
+def _media_candidate(
+    entry: dict[str, Any], context: str, source_file: str
+) -> dict[str, Any]:
+    url = entry.get("url")
+    path = entry.get("image") if not url else None
+    return {
+        "id": _slug(context),
+        "kind": entry.get("kind") or _kind_from_path(str(url or path or "")),
+        "origin": entry.get("origin") or "other",
+        "url": url,
+        "path": path,
+        "source_file": source_file,
+        "context": context,
+        "license": entry.get("license"),
+        "credit": entry.get("credit"),
+        "source_url": entry.get("source_url") or entry.get("sourceUrl"),
+    }
+
+
+def _collect_media_tree(
+    node: Any, context: str, source_file: str, candidates: list[dict[str, Any]]
+) -> None:
+    """Recorre un YAML y recoge `media`, `photos`, `image` y `audio_url`."""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            child = f"{context}.{key}" if context else key
+            if key in {"media", "photos"} and isinstance(value, list):
+                for index, entry in enumerate(value):
+                    if isinstance(entry, dict) and entry.get("url"):
+                        _merge_candidate(
+                            candidates,
+                            _media_candidate(
+                                entry, f"{child}[{index}]", source_file
+                            ),
+                        )
+                continue
+            if key == "image" and isinstance(value, str) and value:
+                if value.startswith(("http://", "https://")):
+                    _merge_candidate(
+                        candidates,
+                        {
+                            "id": _slug(child),
+                            "kind": _kind_from_path(value),
+                            "origin": "other",
+                            "url": value,
+                            "path": None,
+                            "source_file": source_file,
+                            "context": child,
+                        },
+                    )
+                else:
+                    _merge_candidate(
+                        candidates,
+                        {
+                            "id": _slug(child),
+                            "kind": _kind_from_path(value),
+                            "origin": "club_official",
+                            "url": None,
+                            "path": value,
+                            "source_file": source_file,
+                            "context": child,
+                        },
+                    )
+                continue
+            if key == "audio_url" and isinstance(value, str) and value:
+                _merge_candidate(
+                    candidates,
+                    {
+                        "id": _slug(child),
+                        "kind": "audio",
+                        "origin": "other",
+                        "url": value,
+                        "path": None,
+                        "source_file": source_file,
+                        "context": child,
+                    },
+                )
+                continue
+            _collect_media_tree(value, child, source_file, candidates)
+    elif isinstance(node, list):
+        for index, entry in enumerate(node):
+            _collect_media_tree(
+                entry, f"{context}[{index}]", source_file, candidates
+            )
+
+
+def _load_yaml(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    return raw if isinstance(raw, dict) else {}
+
+
+def collect_media_candidates(
+    club_path: Path,
+    titles_path: Path | None = None,
+    rivalries_path: Path | None = None,
+    club_images_path: Path | None = None,
+    manual_media_path: Path | None = None,
+) -> list[dict[str, Any]]:
+    """Descubre todos los medios del club, títulos, rivalidades y fuentes locales.
+
+    No lee binarios ni escribe nada: solo devuelve candidatos con su contexto y
+    su procedencia editorial. Las rutas locales se resuelven después contra
+    `data/public/v1`.
+    """
+    candidates: list[dict[str, Any]] = []
+    for path in (club_path, titles_path, rivalries_path):
+        if path is None:
+            continue
+        raw = _load_yaml(path)
+        if raw is None:
+            continue
+        _collect_media_tree(raw, "", path.name, candidates)
+
+    images = _load_yaml(club_images_path) if club_images_path else None
+    if images:
+        sources = images.get("sources")
+        if isinstance(sources, dict):
+            for local_path, item in sources.items():
+                if not isinstance(item, dict):
+                    continue
+                _merge_candidate(
+                    candidates,
+                    {
+                        "id": _slug(str(local_path)),
+                        "kind": _kind_from_path(str(local_path)),
+                        "origin": "club_official",
+                        "url": item.get("url"),
+                        "path": str(local_path),
+                        "source_file": club_images_path.name
+                        if club_images_path
+                        else "club_images.yml",
+                        "context": f"sources.{local_path}",
+                        "source_url": item.get("source"),
+                    },
+                )
+
+    if manual_media_path:
+        manual = _load_yaml(manual_media_path)
+        if manual:
+            items = manual.get("media")
+            if items is not None and not isinstance(items, list):
+                raise ValueError(f"{manual_media_path}: media debe ser una lista")
+            for index, item in enumerate(items or []):
+                if not isinstance(item, dict) or not item.get("url"):
+                    raise ValueError(
+                        f"{manual_media_path}: el medio #{index + 1} necesita url"
+                    )
+                _merge_candidate(
+                    candidates,
+                    _media_candidate(
+                        item, f"media[{index}]", manual_media_path.name
+                    ),
+                )
+    return candidates
+
 
 def load_media_candidates(path: Path) -> list[dict[str, Any]]:
+    """Compatibilidad: lee el antiguo `club_media.yml` de candidatos sueltos."""
     raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     items = raw.get("media") if isinstance(raw, dict) else None
     if items is None:
@@ -329,45 +531,302 @@ def _image_size(content: bytes) -> tuple[int | None, int | None, str | None]:
         return None, None, None
 
 
+def _svg_size(content: bytes) -> tuple[int | None, int | None, str | None]:
+    head = content[:4096].decode("utf-8", errors="ignore")
+    width_match = _SVG_WIDTH.search(head)
+    height_match = _SVG_HEIGHT.search(head)
+    if width_match and height_match:
+        return (
+            int(float(width_match.group(1))),
+            int(float(height_match.group(1))),
+            "SVG",
+        )
+    viewbox = _SVG_VIEWBOX.search(head)
+    if viewbox:
+        parts = viewbox.group(1).replace(",", " ").split()
+        if len(parts) == 4:
+            return (
+                int(float(parts[2])),
+                int(float(parts[3])),
+                "SVG",
+            )
+    return None, None, "SVG"
+
+
+def _local_media(
+    record: dict[str, Any], public_root: Path | None, local_path: str
+) -> None:
+    record["path"] = local_path
+    if public_root is None:
+        record["status"] = "missing"
+        record["error"] = "no se indicó la raíz pública para resolver la ruta local"
+        return
+    target = public_root / local_path
+    if not target.exists():
+        record["status"] = "missing"
+        record["error"] = "no existe el fichero local"
+        return
+    record["local_exists"] = True
+    record["local_size_bytes"] = target.stat().st_size
+    suffix = target.suffix.lower()
+    if suffix == ".svg":
+        width, height, image_format = _svg_size(target.read_bytes())
+    else:
+        width, height, image_format = _image_size(target.read_bytes())
+    record["local_width"] = width
+    record["local_height"] = height
+    record["local_format"] = image_format
+    if not record.get("url"):
+        record["status"] = "local"
+        record["mime"] = target.suffix.lower()
+        record["size_bytes"] = record["local_size_bytes"]
+        record["width"] = width
+        record["height"] = height
+        record["format"] = image_format
+
+
+def _probe_get(record: dict[str, Any], url: str, http: PoliteClient) -> None:
+    try:
+        fetched = http.get_binary(url)
+    except SourceBlocked as exc:
+        record["status"] = "blocked"
+        record["error"] = str(exc)
+        return
+    except SourceError as exc:
+        record["status"] = "broken"
+        record["http_status"] = getattr(exc, "status", None)
+        record["error"] = str(exc)
+        return
+    record["final_url"] = fetched.final_url
+    record["mime"] = fetched.content_type.split(";")[0].strip() or None
+    record["size_bytes"] = len(fetched.content)
+    if record.get("kind") == "photo" or (record.get("mime") or "").startswith("image/"):
+        width, height, image_format = _image_size(fetched.content)
+        is_svg = (
+            (record.get("mime") or "").endswith("svg+xml")
+            or str(url).lower().split("?", 1)[0].endswith(".svg")
+            or str(record.get("path") or "").lower().endswith(".svg")
+        )
+        if width is None and is_svg:
+            width, height, image_format = _svg_size(fetched.content)
+        record["width"] = width
+        record["height"] = height
+        record["format"] = image_format
+        if width is None and not (record.get("mime") or "").startswith("image/"):
+            record["status"] = "broken"
+            record["error"] = (
+                f"MIME {record.get('mime') or 'desconocido'} no es una imagen legible"
+            )
+            return
+    record["status"] = "ok"
+
+
+def _probe_external(record: dict[str, Any], url: str, http: PoliteClient) -> None:
+    """HEAD para estado/MIME/tamaño y GET mínimo para imágenes."""
+    try:
+        head = http.head(url)
+    except SourceBlocked as exc:
+        record["status"] = "blocked"
+        record["http_status"] = getattr(exc, "status", None)
+        record["error"] = str(exc)
+        return
+    except SourceError as exc:
+        if getattr(exc, "status", None) == 405:
+            _probe_get(record, url, http)
+            return
+        record["status"] = "broken"
+        record["http_status"] = getattr(exc, "status", None)
+        record["error"] = str(exc)
+        return
+
+    record["http_status"] = head.status
+    record["final_url"] = head.final_url
+    record["mime"] = head.content_type.split(";")[0].strip() or None
+    record["size_bytes"] = head.content_length
+    if record.get("kind") == "photo" or (record.get("mime") or "").startswith("image/"):
+        _probe_get(record, url, http)
+        return
+    record["status"] = "ok"
+
+
+def _probe_candidates(
+    candidates: list[dict[str, Any]],
+    http: PoliteClient,
+    checked_at: str | None,
+    public_root: Path | None,
+) -> dict[str, Any]:
+    items: list[dict[str, Any]] = []
+    for candidate in candidates:
+        record = {
+            key: value
+            for key, value in candidate.items()
+            if value not in (None, "", [])
+        }
+        record.setdefault("kind", "photo")
+        record.setdefault("origin", "other")
+        record["checked_at"] = checked_at or _now()
+        if record.get("path"):
+            _local_media(record, public_root, str(record["path"]))
+        if record.get("url"):
+            _probe_external(record, str(record["url"]), http)
+        elif not record.get("path"):
+            record["status"] = "missing"
+            record["error"] = "ni URL ni ruta local"
+        items.append(record)
+
+    counts: dict[str, int] = {}
+    for item in items:
+        counts[item["status"]] = counts.get(item["status"], 0) + 1
+    return {
+        "checked_at": checked_at or _now(),
+        "note": (
+            "Sondeo de URLs externas y rutas locales. No se copian binarios al "
+            "repositorio ni se sustituyen URLs rotas: quedan en null y se "
+            "registran en docs/sources.md para revisión humana."
+        ),
+        "counts": counts,
+        "items": items,
+    }
+
+
 def probe_media(
     sources_path: Path,
     http: PoliteClient,
     checked_at: str | None = None,
+    public_root: Path | None = None,
 ) -> dict[str, Any]:
-    """Comprueba URLs externas y devuelve una propuesta, sin escribir en club.yml."""
+    """Comprueba las URLs de `club_media.yml` (compatibilidad con H1)."""
     candidates = load_media_candidates(sources_path)
-    items: list[dict[str, Any]] = []
-    for candidate in candidates:
-        record = dict(candidate)
-        record.setdefault("kind", "photo")
-        record.setdefault("origin", "other")
-        record["checked_at"] = checked_at or _now()
-        try:
-            result = http.get_binary(str(candidate["url"]))
-            record["status"] = "ok"
-            record["final_url"] = result.final_url
-            record["content_type"] = result.content_type
-            if record["kind"] == "photo" or result.content_type.startswith("image/"):
-                width, height, image_format = _image_size(result.content)
-                record["width"] = width
-                record["height"] = height
-                record["format"] = image_format
-        except SourceBlocked as exc:
-            record["status"] = "blocked"
-            record["error"] = str(exc)
-        except SourceError as exc:
-            record["status"] = "error"
-            record["error"] = str(exc)
-        items.append(record)
-    return {
-        "checked_at": checked_at or _now(),
-        "source": str(sources_path),
-        "note": (
-            "Sondeo de URLs externas. No se copian binarios al repositorio. "
-            "Revisar licencia y crédito antes de mover una entrada a club.yml."
+    result = _probe_candidates(candidates, http, checked_at, public_root)
+    result["source"] = str(sources_path)
+    return result
+
+
+def probe_club_media(
+    club_path: Path,
+    http: PoliteClient,
+    titles_path: Path | None = None,
+    rivalries_path: Path | None = None,
+    club_images_path: Path | None = None,
+    manual_media_path: Path | None = None,
+    public_root: Path | None = None,
+    checked_at: str | None = None,
+) -> dict[str, Any]:
+    """Sondea todos los medios del club sin tocar los YAML ni los JSON."""
+    candidates = collect_media_candidates(
+        club_path,
+        titles_path=titles_path,
+        rivalries_path=rivalries_path,
+        club_images_path=club_images_path,
+        manual_media_path=manual_media_path,
+    )
+    result = _probe_candidates(candidates, http, checked_at, public_root)
+    result["source"] = str(club_path)
+    result["sources"] = [
+        str(path)
+        for path in (
+            club_path,
+            titles_path,
+            rivalries_path,
+            club_images_path,
+            manual_media_path,
+        )
+        if path is not None
+    ]
+    return result
+
+
+def _md_cell(value: Any) -> str:
+    return str(value if value is not None else "—").replace("|", "\\|")
+
+
+def media_report_markdown(result: dict[str, Any]) -> str:
+    counts = result.get("counts", {})
+    checked_at = result.get("checked_at", "")
+    lines = [
+        _CLUB_MEDIA_START,
+        f"### Sondeo de medios del club — {checked_at}",
+        "",
+        "Generado por `python -m depor_hub.cli club probe-media`. No sustituye "
+        "ninguna URL: las rotas quedan en `null` y se listan aquí.",
+        "",
+        (
+            f"OK: **{counts.get('ok', 0)}** · locales: **{counts.get('local', 0)}** · "
+            f"rotas: **{counts.get('broken', 0)}** · bloqueadas: "
+            f"**{counts.get('blocked', 0)}** · ausentes: **{counts.get('missing', 0)}**"
         ),
-        "items": items,
-    }
+        "",
+    ]
+    problems = [
+        item
+        for item in result.get("items", [])
+        if item.get("status") in {"broken", "blocked", "missing"}
+    ]
+    if problems:
+        lines.extend(
+            [
+                "| Estado | Contexto | URL o ruta | HTTP / MIME | Motivo |",
+                "|---|---|---|---|---|",
+            ]
+        )
+        for item in problems:
+            location = item.get("url") or item.get("path") or "—"
+            http_mime = " / ".join(
+                part
+                for part in (str(item.get("http_status") or ""), item.get("mime") or "")
+                if part
+            )
+            lines.append(
+                "| "
+                + " | ".join(
+                    _md_cell(value)
+                    for value in (
+                        item.get("status"),
+                        item.get("context"),
+                        location,
+                        http_mime or "—",
+                        item.get("error") or "—",
+                    )
+                )
+                + " |"
+            )
+    else:
+        lines.append(
+            "Sin URLs rotas, bloqueadas ni ficheros locales ausentes en el último sondeo."
+        )
+    lines.append(_CLUB_MEDIA_END)
+    return "\n".join(lines)
+
+
+def _without_checked_at(section: str) -> str:
+    return re.sub(
+        r"^### Sondeo de medios del club — .*$",
+        "### Sondeo de medios del club",
+        section,
+        count=1,
+        flags=re.M,
+    )
+
+
+def write_media_report(path: Path, result: dict[str, Any]) -> None:
+    """Inserta o reemplaza la sección del sondeo en docs/sources.md.
+
+    Si solo cambia la hora de comprobación, conserva la sección anterior para
+    que una segunda pasada no ensucie el repositorio.
+    """
+    section = media_report_markdown(result)
+    existing = path.read_text(encoding="utf-8") if path.exists() else ""
+    if _CLUB_MEDIA_START in existing and _CLUB_MEDIA_END in existing:
+        before, _, rest = existing.partition(_CLUB_MEDIA_START)
+        previous = _CLUB_MEDIA_START + rest.partition(_CLUB_MEDIA_END)[0] + _CLUB_MEDIA_END
+        if _without_checked_at(previous) == _without_checked_at(section):
+            return
+        _, _, after = rest.partition(_CLUB_MEDIA_END)
+        body = before.rstrip() + "\n\n" + section + after
+    else:
+        body = existing.rstrip() + "\n\n" + section + "\n"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(body.rstrip() + "\n", encoding="utf-8")
 
 
 def write_media_proposal(path: Path, result: dict[str, Any]) -> None:

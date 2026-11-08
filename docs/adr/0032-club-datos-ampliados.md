@@ -61,10 +61,15 @@ confianza.
 (rival + descripción + año). El detalle vive en dos ficheros opcionales:
 
 - `titles.json` (`Titles`): ediciones individuales con `competition`, `year`,
-  `season`, `scope`, `finalMatch`, `topScorers`, `squad`, `note` y `provenance`.
-- `rivalries.json` (`Rivalries`): rivalidades con `rivalBdfutbolId`, `headToHead`
-  (reutiliza el contrato `HeadToHead` de `rivals.json`), `iconicMatches`, `facts`,
-  `media` y `provenance`.
+  `season`, `scope`, `status`, `coach`, `finalMatch`, `topScorers`, `squad`,
+  `media`, `note` y `provenance`.
+- `rivalries.json` (`Rivalries`): rivalidades con `rivalBdfutbolId`, `tier`,
+  `status`, `headToHead` (reutiliza el contrato `HeadToHead` de `rivals.json`),
+  `iconicMatches`, `facts`, `media` y `provenance`.
+
+`FinalMatch` añade `referee` y `goalScorers`; cada `GoalScorer` puede llevar
+`minute` y `team`. `DataStatus` (`verified`/`pending_verification`) distingue lo
+contrastado de lo que aún espera revisión sin ocultar el dato.
 
 Ambos están en `EXTRA_FILES` y en `OPTIONAL_FILES`. `validate` los valida si
 existen y no falla si faltan: 404 = sin datos. La app los lee con
@@ -88,10 +93,15 @@ y temporada.
   `headToHead` desde BDFutbol con `PoliteClient` (caché, robots.txt y 1 s/host).
   Si ninguna fuente devuelve balance, conserva el `rivalries.json` anterior para
   no borrar un histórico ya verificado.
-- `python -m depor_hub.cli club probe-media` comprueba URLs externas y escribe
-  `data/manual/club_media.proposed.yml` con estado, tipo, dimensiones y errores.
-  No copia binarios ni modifica `club.yml`; una entrada solo se aplica a mano con
-  licencia y crédito revisados.
+- `python -m depor_hub.cli club probe-media` recorre todos los medios declarados
+  en `club.yml`, `titles.yml`, `rivalries.yml` y `club_images.yml`: hace HEAD para
+  estado, MIME y tamaño, y un GET mínimo para las imágenes (dimensiones). También
+  comprueba las rutas locales contra `data/public/v1`. Escribe
+  `data/manual/club_media.proposed.yml` con `ok`/`local`/`broken`/`blocked`/
+  `missing`, MIME, tamaño, dimensiones, origen y contexto, e inserta un resumen
+  con las URLs rotas o bloqueadas en `docs/sources.md`. No copia binarios ni
+  modifica los YAML/JSON: una URL rota se queda en `null` y solo se retira tras
+  revisión humana.
 
 Los ids de BDFutbol de los rivales históricos se verificaron abriendo cada ficha
 (`e12` Compostela, `e28` Oviedo, `e34` Sporting, `e48` Racing de Ferrol, `e76`
@@ -100,12 +110,15 @@ búsqueda automática: un homónimo produciría un balance equivocado.
 
 ### 4. Datos publicados
 
-- `titles.json`: 21 ediciones; las Copas de 1995 y 2002 incluyen final, marcador,
-  sede y fuente (Wikipedia, contrastada). El resto conserva solo los años del
-  palmarés curado.
+- `titles.json`: 21 ediciones; las Copas de 1995 y 2002 y la Liga 2000 quedan
+  `verified` con final, marcador, sede, goleadores con minuto, árbitro,
+  entrenador y fuente (Wikipedia contrastada con BDFutbol). El resto conserva el
+  palmarés curado con `pending_verification`.
 - `rivalries.json`: 6 rivalidades (Celta, Compostela, Oviedo, Sporting, Racing de
-  Ferrol y Lugo) con balance histórico de BDFutbol. La descripción narrativa solo
-  se publica cuando está documentada; las demás son factuales y breves.
+  Ferrol y Lugo) con balance histórico de BDFutbol. El Celta queda `verified` y
+  `derbi`; Racing de Ferrol es `derbi`; el resto es `historico` y
+  `pending_verification`. La descripción narrativa solo se publica cuando está
+  documentada; las demás son factuales y breves.
 - `club.json`: las tres letras mantienen su contenido y ganan `lyricsRights`;
   el estadio gana `tenants`; los patrocinadores ganan `details` para ABANCA y
   Nike. No se añaden imágenes nuevas ni se duplican los 15 binarios locales.

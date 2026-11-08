@@ -772,7 +772,7 @@ def cmd_club_rivalries(args: argparse.Namespace) -> int:
 
 
 def cmd_club_probe_media(args: argparse.Namespace) -> int:
-    """Sondea URLs externas y escribe una propuesta de medios, sin tocar club.yml."""
+    """Sondea todos los medios del club sin tocar los YAML ni los JSON."""
     http = PoliteClient(
         cache_dir=Path(args.raw) / "enrich" / "club-media",
         contact=contact_from_env(),
@@ -780,18 +780,28 @@ def cmd_club_probe_media(args: argparse.Namespace) -> int:
         offline=args.offline,
     )
     try:
-        result = club_extra.probe_media(Path(args.sources), http)
+        result = club_extra.probe_club_media(
+            club_path=Path(args.club),
+            http=http,
+            titles_path=Path(args.titles),
+            rivalries_path=Path(args.rivalries),
+            club_images_path=Path(args.club_images),
+            manual_media_path=Path(args.sources),
+            public_root=Path(args.out),
+        )
     finally:
         http.close()
     club_extra.write_media_proposal(Path(args.proposal), result)
-    ok = sum(1 for item in result["items"] if item.get("status") == "ok")
-    blocked = sum(1 for item in result["items"] if item.get("status") == "blocked")
-    failed = sum(1 for item in result["items"] if item.get("status") == "error")
+    if not args.no_docs:
+        club_extra.write_media_report(Path(args.docs), result)
+    counts = result["counts"]
     print(
-        f"media={len(result['items'])} ok={ok} blocked={blocked} failed={failed} "
+        f"media={len(result['items'])} ok={counts.get('ok', 0)} "
+        f"local={counts.get('local', 0)} broken={counts.get('broken', 0)} "
+        f"blocked={counts.get('blocked', 0)} missing={counts.get('missing', 0)} "
         f"proposal={args.proposal}"
     )
-    _gh_output(changed="true" if ok else "false")
+    _gh_output(changed="true" if counts.get("ok") or counts.get("local") else "false")
     return 0
 
 
@@ -1521,11 +1531,20 @@ def main(argv: list[str] | None = None) -> int:
     rivalries.set_defaults(fn=cmd_club_rivalries)
 
     probe_media = club_sub.add_parser(
-        "probe-media", help="Sondea URLs externas y escribe una propuesta de medios"
+        "probe-media",
+        help="Sondea todos los medios del club y registra los fallos en docs/sources.md",
     )
+    probe_media.add_argument("--club", default="data/manual/club.yml")
+    probe_media.add_argument("--titles", default="data/manual/titles.yml")
+    probe_media.add_argument("--rivalries", default="data/manual/rivalries.yml")
+    probe_media.add_argument("--club-images", default="data/manual/club_images.yml")
     probe_media.add_argument("--sources", default="data/manual/club_media.yml")
     probe_media.add_argument("--out", default="data/public/v1")
-    probe_media.add_argument("--proposal", default="data/manual/club_media.proposed.yml")
+    probe_media.add_argument(
+        "--proposal", default="data/manual/club_media.proposed.yml"
+    )
+    probe_media.add_argument("--docs", default="docs/sources.md")
+    probe_media.add_argument("--no-docs", action="store_true")
     probe_media.add_argument("--raw", default="data/raw")
     probe_media.add_argument("--interval", type=float, default=1.0)
     probe_media.add_argument("--offline", action="store_true")
