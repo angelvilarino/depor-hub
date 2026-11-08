@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T16:04:06Z",
+  "updatedAt": "2026-11-08T18:04:32Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "e532899f6c79d377",
+      "title": "Leo Román, conde de Barcelona: las notas del Espanyol – Deportivo",
+      "url": "https://riazor.org/leo-roman-conde-barcelona-notas-espanyol-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-08T17:43:34Z",
+      "kind": "article",
+      "summary": "Estas son las notas de los jugadores y el cuerpo técnico blanquiazul en el Espanyol - Deportivo de la jornada 12 de LaLiga EA Sports. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "bb8ab90e0a0f491b",
       "title": "El detalle de Bil Nsongo con una leyenda del fútbol de Camerún",
@@ -2151,21 +2166,6 @@
       "thumbnailUrl": "https://i3.ytimg.com/vi/ZjMNM7y-rVQ/hqdefault.jpg",
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "a58b531de0e590b6",
-      "title": "¿Estuviste en el estreno copero del Dépor? ¡Búscate en nuestra galería de la afición del Auriense – Deportivo!",
-      "url": "https://riazor.org/estreno-copero-galeria-aficion-auriense-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-30T11:00:07Z",
-      "kind": "article",
-      "summary": "El blanquiazul tiñó las gradas de O Couto en la primera ronda de la Copa del Rey. Una multitud de aficionados deportivistas acompañaron al…",
-      "thumbnailUrl": null,
-      "tags": [
-        "aficion",
         "partido"
       ],
       "alsoIn": []
