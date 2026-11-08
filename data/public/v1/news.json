@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T20:32:51Z",
+  "updatedAt": "2026-11-08T21:32:48Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "3b32cd9c42809046",
+      "title": "Resumen del Arenas Club de Getxo 2 - 1 Fabril",
+      "url": "https://youtube.com/watch?v=5Kzn0N74asQ",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-08T21:28:57Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i2.ytimg.com/vi/5Kzn0N74asQ/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "05443ba41d02888f",
       "title": "Hidalgo espía al Celta en Balaídos",
@@ -2150,21 +2165,6 @@
       "summary": null,
       "thumbnailUrl": "https://i2.ytimg.com/vi/ueyPxiEcmEI/hqdefault.jpg",
       "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "391d2a30ee78148e",
-      "title": "Rueda de prensa de Manuel Pablo previa al Zamora CF - Fabril",
-      "url": "https://youtube.com/watch?v=cyOaLcavZEI",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-30T12:44:22Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/cyOaLcavZEI/hqdefault.jpg",
-      "tags": [
-        "cantera",
         "partido"
       ],
       "alsoIn": []
