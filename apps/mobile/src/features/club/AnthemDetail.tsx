@@ -1,4 +1,5 @@
 import { Alert, Share, StyleSheet, Text, View } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Screen';
@@ -39,9 +40,18 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
         ) : null}
       </Card>
 
+      {anthem.media?.kind === 'video' && anthem.media.origin === 'club_official' && anthem.media.status === 'verified' ? (
+        <Card>
+          <SectionTitle>{t('club.himnos.playback')}</SectionTitle>
+          <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 20 }}>{t('club.himnos.playbackHint')}</Text>
+          <Button label={t('club.himnos.playOfficial')} onPress={() => void WebBrowser.openBrowserAsync(anthem.media!.url)} />
+          {anthem.media.credit ? <Text style={{ color: colors.textMuted, fontSize: 12 }}>{anthem.media.credit}</Text> : null}
+        </Card>
+      ) : null}
+
       <Card>
         <SectionTitle>{t('club.himnos.lyrics')}</SectionTitle>
-        {anthem.lyrics ? (
+        {anthem.lyrics && ['licensed', 'public_domain', 'permission_granted'].includes(anthem.lyricsRights?.status ?? 'unknown') ? (
           <>
             <Text
               selectable
@@ -55,8 +65,13 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
             </Text>
             <Button label={t('club.himnos.share')} onPress={() => void share()} />
           </>
+        ) : anthem.lyricsRights?.sourceUrl ? (
+          <>
+            <EmptyState message={t('club.himnos.rightsPending')} />
+            <Button label={t('club.himnos.sourceLyrics')} onPress={() => void WebBrowser.openBrowserAsync(anthem.lyricsRights!.sourceUrl!)} />
+          </>
         ) : (
-          <EmptyState message={t('club.himnos.noLyrics')} />
+          <EmptyState message={anthem.lyrics ? t('club.himnos.rightsPending') : t('club.himnos.noLyrics')} />
         )}
       </Card>
 

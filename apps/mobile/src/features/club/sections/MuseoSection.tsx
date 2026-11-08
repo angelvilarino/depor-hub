@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/Screen';
+import { HeroHeader, MapActions } from '@/components/club/Editorial';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
 import { formatPrice } from '@/features/club/logic';
@@ -19,8 +20,8 @@ export function MuseoSection({ club }: { club: ClubT }) {
 
   return (
     <View style={{ gap: spacing.md }}>
+      <HeroHeader title={museum.name ?? t('club.sections.museo.title')} subtitle={museum.location} icon="business-outline" />
       <Card>
-        <SectionTitle>{museum.name ?? t('club.sections.museo.title')}</SectionTitle>
         {museum.description ? (
           <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
             {museum.description}
@@ -28,6 +29,7 @@ export function MuseoSection({ club }: { club: ClubT }) {
         ) : null}
         <InfoRow label={t('club.museo.location')} value={museum.location} />
         <InfoRow label={t('club.museo.schedule')} value={museum.schedule} />
+        {club.stadium?.coordinates ? <MapActions latitude={club.stadium.coordinates.lat} longitude={club.stadium.coordinates.lon} label={museum.name ?? t('club.sections.museo.title')} /> : null}
       </Card>
 
       {museum.prices.length > 0 ? (

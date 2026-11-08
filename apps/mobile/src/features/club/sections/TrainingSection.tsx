@@ -3,6 +3,7 @@ import { Alert, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Screen';
+import { HeroHeader } from '@/components/club/Editorial';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
 import { openMapLocation } from '@/features/club/openMap';
@@ -34,8 +35,8 @@ export function TrainingSection({ club }: { club: ClubT }) {
 
   return (
     <View style={{ gap: spacing.md }}>
+      <HeroHeader title={training.name ?? t('club.sections.training.title')} subtitle={training.location} icon="barbell-outline" />
       <Card>
-        <SectionTitle>{training.name ?? t('club.sections.training.title')}</SectionTitle>
         {training.description ? (
           <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
             {training.description}

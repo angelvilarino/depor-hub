@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T16:49:35Z",
+  "updatedAt": "2026-11-08T17:12:23Z",
   "identity": {
     "officialName": "Real Club Deportivo de La Coruña, S.A.D.",
     "shortName": "RC Deportivo",
@@ -86,13 +86,26 @@
           "text": null
         }
       ],
-      "media": null,
+      "media": {
+        "url": "https://www.rcdeportivo.es/es/noticias/el-rc-deportivo-presenta-voa-su-himno-oficial-compuesto-por-xoel-lopez-un-simbolo-de-identidad",
+        "kind": "video",
+        "width": null,
+        "height": null,
+        "license": null,
+        "licenseUrl": null,
+        "author": null,
+        "credit": "Videoclip oficial de «Voa» · RC Deportivo",
+        "sourceUrl": "https://www.rcdeportivo.es/es/noticias/el-rc-deportivo-presenta-voa-su-himno-oficial-compuesto-por-xoel-lopez-un-simbolo-de-identidad",
+        "origin": "club_official",
+        "verifiedAt": "2026-11-08",
+        "status": "verified"
+      },
       "lyricsRights": {
         "status": "unknown",
         "holder": "Xoel López / RC Deportivo de La Coruña",
         "license": "Uso editorial; sin licencia de reutilización",
         "licenseUrl": null,
-        "sourceUrl": "https://www.rcdeportivo.es",
+        "sourceUrl": "https://www.rcdeportivo.es/es/noticias/el-rc-deportivo-presenta-voa-su-himno-oficial-compuesto-por-xoel-lopez-un-simbolo-de-identidad",
         "note": "Letra y créditos tomados de la web oficial del club. Se mantiene por interés editorial y documental; no se afirma permiso de reutilización.",
         "verifiedAt": "2026-11-06"
       }

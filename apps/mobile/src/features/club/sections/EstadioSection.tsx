@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
+import { HeroHeader, PhotoGallery } from '@/components/club/Editorial';
 import { Card } from '@/components/Screen';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
@@ -24,6 +25,7 @@ export function EstadioSection({ club }: { club: ClubT }) {
   const capacity = stadium.capacity;
   const total = capacity ? formatSeats(capacity.total, locale) : null;
   const coordinates = stadium.coordinates;
+  const verifiedPhotos = stadium.media.filter((media) => media.kind === 'photo' && media.status === 'verified');
 
   const openMap = async () => {
     if (!coordinates) return;
@@ -36,8 +38,9 @@ export function EstadioSection({ club }: { club: ClubT }) {
 
   return (
     <View style={{ gap: spacing.md }}>
+      <HeroHeader title={stadium.name} subtitle={stadium.address} icon="football-outline" image={verifiedPhotos[0]?.url} credit={verifiedPhotos[0]} />
+      <PhotoGallery photos={verifiedPhotos} />
       <Card>
-        <SectionTitle>{stadium.name}</SectionTitle>
         {stadium.description ? (
           <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
             {stadium.description}

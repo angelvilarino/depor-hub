@@ -12,11 +12,15 @@ const dataDir = path.resolve(__dirname, '../../../../data/public/v1');
 const clubData = Club.parse(
   JSON.parse(fs.readFileSync(path.join(dataDir, 'club.json'), 'utf8')),
 );
+const titlesData = JSON.parse(fs.readFileSync(path.join(dataDir, 'titles.json'), 'utf8'));
+const rivalriesData = JSON.parse(fs.readFileSync(path.join(dataDir, 'rivalries.json'), 'utf8'));
 
 let mockParams: Record<string, string> = {};
 const mockPush = jest.fn();
 const mockUseClub = jest.fn();
 const mockUseSquad = jest.fn();
+const mockUseTitles = jest.fn();
+const mockUseRivalries = jest.fn();
 
 jest.mock('expo-router', () => ({
   Stack: { Screen: () => null },
@@ -35,6 +39,8 @@ jest.mock('@/config', () => {
 jest.mock('@/data/queries', () => ({
   useClub: () => mockUseClub(),
   useSquad: () => mockUseSquad(),
+  useTitles: () => mockUseTitles(),
+  useRivalries: () => mockUseRivalries(),
 }));
 jest.mock('@/theme/useTheme', () => {
   const { lightColors } = jest.requireActual('@/theme/tokens');
@@ -66,8 +72,12 @@ beforeEach(() => {
   mockPush.mockReset();
   mockUseClub.mockReset();
   mockUseSquad.mockReset();
+  mockUseTitles.mockReset();
+  mockUseRivalries.mockReset();
   mockUseClub.mockReturnValue(query(clubData));
   mockUseSquad.mockReturnValue(query(squad));
+  mockUseTitles.mockReturnValue(query(titlesData));
+  mockUseRivalries.mockReturnValue(query(rivalriesData));
 });
 
 describe('pestaña Club', () => {
@@ -83,6 +93,13 @@ describe('pestaña Club', () => {
 
     fireEvent.press(screen.getByText('Himnos'));
     expect(mockPush).toHaveBeenCalledWith('/club/himnos');
+  });
+
+  it('cubre las 42 temporadas y las 44 equipaciones con imagen o patrón de respaldo', () => {
+    const kits = clubData.kits.flatMap((season) => season.kits);
+    expect(clubData.kits).toHaveLength(42);
+    expect(kits).toHaveLength(44);
+    expect(kits.every((kit) => Boolean(kit.image) || kit.colors.length > 0)).toBe(true);
   });
 
   it('pinta estado vacío sin contrato y error con reintento', async () => {
@@ -112,7 +129,8 @@ describe('secciones del Club', () => {
     expect(screen.getByText('Voa')).toBeTruthy();
     expect(screen.getByText('Fillos de Breogán')).toBeTruthy();
     expect(screen.getByText('El Rock del Deportivo')).toBeTruthy();
-    expect(screen.getAllByText('Letra disponible').length).toBe(3);
+    expect(screen.getAllByText('Letra pendiente')).toHaveLength(2);
+    expect(screen.getAllByText('Letra disponible en la fuente')).toHaveLength(1);
 
     fireEvent.press(screen.getByText('Voa'));
     expect(mockPush).toHaveBeenCalledWith('/club/himno/voa');
@@ -162,7 +180,7 @@ describe('secciones del Club', () => {
     expect(
       screen.getByTestId('kit-1906-07-home-placeholder', { includeHiddenElements: true }),
     ).toBeTruthy();
-    expect(screen.getAllByText('Sin imagen', { includeHiddenElements: true }).length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Ilustración', { includeHiddenElements: true }).length).toBeGreaterThan(0);
   });
 
   it('muestra el aforo desglosado y abre el mapa nativo', async () => {
@@ -188,11 +206,34 @@ describe('secciones del Club', () => {
     fireEvent.press(screen.getByText('Antonio Hidalgo'));
     expect(mockPush).toHaveBeenCalledWith('/coach');
   });
+
+  it('muestra detalles de finales verificadas cuando están publicados', async () => {
+    mockParams = { section: 'titulos' };
+    await render(<ClubSectionScreen />);
+    expect(screen.getByText('Final ante Valencia CF')).toBeTruthy();
+    expect(screen.getByText('2–1')).toBeTruthy();
+    expect(screen.getByText('Entrenador: Arsenio Iglesias')).toBeTruthy();
+    expect(screen.getAllByText('Entrenador: Javier Irureta')).toHaveLength(2);
+  });
+
+  it('muestra el balance enlazado del derbi gallego', async () => {
+    mockParams = { section: 'rivalidades' };
+    await render(<ClubSectionScreen />);
+    expect(screen.getByText('RC Celta de Vigo')).toBeTruthy();
+    expect(screen.getAllByText('Balance en BDFutbol').length).toBeGreaterThan(0);
+    expect(screen.getByText('Goles: 194 a favor · 202 en contra · BDFutbol')).toBeTruthy();
+  });
 });
 
 describe('detalle de himno', () => {
   it('muestra la letra completa, los créditos y permite compartir', async () => {
     mockParams = { id: 'voa' };
+    mockUseClub.mockReturnValue(query({
+      ...clubData,
+      anthems: clubData.anthems.map((anthem) => anthem.id === 'voa'
+        ? { ...anthem, lyricsRights: { ...anthem.lyricsRights!, status: 'permission_granted' as const } }
+        : anthem),
+    }));
     const share = jest.spyOn(Share, 'share').mockResolvedValue({ action: 'sharedAction' } as never);
     await render(<AnthemScreen />);
 
@@ -218,7 +259,8 @@ describe('detalle de himno', () => {
     );
     await render(<AnthemScreen />);
 
-    expect(screen.getByText('La letra de este himno todavía no está disponible.')).toBeTruthy();
+    expect(screen.getByText('Letra disponible en la fuente')).toBeTruthy();
+    expect(screen.getByText('Ver letra en la fuente')).toBeTruthy();
     expect(screen.queryByText('Compartir letra')).toBeNull();
   });
 

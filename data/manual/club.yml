@@ -49,12 +49,20 @@ anthems:
       durante el Trofeo Teresa Herrera, coincidiendo con el 120 aniversario del club.
     lyrics: null
     audio_url: null
+    media:
+      url: https://www.rcdeportivo.es/es/noticias/el-rc-deportivo-presenta-voa-su-himno-oficial-compuesto-por-xoel-lopez-un-simbolo-de-identidad
+      kind: video
+      origin: club_official
+      status: verified
+      credit: Videoclip oficial de «Voa» · RC Deportivo
+      source_url: https://www.rcdeportivo.es/es/noticias/el-rc-deportivo-presenta-voa-su-himno-oficial-compuesto-por-xoel-lopez-un-simbolo-de-identidad
+      verified_at: "2026-11-08"
     lyrics_rights:
       status: unknown
       holder: Xoel López / RC Deportivo de La Coruña
       license: Uso editorial; sin licencia de reutilización
       license_url: null
-      source_url: https://www.rcdeportivo.es
+      source_url: https://www.rcdeportivo.es/es/noticias/el-rc-deportivo-presenta-voa-su-himno-oficial-compuesto-por-xoel-lopez-un-simbolo-de-identidad
       note: >-
         Letra y créditos tomados de la web oficial del club. Se mantiene por
         interés editorial y documental; no se afirma permiso de reutilización.

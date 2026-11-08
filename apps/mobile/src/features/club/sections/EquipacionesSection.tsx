@@ -36,6 +36,7 @@ function KitRow({ season, kit }: { season: string; kit: KitT }) {
         width={78}
         height={98}
         placeholderLabel={t('club.noImage')}
+        illustrationColors={kit.colors}
         testID={`kit-${season}-${kit.type}`}
       />
       <View style={styles.kitText}>
@@ -99,13 +100,22 @@ export function EquipacionesSection({ club }: { club: ClubT }) {
   const [activeDecade, setActiveDecade] = useState<number | null>(
     sections[0]?.decade ?? null,
   );
+  const [kitFilter, setKitFilter] = useState<string | null>(null);
+  const filteredSections = useMemo(() => sections.map((section) => ({
+    ...section,
+    data: section.data.map((season) => ({
+      ...season,
+      kits: kitFilter ? season.kits.filter((kit) => kit.type === kitFilter) : season.kits,
+    })).filter((season) => season.kits.length > 0),
+  })).filter((section) => section.data.length > 0), [kitFilter, sections]);
+  const kitTypes = [...new Set(club.kits.flatMap((season) => season.kits.map((kit) => kit.type)))];
 
-  if (sections.length === 0) {
+  if (filteredSections.length === 0) {
     return <EmptyState message={t('club.equipaciones.empty')} />;
   }
 
   const jumpTo = (decade: number) => {
-    const index = sections.findIndex((section) => section.decade === decade);
+    const index = filteredSections.findIndex((section) => section.decade === decade);
     if (index < 0) return;
     setActiveDecade(decade);
     try {
@@ -122,13 +132,19 @@ export function EquipacionesSection({ club }: { club: ClubT }) {
 
   return (
     <View style={styles.container}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.selectorContent}>
+        {[null, ...kitTypes].map((type) => {
+          const selected = type === kitFilter;
+          return <Pressable key={type ?? 'all-kits'} accessibilityRole="button" accessibilityState={{ selected }} onPress={() => setKitFilter(type)} style={[styles.chip, { backgroundColor: selected ? colors.primary : colors.surface, borderColor: colors.border }]}><Text style={{ color: selected ? colors.onPrimary : colors.text, fontWeight: '700' }}>{type ? t(`club.kitTypes.${type}`) : t('club.equipaciones.allTypes')}</Text></Pressable>;
+        })}
+      </ScrollView>
       <View style={[styles.selector, { borderBottomColor: colors.border }]}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.selectorContent}
         >
-          {sections.map((section) => {
+          {filteredSections.map((section) => {
             const selected = section.decade === activeDecade;
             return (
               <Pressable
@@ -155,7 +171,8 @@ export function EquipacionesSection({ club }: { club: ClubT }) {
       </View>
       <SectionList
         ref={listRef}
-        sections={sections}
+        sections={filteredSections}
+        extraData={kitFilter}
         keyExtractor={(item) => item.season}
         stickySectionHeadersEnabled={false}
         initialNumToRender={6}
