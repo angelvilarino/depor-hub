@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T14:04:01Z",
+  "updatedAt": "2026-11-08T15:32:39Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "53b2962f93107fbb",
+      "title": "Noé Carrillo, de estreno con golazo en la visita del Fabril al Arenas de Getxo (VÍDEO)",
+      "url": "https://riazor.org/noe-carrillo-estreno-golazo-visita-arenas-video",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-08T15:30:40Z",
+      "kind": "article",
+      "summary": "El mediocentro del Fabril se sirvió de una elegante maniobra para anotar su primer gol de la temporada con el filial en Fadura. La entrada…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/resumen-primerafederacion-arenas.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "0f77066717fff450",
       "title": "Rueda de prensa de Manuel Pablo tras el Arenas Club de Getxo 2 - 1 Fabril",
@@ -2149,20 +2164,6 @@
       "kind": "article",
       "summary": "Noé Carrillo fue protagonista en la zona mixta tras su estreno en la presente temporada con el primer equipo, en la primera ronda de Copa…",
       "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "c3ce60437ee888db",
-      "title": "Auriense vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
-      "url": "https://youtube.com/watch?v=n40vPF3Lnn8",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-30T00:07:04Z",
-      "kind": "video",
-      "summary": "Vive en directo el partido de Copa del Rey entre el Auriense y el Dépor perteneciente a la primera eliminatoria de la competición",
-      "thumbnailUrl": "https://i3.ytimg.com/vi/n40vPF3Lnn8/hqdefault.jpg",
       "tags": [
         "partido"
       ],
