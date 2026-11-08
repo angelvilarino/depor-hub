@@ -719,7 +719,7 @@ def cmd_club_titles(args: argparse.Namespace) -> int:
     changed, titles = club_extra.publish_titles(
         Path(args.titles), Path(args.out), force=args.force
     )
-    conflicts = only_in_source = only_in_curated = 0
+    conflicts = only_in_source = only_in_curated = details_count = 0
     if not args.no_proposal:
         http = PoliteClient(
             cache_dir=Path(args.raw) / "enrich" / "titles",
@@ -730,8 +730,18 @@ def cmd_club_titles(args: argparse.Namespace) -> int:
         try:
             html = http.get(args.bdfutbol).text
             proposed = club_extra.parse_bdfutbol_titles(html, args.bdfutbol)
+            details = None
+            if args.details:
+                details = club_extra.build_title_details(
+                    titles,
+                    http,
+                    args.bdfutbol,
+                    max_editions=args.max_editions,
+                    wikipedia=not args.no_wikipedia,
+                )
+                details_count = len(details)
             proposal = club_extra.write_titles_proposal(
-                Path(args.proposal), titles, proposed, args.bdfutbol
+                Path(args.proposal), titles, proposed, args.bdfutbol, details=details
             )
             conflicts = len(proposal["conflicts"])
             only_in_source = len(proposal["only_in_source"])
@@ -742,7 +752,8 @@ def cmd_club_titles(args: argparse.Namespace) -> int:
             http.close()
     print(
         f"changed={'true' if changed else 'false'} editions={len(titles.editions)} "
-        f"conflicts={conflicts} onlyInSource={only_in_source} onlyInCurated={only_in_curated}"
+        f"conflicts={conflicts} onlyInSource={only_in_source} "
+        f"onlyInCurated={only_in_curated} details={details_count}"
     )
     _gh_output(changed="true" if changed else "false")
     return 0
@@ -1517,6 +1528,22 @@ def main(argv: list[str] | None = None) -> int:
     titles.add_argument("--force", action="store_true")
     titles.add_argument("--offline", action="store_true")
     titles.add_argument("--no-proposal", action="store_true")
+    titles.add_argument(
+        "--details",
+        action="store_true",
+        help="Enriquece finales, goleadores y plantillas (más peticiones)",
+    )
+    titles.add_argument(
+        "--max-editions",
+        type=int,
+        default=0,
+        help="Limita las ediciones enriquecidas con --details (0 = todas)",
+    )
+    titles.add_argument(
+        "--no-wikipedia",
+        action="store_true",
+        help="No contrasta la final con Wikipedia",
+    )
     titles.set_defaults(fn=cmd_club_titles)
 
     rivalries = club_sub.add_parser(

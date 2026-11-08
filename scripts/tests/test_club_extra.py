@@ -9,13 +9,20 @@ from depor_hub import models as m
 from depor_hub.club_extra import (
     ProposedTitle,
     build_rivalries,
+    build_title_details,
     load_rivalries,
     load_titles,
     parse_bdfutbol_titles,
+    parse_final_rows,
+    parse_match_page,
+    parse_squad,
+    parse_wikipedia_final,
     probe_media,
     publish_rivalries,
     publish_titles,
     titles_proposal,
+    top_scorers_from_squad,
+    write_titles_proposal,
 )
 from depor_hub.enrich.http import FetchResult, PoliteClient
 
@@ -268,3 +275,289 @@ def test_probe_media_reports_a_block_without_retrying(tmp_path: Path):
         client.close()
     assert result["items"][0]["status"] == "blocked"
     assert "403" in result["items"][0]["error"]
+
+
+TITLES_HTML = """
+<table class="taula_estil taula-palmares">
+  <tr><td></td><td><span><b>Copa del Rey</b></span><span>2</span></td>
+      <td><a href="../t/t1994-9513.html">1994-95</a>
+          <a href="../t/t2001-0213.html">2001-02</a></td></tr>
+</table>
+"""
+
+
+def test_parse_bdfutbol_titles_keeps_the_edition_source_url():
+    proposed = parse_bdfutbol_titles(TITLES_HTML)
+    assert {(item.year, item.source_url) for item in proposed} == {
+        (1995, "https://www.bdfutbol.com/es/t/t1994-9513.html"),
+        (2002, "https://www.bdfutbol.com/es/t/t2001-0213.html"),
+    }
+    proposal = titles_proposal(m.Titles(updatedAt=NOW), proposed)
+    assert proposal["proposed"][0]["sources"] == [
+        {"year": 1995, "url": "https://www.bdfutbol.com/es/t/t1994-9513.html"},
+        {"year": 2002, "url": "https://www.bdfutbol.com/es/t/t2001-0213.html"},
+    ]
+
+
+COMPETITION_HTML = """
+<table>
+  <tr>
+    <td class='text-left'><a href='../p/p.php?id=501547'>Final</a></td>
+    <td class='text-left'>06/03/2002</td>
+    <td class="text-right"><a href='../p/p.php?id=501547'>Real Madrid</a></td>
+    <td class='fit'><a href='../p/p.php?id=501547'><img src="../../i/eg/2h.png" alt=""></a></td>
+    <td><a href='../p/p.php?id=501547'>
+      <div class='resultat-gols'>1</div><div class='resultat-gols'>2</div>
+    </a></td>
+    <td class='fit'><a href='../p/p.php?id=501547'><img src="../../i/eg/13.png" alt=""></a></td>
+    <td class="text-left"><a href='../p/p.php?id=501547'>Deportivo de La Coruña</a></td>
+    <td class="text-left"><a href='../s/2.html'>Santiago Bernabéu</a></td>
+    <td></td>
+  </tr>
+</table>
+"""
+
+MATCH_HTML = """
+<html><head>
+<title>Real Madrid - Deportivo de La Coruña (1 - 2) 06/03/2002 | BDFutbol</title>
+</head><body>
+<div class="f14">Competición</div>
+<div class="f13 font-weight-bold"><a href='../t/t2001-02aCOP.html'>Copa del Rey</a></div>
+<div class="f14">Ronda</div>
+<div class="f13 font-weight-bold"><a href='../t/t2001-02aCOP.html?ronda=F'>Final</a></div>
+<div class="f14">Estadio</div>
+<div class="f13 font-weight-bold"><a href='../s/2.html'>Santiago Bernabéu (Madrid)</a></div>
+<div class="row pt-1 pt-md-3 pb-2 text-center mb-0">
+  <div class="col-6 col-sm f14">
+    <div class="text-right">
+      <div class="text-blanc"><span class=''>1-2</span>
+        <a href="../j/j2296.html">Raúl</a> 58'</div>
+    </div>
+  </div>
+  <div class="col-sm-auto d-none d-sm-block font-blanc f13">
+    <a href='../r/r600022.html'><img src='../../i/am/600022.png' alt=''>Mejuto González</a>
+  </div>
+  <div class="col-6 col-sm f14">
+    <div class="text-left">
+      <div class="text-blanc"><span>0-1</span>
+        <a class="font-blanc" href="../j/j2491.html">Sergio</a> 6'</div>
+      <div class="text-blanc"><span>0-2</span>
+        <a class="font-blanc" href="../j/j588.html">Tristán</a> 38'</div>
+    </div>
+  </div>
+</div>
+<div class="row pt-1 pb-4 d-md-none"></div>
+</body></html>
+"""
+
+SQUAD_HTML = """
+<table id="taulaplantilla">
+  <tr>
+    <th data-colid='nom'>Nombre</th><th data-colid='dem'>Pos</th>
+    <th data-colid='pj'>PJ</th><th data-colid='g'>G</th>
+  </tr>
+  <tr>
+    <td class="text-left"><a href='../j/j820.html'>
+      <span class='font-weight-bold mr-2 float-left'>Liaño</span>
+      <span class='d-none d-md-block float-left'>Francisco Liaño Fernández</span>
+    </a></td>
+    <td><div class="fit por"></div></td><td>27</td><td>-22</td>
+  </tr>
+  <tr>
+    <td class="text-left"><a href='../j/j999.html'>
+      <span class='font-weight-bold mr-2 float-left'>Bebeto</span>
+    </a></td>
+    <td><div class="fit dav"></div></td><td>34</td><td>16</td>
+  </tr>
+</table>
+"""
+
+WIKI_FINAL_HTML = """
+<script>
+{"date":{"wt":"6 March 2002"},"score":{"wt":"1–2"},
+ "team1":{"wt":"[[Real Madrid CF|Real Madrid]]"},
+ "team2":{"wt":"[[Deportivo de La Coruña|Deportivo La Coruña]]"},
+ "goals1":{"wt":"[[Raúl (footballer)|Raúl]] {{goal|58}}"},
+ "goals2":{"wt":"[[Sergio (footballer, born 1976)|Sergio]] {{goal|6}}<br>[[Diego Tristán|Tristán]] {{goal|38}}"},
+ "stadium":{"wt":"[[Santiago Bernabéu Stadium|Santiago Bernabéu]]"},
+ "referee":{"wt":"[[Manuel Mejuto González]] ([[Royal Spanish Football Federation|Spain]])"}}
+</script>
+"""
+
+
+def test_parse_final_row_and_match_page():
+    rows = parse_final_rows(COMPETITION_HTML)
+    assert len(rows) == 1
+    assert (rows[0].date, rows[0].home, rows[0].away) == (
+        "2002-03-06",
+        "Real Madrid",
+        "Deportivo de La Coruña",
+    )
+    assert (rows[0].home_goals, rows[0].away_goals) == (1, 2)
+    assert rows[0].source_url == "https://www.bdfutbol.com/es/p/p.php?id=501547"
+
+    final = parse_match_page(MATCH_HTML)
+    assert (final.home, final.away) == ("Real Madrid", "Deportivo de La Coruña")
+    assert (final.home_goals, final.away_goals) == (1, 2)
+    assert final.venue == "Santiago Bernabéu (Madrid)"
+    assert final.referee == "Mejuto González"
+    assert {
+        (scorer.player, scorer.minute, scorer.team) for scorer in final.goal_scorers
+    } == {
+        ("Raúl", 58, "Real Madrid"),
+        ("Sergio", 6, "Deportivo de La Coruña"),
+        ("Tristán", 38, "Deportivo de La Coruña"),
+    }
+
+
+def test_parse_squad_ignores_goalkeeper_conceded_goals():
+    squad = parse_squad(SQUAD_HTML)
+    assert [(member.name, member.role, member.appearances, member.goals) for member in squad] == [
+        ("Liaño", "Portero", 27, None),
+        ("Bebeto", "Delantero", 34, 16),
+    ]
+    top = top_scorers_from_squad(squad)
+    assert [(scorer.player, scorer.goals) for scorer in top] == [("Bebeto", 16)]
+
+
+def test_parse_wikipedia_final_reads_the_infobox():
+    final = parse_wikipedia_final(WIKI_FINAL_HTML, "https://en.wikipedia.org/wiki/x")
+    assert final.date == "2002-03-06"
+    assert (final.home, final.away) == ("Real Madrid", "Deportivo La Coruña")
+    assert (final.home_goals, final.away_goals) == (1, 2)
+    assert final.venue == "Santiago Bernabéu"
+    assert final.referee == "Manuel Mejuto González"
+    assert [(scorer.player, scorer.minute) for scorer in final.goal_scorers] == [
+        ("Raúl", 58),
+        ("Sergio", 6),
+        ("Tristán", 38),
+    ]
+
+
+SEASON_HTML = """
+<html><body>
+<a href="../t/t2001-02aCOP.html">Copa del Rey</a>
+""" + SQUAD_HTML + """
+</body></html>
+"""
+
+
+def _detail_handler(request: httpx.Request) -> httpx.Response:
+    if request.url.path == "/robots.txt":
+        return httpx.Response(200, text="User-agent: *\nAllow: /\n")
+    if request.url.host == "en.wikipedia.org":
+        return httpx.Response(200, text=WIKI_FINAL_HTML)
+    if request.url.path == "/es/t/t2001-0213.html":
+        return httpx.Response(200, text=SEASON_HTML)
+    if request.url.path == "/es/t/t2001-02aCOP.html":
+        return httpx.Response(200, text=COMPETITION_HTML)
+    if request.url.path == "/es/p/p.php":
+        return httpx.Response(200, text=MATCH_HTML)
+    return httpx.Response(404)
+
+
+def _curated_final(minute: int = 38) -> m.FinalMatch:
+    return m.FinalMatch(
+        date="2002-03-06",
+        round_="Final",
+        home="Real Madrid CF",
+        away="RC Deportivo de La Coruña",
+        home_goals=1,
+        away_goals=2,
+        venue="Estadio Santiago Bernabéu, Madrid",
+        referee="Manuel Mejuto González",
+        goal_scorers=[
+            m.GoalScorer(
+                player="Sergio González",
+                goals=1,
+                minute=6,
+                team="RC Deportivo de La Coruña",
+            ),
+            m.GoalScorer(
+                player="Diego Tristán",
+                goals=1,
+                minute=minute,
+                team="RC Deportivo de La Coruña",
+            ),
+            m.GoalScorer(
+                player="Raúl González",
+                goals=1,
+                minute=58,
+                team="Real Madrid CF",
+            ),
+        ],
+    )
+
+
+def test_build_title_details_cross_checks_without_touching_the_curated_title(tmp_path: Path):
+    curated = m.Titles(
+        updatedAt=NOW,
+        editions=[
+            m.TitleEdition(
+                competition="Copa del Rey",
+                year=2002,
+                season="2001-02",
+                final_match=_curated_final(38),
+                provenance=m.Provenance(source="manual"),
+            )
+        ],
+    )
+    before = curated.model_dump()
+    client = PoliteClient(
+        cache_dir=tmp_path / "cache",
+        interval=0,
+        sleep=lambda _: None,
+        transport=httpx.MockTransport(_detail_handler),
+    )
+    try:
+        details = build_title_details(curated, client)
+    finally:
+        client.close()
+
+    assert len(details) == 1
+    detail = details[0]
+    assert detail["status"] == "match"
+    assert detail["differences"] == []
+    assert detail["bdfutbol"]["final_matches"][0]["referee"] == "Mejuto González"
+    assert detail["bdfutbol"]["top_scorers"][0]["player"] == "Bebeto"
+    assert detail["wikipedia"]["final_match"]["date"] == "2002-03-06"
+    # La edición curada no se modifica: la propuesta solo se escribe aparte.
+    assert curated.model_dump() == before
+
+
+def test_title_details_flags_a_conflict_and_proposal_keeps_titles_yml_intact(tmp_path: Path):
+    titles_path = MANUAL / "titles.yml"
+    before = titles_path.read_bytes()
+    curated = m.Titles(
+        updatedAt=NOW,
+        editions=[
+            m.TitleEdition(
+                competition="Copa del Rey",
+                year=2002,
+                season="2001-02",
+                final_match=_curated_final(37),
+                provenance=m.Provenance(source="manual"),
+            )
+        ],
+    )
+    client = PoliteClient(
+        cache_dir=tmp_path / "cache",
+        interval=0,
+        sleep=lambda _: None,
+        transport=httpx.MockTransport(_detail_handler),
+    )
+    try:
+        details = build_title_details(curated, client)
+    finally:
+        client.close()
+
+    assert details[0]["status"] == "conflict"
+    assert "goal_scorers" in {item["field"] for item in details[0]["differences"]}
+
+    proposal_path = tmp_path / "titles.proposed.yml"
+    proposal = write_titles_proposal(
+        proposal_path, curated, [], details=details
+    )
+    assert proposal["details"] == details
+    assert "goal_scorers" in proposal_path.read_text(encoding="utf-8")
+    assert titles_path.read_bytes() == before

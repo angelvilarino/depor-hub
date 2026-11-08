@@ -14,14 +14,17 @@ opcionales `titles.json` y `rivalries.json`. Reglas:
 
 from __future__ import annotations
 
+import html as html_lib
 import io
 import json
 import re
 import sys
+import unicodedata
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import urljoin, urlparse
 
 import yaml
 
@@ -38,6 +41,91 @@ _ROW = re.compile(r"<tr[^>]*>(.*?)</tr>", re.S)
 _TD = re.compile(r"<td[^>]*>(.*?)</td>", re.S)
 _SEASON = re.compile(r">(\d{4}-\d{2})<")
 _COUNT = re.compile(r"\s+\d+$")
+_HREF = re.compile(r"""href=["']([^"']+)["']""")
+_TEAM_PATH = re.compile(r"/e/e(\d+)\.html")
+_DATE_DMY = re.compile(r"\b(\d{2})/(\d{2})/(\d{4})\b")
+_TABLE_ID = re.compile(r'<table[^>]*id="taulaplantilla"[^>]*>(.*?)</table>', re.S)
+_ROLE = re.compile(r'<div class="fit (por|ltd|lti|cen|mig|dac|dav)"></div>')
+_PLAYER_NAME = re.compile(
+    r"<span class=['\"]font-weight-bold mr-2 float-left['\"]>([^<]+)</span>"
+)
+_GOAL_ENTRY = re.compile(
+    r"<span[^>]*>\s*(\d+)\s*-\s*(\d+)\s*</span>\s*<a[^>]*>(.*?)</a>\s*(\d+)'",
+    re.S,
+)
+_REFEREE_LINK = re.compile(
+    r"""href=["']\.\./r/r\d+\.html["'][^>]*>(.*?)</a>""", re.S
+)
+_MATCH_TITLE = re.compile(
+    r"<title>\s*(.*?)\s*-\s*(.*?)\s*\((\d+)\s*-\s*(\d+)\)\s*"
+    r"(\d{2}/\d{2}/\d{4})",
+    re.S,
+)
+_WIKI_GOAL = re.compile(r"\{\{goal\|(\d+)(?:\|[^}]*)?\}\}")
+_WIKI_LINK = re.compile(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]")
+
+_COMPETITION_CODES = {
+    "Copa del Rey": "COP",
+    "Supercopa de España": "SUP",
+}
+_COMPETITION_WIKI = {
+    "Copa del Rey": "https://en.wikipedia.org/wiki/{year}_Copa_del_Rey_final",
+}
+_ROLE_LABELS = {
+    "por": "Portero",
+    "ltd": "Lateral",
+    "lti": "Lateral",
+    "cen": "Defensa central",
+    "mig": "Centrocampista",
+    "dac": "Delantero",
+    "dav": "Delantero",
+}
+_TEAM_STOPWORDS = {
+    "ca",
+    "cd",
+    "cf",
+    "club",
+    "de",
+    "del",
+    "el",
+    "fc",
+    "futbol",
+    "la",
+    "las",
+    "los",
+    "rc",
+    "real",
+    "sad",
+    "sd",
+    "ud",
+}
+_VENUE_STOPWORDS = {"estadio", "stadium", "municipal"}
+_MONTHS = {
+    "january": 1,
+    "february": 2,
+    "march": 3,
+    "april": 4,
+    "may": 5,
+    "june": 6,
+    "july": 7,
+    "august": 8,
+    "september": 9,
+    "october": 10,
+    "november": 11,
+    "december": 12,
+    "enero": 1,
+    "febrero": 2,
+    "marzo": 3,
+    "abril": 4,
+    "mayo": 5,
+    "junio": 6,
+    "julio": 7,
+    "agosto": 8,
+    "septiembre": 9,
+    "octubre": 10,
+    "noviembre": 11,
+    "diciembre": 12,
+}
 
 
 def _now() -> str:
@@ -94,6 +182,7 @@ class ProposedTitle:
     competition: str
     year: int
     season: str
+    source_url: str | None = None
 
 
 def _normalize_competition(name: str) -> str | None:
@@ -143,15 +232,612 @@ def parse_bdfutbol_titles(html: str, source_url: str = _BDFUTBOL_TEAM) -> list[P
         if not competition:
             continue
         seasons = _SEASON.findall(cells[2])
-        for season in seasons:
+        hrefs = _HREF.findall(cells[2])
+        for index, season in enumerate(seasons):
             year = _season_year(competition, season)
             key = (competition, year)
             if key in seen:
                 continue
             seen.add(key)
-            out.append(ProposedTitle(competition=competition, year=year, season=season))
+            href = hrefs[index] if index < len(hrefs) else None
+            item_url = urljoin(source_url, href) if href else None
+            out.append(
+                ProposedTitle(
+                    competition=competition,
+                    year=year,
+                    season=season,
+                    source_url=item_url,
+                )
+            )
     out.sort(key=lambda item: (item.competition, item.year))
     return out
+
+
+def _text(value: str) -> str:
+    return normalize_space(html_lib.unescape(strip_tags(value)))
+
+
+def _iso_date_dmy(value: str) -> str | None:
+    match = _DATE_DMY.search(value)
+    if not match:
+        return None
+    day, month, year = match.groups()
+    try:
+        datetime.strptime(f"{year}-{month}-{day}", "%Y-%m-%d")
+    except ValueError:
+        return None
+    return f"{year}-{month}-{day}"
+
+
+def _int_or_none(value: str) -> int | None:
+    match = re.search(r"-?\d+", value)
+    return int(match.group()) if match else None
+
+
+def _bdfutbol_team_id(team_url: str) -> str:
+    match = _TEAM_PATH.search(urlparse(team_url).path)
+    if not match:
+        raise ValueError(f"no se pudo leer el id del equipo en {team_url}")
+    return match.group(1)
+
+
+def _season_url(team_url: str, season: str, team_id: str) -> str:
+    return urljoin(team_url, f"../t/t{season}{team_id}.html")
+
+
+def _competition_url(
+    season_html: str, season_url: str, season: str, code: str
+) -> str | None:
+    pattern = re.compile(
+        rf"""href=["']([^"']*t{re.escape(season)}a{re.escape(code)}\.html)["']""",
+        re.I,
+    )
+    match = pattern.search(season_html)
+    return urljoin(season_url, match.group(1)) if match else None
+
+
+@dataclass(frozen=True)
+class FinalRow:
+    label: str
+    date: str | None
+    home: str
+    away: str
+    home_goals: int
+    away_goals: int
+    venue: str | None
+    note: str | None
+    source_url: str | None
+
+
+def parse_final_rows(html: str, source_url: str = "") -> list[FinalRow]:
+    """Lee las filas `Final` de la página de una competición de BDFutbol."""
+    rows: list[FinalRow] = []
+    for row in _ROW.findall(html):
+        cells = _TD.findall(row)
+        if len(cells) < 8:
+            continue
+        label = _text(cells[0])
+        if not label.lower().startswith("final"):
+            continue
+        scores = [
+            int(value)
+            for value in re.findall(
+                r"resultat-gols[^>]*>\s*(-?\d+)\s*<", cells[4]
+            )
+        ]
+        if len(scores) < 2:
+            continue
+        note_match = re.search(r"""title=['"]([^'"]+)['"]""", cells[8])
+        note = _text(note_match.group(1)) if note_match else None
+        href = _HREF.search(row)
+        base = source_url or "https://www.bdfutbol.com/es/t/"
+        rows.append(
+            FinalRow(
+                label=label,
+                date=_iso_date_dmy(_text(cells[1])),
+                home=_text(cells[2]),
+                away=_text(cells[6]),
+                home_goals=scores[0],
+                away_goals=scores[1],
+                venue=_text(cells[7]) or None,
+                note=note,
+                source_url=urljoin(base, href.group(1)) if href else None,
+            )
+        )
+    return rows
+
+
+def parse_match_page(html: str, source_url: str = "") -> m.FinalMatch:
+    """Extrae la ficha de un partido: fecha, equipos, marcador, sede, árbitro y goles."""
+    title_match = _MATCH_TITLE.search(html)
+    if not title_match:
+        raise SourceError(f"ficha de partido sin título reconocible: {source_url}")
+
+    home, away = _text(title_match.group(1)), _text(title_match.group(2))
+    home_goals, away_goals = int(title_match.group(3)), int(title_match.group(4))
+
+    competition = round_name = venue = None
+    for label, target in (
+        ("Competición", "competition"),
+        ("Ronda", "round"),
+        ("Estadio", "venue"),
+    ):
+        match = re.search(
+            rf"{label}</div>\s*<div[^>]*>\s*<a[^>]*>(.*?)</a>", html, re.S
+        )
+        if not match:
+            continue
+        value = _text(match.group(1))
+        if target == "competition":
+            competition = value
+        elif target == "round":
+            round_name = value
+        else:
+            venue = value
+
+    referee_match = _REFEREE_LINK.search(html)
+    referee = _text(referee_match.group(1)) if referee_match else None
+
+    start = html.find("row pt-1 pt-md-3 pb-2 text-center")
+    end = html.find("row pt-1 pb-4", start)
+    block = html[start : end if end > 0 else start + 12000] if start >= 0 else ""
+    right = block.find('class="text-right"')
+    left = block.find('class="text-left"')
+    scorers: list[m.GoalScorer] = []
+    for match in _GOAL_ENTRY.finditer(block):
+        position = match.start()
+        team = home if right >= 0 and position > right and (left < 0 or position < left) else away
+        scorers.append(
+            m.GoalScorer(
+                player=_text(match.group(3)),
+                goals=1,
+                minute=int(match.group(4)),
+                team=team,
+            )
+        )
+
+    return m.FinalMatch(
+        date=_iso_date_dmy(title_match.group(5)),
+        competition=competition,
+        round_=round_name,
+        home=home,
+        away=away,
+        home_goals=home_goals,
+        away_goals=away_goals,
+        venue=venue,
+        referee=referee,
+        goal_scorers=scorers,
+        source_url=source_url or None,
+    )
+
+
+def parse_squad(html: str) -> list[m.TitleSquadMember]:
+    """Lee la plantilla de `table#taulaplantilla` (PJ y G; porteros sin goles)."""
+    table_match = _TABLE_ID.search(html)
+    if not table_match:
+        return []
+    table = table_match.group(1)
+    header = re.search(r"<tr[^>]*>(.*?)</tr>", table, re.S)
+    if not header:
+        return []
+    columns = re.findall(r"""data-colid=['"]([^'"]+)['"]""", header.group(1))
+    if "pj" not in columns or "g" not in columns:
+        return []
+    pj_index, goals_index = columns.index("pj"), columns.index("g")
+    name_index = columns.index("nom") if "nom" in columns else 3
+
+    squad: list[m.TitleSquadMember] = []
+    for row in _ROW.findall(table):
+        cells = _TD.findall(row)
+        if len(cells) <= max(pj_index, goals_index, name_index):
+            continue
+        name_match = _PLAYER_NAME.search(row)
+        name = _text(name_match.group(1)) if name_match else _text(cells[name_index])
+        if not name:
+            continue
+        role_match = _ROLE.search(row)
+        role = _ROLE_LABELS.get(role_match.group(1)) if role_match else None
+        appearances = _int_or_none(_text(cells[pj_index]))
+        goals = _int_or_none(_text(cells[goals_index]))
+        if role == "Portero":
+            # La columna G de un portero son goles encajados, no goles marcados.
+            goals = None
+        elif goals is not None and goals < 0:
+            goals = None
+        squad.append(
+            m.TitleSquadMember(
+                name=name,
+                role=role,
+                appearances=appearances if appearances is None or appearances >= 0 else None,
+                goals=goals,
+            )
+        )
+    return squad
+
+
+def top_scorers_from_squad(
+    squad: list[m.TitleSquadMember], limit: int = 5
+) -> list[m.GoalScorer]:
+    scorers = [
+        m.GoalScorer(player=member.name, goals=member.goals or 0, note=member.role)
+        for member in squad
+        if (member.goals or 0) > 0
+    ]
+    scorers.sort(key=lambda scorer: (-scorer.goals, scorer.player))
+    return scorers[:limit]
+
+
+def _wiki_field(text: str, field: str) -> str | None:
+    pattern = '"' + re.escape(field) + '":\\{"wt":"(.*?)"\\}'
+    match = re.search(pattern, text, re.S)
+    return match.group(1) if match else None
+
+
+def _wiki_link_text(value: str | None) -> str | None:
+    if not value:
+        return None
+    match = _WIKI_LINK.search(value)
+    if not match:
+        return None
+    name = match.group(2) or match.group(1)
+    name = re.sub(r"\s*\([^)]*\)\s*$", "", name).strip()
+    return name or None
+
+
+def _wiki_date(value: str | None) -> str | None:
+    if not value:
+        return None
+    clean = re.sub(r"<[^>]+>", " ", value)
+    candidates: list[str] = []
+    for day, month, year in re.findall(
+        r"(\d{1,2})\s+([A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)\s+(\d{4})", clean
+    ):
+        month_number = _MONTHS.get(month.lower())
+        if month_number:
+            candidates.append(f"{year}-{month_number:02d}-{int(day):02d}")
+    if candidates:
+        return candidates[-1]
+    iso = re.search(r"\d{4}-\d{2}-\d{2}", value)
+    return iso.group() if iso else None
+
+
+def _wiki_goals(value: str | None, team: str) -> list[m.GoalScorer]:
+    if not value:
+        return []
+    scorers: list[m.GoalScorer] = []
+    for part in re.split(r"<br\s*/?>", value, flags=re.I):
+        link = _WIKI_LINK.search(part)
+        if not link:
+            continue
+        player = link.group(2) or re.sub(r"\s*\([^)]*\)\s*$", "", link.group(1))
+        player = player.strip()
+        if not player:
+            continue
+        minutes = [int(minute) for minute in _WIKI_GOAL.findall(part)]
+        if minutes:
+            for minute in minutes:
+                scorers.append(
+                    m.GoalScorer(player=player, goals=1, minute=minute, team=team)
+                )
+        else:
+            scorers.append(m.GoalScorer(player=player, goals=1, team=team))
+    return scorers
+
+
+def parse_wikipedia_final(
+    html: str, source_url: str = ""
+) -> m.FinalMatch:
+    """Lee la ficha de la final desde el wikitext incrustado en Wikipedia."""
+    text = html_lib.unescape(html)
+    home = _wiki_link_text(_wiki_field(text, "team1")) or ""
+    away = _wiki_link_text(_wiki_field(text, "team2")) or ""
+    score_raw = _wiki_field(text, "score") or ""
+    score_match = re.search(r"(\d+)\s*[-–—]\s*(\d+)", score_raw)
+    note = None
+    if "susp" in score_raw.lower():
+        note = "marcador en el momento de la suspensión; la final se reanudó después"
+    return m.FinalMatch(
+        date=_wiki_date(_wiki_field(text, "date")),
+        round_="Final",
+        home=home or None,
+        away=away or None,
+        home_goals=int(score_match.group(1)) if score_match else None,
+        away_goals=int(score_match.group(2)) if score_match else None,
+        venue=_wiki_link_text(_wiki_field(text, "stadium")),
+        referee=_wiki_link_text(_wiki_field(text, "referee")),
+        goal_scorers=_wiki_goals(_wiki_field(text, "goals1"), home)
+        + _wiki_goals(_wiki_field(text, "goals2"), away),
+        note=note,
+        source_url=source_url or None,
+    )
+
+
+def _fold(value: str) -> str:
+    decomposed = unicodedata.normalize("NFKD", value)
+    return "".join(char for char in decomposed if not unicodedata.combining(char)).lower()
+
+
+def _tokens(value: str) -> set[str]:
+    return {
+        token
+        for token in re.findall(r"[a-z0-9]+", _fold(value))
+        if token
+    }
+
+
+def _same_name(left: str, right: str) -> bool:
+    left_tokens, right_tokens = _tokens(left), _tokens(right)
+    if not left_tokens or not right_tokens:
+        return False
+    if left_tokens == right_tokens:
+        return True
+    if left_tokens <= right_tokens or right_tokens <= left_tokens:
+        return True
+    return sorted(left_tokens)[-1] == sorted(right_tokens)[-1]
+
+
+def _same_team(left: str, right: str) -> bool:
+    left_tokens = _tokens(left) - _TEAM_STOPWORDS
+    right_tokens = _tokens(right) - _TEAM_STOPWORDS
+    if not left_tokens or not right_tokens:
+        return _fold(left) == _fold(right)
+    return left_tokens == right_tokens or left_tokens <= right_tokens or right_tokens <= left_tokens
+
+
+def _same_venue(left: str, right: str) -> bool:
+    left_tokens = _tokens(left) - _VENUE_STOPWORDS
+    right_tokens = _tokens(right) - _VENUE_STOPWORDS
+    if not left_tokens or not right_tokens:
+        return _fold(left) == _fold(right)
+    return left_tokens == right_tokens or left_tokens <= right_tokens or right_tokens <= left_tokens
+
+
+def _scorer_key(scorer: m.GoalScorer) -> tuple[str, int | None, str]:
+    player_tokens = sorted(_tokens(scorer.player))
+    player = player_tokens[-1] if player_tokens else _fold(scorer.player)
+    team = " ".join(sorted(_tokens(scorer.team or "") - _TEAM_STOPWORDS))
+    return player, scorer.minute, team
+
+
+def _same_goals(left: list[m.GoalScorer], right: list[m.GoalScorer]) -> bool:
+    return sorted(map(_scorer_key, left)) == sorted(map(_scorer_key, right))
+
+
+def _scorers_json(scorers: list[m.GoalScorer]) -> list[dict[str, Any]]:
+    return [
+        scorer.model_dump(by_alias=True, mode="json", exclude_none=True)
+        for scorer in scorers
+    ]
+
+
+def _final_json(final: m.FinalMatch | None) -> dict[str, Any] | None:
+    if final is None:
+        return None
+    data = final.model_dump(by_alias=True, mode="json", exclude_none=True)
+    if data.get("goalScorers"):
+        data["goalScorers"].sort(
+            key=lambda scorer: (scorer.get("minute") or 0, scorer.get("player", ""))
+        )
+    return data
+
+
+def _field_values(
+    curated: m.FinalMatch | None,
+    bdfutbol: m.FinalMatch | None,
+    wikipedia: m.FinalMatch | None,
+) -> dict[str, dict[str, Any]]:
+    fields = ("date", "home", "away", "home_goals", "away_goals", "venue", "referee")
+    values: dict[str, dict[str, Any]] = {}
+    for field in fields:
+        values[field] = {
+            name: getattr(final, field)
+            for name, final in (
+                ("curated", curated),
+                ("bdfutbol", bdfutbol),
+                ("wikipedia", wikipedia),
+            )
+            if final is not None and getattr(final, field) not in (None, "")
+        }
+    return values
+
+
+def _same_field(field: str, values: dict[str, Any]) -> bool:
+    items = list(values.values())
+    if len(items) < 2:
+        return True
+    first = items[0]
+    for other in items[1:]:
+        if field in {"home", "away"} and not _same_team(str(first), str(other)):
+            return False
+        if field == "venue" and not _same_venue(str(first), str(other)):
+            return False
+        if field == "referee" and not _same_name(str(first), str(other)):
+            return False
+        if field in {"date", "home_goals", "away_goals"} and first != other:
+            return False
+    return True
+
+
+def _differences(
+    curated: m.FinalMatch | None,
+    bdfutbol: m.FinalMatch | None,
+    wikipedia: m.FinalMatch | None,
+) -> list[dict[str, Any]]:
+    differences: list[dict[str, Any]] = []
+    for field, values in _field_values(curated, bdfutbol, wikipedia).items():
+        if not _same_field(field, values):
+            differences.append({"field": field, **values})
+
+    goal_sources = {
+        name: final
+        for name, final in (
+            ("curated", curated),
+            ("bdfutbol", bdfutbol),
+            ("wikipedia", wikipedia),
+        )
+        if final is not None and final.goal_scorers
+    }
+    if len(goal_sources) >= 2:
+        first_name = next(iter(goal_sources))
+        first = sorted(map(_scorer_key, goal_sources[first_name].goal_scorers))
+        if any(
+            sorted(map(_scorer_key, final.goal_scorers)) != first
+            for name, final in goal_sources.items()
+            if name != first_name
+        ):
+            differences.append(
+                {
+                    "field": "goal_scorers",
+                    **{
+                        name: _scorers_json(final.goal_scorers)
+                        for name, final in goal_sources.items()
+                    },
+                }
+            )
+    return differences
+
+
+def _final_from_row(row: FinalRow) -> m.FinalMatch:
+    return m.FinalMatch(
+        date=row.date,
+        round_=row.label,
+        home=row.home,
+        away=row.away,
+        home_goals=row.home_goals,
+        away_goals=row.away_goals,
+        venue=row.venue,
+        note=row.note,
+        source_url=row.source_url,
+    )
+
+
+def _wikipedia_url(edition: m.TitleEdition) -> str | None:
+    if edition.final_match and edition.final_match.source_url:
+        if "wikipedia.org" in edition.final_match.source_url:
+            return edition.final_match.source_url
+    template = _COMPETITION_WIKI.get(edition.competition)
+    return template.format(year=edition.year) if template else None
+
+
+def enrich_title_edition(
+    edition: m.TitleEdition,
+    http: PoliteClient,
+    team_url: str = _BDFUTBOL_TEAM,
+    wikipedia: bool = True,
+) -> dict[str, Any]:
+    """Contrasta una edición con BDFutbol y, si existe, con la final de Wikipedia.
+
+    Devuelve una propuesta, nunca modifica `TitleEdition` ni `titles.yml`.
+    """
+    team_id = _bdfutbol_team_id(team_url)
+    detail: dict[str, Any] = {
+        "competition": edition.competition,
+        "year": edition.year,
+        "season": edition.season,
+        "curated": {"final_match": _final_json(edition.final_match)},
+        "bdfutbol": {
+            "season_url": None,
+            "competition_url": None,
+            "final_matches": [],
+            "top_scorers": [],
+            "squad": [],
+            "errors": [],
+        },
+        "wikipedia": None,
+        "differences": [],
+        "status": "unavailable",
+    }
+    errors: list[str] = detail["bdfutbol"]["errors"]
+    season_url = _season_url(team_url, edition.season or "", team_id)
+    detail["bdfutbol"]["season_url"] = season_url
+    try:
+        season_html = http.get(season_url).text
+    except SourceError as exc:
+        errors.append(str(exc))
+        return detail
+
+    squad = parse_squad(season_html)
+    detail["bdfutbol"]["squad"] = [
+        member.model_dump(mode="json", exclude_none=True) for member in squad
+    ]
+    detail["bdfutbol"]["top_scorers"] = _scorers_json(top_scorers_from_squad(squad))
+
+    competition_html = season_html
+    code = _COMPETITION_CODES.get(edition.competition)
+    if code:
+        competition_url = _competition_url(
+            season_html, season_url, edition.season or "", code
+        )
+        if competition_url:
+            detail["bdfutbol"]["competition_url"] = competition_url
+            try:
+                competition_html = http.get(competition_url).text
+            except SourceError as exc:
+                errors.append(str(exc))
+                competition_html = ""
+        else:
+            errors.append(f"no se encontró la página de {edition.competition}")
+
+    final_matches: list[m.FinalMatch] = []
+    for row in parse_final_rows(competition_html, detail["bdfutbol"]["competition_url"] or ""):
+        if row.source_url:
+            try:
+                final_matches.append(parse_match_page(http.get(row.source_url).text, row.source_url))
+                continue
+            except SourceError as exc:
+                errors.append(str(exc))
+        final_matches.append(_final_from_row(row))
+    detail["bdfutbol"]["final_matches"] = [
+        _final_json(final) for final in final_matches if final is not None
+    ]
+
+    bdfutbol_final = final_matches[0] if len(final_matches) == 1 else None
+    if len(final_matches) > 1:
+        errors.append(
+            "final a doble partido: se listan los partidos, no se compara como final única"
+        )
+
+    wikipedia_final: m.FinalMatch | None = None
+    wiki_url = _wikipedia_url(edition) if wikipedia else None
+    if wiki_url:
+        detail["wikipedia"] = {"source_url": wiki_url, "final_match": None, "errors": []}
+        try:
+            wikipedia_final = parse_wikipedia_final(http.get(wiki_url).text, wiki_url)
+            detail["wikipedia"]["final_match"] = _final_json(wikipedia_final)
+        except SourceError as exc:
+            detail["wikipedia"]["errors"].append(str(exc))
+
+    detail["differences"] = _differences(
+        edition.final_match, bdfutbol_final, wikipedia_final
+    )
+    sources = [final for final in (bdfutbol_final, wikipedia_final) if final is not None]
+    if detail["differences"]:
+        detail["status"] = "conflict"
+    elif len(sources) == 2:
+        detail["status"] = "match"
+    elif sources or final_matches or squad:
+        detail["status"] = "single_source"
+    return detail
+
+
+def build_title_details(
+    curated: m.Titles,
+    http: PoliteClient,
+    team_url: str = _BDFUTBOL_TEAM,
+    max_editions: int = 0,
+    wikipedia: bool = True,
+) -> list[dict[str, Any]]:
+    """Enriquece las ediciones con temporada conocida, sin tocar `titles.yml`."""
+    selected = sorted(
+        (edition for edition in curated.editions if edition.season),
+        key=lambda edition: (edition.year, edition.competition),
+    )
+    if max_editions > 0:
+        selected = selected[:max_editions]
+    return [
+        enrich_title_edition(edition, http, team_url, wikipedia=wikipedia)
+        for edition in selected
+    ]
 
 
 def titles_proposal(
@@ -159,6 +845,7 @@ def titles_proposal(
     proposed: list[ProposedTitle],
     source_url: str = _BDFUTBOL_TEAM,
     generated_at: str | None = None,
+    details: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Compara lo curado con BDFutbol sin aplicar nada automáticamente."""
     curated_by_comp: dict[str, set[int]] = {}
@@ -166,9 +853,12 @@ def titles_proposal(
         curated_by_comp.setdefault(edition.competition, set()).add(edition.year)
     source_by_comp: dict[str, set[int]] = {}
     seasons_by_comp: dict[str, set[str]] = {}
+    urls_by_comp: dict[str, dict[int, str]] = {}
     for item in proposed:
         source_by_comp.setdefault(item.competition, set()).add(item.year)
         seasons_by_comp.setdefault(item.competition, set()).add(item.season)
+        if item.source_url:
+            urls_by_comp.setdefault(item.competition, {})[item.year] = item.source_url
 
     conflicts: list[dict[str, Any]] = []
     only_in_source: list[dict[str, Any]] = []
@@ -182,6 +872,10 @@ def titles_proposal(
                     "competition": competition,
                     "years": sorted(source_years),
                     "seasons": sorted(seasons_by_comp.get(competition, set())),
+                    "sources": [
+                        {"year": year, "url": url}
+                        for year, url in sorted(urls_by_comp.get(competition, {}).items())
+                    ],
                 }
             )
         elif not source_years:
@@ -209,12 +903,17 @@ def titles_proposal(
                 "competition": competition,
                 "years": sorted(years),
                 "seasons": sorted(seasons_by_comp.get(competition, set())),
+                "sources": [
+                    {"year": year, "url": url}
+                    for year, url in sorted(urls_by_comp.get(competition, {}).items())
+                ],
             }
             for competition, years in sorted(source_by_comp.items())
         ],
         "conflicts": conflicts,
         "only_in_source": only_in_source,
         "only_in_curated": only_in_curated,
+        "details": details or [],
     }
 
 
@@ -223,8 +922,9 @@ def write_titles_proposal(
     curated: m.Titles,
     proposed: list[ProposedTitle],
     source_url: str = _BDFUTBOL_TEAM,
+    details: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    proposal = titles_proposal(curated, proposed, source_url)
+    proposal = titles_proposal(curated, proposed, source_url, details=details)
     header = (
         "# Propuesta generada por `python -m depor_hub.cli club titles`.\n"
         "# No editar a mano. Los cambios se aplican únicamente en titles.yml tras revisión.\n\n"
