@@ -53,9 +53,22 @@ export function TitulosSection({ club }: { club: ClubT }) {
           {score ? <Text accessibilityLabel={t('club.titulos.score', { score })} style={{ color: colors.primary, fontSize: 32, fontWeight: '900' }}>{score}</Text> : null}
           {match?.date ? <Text style={{ color: colors.textMuted }}>{formatDate(match.date, locale)}</Text> : null}
           {match?.venue ? <Text style={{ color: colors.textMuted }}>{match.venue}</Text> : null}
-          {edition.coach ? <Text style={{ color: colors.text }}>{t('club.titulos.coach', { coach: edition.coach })}</Text> : null}
+          {edition.coach ? <View style={{ gap: spacing.xs }}>
+            <Text style={{ color: colors.text }}>{t('club.titulos.coach', { coach: edition.coach })}</Text>
+            {edition.coachProvenance ? <FieldProvenance
+              source={edition.coachProvenance.source}
+              confidence={t(`common.confidenceLevel.${edition.coachProvenance.confidence}`)}
+            /> : null}
+          </View> : null}
           {match?.goalScorers.length ? <View style={{ gap: spacing.xs }}><Text style={{ color: colors.textMuted, fontWeight: '700' }}>{t('club.titulos.scorers')}</Text>{match.goalScorers.map((goal, index) => <Text key={`${goal.player}-${index}`} style={{ color: colors.text }}>{goal.player}{goal.minute !== null ? ` · ${goal.minute}′` : ''}</Text>)}</View> : null}
-          {edition.squad.length ? <View style={{ gap: spacing.xs }}><Text style={{ color: colors.textMuted, fontWeight: '700' }}>{t('club.titulos.squad')}</Text>{edition.squad.map((player) => <Text key={player.name} style={{ color: colors.text }}>{player.name}{player.role ? ` · ${player.role}` : ''}</Text>)}</View> : null}
+          {edition.squad.length ? <View style={{ gap: spacing.xs }}>
+            <Text style={{ color: colors.textMuted, fontWeight: '700' }}>{t('club.titulos.squad')}</Text>
+            {edition.squadProvenance ? <FieldProvenance
+              source={edition.squadProvenance.source}
+              confidence={t(`common.confidenceLevel.${edition.squadProvenance.confidence}`)}
+            /> : null}
+            {edition.squad.map((player) => <Text key={player.name} style={{ color: colors.text }}>{player.name}{player.role ? ` · ${player.role}` : ''}</Text>)}
+          </View> : null}
           {edition.note ? <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 20 }}>{edition.note}</Text> : null}
           {match?.sourceUrl ? <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(match.sourceUrl!)} style={{ minHeight: 44, justifyContent: 'center' }}><Text style={{ color: colors.primary, fontWeight: '700' }}>{t('club.titulos.source')}</Text></Pressable> : null}
         </Card>;
@@ -85,6 +98,25 @@ export function TitulosSection({ club }: { club: ClubT }) {
       })}
     </View>
   );
+}
+
+function FieldProvenance({ source, confidence }: { source: string; confidence: string }) {
+  const { t } = useTranslation();
+  const { colors } = useTheme();
+  const url = source.match(/https?:\/\/[^\s)]+/)?.[0];
+  const label = t('club.titulos.fieldProvenance', { source, confidence });
+  const content = <Text style={{ color: colors.textMuted, fontSize: 12 }}>{label}</Text>;
+
+  return url ? (
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={label}
+      onPress={() => void Linking.openURL(url)}
+      style={{ minHeight: 44, justifyContent: 'center' }}
+    >
+      {content}
+    </Pressable>
+  ) : content;
 }
 
 const styles = StyleSheet.create({

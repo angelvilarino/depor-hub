@@ -992,9 +992,11 @@ class TitleEdition(Public):
     scope: Optional[TitleScope] = None
     status: DataStatus = "pending_verification"
     coach: Optional[str] = None
+    coach_provenance: Optional[Provenance] = None
     final_match: Optional[FinalMatch] = None
     top_scorers: list[GoalScorer] = Field(default_factory=list)
     squad: list[TitleSquadMember] = Field(default_factory=list)
+    squad_provenance: Optional[Provenance] = None
     media: list[MediaRef] = Field(default_factory=list)
     note: Optional[str] = None
     provenance: Provenance

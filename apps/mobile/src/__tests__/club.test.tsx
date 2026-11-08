@@ -352,11 +352,22 @@ describe('secciones del Club', () => {
 
   it('muestra detalles de finales verificadas cuando están publicados', async () => {
     mockParams = { section: 'titulos' };
+    const linking = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined);
     await render(<ClubSectionScreen />);
     expect(screen.getByText('Final ante Valencia CF')).toBeTruthy();
     expect(screen.getByText('2–1')).toBeTruthy();
     expect(screen.getByText('Entrenador: Arsenio Iglesias')).toBeTruthy();
     expect(screen.getAllByText('Entrenador: Javier Irureta')).toHaveLength(2);
+    expect(screen.getAllByText('Plantilla de la temporada campeona')).toHaveLength(2);
+    expect(screen.getByText('Liaño · Portero')).toBeTruthy();
+    expect(screen.getAllByText(/Fuente: BDFutbol/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Confianza: una fuente/).length).toBeGreaterThan(0);
+    expect(screen.queryByText('Diego Tristán · 37′')).toBeNull();
+    fireEvent.press(screen.getByRole('link', { name: /Fuente: BDFutbol \(1994-95\)/ }));
+    await waitFor(() => {
+      expect(linking).toHaveBeenCalledWith('https://www.bdfutbol.com/es/t/t1994-9513.html');
+    });
+    linking.mockRestore();
   });
 
   it('muestra el balance enlazado del derbi gallego', async () => {

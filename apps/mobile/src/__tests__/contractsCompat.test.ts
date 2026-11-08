@@ -265,8 +265,10 @@ describe('compatibilidad con JSON anterior a ADR 0032 (Titles / Rivalries)', () 
     expect(r.success).toBe(true);
     if (!r.success) return;
     const e = r.data.editions[0]!;
+    expect(e.coachProvenance).toBeNull();
     expect(e.finalMatch).toBeNull();
     expect(e.squad).toEqual([]);
+    expect(e.squadProvenance).toBeNull();
     expect(e.topScorers).toEqual([]);
     expect(e.media).toEqual([]);
     expect(e.status).toBe('pending_verification');

@@ -404,6 +404,17 @@
           "default": null,
           "title": "Coach"
         },
+        "coachProvenance": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Provenance"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "competition": {
           "title": "Competition",
           "type": "string"
@@ -477,6 +488,17 @@
           },
           "title": "Squad",
           "type": "array"
+        },
+        "squadProvenance": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Provenance"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         },
         "status": {
           "default": "pending_verification",

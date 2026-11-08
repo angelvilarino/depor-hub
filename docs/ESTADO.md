@@ -1,4 +1,4 @@
-# Estado del proyecto — 06-nov-2026
+# Estado del proyecto — 09-nov-2026
 H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados), H2 (iconos de fuentes), el detalle de partido con BDFutbol (ADR 0031), el proxy en directo (Worker + fusión en la app) y **H7.1 (club ampliado, ADR 0032)** hechos. Pendiente para cerrar el Hito 4: desplegar el Worker y definir `EXPO_PUBLIC_LIVE_BASE_URL`.
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
@@ -233,8 +233,8 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
 
 - **Contrato aditivo:** `Anthem.media`, `Anthem.lyricsRights`, `CrestVersion.media`, `Kit.media`, `Stadium.schedule/accessDetails/capacityAlternatives/tenants/media`, `Sponsors.details` y `Club.media`. `DataStatus` (`verified`/`pending_verification`) y los campos de detalle `coach`, `referee`, `goalScorers`, `tier` y `media` completan títulos y rivalidades. Los campos legados (`image`, `lyrics`, `official`...) no cambian. Pydantic → JSON Schema → Zod con `default(null)`/`default([])`.
 - **Derechos de las letras:** las tres letras se mantienen con `lyricsRights.status = unknown`, titular, licencia de uso editorial, nota y `verifiedAt`. No se afirma permiso de reutilización.
-- **Ficheros opcionales:** `titles.json` (21 ediciones; Copas 1995/2002 y Liga 2000 `verified` con goleadores, minuto, árbitro y entrenador) y `rivalries.json` (6 rivalidades con balance de BDFutbol: Celta 133 partidos, Compostela 11, Oviedo 99, Sporting 96, Racing de Ferrol 41, Lugo 18; Celta `derbi`/`verified`). `validate` los acepta ausentes (404 = sin datos); `useTitles`/`useRivalries` los leen de forma opcional.
-- **Pipelines:** `club titles` compara con la tabla «Títulos» de BDFutbol y escribe `data/manual/titles.proposed.yml` sin aplicar. `club titles --details` (manual, fuera del workflow de 10 min) enriquece esa propuesta con finales, goleadores y plantillas de BDFutbol (`temporada → competición → Final → ficha`), contrasta las finales de Copa con Wikipedia y marca `match`/`conflict`/`single_source`; `--max-editions` y `--no-wikipedia` acotan la pasada. Las finales a doble partido se listan como `final_matches` y no se comparan como final única. `club rivalries` rellena `headToHead` con `PoliteClient` y conserva el JSON anterior si no hay ningún balance; `club probe-media` recorre los medios de `club.yml`, `titles.yml`, `rivalries.yml` y `club_images.yml` (HEAD + GET mínimo para dimensiones), comprueba las rutas locales y escribe `club_media.proposed.yml` y la sección de fallos de `docs/sources.md` sin copiar binarios ni sustituir URLs.
+- **Ficheros opcionales:** `titles.json` (21 ediciones; detalles de finales, entrenadores y plantillas estacionales cuando están documentados) y `rivalries.json` (6 rivalidades con balance de BDFutbol: Celta 133 partidos, Compostela 11, Oviedo 99, Sporting 96, Racing de Ferrol 41, Lugo 18; Celta `derbi`/`verified`). `validate` los acepta ausentes (404 = sin datos); `useTitles`/`useRivalries` los leen de forma opcional.
+- **Pipelines:** `club titles` compara con la tabla «Títulos» de BDFutbol y escribe `data/manual/titles.proposed.yml` sin aplicar. `club titles --details` (manual, fuera del workflow de 10 min) enriquece esa propuesta con finales, goleadores y plantillas estacionales de BDFutbol (`temporada → competición → Final → ficha`), contrasta las finales de Copa con Wikipedia y marca `match`/`match_with_unresolved`/`conflict`/`single_source`; `--max-editions` y `--no-wikipedia` acotan la pasada. Los minutos discrepantes quedan en `null`; el enriquecimiento nunca cambia automáticamente `titles.yml`. Las finales a doble partido se listan como `final_matches` y no se comparan como final única. `club rivalries` rellena `headToHead` con `PoliteClient` y conserva el JSON anterior si no hay ningún balance; `club probe-media` recorre los medios de `club.yml`, `titles.yml`, `rivalries.yml` y `club_images.yml` (HEAD + GET mínimo para dimensiones), comprueba las rutas locales y escribe `club_media.proposed.yml` y la sección de fallos de `docs/sources.md` sin copiar binarios ni sustituir URLs.
 - **Ids verificados de BDFutbol:** Compostela `e12`, Oviedo `e28`, Sporting `e34`, Racing de Ferrol `e48`, Lugo `e76`; Celta `e11`. Documentados en `data/manual/bdfutbol_teams.yml`.
 - **Pruebas:** pruebas de club para títulos, propuesta, rivalidades, idempotencia, recolección de medios, HEAD/GET, estados `ok`/`local`/`broken`/`blocked`/`missing`, caché offline y actualización idempotente de `docs/sources.md` con `httpx.MockTransport`. H4 añade HTML sintético para enlaces de competición, fila `Final`, ficha de partido, plantilla (porteros sin goles encajados), wikitext de Wikipedia y un `build_title_details` completo que verifica `match`/`conflict` sin modificar `titles.yml`; H5 audita y prueba `club rivalries` con caché offline, campos manuales vacíos (`iconicMatches`, `facts`, `media`), validación de `tier` y justificación de exclusión de Racing de Santander; H6 completa la compatibilidad hacia atrás en Zod para `Titles` y `Rivalries` y verifica la estabilidad del buster `data-v7`; `pytest` completo (225) y `npm test` (290 / 34 suites) en verde. `club` sigue siendo idempotente (`changed=false` en la segunda pasada).
 
@@ -250,6 +250,22 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
 - **Validación del hito de equipaciones:** `.venv/bin/python -m pytest scripts/tests/test_club.py` (17 passed), `python -m depor_hub.cli club`, y Node 22 `typecheck`, `lint`, tests (34 suites / 294 passed).
 - **Validación del escudo:** render de comparación, años y créditos; visor modal; Node 22 `typecheck`, `lint`, tests (34 suites / 294 passed) y 17 pruebas Python del publicador.
 - **Pendiente para los siguientes hitos:** fotos históricas fiables, fotos verificadas del museo, completar atributos/galerías de venues y probar visualmente ajustes y el conjunto en iPhone. H7.4 no cierra toda la especificación editorial.
+
+### H7.3 — Procedencia y conflictos en títulos (hecho, ADR 0035)
+
+- BDFutbol publica 24 integrantes de la plantilla de temporada 1994-95 y 31 de
+  2001-02; se presentan como plantillas estacionales, no como alineaciones de las
+  finales. Entrenadores y plantillas muestran fuente y confianza por campo.
+- La final de 1995 figura con fecha de inicio 24-jun-1995 y nota de reanudación
+  el 27. Minutos discrepantes de Manjarín, Mijatović, Alfredo y Tristán quedan
+  en `null`; el generador diferencia conflicto de goleador/minuto y no aplica
+  propuestas.
+- Contrato aditivo: `coachProvenance` y `squadProvenance`, `null` por defecto.
+  Se regeneró `titles.schema.json` y `titles.json`; la compatibilidad con
+  payloads anteriores está cubierta en Python y Zod.
+- Verificación: Ruff, **229 pytest**, Node 22 `typecheck`, `lint` y
+  **300 tests / 34 suites** pasan. `python -m depor_hub.cli schemas` se repite
+  sin cambios adicionales; ES/EN conservan las mismas claves.
 
 ### Verificación H7
 ```bash

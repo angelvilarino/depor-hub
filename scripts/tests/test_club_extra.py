@@ -53,6 +53,16 @@ def test_real_titles_and_rivalries_validate():
     assert ferrol.tier == "derbi"
 
 
+def test_title_field_provenance_is_optional_for_legacy_payloads():
+    edition = m.TitleEdition(
+        competition="Copa del Rey",
+        year=2002,
+        provenance=m.Provenance(source="legacy"),
+    )
+    assert edition.coach_provenance is None
+    assert edition.squad_provenance is None
+
+
 def test_titles_include_the_two_copa_finals_with_source():
     titles = load_titles(MANUAL / "titles.yml", NOW)
     copas = [edition for edition in titles.editions if edition.competition == "Copa del Rey"]
@@ -60,8 +70,25 @@ def test_titles_include_the_two_copa_finals_with_source():
     assert all(edition.final_match is not None for edition in copas)
     assert all(edition.final_match.source_url for edition in copas)
     assert {edition.final_match.home_goals for edition in copas} == {1, 2}
+    assert {
+        edition.year: edition.final_match.date for edition in copas
+    } == {1995: "1995-06-24", 2002: "2002-03-06"}
     assert {edition.status for edition in copas} == {"verified"}
     assert {edition.coach for edition in copas} == {"Arsenio Iglesias", "Javier Irureta"}
+    assert all(
+        edition.coach_provenance is not None
+        and edition.coach_provenance.confidence == "single_source"
+        for edition in copas
+    )
+    assert {
+        edition.year: len(edition.squad)
+        for edition in copas
+    } == {1995: 24, 2002: 31}
+    assert all(
+        edition.squad_provenance is not None
+        and edition.squad_provenance.confidence == "single_source"
+        for edition in copas
+    )
     assert {edition.final_match.referee for edition in copas} == {
         "José María García-Aranda",
         "Manuel Mejuto González",
@@ -71,11 +98,11 @@ def test_titles_include_the_two_copa_finals_with_source():
         for edition in copas
         for scorer in edition.final_match.goal_scorers
     } >= {
-        ("Javier Manjarín", 35, "RC Deportivo de La Coruña"),
-        ("Predrag Mijatović", 70, "Valencia CF"),
-        ("Alfredo Santaelena", 81, "RC Deportivo de La Coruña"),
+        ("Javier Manjarín", None, "RC Deportivo de La Coruña"),
+        ("Predrag Mijatović", None, "Valencia CF"),
+        ("Alfredo Santaelena", None, "RC Deportivo de La Coruña"),
         ("Sergio González", 6, "RC Deportivo de La Coruña"),
-        ("Diego Tristán", 37, "RC Deportivo de La Coruña"),
+        ("Diego Tristán", None, "RC Deportivo de La Coruña"),
         ("Raúl González", 58, "Real Madrid CF"),
     }
 
@@ -378,9 +405,23 @@ WIKI_FINAL_HTML = """
  "team1":{"wt":"[[Real Madrid CF|Real Madrid]]"},
  "team2":{"wt":"[[Deportivo de La Coruña|Deportivo La Coruña]]"},
  "goals1":{"wt":"[[Raúl (footballer)|Raúl]] {{goal|58}}"},
- "goals2":{"wt":"[[Sergio (footballer, born 1976)|Sergio]] {{goal|6}}<br>[[Diego Tristán|Tristán]] {{goal|38}}"},
+ "goals2":{"wt":"[[Sergio (footballer, born 1976)|Sergio]] {{goal|6}}<br>[[Diego Tristán|Tristán]] {{goal|37}}"},
  "stadium":{"wt":"[[Santiago Bernabéu Stadium|Santiago Bernabéu]]"},
  "referee":{"wt":"[[Manuel Mejuto González]] ([[Royal Spanish Football Federation|Spain]])"}}
+</script>
+"""
+
+SUSPENDED_WIKI_FINAL_HTML = """
+<script>
+{"date":{"wt":"24 June 1995 (suspended; resumed 27 June 1995)"},
+ "score":{"wt":"1–1 (resumed final score 2–1)"},
+ "team1score":{"wt":"2"},"team2score":{"wt":"1"},
+ "team1":{"wt":"[[Valencia CF|Valencia]]"},
+ "team2":{"wt":"[[RC Deportivo de La Coruña|Deportivo La Coruña]]"},
+ "goals1":{"wt":"[[Player One]] {{goal|35}}"},
+ "goals2":{"wt":"[[Player Two]] {{goal|50}}"},
+ "goals1":{"wt":"[[Player One]] {{goal|35}}<br>[[Player Three]] {{goal|83}}"},
+ "goals2":{"wt":"[[Player Two]] {{goal|50}}"}}
 </script>
 """
 
@@ -430,7 +471,21 @@ def test_parse_wikipedia_final_reads_the_infobox():
     assert [(scorer.player, scorer.minute) for scorer in final.goal_scorers] == [
         ("Raúl", 58),
         ("Sergio", 6),
-        ("Tristán", 38),
+        ("Tristán", 37),
+    ]
+
+
+def test_parse_wikipedia_final_uses_resumed_score_and_scorers():
+    final = parse_wikipedia_final(
+        SUSPENDED_WIKI_FINAL_HTML, "https://en.wikipedia.org/wiki/x"
+    )
+    assert final.date == "1995-06-24"
+    assert (final.home_goals, final.away_goals) == (2, 1)
+    assert "suspensión" in (final.note or "")
+    assert [(scorer.player, scorer.minute) for scorer in final.goal_scorers] == [
+        ("Player One", 35),
+        ("Player Three", 83),
+        ("Player Two", 50),
     ]
 
 
@@ -489,7 +544,7 @@ def _curated_final(minute: int = 38) -> m.FinalMatch:
     )
 
 
-def test_build_title_details_cross_checks_without_touching_the_curated_title(tmp_path: Path):
+def test_title_details_flags_scorer_minute_conflict_without_mutating_curated_title(tmp_path: Path):
     curated = m.Titles(
         updatedAt=NOW,
         editions=[
@@ -516,8 +571,16 @@ def test_build_title_details_cross_checks_without_touching_the_curated_title(tmp
 
     assert len(details) == 1
     detail = details[0]
-    assert detail["status"] == "match"
-    assert detail["differences"] == []
+    assert detail["status"] == "conflict"
+    assert detail["differences"] == [
+        {
+            "field": "goal_scorer_minute",
+            "player": "Diego Tristán",
+            "curated": 38,
+            "bdfutbol": 38,
+            "wikipedia": 37,
+        }
+    ]
     assert detail["bdfutbol"]["final_matches"][0]["referee"] == "Mejuto González"
     assert detail["bdfutbol"]["top_scorers"][0]["player"] == "Bebeto"
     assert detail["wikipedia"]["final_match"]["date"] == "2002-03-06"
@@ -525,7 +588,7 @@ def test_build_title_details_cross_checks_without_touching_the_curated_title(tmp
     assert curated.model_dump() == before
 
 
-def test_title_details_flags_a_conflict_and_proposal_keeps_titles_yml_intact(tmp_path: Path):
+def test_title_details_flags_a_curated_scorer_minute_conflict_and_proposal_keeps_titles_yml_intact(tmp_path: Path):
     titles_path = MANUAL / "titles.yml"
     before = titles_path.read_bytes()
     curated = m.Titles(
@@ -552,15 +615,50 @@ def test_title_details_flags_a_conflict_and_proposal_keeps_titles_yml_intact(tmp
         client.close()
 
     assert details[0]["status"] == "conflict"
-    assert "goal_scorers" in {item["field"] for item in details[0]["differences"]}
+    assert "goal_scorer_minute" in {item["field"] for item in details[0]["differences"]}
 
     proposal_path = tmp_path / "titles.proposed.yml"
     proposal = write_titles_proposal(
         proposal_path, curated, [], details=details
     )
     assert proposal["details"] == details
-    assert "goal_scorers" in proposal_path.read_text(encoding="utf-8")
+    assert "goal_scorer_minute" in proposal_path.read_text(encoding="utf-8")
     assert titles_path.read_bytes() == before
+
+
+def test_title_details_keep_disputed_unpublished_minutes_unresolved(tmp_path: Path):
+    final = _curated_final()
+    final.goal_scorers = [
+        scorer.model_copy(update={"minute": None}) for scorer in final.goal_scorers
+    ]
+    curated = m.Titles(
+        updatedAt=NOW,
+        editions=[
+            m.TitleEdition(
+                competition="Copa del Rey",
+                year=2002,
+                season="2001-02",
+                final_match=final,
+                provenance=m.Provenance(source="manual"),
+            )
+        ],
+    )
+    client = PoliteClient(
+        cache_dir=tmp_path / "cache",
+        interval=0,
+        sleep=lambda _: None,
+        transport=httpx.MockTransport(_detail_handler),
+    )
+    try:
+        detail = build_title_details(curated, client)[0]
+    finally:
+        client.close()
+
+    assert detail["status"] == "match_with_unresolved"
+    assert detail["differences"] == []
+    assert detail["unresolved"] == [
+        {"player": "Diego Tristán", "bdfutbol": 38, "wikipedia": 37}
+    ]
 
 
 # ---------------------------------------------------------------------------

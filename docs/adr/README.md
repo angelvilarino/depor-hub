@@ -15,3 +15,5 @@ Las decisiones numeradas conservan el orden histórico de asignación. El númer
 | [0031](0031-detalle-partido-bdfutbol.md) | Detalle de partido con BDFutbol |
 | [0032](0032-club-datos-ampliados.md) | Club: datos ampliados, títulos, rivalidades y medios externos |
 | [0033](0033-himnos-reproduccion-oficial.md) | Himnos: reproducción oficial bajo demanda |
+| [0034](0034-aforo-estadio-y-galeria-museo.md) | Aforo del estadio y galería del museo |
+| [0035](0035-titulos-y-conflictos-de-fuente.md) | Procedencia y conflictos en los detalles de títulos |

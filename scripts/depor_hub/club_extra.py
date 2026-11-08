@@ -468,9 +468,13 @@ def top_scorers_from_squad(
 
 
 def _wiki_field(text: str, field: str) -> str | None:
+    fields = _wiki_fields(text, field)
+    return fields[0] if fields else None
+
+
+def _wiki_fields(text: str, field: str) -> list[str]:
     pattern = '"' + re.escape(field) + '":\\{"wt":"(.*?)"\\}'
-    match = re.search(pattern, text, re.S)
-    return match.group(1) if match else None
+    return re.findall(pattern, text, re.S)
 
 
 def _wiki_link_text(value: str | None) -> str | None:
@@ -496,7 +500,7 @@ def _wiki_date(value: str | None) -> str | None:
         if month_number:
             candidates.append(f"{year}-{month_number:02d}-{int(day):02d}")
     if candidates:
-        return candidates[-1]
+        return candidates[0] if "susp" in clean.lower() else candidates[-1]
     iso = re.search(r"\d{4}-\d{2}-\d{2}", value)
     return iso.group() if iso else None
 
@@ -532,21 +536,34 @@ def parse_wikipedia_final(
     home = _wiki_link_text(_wiki_field(text, "team1")) or ""
     away = _wiki_link_text(_wiki_field(text, "team2")) or ""
     score_raw = _wiki_field(text, "score") or ""
-    score_match = re.search(r"(\d+)\s*[-–—]\s*(\d+)", score_raw)
+    date_raw = _wiki_field(text, "date") or ""
+    suspended = "susp" in f"{score_raw} {date_raw}".lower()
+    home_score = _wiki_field(text, "team1score")
+    away_score = _wiki_field(text, "team2score")
+    score_match = None
+    if home_score and away_score and home_score.isdigit() and away_score.isdigit():
+        score_match = (home_score, away_score)
+    else:
+        scores = re.findall(r"(\d+)\s*[-–—]\s*(\d+)", score_raw)
+        if scores:
+            score_match = scores[-1] if suspended else scores[0]
     note = None
-    if "susp" in score_raw.lower():
+    if suspended:
         note = "marcador en el momento de la suspensión; la final se reanudó después"
+    goals1 = _wiki_fields(text, "goals1")
+    goals2 = _wiki_fields(text, "goals2")
+    goals1_raw = goals1[-1] if suspended and goals1 else (goals1[0] if goals1 else "")
+    goals2_raw = goals2[-1] if suspended and goals2 else (goals2[0] if goals2 else "")
     return m.FinalMatch(
-        date=_wiki_date(_wiki_field(text, "date")),
+        date=_wiki_date(date_raw),
         round_="Final",
         home=home or None,
         away=away or None,
-        home_goals=int(score_match.group(1)) if score_match else None,
-        away_goals=int(score_match.group(2)) if score_match else None,
+        home_goals=int(score_match[0]) if score_match else None,
+        away_goals=int(score_match[1]) if score_match else None,
         venue=_wiki_link_text(_wiki_field(text, "stadium")),
         referee=_wiki_link_text(_wiki_field(text, "referee")),
-        goal_scorers=_wiki_goals(_wiki_field(text, "goals1"), home)
-        + _wiki_goals(_wiki_field(text, "goals2"), away),
+        goal_scorers=_wiki_goals(goals1_raw, home) + _wiki_goals(goals2_raw, away),
         note=note,
         source_url=source_url or None,
     )
@@ -592,15 +609,71 @@ def _same_venue(left: str, right: str) -> bool:
     return left_tokens == right_tokens or left_tokens <= right_tokens or right_tokens <= left_tokens
 
 
-def _scorer_key(scorer: m.GoalScorer) -> tuple[str, int | None, str]:
-    player_tokens = sorted(_tokens(scorer.player))
-    player = player_tokens[-1] if player_tokens else _fold(scorer.player)
-    team = " ".join(sorted(_tokens(scorer.team or "") - _TEAM_STOPWORDS))
-    return player, scorer.minute, team
-
-
 def _same_goals(left: list[m.GoalScorer], right: list[m.GoalScorer]) -> bool:
-    return sorted(map(_scorer_key, left)) == sorted(map(_scorer_key, right))
+    if len(left) != len(right):
+        return False
+    remaining = list(right)
+    for scorer in left:
+        index = next(
+            (
+                i for i, candidate in enumerate(remaining)
+                if scorer.goals == candidate.goals
+                and _same_name(scorer.player, candidate.player)
+                and _same_team(scorer.team or "", candidate.team or "")
+            ),
+            None,
+        )
+        if index is None:
+            return False
+        remaining.pop(index)
+    return not remaining
+
+
+def _scorer_minute_evidence(
+    curated: m.FinalMatch | None,
+    bdfutbol: m.FinalMatch | None,
+    wikipedia: m.FinalMatch | None,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    if curated is None:
+        return [], []
+
+    sources = [
+        ("bdfutbol", bdfutbol),
+        ("wikipedia", wikipedia),
+    ]
+    differences: list[dict[str, Any]] = []
+    unresolved: list[dict[str, Any]] = []
+    for scorer in curated.goal_scorers:
+        candidates: dict[str, int] = {}
+        for source, final in sources:
+            if final is None:
+                continue
+            match = next(
+                (
+                    other for other in final.goal_scorers
+                    if scorer.goals == other.goals
+                    and _same_name(scorer.player, other.player)
+                    and _same_team(scorer.team or "", other.team or "")
+                ),
+                None,
+            )
+            if match is not None and match.minute is not None:
+                candidates[source] = match.minute
+
+        if scorer.minute is not None:
+            if any(minute != scorer.minute for minute in candidates.values()):
+                differences.append(
+                    {
+                        "field": "goal_scorer_minute",
+                        "player": scorer.player,
+                        "curated": scorer.minute,
+                        **candidates,
+                    }
+                )
+        elif len(set(candidates.values())) > 1:
+            unresolved.append({"player": scorer.player, **candidates})
+
+    return differences, unresolved
 
 
 def _scorers_json(scorers: list[m.GoalScorer]) -> list[dict[str, Any]]:
@@ -679,9 +752,9 @@ def _differences(
     }
     if len(goal_sources) >= 2:
         first_name = next(iter(goal_sources))
-        first = sorted(map(_scorer_key, goal_sources[first_name].goal_scorers))
+        first = goal_sources[first_name].goal_scorers
         if any(
-            sorted(map(_scorer_key, final.goal_scorers)) != first
+            not _same_goals(first, final.goal_scorers)
             for name, final in goal_sources.items()
             if name != first_name
         ):
@@ -694,6 +767,10 @@ def _differences(
                     },
                 }
             )
+    minute_differences, _ = _scorer_minute_evidence(
+        curated, bdfutbol, wikipedia
+    )
+    differences.extend(minute_differences)
     return differences
 
 
@@ -745,6 +822,7 @@ def enrich_title_edition(
         },
         "wikipedia": None,
         "differences": [],
+        "unresolved": [],
         "status": "unavailable",
     }
     errors: list[str] = detail["bdfutbol"]["errors"]
@@ -810,9 +888,14 @@ def enrich_title_edition(
     detail["differences"] = _differences(
         edition.final_match, bdfutbol_final, wikipedia_final
     )
+    _, detail["unresolved"] = _scorer_minute_evidence(
+        edition.final_match, bdfutbol_final, wikipedia_final
+    )
     sources = [final for final in (bdfutbol_final, wikipedia_final) if final is not None]
     if detail["differences"]:
         detail["status"] = "conflict"
+    elif detail["unresolved"]:
+        detail["status"] = "match_with_unresolved"
     elif len(sources) == 2:
         detail["status"] = "match"
     elif sources or final_matches or squad:
