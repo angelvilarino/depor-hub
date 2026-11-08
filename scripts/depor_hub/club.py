@@ -136,7 +136,18 @@ def kits_coverage(club: m.Club) -> str:
     """Informe legible de cobertura de equipaciones (se escribe junto al YAML)."""
     seasons = sorted_seasons(club.kits)
     total = sum(len(season.kits) for season in seasons)
-    with_image = sum(1 for season in seasons for kit in season.kits if kit.image)
+    verified_photos = sum(
+        1
+        for season in seasons
+        for kit in season.kits
+        if kit.media and kit.media.kind == "photo" and kit.media.status == "verified"
+    )
+    illustrations = sum(
+        1
+        for season in seasons
+        for kit in season.kits
+        if kit.image and kit.image.lower().endswith(".svg")
+    )
     lines = [
         "# Cobertura de equipaciones",
         "",
@@ -144,21 +155,28 @@ def kits_coverage(club: m.Club) -> str:
         "",
         f"- Temporadas documentadas: {len(seasons)}",
         f"- Equipaciones: {total}",
-        f"- Con imagen local: {with_image}",
-        f"- Sin imagen (marcador en la app): {total - with_image}",
+        f"- Fotos verificadas con crédito visible: {verified_photos}",
+        f"- Ilustraciones de respaldo SVG: {illustrations}",
+        f"- Sin foto ni ilustración: {total - verified_photos - illustrations}",
         "",
-        "| Temporada | Tipo | Fabricante | Patrocinador | Imagen |",
+        "| Temporada | Tipo | Fabricante | Patrocinador | Soporte visual |",
         "| --- | --- | --- | --- | --- |",
     ]
     for season in seasons:
         for kit in season.kits:
+            if kit.media and kit.media.kind == "photo" and kit.media.status == "verified":
+                visual = "foto verificada"
+            elif kit.image and kit.image.lower().endswith(".svg"):
+                visual = "ilustración SVG"
+            else:
+                visual = "sin imagen"
             lines.append(
-                "| {season} | {type} | {manufacturer} | {sponsor} | {image} |".format(
+                "| {season} | {type} | {manufacturer} | {sponsor} | {visual} |".format(
                     season=season.season,
                     type=kit.type,
                     manufacturer=kit.manufacturer or "—",
                     sponsor=kit.chest_sponsor or "—",
-                    image="sí" if kit.image else "no",
+                    visual=visual,
                 )
             )
     return "\n".join(lines) + "\n"

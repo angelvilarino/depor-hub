@@ -515,6 +515,15 @@ kits:
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
         image: img/club/equipaciones/2026-27-home.jpg
+        media:
+          url: https://deportienda.es/cdn/shop/files/01_65178d22-bec4-485c-9b3a-a907043c7d69.jpg?width=600
+          kind: photo
+          credit: "Foto de producto: Deportienda"
+          license: Derechos reservados
+          source_url: https://deportienda.es/products/camiseta-primera-equipacion-2026-2027
+          origin: club_official
+          verified_at: "2026-11-08"
+          status: verified
       - type: away
         manufacturer: Nike
         chest_sponsor: Estrella Galicia

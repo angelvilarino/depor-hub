@@ -171,14 +171,14 @@ Reglas conservadoras:
 
 ## Club (H7, ADR 0025)
 
-La ficha del club se cura a mano en `data/manual/club.yml`; cada bloque lleva su fuente en comentarios y en esta tabla, pero **el contrato público no expone fuente, confianza ni estado**. Lo que no está documentado queda en `null`; no se completan fechas, dorsales, patrocinadores ni equipaciones por deducción.
+La ficha del club se cura a mano en `data/manual/club.yml`; cada bloque lleva su fuente en comentarios y en esta tabla. El contrato no expone procedencia general, pero los `MediaRef` sí publican crédito, URL de origen y licencia cuando existen. Lo que no está documentado queda en `null`; no se completan fechas, dorsales, patrocinadores ni equipaciones por deducción.
 
 | Bloque | Fuente | Límite |
 |---|---|---|
 | Identidad, fundación, colores, apodos, presidencia, sede y contacto | Web oficial del club y datos societarios publicados | Sin lema documentado: `motto: null`. El contacto es el publicado por el club |
 | Himnos y créditos | Páginas oficiales del club y notas de estreno; créditos de «Voa» revisados en el YAML | La letra se lee de `data/manual/himnos/<id>.txt`; solo se publica el bloque posterior a `Letra`. Sin audio |
 | Escudos históricos | 1000logos para las 14 versiones y la web de identidad corporativa para el vigente (SVG) | Los escudos son marcas del club; uso editorial y pendiente de revisión de términos de 1000logos |
-| Equipaciones | Recopilación de temporadas publicadas (fabricante, patrocinador y colores) | 42 temporadas y 44 equipaciones con imagen local (43 ilustraciones SVG vectoriales y la local 2026-27 en JPEG) |
+| Equipaciones | Recopilación de temporadas publicadas (fabricante, patrocinador y colores); foto de producto de la tienda oficial para la local 2026-27 | 42 temporadas y 44 equipaciones: 1 foto con URL verificada y crédito visible (Deportienda; derechos reservados) y 43 ilustraciones SVG; no se asignan fotos históricas sin temporada comprobada |
 | Estadio y aforo | Datos públicos de Riazor y del club | Total **33.225** = 32.490 gradas + 141 palco de honor + 385 palcos VIP + 113 Área 1906 + 96 medios; la suma se valida en el contrato |
 | Museo, visitas y entradas | `ticketing.museo.rcdeportivo.es` y `rcdeportivo.es/es/museo-and-tour` | Precios y horarios pueden cambiar; la app enlaza a la fuente |
 | Ciudad deportiva | Proyecto y datos publicados del Dépor Training Center en Abegondo | 140.000 m², 8 campos de tamaño Riazor y 3 de calentamiento, diseño Populous. Sin coordenadas verificadas: `coordinates: null` |
@@ -189,9 +189,9 @@ La ficha del club se cura a mano en `data/manual/club.yml`; cada bloque lleva su
 
 Reglas:
 
-- Las **únicas imágenes binarias del repositorio** son las del club: `data/public/v1/img/club/` (15 ficheros, 2.416.456 bytes). Se normalizan con Pillow (escudos a 512 px PNG con alfa; equipaciones a JPEG de 900 px) y se sirven desde la misma base de datos que el JSON. El contrato solo guarda rutas relativas.
-- `data/manual/club_images.yml` es la lista revisable de fuentes; si una URL deja de responder, la imagen local se conserva y la app muestra un marcador si falta. No se hotlinkea ninguna imagen del club desde la app.
-- `docs/kits_coverage.md` se regenera con `python -m depor_hub.cli club` y deja a la vista cuántas equipaciones tienen imagen (44 de 44).
+- `data/manual/club_images.yml` es la lista revisable de imágenes descargables; las atribuciones se publican en el `MediaRef` correspondiente. La foto de producto 2026-27 responde HTTP 200 con `image/jpeg` (verificada el 08-nov-2026); su ficha declara «Derechos reservados». No se añade ningún binario nuevo en este hito.
+- `docs/kits_coverage.md` se regenera con `python -m depor_hub.cli club` y distingue foto verificada, ilustración SVG y falta de imagen. Cobertura actual: 1 foto y 43 ilustraciones SVG (44/44 con soporte visual).
+- El árbol ya versionado `data/public/v1/img/club/` contiene 58 ficheros, incluidos 14 PNG/JPEG rasterizados preexistentes. No se añadieron archivos de imagen; eliminar o sustituir esos ficheros requiere una migración separada porque las rutas del contrato y de la app los usan.
 - `club.json` no entra en el `dataHash` deportivo; se valida como los demás ficheros y se escribe de forma idempotente (sin cambios, conserva `updatedAt`).
 - Las licencias de terceros de la app se generan con `npm run licenses` desde `package-lock.json` (1.052 paquetes de producción en 16 grupos) y se muestran en Acerca de. No se publica un listado de fuentes de datos en la app.
 

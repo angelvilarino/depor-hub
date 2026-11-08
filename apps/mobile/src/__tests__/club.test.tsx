@@ -159,6 +159,8 @@ describe('secciones del Club', () => {
     expect(screen.getByText('2026-27')).toBeTruthy();
     expect(screen.getByTestId('kit-2026-27-home-image')).toBeTruthy();
     expect(screen.getByTestId('kit-2026-27-away-image')).toBeTruthy();
+    expect(screen.getByLabelText('Crédito de imagen: Foto de producto: Deportienda · Derechos reservados')).toBeTruthy();
+    expect(screen.getAllByText('Ilustración').length).toBeGreaterThan(0);
 
     fireEvent.press(screen.getByLabelText('Ir a la década de 1980s'));
   });

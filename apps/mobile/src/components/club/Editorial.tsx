@@ -76,10 +76,10 @@ export function Timeline({ entries, filters = false }: { entries: TimelineEntry[
   </View>;
 }
 
-export function MediaCredit({ media }: { media: MediaRefT }) {
+export function MediaCredit({ media, inline = false }: { media: MediaRefT; inline?: boolean }) {
   const { t } = useTranslation();
   const label = [media.credit, media.author, media.license].filter(Boolean).join(' · ') || media.sourceUrl || media.url;
-  return <Pressable accessibilityRole="button" accessibilityLabel={`${t('club.mediaCredit')}: ${label}`} onPress={() => Alert.alert(t('club.mediaCredit'), label, media.sourceUrl ? [{ text: t('common.close'), style: 'cancel' }, { text: t('club.openSource'), onPress: () => void Linking.openURL(media.sourceUrl!) }] : [{ text: t('common.close') }])} style={styles.credit}><Ionicons name="information-circle-outline" size={18} color="#fff" /><Text numberOfLines={1} style={styles.creditText}>{t('club.mediaCredit')}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" accessibilityLabel={`${t('club.mediaCredit')}: ${label}`} onPress={() => Alert.alert(t('club.mediaCredit'), label, media.sourceUrl ? [{ text: t('common.close'), style: 'cancel' }, { text: t('club.openSource'), onPress: () => void Linking.openURL(media.sourceUrl!) }] : [{ text: t('common.close') }])} style={[styles.credit, inline && styles.inlineCredit]}><Ionicons name="information-circle-outline" size={18} color="#fff" /><Text numberOfLines={1} style={styles.creditText}>{t('club.mediaCredit')}</Text></Pressable>;
 }
 
 export function PhotoGallery({ photos }: { photos: MediaRefT[] }) {
@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
   timelineRow: { flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
   timelineAxis: { width: 16, alignItems: 'center', alignSelf: 'stretch' }, dot: { width: 10, height: 10, borderRadius: 5, marginTop: 4 }, line: { width: 2, flex: 1, marginTop: 3 },
   credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 8, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: radius.pill }, creditText: { color: '#fff', fontSize: 11 },
+  inlineCredit: { position: 'relative', top: 0, right: 0, alignSelf: 'flex-start', marginTop: spacing.xs },
   galleryPhoto: { width: 228, height: 156, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, overflow: 'hidden' },
   photoFallback: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.xs },
   modalPhotoFallback: { alignItems: 'center', justifyContent: 'center' },

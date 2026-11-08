@@ -176,7 +176,10 @@ def test_every_declared_image_has_a_local_source_and_a_file():
 def test_coverage_report_lists_the_current_season():
     report = kits_coverage(real_club())
     assert "Temporadas documentadas: 42" in report
-    assert "| 2026-27 | home | Nike | Estrella Galicia | sí |" in report
+    assert "Fotos verificadas con crédito visible: 1" in report
+    assert "Ilustraciones de respaldo SVG: 43" in report
+    assert "| 2026-27 | home | Nike | Estrella Galicia | foto verificada |" in report
+    assert "| 2026-27 | away | Nike | Estrella Galicia | ilustración SVG |" in report
 
 
 def test_normalize_crest_trims_padding_and_keeps_alpha():

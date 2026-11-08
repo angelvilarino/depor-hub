@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { ClubImage } from '@/components/club/ClubImage';
+import { MediaCredit } from '@/components/club/Editorial';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT, KitT, SeasonKitsT } from '@/data/schemas';
 import { decadeLabel, groupSeasonsByDecade, kitTypeKey } from '@/features/club/logic';
@@ -30,15 +31,24 @@ function KitRow({ season, kit }: { season: string; kit: KitT }) {
 
   return (
     <View style={styles.kitRow}>
-      <ClubImage
-        path={kit.image}
-        label={`${season} · ${type}`}
-        width={78}
-        height={98}
-        placeholderLabel={t('club.noImage')}
-        illustrationColors={kit.colors}
-        testID={`kit-${season}-${kit.type}`}
-      />
+      <View style={styles.kitImageColumn}>
+        <ClubImage
+          path={kit.image}
+          label={`${season} · ${type}`}
+          width={78}
+          height={98}
+          placeholderLabel={t('club.noImage')}
+          illustrationColors={kit.colors}
+          testID={`kit-${season}-${kit.type}`}
+        />
+        {kit.media?.kind === 'photo' && kit.media.status === 'verified' ? (
+          <MediaCredit media={kit.media} inline />
+        ) : kit.image?.toLowerCase().endsWith('.svg') ? (
+          <Text style={{ color: colors.textMuted, fontSize: 11, fontWeight: '700' }}>
+            {t('club.equipaciones.illustration')}
+          </Text>
+        ) : null}
+      </View>
       <View style={styles.kitText}>
         <Text style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>{type}</Text>
         {details ? <Text style={{ color: colors.textMuted, fontSize: 13 }}>{details}</Text> : null}
@@ -198,6 +208,7 @@ export function EquipacionesSection({ club }: { club: ClubT }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  kitImageColumn: { alignItems: 'flex-start' },
   selector: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     paddingVertical: spacing.sm,
