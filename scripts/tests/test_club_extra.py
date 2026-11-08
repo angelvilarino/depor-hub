@@ -561,3 +561,96 @@ def test_title_details_flags_a_conflict_and_proposal_keeps_titles_yml_intact(tmp
     assert proposal["details"] == details
     assert "goal_scorers" in proposal_path.read_text(encoding="utf-8")
     assert titles_path.read_bytes() == before
+
+
+# ---------------------------------------------------------------------------
+# H5 — pipeline club rivalries
+# ---------------------------------------------------------------------------
+
+
+def test_rivalries_offline_uses_cache_and_does_not_fail(tmp_path: Path) -> None:
+    """En modo offline, el pipeline usa solo la caché y no levanta excepciones."""
+    # Primera pasada online: llena la caché sintética.
+    client_online = PoliteClient(
+        cache_dir=tmp_path / "cache",
+        interval=0,
+        sleep=lambda _: None,
+        transport=httpx.MockTransport(lambda r: httpx.Response(200, text=H2H_HTML)),
+    )
+    try:
+        first_changed, rivalries_online = publish_rivalries(
+            MANUAL / "rivalries.yml", tmp_path / "out", client_online, NOW
+        )
+    finally:
+        client_online.close()
+
+    assert first_changed is True
+    assert all(r.head_to_head is not None for r in rivalries_online.rivalries)
+
+    # Segunda pasada offline: usa la caché, no hace peticiones reales.
+    client_offline = PoliteClient(
+        cache_dir=tmp_path / "cache",
+        interval=0,
+        sleep=lambda _: None,
+        offline=True,
+    )
+    try:
+        second_changed, rivalries_offline = publish_rivalries(
+            MANUAL / "rivalries.yml", tmp_path / "out", client_offline, NOW
+        )
+    finally:
+        client_offline.close()
+
+    # Idempotente: sin cambios en la segunda pasada.
+    assert second_changed is False
+    # Con balance porque viene de la caché (o del fichero previo).
+    assert len(rivalries_offline.rivalries) == len(rivalries_online.rivalries)
+
+
+def test_rivalries_iconic_matches_and_facts_start_empty() -> None:
+    """Los campos iconicMatches y facts de las rivalidades curadas arrancan vacíos.
+
+    Solo se rellenan desde YAML manual con fuente verificable; nunca por
+    deducción ni por scraping automático.
+    """
+    rivalries = load_rivalries(MANUAL / "rivalries.yml", NOW)
+    for rivalry in rivalries.rivalries:
+        assert rivalry.iconic_matches == [], (
+            f"{rivalry.rival}: iconicMatches no vacío en el YAML curado"
+        )
+        assert rivalry.facts == [], (
+            f"{rivalry.rival}: facts no vacío en el YAML curado"
+        )
+        assert rivalry.media == [], (
+            f"{rivalry.rival}: media no vacío en el YAML curado (solo URL con crédito)"
+        )
+
+
+def test_rivalries_tier_values_are_valid() -> None:
+    """Todas las rivalidades tienen tier 'derbi' o 'historico'."""
+    rivalries = load_rivalries(MANUAL / "rivalries.yml", NOW)
+    for rivalry in rivalries.rivalries:
+        assert rivalry.tier in ("derbi", "historico"), (
+            f"{rivalry.rival}: tier inesperado '{rivalry.tier}'"
+        )
+
+
+def test_rivalries_all_have_bdfutbol_id() -> None:
+    """Todas las rivalidades tienen un id BDFutbol verificado manualmente."""
+    rivalries = load_rivalries(MANUAL / "rivalries.yml", NOW)
+    for rivalry in rivalries.rivalries:
+        assert rivalry.rival_bdfutbol_id is not None, (
+            f"{rivalry.rival}: falta rival_bdfutbol_id"
+        )
+
+
+def test_rivalries_racing_santander_not_in_rivalries() -> None:
+    """Racing de Santander está en bdfutbol_teams.yml como rival actual de LaLiga
+    pero no como rivalidad histórica del club: no tiene suficiente historia
+    compartida documentada para incluirse en rivalries.yml.
+    """
+    rivalries = load_rivalries(MANUAL / "rivalries.yml", NOW)
+    names = [r.rival for r in rivalries.rivalries]
+    assert not any("Santander" in n for n in names), (
+        "Racing de Santander apareció en rivalries.yml sin fuente documentada"
+    )
