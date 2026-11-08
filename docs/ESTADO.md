@@ -267,6 +267,20 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
   **300 tests / 34 suites** pasan. `python -m depor_hub.cli schemas` se repite
   sin cambios adicionales; ES/EN conservan las mismas claves.
 
+### H7.4 — Rivalidades y acción de Ajustes (implementado)
+
+- Las seis rivalidades publicadas incluyen al Celta y el balance enlazado a
+  BDFutbol; cada una muestra una cronología con sus cinco cruces más recientes.
+  `iconicMatches` y `facts` no tienen contenido en el YAML manual, por lo que
+  no se muestran bloques vacíos ni se inventan curiosidades.
+- La acción de Ajustes del encabezado dejó de usar `Link` como wrapper: ahora es
+  un `Pressable` explícito, transparente, de 44 × 44 pt, con icono neutro de
+  22 pt y separación derecha para evitar recorte/solape. Un test verifica el
+  tamaño, el rol y la etiqueta accesible; falta comprobar la apariencia en un
+  iPhone físico.
+- Verificación actual: Node 22 `typecheck`, `lint` y **301 tests / 35 suites**
+  pasan; la suite Python no tuvo cambios desde los **229 pytest** verdes de H7.3.
+
 ### Verificación H7
 ```bash
 source .venv/bin/activate && ruff check scripts && pytest scripts

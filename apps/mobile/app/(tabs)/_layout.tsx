@@ -1,8 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Link, Tabs } from 'expo-router';
+import { router, Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { minTouch } from '@/theme/tokens';
+import { minTouch, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
@@ -22,20 +22,11 @@ export default function TabsLayout() {
       screenOptions={{
         headerStyle: { backgroundColor: colors.surface },
         headerTintColor: colors.text,
+        headerRightContainerStyle: { paddingRight: spacing.sm },
         tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.border },
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
-        headerRight: () => (
-          <Link href="/settings" asChild>
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel={t('settings.title')}
-              style={{ minWidth: minTouch, minHeight: minTouch, alignItems: 'center', justifyContent: 'center' }}
-            >
-              <Ionicons name="settings-outline" size={24} color={colors.text} />
-            </Pressable>
-          </Link>
-        ),
+        headerRight: () => <SettingsHeaderAction />,
       }}
     >
       {TABS.map(({ name, key, icon }) => (
@@ -51,5 +42,29 @@ export default function TabsLayout() {
         />
       ))}
     </Tabs>
+  );
+}
+
+export function SettingsHeaderAction() {
+  const { colors } = useTheme();
+  const { t } = useTranslation();
+
+  return (
+    <Pressable
+      testID="settings-header-button"
+      accessibilityRole="button"
+      accessibilityLabel={t('settings.title')}
+      onPress={() => router.push('/settings')}
+      style={{
+        width: minTouch,
+        height: minTouch,
+        borderRadius: minTouch / 2,
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Ionicons name="settings-outline" size={22} color={colors.text} />
+    </Pressable>
   );
 }
