@@ -14,7 +14,7 @@ GitHub Pages sustituye el despliegue completo al publicar un artefacto. Los work
 - Datos y clasificación se consultan cada 10 minutos. La ingesta refresca cada 10 minutos dentro de [−30 min, +150 min] de un kickoff confirmado/en juego, y cada hora fuera. Una hora redonda en estado `SCHEDULED` no confirma el kickoff y no abre la ventana.
 - Noticias se consultan cada 30 minutos. El proceso respeta feeds, `robots.txt`, pausas por dominio y validadores HTTP; un fallo parcial conserva las historias disponibles. Si todas las fuentes fallan o quedan menos de cinco historias, falla sin reemplazar el JSON anterior.
 - Rivales se refrescan una vez al día; los fallos de una consulta histórica dejan ese rival sin histórico, sin bloquear a los demás.
-- Los contratos Zod permanecen estrictos. CI valida los ocho ficheros publicados y los ocho ejemplos con Zod; Pydantic valida todos los ficheros. Los documentos opcionales inválidos producen estado vacío y registran el error. Los ficheros obligatorios siguen siendo una incompatibilidad de despliegue detectable por CI; sus cambios deben desplegarse junto con la app.
+- Los contratos Zod permanecen estrictos. CI valida los ficheros publicados (11 con los opcionales `titles.json` y `rivalries.json`, más los snapshots de partido) y los ejemplos compartidos con Zod; Pydantic valida todos los ficheros. Los documentos opcionales inválidos producen estado vacío y registran el error. Los ficheros obligatorios siguen siendo una incompatibilidad de despliegue detectable por CI; sus cambios deben desplegarse junto con la app.
 - `publish.py` valida modelos antes de escribir, prepara y valida archivos temporales y reemplaza `meta.json` al final como marcador de publicación.
 
 ## Consecuencias

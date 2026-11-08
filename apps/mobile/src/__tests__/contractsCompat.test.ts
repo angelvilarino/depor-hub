@@ -1,4 +1,4 @@
-import { Club, Fixtures, Squad, Standings } from '@/data/schemas';
+import { Club, Fixtures, Rivalries, Squad, Standings, Titles } from '@/data/schemas';
 
 // JSON publicado ANTES de ADR 0006 (sin crestUrl/venue/referee): debe seguir validando.
 const oldTeam = { id: 1, name: 'A', shortName: null, tla: null };
@@ -228,5 +228,61 @@ describe('compatibilidad con JSON anterior a ADR 0009', () => {
       credit: null,
       sourceUrl: null,
     });
+  });
+});
+
+describe('compatibilidad con JSON anterior a ADR 0032 (Titles / Rivalries)', () => {
+  it('un TitleEdition sin finalMatch ni squad rellena con null/[]', () => {
+    const r = Titles.safeParse({
+      updatedAt: '2026-11-06T00:00:00Z',
+      editions: [
+        {
+          competition: 'Copa del Rey',
+          year: 1995,
+          provenance: { source: 'manual' },
+        },
+      ],
+    });
+    expect(r.success).toBe(true);
+    if (!r.success) return;
+    const e = r.data.editions[0]!;
+    expect(e.finalMatch).toBeNull();
+    expect(e.squad).toEqual([]);
+    expect(e.topScorers).toEqual([]);
+    expect(e.media).toEqual([]);
+    expect(e.status).toBe('pending_verification');
+  });
+
+  it('un Titles sin ediciones rellena editions con []', () => {
+    const r = Titles.safeParse({ updatedAt: '2026-11-06T00:00:00Z' });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.editions).toEqual([]);
+  });
+
+  it('un RivalryDetail sin headToHead ni iconicMatches rellena con null/[]', () => {
+    const r = Rivalries.safeParse({
+      updatedAt: '2026-11-06T00:00:00Z',
+      rivalries: [
+        {
+          rival: 'RC Celta de Vigo',
+          provenance: { source: 'BDFutbol', confidence: 'single_source', capturedAt: '2026-11-06' },
+        },
+      ],
+    });
+    expect(r.success).toBe(true);
+    if (!r.success) return;
+    const rv = r.data.rivalries[0]!;
+    expect(rv.headToHead).toBeNull();
+    expect(rv.iconicMatches).toEqual([]);
+    expect(rv.facts).toEqual([]);
+    expect(rv.media).toEqual([]);
+    expect(rv.rivalBdfutbolId).toBeNull();
+    expect(rv.tier).toBeNull();
+  });
+
+  it('un Rivalries sin rivalidades rellena con []', () => {
+    const r = Rivalries.safeParse({ updatedAt: '2026-11-06T00:00:00Z' });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.rivalries).toEqual([]);
   });
 });
