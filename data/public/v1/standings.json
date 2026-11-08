@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T13:42:03Z",
+  "updatedAt": "2026-11-08T14:42:35Z",
   "season": "2026-27",
   "matchday": 12,
   "table": [
@@ -70,13 +70,13 @@
         "crestUrl": "https://crests.football-data.org/90.png"
       },
       "played": 12,
-      "won": 7,
-      "draw": 3,
+      "won": 8,
+      "draw": 2,
       "lost": 2,
-      "points": 24,
-      "goalsFor": 18,
+      "points": 26,
+      "goalsFor": 19,
       "goalsAgainst": 15,
-      "goalDifference": 3,
+      "goalDifference": 4,
       "form": null
     },
     {
@@ -310,25 +310,6 @@
     {
       "position": 17,
       "team": {
-        "id": 285,
-        "name": "Elche CF",
-        "shortName": "Elche",
-        "tla": "ELC",
-        "crestUrl": "https://crests.football-data.org/285.png"
-      },
-      "played": 12,
-      "won": 2,
-      "draw": 5,
-      "lost": 5,
-      "points": 11,
-      "goalsFor": 14,
-      "goalsAgainst": 18,
-      "goalDifference": -4,
-      "form": null
-    },
-    {
-      "position": 18,
-      "team": {
         "id": 88,
         "name": "Levante UD",
         "shortName": "Levante",
@@ -342,6 +323,25 @@
       "points": 10,
       "goalsFor": 16,
       "goalsAgainst": 21,
+      "goalDifference": -5,
+      "form": null
+    },
+    {
+      "position": 18,
+      "team": {
+        "id": 285,
+        "name": "Elche CF",
+        "shortName": "Elche",
+        "tla": "ELC",
+        "crestUrl": "https://crests.football-data.org/285.png"
+      },
+      "played": 12,
+      "won": 2,
+      "draw": 4,
+      "lost": 6,
+      "points": 10,
+      "goalsFor": 14,
+      "goalsAgainst": 19,
       "goalDifference": -5,
       "form": null
     },
