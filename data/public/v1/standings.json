@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T14:42:35Z",
+  "updatedAt": "2026-11-08T15:52:23Z",
   "season": "2026-27",
   "matchday": 12,
   "table": [
@@ -74,9 +74,9 @@
       "draw": 2,
       "lost": 2,
       "points": 26,
-      "goalsFor": 19,
+      "goalsFor": 20,
       "goalsAgainst": 15,
-      "goalDifference": 4,
+      "goalDifference": 5,
       "form": null
     },
     {
@@ -88,11 +88,11 @@
         "tla": "RSO",
         "crestUrl": "https://crests.football-data.org/92.png"
       },
-      "played": 11,
+      "played": 12,
       "won": 6,
-      "draw": 1,
+      "draw": 2,
       "lost": 4,
-      "points": 19,
+      "points": 20,
       "goalsFor": 20,
       "goalsAgainst": 20,
       "goalDifference": 0,
@@ -196,6 +196,25 @@
     {
       "position": 11,
       "team": {
+        "id": 87,
+        "name": "Rayo Vallecano de Madrid",
+        "shortName": "Rayo Vallecano",
+        "tla": "RAY",
+        "crestUrl": "https://crests.football-data.org/87.png"
+      },
+      "played": 11,
+      "won": 3,
+      "draw": 4,
+      "lost": 4,
+      "points": 13,
+      "goalsFor": 15,
+      "goalsAgainst": 20,
+      "goalDifference": -5,
+      "form": null
+    },
+    {
+      "position": 12,
+      "team": {
         "id": 94,
         "name": "Villarreal CF",
         "shortName": "Villarreal",
@@ -213,7 +232,7 @@
       "form": null
     },
     {
-      "position": 12,
+      "position": 13,
       "team": {
         "id": 558,
         "name": "RC Celta de Vigo",
@@ -232,7 +251,7 @@
       "form": null
     },
     {
-      "position": 13,
+      "position": 14,
       "team": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
@@ -248,25 +267,6 @@
       "goalsFor": 13,
       "goalsAgainst": 14,
       "goalDifference": -1,
-      "form": null
-    },
-    {
-      "position": 14,
-      "team": {
-        "id": 87,
-        "name": "Rayo Vallecano de Madrid",
-        "shortName": "Rayo Vallecano",
-        "tla": "RAY",
-        "crestUrl": "https://crests.football-data.org/87.png"
-      },
-      "played": 10,
-      "won": 3,
-      "draw": 3,
-      "lost": 4,
-      "points": 12,
-      "goalsFor": 15,
-      "goalsAgainst": 20,
-      "goalDifference": -5,
       "form": null
     },
     {
@@ -341,8 +341,8 @@
       "lost": 6,
       "points": 10,
       "goalsFor": 14,
-      "goalsAgainst": 19,
-      "goalDifference": -5,
+      "goalsAgainst": 20,
+      "goalDifference": -6,
       "form": null
     },
     {
