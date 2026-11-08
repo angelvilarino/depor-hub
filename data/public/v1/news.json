@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T13:33:05Z",
+  "updatedAt": "2026-11-08T14:04:01Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "0f77066717fff450",
+      "title": "Rueda de prensa de Manuel Pablo tras el Arenas Club de Getxo 2 - 1 Fabril",
+      "url": "https://youtube.com/watch?v=G5rQWjCWcfM",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-08T13:44:25Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/G5rQWjCWcfM/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "13edbd8d1e7b0863",
       "title": "Crónica | El Fabril no consigue cambiar la tendencia (2-1)",
@@ -2148,20 +2163,6 @@
       "kind": "video",
       "summary": "Vive en directo el partido de Copa del Rey entre el Auriense y el Dépor perteneciente a la primera eliminatoria de la competición",
       "thumbnailUrl": "https://i3.ytimg.com/vi/n40vPF3Lnn8/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "7e2d2c435ca785f3",
-      "title": "Comparecencia de Noé Carrillo tras el Auriense CA 0 - 3 RC Deportivo",
-      "url": "https://youtube.com/watch?v=NHDsB7ODIC4",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-29T23:06:59Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i3.ytimg.com/vi/NHDsB7ODIC4/hqdefault.jpg",
       "tags": [
         "partido"
       ],
