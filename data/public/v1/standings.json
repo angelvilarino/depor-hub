@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T19:12:35Z",
+  "updatedAt": "2026-11-08T20:14:17Z",
   "season": "2026-27",
   "matchday": 12,
   "table": [
@@ -12,11 +12,11 @@
         "tla": "FCB",
         "crestUrl": "https://crests.football-data.org/81.png"
       },
-      "played": 11,
+      "played": 12,
       "won": 10,
-      "draw": 0,
+      "draw": 1,
       "lost": 1,
-      "points": 30,
+      "points": 31,
       "goalsFor": 46,
       "goalsAgainst": 12,
       "goalDifference": 34,
@@ -50,11 +50,11 @@
         "tla": "ATL",
         "crestUrl": "https://crests.football-data.org/78.png"
       },
-      "played": 11,
+      "played": 12,
       "won": 9,
-      "draw": 1,
+      "draw": 2,
       "lost": 1,
-      "points": 28,
+      "points": 29,
       "goalsFor": 22,
       "goalsAgainst": 8,
       "goalDifference": 14,
@@ -150,9 +150,9 @@
       "draw": 3,
       "lost": 5,
       "points": 15,
-      "goalsFor": 16,
+      "goalsFor": 17,
       "goalsAgainst": 15,
-      "goalDifference": 1,
+      "goalDifference": 2,
       "form": null
     },
     {
@@ -284,8 +284,8 @@
       "lost": 6,
       "points": 12,
       "goalsFor": 8,
-      "goalsAgainst": 17,
-      "goalDifference": -9,
+      "goalsAgainst": 18,
+      "goalDifference": -10,
       "form": null
     },
     {
