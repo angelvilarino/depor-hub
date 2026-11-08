@@ -1,0 +1,51 @@
+<svg width="300" height="360" viewBox="0 0 300 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="drop-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+    <clipPath id="shirt-shape">
+      <path d="M 105 45 L 80 60 L 35 110 L 65 145 L 85 125 L 85 295 L 215 295 L 215 125 L 235 145 L 265 110 L 220 60 L 195 45 Q 150 72 105 45 Z" />
+    </clipPath>
+  </defs>
+
+  <g filter="url(#drop-shadow)">
+    <g clip-path="url(#shirt-shape)">
+      <rect x="0" y="0" width="300" height="360" fill="#0055A5" />
+      
+        <rect x="80" y="45" width="28" height="260" fill="#0055A5" />
+        <rect x="108" y="45" width="28" height="260" fill="#FFFFFF" />
+        <rect x="136" y="45" width="28" height="260" fill="#0055A5" />
+        <rect x="164" y="45" width="28" height="260" fill="#FFFFFF" />
+        <rect x="192" y="45" width="28" height="260" fill="#0055A5" />
+        
+      <polygon points="35,110 65,145 57,152 27,117" fill="#FFFFFF" />
+      <polygon points="265,110 235,145 243,152 273,117" fill="#FFFFFF" />
+    </g>
+
+    <path d="M 105 45 Q 150 72 195 45 Q 150 82 105 45 Z" fill="#FFFFFF" stroke="rgba(0,0,0,0.1)" stroke-width="1" />
+    <path d="M 105 45 Q 150 25 195 45" stroke="#FFFFFF" stroke-width="4" fill="none" />
+
+    <g transform="translate(112, 106) scale(0.7)">
+      <circle cx="0" cy="0" r="16" fill="#FFFFFF" stroke="#0055A5" stroke-width="2" />
+      <path d="M -12 -12 L 12 12" stroke="#702082" stroke-width="4.5" />
+      <path d="M -9 -14 L 9 -14 L 6 -11 L -6 -11 Z" fill="#D91A2A" />
+      <circle cx="0" cy="-14" r="2" fill="#FFD700" />
+    </g>
+
+    <g transform="translate(186, 106)">
+      <text x="0" y="4" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">Lotto</text>
+    </g>
+
+    
+            <g transform="translate(150, 195)">
+                <ellipse cx="0" cy="0" rx="58" ry="16" fill="#D91A2A" stroke="#FFFFFF" stroke-width="1.5" />
+                <text x="0" y="4" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">Estrella Galicia</text>
+            </g>
+            
+
+    <g transform="translate(150, 285)">
+      <rect x="-30" y="-8" width="60" height="13" rx="3" fill="rgba(0,0,0,0.3)" />
+      <text x="0" y="2" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="600" fill="#E0E0E0" text-anchor="middle">2010-11</text>
+    </g>
+  </g>
+</svg>

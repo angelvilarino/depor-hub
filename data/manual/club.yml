@@ -221,244 +221,285 @@ kits:
         manufacturer: Austral
         chest_sponsor: Hotel Rías Altas
         colors: [blanco, azul]
+        image: img/club/equipaciones/1985-86-home.svg
   - season: "1986-87"
     kits:
       - type: home
         manufacturer: Gilcor
         chest_sponsor: La Coruña Despega
         colors: [blanco, azul]
+        image: img/club/equipaciones/1986-87-home.svg
   - season: "1987-88"
     kits:
       - type: home
         manufacturer: Gilcor / Rafrei
         colors: [blanco, azul]
+        image: img/club/equipaciones/1987-88-home.svg
   - season: "1988-89"
     kits:
       - type: home
         manufacturer: Rafrei
         colors: [blanco, azul]
+        image: img/club/equipaciones/1988-89-home.svg
   - season: "1989-90"
     kits:
       - type: home
         manufacturer: Gilcor / Rafrei
         chest_sponsor: Leyma
         colors: [blanco, azul]
+        image: img/club/equipaciones/1989-90-home.svg
   - season: "1990-91"
     kits:
       - type: home
         manufacturer: Rox
         chest_sponsor: Leyma
         colors: [blanco, azul]
+        image: img/club/equipaciones/1990-91-home.svg
   - season: "1991-92"
     kits:
       - type: home
         manufacturer: Rox
         chest_sponsor: Leyma
         colors: [blanco, azul]
+        image: img/club/equipaciones/1991-92-home.svg
   - season: "1992-93"
     kits:
       - type: home
         manufacturer: Rox / Umbro
         chest_sponsor: Ocaso / Feiraco
         colors: [blanco, azul]
+        image: img/club/equipaciones/1992-93-home.svg
   - season: "1993-94"
     kits:
       - type: home
         manufacturer: Umbro
         chest_sponsor: Feiraco
         colors: [blanco, azul]
+        image: img/club/equipaciones/1993-94-home.svg
   - season: "1994-95"
     kits:
       - type: home
         manufacturer: Umbro
         chest_sponsor: Feiraco / Galicia Calidade
         colors: [blanco, azul]
+        image: img/club/equipaciones/1994-95-home.svg
   - season: "1995-96"
     kits:
       - type: home
         manufacturer: Umbro
         chest_sponsor: Feiraco
         colors: [blanco, azul]
+        image: img/club/equipaciones/1995-96-home.svg
   - season: "1996-97"
     kits:
       - type: home
         manufacturer: Umbro
         chest_sponsor: Feiraco
         colors: [blanco, azul]
+        image: img/club/equipaciones/1996-97-home.svg
   - season: "1997-98"
     kits:
       - type: home
         manufacturer: Adidas
         chest_sponsor: Feiraco
         colors: [blanco, azul]
+        image: img/club/equipaciones/1997-98-home.svg
   - season: "1998-99"
     kits:
       - type: home
         manufacturer: Adidas
         chest_sponsor: Feiraco
         colors: [blanco, azul]
+        image: img/club/equipaciones/1998-99-home.svg
   - season: "1999-00"
     kits:
       - type: home
         manufacturer: Adidas
         chest_sponsor: Feiraco
         colors: [blanco, azul]
+        image: img/club/equipaciones/1999-00-home.svg
   - season: "2000-01"
     kits:
       - type: home
         manufacturer: Adidas
         chest_sponsor: Dreamcast
         colors: [blanco, azul]
+        image: img/club/equipaciones/2000-01-home.svg
   - season: "2001-02"
     kits:
       - type: home
         manufacturer: Joma
         chest_sponsor: Fadesa
         colors: [blanco, azul]
+        image: img/club/equipaciones/2001-02-home.svg
   - season: "2002-03"
     kits:
       - type: home
         manufacturer: Joma
         chest_sponsor: Fadesa
         colors: [blanco, azul]
+        image: img/club/equipaciones/2002-03-home.svg
   - season: "2003-04"
     kits:
       - type: home
         manufacturer: Joma
         chest_sponsor: Fadesa
         colors: [blanco, azul]
+        image: img/club/equipaciones/2003-04-home.svg
   - season: "2004-05"
     kits:
       - type: home
         manufacturer: Joma
         chest_sponsor: Fadesa
         colors: [blanco, azul]
+        image: img/club/equipaciones/2004-05-home.svg
   - season: "2005-06"
     kits:
       - type: home
         manufacturer: Joma
         chest_sponsor: Fadesa
         colors: [blanco, azul]
+        image: img/club/equipaciones/2005-06-home.svg
   - season: "2006-07"
     kits:
       - type: home
         manufacturer: Joma
         chest_sponsor: Fadesa
         colors: [blanco, azul]
+        image: img/club/equipaciones/2006-07-home.svg
   - season: "2007-08"
     kits:
       - type: home
         manufacturer: Canterbury
         chest_sponsor: Fadesa
         colors: [blanco, azul]
+        image: img/club/equipaciones/2007-08-home.svg
   - season: "2008-09"
     kits:
       - type: home
         manufacturer: Canterbury
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2008-09-home.svg
   - season: "2009-10"
     kits:
       - type: home
         manufacturer: Lotto
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2009-10-home.svg
   - season: "2010-11"
     kits:
       - type: home
         manufacturer: Lotto
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2010-11-home.svg
   - season: "2011-12"
     kits:
       - type: home
         manufacturer: Lotto
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2011-12-home.svg
   - season: "2012-13"
     kits:
       - type: home
         manufacturer: Lotto
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2012-13-home.svg
   - season: "2013-14"
     kits:
       - type: home
         manufacturer: Lotto
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2013-14-home.svg
   - season: "2014-15"
     kits:
       - type: home
         manufacturer: Lotto
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2014-15-home.svg
   - season: "2015-16"
     kits:
       - type: home
         manufacturer: Lotto
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2015-16-home.svg
   - season: "2016-17"
     kits:
       - type: home
         manufacturer: Lotto
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2016-17-home.svg
   - season: "2017-18"
     kits:
       - type: home
         manufacturer: Macron
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2017-18-home.svg
   - season: "2018-19"
     kits:
       - type: home
         manufacturer: Macron
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2018-19-home.svg
   - season: "2019-20"
     kits:
       - type: home
         manufacturer: Macron
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2019-20-home.svg
   - season: "2020-21"
     kits:
       - type: home
         manufacturer: Macron
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2020-21-home.svg
   - season: "2021-22"
     kits:
       - type: home
         manufacturer: Kappa
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2021-22-home.svg
   - season: "2022-23"
     kits:
       - type: home
         manufacturer: Kappa
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2022-23-home.svg
   - season: "2023-24"
     kits:
       - type: home
         manufacturer: Kappa
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2023-24-home.svg
   - season: "2024-25"
     kits:
       - type: home
         manufacturer: Kappa
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2024-25-home.svg
   - season: "2025-26"
     kits:
       - type: home
         manufacturer: Kappa
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2025-26-home.svg
   - season: "2026-27"
     kits:
       - type: home
@@ -470,10 +511,12 @@ kits:
         manufacturer: Nike
         chest_sponsor: Estrella Galicia
         colors: [negro, azul]
+        image: img/club/equipaciones/2026-27-away.svg
       - type: third
         manufacturer: Nike
         chest_sponsor: Estrella Galicia
         colors: [blanco, azul]
+        image: img/club/equipaciones/2026-27-third.svg
 
 stadium:
   name: Estadio Abanca-Riazor

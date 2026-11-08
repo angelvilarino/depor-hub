@@ -178,7 +178,7 @@ La ficha del club se cura a mano en `data/manual/club.yml`; cada bloque lleva su
 | Identidad, fundación, colores, apodos, presidencia, sede y contacto | Web oficial del club y datos societarios publicados | Sin lema documentado: `motto: null`. El contacto es el publicado por el club |
 | Himnos y créditos | Páginas oficiales del club y notas de estreno; créditos de «Voa» revisados en el YAML | La letra se lee de `data/manual/himnos/<id>.txt`; solo se publica el bloque posterior a `Letra`. Sin audio |
 | Escudos históricos | 1000logos para las 14 versiones y la web de identidad corporativa para el vigente (SVG) | Los escudos son marcas del club; uso editorial y pendiente de revisión de términos de 1000logos |
-| Equipaciones | Recopilación de temporadas publicadas (fabricante, patrocinador y colores) | 42 temporadas y 44 equipaciones; solo la local 2026-27 tiene imagen real. El resto se publica sin `image` |
+| Equipaciones | Recopilación de temporadas publicadas (fabricante, patrocinador y colores) | 42 temporadas y 44 equipaciones con imagen local (43 ilustraciones SVG vectoriales y la local 2026-27 en JPEG) |
 | Estadio y aforo | Datos públicos de Riazor y del club | Total **33.225** = 32.490 gradas + 141 palco de honor + 385 palcos VIP + 113 Área 1906 + 96 medios; la suma se valida en el contrato |
 | Museo, visitas y entradas | `ticketing.museo.rcdeportivo.es` y `rcdeportivo.es/es/museo-and-tour` | Precios y horarios pueden cambiar; la app enlaza a la fuente |
 | Ciudad deportiva | Proyecto y datos publicados del Dépor Training Center en Abegondo | 140.000 m², 8 campos de tamaño Riazor y 3 de calentamiento, diseño Populous. Sin coordenadas verificadas: `coordinates: null` |
@@ -191,7 +191,7 @@ Reglas:
 
 - Las **únicas imágenes binarias del repositorio** son las del club: `data/public/v1/img/club/` (15 ficheros, 2.416.456 bytes). Se normalizan con Pillow (escudos a 512 px PNG con alfa; equipaciones a JPEG de 900 px) y se sirven desde la misma base de datos que el JSON. El contrato solo guarda rutas relativas.
 - `data/manual/club_images.yml` es la lista revisable de fuentes; si una URL deja de responder, la imagen local se conserva y la app muestra un marcador si falta. No se hotlinkea ninguna imagen del club desde la app.
-- `docs/kits_coverage.md` se regenera con `python -m depor_hub.cli club` y deja a la vista cuántas equipaciones tienen imagen (1 de 44).
+- `docs/kits_coverage.md` se regenera con `python -m depor_hub.cli club` y deja a la vista cuántas equipaciones tienen imagen (44 de 44).
 - `club.json` no entra en el `dataHash` deportivo; se valida como los demás ficheros y se escribe de forma idempotente (sin cambios, conserva `updatedAt`).
 - Las licencias de terceros de la app se generan con `npm run licenses` desde `package-lock.json` (1.052 paquetes de producción en 16 grupos) y se muestran en Acerca de. No se publica un listado de fuentes de datos en la app.
 
@@ -320,11 +320,11 @@ npm run mobile
 Arranca Expo y un servidor estático de solo lectura sobre `data/public` (puerto 8000). La app deriva la URL del host de Metro; no hay IPs fijas. Para usar los datos publicados, define `EXPO_PUBLIC_DATA_BASE_URL` en `apps/mobile/.env`. Detalles en `docs/adr/0009-fotos-y-fuente-oficial.md`.
 
 <!-- club-media:start -->
-### Sondeo de medios del club — 2026-11-08T10:33:57Z
+### Sondeo de medios del club — 2026-11-08T16:49:44Z
 
 Generado por `python -m depor_hub.cli club probe-media`. No sustituye ninguna URL: las rotas quedan en `null` y se listan aquí.
 
-OK: **15** · locales: **0** · rotas: **0** · bloqueadas: **0** · ausentes: **0**
+OK: **58** · locales: **0** · rotas: **0** · bloqueadas: **0** · ausentes: **0**
 
 Sin URLs rotas, bloqueadas ni ficheros locales ausentes en el último sondeo.
 <!-- club-media:end -->

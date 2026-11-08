@@ -132,7 +132,7 @@ describe('secciones del Club', () => {
     expect(screen.getByText('Cerrar')).toBeTruthy();
   });
 
-  it('agrupa equipaciones por década y usa imagen o marcador según el kit', async () => {
+  it('agrupa equipaciones por década y muestra sus imágenes', async () => {
     mockParams = { section: 'equipaciones' };
     await render(<ClubSectionScreen />);
 
@@ -140,10 +140,29 @@ describe('secciones del Club', () => {
     expect(screen.getAllByText('1980s').length).toBeGreaterThan(0);
     expect(screen.getByText('2026-27')).toBeTruthy();
     expect(screen.getByTestId('kit-2026-27-home-image')).toBeTruthy();
-    expect(screen.getByTestId('kit-2026-27-away-placeholder', { includeHiddenElements: true })).toBeTruthy();
-    expect(screen.getAllByText('Sin imagen', { includeHiddenElements: true }).length).toBeGreaterThan(0);
+    expect(screen.getByTestId('kit-2026-27-away-image')).toBeTruthy();
 
     fireEvent.press(screen.getByLabelText('Ir a la década de 1980s'));
+  });
+
+  it('muestra marcador de sustitución cuando una equipación no tiene imagen', async () => {
+    mockParams = { section: 'equipaciones' };
+    mockUseClub.mockReturnValueOnce(
+      query({
+        ...clubData,
+        kits: [
+          {
+            season: '1906-07',
+            kits: [{ type: 'home', colors: ['blanco'], image: null }],
+          },
+        ],
+      }),
+    );
+    await render(<ClubSectionScreen />);
+    expect(
+      screen.getByTestId('kit-1906-07-home-placeholder', { includeHiddenElements: true }),
+    ).toBeTruthy();
+    expect(screen.getAllByText('Sin imagen', { includeHiddenElements: true }).length).toBeGreaterThan(0);
   });
 
   it('muestra el aforo desglosado y abre el mapa nativo', async () => {

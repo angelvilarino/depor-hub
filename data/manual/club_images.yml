@@ -1,13 +1,3 @@
-# Fuentes de las imágenes locales del club (ADR 0025).
-#
-# `python -m depor_hub.cli club-images` descarga cada URL, la normaliza y la
-# escribe en data/public/v1/<ruta>. La app solo ve la ruta relativa que declara
-# data/manual/club.yml; nunca una URL externa.
-#
-# Solo se usan imágenes de fuentes que permiten su consulta pública. Si una
-# fuente deja de responder, la ruta se mantiene en club.yml y la app muestra el
-# marcador de posición correspondiente.
-
 sources:
   img/club/escudos/1906.png:
     url: https://1000logos.net/wp-content/uploads/2022/03/Deportivo-Sala-Calvet-Logo-1906.png
@@ -54,3 +44,132 @@ sources:
   img/club/equipaciones/2026-27-home.jpg:
     url: https://deportienda.es/cdn/shop/files/01_65178d22-bec4-485c-9b3a-a907043c7d69.jpg?width=600
     source: https://deportienda.es/products/camiseta-primera-equipacion-2026-2027
+  img/club/equipaciones/1985-86-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1985-86-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1986-87-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1986-87-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1987-88-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1987-88-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1988-89-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1988-89-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1989-90-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1989-90-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1990-91-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1990-91-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1991-92-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1991-92-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1992-93-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1992-93-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1993-94-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1993-94-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1994-95-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1994-95-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1995-96-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1995-96-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1996-97-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1996-97-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1997-98-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1997-98-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1998-99-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1998-99-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/1999-00-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/1999-00-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2000-01-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2000-01-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2001-02-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2001-02-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2002-03-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2002-03-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2003-04-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2003-04-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2004-05-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2004-05-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2005-06-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2005-06-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2006-07-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2006-07-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2007-08-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2007-08-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2008-09-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2008-09-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2009-10-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2009-10-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2010-11-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2010-11-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2011-12-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2011-12-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2012-13-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2012-13-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2013-14-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2013-14-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2014-15-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2014-15-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2015-16-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2015-16-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2016-17-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2016-17-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2017-18-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2017-18-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2018-19-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2018-19-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2019-20-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2019-20-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2020-21-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2020-21-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2021-22-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2021-22-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2022-23-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2022-23-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2023-24-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2023-24-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2024-25-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2024-25-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2025-26-home.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2025-26-home.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2026-27-away.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2026-27-away.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
+  img/club/equipaciones/2026-27-third.svg:
+    url: https://scdn.ovixia.app/images/scn1tr4b/production/2026-27-third.svg
+    source: https://www.rcdeportivo.es/es/identidad-corporativa
