@@ -57,7 +57,8 @@
         "credit": "Foto de ejemplo · Autoría de ejemplo",
         "sourceUrl": "https://example.org/himno",
         "origin": "commons",
-        "verifiedAt": "2026-11-06"
+        "verifiedAt": "2026-11-06",
+        "status": "verified"
       },
       "lyricsRights": {
         "status": "unknown",
@@ -136,21 +137,24 @@
       "hours": "09:00-20:00",
       "note": "Horario sintético.",
       "sourceUrl": "https://example.org/estadio",
-      "verifiedAt": "2026-11-06"
+      "verifiedAt": "2026-11-06",
+      "status": "verified"
     },
     "accessDetails": {
       "publicTransport": "Autobús de ejemplo",
       "parking": "Aparcamiento de ejemplo",
       "accessibility": "Acceso adaptado de ejemplo",
       "note": null,
-      "sourceUrl": "https://example.org/estadio"
+      "sourceUrl": "https://example.org/estadio",
+      "status": "pending_verification"
     },
     "capacityAlternatives": [
       {
         "label": "Configuración de ejemplo",
         "total": 90,
         "note": null,
-        "sourceUrl": "https://example.org/estadio"
+        "sourceUrl": "https://example.org/estadio",
+        "status": "pending_verification"
       }
     ],
     "tenants": [
@@ -159,7 +163,8 @@
         "fromYear": 1944,
         "toYear": null,
         "note": null,
-        "sourceUrl": "https://example.org/estadio"
+        "sourceUrl": "https://example.org/estadio",
+        "status": "verified"
       }
     ],
     "media": []
@@ -240,7 +245,8 @@
         "url": "https://example.org/patrocinador",
         "note": null,
         "sourceUrl": "https://example.org/club",
-        "verifiedAt": "2026-11-06"
+        "verifiedAt": "2026-11-06",
+        "status": "verified"
       }
     ]
   },

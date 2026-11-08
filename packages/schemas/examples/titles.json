@@ -6,6 +6,8 @@
       "year": 2000,
       "season": "1999-00",
       "scope": "national",
+      "status": "verified",
+      "coach": "Entrenador de ejemplo",
       "finalMatch": {
         "date": "2000-06-30",
         "competition": "Competición de ejemplo 1999-00",
@@ -15,15 +17,20 @@
         "homeGoals": 2,
         "awayGoals": 1,
         "venue": "Estadio de ejemplo",
+        "referee": "Árbitro de ejemplo",
+        "goalScorers": [
+          { "player": "Jugador de ejemplo", "goals": 2, "minute": 35, "team": "Club de ejemplo", "note": null }
+        ],
         "note": "Partido sintético.",
         "sourceUrl": "https://example.org/final"
       },
       "topScorers": [
-        { "player": "Jugador de ejemplo", "goals": 2, "note": null }
+        { "player": "Jugador de ejemplo", "goals": 2, "minute": 35, "team": "Club de ejemplo", "note": null }
       ],
       "squad": [
         { "name": "Jugador de ejemplo", "role": "delantero", "appearances": 1, "goals": 2 }
       ],
+      "media": [],
       "note": "Edición sintética.",
       "provenance": {
         "source": "Fuente de ejemplo",

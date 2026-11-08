@@ -38,6 +38,12 @@ def test_real_titles_and_rivalries_validate():
         "CD Lugo",
     }
     assert all(rivalry.provenance.source for rivalry in rivalries.rivalries)
+    celta = next(item for item in rivalries.rivalries if item.rival == "RC Celta de Vigo")
+    assert (celta.tier, celta.status) == ("derbi", "verified")
+    ferrol = next(
+        item for item in rivalries.rivalries if item.rival == "Racing Club de Ferrol"
+    )
+    assert ferrol.tier == "derbi"
 
 
 def test_titles_include_the_two_copa_finals_with_source():
@@ -47,6 +53,24 @@ def test_titles_include_the_two_copa_finals_with_source():
     assert all(edition.final_match is not None for edition in copas)
     assert all(edition.final_match.source_url for edition in copas)
     assert {edition.final_match.home_goals for edition in copas} == {1, 2}
+    assert {edition.status for edition in copas} == {"verified"}
+    assert {edition.coach for edition in copas} == {"Arsenio Iglesias", "Javier Irureta"}
+    assert {edition.final_match.referee for edition in copas} == {
+        "José María García-Aranda",
+        "Manuel Mejuto González",
+    }
+    assert {
+        (scorer.player, scorer.minute, scorer.team)
+        for edition in copas
+        for scorer in edition.final_match.goal_scorers
+    } >= {
+        ("Javier Manjarín", 35, "RC Deportivo de La Coruña"),
+        ("Predrag Mijatović", 70, "Valencia CF"),
+        ("Alfredo Santaelena", 81, "RC Deportivo de La Coruña"),
+        ("Sergio González", 6, "RC Deportivo de La Coruña"),
+        ("Diego Tristán", 37, "RC Deportivo de La Coruña"),
+        ("Raúl González", 58, "Real Madrid CF"),
+    }
 
 
 def test_publish_titles_is_idempotent(tmp_path: Path):

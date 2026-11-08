@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T13:19:38Z",
+  "updatedAt": "2026-11-08T10:31:01Z",
   "identity": {
     "officialName": "Real Club Deportivo de La Coruña, S.A.D.",
     "shortName": "RC Deportivo",
@@ -1145,7 +1145,8 @@
         "fromYear": 1944,
         "toYear": null,
         "note": "Primer equipo y filial.",
-        "sourceUrl": "https://www.rcdeportivo.es"
+        "sourceUrl": "https://www.rcdeportivo.es",
+        "status": "verified"
       }
     ],
     "media": []
@@ -1265,7 +1266,8 @@
         "url": "https://www.abanca.com",
         "note": "Patrocinador principal y titular de los derechos de nombre del estadio.",
         "sourceUrl": "https://www.rcdeportivo.es",
-        "verifiedAt": "2026-11-06"
+        "verifiedAt": "2026-11-06",
+        "status": "verified"
       },
       {
         "name": "Nike",
@@ -1276,7 +1278,8 @@
         "url": "https://www.nike.com",
         "note": "Proveedor técnico desde la temporada 2026-27.",
         "sourceUrl": "https://www.rcdeportivo.es",
-        "verifiedAt": "2026-11-06"
+        "verifiedAt": "2026-11-06",
+        "status": "verified"
       }
     ]
   },

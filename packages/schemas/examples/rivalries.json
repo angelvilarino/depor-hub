@@ -6,6 +6,8 @@
       "rivalBdfutbolId": "99",
       "description": "Rivalidad sintética.",
       "sinceYear": 1920,
+      "tier": "derbi",
+      "status": "verified",
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",

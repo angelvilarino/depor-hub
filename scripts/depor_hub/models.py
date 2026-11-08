@@ -648,6 +648,9 @@ class ClubIdentity(Public):
 
 MediaKind = Literal["photo", "video", "audio", "document"]
 MediaOrigin = Literal["commons", "club_official", "press", "other"]
+# H2: un dato manual sin contraste suficiente se publica, pero marcado. La UI
+# futura puede ocultarlo o enseñarlo como «pendiente de verificar».
+DataStatus = Literal["verified", "pending_verification"]
 
 
 class MediaRef(Public):
@@ -670,6 +673,7 @@ class MediaRef(Public):
     source_url: Optional[str] = None
     origin: MediaOrigin = "other"
     verified_at: Optional[str] = None
+    status: DataStatus = "pending_verification"
 
 
 LyricsRightsStatus = Literal[
@@ -782,6 +786,7 @@ class CapacityAlternative(Public):
     total: int = Field(ge=0)
     note: Optional[str] = None
     source_url: Optional[str] = None
+    status: DataStatus = "pending_verification"
 
 
 class VenueSchedule(Public):
@@ -790,6 +795,7 @@ class VenueSchedule(Public):
     note: Optional[str] = None
     source_url: Optional[str] = None
     verified_at: Optional[str] = None
+    status: DataStatus = "pending_verification"
 
 
 class VenueAccess(Public):
@@ -798,6 +804,7 @@ class VenueAccess(Public):
     accessibility: Optional[str] = None
     note: Optional[str] = None
     source_url: Optional[str] = None
+    status: DataStatus = "pending_verification"
 
 
 class Tenure(Public):
@@ -808,6 +815,7 @@ class Tenure(Public):
     to_year: Optional[int] = Field(default=None, ge=1800, le=2100)
     note: Optional[str] = None
     source_url: Optional[str] = None
+    status: DataStatus = "pending_verification"
 
 
 class Capacity(Public):
@@ -911,6 +919,7 @@ class Sponsor(Public):
     note: Optional[str] = None
     source_url: Optional[str] = None
     verified_at: Optional[str] = None
+    status: DataStatus = "pending_verification"
 
 
 class Sponsors(Public):
@@ -933,6 +942,8 @@ TitleScope = Literal["national", "regional", "international", "other"]
 class GoalScorer(Public):
     player: str
     goals: int = Field(ge=0)
+    minute: Optional[int] = Field(default=None, ge=0, le=130)
+    team: Optional[str] = None
     note: Optional[str] = None
 
 
@@ -945,6 +956,8 @@ class FinalMatch(Public):
     home_goals: Optional[int] = Field(default=None, ge=0)
     away_goals: Optional[int] = Field(default=None, ge=0)
     venue: Optional[str] = None
+    referee: Optional[str] = None
+    goal_scorers: list[GoalScorer] = Field(default_factory=list)
     note: Optional[str] = None
     source_url: Optional[str] = None
 
@@ -974,9 +987,12 @@ class TitleEdition(Public):
     year: int = Field(ge=1800, le=2100)
     season: Optional[str] = None
     scope: Optional[TitleScope] = None
+    status: DataStatus = "pending_verification"
+    coach: Optional[str] = None
     final_match: Optional[FinalMatch] = None
     top_scorers: list[GoalScorer] = Field(default_factory=list)
     squad: list[TitleSquadMember] = Field(default_factory=list)
+    media: list[MediaRef] = Field(default_factory=list)
     note: Optional[str] = None
     provenance: Provenance
 
@@ -1026,6 +1042,8 @@ class RivalryDetail(Public):
     rival_bdfutbol_id: Optional[str] = None
     description: Optional[str] = None
     since_year: Optional[int] = Field(default=None, ge=1800, le=2100)
+    tier: Optional[Literal["derbi", "historico"]] = None
+    status: DataStatus = "pending_verification"
     head_to_head: Optional[HeadToHead] = None
     iconic_matches: list[RivalryMeeting] = Field(default_factory=list)
     facts: list[RivalryFact] = Field(default_factory=list)

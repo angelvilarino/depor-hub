@@ -52,6 +52,13 @@
           "default": null,
           "title": "Date"
         },
+        "goalScorers": {
+          "items": {
+            "$ref": "#/$defs/GoalScorer"
+          },
+          "title": "Goalscorers",
+          "type": "array"
+        },
         "home": {
           "anyOf": [
             {
@@ -88,6 +95,18 @@
           ],
           "default": null,
           "title": "Note"
+        },
+        "referee": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Referee"
         },
         "round": {
           "anyOf": [
@@ -137,6 +156,20 @@
           "title": "Goals",
           "type": "integer"
         },
+        "minute": {
+          "anyOf": [
+            {
+              "maximum": 130,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minute"
+        },
         "note": {
           "anyOf": [
             {
@@ -152,6 +185,18 @@
         "player": {
           "title": "Player",
           "type": "string"
+        },
+        "team": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Team"
         }
       },
       "required": [
@@ -159,6 +204,150 @@
         "goals"
       ],
       "title": "GoalScorer",
+      "type": "object"
+    },
+    "MediaRef": {
+      "additionalProperties": false,
+      "description": "Referencia a un medio externo con su licencia y atribuci\u00f3n.\n\nRegla del proyecto: las im\u00e1genes nuevas no se copian al repositorio. Se\npublica la URL original, el cr\u00e9dito y la licencia; si no hay licencia de\nreutilizaci\u00f3n, se dice expl\u00edcitamente. `verifiedAt` es la fecha en la que se\ncomprob\u00f3 que la URL segu\u00eda viva, no la fecha del dato deportivo.",
+      "properties": {
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Author"
+        },
+        "credit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Credit"
+        },
+        "height": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Height"
+        },
+        "kind": {
+          "default": "photo",
+          "enum": [
+            "photo",
+            "video",
+            "audio",
+            "document"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "licenseUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Licenseurl"
+        },
+        "origin": {
+          "default": "other",
+          "enum": [
+            "commons",
+            "club_official",
+            "press",
+            "other"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "sourceUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sourceurl"
+        },
+        "status": {
+          "default": "pending_verification",
+          "enum": [
+            "verified",
+            "pending_verification"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "verifiedAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verifiedat"
+        },
+        "width": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Width"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "MediaRef",
       "type": "object"
     },
     "Provenance": {
@@ -203,6 +392,18 @@
       "additionalProperties": false,
       "description": "Una edici\u00f3n concreta de un t\u00edtulo, con detalle opcional y procedencia.\n\nLa app puede seguir usando `Club.titles` (agrupado por competici\u00f3n). Este\ncontrato a\u00f1ade la edici\u00f3n individual sin romper el bloque legado.",
       "properties": {
+        "coach": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Coach"
+        },
         "competition": {
           "title": "Competition",
           "type": "string"
@@ -217,6 +418,13 @@
             }
           ],
           "default": null
+        },
+        "media": {
+          "items": {
+            "$ref": "#/$defs/MediaRef"
+          },
+          "title": "Media",
+          "type": "array"
         },
         "note": {
           "anyOf": [
@@ -269,6 +477,15 @@
           },
           "title": "Squad",
           "type": "array"
+        },
+        "status": {
+          "default": "pending_verification",
+          "enum": [
+            "verified",
+            "pending_verification"
+          ],
+          "title": "Status",
+          "type": "string"
         },
         "topScorers": {
           "items": {

@@ -514,6 +514,7 @@ stadium:
       to_year: null
       note: Primer equipo y filial.
       source_url: https://www.rcdeportivo.es
+      status: verified
   media: []
 
 tickets:
@@ -610,6 +611,7 @@ sponsors:
       note: Patrocinador principal y titular de los derechos de nombre del estadio.
       source_url: https://www.rcdeportivo.es
       verified_at: "2026-11-06"
+      status: verified
     - name: Nike
       role: technical
       category: equipación
@@ -619,6 +621,7 @@ sponsors:
       note: Proveedor técnico desde la temporada 2026-27.
       source_url: https://www.rcdeportivo.es
       verified_at: "2026-11-06"
+      status: verified
 
 titles:
   - competition: Primera División

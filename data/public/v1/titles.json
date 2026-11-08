@@ -1,18 +1,21 @@
 {
-  "updatedAt": "2026-11-06T13:16:40Z",
+  "updatedAt": "2026-11-08T10:31:02Z",
   "editions": [
     {
       "competition": "Primera División",
       "year": 2000,
       "season": "1999-00",
       "scope": "national",
+      "status": "verified",
+      "coach": "Javier Irureta",
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": "Temporada 1999-2000.",
       "provenance": {
-        "source": "Palmarés curado en data/manual/club.yml",
-        "confidence": "cross_checked",
+        "source": "BDFutbol (palmarés) y hemeroteca",
+        "confidence": "verified",
         "capturedAt": "2026-11-06"
       }
     },
@@ -21,6 +24,8 @@
       "year": 1995,
       "season": "1994-95",
       "scope": "national",
+      "status": "verified",
+      "coach": "Arsenio Iglesias",
       "finalMatch": {
         "date": "1995-06-27",
         "competition": "Copa del Rey 1994-95",
@@ -30,15 +35,40 @@
         "homeGoals": 2,
         "awayGoals": 1,
         "venue": "Estadio Santiago Bernabéu, Madrid",
+        "referee": "José María García-Aranda",
+        "goalScorers": [
+          {
+            "player": "Javier Manjarín",
+            "goals": 1,
+            "minute": 35,
+            "team": "RC Deportivo de La Coruña",
+            "note": null
+          },
+          {
+            "player": "Predrag Mijatović",
+            "goals": 1,
+            "minute": 70,
+            "team": "Valencia CF",
+            "note": null
+          },
+          {
+            "player": "Alfredo Santaelena",
+            "goals": 1,
+            "minute": 81,
+            "team": "RC Deportivo de La Coruña",
+            "note": null
+          }
+        ],
         "note": "Final suspendida por la lluvia el 24 de junio y reanudada el 27 de junio.",
         "sourceUrl": "https://en.wikipedia.org/wiki/1995_Copa_del_Rey_final"
       },
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": "Primera Copa del Rey del club.",
       "provenance": {
-        "source": "Wikipedia (final de la Copa del Rey de 1995)",
-        "confidence": "cross_checked",
+        "source": "Wikipedia (final de la Copa del Rey), contrastado con BDFutbol",
+        "confidence": "verified",
         "capturedAt": "2026-11-06"
       }
     },
@@ -47,6 +77,8 @@
       "year": 2002,
       "season": "2001-02",
       "scope": "national",
+      "status": "verified",
+      "coach": "Javier Irureta",
       "finalMatch": {
         "date": "2002-03-06",
         "competition": "Copa del Rey 2001-02",
@@ -56,15 +88,40 @@
         "homeGoals": 1,
         "awayGoals": 2,
         "venue": "Estadio Santiago Bernabéu, Madrid",
+        "referee": "Manuel Mejuto González",
+        "goalScorers": [
+          {
+            "player": "Sergio González",
+            "goals": 1,
+            "minute": 6,
+            "team": "RC Deportivo de La Coruña",
+            "note": null
+          },
+          {
+            "player": "Diego Tristán",
+            "goals": 1,
+            "minute": 37,
+            "team": "RC Deportivo de La Coruña",
+            "note": null
+          },
+          {
+            "player": "Raúl González",
+            "goals": 1,
+            "minute": 58,
+            "team": "Real Madrid CF",
+            "note": null
+          }
+        ],
         "note": "El Centenariazo: el Dépor ganó la final del centenario del Real Madrid.",
         "sourceUrl": "https://en.wikipedia.org/wiki/2002_Copa_del_Rey_final"
       },
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": "El Centenariazo.",
       "provenance": {
-        "source": "Wikipedia (final de la Copa del Rey de 2002)",
-        "confidence": "cross_checked",
+        "source": "Wikipedia (final de la Copa del Rey), contrastado con BDFutbol",
+        "confidence": "verified",
         "capturedAt": "2026-11-06"
       }
     },
@@ -73,9 +130,12 @@
       "year": 1995,
       "season": "1995-96",
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -88,9 +148,12 @@
       "year": 2000,
       "season": "2000-01",
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -103,9 +166,12 @@
       "year": 2002,
       "season": "2002-03",
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -118,9 +184,12 @@
       "year": 1912,
       "season": null,
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -133,9 +202,12 @@
       "year": 1962,
       "season": null,
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -148,9 +220,12 @@
       "year": 1964,
       "season": null,
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -163,9 +238,12 @@
       "year": 1966,
       "season": null,
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -178,9 +256,12 @@
       "year": 1968,
       "season": null,
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -193,9 +274,12 @@
       "year": 2012,
       "season": null,
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -208,9 +292,12 @@
       "year": 2024,
       "season": null,
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -223,9 +310,12 @@
       "year": 1975,
       "season": null,
       "scope": "national",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -238,9 +328,12 @@
       "year": 1927,
       "season": null,
       "scope": "regional",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -253,9 +346,12 @@
       "year": 1928,
       "season": null,
       "scope": "regional",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -268,9 +364,12 @@
       "year": 1931,
       "season": null,
       "scope": "regional",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -283,9 +382,12 @@
       "year": 1933,
       "season": null,
       "scope": "regional",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -298,9 +400,12 @@
       "year": 1937,
       "season": null,
       "scope": "regional",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -313,9 +418,12 @@
       "year": 1940,
       "season": null,
       "scope": "regional",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",
@@ -328,9 +436,12 @@
       "year": 1946,
       "season": null,
       "scope": "regional",
+      "status": "pending_verification",
+      "coach": null,
       "finalMatch": null,
       "topScorers": [],
       "squad": [],
+      "media": [],
       "note": null,
       "provenance": {
         "source": "Palmarés curado en data/manual/club.yml",

@@ -1,11 +1,13 @@
 {
-  "updatedAt": "2026-11-06T13:16:53Z",
+  "updatedAt": "2026-11-08T10:31:04Z",
   "rivalries": [
     {
       "rival": "RC Celta de Vigo",
       "rivalBdfutbolId": "11",
       "description": "El derbi gallego. Primer enfrentamiento en el campeonato gallego de 1923; es el partido más repetido y tenso del fútbol gallego.",
       "sinceYear": 1923,
+      "tier": "derbi",
+      "status": "verified",
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -84,6 +86,8 @@
       "rivalBdfutbolId": "12",
       "description": "Rivalidad gallega de los años noventa; ambos clubes coincidieron en Primera División en la temporada 1994-95.",
       "sinceYear": null,
+      "tier": "historico",
+      "status": "pending_verification",
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -162,6 +166,8 @@
       "rivalBdfutbolId": "28",
       "description": "Enfrentamientos históricos en Primera y Segunda División.",
       "sinceYear": null,
+      "tier": "historico",
+      "status": "pending_verification",
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -240,6 +246,8 @@
       "rivalBdfutbolId": "34",
       "description": "Rivalidad deportiva del norte; enfrentamientos históricos en Primera y Segunda División.",
       "sinceYear": null,
+      "tier": "historico",
+      "status": "pending_verification",
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -318,6 +326,8 @@
       "rivalBdfutbolId": "48",
       "description": "Derbi gallego; enfrentamientos en Segunda y Segunda División B.",
       "sinceYear": null,
+      "tier": "derbi",
+      "status": "pending_verification",
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",
@@ -396,6 +406,8 @@
       "rivalBdfutbolId": "76",
       "description": "Rival gallego; enfrentamientos en Segunda y Segunda División B.",
       "sinceYear": null,
+      "tier": "historico",
+      "status": "pending_verification",
       "headToHead": {
         "scope": "all_official_matches",
         "source": "BDFutbol",

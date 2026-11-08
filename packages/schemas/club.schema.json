@@ -377,6 +377,15 @@
           "default": null,
           "title": "Sourceurl"
         },
+        "status": {
+          "default": "pending_verification",
+          "enum": [
+            "verified",
+            "pending_verification"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
         "total": {
           "minimum": 0,
           "title": "Total",
@@ -1058,6 +1067,15 @@
           "default": null,
           "title": "Sourceurl"
         },
+        "status": {
+          "default": "pending_verification",
+          "enum": [
+            "verified",
+            "pending_verification"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
         "url": {
           "title": "Url",
           "type": "string"
@@ -1332,6 +1350,15 @@
           ],
           "default": null,
           "title": "Sourceurl"
+        },
+        "status": {
+          "default": "pending_verification",
+          "enum": [
+            "verified",
+            "pending_verification"
+          ],
+          "title": "Status",
+          "type": "string"
         },
         "untilYear": {
           "anyOf": [
@@ -1695,6 +1722,15 @@
           "default": null,
           "title": "Sourceurl"
         },
+        "status": {
+          "default": "pending_verification",
+          "enum": [
+            "verified",
+            "pending_verification"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
         "toYear": {
           "anyOf": [
             {
@@ -1910,6 +1946,15 @@
           ],
           "default": null,
           "title": "Sourceurl"
+        },
+        "status": {
+          "default": "pending_verification",
+          "enum": [
+            "verified",
+            "pending_verification"
+          ],
+          "title": "Status",
+          "type": "string"
         }
       },
       "title": "VenueAccess",
@@ -1965,6 +2010,15 @@
           ],
           "default": null,
           "title": "Sourceurl"
+        },
+        "status": {
+          "default": "pending_verification",
+          "enum": [
+            "verified",
+            "pending_verification"
+          ],
+          "title": "Status",
+          "type": "string"
         },
         "verifiedAt": {
           "anyOf": [

@@ -450,6 +450,7 @@ export const AnthemKind = z.enum(['oficial', 'no_oficial', 'popular']);
 
 export const MediaKind = z.enum(['photo', 'video', 'audio', 'document']);
 export const MediaOrigin = z.enum(['commons', 'club_official', 'press', 'other']);
+export const DataStatus = z.enum(['verified', 'pending_verification']);
 
 export const MediaRef = z.strictObject({
   url: z.string(),
@@ -463,6 +464,7 @@ export const MediaRef = z.strictObject({
   sourceUrl: optionalNull(),
   origin: MediaOrigin.default('other'),
   verifiedAt: optionalNull(),
+  status: DataStatus.default('pending_verification'),
 });
 
 export const LyricsRightsStatus = z.enum([
@@ -555,6 +557,7 @@ export const CapacityAlternative = z.strictObject({
   total: z.number().int().nonnegative(),
   note: optionalNull(),
   sourceUrl: optionalNull(),
+  status: DataStatus.default('pending_verification'),
 });
 
 export const VenueSchedule = z.strictObject({
@@ -563,6 +566,7 @@ export const VenueSchedule = z.strictObject({
   note: optionalNull(),
   sourceUrl: optionalNull(),
   verifiedAt: optionalNull(),
+  status: DataStatus.default('pending_verification'),
 });
 
 export const VenueAccess = z.strictObject({
@@ -571,6 +575,7 @@ export const VenueAccess = z.strictObject({
   accessibility: optionalNull(),
   note: optionalNull(),
   sourceUrl: optionalNull(),
+  status: DataStatus.default('pending_verification'),
 });
 
 export const Tenure = z.strictObject({
@@ -579,6 +584,7 @@ export const Tenure = z.strictObject({
   toYear: z.number().int().min(1800).max(2100).nullable().default(null),
   note: optionalNull(),
   sourceUrl: optionalNull(),
+  status: DataStatus.default('pending_verification'),
 });
 
 export const Capacity = z
@@ -671,6 +677,7 @@ export const Sponsor = z.strictObject({
   note: optionalNull(),
   sourceUrl: optionalNull(),
   verifiedAt: optionalNull(),
+  status: DataStatus.default('pending_verification'),
 });
 
 export const Sponsors = z.strictObject({
@@ -692,6 +699,8 @@ export const TitleScope = z.enum(['national', 'regional', 'international', 'othe
 export const GoalScorer = z.strictObject({
   player: z.string(),
   goals: z.number().int().nonnegative(),
+  minute: z.number().int().min(0).max(130).nullable().default(null),
+  team: optionalNull(),
   note: optionalNull(),
 });
 
@@ -704,6 +713,8 @@ export const FinalMatch = z.strictObject({
   homeGoals: z.number().int().nonnegative().nullable().default(null),
   awayGoals: z.number().int().nonnegative().nullable().default(null),
   venue: optionalNull(),
+  referee: optionalNull(),
+  goalScorers: z.array(GoalScorer).default([]),
   note: optionalNull(),
   sourceUrl: optionalNull(),
 });
@@ -720,9 +731,12 @@ export const TitleEdition = z.strictObject({
   year: z.number().int().min(1800).max(2100),
   season: optionalNull(),
   scope: TitleScope.nullable().default(null),
+  status: DataStatus.default('pending_verification'),
+  coach: optionalNull(),
   finalMatch: FinalMatch.nullable().default(null),
   topScorers: z.array(GoalScorer).default([]),
   squad: z.array(TitleSquadMember).default([]),
+  media: z.array(MediaRef).default([]),
   note: optionalNull(),
   provenance: Provenance,
 });
@@ -760,6 +774,8 @@ export const RivalryDetail = z.strictObject({
   rivalBdfutbolId: optionalNull(),
   description: optionalNull(),
   sinceYear: z.number().int().min(1800).max(2100).nullable().default(null),
+  tier: z.enum(['derbi', 'historico']).nullable().default(null),
+  status: DataStatus.default('pending_verification'),
   headToHead: HeadToHead.nullable().default(null),
   iconicMatches: z.array(RivalryMeeting).default([]),
   facts: z.array(RivalryFact).default([]),

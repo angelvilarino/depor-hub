@@ -4,27 +4,35 @@
 # `python -m depor_hub.cli club titles` compara BDFutbol con estas ediciones y
 # escribe las diferencias en `data/manual/titles.proposed.yml` para revisión.
 #
-# Cada edición conserva su procedencia. `confidence` solo puede ser
-# verified/cross_checked/single_source/estimated. Lo que no esté documentado se
-# deja en null/[]; no se inventan goleadores, alineaciones ni marcadores.
+# Cada edición conserva su procedencia y un `status`:
+#   verified             = contraste suficiente (2 fuentes u oficial)
+#   pending_verification = dato de partida pendiente de contraste
+# `confidence` solo puede ser verified/cross_checked/single_source/estimated.
+# Lo que no esté documentado se deja en null/[]; no se inventan goleadores,
+# alineaciones, marcadores ni árbitros.
 
 editions:
 - competition: Primera División
   year: 2000
   season: 1999-00
   scope: national
+  status: verified
+  coach: Javier Irureta
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: Temporada 1999-2000.
   provenance:
-    source: Palmarés curado en data/manual/club.yml
-    confidence: cross_checked
+    source: BDFutbol (palmarés) y hemeroteca
+    confidence: verified
     captured_at: '2026-11-06'
 - competition: Copa del Rey
   year: 1995
   season: 1994-95
   scope: national
+  status: verified
+  coach: Arsenio Iglesias
   final_match:
     date: '1995-06-27'
     competition: Copa del Rey 1994-95
@@ -36,17 +44,37 @@ editions:
     venue: Estadio Santiago Bernabéu, Madrid
     note: Final suspendida por la lluvia el 24 de junio y reanudada el 27 de junio.
     source_url: https://en.wikipedia.org/wiki/1995_Copa_del_Rey_final
+    referee: José María García-Aranda
+    goal_scorers:
+    - player: Javier Manjarín
+      team: RC Deportivo de La Coruña
+      goals: 1
+      minute: 35
+      note: null
+    - player: Predrag Mijatović
+      team: Valencia CF
+      goals: 1
+      minute: 70
+      note: null
+    - player: Alfredo Santaelena
+      team: RC Deportivo de La Coruña
+      goals: 1
+      minute: 81
+      note: null
   top_scorers: []
   squad: []
+  media: []
   note: Primera Copa del Rey del club.
   provenance:
-    source: Wikipedia (final de la Copa del Rey de 1995)
-    confidence: cross_checked
+    source: Wikipedia (final de la Copa del Rey), contrastado con BDFutbol
+    confidence: verified
     captured_at: '2026-11-06'
 - competition: Copa del Rey
   year: 2002
   season: 2001-02
   scope: national
+  status: verified
+  coach: Javier Irureta
   final_match:
     date: '2002-03-06'
     competition: Copa del Rey 2001-02
@@ -58,20 +86,41 @@ editions:
     venue: Estadio Santiago Bernabéu, Madrid
     note: 'El Centenariazo: el Dépor ganó la final del centenario del Real Madrid.'
     source_url: https://en.wikipedia.org/wiki/2002_Copa_del_Rey_final
+    referee: Manuel Mejuto González
+    goal_scorers:
+    - player: Sergio González
+      team: RC Deportivo de La Coruña
+      goals: 1
+      minute: 6
+      note: null
+    - player: Diego Tristán
+      team: RC Deportivo de La Coruña
+      goals: 1
+      minute: 37
+      note: null
+    - player: Raúl González
+      team: Real Madrid CF
+      goals: 1
+      minute: 58
+      note: null
   top_scorers: []
   squad: []
+  media: []
   note: El Centenariazo.
   provenance:
-    source: Wikipedia (final de la Copa del Rey de 2002)
-    confidence: cross_checked
+    source: Wikipedia (final de la Copa del Rey), contrastado con BDFutbol
+    confidence: verified
     captured_at: '2026-11-06'
 - competition: Supercopa de España
   year: 1995
   season: 1995-96
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -81,9 +130,12 @@ editions:
   year: 2000
   season: 2000-01
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -93,9 +145,12 @@ editions:
   year: 2002
   season: 2002-03
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -105,9 +160,12 @@ editions:
   year: 1912
   season: null
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -117,9 +175,12 @@ editions:
   year: 1962
   season: null
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -129,9 +190,12 @@ editions:
   year: 1964
   season: null
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -141,9 +205,12 @@ editions:
   year: 1966
   season: null
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -153,9 +220,12 @@ editions:
   year: 1968
   season: null
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -165,9 +235,12 @@ editions:
   year: 2012
   season: null
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -177,9 +250,12 @@ editions:
   year: 2024
   season: null
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -189,9 +265,12 @@ editions:
   year: 1975
   season: null
   scope: national
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -201,9 +280,12 @@ editions:
   year: 1927
   season: null
   scope: regional
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -213,9 +295,12 @@ editions:
   year: 1928
   season: null
   scope: regional
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -225,9 +310,12 @@ editions:
   year: 1931
   season: null
   scope: regional
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -237,9 +325,12 @@ editions:
   year: 1933
   season: null
   scope: regional
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -249,9 +340,12 @@ editions:
   year: 1937
   season: null
   scope: regional
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -261,9 +355,12 @@ editions:
   year: 1940
   season: null
   scope: regional
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
@@ -273,9 +370,12 @@ editions:
   year: 1946
   season: null
   scope: regional
+  status: pending_verification
+  coach: null
   final_match: null
   top_scorers: []
   squad: []
+  media: []
   note: null
   provenance:
     source: Palmarés curado en data/manual/club.yml
