@@ -4,15 +4,15 @@ Generado por `python -m depor_hub.cli club`. No editar a mano.
 
 - Temporadas documentadas: 42
 - Equipaciones: 44
-- Fotos verificadas con crédito visible: 1
-- Ilustraciones de respaldo SVG: 43
+- Fotos verificadas con crédito visible: 3
+- Ilustraciones de respaldo SVG: 41
 - Sin foto ni ilustración: 0
 
 | Temporada | Tipo | Fabricante | Patrocinador | Soporte visual |
 | --- | --- | --- | --- | --- |
 | 1985-86 | home | Austral | Hotel Rías Altas | ilustración SVG |
 | 1986-87 | home | Gilcor | La Coruña Despega | ilustración SVG |
-| 1987-88 | home | Gilcor / Rafrei | — | ilustración SVG |
+| 1987-88 | home | Gilcor / Rafrei | — | foto verificada |
 | 1988-89 | home | Rafrei | — | ilustración SVG |
 | 1989-90 | home | Gilcor / Rafrei | Leyma | ilustración SVG |
 | 1990-91 | home | Rox | Leyma | ilustración SVG |
@@ -24,7 +24,7 @@ Generado por `python -m depor_hub.cli club`. No editar a mano.
 | 1996-97 | home | Umbro | Feiraco | ilustración SVG |
 | 1997-98 | home | Adidas | Feiraco | ilustración SVG |
 | 1998-99 | home | Adidas | Feiraco | ilustración SVG |
-| 1999-00 | home | Adidas | Feiraco | ilustración SVG |
+| 1999-00 | home | Adidas | Feiraco | foto verificada |
 | 2000-01 | home | Adidas | Dreamcast | ilustración SVG |
 | 2001-02 | home | Joma | Fadesa | ilustración SVG |
 | 2002-03 | home | Joma | Fadesa | ilustración SVG |

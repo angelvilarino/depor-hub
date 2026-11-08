@@ -191,10 +191,33 @@ def test_every_declared_image_has_a_local_source_and_a_file():
 def test_coverage_report_lists_the_current_season():
     report = kits_coverage(real_club())
     assert "Temporadas documentadas: 42" in report
-    assert "Fotos verificadas con crédito visible: 1" in report
-    assert "Ilustraciones de respaldo SVG: 43" in report
+    assert "Fotos verificadas con crédito visible: 3" in report
+    assert "Ilustraciones de respaldo SVG: 41" in report
+    assert "| 1987-88 | home | Gilcor / Rafrei | — | foto verificada |" in report
+    assert "| 1999-00 | home | Adidas | Feiraco | foto verificada |" in report
     assert "| 2026-27 | home | Nike | Estrella Galicia | foto verificada |" in report
     assert "| 2026-27 | away | Nike | Estrella Galicia | ilustración SVG |" in report
+
+
+def test_historical_kit_photos_have_verified_sources_and_svg_fallbacks():
+    club = real_club()
+    expected = {
+        "1987-88": "https://commons.wikimedia.org/wiki/File:Camisetavicenteceleiro.jpg",
+        "1999-00": "https://commons.wikimedia.org/wiki/File:Camisetadjalminhaliga9900.jpg",
+    }
+    for season, source_url in expected.items():
+        kit = next(
+            item
+            for item in next(row for row in club.kits if row.season == season).kits
+            if item.type == "home"
+        )
+        assert kit.media is not None
+        assert kit.media.status == "verified"
+        assert kit.media.origin == "commons"
+        assert kit.media.license == "CC0"
+        assert kit.media.author == "Magno2002"
+        assert kit.media.source_url == source_url
+        assert kit.image is not None and kit.image.endswith(".svg")
 
 
 def test_normalize_crest_trims_padding_and_keeps_alpha():

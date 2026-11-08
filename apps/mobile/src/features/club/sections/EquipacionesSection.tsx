@@ -34,6 +34,11 @@ function KitRow({ season, kit }: { season: string; kit: KitT }) {
       <View style={styles.kitImageColumn}>
         <ClubImage
           path={kit.image}
+          remoteUrl={
+            kit.media?.kind === 'photo' && kit.media.status === 'verified'
+              ? kit.media.url
+              : null
+          }
           label={`${season} · ${type}`}
           width={78}
           height={98}

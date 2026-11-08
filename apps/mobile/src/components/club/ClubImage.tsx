@@ -11,6 +11,8 @@ import { useTheme } from '@/theme/useTheme';
 type Props = {
   /** Ruta relativa del contrato (`img/club/...`). */
   path: string | null | undefined;
+  /** URL externa solo para medios publicados y verificados. */
+  remoteUrl?: string | null;
   /** Texto alternativo para lectores de pantalla. */
   label: string;
   width: number;
@@ -23,13 +25,13 @@ type Props = {
 };
 
 /**
- * Imagen local del club con hueco fijo. Si no hay ruta, la URL base no está
- * configurada o la descarga falla, se pinta un marcador con el mismo tamaño para
- * que la lista no salte. Las imágenes nunca se piden a un dominio externo desde la
- * app: `clubImageUrl` las resuelve contra la base de datos pública.
+ * Imagen del club con hueco fijo. El caller puede usar una URL externa solo para
+ * un medio verificado; la ruta del contrato conserva la ilustración de respaldo.
+ * Si no hay imagen, la URL falla o no hay base configurada, se muestra un marcador.
  */
 export function ClubImage({
   path,
+  remoteUrl,
   label,
   width,
   height,
@@ -41,9 +43,14 @@ export function ClubImage({
 }: Props) {
   const { t } = useTranslation();
   const { colors } = useTheme();
-  const [failedPath, setFailedPath] = useState<string | null>(null);
-  const uri = clubImageUrl(path);
-  const failed = !uri || failedPath === path;
+  const [failedUris, setFailedUris] = useState<string[]>([]);
+  const localUri = clubImageUrl(path);
+  const preferredUri = remoteUrl?.trim() || localUri;
+  const uri = [preferredUri, localUri].find(
+    (candidate): candidate is string =>
+      candidate !== null && candidate.length > 0 && !failedUris.includes(candidate),
+  ) ?? null;
+  const failed = uri === null;
   const hidden = {
     accessibilityElementsHidden: true,
     importantForAccessibility: 'no-hide-descendants' as const,
@@ -90,10 +97,15 @@ export function ClubImage({
             {...hidden}
             cachePolicy="memory-disk"
             contentFit={contentFit}
-            onError={() => setFailedPath(path ?? null)}
-            recyclingKey={`${path}-${width}x${height}`}
+            onError={() => {
+              if (uri) setFailedUris((previous) => (
+                previous.includes(uri) ? previous : [...previous, uri]
+              ));
+            }}
+            recyclingKey={`${uri ?? path}-${width}x${height}`}
             source={{ uri }}
             style={StyleSheet.absoluteFill}
+            testID={testID ? `${testID}-resolved-image` : undefined}
           />
         </View>
       )}

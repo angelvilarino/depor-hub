@@ -121,6 +121,30 @@ describe('pestaña Club', () => {
     expect(clubData.kits).toHaveLength(42);
     expect(kits).toHaveLength(44);
     expect(kits.every((kit) => Boolean(kit.image) || kit.colors.length > 0)).toBe(true);
+    expect(kits.filter((kit) => kit.media?.kind === 'photo' && kit.media.status === 'verified')).toHaveLength(3);
+  });
+
+  it('renders a verified historical shirt photo with visible credit and SVG fallback', async () => {
+    mockParams = { section: 'equipaciones' };
+    const season = clubData.kits.find((item) => item.season === '1999-00')!;
+    mockUseClub.mockReturnValueOnce(query({ ...clubData, kits: [season] }));
+    await render(<ClubSectionScreen />);
+
+    const image = screen.getByTestId('kit-1999-00-home-resolved-image', {
+      includeHiddenElements: true,
+    });
+    expect(image.props.source).toEqual([{ uri: season.kits[0]!.media!.url }]);
+    expect(season.kits[0]!.image).toMatch(/\.svg$/);
+    expect(screen.getByLabelText('Crédito de imagen: Magno2002 / Wikimedia Commons · Magno2002 · CC0')).toBeTruthy();
+
+    fireEvent(image, 'onError', { nativeEvent: { error: 'network' } });
+    await waitFor(() => {
+      expect(screen.getByTestId('kit-1999-00-home-resolved-image', {
+        includeHiddenElements: true,
+      }).props.source).toEqual([{
+        uri: `https://data.test/v1/${season.kits[0]!.image}`,
+      }]);
+    });
   });
 
   it('pinta estado vacío sin contrato y error con reintento', async () => {

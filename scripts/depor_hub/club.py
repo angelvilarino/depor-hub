@@ -146,7 +146,13 @@ def kits_coverage(club: m.Club) -> str:
         1
         for season in seasons
         for kit in season.kits
-        if kit.image and kit.image.lower().endswith(".svg")
+        if kit.image
+        and kit.image.lower().endswith(".svg")
+        and not (
+            kit.media
+            and kit.media.kind == "photo"
+            and kit.media.status == "verified"
+        )
     )
     lines = [
         "# Cobertura de equipaciones",

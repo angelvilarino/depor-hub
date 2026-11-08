@@ -36,7 +36,7 @@ editions:
   coach_provenance:
     source: https://en.wikipedia.org/wiki/1995_Copa_del_Rey_final (manager de la final)
     confidence: single_source
-    captured_at: '2026-11-09'
+    captured_at: '2026-11-08'
   final_match:
     date: '1995-06-24'
     competition: Copa del Rey 1994-95
@@ -163,7 +163,7 @@ editions:
   squad_provenance:
     source: BDFutbol (1994-95) https://www.bdfutbol.com/es/t/t1994-9513.html
     confidence: single_source
-    captured_at: '2026-11-09'
+    captured_at: '2026-11-08'
   media: []
   note: Primera Copa del Rey del club.
   provenance:
@@ -179,7 +179,7 @@ editions:
   coach_provenance:
     source: https://en.wikipedia.org/wiki/2002_Copa_del_Rey_final (manager de la final)
     confidence: single_source
-    captured_at: '2026-11-09'
+    captured_at: '2026-11-08'
   final_match:
     date: '2002-03-06'
     competition: Copa del Rey 2001-02
@@ -334,7 +334,7 @@ editions:
   squad_provenance:
     source: BDFutbol (2001-02) https://www.bdfutbol.com/es/t/t2001-0213.html
     confidence: single_source
-    captured_at: '2026-11-09'
+    captured_at: '2026-11-08'
   media: []
   note: El Centenariazo.
   provenance:

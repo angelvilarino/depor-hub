@@ -356,6 +356,19 @@ kits:
         manufacturer: Gilcor / Rafrei
         colors: [blanco, azul]
         image: img/club/equipaciones/1987-88-home.svg
+        media:
+          url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Camisetavicenteceleiro.jpg/960px-Camisetavicenteceleiro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          kind: photo
+          width: 800
+          height: 1067
+          license: CC0
+          license_url: https://creativecommons.org/publicdomain/zero/1.0/
+          author: Magno2002
+          credit: "Magno2002 / Wikimedia Commons"
+          source_url: https://commons.wikimedia.org/wiki/File:Camisetavicenteceleiro.jpg
+          origin: commons
+          verified_at: "2026-11-08"
+          status: verified
   - season: "1988-89"
     kits:
       - type: home
@@ -439,6 +452,19 @@ kits:
         chest_sponsor: Feiraco
         colors: [blanco, azul]
         image: img/club/equipaciones/1999-00-home.svg
+        media:
+          url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Camisetadjalminhaliga9900.jpg/960px-Camisetadjalminhaliga9900.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          kind: photo
+          width: 800
+          height: 1067
+          license: CC0
+          license_url: https://creativecommons.org/publicdomain/zero/1.0/
+          author: Magno2002
+          credit: "Magno2002 / Wikimedia Commons"
+          source_url: https://commons.wikimedia.org/wiki/File:Camisetadjalminhaliga9900.jpg
+          origin: commons
+          verified_at: "2026-11-08"
+          status: verified
   - season: "2000-01"
     kits:
       - type: home

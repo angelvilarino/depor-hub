@@ -1,7 +1,7 @@
 # ADR 0035: Procedencia y conflictos en los detalles de títulos
 
 - **Estado:** Aceptado
-- **Fecha:** 2026-11-09
+- **Fecha:** 2026-11-08
 - **Contexto:** los detalles de las finales de Copa mezclaban la plantilla completa
   de la temporada con las alineaciones del día de la final. Además, las fuentes
   consultadas discrepan en algunos minutos de gol y la final de 1995 se disputó

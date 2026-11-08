@@ -1,4 +1,4 @@
-# Estado del proyecto — 09-nov-2026
+# Estado del proyecto — 08-nov-2026
 H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calendario), **H4 (plantilla + ficha enriquecida, rediseño, escudos, entrenador y cuerpo técnico)**, **H5 (inicio + identidad Cartel/Prensa, iteración 3)**, **H6 (noticias, vídeos y redes curadas)** y **H7 (club, ajustes y acerca de)** implementados; H4, H5, H6 y H7 pendientes de verificación final en dispositivo (ver «Verificación H4», «Verificación H5», «Verificación H6» y «Verificación H7»). Fase 2 en curso: H0.1 (sincronización con `main`), H0.2 (salud del pipeline + `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados), H2 (iconos de fuentes), el detalle de partido con BDFutbol (ADR 0031), el proxy en directo (Worker + fusión en la app) y **H7.1 (club ampliado, ADR 0032)** hechos. Pendiente para cerrar el Hito 4: desplegar el Worker y definir `EXPO_PUBLIC_LIVE_BASE_URL`.
 
 ## Datos reales (sondeo football-data.org, plan gratuito)
@@ -241,13 +241,13 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
 ### H7.2 — Revisión editorial inicial del Club (implementado parcialmente, ADR 0033)
 - **Base compartida:** nuevos `HeroHeader`, `StatCounter` compatible con Reducir movimiento, `Timeline` filtrable/expandible, `PhotoGallery` con modal, `MediaCredit`, `ConfidenceBadge` y `MapActions`. La portada ahora presenta cabecera editorial, cifras, identidad jerarquizada y mosaico de secciones; incluye siempre el aviso no oficial.
 - **Escudo:** 14 versiones con años/contexto, comparación seleccionable antes/después entre versiones adyacentes y visor modal a pantalla completa. Cada versión muestra `MediaCredit`; las 13 fuentes de 1000logos quedan marcadas con licencia no verificada (no se afirma permiso de reutilización).
-- **Equipaciones:** filtro por tipo y SectionList por década; las ilustraciones existentes se etiquetan explícitamente «Ilustración». Cobertura regenerada: **1 foto verificada** (Deportienda, temporada 2026-27, HTTP 200 `image/jpeg`, crédito visible y derechos reservados) y **43 ilustraciones SVG**. No se encontró una fuente fiable que atribuya imágenes históricas a temporada, así que no se reasignaron.
+- **Equipaciones:** filtro por tipo y SectionList por década; las ilustraciones existentes se etiquetan explícitamente «Ilustración». Cobertura regenerada: **3 fotos verificadas** (1987-88 y 1999-00, Wikimedia Commons, CC0; 2026-27, Deportienda, derechos reservados), todas con fuente y crédito visibles; las tres URL responden HTTP 200 `image/jpeg`. Las otras **41 equipaciones** conservan ilustración SVG. No se reasignaron fotos por suposición.
 - **Himnos:** «Voa» tiene una acción de reproducción externa a su publicación oficial; se verifica `origin=club_official` y `status=verified`. No se carga WebView. La app oculta letras sin un estado de derechos autorizado.
 - **Estadio y museo:** aforo animado con fuente/confianza; capacidad oficial corregida a 32.490, cronología de inauguración/reforma y acceso nativo a mapas. El museo ofrece mapas y galería modal solo para fotos verificadas con crédito; no hay fotos u horarios verificados, así que se ocultan la galería vacía y el estado Abierto/Cerrado.
 - **Junta y patrocinadores:** organigrama visual con iniciales, consejo publicado y entrenador enlazado desde `squad.json`; dirección deportiva ausente oculta. Patrocinadores agrupados por papel con monogramas. La cronología solo incluye acuerdos con fechas verificadas (Nike desde 2026); no se inventa la antigüedad de ABANCA.
 - **Cronología transversal:** filtros por escudo, estadio, títulos, patrocinadores y junta; usa años explícitos de los datos publicados. Los acuerdos sin tenencia verificada quedan fuera. Los controles de filtro cumplen 44 pt.
 - **Validación del rediseño Club:** Node 22 `typecheck`, `lint` y suite móvil (34 suites, 300 pruebas); claves ES/EN en paridad (712/712). El hito de cronología no cambia el contrato.
-- **Validación del hito de equipaciones:** `.venv/bin/python -m pytest scripts/tests/test_club.py` (17 passed), `python -m depor_hub.cli club`, y Node 22 `typecheck`, `lint`, tests (34 suites / 294 passed).
+- **Validación del hito de equipaciones:** `.venv/bin/ruff check scripts` y `.venv/bin/pytest scripts/tests` (230 passed); Node 22 `typecheck`, `lint` y `npm test -w apps/mobile -- --ci` (35 suites, 302 passed). La prueba de render comprueba crédito visible y fallback desde foto remota a SVG local.
 - **Validación del escudo:** render de comparación, años y créditos; visor modal; Node 22 `typecheck`, `lint`, tests (34 suites / 294 passed) y 17 pruebas Python del publicador.
 - **Pendiente para los siguientes hitos:** fotos históricas fiables, fotos verificadas del museo, completar atributos/galerías de venues y probar visualmente ajustes y el conjunto en iPhone. H7.4 no cierra toda la especificación editorial.
 
@@ -278,7 +278,7 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
   22 pt y separación derecha para evitar recorte/solape. Un test verifica el
   tamaño, el rol y la etiqueta accesible; falta comprobar la apariencia en un
   iPhone físico.
-- Verificación actual: Node 22 `typecheck`, `lint` y **301 tests / 35 suites**
+- Verificación actual: Node 22 `typecheck`, `lint` y **302 tests / 35 suites**
   pasan; la suite Python no tuvo cambios desde los **229 pytest** verdes de H7.3.
 
 ### Verificación H7
