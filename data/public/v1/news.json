@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T13:03:52Z",
+  "updatedAt": "2026-11-08T13:33:05Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -84,6 +84,20 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af067095d065.r_d.1358-598-0.jpg",
       "tags": [
         "lesiones"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "448891ac5bcfdb5e",
+      "title": "¿Viajaste a Barcelona para animar al Dépor? ¡Búscate en nuestra galería de la afición del Espanyol – Deportivo!",
+      "url": "https://riazor.org/barcelona-galeria-aficion-espanyol-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-08T12:00:27Z",
+      "kind": "article",
+      "summary": "El deportivismo se desplazó una vez más para seguir a su equipo, esta vez a Barcelona. Búscate en nuestra galería galería de público del…",
+      "thumbnailUrl": null,
+      "tags": [
+        "aficion"
       ],
       "alsoIn": []
     },
@@ -2148,20 +2162,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i3.ytimg.com/vi/NHDsB7ODIC4/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "b7f7076fbf0a7f9a",
-      "title": "Rueda de prensa de Antonio Hidalgo tras el Auriense CA 0 - 3 RC Deportivo",
-      "url": "https://youtube.com/watch?v=h4aGwycHn58",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-29T23:06:39Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i1.ytimg.com/vi/h4aGwycHn58/hqdefault.jpg",
       "tags": [
         "partido"
       ],
