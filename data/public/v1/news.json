@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T20:04:34Z",
+  "updatedAt": "2026-11-09T22:33:00Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,35 @@
     }
   ],
   "stories": [
+    {
+      "id": "4647855ce4eb83a6",
+      "title": "Resumen del Dépor ABANCA 0 - 2 Valencia",
+      "url": "https://youtube.com/watch?v=jGsgtFQpM1U",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-09T22:27:17Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i3.ytimg.com/vi/jGsgtFQpM1U/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "f2ba11495cde4a87",
+      "title": "Crónica | El Valencia toma respiro a costa de un Dépor condenado por una expulsión temprana (0-2)",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-09/cronica-el-valencia-toma-respiro-a-costa-de-un-depor-condenado-por-una-expulsion-temprana-0-890022.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-09T22:02:19Z",
+      "kind": "article",
+      "summary": "Ainara Acevedo mostró la roja directa a Michi Apóstol en el minuto 15 tras un pisotón inevitable para la jugadora blanquiazul",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/09/6af230502c46d.r_d.1194-1051-0.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "c5d5a6d1367e0492",
       "title": "El menú de los internacionales del Dépor: fuego real para Bil y clásico amistoso para Giménez",
@@ -2129,34 +2158,6 @@
       "kind": "article",
       "summary": "Repasamos en imágenes la clasificación del Deportivo en Copa del Rey. Asp-Jensen -con un doblete- y Luismi Cruz anotaron ante el Auriense…",
       "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "d788dadf2d44ec71",
-      "title": "Dani Barcia, el gran olvidado: \"Tenemos sobrepoblada la posición de centrales\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-31/dani-barcia-el-gran-olvidado-tenemos-sobrepoblada-la-posicion-de-centrales-888028.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-31T04:00:00Z",
-      "kind": "article",
-      "summary": "El cambrés tampoco jugó en Copa y es el único jugador de campo sin minutos. Comas, en una situación similar, sí participó, mientras…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4b2884b3e4.r_d.741-1009-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "d2ffd78e10d29f08",
-      "title": "El Dépor-Osasuna en el que el árbitro esquivó una agresión",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/historia/2026-10-31/el-depor-osasuna-en-el-que-el-arbitro-esquivo-una-agresion-888132.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-31T04:00:00Z",
-      "kind": "article",
-      "summary": "Un hincha saltó a agredir a Congregado Rodríguez en el siguiente partido en Riazor al del recordado robo de Pes Pérez, tras el que el…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/30/6ae4f5e849802.jpg",
       "tags": [
         "partido"
       ],
