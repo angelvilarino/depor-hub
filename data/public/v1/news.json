@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T19:32:57Z",
+  "updatedAt": "2026-11-09T20:04:34Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "c5d5a6d1367e0492",
+      "title": "El menú de los internacionales del Dépor: fuego real para Bil y clásico amistoso para Giménez",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/el-menu-de-los-internacionales-del-depor-fuego-real-para-bil-y-clasico-amistoso-para-gimenez-890018.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-09T19:33:04Z",
+      "kind": "article",
+      "summary": "El camerunés es el único que afrontará partidos de competición oficial, mientras que Mella y Amatucci podrían debutar con la sub-21",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/26/6adfa0a11fc67.r_d.1591-994-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "58eb582afb3a9896",
+      "title": "El Dépor pone a la venta este miércoles las entradas para recibir al Barça desde 110 euros",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/el-depor-pone-a-la-venta-este-miercoles-las-entradas-para-recibir-al-barca-desde-110-euros-890066.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-09T19:31:45Z",
+      "kind": "article",
+      "summary": "El conjunto azulgrana visita Riazor el próximo 29 de noviembre a las 16.15 horas",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/09/24/6ab55d65c6bf3.r_d.1419-817-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "12018dc8871ccc5d",
       "title": "Son de Riazor #24 | Un punto gracias a la mano de Leo Román",
@@ -2131,35 +2157,6 @@
       "kind": "article",
       "summary": "Un hincha saltó a agredir a Congregado Rodríguez en el siguiente partido en Riazor al del recordado robo de Pes Pérez, tras el que el…",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/30/6ae4f5e849802.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "497f575f8b84673e",
-      "title": "El sueño del Auriense de enfrentarse al Dépor: «Cuando entré al campo se me caían las lágrimas»",
-      "url": "https://lavozdegalicia.es/noticia/ourense/2026/10/30/sueno-auriense-enfrentarse-depor-entre-campo-me-emocione/00031793386537212757192.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-10-31T04:00:00Z",
-      "kind": "article",
-      "summary": "Los jugadores del club ourensano, que milita en Preferente, rememoran su partido de Copa del Rey en el estadio de O Couto",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/w5GjrlErKy0J9X2k5q0_62A60ag=/768x/2026/10/29/00121793308204017401638/Foto/i_20261029_220159002.jpg",
-      "tags": [
-        "partido",
-        "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3b434f067db7458f",
-      "title": "Previa | El tercer triunfo seguido del Dépor pasa por Madrid",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-10-31/previa-el-tercer-triunfo-seguido-del-depor-pasa-por-madrid-888050.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-31T04:00:00Z",
-      "kind": "article",
-      "summary": "El conjunto blanquiazul puede sumar esta tarde (18.00 horas) tres victorias consecutivas, algo que no logra desde 2019",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4c8f8038d5.r_d.1643-1086-0.jpg",
       "tags": [
         "partido"
       ],
