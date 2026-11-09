@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T23:32:52Z",
+  "updatedAt": "2026-11-09T04:32:48Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "d65e556c32965ba8",
+      "title": "Cornellà seca por completo el ataque del Deportivo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/cornella-seca-por-completo-el-ataque-del-deportivo-889778.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-09T04:00:00Z",
+      "kind": "article",
+      "summary": "Sin remates en la segunda mitad, el Dépor firmó ante el Espanyol su segundo partido del curso con menos amenaza y el más pobre en posesión",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af0793559656.r_d.1774-797-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "3ab103d0e2ff7b7a",
+      "title": "Hidalgo repite once en el Dépor un año después de la última vez",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/hidalgo-repite-once-en-el-depor-un-ano-despues-de-la-ultima-vez-889831.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-09T04:00:00Z",
+      "kind": "article",
+      "summary": "El técnico presentó la misma alineación ante Osasuna y Espanyol, algo que no ocurría desde las jornadas 12 y 13 de la 2025-26",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af0c844a38ae.r_d.1361-977-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3b32cd9c42809046",
       "title": "Resumen del Arenas Club de Getxo 2 - 1 Fabril",
@@ -244,6 +272,18 @@
         "cantera",
         "partido"
       ],
+      "alsoIn": []
+    },
+    {
+      "id": "2d1d90725060e6a9",
+      "title": "El Dépor, de nuevo en el mundo",
+      "url": "https://dxtcampeon.elidealgallego.com/opinion/2026-11-08/el-depor-de-nuevo-en-el-mundo-889731.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-08T04:00:00Z",
+      "kind": "article",
+      "summary": "Ahora que la Primera División se detiene, llega de nuevo el momento en el que el foco futbolístico se pone otra vez sobre las selecciones…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2025/09/16/drh37qyb0mfmjbrdy.png",
+      "tags": [],
       "alsoIn": []
     },
     {
@@ -2124,49 +2164,6 @@
       "summary": "DXT Campeón sortea entre sus lectores la opción de animar al equipo en Riazor",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/30/6ae4d4927c809.png",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "7945cc0a6f8d6a16",
-      "title": "Resumen del Auriense CA 0 - 3 RC Deportivo",
-      "url": "https://youtube.com/watch?v=9guVqVtZ9o8",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-30T15:59:51Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i2.ytimg.com/vi/9guVqVtZ9o8/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "806e46bb37a0cf67",
-      "title": "Alberto Rodríguez y la portería del Dépor ABANCA: «Tarazona ya está con el grupo»",
-      "url": "https://riazor.org/alberto-rodriguez-porteria-depor-abanca-tarazona",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-30T15:30:34Z",
-      "kind": "article",
-      "summary": "El entrenador del Dépor ABANCA analizó cómo afronta el equipo su próximo compromiso ante el Madrid CFF en la Liga F esta semana. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ae335f275b4561dc",
-      "title": "Sorteo entradas RCD Espanyol - RC Deportivo | Jornada 12 | Temporada 26/27",
-      "url": "https://youtube.com/watch?v=ueyPxiEcmEI",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-30T12:45:24Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i2.ytimg.com/vi/ueyPxiEcmEI/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
