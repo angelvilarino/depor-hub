@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T11:33:22Z",
+  "updatedAt": "2026-11-09T13:04:30Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "b3fda8bbaa7c4b6f",
+      "title": "Dépor ABANCA – Valencia: Volver a ganar tras el parón",
+      "url": "https://riazor.org/depor-abanca-valencia-volver-ganar-tras-paron",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-09T13:00:48Z",
+      "kind": "article",
+      "summary": "El Dépor ABANCA vuelve a la Liga F tras el parón este lunes (21:00 horas) ante un Valencia que es colista y estrenará entrenador en…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "9456772c07031e12",
       "title": "Cedidos del Dépor: Diego Gómez, final antes de tiempo en un derbi aragonés con aroma blanquiazul",
@@ -2149,21 +2164,6 @@
       "summary": null,
       "thumbnailUrl": "https://i2.ytimg.com/vi/yqLWrXYjDY4/hqdefault.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "17664ebc0d70f96f",
-      "title": "Noé Carrillo, una brillante actuación en Copa del Rey y un regreso con segundas",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/30/noe-carrillo-brillante-actuacion-copa-rey-regreso-segundas/00031793384300510374280.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-10-30T18:33:00Z",
-      "kind": "article",
-      "summary": "El canterano de Teo, que volvió a jugar un partido con el primer equipo del Deportivo tras superar su lesión, acepta el reto de Hidalgo…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/Hq0E_stEpi-18WPVJUY-0t1Uy70=/768x/2026/10/29/00121793308202592458588/Foto/i_20261029_220159003.jpg",
-      "tags": [
-        "partido",
-        "lesiones"
-      ],
       "alsoIn": []
     }
   ]
