@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T17:04:50Z",
+  "updatedAt": "2026-11-09T19:32:57Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "12018dc8871ccc5d",
+      "title": "Son de Riazor #24 | Un punto gracias a la mano de Leo Román",
+      "url": "https://riazor.org/son-de-riazor-24-punto-gracias-mano-leo-roman",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-09T19:15:28Z",
+      "kind": "article",
+      "summary": "Analizamos el fin de semana en clave blanquiazul: victoria del Deportivo con protagonismo para Leo Román y entrevista a Fran Guillén. La…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/son-de-riazor-24-espanyol-deportivo-1600x900-1.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "7d0ebb7eb0dd76c7",
+      "title": "Así recortó plazos Casadó: de la hipoxia controlada a una genética privilegiada",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/09/recorto-plazos-casado-hipoxia-controlada-genetica-privilegiada/00031794249838040555271.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-09T18:53:03Z",
+      "kind": "article",
+      "summary": "El medio del Dépor, que hace siete semanas fue operado de una fractura de clavícula, se recuperó en tiempo récord con los últimos avances…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/sSru2K0l0xvhvS6z2B6C-ksCEN4=/768x/2026/11/09/00121794249903108598103/Foto/j_20261107_211648000.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "a2bfefa22aa0ec03",
       "title": "La paradoja defensiva del Dépor: sexta mejor defensa de Primera y una sola portería a cero",
@@ -460,27 +486,6 @@
       "alsoIn": []
     },
     {
-      "id": "943fbd2d4f7a8758",
-      "title": "Antonio Hidalgo: \"No ha sido nuestro mejor día, pero el equipo siempre compite y nos ha dado para sumar\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/antonio-hidalgo-no-ha-sido-nuestro-mejor-dia-pero-el-equipo-siempre-compite-y-nos-ha-dado-para-sumar-889629.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-07T18:06:07Z",
-      "kind": "article",
-      "summary": "El técnico del Deportivo reconoció el mal encuentro sin balón y dio valor a los ajustes y al partido de Leo Román: \"Lo necesitaba\"",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef66f61833e.r_d.1009-637-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "El Deportivo suda otro punto de mérito ante el Espanyol: 0 - 0",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/07/deportivo-suda-punto-merito-ante-espanyol-0-0/00031794071610867107217.htm",
-          "publishedAt": "2026-11-07T17:14:00Z"
-        }
-      ]
-    },
-    {
       "id": "02bf22de3cbea96e",
       "title": "El «1x1» del Deportivo en el empate ante el Espanyol",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/07/1x1-deportivo-empate-ante-espanyol/00031794073642617374749.htm",
@@ -588,6 +593,25 @@
         "partido"
       ],
       "alsoIn": []
+    },
+    {
+      "id": "943fbd2d4f7a8758",
+      "title": "El Deportivo suda otro punto de mérito ante el Espanyol: 0 - 0",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/07/deportivo-suda-punto-merito-ante-espanyol-0-0/00031794071610867107217.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-07T17:14:00Z",
+      "kind": "article",
+      "summary": "Tres paradas de Leo Román sostuvieron al equipo coruñés de un encuentro en el que cedió la iniciativa al rival y buscó aprovecharse de…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/JVc4jID8StX3eHLbXeR0rY4QHsY=/768x/2026/11/07/00121794071642950313175/Foto/j_20261107_171959000.jpg",
+      "tags": [],
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "Antonio Hidalgo: \"No ha sido nuestro mejor día, pero el equipo siempre compite y nos ha dado para sumar\"",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/antonio-hidalgo-no-ha-sido-nuestro-mejor-dia-pero-el-equipo-siempre-compite-y-nos-ha-dado-para-sumar-889629.html",
+          "publishedAt": "2026-11-07T18:06:07Z"
+        }
+      ]
     },
     {
       "id": "581afd380844e741",
@@ -2139,33 +2163,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "24bdf3ae590a538b",
-      "title": "Así es Ana Seoane, jugadora Dépor Abanca: «Es una portera de ocho tirando a sobresaliente; rápida y agresiva»",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/30/ana-seoane-jugadora-depor-abanca-portera-ocho-tirando-sobresaliente-rapida-agresiva/00031793391856331539535.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-10-31T04:00:00Z",
-      "kind": "article",
-      "summary": "Tras convertirse en la guardameta más joven en debutar como titular en Liga F, exentrenadores desgranan sus atributos, su alta capacidad…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/vOgUayqMr8BIdPh0A_A3Yr_-bjU=/768x/2026/10/30/00121793384235601994865/Foto/anaseoane.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "bc1e83f9f22f3d0d",
-      "title": "Nsongo hace justicia para un Dépor superior ante el Osasuna (2 - 1)",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/02/nsongo-justicia-depor-superior-ante-osasuna-2-1/00031793656853330540720.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-10-30T23:01:00Z",
-      "kind": "article",
-      "summary": "Una pifia de Leo Román, después de que Yeremay perdonara dos manos a mano, obligó al equipo coruñés a buscar una remontada que mereció en…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/FNOlARKJC6-tmMCbqfV1zKUbp1Y=/768x/2026/11/02/00121793656742822157603/Foto/i_20261102_220655001.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]
