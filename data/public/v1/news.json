@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T22:33:00Z",
+  "updatedAt": "2026-11-09T23:33:07Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -50,13 +50,20 @@
       "sourceId": "youtube-club",
       "publishedAt": "2026-11-09T22:27:17Z",
       "kind": "video",
-      "summary": null,
+      "summary": "La polémica expulsión de Michi Apóstol condicionó al cuadro coruñés, obligado a jugar con una menos desde el minuto 16",
       "thumbnailUrl": "https://i3.ytimg.com/vi/jGsgtFQpM1U/hqdefault.jpg",
       "tags": [
         "cantera",
         "partido"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "Un Dépor Abanca en inferioridad se desinfla ante el Valencia (0-2)",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/09/depor-abanca-inferioridad-desinfla-ante-valencia-0-2/00031794262114996658931.htm",
+          "publishedAt": "2026-11-09T22:18:00Z"
+        }
+      ]
     },
     {
       "id": "f2ba11495cde4a87",
