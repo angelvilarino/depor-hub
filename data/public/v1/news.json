@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T10:04:30Z",
+  "updatedAt": "2026-11-09T11:33:22Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "9456772c07031e12",
+      "title": "Cedidos del Dépor: Diego Gómez, final antes de tiempo en un derbi aragonés con aroma blanquiazul",
+      "url": "https://riazor.org/cedidos-depor-expulsion-diego-gomez-derbi-aragones",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-09T11:16:05Z",
+      "kind": "article",
+      "summary": "Repasamos la jornada de los cedidos por el Deportivo. Diego Gómez fue expulsado por doble amarilla en el derbi aragonés entre Huesca y…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/resumen-primerafederacion-real-z.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "af79039ac72564f6",
       "title": "La velocidad de crucero del Dépor lleva al puerto de la permanencia",
@@ -2149,20 +2163,6 @@
       "tags": [
         "partido",
         "lesiones"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "6960696fab4b121a",
-      "title": "«Vamos a ser profesionales, Nsongo»: así fue la RefCam del Atlético – Deportivo",
-      "url": "https://riazor.org/vamos-ser-profesionales-nsongo-refcam-atletico-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-30T18:12:21Z",
-      "kind": "article",
-      "summary": "LaLiga publica la RefCam de Sánchez Martínez en el Atlético-Dépor: la reprimenda a Nsongo, el gol de Julián Álvarez y cómo llamó a unos y…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }
