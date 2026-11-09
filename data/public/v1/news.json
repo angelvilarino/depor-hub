@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T08:06:49Z",
+  "updatedAt": "2026-11-09T10:04:30Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "af79039ac72564f6",
+      "title": "La velocidad de crucero del Dépor lleva al puerto de la permanencia",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/la-velocidad-de-crucero-del-depor-lleva-al-puerto-de-la-permanencia-889899.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-09T09:55:33Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul es uno de los mejores recién ascendidos del último lustro después de 12 jornadas",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/03/6ae91ffaa0133.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "d65e556c32965ba8",
       "title": "Cornellà seca por completo el ataque del Deportivo",
@@ -2152,18 +2164,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "5b7c6b27677246dc",
-      "title": "¿Quieres una entrada doble para asistir al Dépor-Osasuna del lunes? Aquí te indicamos los pasos para conseguirla",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-10-30/quieres-una-entrada-doble-para-asistir-al-depor-osasuna-del-lunes-aqui-te-indicamos-los-pasos-para-conseguirla-888072.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-30T17:33:06Z",
-      "kind": "article",
-      "summary": "DXT Campeón sortea entre sus lectores la opción de animar al equipo en Riazor",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/30/6ae4d4927c809.png",
-      "tags": [],
       "alsoIn": []
     }
   ]
