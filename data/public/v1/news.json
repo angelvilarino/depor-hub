@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T08:06:04Z",
+  "updatedAt": "2026-11-10T09:04:36Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "b05af74b8f70c84b",
+      "title": "David Mella se entrena con la absoluta de De la Fuente: qué significa y qué no para el deportivista",
+      "url": "https://riazor.org/david-mella-se-entrena-con-la-absoluta-de-de-la-fuente-que-significa-y-que-no-para-el-deportivista",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-10T08:54:50Z",
+      "kind": "article",
+      "summary": "David Mella se entrenó con la absoluta de De la Fuente en Las Rozas. No es una convocatoria: qué hizo, por qué estaba allí y cuándo juega…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "c8d195a3b11fc433",
       "title": "El silbato y los once metros condenan al Dépor ABANCA (0-2)",
@@ -2153,18 +2167,6 @@
         "opinion",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "b56a1dc985c3d69f",
-      "title": "Aubameyang sigue acortando plazos en su recuperación: ya entrena con normalidad",
-      "url": "https://riazor.org/aubameyang-plazos-recuperacion-entrena-normalidad",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-31T17:00:40Z",
-      "kind": "article",
-      "summary": "Aubameyang se entrenó a ritmo normal en la mañana de este sábado y podría volver a los terrenos de juego antes del parón de selecciones…",
-      "thumbnailUrl": null,
-      "tags": [],
       "alsoIn": []
     }
   ]
