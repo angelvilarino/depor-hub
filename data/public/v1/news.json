@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T12:33:38Z",
+  "updatedAt": "2026-11-10T13:04:18Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "20cc6b136ba014d7",
+      "title": "Así sobrevivió el Dépor ante el Espanyol: las herramientas para sostenerse en el caos",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-10/asi-sobrevivio-el-depor-ante-el-espanyol-las-herramientas-para-sostenerse-en-el-caos-890145.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-10T12:36:41Z",
+      "kind": "article",
+      "summary": "El conjunto deportivista fue incapaz en todas las zonas de ataque y sufrió en defensa, hasta que ajustó la presión con la entrada de…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/10/6af30fc8f0b5b.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "161bfd4253a6f8b0",
       "title": "El menú para el deportivismo durante el parón de selecciones",
@@ -2142,21 +2154,6 @@
       "summary": "Después de firmar contra el Atleti su primera gran actuación en Primera, el cercedense gana enteros para acompañar a Giménez en la zaga",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/31/6ae5f9f332f72.r_d.1612-1089-0.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "7dab33d4c5434c4e",
-      "title": "Volver a empezar (2-1)",
-      "url": "https://riazor.org/volver-a-empezar-2-1",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-31T19:43:35Z",
-      "kind": "article",
-      "summary": "Crónica y resultado del Madrid CFF - Dépor ABANCA de la jornada 9 de la Liga F, que finalizó con derrota coruñesa en Fuenlabrada. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
