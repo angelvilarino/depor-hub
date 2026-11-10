@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T08:52:30Z",
+  "updatedAt": "2026-11-10T10:03:43Z",
   "season": "2026-27",
   "matches": [
     {
@@ -315,7 +315,7 @@
     {
       "id": 564731,
       "utcDate": "2026-11-02T20:00:00Z",
-      "status": "FINISHED",
+      "status": "2026-11-02 20:00:00Z",
       "matchday": 11,
       "stage": "REGULAR_SEASON",
       "home": {
@@ -346,7 +346,7 @@
     {
       "id": 564745,
       "utcDate": "2026-11-07T15:15:00Z",
-      "status": "FINISHED",
+      "status": "2026-11-07 15:15:00Z",
       "matchday": 12,
       "stage": "REGULAR_SEASON",
       "home": {
@@ -408,7 +408,7 @@
     {
       "id": 564766,
       "utcDate": "2026-11-29T15:15:00Z",
-      "status": "TIMED",
+      "status": "2026-11-29 16:00:00Z",
       "matchday": 14,
       "stage": "REGULAR_SEASON",
       "home": {

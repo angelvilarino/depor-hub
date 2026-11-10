@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T08:52:30Z",
+  "updatedAt": "2026-11-10T10:03:43Z",
   "season": "2026-27",
   "matchday": 12,
   "team": {
@@ -21,38 +21,6 @@
     "goalDifference": 1
   },
   "form": [
-    {
-      "matchId": 564745,
-      "matchday": 12,
-      "date": "2026-11-07",
-      "opponent": {
-        "id": 80,
-        "name": "RCD Espanyol de Barcelona",
-        "shortName": "Espanyol",
-        "tla": "ESP",
-        "crestUrl": "https://crests.football-data.org/80.png"
-      },
-      "home": false,
-      "scoreFor": 0,
-      "scoreAgainst": 0,
-      "result": "D"
-    },
-    {
-      "matchId": 564731,
-      "matchday": 11,
-      "date": "2026-11-02",
-      "opponent": {
-        "id": 79,
-        "name": "CA Osasuna",
-        "shortName": "Osasuna",
-        "tla": "OSA",
-        "crestUrl": "https://crests.football-data.org/79.png"
-      },
-      "home": true,
-      "scoreFor": 2,
-      "scoreAgainst": 1,
-      "result": "W"
-    },
     {
       "matchId": 564724,
       "matchday": 10,
@@ -99,6 +67,38 @@
       "home": false,
       "scoreFor": 2,
       "scoreAgainst": 3,
+      "result": "L"
+    },
+    {
+      "matchId": 564695,
+      "matchday": 7,
+      "date": "2026-09-20",
+      "opponent": {
+        "id": 90,
+        "name": "Real Betis Balompié",
+        "shortName": "Real Betis",
+        "tla": "BET",
+        "crestUrl": "https://crests.football-data.org/90.png"
+      },
+      "home": true,
+      "scoreFor": 1,
+      "scoreAgainst": 1,
+      "result": "D"
+    },
+    {
+      "matchId": 564679,
+      "matchday": 6,
+      "date": "2026-09-16",
+      "opponent": {
+        "id": 559,
+        "name": "Sevilla FC",
+        "shortName": "Sevilla FC",
+        "tla": "SEV",
+        "crestUrl": "https://crests.football-data.org/559.png"
+      },
+      "home": true,
+      "scoreFor": 0,
+      "scoreAgainst": 1,
       "result": "L"
     }
   ],
@@ -152,33 +152,23 @@
       "matchday": 10,
       "position": 11,
       "points": 11
-    },
-    {
-      "matchday": 11,
-      "position": 8,
-      "points": 14
-    },
-    {
-      "matchday": 12,
-      "position": 9,
-      "points": 15
     }
   ],
   "provenance": {
     "summary": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-10T08:52:30Z"
+      "capturedAt": "2026-11-10T10:03:43Z"
     },
     "form": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-10T08:52:30Z"
+      "capturedAt": "2026-11-10T10:03:43Z"
     },
     "positionEvolution": {
       "source": "football-data.org (cálculo propio por jornada)",
       "confidence": "estimated",
-      "capturedAt": "2026-11-10T08:52:30Z"
+      "capturedAt": "2026-11-10T10:03:43Z"
     }
   }
 }
