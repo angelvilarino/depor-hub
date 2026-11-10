@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T10:32:42Z",
+  "updatedAt": "2026-11-10T12:33:38Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "161bfd4253a6f8b0",
+      "title": "El menú para el deportivismo durante el parón de selecciones",
+      "url": "https://riazor.org/menu-deportivismo-durante-paron-selecciones",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-10T12:00:54Z",
+      "kind": "article",
+      "summary": "Repasamos las fechas a anotar por la afición del Deportivo en el parón de selecciones: partidos de Dépor ABANCA, Fabril e internacionales…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3a3fd0bf84790329",
       "title": "Miguel Loureiro se lo pone difícil a los chavales del Dépor",
@@ -2143,28 +2158,6 @@
         "partido"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "ae5672ca05ac078b",
-      "title": "Resumen del Madrid CFF 2-1 Dépor ABANCA",
-      "url": "https://youtube.com/watch?v=sdPW5gooxC0",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-10-31T19:42:59Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/sdPW5gooxC0/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "Al Dépor Abanca se le atraganta el Madrid CFF (2-1)",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/31/depor-abanca-atraganta-madrid-cff-2-1/00031793476601779888952.htm",
-          "publishedAt": "2026-10-31T19:59:00Z"
-        }
-      ]
     }
   ]
 }
