@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T23:33:07Z",
+  "updatedAt": "2026-11-10T00:10:09Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,33 @@
     }
   ],
   "stories": [
+    {
+      "id": "0f4273e387bfdc63",
+      "title": "Alberto Rodríguez, sobre a actuación arbitral no Dépor-Valencia: \"Non teño claro que o criterio se mantivese sempre\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-10/alberto-rodriguez-sobre-a-actuacion-arbitral-no-depor-valencia-non-teno-claro-que-o-criterio-se-mantivese-sempre-890114.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-09T23:43:03Z",
+      "kind": "article",
+      "summary": "O adestrador do Deportivo amosou a súa tristeza por cómo a expulsión de Michi condicionou o encontro",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/16/6ad20c062e013.r_d.1326-693-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "5d779d9319c74d6f",
+      "title": "Rueda de prensa de Alberto Rodríguez tras el Dépor ABANCA 0 - 2 Valencia Fem",
+      "url": "https://youtube.com/watch?v=GOr28bL83lw",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-09T23:35:05Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/GOr28bL83lw/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "4647855ce4eb83a6",
       "title": "Resumen del Dépor ABANCA 0 - 2 Valencia",
@@ -2138,35 +2165,6 @@
       "thumbnailUrl": null,
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "067ea967480e1f14",
-      "title": "Madrid CFF – Dépor ABANCA: A la tercera… ¿también va la vencida?",
-      "url": "https://riazor.org/madrid-cff-depor-abanca-tercera-tambien-va-vencida",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-31T08:00:33Z",
-      "kind": "article",
-      "summary": "El equipo de Alberto Rodríguez busca en Fuenlabrada su tercera victoria seguida de la temporada después de vencer Eibar y Alavés. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "484610c9740d8b23",
-      "title": "Galería de imágenes del Auriense – Deportivo: Trabajo hecho",
-      "url": "https://riazor.org/galeria-imagenes-auriense-deportivo-trabajo-hecho",
-      "sourceId": "riazor",
-      "publishedAt": "2026-10-31T06:00:49Z",
-      "kind": "article",
-      "summary": "Repasamos en imágenes la clasificación del Deportivo en Copa del Rey. Asp-Jensen -con un doblete- y Luismi Cruz anotaron ante el Auriense…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }
