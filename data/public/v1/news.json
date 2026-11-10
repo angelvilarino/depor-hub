@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T09:04:36Z",
+  "updatedAt": "2026-11-10T10:32:42Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "3a3fd0bf84790329",
+      "title": "Miguel Loureiro se lo pone difícil a los chavales del Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-10/miguel-loureiro-se-lo-pone-dificil-a-los-chavales-del-depor-890124.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-10T10:16:57Z",
+      "kind": "article",
+      "summary": "A unos días de cumplir los 30, Miguel Loureiro se consolida en la defensa del Deportivo después de escalar en la rotación de Hidalgo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/10/6af2ee72ab5a1.r_d.1500-1000-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "b05af74b8f70c84b",
       "title": "David Mella se entrena con la absoluta de De la Fuente: qué significa y qué no para el deportivista",
@@ -2153,21 +2165,6 @@
           "publishedAt": "2026-10-31T19:59:00Z"
         }
       ]
-    },
-    {
-      "id": "83350e25ecb1daf8",
-      "title": "El 1x1 del Madrid CCF-Dépor: Marisa deja huella en su regreso a casa",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-10-31/el-1x1-del-madrid-ccf-depor-marisa-deja-huella-en-su-regreso-a-casa-888235.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-10-31T19:42:13Z",
-      "kind": "article",
-      "summary": "La delantera disfrutó de su primera titularidad en Liga y anotó el gol que adelantó a las blanquiazules",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/31/6ae643923c453.r_d.480-472-0.jfif",
-      "tags": [
-        "opinion",
-        "partido"
-      ],
-      "alsoIn": []
     }
   ]
 }
