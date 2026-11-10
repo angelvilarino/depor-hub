@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T13:04:18Z",
+  "updatedAt": "2026-11-10T15:04:26Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "b98e7a05818e75d9",
+      "title": "‘Los Apuntes’ de Borja Guerreiro: análisis al detalle del Espanyol 0-0 Deportivo",
+      "url": "https://riazor.org/apuntes-borja-guerreiro-analisis-espanyol-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-10T14:55:03Z",
+      "kind": "article",
+      "summary": "Análisis del Espanyol 0-0 Deportivo en 'Los Apuntes' con Borja Guerreiro: en empate con gran protagonismo para el portero Leo Román. La…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/apuntes-espanyol-0-0-deportivo-1600x900-1.jpg",
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "20cc6b136ba014d7",
       "title": "Así sobrevivió el Dépor ante el Espanyol: las herramientas para sostenerse en el caos",
@@ -2141,18 +2156,6 @@
       "kind": "article",
       "summary": "El Dépor, que suma seis jornadas sin vencer, recibe mañana a un Osasuna con carencias en las áreas y que solo ha sumado tres puntos a…",
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/zoCkrYG82Hod6CA1WMaZeRt3RIA=/768x/2026/10/31/00121793470622934340712/Foto/h_20261017_183817000.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "10092e584f3c227b",
-      "title": "Miguel Loureiro, la alternativa más fiable del Deportivo para frenar a Osasuna",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/miguel-loureiro-la-alternativa-mas-fiable-del-deportivo-para-frenar-a-osasuna-888212.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-01T04:00:00Z",
-      "kind": "article",
-      "summary": "Después de firmar contra el Atleti su primera gran actuación en Primera, el cercedense gana enteros para acompañar a Giménez en la zaga",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/31/6ae5f9f332f72.r_d.1612-1089-0.jpg",
       "tags": [],
       "alsoIn": []
     }
