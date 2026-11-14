@@ -1,0 +1,136 @@
+{
+  "updatedAt": "2026-11-14T14:32:59Z",
+  "commit": "947e5dab3918a824cd4db890a5f2397d5b7ed714",
+  "ok": false,
+  "files": [
+    {
+      "name": "meta.json",
+      "present": true,
+      "updatedAt": "2026-11-10T14:32:34Z",
+      "ageMinutes": 5760,
+      "detail": null
+    },
+    {
+      "name": "standings.json",
+      "present": true,
+      "updatedAt": "2026-11-10T14:32:34Z",
+      "ageMinutes": 5760,
+      "detail": null
+    },
+    {
+      "name": "fixtures.json",
+      "present": true,
+      "updatedAt": "2026-11-10T14:32:34Z",
+      "ageMinutes": 5760,
+      "detail": "38 partidos"
+    },
+    {
+      "name": "squad.json",
+      "present": true,
+      "updatedAt": "2026-11-10T14:32:34Z",
+      "ageMinutes": 5760,
+      "detail": null
+    },
+    {
+      "name": "season.json",
+      "present": true,
+      "updatedAt": "2026-11-10T14:32:34Z",
+      "ageMinutes": 5760,
+      "detail": null
+    },
+    {
+      "name": "club.json",
+      "present": true,
+      "updatedAt": "2026-11-14T13:39:02Z",
+      "ageMinutes": 53,
+      "detail": null
+    },
+    {
+      "name": "news.json",
+      "present": true,
+      "updatedAt": "2026-11-10T15:04:26Z",
+      "ageMinutes": 5728,
+      "detail": "150 historias · 5 fuentes"
+    },
+    {
+      "name": "rivals.json",
+      "present": true,
+      "updatedAt": "2026-11-10T06:28:05Z",
+      "ageMinutes": 6244,
+      "detail": "19 rivales · 19 con histórico"
+    },
+    {
+      "name": "social.json",
+      "present": true,
+      "updatedAt": "2026-10-31T12:19:27Z",
+      "ageMinutes": 20293,
+      "detail": null
+    },
+    {
+      "name": "titles.json",
+      "present": true,
+      "updatedAt": "2026-11-08T18:20:34Z",
+      "ageMinutes": 8412,
+      "detail": "21 ediciones"
+    },
+    {
+      "name": "rivalries.json",
+      "present": true,
+      "updatedAt": "2026-11-08T10:31:04Z",
+      "ageMinutes": 8881,
+      "detail": "6 rivalidades · 6 con histórico"
+    }
+  ],
+  "workflows": [
+    {
+      "name": "Data refresh",
+      "file": "data-refresh.yml",
+      "conclusion": "startup_failure",
+      "updatedAt": "2026-11-14T14:32:39Z",
+      "lastSuccessAt": "2026-11-10T15:32:28Z",
+      "expectedWithinHours": 36,
+      "stale": true,
+      "url": "https://github.com/angelvilarino/depor-hub/actions/runs/43605405783"
+    },
+    {
+      "name": "News refresh",
+      "file": "news-refresh.yml",
+      "conclusion": "startup_failure",
+      "updatedAt": "2026-11-14T14:32:45Z",
+      "lastSuccessAt": "2026-11-10T15:33:18Z",
+      "expectedWithinHours": 6,
+      "stale": true,
+      "url": "https://github.com/angelvilarino/depor-hub/actions/runs/43605415320"
+    },
+    {
+      "name": "Rivals refresh",
+      "file": "rivals-refresh.yml",
+      "conclusion": "startup_failure",
+      "updatedAt": "2026-11-14T14:32:43Z",
+      "lastSuccessAt": "2026-11-10T06:28:29Z",
+      "expectedWithinHours": 192,
+      "stale": false,
+      "url": "https://github.com/angelvilarino/depor-hub/actions/runs/43605411592"
+    },
+    {
+      "name": "Health",
+      "file": "health.yml",
+      "conclusion": "success",
+      "updatedAt": "2026-11-10T15:32:28Z",
+      "lastSuccessAt": "2026-11-10T15:32:28Z",
+      "expectedWithinHours": 30,
+      "stale": true,
+      "url": "https://github.com/angelvilarino/depor-hub/actions/runs/42845331166"
+    },
+    {
+      "name": "CI",
+      "file": "ci.yml",
+      "conclusion": "success",
+      "updatedAt": "2026-11-06T12:56:46Z",
+      "lastSuccessAt": "2026-11-06T12:56:46Z",
+      "expectedWithinHours": null,
+      "stale": null,
+      "url": "https://github.com/angelvilarino/depor-hub/actions/runs/42221306342"
+    }
+  ]
+}
