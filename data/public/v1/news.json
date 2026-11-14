@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T16:04:09Z",
+  "updatedAt": "2026-11-14T17:03:49Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "0d94e78cf8d2dadb",
+      "title": "Territorio inexplorado para Ximo Navarro con el Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-14/territorio-inexplorado-para-ximo-navarro-con-el-depor-890947.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-14T16:44:44Z",
+      "kind": "article",
+      "summary": "El lateral ha jugado un minuto en las últimas tres jornadas y por primera vez pierde el puesto por decisión técnica",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/14/6af862653739b.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "79d93864a43770da",
       "title": "Fabril – Barakaldo: De vuelta en Abegondo",
@@ -2127,20 +2139,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i2.ytimg.com/vi/Ei7p6QuxSlM/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "c7073def4d8dd316",
-      "title": "Comparecencia de Mario Soriano tras el RC Deportivo 2 - 1 CA Osasuna",
-      "url": "https://youtube.com/watch?v=6G6UmiVKV-4",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-02T23:08:47Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i3.ytimg.com/vi/6G6UmiVKV-4/hqdefault.jpg",
       "tags": [
         "partido"
       ],
