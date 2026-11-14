@@ -924,6 +924,7 @@ _STATUS_WORKFLOWS: tuple[tuple[str, str, int | None], ...] = (
     ("Data refresh", "data-refresh.yml", 36),
     ("News refresh", "news-refresh.yml", 6),
     ("Rivals refresh", "rivals-refresh.yml", 24 * 8),
+    ("Club refresh", "club-refresh.yml", 24 * 10),
     ("Health", "health.yml", 8),
     # CI solo corre con pushes: su ausencia no implica un pipeline roto.
     ("CI", "ci.yml", None),
@@ -1064,6 +1065,19 @@ def _status_workflows(
     return out
 
 
+def _workflow_ok(workflow: m.StatusWorkflow) -> bool:
+    """Un workflow cuenta para `ok` salvo Health, que se evalúa por frescura.
+
+    Health falla a propósito cuando publica `ok=false` (PIPE-12). Si su propio
+    run contara como rojo, el siguiente Health volvería a verlo y no se saldría
+    del bucle ni después de arreglar los datos. Su antigüedad sí delata que ha
+    dejado de ejecutarse con éxito.
+    """
+    if workflow.file == "health.yml":
+        return not workflow.stale
+    return workflow.conclusion not in _STATUS_BAD_CONCLUSIONS and not workflow.stale
+
+
 def cmd_status(args: argparse.Namespace) -> int:
     """Resume el estado publicado y la última pasada de cada workflow (ADR 0027)."""
     now = datetime.now(UTC)
@@ -1104,10 +1118,7 @@ def cmd_status(args: argparse.Namespace) -> int:
         }
         for file, (name, _) in zip(files, _STATUS_DATA_FILES, strict=True)
     )
-    workflows_ok = not workflows or all(
-        workflow.conclusion not in _STATUS_BAD_CONCLUSIONS and not workflow.stale
-        for workflow in workflows
-    )
+    workflows_ok = not workflows or all(_workflow_ok(workflow) for workflow in workflows)
     status = m.Status(
         updated_at=now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         commit=args.commit or None,

@@ -208,3 +208,56 @@ def test_status_ignores_missing_optional_files_and_unreadable_updated_at(tmp_pat
     standings = next(file for file in status.files if file.name == "standings.json")
     assert standings.detail == "sin updatedAt"
     assert standings.updated_at is None
+
+
+def test_status_does_not_feed_its_own_health_failure_back_into_the_light(tmp_path):
+    """PIPE-12: Health falla cuando ok=false; su run rojo no debe ser la causa."""
+    data = make_data(tmp_path)
+    runs = make_runs(tmp_path)
+    body = json.loads(runs.read_text(encoding="utf-8"))
+    body["workflow_runs"].append(
+        {
+            "path": ".github/workflows/health.yml",
+            "conclusion": "success",
+            "updated_at": "2026-11-04T06:00:00Z",
+            "html_url": "https://example.test/health",
+        }
+    )
+    body["workflow_runs"].append(
+        {
+            "path": ".github/workflows/health.yml",
+            "conclusion": "failure",
+            "updated_at": "2026-11-04T10:00:00Z",
+            "html_url": "https://example.test/health-red",
+        }
+    )
+    runs.write_text(json.dumps(body), encoding="utf-8")
+
+    code, status = run_status(tmp_path, data, runs)
+    health = next(item for item in status.workflows if item.file == "health.yml")
+
+    assert health.conclusion == "failure"
+    assert health.stale is False
+    assert status.ok is True
+    assert code == 0
+
+
+def test_status_tracks_the_weekly_club_refresh(tmp_path):
+    data = make_data(tmp_path)
+    runs = make_runs(tmp_path)
+    body = json.loads(runs.read_text(encoding="utf-8"))
+    body["workflow_runs"].append(
+        {
+            "path": ".github/workflows/club-refresh.yml",
+            "conclusion": "success",
+            "updated_at": NOW,
+            "html_url": "https://example.test/club",
+        }
+    )
+    runs.write_text(json.dumps(body), encoding="utf-8")
+
+    _, status = run_status(tmp_path, data, runs)
+    club = next(item for item in status.workflows if item.file == "club-refresh.yml")
+
+    assert club.expected_within_hours == 240
+    assert club.stale is False
