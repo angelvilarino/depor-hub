@@ -12,10 +12,28 @@ Copia `DEPOR_HUB_CONTEXTO.md` a `docs/CONTEXTO.md` si aún no existe.
 
 ## Primera vez
 ```bash
-./setup.sh          # crea apps/mobile (Expo SDK estable), superpone la plantilla, instala y ejecuta lint/typecheck/tests
+nvm use             # Node 22 (ver .nvmrc; package.json exige >=22.13)
+npm install         # instala el monorepo y apps/mobile
 npm run mobile      # sirve data/public en local y arranca Expo
 ```
 `npm run mobile` levanta un servidor estático de solo lectura sobre `data/public` (puerto 8000) y arranca Expo. La app deriva la URL del host de Metro, así que en desarrollo siempre enseña los datos locales; para apuntar a GitHub Pages, define `EXPO_PUBLIC_DATA_BASE_URL` en `apps/mobile/.env` (ver `.env.example`). El marcador en directo es opcional: define `EXPO_PUBLIC_LIVE_BASE_URL` con la URL del Worker de `workers/live-proxy`; sin ella no se hacen peticiones en directo.
+
+## Estado de Actions y actualización local
+
+**Actions está deshabilitado a nivel de repositorio desde el 11-nov-2026.** Los workflows siguen versionados y sus crons no se ejecutan; los datos publicados están congelados hasta que se reactive. No se reactiva solo: las instrucciones exactas quedan al cerrar el Lote 1 de la auditoría.
+
+Mientras esté pausado, la actualización es local y explícita:
+
+```bash
+python -m depor_hub.cli ingest --if-due      # datos deportivos
+python -m depor_hub.cli news                 # noticias
+python -m depor_hub.cli rivals                # histórico de rivales (BDFutbol)
+python -m depor_hub.cli club                  # ficha del club
+python -m depor_hub.cli validate --data data/public/v1
+python -m depor_hub.cli smoke --data data/public/v1
+```
+
+`smoke` comprueba los 11 documentos raíz del contrato, los valida con Pydantic y verifica que `meta.dataHash` coincide con el contenido deportivo. Contra Pages: `python -m depor_hub.cli smoke`. Para ver el estado real de Actions: `gh api repos/angelvilarino/depor-hub/actions/permissions` y `gh run list --limit 10`.
 
 El proyecto usa **Expo SDK 58** (React Native 0.88), el SDK que soporta Expo Go actualmente. Para probar en iPhone con un SDK recién salido, Expo Go de la App Store puede ir por detrás: usa un development build (EAS) o `eas go`.
 
@@ -59,7 +77,7 @@ Las noticias salen de **cinco fuentes curadas** (`data/manual/news_feeds.yml`): 
 
 La pestaña **Club** se alimenta de `data/manual/club.yml` y de las letras de `data/manual/himnos/*.txt` (ADR 0026). Cubre identidad, tres himnos con letra y créditos, 14 versiones del escudo, 42 temporadas de equipaciones (44 equipaciones), estadio con aforo oficial de **32.490** y fuente/confianza visibles, museo, ciudad deportiva, junta, patrocinadores, palmarés, rivalidades y enlaces. La procedencia se publica solo donde la interfaz la presenta; lo desconocido es `null` y no se inventan fechas, dorsales, patrocinadores ni equipaciones.
 
-Las imágenes del club son las únicas que se guardan en el repositorio: `data/public/v1/img/club/` tiene **15 ficheros y 2.416.456 bytes (2,30 MiB)**. El JSON solo guarda rutas relativas y la app las resuelve con `clubImageUrl`; si falta una imagen o falla la carga, se pinta un marcador del mismo tamaño. Solo la equipación local 2026-27 tiene foto real; el resto queda pendiente y así se refleja en [`docs/kits_coverage.md`](docs/kits_coverage.md). Las letras y nombres propios no se traducen.
+Las imágenes del club son las únicas que se guardan en el repositorio: `data/public/v1/img/club/` tiene **58 ficheros** (14 escudos y 44 equipaciones), con **2,3 MB solo en los escudos**. El JSON solo guarda rutas relativas y la app las resuelve con `clubImageUrl`; si falta una imagen o falla la carga, se pinta un marcador del mismo tamaño. Solo la equipación local 2026-27 tiene foto real; el resto queda pendiente y así se refleja en [`docs/kits_coverage.md`](docs/kits_coverage.md). Las letras y nombres propios no se traducen.
 
 Ajustes añade el borrado de la caché de datos (solo TanStack Query, no ajustes ni recordatorios), la versión de la app, `meta.dataHash`/`updatedAt` y el acceso a **Acerca de**. Acerca de muestra el aviso de proyecto no oficial, el contacto y las licencias de terceros generadas con `npm run licenses` desde `package-lock.json` (1.052 paquetes en 16 grupos). No se lista ninguna fuente de datos.
 

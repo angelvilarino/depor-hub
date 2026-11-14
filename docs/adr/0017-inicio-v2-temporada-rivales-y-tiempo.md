@@ -1,6 +1,6 @@
 # ADR 0017 — Inicio v2, contexto de temporada, rivales y tiempo
 
-- **Estado:** aceptada (28-oct-2026).
+- **Estado:** aceptada (28-oct-2026). **Vigencia operativa (14-nov-2026):** `rivals-refresh.yml` sigue a diario y `rivals.json` conserva 19 rivales, pero Actions está deshabilitado y el último `rivals.json` publicado es del 10-nov-2026. No hay crons ejecutándose.
 - **Alcance:** orden y estados de la Home, reloj único, `season.json`, `rivals.json`, evolución de la posición, «Qué se juega», tiempo en la sede, editor nativo del calendario y recordatorios configurables.
 - **Regla base:** todo dato ausente queda en `null` y su bloque se oculta. No se inventan posiciones, marcadores, horas, asistencias ni previsiones.
 

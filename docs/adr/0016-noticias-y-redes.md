@@ -1,6 +1,7 @@
 # ADR 0016 — Noticias, vídeos y redes curadas
 
-- **Estado:** aceptada (27-oct-2026).
+- **Estado:** aceptada (27-oct-2026); **superada en fuentes, contrato y deduplicación por ADR 0018**. Solo siguen vigentes `social.json` y los perfiles curados.
+- **Vigencia operativa (14-nov-2026):** el catálogo actual tiene **16 entradas y 5 activas**, no 21; el grupo de concurrencia de noticias es **`news-publish`** (separado de `data-publish`) y el rebase es `git pull --rebase origin main`, sin `--autostash`. `news.json` publicado el 10-nov-2026 tiene **0 historias** porque Actions está deshabilitado; no es un fallo del contrato.
 - **Alcance:** ingesta real de RSS/Atom y YouTube, filtro de relevancia, deduplicación entre medios, contrato público `news.json`/`sources.json`/`social.json`, workflow cada 30 minutos y pestaña Noticias.
 - **Regla base:** se publica solo lo que entrega el feed (titular, enlace, fecha, miniatura y resumen). No se descarga ni se scrapea el cuerpo del artículo, no se rodean muros de pago ni bloqueos y no se inventan publicaciones sociales.
 
@@ -16,7 +17,7 @@ El repositorio no tiene backend ni claves en la app. Todo se resuelve con un pip
 
 `data/manual/news_feeds.yml` es la única lista de medios. Cada entrada declara `id`, `name`, `kind` (`club`, `local`, `nacional`, `radio`, `agregador` o `video`), `url`, `media_url`, idioma, peso, `keyword_filter` y `enabled`. La auditoría puede deshabilitar un feed, pero el motivo queda escrito en `note` y en `docs/sources.md`; nunca se reintenta a ciegas un 403, 406 o 429.
 
-Situación del catálogo (27-oct-2026): **30 entradas, 21 activas y 9 descartadas**. Las descartadas son la web del club sin RSS propio, AS (403), Sport (406), Cadena SER (403), Radio Coruña (sin RSS y dominio bloqueado), Faro de Vigo, La Opinión A Coruña y Superdeporte (406 de su WAF) y Deportivo Hoy (DNS inexistente). Para los medios bloqueados se usa una consulta `site:` en Google News; el club se cubre con su canal de YouTube y con `site:rcdeportivo.es`.
+Situación del catálogo (27-oct-2026, histórica): **30 entradas, 21 activas y 9 descartadas**. El catálogo vigente tras ADR 0018 tiene **16 entradas y 5 activas** (YouTube del club, Riazor.org, DXT Campeón, La Voz y Marca). Las descartadas son la web del club sin RSS propio, AS (403), Sport (406), Cadena SER (403), Radio Coruña (sin RSS y dominio bloqueado), Faro de Vigo, La Opinión A Coruña y Superdeporte (406 de su WAF) y Deportivo Hoy (DNS inexistente). Para los medios bloqueados se usa una consulta `site:` en Google News; el club se cubre con su canal de YouTube y con `site:rcdeportivo.es`.
 
 `keyword_filter: true` marca los feeds generales: su contenido pasa por el filtro de relevancia. Se reserva `false` para feeds que ya son del club.
 
@@ -93,8 +94,8 @@ Los vídeos del club viven dentro de `news.json` con `kind: 'video'` y `videoId`
 
 `.github/workflows/news-refresh.yml` se ejecuta cada **30 minutos** y comparte con `data-refresh.yml`:
 
-- `concurrency.group: data-publish` y `cancel-in-progress: false`: los dos escriben en `main` y despliegan Pages, así que nunca se pisan ni se cancelan.
-- `git pull --rebase --autostash origin main` antes de `git push`.
+- `concurrency.group: news-publish` y `cancel-in-progress: false`: noticias no compite con el refresco de datos; cada uno espera al otro solo en el despliegue de Pages (`pages-deploy`).
+- `git pull --rebase origin main` antes de `git push` (sin `--autostash`).
 - Despliegue desde un **checkout fresco de `main`** con `data/public` completo, no desde el árbol que acaba de commitear.
 - Caché de `data/raw/news` para conservar ETag, cuerpos y rotación.
 
@@ -128,4 +129,4 @@ python -m depor_hub.cli news ingest --interval 1 --player-queries 6
 python -m depor_hub.cli social
 ```
 
-La auditoría del 27-oct-2026 devolvió **21 feeds activos y 0 errores**. La ingesta real publicó **184 ítems de 56 fuentes** (15 vídeos y 7 con `alsoIn`), sin duplicados exactos de titular, y `social.json` con 3 perfiles y 0 pins. Los tests cubren parseo RSS/Atom/YouTube, HTML ilegible, canonicalización, relevancia, etiquetas, dedupe entre medios y del mismo medio, ventana, idempotencia, tolerancia a un feed roto, auditoría, redes, workflows y render de la pantalla con 0/1/muchos/error/offline.
+La auditoría del 27-oct-2026 devolvió **21 feeds activos y 0 errores** (histórico; el catálogo vigente es el de ADR 0018). La ingesta real publicó **184 ítems de 56 fuentes** (15 vídeos y 7 con `alsoIn`), sin duplicados exactos de titular, y `social.json` con 3 perfiles y 0 pins. Los tests cubren parseo RSS/Atom/YouTube, HTML ilegible, canonicalización, relevancia, etiquetas, dedupe entre medios y del mismo medio, ventana, idempotencia, tolerancia a un feed roto, auditoría, redes, workflows y render de la pantalla con 0/1/muchos/error/offline.

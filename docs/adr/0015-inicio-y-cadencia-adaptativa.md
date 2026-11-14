@@ -1,6 +1,6 @@
 # ADR 0015 — Inicio real y cadencia adaptativa de la ingesta
 
-- **Estado:** aceptada (27-oct-2026).
+- **Estado:** aceptada (27-oct-2026). **Vigente con matices operativos (14-nov-2026):** el cron de `data-refresh.yml` despierta cada 10 min, pero `--if-due` solo llama a la red cada 10 min dentro de [−30, +150] min del kickoff y cada 60 min fuera; no se ejecuta ningún cron porque Actions está deshabilitado. La cadencia se reevalúa en el Lote 1 de la auditoría.
 - **Alcance:** sustituir la pantalla provisional de H2 por la Home real, extraer la lógica y las acciones compartidas de partido y hacer que la ingesta se adapte a la ventana de partido sin multiplicar peticiones.
 - **Regla base:** la Home solo muestra datos ya publicados y validados. Lo que falta se explica con un estado vacío; no se rellena con ceros, horas inventadas ni noticias de ejemplo.
 
@@ -67,7 +67,7 @@ Se añade un contrato mínimo `news.json` (`updatedAt`, `items` con `id`, `title
 
 `python -m depor_hub.cli ingest --if-due` decide antes de tocar la red:
 
-- Ventana original: desde 30 minutos antes del kickoff hasta 3 horas después, para `TIMED`, `IN_PLAY` y `PAUSED`; refresco cada **10 minutos**. El límite vigente de +150 min está fijado por ADR 0025.
+- Ventana: desde 30 minutos antes del kickoff hasta 150 minutos después para `TIMED`, `IN_PLAY` y `PAUSED`; refresco cada **10 minutos**. (El texto original decía «3 horas»; ADR 0025 fijó el límite vigente en +150 min y `cadence.py` aplica 150.)
 - Fuera de la ventana: refresco cada **60 minutos**.
 - Sin fixtures o sin estado previo: se refresca.
 - Si no toca, termina con `changed=false due=false` y no hace peticiones.
@@ -83,7 +83,7 @@ El estado del último refresco se guarda en `data/raw/ingest_state.json`. No se 
 ### 9. Pruebas
 
 - `homeLogic.test.ts`: próximos partidos, resultados, mini tabla en extremos, forma, resumen, balance del rival, cuenta atrás, `SCHEDULED`, aplazados, ausencia de datos y CET/CEST.
-- `home.test.tsx`: render con los JSON reales, datos vacíos, error con reintento y titulares opcionales.
+- `home.test.tsx`: render con fixtures JSON **congelados** (no con `data/public`, para que un refresco del bot no rompa Jest), datos vacíos, error con reintento y titulares opcionales.
 - `headlines.test.tsx`, `useCountdown.test.ts` y `maps.test.ts`.
 - `test_cadence.py`: ventana de partido, fuera de ventana, sin fixtures y estado persistido.
 - `test_depor_hub.py`: salida limpia de `--if-due` cuando no toca y escritura de estado cuando toca.
