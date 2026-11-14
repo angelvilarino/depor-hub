@@ -9,7 +9,7 @@ Regla general: solo datos públicos, con User-Agent identificable y contacto (`C
 | Fuente | Aporta | Términos / robots | Frecuencia | Estado |
 |---|---|---|---|---|
 | **football-data.org** (plan gratuito) | Clasificación, partidos, plantilla y entrenador (PD) | Pendiente de revisar términos y atribución | El cron despierta cada 10 min, pero `--if-due` solo llama a la red cada 10 min entre −30 min y +150 min del kickoff y cada 60 min fuera (ADR 0015). Escribe solo si cambia el contenido | En uso. Cobertura 2026-27 en «Sondeo» |
-| **BDFutbol** (`bdfutbol.com`) | Trayectoria por club y temporada, totales, dorsal de la temporada actual, partidos con el Depor (minutos, goles, tarjetas, marcador), detalle de partidos terminados (alineaciones, entrenadores, goles, tarjetas y cambios) y, con `club titles --details`, finales, plantillas y goleadores de las temporadas con título | `robots.txt` permite `/es/`; HTML público. Solo se guardan hechos, no se redistribuye HTML, fotos ni escudos. **Riesgo alto asumido por el responsable el 05-nov-2026 para el detalle de partido; ver [informe legal](bdfutbol-legal-risk.md) y [ADR 0031](adr/0031-detalle-partido-bdfutbol.md)** | Manual / `enrich` / `match-details`; caché en `data/raw/enrich/`. Un 403/429 con partidos pendientes deja anotación y run rojo, sin bloquear la publicación (PIPE-04) | En uso. HTTP 200 en las pruebas del 05-nov-2026 |
+| **BDFutbol** (`bdfutbol.com`) | Trayectoria por club y temporada, totales, dorsal de la temporada actual, partidos con el Depor (minutos, goles, tarjetas, marcador), detalle de partidos terminados (alineaciones, entrenadores, goles, tarjetas y cambios) y, con `club titles --details`, finales, plantillas y goleadores de las temporadas con título | `robots.txt` permite `/es/`; HTML público. Solo se guardan hechos, no se redistribuye HTML, fotos ni escudos. **Riesgo alto asumido por el responsable el 05-nov-2026 para el detalle de partido; ver [informe legal](bdfutbol-legal-risk.md) y [ADR 0031](adr/0031-detalle-partido-bdfutbol.md)** | Manual / `enrich` / `match-details` / `club-refresh`; caché en `data/raw/enrich/`. Un 403/429, un calendario sin filas o un partido terminado sin emparejar dejan anotación y run rojo, sin bloquear la publicación (PIPE-04, PIPE-07) | En uso. HTTP 200 en las pruebas del 05-nov-2026 |
 | **Wikipedia ES/EN** (`es.wikipedia.org`, `en.wikipedia.org`) | Dorsal, contrato, procedencia, cesión, altura, peso y lugar de nacimiento; trayectoria del entrenador como jugador y como entrenador; ficha de la final de Copa para contrastar fecha, marcador, sede, árbitro y goleadores | CC BY-SA; se extraen hechos, no texto | Manual / `enrich` / `club titles --details` | En uso. Se recorren los sitelinks ES/GL/EN de Wikidata; la fecha de nacimiento desambigua |
 | **Wikidata** (`www.wikidata.org`, API de entidades) | Lugar de nacimiento, altura, pie (`P8006`), dorsal con `P54=Q8760`, redes, alias, imagen (`P18`) y sitelinks; entrenador `Q602465` (`P569`, `P19`, `P27`) | CC0 | Manual / `enrich` | En uso |
 | **Wikimedia Commons** (`commons.wikimedia.org`, API `imageinfo`) | Miniaturas de escudos de club a 96 px y metadatos de imágenes | CC BY-SA / CC0 según la ficha; solo se enlaza, no se copia | Manual / `enrich` | En uso para escudos (ADR 0012). **No se usa para fotos de jugador**: solo la foto oficial del club (ADR 0009) |
@@ -104,7 +104,7 @@ YouTube es la única fuente sin miniaturas propias en todos los ítems (solo alg
 - **Sin fixtures o sin estado previo:** refresca.
 - **Si no toca:** termina con `changed=false due=false` y no hace peticiones.
 
-El último refresco se guarda en `data/raw/ingest_state.json` (no se deduce de `updatedAt`, que solo cambia cuando cambia el contenido). El workflow `Data refresh` se ejecuta cada 10 min, restaura y guarda ese fichero con `actions/cache` y respeta el límite de 10 peticiones/minuto porque hace una sola pasada por ejecución. `workflow_dispatch` permite forzar con `force`.
+El último refresco se guarda en `data/raw/ingest_state.json` (no se deduce de `updatedAt`, que solo cambia cuando cambia el contenido). El workflow `Data refresh` usa un cron híbrido (`0 * * * *` + `*/10 12-23 * * 6,0`), restaura y guarda ese fichero con `actions/cache` y respeta el límite de 10 peticiones/minuto porque hace una sola pasada por ejecución. `workflow_dispatch` permite forzar con `force`.
 
 ## Etiqueta y límites aplicados
 
@@ -112,6 +112,7 @@ El último refresco se guarda en `data/raw/ingest_state.json` (no se deduce de `
 - Al menos 1 s entre peticiones al mismo host (`--interval`); por defecto en `enrich`.
 - `robots.txt` se consulta antes de cada GET HTML.
 - 403, 429, 202 (captcha) o `robots.txt` denegando ⇒ se aborta esa fuente con `SourceBlocked` y se registra el motivo.
+- Un HTML que ya no se entiende (0 filas en el calendario, 0 alineaciones/eventos en una ficha o un balance con partidos pero sin cruces) ⇒ `SourceError`; el workflow lo convierte en run rojo con anotación en vez de publicar datos vacíos (PIPE-07). Un HTML cambiado debe romper un test, no producción.
 - Reintentos solo para red y 5xx, con espera creciente. Nunca para bloqueos.
 - Caché: `data/raw/enrich/` (ignorada por git). `--offline` solo lee caché.
 
@@ -129,13 +130,13 @@ La clave es la **fecha de nacimiento** de football-data.org + nombre normalizado
 | Dato | Fuente | Cómo se obtiene | Límite |
 |---|---|---|---|
 | Resumen, racha y evolución de la posición | football-data.org (`standings`, `matches`) | Cálculo propio por jornada con los partidos terminados; se marca `estimated` | La evolución es una reconstrucción, no una tabla publicada |
-| Balance histórico y últimos 5 cruces | BDFutbol `https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=<id>` | HTML público; se leen los totales (`valorpj`, `valorpg`, `valorpp`, `valorpe`, `valorgf`, `valorgc`) y las filas de partidos | Alcance `all_official_matches`; se cita fuente y enlace. `robots.txt` permite `/es/` |
+| Balance histórico y últimos 5 cruces | BDFutbol `https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=<id>` | HTML público; se leen los totales (`valorpj`, `valorpg`, `valorpp`, `valorpe`, `valorgf`, `valorgc`) y las filas de partidos | Alcance `all_official_matches`; se cita fuente y enlace. `robots.txt` permite `/es/`. Si el balance dice que hubo partidos pero no se parsea ningún cruce, es `SourceError`, no un rival sin histórico (PIPE-07) |
 | Entrenador del rival | football-data.org (`competitions/PD/teams`) | Campo `coach.name` | Si la API no lo da, `null` |
 | Estadísticas individuales del rival | No se publican | No se verificó una fuente gratuita suficientemente fiable para la temporada 2026/27; no se llama a `/scorers` ni a API-Football | Campo `keyPlayers` vacío por compatibilidad; sin fotografías rivales |
 
 BDFutbol se usa para el historial oficial y los cruces Depor–rival, no como sustituto automático de datos actuales de plantilla: su cobertura para esta temporada no se considera comprobada para este uso. No se añadió `API_FOOTBALL_KEY`; no se requiere una clave para mostrar la ficha básica del rival. El mapa football-data → BDFutbol es manual y verificado en `data/manual/bdfutbol_teams.yml`. No se resuelve por búsqueda automática: un homónimo (filial, club histórico) produciría un balance equivocado. Depor = `13`. Los 19 rivales de la temporada tienen histórico; si una consulta falla, ese rival queda con `headToHead: null` y el resto se publica.
 
-`rivals` se ejecuta a diario (`rivals-refresh.yml`) y no en `ingest`: BDFutbol es más lento y no debe bloquear la cadencia de 10 minutos. La caché vive en `data/raw/enrich/h2h/`.
+`rivals` se ejecuta a diario (`rivals-refresh.yml`) y no en `ingest`: BDFutbol es más lento y no debe bloquear la cadencia de datos. La caché vive en `data/raw/enrich/h2h/`.
 
 ## Tiempo en la sede (H5.2)
 
@@ -261,7 +262,8 @@ La salida de `enrich` cuenta solo lo generado: los overrides se suman al aplicar
   goleadores, minuto, árbitro y entrenador contrastados; el resto conserva el
   palmarés curado con `pending_verification`. `club titles` compara con la tabla
   «Títulos» de BDFutbol (`https://www.bdfutbol.com/es/e/e13.html`) y escribe
-  `data/manual/titles.proposed.yml`; nunca aplica cambios sola.
+  `data/raw/titles.proposed.yml`; nunca aplica cambios sola. La propuesta queda
+  fuera de `main` y se revisa a mano.
 - **Rivalidades**: `data/manual/rivalries.yml` con seis rivales. El balance se
   obtiene de `https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=<id>` con
   `PoliteClient` (caché, robots.txt, 1 s/host) y se publica en
@@ -309,7 +311,7 @@ python -m depor_hub.cli club rivalries               # publica rivalries.json co
 python -m depor_hub.cli club probe-media             # sondea todos los medios y registra fallos en docs/sources.md
 ```
 
-El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 30 minutos y usa el grupo `news-publish`, separado de `data-publish`. Todos hacen rebase antes de empujar, reintentan cinco veces y despliegan Pages solo cuando hay cambios; los deploys se serializan en `pages-deploy`.
+El workflow `News refresh` (`.github/workflows/news-refresh.yml`) ejecuta la ingesta cada 30 minutos. Data, News, Rivals y Club comparten el grupo `main-write`, hacen rebase antes de empujar, reintentan cinco veces y despliegan Pages con el workflow reutilizable `publish.yml` solo cuando hay cambios; los deploys se serializan en `pages-deploy`. Títulos, rivalidades, ficha e imágenes del club viven en `club-refresh.yml`, semanal.
 
 El workflow `Enrich proposal` (`.github/workflows/enrich.yml`) es manual y solo sube el informe como artefacto. No hace commit.
 

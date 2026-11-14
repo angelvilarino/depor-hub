@@ -22,6 +22,8 @@ npm run mobile      # sirve data/public en local y arranca Expo
 
 **Actions está deshabilitado a nivel de repositorio desde el 11-nov-2026.** Los workflows siguen versionados y sus crons no se ejecutan; los datos publicados están congelados hasta que se reactive. No se reactiva solo: las instrucciones exactas quedan al cerrar el Lote 1 de la auditoría.
 
+Al reactivarlo, la cadencia ya es la del Lote 1: Data despierta cada hora con banda densa sábado/domingo (`0 * * * *` + `*/10 12-23 * * 6,0`), News cada 30 min, Rivals a diario, Club los lunes y Health cada 4 h. Data, News, Rivals y Club comparten el grupo `main-write` y despliegan con el workflow reutilizable `publish.yml`; las instrucciones de reactivación y verificación están en [`docs/operations.md`](docs/operations.md#reactivar-actions).
+
 Mientras esté pausado, la actualización es local y explícita:
 
 ```bash
@@ -44,7 +46,7 @@ pip install -e "scripts[dev]"
 
 python -m depor_hub.cli probe                       # comprueba la API y la cobertura
 python -m depor_hub.cli ingest                      # actualiza data/public/v1
-python -m depor_hub.cli ingest --if-due             # refresca solo si toca (10 min en partido, 60 min fuera)
+python -m depor_hub.cli ingest --if-due             # refresca solo si toca (10 min en partido, 55 min fuera)
 python -m depor_hub.cli schemas                     # regenera packages/schemas
 python -m depor_hub.cli enrich                      # propone carrera/estadísticas/escudos (no aplica)
 python -m depor_hub.cli enrich --apply              # aplica y actualiza el JSON público

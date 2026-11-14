@@ -1,6 +1,6 @@
 # ADR 0015 — Inicio real y cadencia adaptativa de la ingesta
 
-- **Estado:** aceptada (27-oct-2026). **Vigente con matices operativos (14-nov-2026):** el cron de `data-refresh.yml` despierta cada 10 min, pero `--if-due` solo llama a la red cada 10 min dentro de [−30, +150] min del kickoff y cada 60 min fuera; no se ejecuta ningún cron porque Actions está deshabilitado. La cadencia se reevalúa en el Lote 1 de la auditoría.
+- **Estado:** aceptada (27-oct-2026). **Revisión (14-nov-2026, Lote 1):** el cron de `data-refresh.yml` es híbrido (`0 * * * *` + `*/10 12-23 * * 6,0`); `--if-due` solo llama a la red cada 10 min dentro de [−30, +150] min del kickoff y cada 55 min fuera. Los pasos que no dependen de la red son condicionales a `refreshed`/`dirty` (PIPE-02, PIPE-11). No se ejecuta ningún cron porque Actions está deshabilitado.
 - **Alcance:** sustituir la pantalla provisional de H2 por la Home real, extraer la lógica y las acciones compartidas de partido y hacer que la ingesta se adapte a la ventana de partido sin multiplicar peticiones.
 - **Regla base:** la Home solo muestra datos ya publicados y validados. Lo que falta se explica con un estado vacío; no se rellena con ceros, horas inventadas ni noticias de ejemplo.
 
@@ -68,11 +68,13 @@ Se añade un contrato mínimo `news.json` (`updatedAt`, `items` con `id`, `title
 `python -m depor_hub.cli ingest --if-due` decide antes de tocar la red:
 
 - Ventana: desde 30 minutos antes del kickoff hasta 150 minutos después para `TIMED`, `IN_PLAY` y `PAUSED`; refresco cada **10 minutos**. (El texto original decía «3 horas»; ADR 0025 fijó el límite vigente en +150 min y `cadence.py` aplica 150.)
-- Fuera de la ventana: refresco cada **60 minutos**.
+- Fuera de la ventana: refresco cada **55 minutos**. Son 55 y no 60 para que un cron horario que se dispara 59 minutos después de la pasada anterior no se salte la ejecución y deje un hueco de casi dos horas.
 - Sin fixtures o sin estado previo: se refresca.
 - Si no toca, termina con `changed=false due=false` y no hace peticiones.
 
-El estado del último refresco se guarda en `data/raw/ingest_state.json`. No se puede deducir de `updatedAt` porque ese campo solo cambia cuando cambia el contenido. El workflow lo restaura y guarda con `actions/cache` y ejecuta cada 10 minutos; GitHub Actions no garantiza puntualidad, pero la caché conserva el intervalo real. `workflow_dispatch` mantiene `force` para publicar sin esperar. El límite de 10 peticiones por minuto se respeta porque cada ejecución hace una sola pasada y el mínimo entre pasadas es de 10 minutos.
+El estado del último refresco se guarda en `data/raw/ingest_state.json`. No se puede deducir de `updatedAt` porque ese campo solo cambia cuando cambia el contenido. El workflow lo restaura y guarda con `actions/cache`. Su cron es híbrido: base horaria (`0 * * * *`) y banda densa de sábado/domingo 12–23 UTC cada 10 minutos (`*/10 12-23 * * 6,0`). GitHub Actions no garantiza puntualidad; `--if-due` y la caché conservan el intervalo real. `workflow_dispatch` mantiene `force` para publicar sin esperar. El límite de 10 peticiones por minuto se respeta porque cada ejecución hace una sola pasada y el mínimo entre pasadas es de 10 minutos.
+
+Los pasos de `snapshots` y `match-details` solo se ejecutan si la ingesta hizo una pasada real (`refreshed=true`); la validación completa y el commit solo si hay cambios (`dirty=true`). Un run que no toca la red no instala trabajo de validación ni despliega (PIPE-11).
 
 ### 8. Accesibilidad e i18n
 

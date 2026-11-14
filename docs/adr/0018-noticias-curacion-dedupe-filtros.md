@@ -1,6 +1,6 @@
 # ADR 0018 — Noticias curadas, clústeres y filtros sin ruido
 
-- **Estado:** aceptada (30-oct-2026). **Vigencia operativa (14-nov-2026):** el cron real es cada 30 min, no cada 6 h (ya corregido abajo), y el grupo es `news-publish`; Actions está deshabilitado y `news.json` tiene 0 historias publicadas desde el 10-nov-2026.
+- **Estado:** aceptada (30-oct-2026). **Vigencia operativa (14-nov-2026):** el cron real es cada 30 min, no cada 6 h (ya corregido abajo), y el grupo es `main-write`; Actions está deshabilitado y `news.json` tiene 0 historias publicadas desde el 10-nov-2026.
 - **Sustituye a:** ADR 0016 en todo lo relativo a fuentes, contrato, deduplicación y pestaña Noticias. `social.json` y sus perfiles curados siguen vigentes.
 - **Alcance:** catálogo de 5 fuentes, relevancia explicable, taxonomía cerrada, historias con clústeres, contrato `news.json` v1 roto de forma deliberada, retención, CLI, workflow cada 6 h y rediseño completo de la pestaña.
 - **Regla base:** solo se publica lo que entrega el feed. No se descarga el cuerpo del artículo, no se rodean bloqueos y no se inventan fechas, medios, resúmenes ni miniaturas.
@@ -120,7 +120,7 @@ python -m depor_hub.cli news audit [--all] [--write-docs]
 
 La cadencia fue actualizada a cada 30 minutos por ADR 0025.
 
-`news-refresh.yml` usa hoy `cron: "*/30 * * * *"` (ADR 0025), con `workflow_dispatch` y `force`. Tiene `concurrency.group: news-publish` propio y `cancel-in-progress: false`; comparte `pages-deploy` con los workflows de datos para no pisar el despliegue. Permisos mínimos (`contents`, `pages`, `id-token`); caché `data/raw/news`; `timeout-minutes`; commit solo cuando hay cambios; `git pull --rebase` antes de publicar; despliegue solo con cambios. Si ninguna fuente responde, el paso de ingesta sale con error y no se despliega.
+`news-refresh.yml` usa hoy `cron: "*/30 * * * *"` (ADR 0025), con `workflow_dispatch` y `force`. Comparte `concurrency.group: main-write` con los workflows de datos, rivales y club para que solo uno escriba `main` a la vez; llama al workflow reutilizable `publish.yml`, que serializa Pages en `pages-deploy`. Permisos mínimos (`contents`); caché `data/raw/news`; `timeout-minutes`; commit solo cuando hay cambios; `git pull --rebase` antes de publicar; despliegue solo con cambios. Si ninguna fuente responde, el paso de ingesta sale con error y no se despliega.
 
 Las fuentes publican pocas veces al día; cada 30 minutos generaba peticiones y commits sin valor. El refresco manual sigue disponible desde Actions.
 

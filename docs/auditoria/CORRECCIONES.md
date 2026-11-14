@@ -59,11 +59,61 @@ npm test                                # 302 passed
 cd workers/live-proxy && npm test       # 4 passed
 ```
 
+## Lote 1 — Idempotencia y cadencia
+
+Estado: **cerrado en local**. Actions sigue deshabilitado hasta que el propietario
+ejecute las instrucciones de reactivación de `docs/operations.md`; por eso las
+métricas de runs y minutos son una estimación de diseño, no una medición de 30
+días todavía.
+
+| ID | Estado | Qué se ha corregido | Evidencia |
+|---|---|---|---|
+| D1-02 / PIPE-03 | Hecho | `content_hash` elimina `updatedAt`, `dataHash`, `capturedAt` y `generatedAt` a cualquier profundidad, no solo en la raíz. Dos ingestas idénticas con timestamps distintos producen el mismo hash y la segunda no escribe. | `scripts/depor_hub/transform.py` (`_canonical`, `_VOLATILE_KEYS`), `scripts/tests/test_depor_hub.py`; test de doble pasada con `write_if_changed` |
+| PIPE-02 | Hecho | Cron híbrido: `0 * * * *` + `*/10 12-23 * * 6,0`. Fuera de ventana, `--if-due` pasa de 60 a **55 min** para que el disparo horario siempre encuentre la pasada vencida. | `.github/workflows/data-refresh.yml`, `scripts/depor_hub/cadence.py`, `scripts/tests/test_cadence.py` |
+| PIPE-06 | Hecho | Data, News, Rivals y Club comparten `concurrency.group: main-write`; Pages se serializa en `pages-deploy`. Se mantiene el rebase de 5 intentos como red de seguridad. | Los cuatro workflows + `.github/workflows/publish.yml`; `scripts/tests/test_workflows.py` |
+| PIPE-07 | Hecho | Se detectan degradaciones parciales de BDFutbol: calendario con 0 filas, ficha sin alineaciones ni eventos y balance con partidos pero sin cruces lanzan `SourceError`. Los workflows dejan el run en rojo con anotación sin impedir la publicación del resto. Fixtures HTML actualizados para que un cambio de estructura rompa un test. | `scripts/depor_hub/enrich/bdfutbol.py`, `scripts/depor_hub/rivals.py`, `scripts/tests/test_match_details.py`, `scripts/tests/test_season_rivals.py`, `scripts/tests/test_club_extra.py` |
+| PIPE-08 | Hecho | `data-refresh.yml` ya no ejecuta `club`, `club titles`, `club rivalries` ni `club-images`. Nuevo `club-refresh.yml` semanal (`0 7 * * 1`) con títulos → rivalidades → ficha → imágenes, caché `data/raw/enrich`, propuesta en `data/raw/titles.proposed.yml` y alerta final si BDFutbol falla. | `.github/workflows/club-refresh.yml`, `.github/workflows/data-refresh.yml`, `scripts/tests/test_workflows.py` |
+| PIPE-11 | Hecho | `snapshots` y `match-details` solo corren si `ingest` hizo una pasada real (`refreshed=true`). La validación completa y el commit solo si hay cambios (`dirty=true`). Un run vacío no instala trabajo de datos ni despliega. | `.github/workflows/data-refresh.yml`; `scripts/tests/test_workflows.py` |
+| PIPE-12 | Hecho | Health pasa a cada 4 h (`0 */4 * * *`), consulta también Club, Health y CI, y **pone el run en rojo** si `status.json` queda en `ok=false`, después de publicarlo. Su propio run no cuenta para `ok`, para no crear un bucle rojo. Umbrales: Data 36 h, News 6 h, Rivals 8 días, Club 10 días, Health 8 h. | `.github/workflows/health.yml`, `scripts/depor_hub/cli.py` (`_STATUS_WORKFLOWS`, `_workflow_ok`), `scripts/tests/test_status.py`, `scripts/tests/test_workflows.py` |
+| PIPE-16 | Hecho | Un único `publish.yml` (`workflow_call`) contiene el deploy de Pages. Data, News, Rivals y Club lo llaman solo si su commit cambió algo; se eliminan las tres copias duplicadas. | `.github/workflows/publish.yml`; los cuatro workflows ya solo tienen `uses: ./.github/workflows/publish.yml` |
+
+### Medición antes / después
+
+| Métrica | Antes | Después |
+|---|---:|---:|
+| Triggers de Data al mes | 4.320 (`*/10` todo el día) | ~1.344 (720 horarios + 624 de banda densa), con ~104 solapamientos horarios en fin de semana |
+| Runs de Data que solo comprueban | 1.398/1.672 (84 %) | Los runs vacíos dejan de ejecutar snapshots, match-details, validación completa y deploy |
+| Commits que solo mueven timestamps | 179/233 (76,8 %) | 0 por diseño: dos ingestas idénticas no vuelven a escribir |
+| Ventana fuera de partido | 60 min | 55 min (el cron horario no se salta la pasada) |
+| Grupos de escritura de `main` | `data-publish` + `news-publish` | Un solo `main-write` |
+| Workflows que desplegaban Pages | 3 copias | 1 reusable (`publish.yml`) |
+| Documentos de estado | 3 workflows, Health 8 h sin alerta | 6 workflows, Club 10 días, run rojo visible |
+| Loops de club en el cron de datos | Títulos, rivalidades, ficha e imágenes cada 10 min | `club-refresh` semanal |
+
+La estimación de runs queda por debajo de los criterios del informe (< 2.500
+runs/mes y < 1.500 min/mes). La confirmación real exige 30 días con Actions
+activo; hasta entonces se marca como **estimación**, no como medición.
+
+### Comandos de verificación ejecutados
+
+```bash
+ruff check scripts
+pytest scripts -q                       # 250 passed
+python -m depor_hub.cli schemas
+git diff --exit-code packages/schemas   # sin diferencias
+python -m depor_hub.cli validate --data data/public/v1
+python -m depor_hub.cli smoke --data data/public/v1
+npm run lint
+npm run typecheck
+npm test
+cd workers/live-proxy && npm test
+```
+
 ### Lo que sigue
 
-- **Lote 1:** hash normalizado, cron híbrido, pasos condicionales y un solo
-  `publish.yml`; al terminar, reactivar Actions con las instrucciones exactas y
-  verificar los 13 documentos en producción.
+- **Reactivación pendiente:** ejecutar las instrucciones de
+  `docs/operations.md#reactivar-actions` y verificar los 13 documentos en
+  producción. Es el único paso que no se puede hacer con Actions pausado.
 - **Lote 2:** `squad.json` ligero, WebP de escudos, noticias de portada y
   retratos pequeños.
 - **Lote 3 en adelante:** release, offline, rediseño, gallego y cierre.

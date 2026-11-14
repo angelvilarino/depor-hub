@@ -96,7 +96,7 @@ Los recordatorios pasan de `remindMatchIds: number[]` a `remindMatches: Record<m
 
 ### 8. Workflow
 
-`rivals-refresh.yml` se ejecuta a diario (`17 6 * * *`) y bajo demanda. Comparte el grupo `data-publish` con `data-refresh` y `news-refresh`, hace `git pull --rebase` antes de empujar y despliega Pages desde un checkout fresco de `main`. El histórico de BDFutbol solo cambia cuando se juega un cruce, así que no necesita la cadencia de 10 minutos.
+`rivals-refresh.yml` se ejecuta a diario (`17 6 * * *`) y bajo demanda. Comparte el grupo `main-write` con Data, News y Club, hace `git pull --rebase` antes de empujar y llama al workflow reutilizable `publish.yml`, que despliega Pages desde un checkout fresco de `main`. El histórico de BDFutbol solo cambia cuando se juega un cruce, así que no necesita la cadencia de 10 minutos.
 
 ## Consecuencias
 
