@@ -17,7 +17,10 @@ from . import models as m
 MATCH_WINDOW_BEFORE = timedelta(minutes=30)
 MATCH_WINDOW_AFTER = timedelta(minutes=150)
 IN_WINDOW_INTERVAL = timedelta(minutes=10)
-OUT_WINDOW_INTERVAL = timedelta(minutes=60)
+# 55 min y no 60: el cron horario puede dispararse 59 min después de la pasada
+# anterior (por ejemplo, 12:05 -> 13:00) y con 60 se saltaría, dejando un hueco
+# de casi dos horas. El objetivo operativo sigue siendo «una vez por hora».
+OUT_WINDOW_INTERVAL = timedelta(minutes=55)
 
 # PAUSED es el descanso de un partido que ya empezó: sigue siendo ventana de partido.
 LIVE_STATUSES = frozenset({"TIMED", "IN_PLAY", "PAUSED"})

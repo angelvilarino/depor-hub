@@ -1,10 +1,10 @@
 name: Data refresh
 on:
   schedule:
-    # Cada 10 min: --if-due decide 10 min en ventana de partido y 60 min fuera.
-    # GitHub Actions no garantiza puntualidad y puede retrasarse; el estado real del
-    # último refresco vive en la caché.
-    - cron: "*/10 * * * *"
+    # Base horaria + banda densa de fin de semana (PIPE-02). `--if-due` sigue
+    # decidiendo: 10 min dentro de la ventana de partido y ~60 min fuera.
+    - cron: "0 * * * *"
+    - cron: "*/10 12-23 * * 6,0"
   workflow_dispatch:
     inputs:
       force:
@@ -15,10 +15,10 @@ on:
 permissions:
   contents: write
 
-# Los dos workflows de datos comparten grupo: nunca publican a la vez. Si uno está en
-# curso, el otro espera en cola (cancel-in-progress: false) en vez de pisar el commit.
+# Un solo grupo para Data, News, Rivals y Club: solo uno escribe `main` a la vez
+# (PIPE-06). El despliegue se serializa aparte en `pages-deploy`.
 concurrency:
-  group: data-publish
+  group: main-write
   cancel-in-progress: false
 
 jobs:
@@ -48,10 +48,14 @@ jobs:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
         run: python -m depor_hub.cli ingest --if-due ${{ inputs.force && '--force' || '' }}
+      # PIPE-11: snapshots y match-details solo trabajan cuando la ingesta ha
+      # hecho una pasada real. Si no tocaba, no hay nada nuevo que congelar.
       - name: Congelar snapshots de partidos terminados
+        if: steps.ingest.outputs.refreshed == 'true'
         run: python -m depor_hub.cli snapshots
       - id: match-details
         name: Publicar alineaciones y eventos de partidos terminados
+        if: steps.ingest.outputs.refreshed == 'true'
         # PIPE-04: un 403/429 o un partido terminado sin emparejar deja el paso
         # en rojo y una anotación, pero no bloquea la publicación del resto.
         # El job bdfutbol-alert convierte ese rojo en run no-verde al final.
@@ -59,30 +63,25 @@ jobs:
         env:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
         run: python -m depor_hub.cli match-details --strict
-      - name: Publicar la ficha del club
-        run: python -m depor_hub.cli club
-      - name: Imágenes del club (solo si faltan)
-        run: |
-          if [ -d data/public/v1/img/club ]; then
-            python -m depor_hub.cli club-images --offline
-          else
-            python -m depor_hub.cli club-images
-          fi
-      - name: Títulos del club (propuesta fuera del árbol publicado)
-        env:
-          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
-        run: python -m depor_hub.cli club titles --proposal data/raw/titles.proposed.yml
-      - name: Rivalidades del club (balance BDFutbol)
-        env:
-          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
-        run: python -m depor_hub.cli club rivalries
       - name: Guardar el último refresco
         if: steps.ingest.outputs.refreshed == 'true'
         uses: actions/cache/save@v4
         with:
           path: data/raw/ingest_state.json
           key: ingest-state-${{ github.run_id }}
+      - name: Detectar cambios en data/public
+        id: dirty
+        run: |
+          git add -A data/public
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      # PIPE-11: validar 3,9 MB solo cuando hay algo que publicar. La validación
+      # completa sigue en CI y en los workflows que sí escriben siempre.
       - name: Validar todos los datos antes de publicar
+        if: steps.dirty.outputs.changed == 'true'
         run: python -m depor_hub.cli validate --data data/public/v1
       - name: Commit de los datos
         id: commit
@@ -108,35 +107,12 @@ jobs:
           [ "$pushed" = true ]
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
-  # Se despliega desde un checkout nuevo de main: así Pages publica exactamente el
-  # commit que acaba de quedar en el repositorio, con data/public completo.
+  # Un único workflow reutilizable despliega Pages (PIPE-16). Se ejecuta solo si
+  # esta pasada ha dejado un commit: un deploy por commit, no por run.
   deploy:
     needs: refresh
     if: needs.refresh.outputs.changed == 'true'
-    runs-on: ubuntu-latest
-    concurrency:
-      group: pages-deploy
-      cancel-in-progress: false
-    timeout-minutes: 10
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 1
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          # deploy-pages sustituye Pages entero: siempre subimos el snapshot completo.
-          path: data/public
-      - id: deploy
-        uses: actions/deploy-pages@v4
+    uses: ./.github/workflows/publish.yml
 
   # PIPE-04: si había partidos terminados y BDFutbol falló o no los emparejó,
   # el run termina en rojo. Va en un job aparte para que deploy siga publicando

@@ -1,0 +1,39 @@
+name: Publish Pages
+
+# Workflow reutilizable: una sola copia del bloque de despliegue para Data,
+# News, Rivals y Club (PIPE-16). Cada llamada sube el `data/public` completo
+# desde un checkout nuevo de `main`, así Pages publica exactamente el commit
+# que acaba de quedar en el repositorio.
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un deploy a la vez. Si dos workflows terminan seguidos, el segundo espera y
+# publica el snapshot más reciente; nunca se pisan.
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          # deploy-pages sustituye Pages entero: siempre subimos el snapshot completo.
+          path: data/public
+      - id: deploy
+        uses: actions/deploy-pages@v4

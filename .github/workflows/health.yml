@@ -2,8 +2,8 @@ name: Health
 
 on:
   schedule:
-    # Cada 30 min: refleja el estado del pipeline aunque Pages o un workflow fallen.
-    - cron: "*/30 * * * *"
+    # Cada 4 h: refleja el estado del pipeline aunque Pages o un workflow fallen.
+    - cron: "0 */4 * * *"
   workflow_dispatch:
 
 permissions:
@@ -38,7 +38,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p "$RUNNER_TEMP/runs"
-          for workflow in data-refresh.yml news-refresh.yml rivals-refresh.yml health.yml ci.yml; do
+          for workflow in data-refresh.yml news-refresh.yml rivals-refresh.yml club-refresh.yml health.yml ci.yml; do
             curl --fail --silent --show-error \
               -H "Authorization: Bearer $GITHUB_TOKEN" \
               -H "Accept: application/vnd.github+json" \
@@ -67,3 +67,14 @@ jobs:
           git add status.json
           git commit -m "status: $(date -u +%Y-%m-%dT%H:%MZ)"
           git push --force origin HEAD:status
+      - name: Poner el run en rojo si el semáforo está en rojo
+        # PIPE-12: antes el `--soft` escribía ok=false y el job seguía verde, así
+        # que nadie se enteraba. El estado se publica primero (el diagnóstico no
+        # debe desaparecer) y después el run refleja el fallo. Health no cuenta
+        # su propio run en `ok` (ver cmd_status) para no crear un bucle rojo.
+        run: |
+          ok=$(python -c "import json,sys; print('true' if json.load(open(sys.argv[1]))['ok'] else 'false')" "$RUNNER_TEMP/status.json")
+          if [ "$ok" != "true" ]; then
+            echo "::error::status.json tiene ok=false: algún documento requerido falta o un workflow está fallando/obsoleto."
+            exit 1
+          fi

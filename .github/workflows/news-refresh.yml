@@ -13,11 +13,11 @@ on:
 permissions:
   contents: write
 
-# Grupo propio: las noticias no esperan detrás de un refresco de datos lento.
-# Ambos escriben en main con rebase y reintentos; el deploy de Pages se serializa
-# en el grupo pages-deploy para que dos snapshots no se pisen.
+# Un solo grupo para Data, News, Rivals y Club: solo uno escribe `main` a la vez
+# (PIPE-06). El rebase de 5 intentos queda como red de seguridad, pero ya no hay
+# dos workflows compitiendo por el mismo push.
 concurrency:
-  group: news-publish
+  group: main-write
   cancel-in-progress: false
 
 jobs:
@@ -79,30 +79,9 @@ jobs:
           [ "$pushed" = true ]
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
+  # Un único workflow reutilizable despliega Pages (PIPE-16): un deploy por
+  # commit, no por run.
   deploy:
     needs: refresh
     if: needs.refresh.outputs.changed == 'true'
-    runs-on: ubuntu-latest
-    concurrency:
-      group: pages-deploy
-      cancel-in-progress: false
-    timeout-minutes: 10
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 1
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          # deploy-pages sustituye Pages entero: siempre subimos el snapshot completo.
-          path: data/public
-      - id: deploy
-        uses: actions/deploy-pages@v4
+    uses: ./.github/workflows/publish.yml

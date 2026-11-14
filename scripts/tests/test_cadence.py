@@ -69,11 +69,13 @@ def test_due_in_window_every_ten_minutes():
     assert not is_due(f, NOW, NOW - timedelta(minutes=9))
 
 
-def test_due_outside_window_every_sixty_minutes():
+def test_due_outside_window_every_55_minutes():
+    # 55 y no 60: el cron horario puede dispararse a los 59 min de la pasada
+    # anterior. El objetivo operativo sigue siendo «una vez por hora».
     f = fixtures(match(1, "2026-11-02T20:00:00Z"))
     outside = datetime(2026, 11, 2, 12, 0, tzinfo=UTC)
-    assert is_due(f, outside, outside - timedelta(minutes=60))
-    assert not is_due(f, outside, outside - timedelta(minutes=59))
+    assert is_due(f, outside, outside - timedelta(minutes=55))
+    assert not is_due(f, outside, outside - timedelta(minutes=54))
 
 
 def test_no_fixtures_or_no_state_is_due():
