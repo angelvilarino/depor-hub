@@ -2,7 +2,7 @@ name: Smoke Pages
 
 on:
   workflow_run:
-    workflows: ["Data refresh", "News refresh", "Rivals refresh", "Club refresh"]
+    workflows: ["Data refresh", "News refresh", "Rivals refresh"]
     types: [completed]
   workflow_dispatch:
 

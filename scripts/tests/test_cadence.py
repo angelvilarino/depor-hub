@@ -3,10 +3,12 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from depor_hub import models as m
+from depor_hub import transform as t
 from depor_hub.cadence import (
     in_match_window,
     is_due,
     load_fixtures,
+    plan_matchday,
     read_last_refresh,
     write_last_refresh,
 )
@@ -132,3 +134,60 @@ def test_cli_if_due_skips_without_network(tmp_path: Path, capsys):
 
     assert code == 0
     assert "changed=false due=false" in capsys.readouterr().out
+
+
+def test_matchday_plan_opens_the_lead_window_and_ends_after_the_match():
+    f = fixtures(match(1, "2026-11-02T20:00:00Z"))
+
+    plan = plan_matchday(f, datetime(2026, 11, 2, 17, 0, tzinfo=UTC))
+
+    assert plan.active is True
+    assert plan.start == datetime(2026, 11, 2, 19, 30, tzinfo=UTC)
+    assert plan.until == datetime(2026, 11, 2, 22, 30, tzinfo=UTC)
+
+
+def test_matchday_plan_is_inactive_before_the_lead_and_after_the_window():
+    f = fixtures(match(1, "2026-11-02T20:00:00Z"))
+
+    assert plan_matchday(f, datetime(2026, 11, 2, 16, 59, tzinfo=UTC)).active is False
+    assert plan_matchday(f, datetime(2026, 11, 2, 22, 31, tzinfo=UTC)).active is False
+
+
+def test_matchday_plan_inside_the_window_starts_right_away():
+    f = fixtures(match(1, "2026-11-02T20:00:00Z"))
+    now = datetime(2026, 11, 2, 20, 15, tzinfo=UTC)
+
+    plan = plan_matchday(f, now)
+
+    assert plan.active is True
+    assert plan.start == now
+    assert plan.until == datetime(2026, 11, 2, 22, 30, tzinfo=UTC)
+
+
+def test_matchday_plan_ignores_scheduled_matches_without_a_confirmed_kickoff():
+    f = fixtures(match(1, "2026-11-02T20:00:00Z", status="SCHEDULED"))
+
+    assert plan_matchday(f, NOW).active is False
+
+
+def test_matchday_plan_cli_writes_github_outputs(tmp_path, monkeypatch):
+    path = tmp_path / "fixtures.json"
+    path.write_text(json.dumps(t.dump(fixtures(match(1, "2026-11-02T20:00:00Z")))), encoding="utf-8")
+    output = tmp_path / "github-output"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(output))
+
+    code = main(
+        [
+            "matchday-plan",
+            "--fixtures",
+            str(path),
+            "--now",
+            "2026-11-02T17:00:00Z",
+        ]
+    )
+
+    assert code == 0
+    body = output.read_text(encoding="utf-8")
+    assert "active=true" in body
+    assert "start=1793647800" in body
+    assert "until=1793658600" in body

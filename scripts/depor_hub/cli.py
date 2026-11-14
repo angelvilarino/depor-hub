@@ -18,7 +18,7 @@ from . import models as m
 from . import rivals as rivals_ctx
 from . import source_models as s
 from . import transform as t
-from .cadence import is_due, load_fixtures, read_last_refresh, write_last_refresh
+from .cadence import is_due, load_fixtures, plan_matchday, read_last_refresh, write_last_refresh
 from .client import Client
 from .enrich import bdfutbol, crests, official, proposal, wikidata, wikipedia
 from .enrich import coach as coach_enrich
@@ -152,6 +152,30 @@ def cmd_ingest(args: argparse.Namespace) -> int:
         _gh_output(changed="true" if changed else "false", refreshed="true")
     else:
         _gh_output(changed="true" if changed else "false")
+    return 0
+
+
+def cmd_matchday_plan(args: argparse.Namespace) -> int:
+    """Ventana del supervisor de día de partido: refresco cada 10 min."""
+    fixtures = m.Fixtures.model_validate_json(
+        Path(args.fixtures).read_text(encoding="utf-8")
+    )
+    now = datetime.now(UTC)
+    if getattr(args, "now", None):
+        now = datetime.fromisoformat(str(args.now).replace("Z", "+00:00"))
+        if now.tzinfo is None:
+            now = now.replace(tzinfo=UTC)
+    plan = plan_matchday(fixtures, now)
+    if not plan.active:
+        print("active=false")
+        _gh_output(active="false", start="", until="")
+        return 0
+    if plan.start is None or plan.until is None:
+        raise SystemExit("plan_matchday activo sin ventana")
+    start = int(plan.start.timestamp())
+    until = int(plan.until.timestamp())
+    print(f"active=true start={start} until={until}")
+    _gh_output(active="true", start=str(start), until=str(until))
     return 0
 
 
@@ -924,8 +948,7 @@ _STATUS_WORKFLOWS: tuple[tuple[str, str, int | None], ...] = (
     ("Data refresh", "data-refresh.yml", 36),
     ("News refresh", "news-refresh.yml", 6),
     ("Rivals refresh", "rivals-refresh.yml", 24 * 8),
-    ("Club refresh", "club-refresh.yml", 24 * 10),
-    ("Health", "health.yml", 8),
+    ("Health", "health.yml", 30),
     # CI solo corre con pushes: su ausencia no implica un pipeline roto.
     ("CI", "ci.yml", None),
 )
@@ -1462,6 +1485,13 @@ def main(argv: list[str] | None = None) -> int:
             sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
             sp.add_argument("--state", default="data/raw/ingest_state.json")
         sp.set_defaults(fn=fn)
+    sp = sub.add_parser(
+        "matchday-plan",
+        help="Decide si el supervisor debe refrescar cada 10 min en un día de partido",
+    )
+    sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
+    sp.add_argument("--now", default=None, help="Instante ISO para pruebas deterministas")
+    sp.set_defaults(fn=cmd_matchday_plan)
     sp = sub.add_parser("schemas")
     sp.add_argument("--out", default="packages/schemas")
     sp.set_defaults(fn=cmd_schemas)

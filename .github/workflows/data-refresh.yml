@@ -1,10 +1,9 @@
 name: Data refresh
 on:
   schedule:
-    # Base horaria + banda densa de fin de semana (PIPE-02). `--if-due` sigue
-    # decidiendo: 10 min dentro de la ventana de partido y ~60 min fuera.
-    - cron: "0 * * * *"
-    - cron: "*/10 12-23 * * 6,0"
+    # Una pasada diaria. Los días de partido, `data-matchday.yml` lanza este
+    # workflow cada 10 min dentro de la ventana del encuentro.
+    - cron: "0 6 * * *"
   workflow_dispatch:
     inputs:
       force:
@@ -15,7 +14,7 @@ on:
 permissions:
   contents: write
 
-# Un solo grupo para Data, News, Rivals y Club: solo uno escribe `main` a la vez
+# Un solo grupo para Data, News y Rivals: solo uno escribe `main` a la vez
 # (PIPE-06). El despliegue se serializa aparte en `pages-deploy`.
 concurrency:
   group: main-write
@@ -43,6 +42,12 @@ jobs:
           key: ingest-state-${{ github.run_id }}
           restore-keys: |
             ingest-state-
+      - name: Forzar una pasada diaria sin duplicar commits
+        # El cron diario siempre consulta la red, pero `write_if_changed` sigue
+        # evitando el commit si el contenido no ha cambiado. Los disparos del
+        # supervisor de partido no borran el estado.
+        if: github.event_name == 'schedule'
+        run: rm -f data/raw/ingest_state.json
       - id: ingest
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}

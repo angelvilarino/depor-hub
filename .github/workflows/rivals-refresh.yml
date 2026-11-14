@@ -1,8 +1,9 @@
 name: Rivals refresh
 on:
   schedule:
-    # Una vez al día: el histórico de BDFutbol solo cambia cuando se juega un cruce.
-    - cron: "17 6 * * *"
+    # Lunes por la noche, cuando ya ha terminado la jornada del fin de semana.
+    # BDFutbol solo cambia el histórico cuando se juega un cruce.
+    - cron: "0 22 * * 1"
   workflow_dispatch:
     inputs:
       force:
@@ -13,7 +14,7 @@ on:
 permissions:
   contents: write
 
-# Un solo grupo para Data, News, Rivals y Club: solo uno escribe `main` a la vez
+# Un solo grupo para Data, News y Rivals: solo uno escribe `main` a la vez
 # (PIPE-06). El despliegue se serializa aparte en `pages-deploy`.
 concurrency:
   group: main-write

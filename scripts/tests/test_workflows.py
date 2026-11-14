@@ -4,7 +4,7 @@ import yaml
 
 WORKFLOWS = Path(__file__).resolve().parents[2] / ".github" / "workflows"
 
-WRITERS = ("data-refresh.yml", "news-refresh.yml", "rivals-refresh.yml", "club-refresh.yml")
+WRITERS = ("data-refresh.yml", "news-refresh.yml", "rivals-refresh.yml")
 
 
 def load(name: str) -> dict:
@@ -71,12 +71,21 @@ def test_all_writers_rebase_before_push_and_validate_before_commit():
         assert workflow["jobs"]["refresh"]["timeout-minutes"] > 0
 
 
-def test_data_refresh_uses_the_hybrid_cadence_and_skips_noop_steps():
+def test_data_refresh_runs_once_a_day_and_skips_noop_steps():
     workflow = load("data-refresh.yml")
     crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
-    assert crons == ["0 * * * *", "*/10 12-23 * * 6,0"]
+    assert crons == ["0 6 * * *"]
     body = runs(workflow, "refresh")
     assert "ingest --if-due" in body
+
+    # El cron diario consulta la red aunque el estado diga que no toca: la
+    # caché del último refresco se borra solo en `schedule`.
+    reset = next(
+        item
+        for item in steps(workflow, "refresh")
+        if "rm -f data/raw/ingest_state.json" in str(item.get("run", ""))
+    )
+    assert reset["if"] == "github.event_name == 'schedule'"
 
     # PIPE-11: snapshots y fichas de partido solo cuando la ingesta ha hecho una
     # pasada real. Si `--if-due` sale pronto, no hay nada nuevo que congelar.
@@ -93,7 +102,7 @@ def test_data_refresh_uses_the_hybrid_cadence_and_skips_noop_steps():
     )
     assert validate["if"] == "steps.dirty.outputs.changed == 'true'"
 
-    # PIPE-08: el club vive en su propio workflow semanal.
+    # PIPE-08: el club es estático y se publica a mano; ningún workflow lo toca.
     assert "cli club" not in body
     assert "club-images" not in body
 
@@ -111,45 +120,30 @@ def test_data_refresh_makes_a_bdfutbol_failure_visible_without_blocking_publish(
     assert workflow["jobs"]["deploy"]["needs"] == "refresh"
 
 
-def test_club_refresh_is_weekly_and_keeps_generated_yaml_out_of_main():
-    workflow = load("club-refresh.yml")
+def test_matchday_supervisor_dispatches_data_refresh_every_ten_minutes():
+    workflow = load("data-matchday.yml")
     crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
-    assert crons == ["0 7 * * 1"]
+    assert crons == ["0 9-21/2 * * *"]
+    # Necesita `actions: write` para lanzar `data-refresh.yml`; no escribe main.
+    assert workflow["permissions"]["actions"] == "write"
+    assert workflow["permissions"]["contents"] == "read"
 
-    titles = step(workflow, "refresh", "titles")
-    assert "club titles" in str(titles["run"])
-    assert "--proposal data/raw/titles.proposed.yml" in str(titles["run"])
-    assert titles["continue-on-error"] is True
+    plan = step(workflow, "supervise", "plan")
+    assert "matchday-plan" in str(plan["run"])
+    body = runs(workflow, "supervise")
+    assert "gh workflow run data-refresh.yml --ref main" in body
+    assert "sleep 600" in body
 
-    rivalries = step(workflow, "refresh", "rivalries")
-    assert "club rivalries" in str(rivalries["run"])
-    assert rivalries["continue-on-error"] is True
-
-    images = step(workflow, "refresh", "images")
-    assert "club-images" in str(images["run"])
-    assert images["continue-on-error"] is True
-
-    body = runs(workflow, "refresh")
-    assert "cli club " in body
-    paths = [
-        item["with"]["path"]
-        for item in steps(workflow, "refresh")
-        if str(item.get("uses", "")).startswith("actions/cache")
-    ]
-    assert any("data/raw/enrich" in str(path) for path in paths)
-
-    # PIPE-07: el fallo de BDFutbol deja el run en rojo, pero después de publicar.
-    outputs = workflow["jobs"]["refresh"]["outputs"]
-    assert outputs["titles"] == "${{ steps.titles.outcome }}"
-    alert = workflow["jobs"]["club-alert"]
-    assert alert["needs"] == "refresh"
-    assert "titles == 'failure'" in alert["if"]
+    # El supervisor no publica: reutiliza `publish.yml` vía `data-refresh.yml`.
+    assert "deploy" not in workflow["jobs"]
+    assert workflow["concurrency"]["group"] == "matchday-supervisor"
+    assert workflow["concurrency"]["cancel-in-progress"] is False
 
 
-def test_health_runs_every_four_hours_and_fails_when_the_light_is_red():
+def test_health_runs_once_a_day_and_fails_when_the_light_is_red():
     workflow = load("health.yml")
     crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
-    assert crons == ["0 */4 * * *"]
+    assert crons == ["0 7 * * *"]
     assert workflow["concurrency"]["group"] == "status-publish"
     assert workflow["permissions"]["contents"] == "write"
     assert workflow["permissions"]["actions"] == "read"
@@ -159,7 +153,8 @@ def test_health_runs_every_four_hours_and_fails_when_the_light_is_red():
     assert "--runs-dir" in body
     assert "actions/workflows/" in body
     assert "per_page=20" in body
-    assert "club-refresh.yml" in body
+    # El club ya no se refresca solo: Health no debe esperar su run.
+    assert "club-refresh.yml" not in body
     assert "HEAD:status" in body
     assert "deploy-pages" not in body
     # Publica primero y después refleja el rojo en el propio run (PIPE-12).
@@ -175,7 +170,6 @@ def test_smoke_runs_after_a_successful_publish_of_any_writer():
         "Data refresh",
         "News refresh",
         "Rivals refresh",
-        "Club refresh",
     }
     body = runs(workflow, "smoke")
     assert "cli smoke" in body
@@ -197,10 +191,10 @@ def test_news_runs_every_thirty_minutes_and_caches_the_feeds():
     assert "data/raw/news" in paths
 
 
-def test_rivals_refresh_runs_daily_and_caches_bdfutbol():
+def test_rivals_refresh_runs_weekly_after_the_matchday_and_caches_bdfutbol():
     workflow = load("rivals-refresh.yml")
     crons = [entry["cron"] for entry in workflow["on"]["schedule"]]
-    assert "17 6 * * *" in crons
+    assert crons == ["0 22 * * 1"]
     body = runs(workflow, "refresh")
     assert "cli rivals" in body
     paths = [

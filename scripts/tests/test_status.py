@@ -242,22 +242,32 @@ def test_status_does_not_feed_its_own_health_failure_back_into_the_light(tmp_pat
     assert code == 0
 
 
-def test_status_tracks_the_weekly_club_refresh(tmp_path):
+def test_status_tracks_health_with_a_daily_window(tmp_path):
     data = make_data(tmp_path)
     runs = make_runs(tmp_path)
     body = json.loads(runs.read_text(encoding="utf-8"))
     body["workflow_runs"].append(
         {
-            "path": ".github/workflows/club-refresh.yml",
+            "path": ".github/workflows/health.yml",
             "conclusion": "success",
             "updated_at": NOW,
-            "html_url": "https://example.test/club",
+            "html_url": "https://example.test/health",
         }
     )
     runs.write_text(json.dumps(body), encoding="utf-8")
 
     _, status = run_status(tmp_path, data, runs)
-    club = next(item for item in status.workflows if item.file == "club-refresh.yml")
+    health = next(item for item in status.workflows if item.file == "health.yml")
 
-    assert club.expected_within_hours == 240
-    assert club.stale is False
+    assert health.expected_within_hours == 30
+    assert health.stale is False
+
+
+def test_status_does_not_expect_a_club_refresh(tmp_path):
+    """El club es estático: no hay workflow semanal del que depender."""
+    data = make_data(tmp_path)
+    runs = make_runs(tmp_path)
+
+    _, status = run_status(tmp_path, data, runs)
+
+    assert all(item.file != "club-refresh.yml" for item in status.workflows)

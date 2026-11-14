@@ -2,8 +2,9 @@ name: Health
 
 on:
   schedule:
-    # Cada 4 h: refleja el estado del pipeline aunque Pages o un workflow fallen.
-    - cron: "0 */4 * * *"
+    # Una vez al día, después de la pasada diaria de datos. Health es barato,
+    # pero no necesita más frecuencia: el diagnóstico vive en la rama status.
+    - cron: "0 7 * * *"
   workflow_dispatch:
 
 permissions:
@@ -38,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p "$RUNNER_TEMP/runs"
-          for workflow in data-refresh.yml news-refresh.yml rivals-refresh.yml club-refresh.yml health.yml ci.yml; do
+          for workflow in data-refresh.yml news-refresh.yml rivals-refresh.yml health.yml ci.yml; do
             curl --fail --silent --show-error \
               -H "Authorization: Bearer $GITHUB_TOKEN" \
               -H "Accept: application/vnd.github+json" \

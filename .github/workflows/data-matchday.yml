@@ -1,0 +1,52 @@
+name: Data matchday
+
+# Supervisor de día de partido: no hace la recogida él mismo, solo lanza
+# `data-refresh.yml` cada 10 minutos dentro de la ventana del encuentro.
+# En días sin partido los checkpoints salen en segundos; la recogida real es
+# una sola pasada diaria a las 06:00 UTC.
+on:
+  schedule:
+    # Checkpoints cada 2 h. Con 2,5 h de antelación se cubre cualquier kickoff
+    # entre ~09:30 y ~23:30 UTC sin mantener un runner toda la noche.
+    - cron: "0 9-21/2 * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: matchday-supervisor
+  cancel-in-progress: false
+
+jobs:
+  supervise:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/pyproject.toml
+      - run: pip install -e scripts
+      - name: Decidir si hoy hay ventana de partido
+        id: plan
+        run: python -m depor_hub.cli matchday-plan --fixtures data/public/v1/fixtures.json
+      - name: Lanzar el refresco cada 10 minutos
+        if: steps.plan.outputs.active == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          start=${{ steps.plan.outputs.start }}
+          end=${{ steps.plan.outputs.until }}
+          now=$(date +%s)
+          if [ "$start" -gt "$now" ]; then
+            echo "Esperando a la ventana: $((start - now)) s"
+            sleep $((start - now))
+          fi
+          while [ "$(date +%s)" -lt "$end" ]; do
+            gh workflow run data-refresh.yml --ref main
+            sleep 600
+          done

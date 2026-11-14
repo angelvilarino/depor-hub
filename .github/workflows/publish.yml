@@ -1,7 +1,7 @@
 name: Publish Pages
 
 # Workflow reutilizable: una sola copia del bloque de despliegue para Data,
-# News, Rivals y Club (PIPE-16). Cada llamada sube el `data/public` completo
+# News y Rivals (PIPE-16). Cada llamada sube el `data/public` completo
 # desde un checkout nuevo de `main`, así Pages publica exactamente el commit
 # que acaba de quedar en el repositorio.
 on:
