@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T15:04:26Z",
+  "updatedAt": "2026-11-14T15:03:47Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,468 @@
     }
   ],
   "stories": [
+    {
+      "id": "412f64ed15074895",
+      "title": "Rueda de prensa de Alberto Rodríguez antes del Dépor ABANCA - FC Barcelona",
+      "url": "https://youtube.com/watch?v=7grye4dC-h4",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-14T12:50:01Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/7grye4dC-h4/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "6ff469d38147b067",
+      "title": "Alberto Rodríguez: «La palabra es motivación y reto al saber que nos enfrentamos a uno de los mejores equipos del mundo»",
+      "url": "https://riazor.org/alberto-rodriguez-motivacion-reto-mejores-equipos",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-14T12:30:21Z",
+      "kind": "article",
+      "summary": "El entrenador del Dépor ABANCA explicó cómo llega el equipo al partido de este domingo ante un 'coco' como el Barcelona en Riazor. La…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/rueda-de-prensa-de-alberto-rodri.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "72e356de137fc978",
+      "title": "Lorenzo Amatucci, ‘il bambino’ del Deportivo ya es ‘azzurrini’",
+      "url": "https://riazor.org/lorenzo-amatucci-bambino-deportivo-azzurrini",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-14T10:00:24Z",
+      "kind": "article",
+      "summary": "El centrocampista del Deportivo debutó con la selección italiana sub-21 en la victoria frente a Francia disputando 62 minutos. La entrada…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "d6f7b5ad8f2d96d2",
+      "title": "Bebeto, con MARCA: \"El Dépor debe preocuparse ahora por no bajar nunca más\"",
+      "url": "https://marca.com/futbol/deportivo/2026/11/14/bebeto-marca-depor-debe-preocuparse-bajar-nunca.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-14T06:33:21Z",
+      "kind": "article",
+      "summary": "Entrevista exclusiva en México con la leyenda brasileña del equipo coruñés",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/14/6af7dbca63ae4.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "e90d7dc92cb6043c",
+      "title": "Vituco, jugador del Sporting Meicende y campeón de España juvenil: “Habría hecho las cosas de otra forma, pero a toro pasado es muy fácil”",
+      "url": "https://dxtcampeon.elidealgallego.com/o-noso-futbol/2026-11-14/vituco-jugador-del-sporting-meicende-y-campeon-de-espana-juvenil-habria-hecho-las-cosas-de-otra-forma-pero-a-toro-pasado-es-muy-facil-890850.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-14T04:00:00Z",
+      "kind": "article",
+      "summary": "El mediapunta coruñés fue una de las piezas destacadas del éxito del Dépor en el año 2020; después pasó por Fabril, Arteixo, Betanzos y…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/13/6af76f7218692.r_d.801-887-0.jfif",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "96e43f5fe6419eb7",
+      "title": "Previa | Un examen de fuerza y contundencia",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-14/previa-un-examen-de-fuerza-y-contundencia-890784.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-14T04:00:00Z",
+      "kind": "article",
+      "summary": "El Fabril regresa a Abegondo para recibir a un Barakaldo cuyas fortalezas coinciden con las principales carencias del filial",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/13/6af73c3827537.jpg",
+      "tags": [
+        "partido",
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "837494472d9c2514",
+      "title": "El difícil encaje del facilitador blanquiazul",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-14/el-dificil-encaje-del-facilitador-blanquiazul-890795.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-14T04:00:00Z",
+      "kind": "article",
+      "summary": "Los retornos de Aubameyang y Casadó complican la continuidad de Luismi Cruz, situado en el top-15 de la Liga en creación de ocasiones",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/13/6af73c93bcf94.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "4704a3a96288bb4f",
+      "title": "Amatucci logra su esperado debut con Italia sub-21 y Noubi se afianza en Bélgica",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-13/amatucci-logra-su-esperado-debut-con-italia-sub-21-y-noubi-se-afianza-en-belgica-890881.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-13T20:44:49Z",
+      "kind": "article",
+      "summary": "Los jugadores del Dépor fueron titulares y sus selecciones vencieron",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/13/6af77167c594a.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "3a595e65ef16009c",
+      "title": "El futuro del periodismo con el fútbol como eje vertebrador: Juan Ignacio Gallardo y José Félix Díaz inauguran 'Falas Dépor'",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-13/el-futuro-del-periodismo-con-el-futbol-como-eje-vertebrador-juan-ignacio-gallardo-y-jose-felix-diaz-inauguran-falas-depor-890868.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-13T19:59:24Z",
+      "kind": "article",
+      "summary": "Los directores de Marca y As protagonizaron en el Museo del club la primera de las charlas del fin de semana",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/13/6af76a7e1507e.jpg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "eb5a04120f469dff",
+      "title": "‘Son de Riazor’ by MULLIGAN: La cantera a debate | Especial en directo con público",
+      "url": "https://riazor.org/son-de-riazor-mulligan-cantera-debate-especial",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-13T18:39:34Z",
+      "kind": "article",
+      "summary": "RiazorTV se desplaza hasta MULLIGAN para una edición especial de 'Son de Riazor' con público con la cantera en el centro del debate. La…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/son-de-riazor-especial-debate-web-1404x672-2.jpg",
+      "tags": [
+        "cantera",
+        "opinion"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "f452f1cb11deea68",
+      "title": "Alavés – Dépor: entradas para Mendizorroza, plazos, precios y cómo llegar",
+      "url": "https://riazor.org/alaves-depor-entradas-mendizorrotza-plazos-precios",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-13T17:00:38Z",
+      "kind": "article",
+      "summary": "El Dépor activa la prerreserva de entradas para la visita a Mendizorrotza. Consulta precios, plazos, sorteo, cómo reservar y cómo llegar…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "24d5ac9119b0312d",
+      "title": "La plantilla del Dépor disfrutará de un fin de semana largo tras una última sesión sin Bright Ede",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-13/la-plantilla-del-depor-disfrutara-del-fin-de-semana-libre-tras-una-ultima-sesion-sin-bright-ede-890776.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-13T15:24:06Z",
+      "kind": "article",
+      "summary": "El central polaco sigue con su proceso de recuperación y espera estar listo ante el Alavés",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/13/6af72a222bec3.r_d.707-1273-0.jfif",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "18dfcbe9f5fea66b",
+      "title": "Son de Riazor, con público: programa especial sobre la cantera el viernes 13 de noviembre en MULLIGAN",
+      "url": "https://riazor.org/son-de-riazor-con-publico-programa-especial-sobre-la-cantera-el-viernes-13-de-noviembre-en-mulligan",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-13T13:00:39Z",
+      "kind": "article",
+      "summary": "Son de Riazor emite un programa especial sobre la cantera el viernes 13 de noviembre a las 20:00 en MULLIGAN (Rúa Franja, 53). Aforo…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/son-de-riazor-especial-debate-web-1404x672-2.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "d500a3dffa318e41",
+      "title": "El Deportivo presenta ‘Dépor, voa’, un documental de los entresijos del ascenso a Primera",
+      "url": "https://riazor.org/presenta-depor-voa-documental-ascenso-primera",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-13T11:25:50Z",
+      "kind": "article",
+      "summary": "'Dépor, voa', el documental con el que el Deportivo recordará el ascenso y contará los entresijos del día a día de un club que regresa a…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/XhpEiStmWJ2KGocQiaPZs0CxmZI=/768x/2026/11/11/00121794425343058297974/Foto/H_20250927_180836000.jpg",
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "El Deportivo conmemora sus 120 años de historia: así es el programa de «Falas Dépor»",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/11/falas/00031794424962048172544.htm",
+          "publishedAt": "2026-11-11T20:16:00Z"
+        },
+        {
+          "sourceId": "la-voz",
+          "title": "El Deportivo presenta un documental sobre el ascenso a Primera División y el nuevo proyecto",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/13/deportivo-presenta-documental-sobre-ascenso-primera-nuevo-proyecto/00031794600760185908463.htm",
+          "publishedAt": "2026-11-13T20:16:01Z"
+        }
+      ]
+    },
+    {
+      "id": "f88d8ff0b021120b",
+      "title": "El 'mercado' donde Adama Traoré y Giménez son los más cotizados del Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-13/el-mercado-donde-adama-traore-y-gimenez-son-los-mas-cotizados-del-depor-890717.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-13T10:08:15Z",
+      "kind": "article",
+      "summary": "El truque de cromos organizado en la calle Riego de Agua atrae cada domingo a cientos de coleccionistas",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/13/6af6dcd89c0ad.r_d.1433-964-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "63897d42879ef2fa",
+      "title": "Nsongo Bil marca en el 2-0 de Camerún ante Namibia: así fue su segundo gol con la absoluta",
+      "url": "https://riazor.org/nsongo-bil-marca-en-el-2-0-de-camerun-ante-namibia-asi-fue-su-segundo-gol-con-la-absoluta",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-13T08:29:01Z",
+      "kind": "article",
+      "summary": "Nsongo Bil remató en el minuto 28 un centro desde la derecha en el Camerún 2-0 Namibia, de la clasificación para la Copa de África 2027…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "9e1af80c5ee4d02f",
+      "title": "La Copa da una alegría en el último momento al Dépor ABANCA (0-1)",
+      "url": "https://riazor.org/copa-da-alegria-ultimo-momento-depor-abanca-0-1",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-13T06:00:02Z",
+      "kind": "article",
+      "summary": "Crónica y resultado del Europa - Dépor ABANCA de los dieciseisavos de final de la Copa de la Reina que finalizó con victoria coruñesa. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "00fdeff454b77def",
+      "title": "Rueda de prensa de Alberto Rodríguez tras el CE Europa 0 - 1 Dépor ABANCA",
+      "url": "https://youtube.com/watch?v=BROStIT14JE",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-12T21:51:02Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i3.ytimg.com/vi/BROStIT14JE/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "0a2b5a35b9ae5df5",
+      "title": "Falas Dépor, charla a charla: horarios, ponentes y moderadores del programa definitivo",
+      "url": "https://riazor.org/falas-depor-charla-a-charla-horarios-ponentes-y-moderadores-del-programa-definitivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-12T19:30:59Z",
+      "kind": "article",
+      "summary": "Programa definitivo de Falas Dépor: las ocho charlas del 13 al 15 de noviembre, con horarios, sedes, ponentes, moderadores y cómo…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "62c4369a79d9d9f0",
+      "title": "Europa – Dépor ABANCA: La Copa de la Reina como punto de inflexión",
+      "url": "https://riazor.org/europa-depor-abanca-copa-reina-punto-inflexion",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-12T18:00:11Z",
+      "kind": "article",
+      "summary": "El Dépor ABANCA visitará este jueves (20:00 horas) el Nou Sardenya, campo del CE Europa de Segunda Federación, para estrenarse este curso…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "675ff0d6d90572cf",
+      "title": "Marc Casadó: «Tenía muy claro que iba a hacer todo lo posible para acortar los plazos»",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/12/marc-casadotenia-claro-iba-posible-acortar-plazos/00031794493170154857834.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-12T14:47:00Z",
+      "kind": "article",
+      "summary": "«Cuando estaba en el hospital, el cirujano me dijo que estaría tres meses fuera. Miré al doctor del Dépor y le dije: 'Eso no va a pasar'»…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/AWeuIL9SvKg4ytNM5JPuABXsQl0=/768x/2026/11/12/00121794492723035517390/Foto/h_20260903_143703000.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "6711aa4909fb2075",
+      "title": "Así probó Marc Casadó su clavícula: «Estuve chocando y tirándome al suelo con Adama todo el entrenamiento»",
+      "url": "https://riazor.org/asi-probo-marc-casado-su-clavicula-estuve-chocando-y-tirandome-al-suelo-con-adama-todo-el-entrenamiento",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-12T14:42:56Z",
+      "kind": "article",
+      "summary": "El centrocampista se midió con Adama Traoré en su primera sesión completa y explicó cómo recortó los plazos tras la operación. La entrada…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "c72dabb3ac242e82",
+      "title": "Marc Casadó podrá jugar contra el Barcelona en Riazor: su cesión no incluye cláusula del miedo",
+      "url": "https://riazor.org/marc-casado-reencuentra-jugar-barcelona-riazor",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-12T14:10:50Z",
+      "kind": "article",
+      "summary": "La cesión de Marc Casadó no incluye cláusula del miedo: el centrocampista puede jugar el Deportivo-Barcelona del 29 de noviembre (16:15)…",
+      "thumbnailUrl": null,
+      "tags": [
+        "fichajes"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c40e7f5a96708892",
+      "title": "Marc Casadó sobre su recuperación en tiempo récord: \"Cuando el cirujano me dijo tres meses miré al médico del Dépor y le dije que eso no iba a pasar\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-12/marc-casado-sobre-su-recuperacion-en-tiempo-record-cuando-el-cirujano-me-dijo-tres-meses-mire-al-medico-del-depor-y-le-dije-que-eso-no-iba-a-pasar-890533.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-12T14:10:17Z",
+      "kind": "article",
+      "summary": "\"La clavícula está perfecta. Hasta yo me sorprendo porque no noto nada. Está como nueva\"",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/12/6af5c74d36855.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "e666857b1085eb50",
+      "title": "Rueda de prensa de Manuel Pablo previa al Fabril - Barakaldo",
+      "url": "https://youtube.com/watch?v=o0aYcTaT2j4",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-12T13:33:02Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/o0aYcTaT2j4/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "b93c6b1d8185b6d2",
+      "title": "Agotadas en solo unas horas las entradas para el Dépor-Barcelona",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/11/agotadas-pocas-horas-entradas-depor-barcelona/00031794423325259745137.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-11T19:13:00Z",
+      "kind": "article",
+      "summary": "Abanca Riazor se prepara para el lleno y el club anuncia que tomará medidas contra la reventa de abonos y entradas",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/PqKjBeyrVGF6Pe8tRECoznNZoJk=/768x/2026/11/11/00121794424502735670740/Foto/h_20260722_084442000.jpg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "d62290d74397fb8e",
+      "title": "Le enfermería del Dépor sigue vaciándose: Ede llega a la meta y Zaka se acerca a ella",
+      "url": "https://riazor.org/enfermeria-ede-llega-meta-zaka-acerca-ella",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-11T16:30:07Z",
+      "kind": "article",
+      "summary": "Bright Ede ya se entrena con total normalidad mientras que Zakaria Eddahchouri completó parte de la sesión con el grupo y otra con el…",
+      "thumbnailUrl": null,
+      "tags": [
+        "lesiones"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c63d016e4f206fbe",
+      "title": "Bebeto entra en el Salón de la Fama y se acuerda del Dépor: «Volvieron al sitio del que nunca deberían salir»",
+      "url": "https://riazor.org/bebeto-salon-fama-acuerda-depor-sitio-nunca-salir",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-11T11:21:11Z",
+      "kind": "article",
+      "summary": "Bebeto ha recibido un nuevo reconocimiento a su carrera. La leyenda deportivista ha entrado en el Salón de la Fama del Fútbol…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "a7ce5ea557c066ae",
+      "title": "Rueda de prensa de Alberto Rodríguez previa al partido de Copa De La REINA CE Europa - Dépor ABANCA",
+      "url": "https://youtube.com/watch?v=GOiBHtBbfNA",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-11T10:50:26Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/GOiBHtBbfNA/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "eb47b7fbfe5fc85a",
+      "title": "Mella, sobre su ‘no’ al Brighton: «El Dépor me hacía un proyecto deportivo muy bueno y me lo hizo. Aquí estoy»",
+      "url": "https://riazor.org/mella-sobre-su-no-al-brighton-el-depor-me-hacia-un-proyecto-deportivo-muy-bueno-y-me-lo-hizo-aqui-estoy",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-11T09:06:43Z",
+      "kind": "article",
+      "summary": "David Mella explica en Radio Marca por qué rechazó al Brighton para seguir en el Deportivo y confiesa su deseo para esta temporada…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "9364d7c124b9681a",
+      "title": "«Leo Román es el mejor portero del plantel y es buena noticia que se convenza de ello»: las claves de Manu Sánchez tras el Espanyol – Deportivo",
+      "url": "https://riazor.org/leo-roman-mejor-portero-claves-espanyol-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-11T06:00:16Z",
+      "kind": "article",
+      "summary": "El extécnico del Dépor ABANCA analiza las claves del empate del Deportivo ante el Espanyol justo antes del segundo parón del curso. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "bacaafe0454735b3",
+      "title": "Mella: \"Sueño con Europa con el Dépor y con el Europeo con la Sub 21\"",
+      "url": "https://marca.com/radio/2026/11/10/mella-sueno-europa-depor-europeo-sub-21.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-10T21:15:36Z",
+      "kind": "article",
+      "summary": "El futbolista del Deportivo vive su primera convocatoria con la Sub-21 habla en 'Otra Ronda'",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/10/6af38923ae019.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "26452b2f74695834",
+      "title": "Así fue el RCD Espanyol 0 - 0 RC Deportivo desde dentro | INSIDE DÉPOR",
+      "url": "https://youtube.com/watch?v=VHI86MiOkRU",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-10T20:00:12Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i3.ytimg.com/vi/VHI86MiOkRU/hqdefault.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "b98e7a05818e75d9",
       "title": "‘Los Apuntes’ de Borja Guerreiro: análisis al detalle del Espanyol 0-0 Deportivo",
@@ -246,7 +708,7 @@
       "title": "Así recortó plazos Casadó: de la hipoxia controlada a una genética privilegiada",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/09/recorto-plazos-casado-hipoxia-controlada-genetica-privilegiada/00031794249838040555271.htm",
       "sourceId": "la-voz",
-      "publishedAt": "2026-11-09T18:53:03Z",
+      "publishedAt": "2026-11-09T18:53:00Z",
       "kind": "article",
       "summary": "El medio del Dépor, que hace siete semanas fue operado de una fractura de clavícula, se recuperó en tiempo récord con los últimos avances…",
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/sSru2K0l0xvhvS6z2B6C-ksCEN4=/768x/2026/11/09/00121794249903108598103/Foto/j_20261107_211648000.jpg",
@@ -1682,481 +2144,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "10f754ad5915b1b6",
-      "title": "Antonio Hidalgo: «Es un subidón grande, hemos puesto todo lo que teníamos y un poco más»",
-      "url": "https://riazor.org/antonio-hidalgo-subidon-grande-puesto-todo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-02T22:53:10Z",
-      "kind": "article",
-      "summary": "El entrenador del Deportivo hizo balance de la victoria ante Osasuna con los goles de Nsongo Bil y Mario Soriano en Riazor. La entrada…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "80e752a7f0cfbfb3",
-      "title": "El 1x1 del Dépor ante Osasuna: Loureiro y Quagliata ganan tiempo para la revolución Adama",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/el-1x1-del-depor-ante-osasuna-loureiro-y-quagliata-ganan-tiempo-para-la-revolucion-adama-888580.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-02T22:34:34Z",
-      "kind": "article",
-      "summary": "El extremo volvió a ser decisivo desde el banquillo en un partido con otro suspenso para Leo Román",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/02/6ae8f06a8bbc3.r_d.1455-1131-0.jpeg",
-      "tags": [
-        "opinion",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "7b148c8d555bc327",
-      "title": "Resumen del RC Deportivo 2 - 1 CA Osasuna",
-      "url": "https://youtube.com/watch?v=pmystsjdhc8",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-02T22:24:37Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i1.ytimg.com/vi/pmystsjdhc8/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "5d5f2fc00a47c3b8",
-      "title": "Mario Soriano explica su gol de falta: \"Lo hablamos Luismi y yo rápido y salió bien\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/mario-soriano-explica-su-gol-de-falta-lo-hablamos-luismi-y-yo-rapido-y-salio-bien-888667.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-02T22:19:20Z",
-      "kind": "article",
-      "summary": "El centrocampista del Deportivo recalcó que su equipo tuvo \"control\" en la primera parte y supo \"insistir\" para atacar \"bien\" en la segunda",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/02/6ae90c5c13fed.r_d.1662-1111-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e3aca0c431bf54e1",
-      "title": "Las bandas, claves en la victoria del Deportivo ante el Osasuna (2-1)",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/02/bandas-claves-remontada-deportivo/00031793657769953711272.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-02T22:18:00Z",
-      "kind": "article",
-      "summary": "Con Adama y Aubameyang en el campo, Hidalgo reestructuró el equipo y recuperó el cuero para culminar la remontada",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/86DxsUX_W5JH-zoU7-gVPfnNfzw=/768x/2026/11/02/00121793658003178336631/Foto/i_20261102_231732001.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "13547502dccb3846",
-      "title": "El Deportivo vuelve a ganar en el regreso de Aubameyang",
-      "url": "https://marca.com/futbol/primera-division/cronica/2026/11/02/deportivo-vuelve-ganar-regreso-aubameyang.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-02T22:01:57Z",
-      "kind": "article",
-      "summary": "La milagrosa recuperación del gabonés impulsa al Deportivo a una sufrida remontada ante Osasuna con goles de Soriano y Nsongo",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "dxt-campeon",
-          "title": "Crónica | El Dépor vuelve a ganar y a sonreír con Aubameyang (2-1)",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/cronica-el-depor-vuelve-a-ganar-y-a-sonreir-con-aubameyang-2-888579.html",
-          "publishedAt": "2026-11-02T22:01:04Z"
-        }
-      ]
-    },
-    {
-      "id": "4b28b42f4d494240",
-      "title": "Así contamos el Deportivo 2-1 Osasuna",
-      "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/02/directo-deportivo-osasuna/01071793643729133831384.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-02T21:56:00Z",
-      "kind": "article",
-      "summary": "Nsongo Bil culminó la remontada blanquiazul a falta de cuatro minutos para el final del partido",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/uy73MarAAgKgJIjjaGWaww3B88A=/768x/2026/11/02/00121793652841653353712/Foto/i_20261102_211917002.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "riazor",
-          "title": "Así te contamos el Deportivo 2–1 Osasuna: Mario Soriano y Nsongo Bil, héroes en la remontada del Dépor",
-          "url": "https://riazor.org/deportivo-osasuna-en-directo",
-          "publishedAt": "2026-11-02T18:30:03Z"
-        },
-        {
-          "sourceId": "dxt-campeon",
-          "title": "Directo | Deportivo-Osasuna: Entra Aubameyang por Luismi (1-1)",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/directo-deportivo-osasuna-sigue-la-previa-el-minuto-a-minuto-y-todo-lo-que-ocurra-en-riazor-888582.html",
-          "publishedAt": "2026-11-02T18:37:55Z"
-        }
-      ]
-    },
-    {
-      "id": "584d1aa20bb579ac",
-      "title": "Aubameyang obra el milagro: alta médica y listo para reaparecer ante Osasuna",
-      "url": "https://marca.com/futbol/deportivo/2026/11/02/aubameyang-obra-milagro-alta-medica-listo-reaparecer-osasuna.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-02T19:47:02Z",
-      "kind": "article",
-      "summary": "El delantero ha superado los tests previos y es la novedad de la lista del Depor ante los rojillos",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/02/6ae8e8b0c0b86.jpeg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "307a1760fb4c5e49",
-      "title": "Ocho charlas en tres días: este es el programa completo de Falas Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/ocho-charlas-en-tres-dias-este-es-el-programa-completo-de-falas-depor-888613.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-02T19:22:12Z",
-      "kind": "article",
-      "summary": "El Dépor Museo y el Espacio Avenida de Abanca acogerán la primera edición de una cita que pondrá el valor el deportivismo desde todos los…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/27/6ae0a20d54639.r_d.1500-1000-0.jpeg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "aa1384553c5dd4c0",
-      "title": "Ya es oficial: Aubameyang vuelve a la convocatoria del Deportivo 43 días después",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/ya-es-oficial-aubameyang-vuelve-a-la-convocatoria-del-deportivo-43-dias-despues-888609.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-02T19:01:54Z",
-      "kind": "article",
-      "summary": "El gabonés arrancará el Dépor-Osasuna desde el banquillo",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/21/6ad9077204eef.r_d.2584-699-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "c1ca23b5ed3a55c9",
-      "title": "Aubameyang vuelve a una convocatoria seis semanas después",
-      "url": "https://riazor.org/aubameyang-vuelve-convocatoria-seis-semanas-despues",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-02T18:24:30Z",
-      "kind": "article",
-      "summary": "Aubameyang vuelve a una convoctaria este lunes ante Osasuna. Seis semanas después de su lesión podría tener minutos. La entrada Aubameyang…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido",
-        "lesiones"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ebdee3e5a6d8bd2d",
-      "title": "Deportivo de A Coruña - Osasuna: horario, dónde ver en TV y canal del partido de LaLiga EA Sports",
-      "url": "https://marca.com/futbol/primera-division/2026/11/02/deportivo-coruna-osasuna-horario-donde-ver-tv-canal-partido-laliga-ea-sports.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-02T18:00:21Z",
-      "kind": "article",
-      "summary": "Deportivo de A Coruña y Osasuna se enfrentan hoy lunes 2 de noviembre a las 21:00 horas en el estadio ABANCA-Riazor en el partido…",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/10/31/21347454434687.png",
-      "tags": [
-        "partido",
-        "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "b78711bfa524a074",
-      "title": "Yeremay vuelve al radar de Luis de la Fuente",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/yeremay-vuelve-al-radar-de-luis-de-la-fuente-888568.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-02T16:30:09Z",
-      "kind": "article",
-      "summary": "El nombre del jugador del Dépor está incluido en la prelista de España antes del próximo parón por fechas FIFA",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/02/6ae8b6d099bf4.r_d.469-277-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "2fcf2b9dd62e0f17",
-      "title": "Los lectores de Riazor.org divisan un once inicial sin grandes novedades para recibir a Osasuna en Riazor",
-      "url": "https://riazor.org/los-lectores-de-riazor-org-divisan-un-once-inicial-sin-grandes-novedades-para-recibir-a-osasuna-en-riazor",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-02T06:00:04Z",
-      "kind": "article",
-      "summary": "El Deportivo intentará poner fin a la racha de seis jornadas en liga sin conocer la victoria con un triunfo este lunes en Riazor ante un…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "be60cc2ec3fcb7b5",
-      "title": "Un ataque que se apoye en más de dos apellidos",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/un-ataque-que-se-apoye-en-mas-de-dos-apellidos-888421.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-02T03:15:00Z",
-      "kind": "article",
-      "summary": "Nsongo y Aubameyang capitalizan casi la mitad de los remates del Deportivo y del peligro generado en juego dinámico",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/01/6ae781e27de00.r_d.1386-1228-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "13e2a8058ced0a51",
-      "title": "Altimira amenaza la jerarquía de Ximo Navarro en el lateral del Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-02/altimira-amenaza-la-jerarquia-de-ximo-navarro-en-el-lateral-del-depor-888111.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-02T03:15:00Z",
-      "kind": "article",
-      "summary": "El notable partido de Altimira ante el Atlético y los 90 minutos de Ximo Navarro en Copa reabren la disputa por el puesto",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4e9682220e.r_d.1642-1403-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "78408f14eabc5a29",
-      "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
-      "url": "https://marca.com/futbol/2026/11/02/pepe-mel-uci-operado-ictus-sevilla.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-01T23:37:11Z",
-      "kind": "article",
-      "summary": "El exentrenador del Betis, Rayo, Málaga o Dépor, entre otros, permanece ingresado en observación",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2024/09/06/17161522568209.jpeg",
-      "tags": [],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "Pepe Mel, en la UCI tras ser operado de un ictus en Sevilla",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/02/pepe-mel-uci-tras-operado-ictus-sevilla/00031793611396756290829.htm",
-          "publishedAt": "2026-11-02T09:27:00Z"
-        }
-      ]
-    },
-    {
-      "id": "d14ba4969b879daf",
-      "title": "Resumen del Zamora CF 1 - 3 Fabril",
-      "url": "https://youtube.com/watch?v=9FlfI9800lM",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-01T22:37:05Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i2.ytimg.com/vi/9FlfI9800lM/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "d829064f77186299",
-      "title": "Rueda de prensa de Manuel Pablo tras el Zamora CF 1 - 3 Fabril",
-      "url": "https://youtube.com/watch?v=doKo_9gkvdo",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-01T21:20:52Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i1.ytimg.com/vi/doKo_9gkvdo/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "1ea807dce3113c93",
-      "title": "Hidalgo busca frenar ante Osasuna una racha que nunca había sufrido en el Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/hidalgo-busca-frenar-ante-osasuna-una-racha-que-nunca-habia-sufrido-en-el-depor-888127.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-01T20:33:58Z",
-      "kind": "article",
-      "summary": "El equipo coruñés enlaza seis jornadas sin ganar, una cifra que supera las dos peores series de Antonio Hidalgo como blanquiazul, ambas de…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4f045a7a2c.r_d.1432-684-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "3dfec38f62268ea7",
-      "title": "Riazor recupera a su todoterreno: Lorenzo Amatucci",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/01/riazor-recupera-todoterreno-lorenzo-amatucci/00031793558734388623521.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-01T20:12:00Z",
-      "kind": "article",
-      "summary": "Mes y medio después, tras una leve lesión, el parón de selecciones y una sanción, vuelve a jugar como local con el Dépor, ante Osasuna",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/G83SKdhESB72cgnkY_J413gkWug=/768x/2026/11/01/00121793558702452460880/Foto/h_20260831_110307000.jpg",
-      "tags": [
-        "lesiones"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3bc8d2067d1cd3b3",
-      "title": "El 1x1 del Zamora-Fabril: Manu Ferreiro agitó la varita en el Ruta de la Plata",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-01/el-1x1-del-zamora-fabril-manu-ferreiro-agito-la-varita-en-el-ruta-de-la-plata-888401.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-01T20:03:06Z",
-      "kind": "article",
-      "summary": "El futbolista de Castroverde recuperó la sonrisa en su primera titularidad tras la lesión",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/01/6ae79ab665f33.r_d.512-361-0.jpg",
-      "tags": [
-        "cantera",
-        "opinion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3ea529b080fbab17",
-      "title": "Así fue el golazo con el que Manu Ferreiro inició el triunfo del Fabril en Zamora (VÍDEO)",
-      "url": "https://riazor.org/golazo-manu-ferreiro-triunfo-fabril-zamora-video",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-01T20:00:58Z",
-      "kind": "article",
-      "summary": "Manu Ferreiro, con un golpeo desde el medio del campo que por seguro será uno de los goles de la temporada, adelantó al Fabril en Zamora…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "bafe97c690568e77",
-      "title": "Crónica | El Fabril revive con personalidad en Zamora (1-3)",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-01/cronica-el-fabril-revive-con-personalidad-en-zamora-1-888395.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-01T19:46:44Z",
-      "kind": "article",
-      "summary": "El filial blanquiazul vuelve a la senda de la victoria con goles de Manu Ferreiro, Iker Gil y Martín Ochoa",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/01/6ae795e96bff2.r_d.543-720-0.jfif",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ab6c7bbe84f45d9a",
-      "title": "Jagoba Arrasate: «Quiero un equipo valiente y que el Dépor sienta nuestra amenaza»",
-      "url": "https://riazor.org/jagoba-arrasate-equipo-valiente-depor-amenaza",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-01T19:00:29Z",
-      "kind": "article",
-      "summary": "El entrenador de Osasuna ha vuelto al club rojillo, donde es leyenda, después de la destitución de Luis Miguel Ramis hace tres semanas. La…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/rueda-de-prensa-jagoba-arrasate-.jpg",
-      "tags": [
-        "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "8e47b72ce4e5868c",
-      "title": "Leo Román se reencuentra con Arrasate, el técnico que le puso a prueba antes de confiar en él",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/leo-roman-se-reencuentra-con-arrasate-el-tecnico-que-le-puso-a-prueba-antes-de-confiar-en-el-888140.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-01T17:31:28Z",
-      "kind": "article",
-      "summary": "Leo Román, portero del Dépor, busca recuperar su mejor versión ante Arrasate, el técnico que no le regaló la titularidad en el Mallorca",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4f9ff7c1f9.r_d.1506-900-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "743040e4502cba83",
-      "title": "El Fabril viaja a Zamora con la lección del Extremadura para recuperar las sensaciones",
-      "url": "https://riazor.org/el-fabril-viaja-a-zamora-con-la-leccion-del-extremadura-para-recuperar-las-sensaciones",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-01T17:30:15Z",
-      "kind": "article",
-      "summary": "El Fabril visita al Zamora (18:45) 18º con 8 puntos y seis bajas. Manuel Pablo pide recuperar sensaciones y Óscar Cano saca a relucir a…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "583ff7f2bc7bd634",
-      "title": "El árbitro del Dépor-Osasuna: de la despedida de Idiakez al incomprensible gol anulado en A Malata",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/el-arbitro-del-depor-osasuna-de-la-despedida-de-idiakez-al-incomprensible-gol-anulado-en-a-malata-888356.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-01T13:33:55Z",
-      "kind": "article",
-      "summary": "Jon Ander González dirigirá el encuentro de este lunes en Riazor su quinto encuentro al equipo blanquiazul",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/01/6ae73c3ca74c9.r_d.1511-899-0.JPG",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3d1ac0e13e51df92",
-      "title": "Altas, bajas y posible once del Dépor ante el Osasuna: Adama o Luismi, con la incógnita de la vuelta de Aubameyang",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/altas-bajas-y-posible-once-del-depor-ante-el-osasuna-adama-o-luismi-con-la-incognita-de-la-vuelta-de-aubameyang-888355.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-01T13:03:59Z",
-      "kind": "article",
-      "summary": "Hidalgo no descarta que el gabonés entre en la lista después de completar una nueva sesión con el grupo",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/27/6ae09f1859e77.r_d.1069-575-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "4863ca7bd1bd9358",
-      "title": "Arrasate: \"El Dépor es un equipo bueno con balón, tenemos que lograr que no esté cómodo\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/arrasate-el-depor-es-un-equipo-bueno-con-balon-tenemos-que-lograr-que-no-este-comodo-888354.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-01T12:42:06Z",
-      "kind": "article",
-      "summary": "El técnico de Osasuna insiste en la necesidad de tener más presencia en ataque",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2025/09/11/68c202070c820.r_d.1037-1132-0.jpeg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "9d4fb62a2f1e8d04",
-      "title": "Rueda de prensa de Antonio Hidalgo previa al RC Deportivo - CA Osasuna",
-      "url": "https://youtube.com/watch?v=TlzTqDc63A0",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-01T10:00:17Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i1.ytimg.com/vi/TlzTqDc63A0/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "d0dc1d16ad83b7e1",
-      "title": "Hidalgo y la vuelta de Aubameyang: \"No vamos a cometer ningún tipo de locura\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-01/hidalgo-y-la-vuelta-de-aubameyang-no-vamos-a-cometer-ningun-tipo-de-locura-888339.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-01T08:52:29Z",
-      "kind": "article",
-      "summary": "Antonio Hidalgo habló sobre el Dépor-Espanyol y la posible presencia de Aubameyang",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/30/6ae4f045a7a2c.r_d.1432-684-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "d2d47a1cca37b944",
-      "title": "Duelo de necesidad en Abanca Riazor",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/31/duelo-necesidad-abanca-riazor/00031793470296333752576.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-01T04:00:00Z",
-      "kind": "article",
-      "summary": "El Dépor, que suma seis jornadas sin vencer, recibe mañana a un Osasuna con carencias en las áreas y que solo ha sumado tres puntos a…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/zoCkrYG82Hod6CA1WMaZeRt3RIA=/768x/2026/10/31/00121793470622934340712/Foto/h_20261017_183817000.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]
