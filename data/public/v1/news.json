@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T21:03:41Z",
+  "updatedAt": "2026-11-14T21:32:40Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,21 @@
   ],
   "stories": [
     {
+      "id": "4a9238c1361231f1",
+      "title": "Manuel Pablo: \"Hemos cometido errores y, como siempre, nos han perjudicado mucho\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-14/manuel-pablo-hemos-cometido-errores-siempre-han-perjudicado-891041.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-14T21:03:16Z",
+      "kind": "article",
+      "summary": "El técnico del Fabril analizó en rueda de prensa el empate del filial blanquiazul ante el Barakaldo (2-2)",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/12/6af5dd331dad5.r_d.1699-868-0.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "7dc5a1eff142b807",
       "title": "Rueda de prensa de Manuel Pablo tras el Fabril 2 - 2 Barakaldo",
       "url": "https://youtube.com/watch?v=gRR8gPDqxeg",
@@ -52,6 +67,21 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i4.ytimg.com/vi/gRR8gPDqxeg/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "1107ec1b9c615222",
+      "title": "Noé Carrillo salva el empate para un Fabril que mereció más",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/14/noe-carrillo-salva-empate-fabril-merecio/00031794687721693663598.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-14T20:27:00Z",
+      "kind": "article",
+      "summary": "El filial deportivista empezó ganando, pero marcó el 2-2 en el último minuto del tiempo reglamentario",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/rGlZfnKjH1GXnmKk8so3NwoPZJ0=/768x/2026/11/14/00121794687302761240980/Foto/fabrbarkaldo.png",
       "tags": [
         "cantera",
         "partido"
@@ -2112,35 +2142,6 @@
       "publishedAt": "2026-11-03T10:00:35Z",
       "kind": "article",
       "summary": "El Deportivo remontó ante Osasuna gracias a los goles de Mario Soriano y Nsongo Bil. Vota a los jugadores y a Antonio Hidalgo en este…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "50ec0577993a83a7",
-      "title": "Galería | Búscate en las gradas de Riazor durante el Dépor-Osasuna",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/galeria-buscate-en-las-gradas-de-riazor-durante-el-depor-osasuna-888683.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-03T08:38:58Z",
-      "kind": "article",
-      "summary": "Todas las imágenes de la afición del Deportivo en Riazor durante el partido ante Osasuna de la jornada 11 de LaLiga EA Sports",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6ae99c5d0b874.r_d.1549-1129-0.jpg",
-      "tags": [
-        "aficion",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3e84f27cb09b9ab1",
-      "title": "Adama Traoré, una pesadilla para Arrasate: «Es un especialista y hoy ha sido determinante»",
-      "url": "https://riazor.org/adama-traore-pesadilla-arrasate-determinante",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-03T08:00:00Z",
-      "kind": "article",
-      "summary": "El entrenador de Osasuna analizó el partido realizado por el Deportivo tras la derrota del conjunto rojillo este lunes en Riazor. La…",
       "thumbnailUrl": null,
       "tags": [
         "partido"
