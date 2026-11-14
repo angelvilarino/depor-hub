@@ -412,13 +412,22 @@ def cmd_match_details(args: argparse.Namespace) -> int:
         offline=args.offline,
     )
     created = unresolved = 0
+    # PIPE-04: distinguir «no había partido pendiente» de «había partido y la
+    # fuente falló». Lo segundo se anota en el run; con --strict, además, el
+    # comando sale en rojo. El workflow usa continue-on-error para que el rojo
+    # sea visible sin bloquear fixtures, snapshots, club ni la publicación.
+    strict = bool(getattr(args, "strict", False))
     try:
         client = bdfutbol.BDFutbolClient(http)
         try:
             schedule = client.schedule(season)
         except SourceError as exc:
+            print(
+                f"::error::BDFutbol no devolvió el calendario {season}: {exc}",
+                file=sys.stderr,
+            )
             print(f"AVISO: no se pudo leer el calendario de BDFutbol: {exc}", file=sys.stderr)
-            return 0
+            return 2 if strict else 0
         for match, target in pending:
             row = bdfutbol.find_schedule_match(
                 schedule, match.home.name, match.away.name, match.utc_date[:10]
@@ -426,7 +435,7 @@ def cmd_match_details(args: argparse.Namespace) -> int:
             if row is None or row.bdf_id is None:
                 unresolved += 1
                 print(
-                    f"AVISO: sin partido de BDFutbol para {match.id} "
+                    f"::error::sin partido de BDFutbol para {match.id} "
                     f"({match.home.name} - {match.away.name}, {match.utc_date[:10]})",
                     file=sys.stderr,
                 )
@@ -435,7 +444,10 @@ def cmd_match_details(args: argparse.Namespace) -> int:
                 data = client.match_detail(row.bdf_id)
             except SourceError as exc:
                 unresolved += 1
-                print(f"AVISO: no se pudo leer el partido {row.bdf_id}: {exc}", file=sys.stderr)
+                print(
+                    f"::error::no se pudo leer el partido {row.bdf_id}: {exc}",
+                    file=sys.stderr,
+                )
                 continue
             if not (
                 data.home_lineup.starters
@@ -446,7 +458,7 @@ def cmd_match_details(args: argparse.Namespace) -> int:
             ):
                 unresolved += 1
                 print(
-                    f"AVISO: la ficha {row.bdf_id} no contiene alineaciones ni eventos; "
+                    f"::error::la ficha {row.bdf_id} no contiene alineaciones ni eventos; "
                     "no se publica un detalle vacío",
                     file=sys.stderr,
                 )
@@ -460,7 +472,7 @@ def cmd_match_details(args: argparse.Namespace) -> int:
             ):
                 unresolved += 1
                 print(
-                    f"AVISO: el marcador de BDFutbol ({data.score_home}-{data.score_away}) "
+                    f"::error::el marcador de BDFutbol ({data.score_home}-{data.score_away}) "
                     f"no coincide con el publicado ({match.score.home}-{match.score.away}) "
                     f"para {match.id}; no se publica detalle",
                     file=sys.stderr,
@@ -477,7 +489,31 @@ def cmd_match_details(args: argparse.Namespace) -> int:
         f"unresolved={unresolved} out={out_dir}"
     )
     # El detalle es opcional: no debe impedir que se publiquen fixtures, snapshots
-    # o el club si BDFutbol no tiene todavía la ficha de un partido.
+    # o el club si BDFutbol no tiene todavía la ficha de un partido (ADR 0031).
+    # Pero un fallo con partidos pendientes no puede quedar en verde silencioso
+    # (PIPE-04): --strict devuelve 2 y el workflow lo muestra con continue-on-error.
+    if unresolved and strict:
+        return 2
+    return 0
+
+
+def cmd_smoke(args: argparse.Namespace) -> int:
+    """Comprueba el contrato publicado en Pages o en un directorio local (D1-01)."""
+    from . import smoke
+
+    if args.data:
+        payloads = smoke.load_local(Path(args.data))
+        target = str(args.data)
+    else:
+        payloads = smoke.fetch_published(args.base_url, timeout=args.timeout)
+        target = args.base_url
+    failures = smoke.check_payloads(payloads)
+    if failures:
+        print(f"smoke falló contra {target}:", file=sys.stderr)
+        for failure in failures:
+            print(f"- {failure}", file=sys.stderr)
+        return 1
+    print(f"smoke ok: {len(smoke.DOCUMENTS)} documentos válidos contra {target}")
     return 0
 
 
@@ -682,6 +718,8 @@ def cmd_club(args: argparse.Namespace) -> int:
         Path(args.out),
         manual_dir=Path(args.manual),
         force=args.force,
+        titles_path=Path(args.titles),
+        rivalries_path=Path(args.rivalries),
     )
     coverage = Path(args.coverage)
     coverage.parent.mkdir(parents=True, exist_ok=True)
@@ -882,10 +920,17 @@ _STATUS_DATA_FILES: tuple[tuple[str, bool], ...] = (
     ("rivalries.json", False),
 )
 
-_STATUS_WORKFLOWS: tuple[tuple[str, str], ...] = (
-    ("Data refresh", "data-refresh.yml"),
-    ("News refresh", "news-refresh.yml"),
-    ("Rivals refresh", "rivals-refresh.yml"),
+_STATUS_WORKFLOWS: tuple[tuple[str, str, int | None], ...] = (
+    ("Data refresh", "data-refresh.yml", 36),
+    ("News refresh", "news-refresh.yml", 6),
+    ("Rivals refresh", "rivals-refresh.yml", 24 * 8),
+    ("Health", "health.yml", 8),
+    # CI solo corre con pushes: su ausencia no implica un pipeline roto.
+    ("CI", "ci.yml", None),
+)
+
+_STATUS_BAD_CONCLUSIONS = frozenset(
+    {"failure", "timed_out", "action_required", "startup_failure"}
 )
 
 
@@ -960,22 +1005,59 @@ def _status_file(path: Path, name: str, required: bool, now: datetime) -> m.Stat
     )
 
 
-def _status_workflows(runs: list[dict[str, object]]) -> list[m.StatusWorkflow]:
+def _age_hours(value: object, now: datetime) -> float | None:
+    if not isinstance(value, str):
+        return None
+    try:
+        captured = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if captured.tzinfo is None:
+        captured = captured.replace(tzinfo=UTC)
+    return max(0.0, (now - captured).total_seconds() / 3600)
+
+
+def _status_workflows(
+    runs: list[dict[str, object]], now: datetime
+) -> list[m.StatusWorkflow]:
+    """Última pasada y último éxito de cada workflow, con su propia ventana.
+
+    Se calcula sobre los runs que haya para ese workflow; no sobre una ventana
+    global de 50 runs donde Rivals (semanal) desaparece (PIPE-05).
+    """
     out: list[m.StatusWorkflow] = []
-    for name, filename in _STATUS_WORKFLOWS:
+    for name, filename, expected_hours in _STATUS_WORKFLOWS:
         candidates = [
             run
             for run in runs
             if str(run.get("path", "")).endswith(f"/{filename}")
             and run.get("conclusion") is not None
         ]
+        if not candidates:
+            continue
         latest = max(candidates, key=lambda run: str(run.get("updated_at", "")), default=None)
+        successes = [run for run in candidates if run.get("conclusion") == "success"]
+        last_success = max(
+            successes, key=lambda run: str(run.get("updated_at", "")), default=None
+        )
+        last_success_at = (
+            str(last_success["updated_at"])
+            if last_success and last_success.get("updated_at")
+            else None
+        )
+        stale = None
+        if expected_hours is not None:
+            age = _age_hours(last_success_at, now)
+            stale = age is None or age > expected_hours
         out.append(
             m.StatusWorkflow(
                 name=name,
                 file=filename,
                 conclusion=str(latest["conclusion"]) if latest else None,
                 updated_at=str(latest["updated_at"]) if latest and latest.get("updated_at") else None,
+                last_success_at=last_success_at,
+                expected_within_hours=expected_hours,
+                stale=stale,
                 url=str(latest["html_url"]) if latest and latest.get("html_url") else None,
             )
         )
@@ -985,18 +1067,28 @@ def _status_workflows(runs: list[dict[str, object]]) -> list[m.StatusWorkflow]:
 def cmd_status(args: argparse.Namespace) -> int:
     """Resume el estado publicado y la última pasada de cada workflow (ADR 0027)."""
     now = datetime.now(UTC)
+    if getattr(args, "now", None):
+        now = datetime.fromisoformat(str(args.now).replace("Z", "+00:00"))
+        if now.tzinfo is None:
+            now = now.replace(tzinfo=UTC)
     data_dir = Path(args.data)
     files = [
         _status_file(data_dir / name, name, required, now)
         for name, required in _STATUS_DATA_FILES
     ]
     runs: list[dict[str, object]] = []
-    if args.runs:
+    if getattr(args, "runs_dir", None):
+        for path in sorted(Path(args.runs_dir).glob("*.json")):
+            raw = json.loads(path.read_text(encoding="utf-8"))
+            value = raw.get("workflow_runs") if isinstance(raw, dict) else raw
+            if isinstance(value, list):
+                runs.extend(run for run in value if isinstance(run, dict))
+    elif args.runs:
         raw = json.loads(Path(args.runs).read_text(encoding="utf-8"))
         value = raw.get("workflow_runs") if isinstance(raw, dict) else raw
         if isinstance(value, list):
             runs = [run for run in value if isinstance(run, dict)]
-    workflows = _status_workflows(runs) if runs else []
+    workflows = _status_workflows(runs, now) if runs else []
 
     # Un fichero opcional ausente no rompe la app; los requeridos sí.
     required_missing = any(
@@ -1012,7 +1104,10 @@ def cmd_status(args: argparse.Namespace) -> int:
         }
         for file, (name, _) in zip(files, _STATUS_DATA_FILES, strict=True)
     )
-    workflows_ok = not workflows or all(workflow.conclusion == "success" for workflow in workflows)
+    workflows_ok = not workflows or all(
+        workflow.conclusion not in _STATUS_BAD_CONCLUSIONS and not workflow.stale
+        for workflow in workflows
+    )
     status = m.Status(
         updated_at=now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         commit=args.commit or None,
@@ -1362,10 +1457,29 @@ def main(argv: list[str] | None = None) -> int:
     sp = sub.add_parser("validate", help="Valida todos los JSON públicos con Pydantic")
     sp.add_argument("--data", default="data/public/v1")
     sp.set_defaults(fn=cmd_validate)
+    sp = sub.add_parser("smoke", help="Comprueba el contrato publicado (D1-01)")
+    sp.add_argument(
+        "--base-url",
+        default="https://angelvilarino.github.io/depor-hub",
+        help="Base pública; se añade /v1/<documento>",
+    )
+    sp.add_argument(
+        "--data",
+        default=None,
+        help="Directorio local; si se indica, no se hace ninguna petición",
+    )
+    sp.add_argument("--timeout", type=float, default=20.0)
+    sp.set_defaults(fn=cmd_smoke)
     sp = sub.add_parser("status", help="Genera status.json para la rama status (ADR 0027)")
     sp.add_argument("--data", default="data/public/v1")
     sp.add_argument("--runs", default=None, help="JSON de /actions/runs con workflow_runs")
+    sp.add_argument(
+        "--runs-dir",
+        default=None,
+        help="Directorio con un JSON de runs por workflow (ventana propia, PIPE-05)",
+    )
     sp.add_argument("--out", default="status.json")
+    sp.add_argument("--now", default=None, help="Instante ISO para pruebas deterministas")
     sp.add_argument("--commit", default=os.environ.get("GITHUB_SHA", ""))
     sp.add_argument(
         "--soft",
@@ -1388,6 +1502,11 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--interval", type=float, default=1.0)
     sp.add_argument("--offline", action="store_true")
     sp.add_argument("--force", action="store_true", help="Reescribe detalles existentes")
+    sp.add_argument(
+        "--strict",
+        action="store_true",
+        help="Sale 2 si había partidos pendientes y BDFutbol falló o no emparejó (PIPE-04)",
+    )
     sp.set_defaults(fn=cmd_match_details)
     sp = sub.add_parser("rivals", help="Publica el histórico y el contexto de los 19 rivales")
     sp.add_argument("--fixtures", default="data/public/v1/fixtures.json")
@@ -1514,6 +1633,16 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--manual", default="data/manual")
     sp.add_argument("--out", default="data/public/v1")
     sp.add_argument("--coverage", default="docs/kits_coverage.md")
+    sp.add_argument(
+        "--titles",
+        default="data/public/v1/titles.json",
+        help="Documento canónico para el resumen de títulos de club.json (D1-09)",
+    )
+    sp.add_argument(
+        "--rivalries",
+        default="data/public/v1/rivalries.json",
+        help="Documento canónico para el resumen de rivalidades de club.json (D1-09)",
+    )
     sp.add_argument("--force", action="store_true")
     sp.set_defaults(fn=cmd_club)
     club_sub = sp.add_subparsers(dest="club_command")

@@ -1107,12 +1107,20 @@ class StatusFile(Public):
 
 
 class StatusWorkflow(Public):
-    """Última ejecución completada de un workflow de datos."""
+    """Última ejecución completada de un workflow de datos.
+
+    Cada workflow tiene su propia ventana: Rivals es semanal y no puede quedar
+    en rojo solo porque no aparece entre los 50 runs globales (PIPE-05). La
+    antigüedad se mide desde el último éxito, no desde el último intento.
+    """
 
     name: str
     file: str
     conclusion: Optional[str] = None
     updated_at: Optional[IsoDateTime] = None
+    last_success_at: Optional[IsoDateTime] = None
+    expected_within_hours: Optional[int] = Field(default=None, ge=1)
+    stale: Optional[bool] = None
     url: Optional[str] = None
 
 

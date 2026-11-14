@@ -54,7 +54,13 @@ def make_runs(tmp_path, conclusions=("success", "success", "success")):
 def run_status(tmp_path, data, runs, soft=False):
     out = tmp_path / "status.json"
     args = argparse.Namespace(
-        data=str(data), runs=str(runs), out=str(out), commit="abc1234", soft=soft
+        data=str(data),
+        runs=str(runs),
+        runs_dir=None,
+        out=str(out),
+        now=NOW,
+        commit="abc1234",
+        soft=soft,
     )
     code = cli.cmd_status(args)
     return code, m.Status.model_validate_json(out.read_text(encoding="utf-8"))
@@ -126,6 +132,65 @@ def test_status_is_red_when_a_required_file_or_workflow_fails(tmp_path):
     meta = next(file for file in status.files if file.name == "meta.json")
     assert meta.present is False
     assert meta.detail == "falta un fichero requerido"
+
+
+def test_status_marks_a_workflow_stale_from_its_last_success(tmp_path):
+    data = make_data(tmp_path)
+    runs = make_runs(tmp_path)
+    body = json.loads(runs.read_text(encoding="utf-8"))
+    body["workflow_runs"][0]["updated_at"] = "2026-10-01T00:00:00Z"
+    runs.write_text(json.dumps(body), encoding="utf-8")
+
+    code, status = run_status(tmp_path, data, runs)
+
+    assert code == 1
+    data_workflow = next(item for item in status.workflows if item.file == "data-refresh.yml")
+    assert data_workflow.last_success_at == "2026-10-01T00:00:00Z"
+    assert data_workflow.expected_within_hours == 36
+    assert data_workflow.stale is True
+    assert status.ok is False
+
+
+def test_status_reads_one_window_per_workflow_from_a_directory(tmp_path):
+    data = make_data(tmp_path)
+    runs_dir = tmp_path / "runs"
+    runs_dir.mkdir()
+    for filename in ("data-refresh.yml", "rivals-refresh.yml"):
+        (runs_dir / f"{filename}.json").write_text(
+            json.dumps(
+                {
+                    "workflow_runs": [
+                        {
+                            "path": f".github/workflows/{filename}",
+                            "conclusion": "success",
+                            "updated_at": NOW,
+                            "html_url": f"https://example.test/{filename}",
+                        }
+                    ]
+                }
+            ),
+            encoding="utf-8",
+        )
+    out = tmp_path / "status.json"
+    args = argparse.Namespace(
+        data=str(data),
+        runs=None,
+        runs_dir=str(runs_dir),
+        out=str(out),
+        now=NOW,
+        commit="abc1234",
+        soft=False,
+    )
+
+    code = cli.cmd_status(args)
+    status = m.Status.model_validate_json(out.read_text(encoding="utf-8"))
+
+    assert code == 0
+    assert {item.file for item in status.workflows} == {
+        "data-refresh.yml",
+        "rivals-refresh.yml",
+    }
+    assert all(item.stale is False for item in status.workflows)
 
 
 def test_status_ignores_missing_optional_files_and_unreadable_updated_at(tmp_path):

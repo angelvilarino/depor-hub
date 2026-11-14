@@ -73,9 +73,24 @@ def test_health_publishes_status_on_its_own_branch():
     body = runs(workflow, "status")
     assert "cli status" in body
     assert "--soft" in body
-    assert "actions/runs" in body
+    assert "--runs-dir" in body
+    assert "actions/workflows/" in body
+    assert "per_page=20" in body
     assert "HEAD:status" in body
     assert "deploy-pages" not in body
+
+
+def test_smoke_runs_after_a_successful_data_publish():
+    workflow = load("smoke.yml")
+    assert workflow["on"]["workflow_run"]["types"] == ["completed"]
+    assert set(workflow["on"]["workflow_run"]["workflows"]) == {
+        "Data refresh",
+        "News refresh",
+        "Rivals refresh",
+    }
+    body = runs(workflow, "smoke")
+    assert "cli smoke" in body
+    assert "angelvilarino.github.io/depor-hub" in body
 
 
 def test_news_runs_every_thirty_minutes_and_caches_the_feeds():
@@ -92,6 +107,19 @@ def test_news_runs_every_thirty_minutes_and_caches_the_feeds():
         if str(step.get("uses", "")).startswith("actions/cache")
     ]
     assert "data/raw/news" in paths
+
+
+def test_data_refresh_makes_a_bdfutbol_failure_visible_without_blocking_publish():
+    workflow = load("data-refresh.yml")
+    details = next(step for step in steps(workflow, "refresh") if step.get("id") == "match-details")
+    assert details["continue-on-error"] is True
+    assert "match-details --strict" in str(details["run"])
+    assert workflow["jobs"]["refresh"]["outputs"]["bdfutbol"] == "${{ steps.match-details.outcome }}"
+    alert = workflow["jobs"]["bdfutbol-alert"]
+    assert alert["needs"] == "refresh"
+    assert "failure" in alert["if"]
+    # El deploy solo depende de refresh: el rojo de BDFutbol no impide publicar.
+    assert workflow["jobs"]["deploy"]["needs"] == "refresh"
 
 
 def test_data_refresh_keeps_its_adaptive_cadence():

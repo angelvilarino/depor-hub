@@ -59,7 +59,7 @@
     },
     "StatusWorkflow": {
       "additionalProperties": false,
-      "description": "\u00daltima ejecuci\u00f3n completada de un workflow de datos.",
+      "description": "\u00daltima ejecuci\u00f3n completada de un workflow de datos.\n\nCada workflow tiene su propia ventana: Rivals es semanal y no puede quedar\nen rojo solo porque no aparece entre los 50 runs globales (PIPE-05). La\nantig\u00fcedad se mide desde el \u00faltimo \u00e9xito, no desde el \u00faltimo intento.",
       "properties": {
         "conclusion": {
           "anyOf": [
@@ -73,13 +73,50 @@
           "default": null,
           "title": "Conclusion"
         },
+        "expectedWithinHours": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expectedwithinhours"
+        },
         "file": {
           "title": "File",
           "type": "string"
         },
+        "lastSuccessAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lastsuccessat"
+        },
         "name": {
           "title": "Name",
           "type": "string"
+        },
+        "stale": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stale"
         },
         "updatedAt": {
           "anyOf": [

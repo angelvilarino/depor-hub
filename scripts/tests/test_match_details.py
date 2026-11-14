@@ -10,6 +10,7 @@ from depor_hub import cli
 from depor_hub import models as m
 from depor_hub import transform as t
 from depor_hub.enrich import bdfutbol
+from depor_hub.enrich.http import SourceError
 
 NOW = "2026-11-04T10:00:00Z"
 
@@ -302,6 +303,64 @@ def test_cmd_match_details_writes_once_and_not_for_upcoming(monkeypatch, tmp_pat
     assert calls == ["32382"]  # el segundo pase no vuelve a pedir la ficha
     again = m.MatchDetail.model_validate_json(target.read_text(encoding="utf-8"))
     assert again.captured_at == first.captured_at
+
+
+def test_cmd_match_details_strict_fails_when_bdfutbol_is_unavailable(monkeypatch, tmp_path):
+    """PIPE-04: un 403/429 con partidos pendientes no puede quedar en verde."""
+    fixtures_path = tmp_path / "fixtures.json"
+    fixtures_path.write_text(
+        json.dumps(
+            t.dump(m.Fixtures(updated_at=NOW, season="2026-27", matches=[_match()])),
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    class FailingClient:
+        def __init__(self, http):
+            pass
+
+        def schedule(self, season):
+            raise SourceError("403 Forbidden", status=403)
+
+    monkeypatch.setattr(bdfutbol, "BDFutbolClient", FailingClient)
+    args = argparse.Namespace(
+        fixtures=str(fixtures_path),
+        out=str(tmp_path / "match-details"),
+        raw=str(tmp_path / "raw"),
+        interval=0,
+        offline=True,
+        force=False,
+        strict=True,
+    )
+
+    assert cli.cmd_match_details(args) == 2
+
+
+def test_cmd_match_details_without_pending_matches_stays_green(monkeypatch, tmp_path):
+    fixtures_path = tmp_path / "fixtures.json"
+    fixtures_path.write_text(
+        json.dumps(
+            t.dump(m.Fixtures(updated_at=NOW, season="2026-27", matches=[_match()])),
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    target = tmp_path / "match-details" / "2026-27" / "564635.json"
+    target.parent.mkdir(parents=True)
+    target.write_text("{}", encoding="utf-8")
+
+    args = argparse.Namespace(
+        fixtures=str(fixtures_path),
+        out=str(tmp_path / "match-details"),
+        raw=str(tmp_path / "raw"),
+        interval=0,
+        offline=True,
+        force=False,
+        strict=True,
+    )
+
+    assert cli.cmd_match_details(args) == 0
 
 
 def test_cmd_match_details_skips_a_different_score(monkeypatch, tmp_path):

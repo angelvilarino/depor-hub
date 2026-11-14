@@ -30,22 +30,28 @@ jobs:
           cache: pip
           cache-dependency-path: scripts/pyproject.toml
       - run: pip install -e scripts
-      - name: Leer los últimos runs de los workflows de datos
+      - name: Leer los últimos runs de cada workflow
+        # Una ventana global de 50 runs oculta Rivals (semanal) y deja el
+        # semáforo en rojo para siempre (PIPE-05). Cada workflow se consulta
+        # por separado para que tenga su propia ventana.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl --fail --silent --show-error \
-            -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs?per_page=50" \
-            -o "$RUNNER_TEMP/runs.json"
+          mkdir -p "$RUNNER_TEMP/runs"
+          for workflow in data-refresh.yml news-refresh.yml rivals-refresh.yml health.yml ci.yml; do
+            curl --fail --silent --show-error \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/$workflow/runs?per_page=20&status=completed" \
+              -o "$RUNNER_TEMP/runs/$workflow.json"
+          done
       - name: Construir status.json
         # --soft publica también un estado rojo: el diagnóstico no debe desaparecer
         # justo cuando algo falla.
         run: |
           python -m depor_hub.cli status \
             --data data/public/v1 \
-            --runs "$RUNNER_TEMP/runs.json" \
+            --runs-dir "$RUNNER_TEMP/runs" \
             --out "$RUNNER_TEMP/status.json" \
             --commit "$GITHUB_SHA" \
             --soft

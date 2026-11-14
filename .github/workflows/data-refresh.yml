@@ -27,6 +27,7 @@ jobs:
     timeout-minutes: 10
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
+      bdfutbol: ${{ steps.match-details.outcome }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -49,10 +50,15 @@ jobs:
         run: python -m depor_hub.cli ingest --if-due ${{ inputs.force && '--force' || '' }}
       - name: Congelar snapshots de partidos terminados
         run: python -m depor_hub.cli snapshots
-      - name: Publicar alineaciones y eventos de partidos terminados
+      - id: match-details
+        name: Publicar alineaciones y eventos de partidos terminados
+        # PIPE-04: un 403/429 o un partido terminado sin emparejar deja el paso
+        # en rojo y una anotación, pero no bloquea la publicación del resto.
+        # El job bdfutbol-alert convierte ese rojo en run no-verde al final.
+        continue-on-error: true
         env:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
-        run: python -m depor_hub.cli match-details
+        run: python -m depor_hub.cli match-details --strict
       - name: Publicar la ficha del club
         run: python -m depor_hub.cli club
       - name: Imágenes del club (solo si faltan)
@@ -131,3 +137,16 @@ jobs:
           path: data/public
       - id: deploy
         uses: actions/deploy-pages@v4
+
+  # PIPE-04: si había partidos terminados y BDFutbol falló o no los emparejó,
+  # el run termina en rojo. Va en un job aparte para que deploy siga publicando
+  # fixtures, snapshots y club (no depende de este job).
+  bdfutbol-alert:
+    needs: refresh
+    if: needs.refresh.outputs.bdfutbol == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Señalar el fallo de BDFutbol
+        run: |
+          echo "::error::BDFutbol falló o no emparejó algún partido terminado; revisa las anotaciones del job refresh."
+          exit 1
