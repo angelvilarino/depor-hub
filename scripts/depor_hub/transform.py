@@ -324,12 +324,27 @@ def dump(model: m.Public) -> dict[str, Any]:
     return model.model_dump(mode="json", by_alias=True)
 
 
+# Campos volátiles que no representan un cambio de contenido. Se eliminan a
+# cualquier profundidad: `season.provenance.*.capturedAt` y los `generatedAt`
+# anidados hacían que cada pasada pareciera distinta (D1-02).
+_VOLATILE_KEYS = frozenset({"updatedAt", "dataHash", "capturedAt", "generatedAt"})
+
+
+def _canonical(value: Any) -> Any:
+    """Copia normalizada: fuera marcas de tiempo volátiles, dicts ordenados."""
+    if isinstance(value, dict):
+        return {
+            key: _canonical(item)
+            for key, item in sorted(value.items())
+            if key not in _VOLATILE_KEYS
+        }
+    if isinstance(value, list):
+        return [_canonical(item) for item in value]
+    return value
+
+
 def content_hash(files: dict[str, dict[str, Any]]) -> str:
-    """Hash del contenido ignorando marcas de tiempo, para publicar solo si hay cambios reales."""
-    ignored = {"updatedAt", "dataHash"}
-    canon = {
-        name: {k: v for k, v in body.items() if k not in ignored}
-        for name, body in sorted(files.items())
-    }
+    """Hash del contenido ignorando marcas de tiempo volátiles a cualquier nivel."""
+    canon = _canonical(files)
     blob = json.dumps(canon, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
     return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]

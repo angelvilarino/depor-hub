@@ -88,6 +88,60 @@ def test_hash_ignores_timestamps_but_not_content():
     assert t.content_hash(base) != t.content_hash(changed)
 
 
+def test_hash_ignores_volatile_timestamps_at_any_depth():
+    """D1-02: capturedAt/generatedAt anidados no son contenido."""
+    base = {
+        "season.json": {
+            "updatedAt": "2026-11-01T10:00:00Z",
+            "provenance": {"capturedAt": "2026-11-01T10:00:00Z", "source": "a"},
+            "matches": [{"generatedAt": "2026-11-01T10:00:00Z", "value": 1}],
+        }
+    }
+    other = {
+        "season.json": {
+            "updatedAt": "2026-11-02T10:00:00Z",
+            "provenance": {"capturedAt": "2026-11-02T10:00:00Z", "source": "a"},
+            "matches": [{"generatedAt": "2026-11-02T10:00:00Z", "value": 1}],
+        }
+    }
+    changed = {
+        "season.json": {
+            "updatedAt": "2026-11-01T10:00:00Z",
+            "provenance": {"capturedAt": "2026-11-01T10:00:00Z", "source": "b"},
+            "matches": [{"generatedAt": "2026-11-01T10:00:00Z", "value": 1}],
+        }
+    }
+    assert t.content_hash(base) == t.content_hash(other)
+    assert t.content_hash(base) != t.content_hash(changed)
+
+
+def test_two_passes_with_new_timestamps_do_not_write_again(tmp_path):
+    """D1-02: la segunda ingesta idéntica no debe generar commit."""
+    meta = json.loads((EXAMPLES / "meta.json").read_text(encoding="utf-8"))
+    first = {
+        "a.json": {
+            "updatedAt": "2026-11-01T10:00:00Z",
+            "nested": {"capturedAt": "2026-11-01T10:00:00Z", "value": 1},
+        },
+        "meta.json": {**meta, "updatedAt": "2026-11-01T10:00:00Z"},
+    }
+    second = {
+        "a.json": {
+            "updatedAt": "2026-11-02T10:00:00Z",
+            "nested": {"capturedAt": "2026-11-02T10:00:00Z", "value": 1},
+        },
+        "meta.json": {**meta, "updatedAt": "2026-11-02T10:00:00Z"},
+    }
+    first_hash = t.content_hash(first)
+    second_hash = t.content_hash(second)
+
+    assert first_hash == second_hash
+    first["meta.json"]["dataHash"] = first_hash
+    second["meta.json"]["dataHash"] = second_hash
+    assert write_if_changed(tmp_path, first, first_hash) is True
+    assert write_if_changed(tmp_path, second, second_hash) is False
+
+
 @pytest.mark.parametrize(
     "name", [*m.FILES, *m.NEWS_FILES, *m.EXTRA_FILES, *m.SNAPSHOT_FILES, *m.MATCH_DETAIL_FILES]
 )
