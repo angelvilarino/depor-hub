@@ -94,6 +94,39 @@ def _same_content(previous: dict[str, Any], current: dict[str, Any]) -> bool:
     }
 
 
+def derive_titles(path: Path) -> list[m.Title] | None:
+    """Resume `titles.json` como la lista de competiciones/años de `club.json`.
+
+    `titles.json` es la fuente canónica de las ediciones; `club.json.titles` solo
+    conserva el resumen que ya consumía la app. Si el documento no existe o no
+    valida, se devuelve `None` para mantener el respaldo de `club.yml`.
+    """
+    try:
+        document = m.Titles.model_validate_json(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    grouped: dict[str, list[int]] = {}
+    for edition in document.editions:
+        grouped.setdefault(edition.competition, []).append(edition.year)
+    return [m.Title(competition=competition, years=sorted(years)) for competition, years in grouped.items()]
+
+
+def derive_rivalries(path: Path) -> list[m.Rivalry] | None:
+    """Resume `rivalries.json` como la lista de rivales de `club.json`."""
+    try:
+        document = m.Rivalries.model_validate_json(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    return [
+        m.Rivalry(
+            rival=item.rival,
+            description=item.description,
+            since_year=item.since_year,
+        )
+        for item in document.rivalries
+    ]
+
+
 def publish_club(
     config_path: Path,
     anthems_dir: Path,
@@ -101,9 +134,24 @@ def publish_club(
     manual_dir: Path | None = None,
     force: bool = False,
     now: str | None = None,
+    titles_path: Path | None = None,
+    rivalries_path: Path | None = None,
 ) -> tuple[bool, m.Club]:
-    """Escribe club.json de forma idempotente y devuelve (cambió, club)."""
+    """Escribe club.json de forma idempotente y devuelve (cambió, club).
+
+    Si existen `titles.json` y `rivalries.json`, los resúmenes de `club.json` se
+    derivan de ellos (D1-09). `club.yml` sigue siendo el respaldo cuando esos
+    documentos aún no se han publicado.
+    """
     club = load_club(config_path, anthems_dir, manual_dir, now)
+    if titles_path is not None:
+        titles = derive_titles(titles_path)
+        if titles is not None:
+            club = club.model_copy(update={"titles": titles})
+    if rivalries_path is not None:
+        rivalries = derive_rivalries(rivalries_path)
+        if rivalries is not None:
+            club = club.model_copy(update={"rivalries": rivalries})
     body = club.model_dump(by_alias=True, mode="json")
     target = out_dir / "club.json"
 

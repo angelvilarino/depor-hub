@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T18:20:34Z",
+  "updatedAt": "2026-11-14T13:39:02Z",
   "identity": {
     "officialName": "Real Club Deportivo de La Coruña, S.A.D.",
     "shortName": "RC Deportivo",
@@ -1578,6 +1578,31 @@
       "rival": "RC Celta de Vigo",
       "description": "El derbi gallego. Primer enfrentamiento en el campeonato gallego de 1923; es el partido más repetido y tenso del fútbol gallego.",
       "sinceYear": 1923
+    },
+    {
+      "rival": "SD Compostela",
+      "description": "Rivalidad gallega de los años noventa; ambos clubes coincidieron en Primera División en la temporada 1994-95.",
+      "sinceYear": null
+    },
+    {
+      "rival": "Real Oviedo",
+      "description": "Enfrentamientos históricos en Primera y Segunda División.",
+      "sinceYear": null
+    },
+    {
+      "rival": "Real Sporting de Gijón",
+      "description": "Rivalidad deportiva del norte; enfrentamientos históricos en Primera y Segunda División.",
+      "sinceYear": null
+    },
+    {
+      "rival": "Racing Club de Ferrol",
+      "description": "Derbi gallego; enfrentamientos en Segunda y Segunda División B.",
+      "sinceYear": null
+    },
+    {
+      "rival": "CD Lugo",
+      "description": "Rival gallego; enfrentamientos en Segunda y Segunda División B.",
+      "sinceYear": null
     }
   ],
   "facts": [

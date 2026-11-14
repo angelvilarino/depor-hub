@@ -161,6 +161,49 @@ def test_publish_club_rewrites_when_the_content_changes(tmp_path: Path):
     )
 
 
+def test_club_summaries_follow_the_canonical_titles_and_rivalries(tmp_path: Path):
+    """D1-09: club.json no mantiene una segunda lista de títulos/rivales."""
+    titles_path = ROOT / "data" / "public" / "v1" / "titles.json"
+    rivalries_path = ROOT / "data" / "public" / "v1" / "rivalries.json"
+    changed, club = publish_club(
+        MANUAL / "club.yml",
+        MANUAL / "himnos",
+        tmp_path,
+        MANUAL,
+        now=NOW,
+        titles_path=titles_path,
+        rivalries_path=rivalries_path,
+    )
+
+    editions = json.loads(titles_path.read_text(encoding="utf-8"))["editions"]
+    expected_titles: dict[str, list[int]] = {}
+    for edition in editions:
+        expected_titles.setdefault(edition["competition"], []).append(edition["year"])
+
+    assert changed is True
+    assert [(title.competition, title.years) for title in club.titles] == [
+        (competition, sorted(years)) for competition, years in expected_titles.items()
+    ]
+    assert [rivalry.rival for rivalry in club.rivalries] == [
+        rivalry["rival"]
+        for rivalry in json.loads(rivalries_path.read_text(encoding="utf-8"))["rivalries"]
+    ]
+
+
+def test_club_summaries_fall_back_to_yaml_when_documents_are_missing(tmp_path: Path):
+    _, club = publish_club(
+        MANUAL / "club.yml",
+        MANUAL / "himnos",
+        tmp_path,
+        MANUAL,
+        now=NOW,
+        titles_path=tmp_path / "missing-titles.json",
+        rivalries_path=tmp_path / "missing-rivalries.json",
+    )
+    assert club.titles
+    assert [rivalry.rival for rivalry in club.rivalries] == ["RC Celta de Vigo"]
+
+
 def test_kits_are_sorted_by_season_and_groupable_by_decade():
     club = real_club()
     seasons = sorted_seasons(club.kits)
