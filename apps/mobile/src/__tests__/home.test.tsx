@@ -5,7 +5,9 @@ import Home from '../../app/(tabs)/index';
 import i18n from '@/i18n';
 import { Fixtures, Meta, Rivals, Season, Standings } from '@/data/schemas';
 
-const dir = path.resolve(__dirname, '../../../../data/public/v1');
+// Fixtures congelados: la home no debe depender de que el bot haya actualizado
+// data/public justo antes de ejecutar Jest (F5-06).
+const dir = path.resolve(__dirname, '../test-utils/fixtures/home');
 const load = (name: string): unknown => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8'));
 
 const metaData = Meta.parse(load('meta.json'));

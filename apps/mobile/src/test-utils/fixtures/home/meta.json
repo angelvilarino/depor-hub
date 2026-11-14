@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "season": "2026-27",
+  "competitionCode": "PD",
+  "competitionName": "Primera Division",
+  "team": {
+    "id": 560,
+    "name": "RC Deportivo La Coruña",
+    "shortName": "Deportivo",
+    "tla": "DEP",
+    "crestUrl": "https://crests.football-data.org/560.png",
+    "venue": "Estadio Abanca-Riazor"
+  },
+  "updatedAt": "2026-11-06T12:42:42Z",
+  "dataHash": "7fad479bc683ad47",
+  "source": {
+    "name": "football-data.org",
+    "url": "https://www.football-data.org",
+    "note": "Datos de terceros; consulta sus términos. Proyecto de aficionados no oficial."
+  }
+}
