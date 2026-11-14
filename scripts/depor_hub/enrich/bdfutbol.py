@@ -612,6 +612,10 @@ def parse_schedule(document: str) -> list[ScheduleMatch]:
                 away=strip_tags(cells[3]),
             )
         )
+    if not out:
+        # PIPE-07: un calendario sin filas es una degradación de la fuente, no
+        # un día sin partidos. Se trata como error para que el run no quede verde.
+        raise SourceError("el calendario de BDFutbol no contiene partidos")
     return out
 
 
@@ -899,6 +903,17 @@ def parse_match_detail(document: str, bdf_id: str, url: str) -> MatchDetailData:
     goals.sort(key=sort_key)
     cards.sort(key=sort_key)
     substitutions.sort(key=sort_key)
+
+    if not (
+        home_lineup.starters
+        or away_lineup.starters
+        or goals
+        or cards
+        or substitutions
+    ):
+        # PIPE-07: la ficha existe pero no se ha podido extraer nada. Es una
+        # degradación del HTML, no un partido sin eventos.
+        raise SourceError(f"la ficha {bdf_id} no contiene alineaciones ni eventos")
 
     return MatchDetailData(
         bdfutbol_id=bdf_id,

@@ -184,6 +184,12 @@ class StubHttp:
 H2H_HTML = """
 <table>
   <tr><td>Balance</td></tr>
+  <tr data-codi1="13" data-codi2="11">
+    <td>16/12/2021</td><td>LaLiga</td><td>Jornada 17</td>
+    <td>Deportivo de La Coruña</td><td></td>
+    <td><div class='resultat-gols '>2</div><div class='resultat-gols'>1</div></td>
+    <td></td><td>RC Celta de Vigo</td>
+  </tr>
 </table>
 <div id='valorpj'>10</div><div id='valorpg'>5</div><div id='valorpp'>3</div>
 <div id='valorpe'>2</div><div id='valorgf'>15</div><div id='valorgc'>10</div>
@@ -194,9 +200,9 @@ def test_build_rivalries_fills_head_to_head_from_the_source():
     config = MANUAL / "rivalries.yml"
     rivalries = build_rivalries(config, StubHttp(H2H_HTML), NOW)  # type: ignore[arg-type]
     assert len(rivalries.rivalries) == 6
-    # El HTML sintético no trae filas de partidos, pero sí el balance global.
     assert all(rivalry.head_to_head is not None for rivalry in rivalries.rivalries)
     assert rivalries.rivalries[0].head_to_head.played == 10
+    assert rivalries.rivalries[0].head_to_head.meetings[0].home_goals == 2
 
 
 def test_publish_rivalries_is_idempotent(tmp_path: Path):

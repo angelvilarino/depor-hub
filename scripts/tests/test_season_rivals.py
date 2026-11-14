@@ -85,6 +85,16 @@ def test_parse_head_to_head_without_totals_raises():
         r.parse_head_to_head("<html></html>", "https://example.test/vs")
 
 
+def test_parse_head_to_head_with_totals_but_no_meetings_raises():
+    """PIPE-07: si el balance dice que hubo partidos, faltan filas es un fallo."""
+    html = """
+    <div id='valorpj'>80</div><div id='valorpg'>38</div><div id='valorpp'>28</div>
+    <div id='valorpe'>14</div><div id='valorgf'>133</div><div id='valorgc'>105</div>
+    """
+    with pytest.raises(SourceError):
+        r.parse_head_to_head(html, "https://example.test/vs")
+
+
 def test_build_season_evolution_and_summary():
     raw = s.FDMatches.model_validate(
         {

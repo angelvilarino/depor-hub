@@ -83,6 +83,13 @@ def parse_head_to_head(
         if len(meetings) >= limit:
             break
 
+    if totals["played"] > 0 and not meetings:
+        # PIPE-07: el balance dice que hubo partidos pero no se parseó ninguno.
+        # Es un cambio de HTML, no un rival sin cruces.
+        raise SourceError(
+            "BDFutbol publicó un balance sin filas de partidos; HTML no reconocido"
+        )
+
     return m.HeadToHead(
         source_url=source_url,
         played=totals["played"],

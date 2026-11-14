@@ -6,6 +6,8 @@ import argparse
 import json
 from dataclasses import replace
 
+import pytest
+
 from depor_hub import cli
 from depor_hub import models as m
 from depor_hub import transform as t
@@ -127,6 +129,25 @@ def test_parse_schedule_keeps_rows_without_result():
     assert rows[0].date == "2026-08-17"
     assert rows[0].matchday == 1
     assert rows[1].date == "2026-11-08"
+
+
+def test_parse_schedule_without_rows_raises():
+    """PIPE-07: 0 filas parseadas es un HTML roto, no una temporada vacía."""
+    with pytest.raises(SourceError):
+        bdfutbol.parse_schedule("<html><table><tr class='jornadai'></tr></table></html>")
+
+
+def test_parse_match_detail_without_lineups_or_events_raises():
+    empty_sheet = """
+    <h1 class="m-0">
+      <a href='../e/e13.html'>Deportivo de A Coruña</a>
+      <div class="resultat-partit">1</div>
+      <div class="resultat-partit">2</div>
+      <a href='../e/e24.html'>Elche</a>
+    </h1>
+    """
+    with pytest.raises(SourceError):
+        bdfutbol.parse_match_detail(empty_sheet, "32382", "https://example.test/p")
 
 
 def test_same_team_tolerates_suffixes_but_not_rivals():
