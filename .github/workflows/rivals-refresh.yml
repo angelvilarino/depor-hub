@@ -13,6 +13,9 @@ on:
 
 permissions:
   contents: write
+  # El deploy vive en `publish.yml` (workflow_call).
+  pages: write
+  id-token: write
 
 # Un solo grupo para Data, News y Rivals: solo uno escribe `main` a la vez
 # (PIPE-06). El despliegue se serializa aparte en `pages-deploy`.

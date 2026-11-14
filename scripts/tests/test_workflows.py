@@ -32,6 +32,10 @@ def test_every_writer_shares_one_lock_and_one_reusable_deploy():
         workflow = load(name)
         assert workflow["concurrency"]["group"] == "main-write"
         assert workflow["concurrency"]["cancel-in-progress"] is False
+        # El llamante debe conceder los permisos que pide `publish.yml`; si no,
+        # GitHub falla el run al arrancar con `startup_failure`.
+        assert workflow["permissions"]["pages"] == "write"
+        assert workflow["permissions"]["id-token"] == "write"
         deploy = workflow["jobs"]["deploy"]
         assert deploy["needs"] == "refresh"
         assert deploy["if"] == "needs.refresh.outputs.changed == 'true'"

@@ -12,6 +12,9 @@ on:
 
 permissions:
   contents: write
+  # El deploy vive en `publish.yml` (workflow_call).
+  pages: write
+  id-token: write
 
 # Un solo grupo para Data, News y Rivals: solo uno escribe `main` a la vez
 # (PIPE-06). El rebase de 5 intentos queda como red de seguridad, pero ya no hay
