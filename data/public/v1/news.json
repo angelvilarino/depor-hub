@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T17:03:49Z",
+  "updatedAt": "2026-11-14T20:03:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "ff434b3cb9e0a804",
+      "title": "Crónica | El Fabril suma un punto y evita males mayores (2-2)",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-14/cronica-el-fabril-suma-un-punto-y-evita-males-mayores-2-890981.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-14T19:50:56Z",
+      "kind": "article",
+      "summary": "Noé Carrillo apareció en el último minuto del tiempo reglamentario para rescatar el empate ante el Barakaldo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/14/6af8ba4c12756.r_d.1166-824-0.jpeg",
+      "tags": [
+        "partido",
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "0d94e78cf8d2dadb",
       "title": "Territorio inexplorado para Ximo Navarro con el Dépor",
@@ -2125,20 +2140,6 @@
       "kind": "article",
       "summary": "Los dos atacantes, que ya coincidieron en el Barça, participaron por primera vez de forma conjunta en un gol blanquiazul, en el 2-1 de Bil…",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/03/6ae91ffaa0133.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "da42e6660c979001",
-      "title": "Rueda de prensa de Antonio Hidalgo tras el RC Deportivo 2 - 1 CA Osasuna",
-      "url": "https://youtube.com/watch?v=Ei7p6QuxSlM",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-02T23:08:50Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i2.ytimg.com/vi/Ei7p6QuxSlM/hqdefault.jpg",
       "tags": [
         "partido"
       ],
