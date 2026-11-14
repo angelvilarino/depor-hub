@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T20:03:56Z",
+  "updatedAt": "2026-11-14T20:32:49Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,51 @@
     }
   ],
   "stories": [
+    {
+      "id": "7dc5a1eff142b807",
+      "title": "Rueda de prensa de Manuel Pablo tras el Fabril 2 - 2 Barakaldo",
+      "url": "https://youtube.com/watch?v=gRR8gPDqxeg",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-14T20:29:22Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/gRR8gPDqxeg/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "7598e7389332fccf",
+      "title": "El 1x1 del Fabril-Barakaldo: Noé Carrillo, palabras mayores",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-14/el-1x1-del-fabril-barakaldo-noe-carrillo-palabras-mayores-890982.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-14T20:26:46Z",
+      "kind": "article",
+      "summary": "Partido de sobresaliente del centrocampista, que rescató al filial blanquiazul con un gol en el minuto 89",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/14/6af8c1ddacfa9.r_d.1418-888-0.jpg",
+      "tags": [
+        "cantera",
+        "opinion"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "ca5eed01b6ec23e8",
+      "title": "El FVS deja a un Fabril liderado por Noé sin remontada ante el Barakaldo (2-2)",
+      "url": "https://riazor.org/fvs-fabril-liderado-noe-sin-remontada-barakaldo-2-2",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-14T20:07:15Z",
+      "kind": "article",
+      "summary": "Crónica y resultado del Fabril – Barakaldo de la jornada 12 de Primera Federación, que finalizó en empate a dos con goles de Kevin Sánchez…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "ff434b3cb9e0a804",
       "title": "Crónica | El Fabril suma un punto y evita males mayores (2-2)",
@@ -2098,48 +2143,6 @@
       "kind": "article",
       "summary": "El entrenador de Osasuna analizó el partido realizado por el Deportivo tras la derrota del conjunto rojillo este lunes en Riazor. La…",
       "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3167cd2d4ff5ac79",
-      "title": "La conversación de Luismi y Soriano antes del gol: «Le he dicho que mirase la de tocarla y tirar rápido porque Osasuna no estaba atento»",
-      "url": "https://riazor.org/conversacion-luismi-soriano-gol-tocarla-tirar",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-03T06:00:00Z",
-      "kind": "article",
-      "summary": "Mario Soriano, en zona mixta, desgranó como fue la conversación que tuvo con Luismi antes de marcar gol en la victoria del Deportivo ante…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "517d76bfe26c81bc",
-      "title": "El Deportivo regala un crédito extra a Leo Román",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/el-deportivo-regala-un-credito-extra-a-leo-roman-888677.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-03T04:00:00Z",
-      "kind": "article",
-      "summary": "Un nuevo error del portero conduce a un gol en contra, pero el equipo remonta y arropa al ibicenco",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6ae920cb7f432.r_d.1417-1123-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "1753eee4b59137e0",
-      "title": "Aubameyang y Adama, una amistad que ya da puntos en el Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/aubameyang-y-adama-una-amistad-que-ya-da-puntos-en-el-depor-888678.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-03T04:00:00Z",
-      "kind": "article",
-      "summary": "Los dos atacantes, que ya coincidieron en el Barça, participaron por primera vez de forma conjunta en un gol blanquiazul, en el 2-1 de Bil…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/03/6ae91ffaa0133.jpg",
       "tags": [
         "partido"
       ],
