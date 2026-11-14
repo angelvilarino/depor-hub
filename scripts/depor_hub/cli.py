@@ -22,7 +22,7 @@ from .cadence import is_due, load_fixtures, plan_matchday, read_last_refresh, wr
 from .client import Client
 from .enrich import bdfutbol, crests, official, proposal, wikidata, wikipedia
 from .enrich import coach as coach_enrich
-from .enrich.http import PoliteClient, SourceError, contact_from_env
+from .enrich.http import PoliteClient, SourceBlocked, SourceError, contact_from_env
 from .extras import (
     PlayerExtra,
     apply_coach,
@@ -204,6 +204,24 @@ def _keep_previous_rivals(out_dir: Path, with_history: int) -> bool:
     return any(rival.head_to_head is not None for rival in previous.rivals)
 
 
+def _rivals_guard(
+    *, with_history: int, previous: bool, blocked: int, attempts: int
+) -> str:
+    """Decide qué hacer cuando la pasada no trae histórico.
+
+    - ``publish``: hay histórico o no había publicación previa que proteger.
+    - ``keep-blocked``: BDFutbol bloqueó **todas** las consultas (403/429): no es
+      una degradación del HTML, así que se conserva lo anterior sin run rojo.
+    - ``keep-degraded``: la fuente respondió y aun así no hay cruces: eso sí es
+      una degradación y el run debe verse en rojo (PIPE-07).
+    """
+    if with_history or not previous:
+        return "publish"
+    if attempts > 0 and blocked == attempts:
+        return "keep-blocked"
+    return "keep-degraded"
+
+
 def cmd_rivals(args: argparse.Namespace) -> int:
     """Publica rivals.json: histórico BDFutbol, entrenador y goleadores por rival."""
     out_dir = Path(args.out)
@@ -226,6 +244,7 @@ def cmd_rivals(args: argparse.Namespace) -> int:
         offline=args.offline,
     )
     heads: dict[int, m.HeadToHead | None] = {}
+    attempts = blocked = 0
     try:
         for opponent in rivals_ctx.opponents(fixtures, meta.team.id):
             bdf_id = bdf_ids.get(opponent.id)
@@ -233,8 +252,13 @@ def cmd_rivals(args: argparse.Namespace) -> int:
                 print(f"AVISO: sin id de BDFutbol para {opponent.name}", file=sys.stderr)
                 heads[opponent.id] = None
                 continue
+            attempts += 1
             try:
                 heads[opponent.id] = rivals_ctx.fetch_head_to_head(http, bdf_id)
+            except SourceBlocked as exc:
+                blocked += 1
+                print(f"AVISO: sin histórico para {opponent.name}: {exc}", file=sys.stderr)
+                heads[opponent.id] = None
             except SourceError as exc:
                 print(f"AVISO: sin histórico para {opponent.name}: {exc}", file=sys.stderr)
                 heads[opponent.id] = None
@@ -254,7 +278,21 @@ def cmd_rivals(args: argparse.Namespace) -> int:
     )
     digest = t.content_hash({"rivals.json": t.dump(data)})
     with_history = sum(1 for rival in data.rivals if rival.head_to_head)
-    if _keep_previous_rivals(out_dir, with_history) and not args.force:
+    previous = _keep_previous_rivals(out_dir, with_history)
+    if previous and not args.force:
+        outcome = _rivals_guard(
+            with_history=with_history,
+            previous=previous,
+            blocked=blocked,
+            attempts=attempts,
+        )
+        if outcome == "keep-blocked":
+            print(
+                f"::warning::BDFutbol bloqueó las {attempts} consultas (403/429); "
+                "se conserva rivals.json.",
+                file=sys.stderr,
+            )
+            return 0
         print(
             f"ERROR: rivals.json tendría 0/{len(data.rivals)} con histórico; "
             "se conserva la publicación anterior. Usa --force para sobrescribir.",

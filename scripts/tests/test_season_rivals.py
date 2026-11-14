@@ -295,3 +295,30 @@ def test_keep_previous_rivals_blocks_publishing_zero_history(tmp_path):
 
     missing = tmp_path / "sin-datos"
     assert cli._keep_previous_rivals(missing, 0) is False
+
+
+def test_rivals_guard_distinguishes_a_blocked_source_from_a_degradation():
+    # Fuente bloqueada (403/429) en todas las consultas: se conserva sin run rojo.
+    assert (
+        cli._rivals_guard(with_history=0, previous=True, blocked=19, attempts=19)
+        == "keep-blocked"
+    )
+    # La fuente respondió y aun así no hay cruces: degradación visible (PIPE-07).
+    assert (
+        cli._rivals_guard(with_history=0, previous=True, blocked=2, attempts=19)
+        == "keep-degraded"
+    )
+    # Sin consultas posibles no se puede culpar al bloqueo.
+    assert (
+        cli._rivals_guard(with_history=0, previous=True, blocked=0, attempts=0)
+        == "keep-degraded"
+    )
+    # Hay histórico nuevo o no había nada que proteger: se publica.
+    assert (
+        cli._rivals_guard(with_history=3, previous=True, blocked=0, attempts=19)
+        == "publish"
+    )
+    assert (
+        cli._rivals_guard(with_history=0, previous=False, blocked=19, attempts=19)
+        == "publish"
+    )
