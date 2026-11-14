@@ -120,7 +120,7 @@ python -m depor_hub.cli news audit [--all] [--write-docs]
 
 La cadencia fue actualizada a cada 30 minutos por ADR 0025.
 
-`news-refresh.yml` usa hoy `cron: "*/30 * * * *"` (ADR 0025), con `workflow_dispatch` y `force`. Comparte `concurrency.group: main-write` con los workflows de datos, rivales y club para que solo uno escriba `main` a la vez; llama al workflow reutilizable `publish.yml`, que serializa Pages en `pages-deploy`. Permisos mínimos (`contents`); caché `data/raw/news`; `timeout-minutes`; commit solo cuando hay cambios; `git pull --rebase` antes de publicar; despliegue solo con cambios. Si ninguna fuente responde, el paso de ingesta sale con error y no se despliega.
+`news-refresh.yml` usa hoy `cron: "*/30 * * * *"` (ADR 0025), con `workflow_dispatch` y `force`. Comparte `concurrency.group: main-write` con los workflows de datos y rivales para que solo uno escriba `main` a la vez; llama al workflow reutilizable `publish.yml`, que serializa Pages en `pages-deploy`. Permisos mínimos (`contents`); caché `data/raw/news`; `timeout-minutes`; commit solo cuando hay cambios; `git pull --rebase` antes de publicar; despliegue solo con cambios. Si ninguna fuente responde, el paso de ingesta sale con error y no se despliega.
 
 Las fuentes publican pocas veces al día; cada 30 minutos generaba peticiones y commits sin valor. El refresco manual sigue disponible desde Actions.
 

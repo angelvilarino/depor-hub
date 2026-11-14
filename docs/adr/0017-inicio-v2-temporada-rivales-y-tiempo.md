@@ -1,6 +1,6 @@
 # ADR 0017 — Inicio v2, contexto de temporada, rivales y tiempo
 
-- **Estado:** aceptada (28-oct-2026). **Vigencia operativa (14-nov-2026):** `rivals-refresh.yml` sigue a diario y `rivals.json` conserva 19 rivales, pero Actions está deshabilitado y el último `rivals.json` publicado es del 10-nov-2026. No hay crons ejecutándose.
+- **Estado:** aceptada (28-oct-2026). **Vigencia operativa (14-nov-2026):** `rivals-refresh.yml` pasa a semanal (`0 22 * * 1`, lunes por la noche, al terminar la jornada) y `rivals.json` conserva 19 rivales. Actions está deshabilitado y el último `rivals.json` publicado es del 10-nov-2026. No hay crons ejecutándose.
 - **Alcance:** orden y estados de la Home, reloj único, `season.json`, `rivals.json`, evolución de la posición, «Qué se juega», tiempo en la sede, editor nativo del calendario y recordatorios configurables.
 - **Regla base:** todo dato ausente queda en `null` y su bloque se oculta. No se inventan posiciones, marcadores, horas, asistencias ni previsiones.
 
@@ -96,7 +96,7 @@ Los recordatorios pasan de `remindMatchIds: number[]` a `remindMatches: Record<m
 
 ### 8. Workflow
 
-`rivals-refresh.yml` se ejecuta a diario (`17 6 * * *`) y bajo demanda. Comparte el grupo `main-write` con Data, News y Club, hace `git pull --rebase` antes de empujar y llama al workflow reutilizable `publish.yml`, que despliega Pages desde un checkout fresco de `main`. El histórico de BDFutbol solo cambia cuando se juega un cruce, así que no necesita la cadencia de 10 minutos.
+`rivals-refresh.yml` se ejecuta **una vez a la semana**, los lunes a las 22:00 UTC (`0 22 * * 1`), cuando ya ha terminado la jornada del fin de semana, y bajo demanda. Comparte el grupo `main-write` con Data y News, hace `git pull --rebase` antes de empujar y llama al workflow reutilizable `publish.yml`, que despliega Pages desde un checkout fresco de `main`. El histórico de BDFutbol solo cambia cuando se juega un cruce, así que no necesita la cadencia de 10 minutos.
 
 ## Consecuencias
 

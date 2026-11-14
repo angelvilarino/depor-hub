@@ -1,10 +1,10 @@
 # Operación del pipeline
 
-> **Actions está deshabilitado (11-nov-2026).** Mientras siga así no hay crons, no se publica `status.json` nuevo y Pages no recibe despliegues. Los comandos de este documento sirven para operar en local; la reactivación se hará al cerrar el Lote 1 de la auditoría, no antes.
+> **Actions está deshabilitado (11-nov-2026).** Mientras siga así no hay crons, no se publica `status.json` nuevo y Pages no recibe despliegues. Los comandos de este documento sirven para operar en local; la reactivación queda pendiente de decisión del propietario.
 
 ## Estado publicado
 
-`health.yml` publica un único fichero cada 4 horas en la rama `status` (cuando Actions está activo):
+`health.yml` publica un único fichero una vez al día en la rama `status` (cuando Actions está activo):
 
 ```text
 https://raw.githubusercontent.com/angelvilarino/depor-hub/status/status.json
@@ -27,9 +27,10 @@ curl -fsS https://raw.githubusercontent.com/angelvilarino/depor-hub/status/statu
 - `files[].ageMinutes` es informativo: un dato viejo puede ser normal si no hubo
   cambios.
 - `workflows[]` incluye `lastSuccessAt`, `expectedWithinHours` y `stale`. Cada
-  workflow tiene su ventana (Data 36 h, News 6 h, Rivals 8 días, Club 10 días,
-  Health 8 h); `CI` no caduca porque solo corre con pushes. Rivals ya no queda en
-  `null` porque la consulta es por workflow, no una lista global de 50 runs.
+  workflow tiene su ventana (Data 36 h, News 6 h, Rivals 8 días, Health 30 h);
+  `CI` no caduca porque solo corre con pushes. El club ya no tiene workflow: es
+  estático y se publica a mano. Rivals ya no queda en `null` porque la consulta
+  es por workflow, no una lista global de 50 runs.
 - `workflows[].url` enlaza a la ejecución concreta.
 
 ## Proxy en directo
@@ -59,14 +60,20 @@ en [`adr/0030-proxy-directo-worker.md`](adr/0030-proxy-directo-worker.md).
 
 ## Cadencia y publicación
 
-- **Data** despierta con un cron híbrido: `0 * * * *` (base horaria) y
-  `*/10 12-23 * * 6,0` (banda densa de sábado y domingo). `--if-due` sigue
-  decidiendo: cada 10 minutos dentro de [−30, +150] min del kickoff y cada 55 min
-  fuera, de modo que el disparo horario siempre encuentre la pasada vencida.
-- **News** cada 30 minutos, **Rivals** una vez al día y **Club** una vez a la
-  semana (`0 7 * * 1`). Títulos, rivalidades, ficha e imágenes del club ya no se
-  ejecutan en el cron de datos (PIPE-08).
-- Data, News, Rivals y Club comparten el grupo de concurrencia `main-write`: solo
+- **Data** hace **una pasada diaria** a las 06:00 UTC (`0 6 * * *`). El cron
+  borra `data/raw/ingest_state.json` para consultar la red aunque el contenido no
+  haya cambiado; `write_if_changed` sigue evitando el commit si no hay diff.
+- **Día de partido**, `data-matchday.yml` revisa cada 2 h si hay un kickoff a
+  menos de 2,5 h y, si lo hay, lanza `data-refresh.yml` **cada 10 minutos**
+  dentro de [−30, +150] min del partido. El supervisor no recoge datos: solo
+  dispara el workflow, que conserva su propio `publish.yml`. En días sin partido
+  los checkpoints terminan en segundos.
+- **News** cada 30 minutos, **Rivals** los **lunes a las 22:00 UTC**
+  (`0 22 * * 1`), cuando ya ha terminado la jornada del fin de semana. **Health**
+  una vez al día a las 07:00 UTC (`0 7 * * *`).
+- **Club** es estático: **no hay `club-refresh.yml`**. Sus documentos se publican
+  a mano cuando cambian los YAML curados (ver [Club manual](#club-manual)).
+- Data, News y Rivals comparten el grupo de concurrencia `main-write`: solo
   uno escribe `main` a la vez. Todos llaman al workflow reutilizable
   [`publish.yml`](../.github/workflows/publish.yml), que serializa Pages en
   `pages-deploy` y despliega una vez por commit (PIPE-06, PIPE-16).
@@ -76,7 +83,7 @@ en [`adr/0030-proxy-directo-worker.md`](adr/0030-proxy-directo-worker.md).
 
 ## Reactivar Actions
 
-La reactivación se hace solo al cerrar el Lote 1 y con estos pasos exactos:
+La reactivación se hace solo cuando el propietario lo decida y con estos pasos exactos:
 
 ```bash
 # 1. Comprobar que está deshabilitado y habilitarlo a nivel de repositorio.
@@ -88,8 +95,9 @@ gh api -X PUT repos/angelvilarino/depor-hub/actions/permissions \
 gh workflow run data-refresh.yml --ref main -f force=true
 gh workflow run news-refresh.yml --ref main
 gh workflow run rivals-refresh.yml --ref main
-gh workflow run club-refresh.yml --ref main
 gh workflow run health.yml --ref main
+# `data-matchday.yml` solo dispara Data: no hace falta lanzarlo a mano.
+# El club es estático: se publica con los comandos de «Club manual» si cambió.
 
 # 3. Verificar los 13 documentos del contrato (11 raíz + snapshots/detalles).
 for f in meta standings fixtures squad season club news rivals social titles rivalries; do
@@ -144,11 +152,12 @@ python -m depor_hub.cli match-details --force    # reescribe todos y revisa el d
   [`bdfutbol-legal-risk.md`](bdfutbol-legal-risk.md) y
   [`adr/0031-detalle-partido-bdfutbol.md`](adr/0031-detalle-partido-bdfutbol.md).
 
-## Club semanal
+## Club manual
 
-`club-refresh.yml` se ejecuta los lunes a las 07:00 UTC y también se puede lanzar
-a mano. Ordena las dependencias para que `club.json` derive de los documentos
-canónicos (D1-09):
+El club es estático: **no hay workflow periódico**. Sus documentos se regeneran en
+local cuando cambia un YAML curado, se revisa el diff y se commitea. El orden
+respeta las dependencias para que `club.json` derive de los documentos canónicos
+(D1-09):
 
 ```bash
 python -m depor_hub.cli club titles --proposal data/raw/titles.proposed.yml
@@ -158,12 +167,13 @@ python -m depor_hub.cli club-images
 ```
 
 - La propuesta de títulos se escribe en `data/raw/titles.proposed.yml`, fuera de
-  `main`: el workflow nunca aplica automáticamente un cambio editorial.
-- Títulos, rivalidades e imágenes usan `continue-on-error`: un 403/429, un HTML
-  cambiado o una descarga fallida dejan el run en rojo al final (`club-alert`)
-  pero **no** bloquean la ficha local ni el resto de la publicación (PIPE-07).
-- `club` solo lee YAML curado. Se puede ejecutar en local sin red y es la vía para
-  aplicar un cambio manual de `club.yml`.
+  `main`: nunca se aplica automáticamente un cambio editorial.
+- Títulos, rivalidades e imágenes pueden fallar por un 403/429, un HTML cambiado
+  o una descarga rota; el comando lo anota y el resto de documentos se mantiene.
+- `club` solo lee YAML curado. Se puede ejecutar sin red y es la vía para aplicar
+  un cambio manual de `club.yml`.
+- Si se cambia `club.yml`, `titles.yml`, `rivalries.yml` o `club_images.yml`,
+  ejecutar los cuatro comandos y commitear solo los JSON que cambien.
 
 ## Disparo manual
 
@@ -181,7 +191,6 @@ python -m depor_hub.cli club
 gh workflow run data-refresh.yml --ref main -f force=true
 gh workflow run news-refresh.yml --ref main -f force=true
 gh workflow run rivals-refresh.yml --ref main -f force=true
-gh workflow run club-refresh.yml --ref main -f force=true
 gh workflow run health.yml --ref main
 ```
 

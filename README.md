@@ -20,9 +20,9 @@ npm run mobile      # sirve data/public en local y arranca Expo
 
 ## Estado de Actions y actualización local
 
-**Actions está deshabilitado a nivel de repositorio desde el 11-nov-2026.** Los workflows siguen versionados y sus crons no se ejecutan; los datos publicados están congelados hasta que se reactive. No se reactiva solo: las instrucciones exactas quedan al cerrar el Lote 1 de la auditoría.
+**Actions está deshabilitado a nivel de repositorio desde el 11-nov-2026.** Los workflows siguen versionados y sus crons no se ejecutan; los datos publicados están congelados hasta que se reactive. No se reactiva solo: queda pendiente de decisión del propietario.
 
-Al reactivarlo, la cadencia ya es la del Lote 1: Data despierta cada hora con banda densa sábado/domingo (`0 * * * *` + `*/10 12-23 * * 6,0`), News cada 30 min, Rivals a diario, Club los lunes y Health cada 4 h. Data, News, Rivals y Club comparten el grupo `main-write` y despliegan con el workflow reutilizable `publish.yml`; las instrucciones de reactivación y verificación están en [`docs/operations.md`](docs/operations.md#reactivar-actions).
+Al reactivarlo, la cadencia es: Data una vez al día (`0 6 * * *`) y cada 10 min en la ventana de un partido del Depor (supervisor `data-matchday.yml`), News cada 30 min, Rivals los lunes a las 22:00 UTC y Health una vez al día. El Club es estático y se publica a mano. Data, News y Rivals comparten el grupo `main-write` y despliegan con el workflow reutilizable `publish.yml`; las instrucciones de reactivación y verificación están en [`docs/operations.md`](docs/operations.md#reactivar-actions).
 
 Mientras esté pausado, la actualización es local y explícita:
 
