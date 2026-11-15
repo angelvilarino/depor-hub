@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T23:04:09Z",
+  "updatedAt": "2026-11-15T04:33:10Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "cdf90412bde798fa",
+      "title": "El lugar que la historia merece",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-15/el-lugar-que-la-historia-merece-891086.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-15T04:00:00Z",
+      "kind": "article",
+      "summary": "‘Falas Dépor’ reunió ayer a personas decisivas para preservar los recuerdos de clubes punteros",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/15/6af8ecaeeb251.jpg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "b8cf169d17de4987",
       "title": "Resumen del Fabril 2 - 2 Barakaldo",
@@ -2131,20 +2145,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6ae9abc76cc43.r_d.1455-1439-0.jpg",
       "tags": [
         "opinion",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ab9b914b021e0894",
-      "title": "Jesús de Miguel, un coleccionista de ascensos que tuvo en el Dépor a su rival más recurrente",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/rivales/2026-11-03/jesus-de-miguel-un-coleccionista-de-ascensos-que-tuvo-en-el-depor-a-su-rival-mas-recurrente-888688.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-03T10:26:32Z",
-      "kind": "article",
-      "summary": "El delantero fallecido de forma trágica fue autor de uno de los goles del playoff blanquiazul ante el Castellón en la 2022-23",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6ae9afd9a5dd0.r_d.1525-1172-0.jpg",
-      "tags": [
         "partido"
       ],
       "alsoIn": []
