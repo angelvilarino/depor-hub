@@ -229,7 +229,7 @@ Probar en iPhone: pestaña Noticias con historias agrupadas por día, búsqueda 
 - **Ajustes:** «Borrar caché de datos» elimina solo la caché persistida de TanStack Query (`persister.removeClient()`), con confirmación, sin tocar ajustes ni recordatorios. La caché vive en una clave por consulta (`deporhub-query:<hash>`), no en un único documento. Muestra versión de la app, `meta.dataHash`, `updatedAt` y enlace a Acerca de.
 - **Acerca de:** nombre y versión, aviso de proyecto no oficial, contacto (incidencias del proyecto) y licencias de terceros agrupadas. `npm run licenses` genera de forma determinista `apps/mobile/src/data/licenses.json` desde `package-lock.json`: **1.052 paquetes de producción en 16 grupos** (~93 KB, sin fecha). No se listan fuentes de datos.
 - **i18n:** ES/EN con paridad exacta; GL 212/713 sin claves extra y con caída a ES. Letras y nombres propios no se traducen. El Lote 6 completa las 501 claves restantes.
-- **Pruebas:** **271 pytest** y **312 tests / 36 suites** en la app. Cubren suma de aforo, agrupación por década, orden de temporadas, `clubImageUrl`, validación del `club.yml` y las letras reales, contrato compartido, idempotencia, fuentes de imagen y renders de Club, Himnos con y sin letra, Escudo, Equipaciones con imagen/marcador y Estadio.
+- **Pruebas:** **272 pytest** y **312 tests / 36 suites** en la app. Cubren suma de aforo, agrupación por década, orden de temporadas, `clubImageUrl`, validación del `club.yml` y las letras reales, contrato compartido, idempotencia, fuentes de imagen y renders de Club, Himnos con y sin letra, Escudo, Equipaciones con imagen/marcador y Estadio.
 
 ### H7.1 — Club ampliado: títulos, rivalidades y medios (hecho, ADR 0032)
 

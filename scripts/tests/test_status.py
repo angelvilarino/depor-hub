@@ -51,7 +51,7 @@ def make_runs(tmp_path, conclusions=("success", "success", "success")):
     return path
 
 
-def run_status(tmp_path, data, runs, soft=False):
+def run_status(tmp_path, data, runs, soft=False, current_workflow=None):
     out = tmp_path / "status.json"
     args = argparse.Namespace(
         data=str(data),
@@ -61,6 +61,7 @@ def run_status(tmp_path, data, runs, soft=False):
         now=NOW,
         commit="abc1234",
         soft=soft,
+        current_workflow=current_workflow,
     )
     code = cli.cmd_status(args)
     return code, m.Status.model_validate_json(out.read_text(encoding="utf-8"))
@@ -261,6 +262,35 @@ def test_status_tracks_health_with_a_daily_window(tmp_path):
 
     assert health.expected_within_hours == 30
     assert health.stale is False
+
+
+def test_status_lets_the_running_health_run_recover_green_after_a_pause(tmp_path):
+    """PIPE-12: Health no puede observar su propia ejecución (no está en los runs)."""
+    data = make_data(tmp_path)
+    runs = make_runs(tmp_path)
+    body = json.loads(runs.read_text(encoding="utf-8"))
+    body["workflow_runs"].append(
+        {
+            "path": ".github/workflows/health.yml",
+            "conclusion": "failure",
+            "updated_at": "2026-11-02T06:00:00Z",
+            "html_url": "https://example.test/health-red",
+        }
+    )
+    runs.write_text(json.dumps(body), encoding="utf-8")
+
+    # Sin el flag, 48 h sin un éxito de Health son una parada real: rojo.
+    code, status = run_status(tmp_path, data, runs)
+    health = next(item for item in status.workflows if item.file == "health.yml")
+    assert health.stale is True
+    assert code == 1
+
+    # Con el flag, el run en curso demuestra que el workflow sigue vivo.
+    code, status = run_status(tmp_path, data, runs, current_workflow="health.yml")
+    health = next(item for item in status.workflows if item.file == "health.yml")
+    assert health.stale is False
+    assert status.ok is True
+    assert code == 0
 
 
 def test_status_does_not_expect_a_club_refresh(tmp_path):

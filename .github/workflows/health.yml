@@ -55,6 +55,7 @@ jobs:
             --runs-dir "$RUNNER_TEMP/runs" \
             --out "$RUNNER_TEMP/status.json" \
             --commit "$GITHUB_SHA" \
+            --current-workflow health.yml \
             --soft
       - name: Publicar en la rama status
         env:

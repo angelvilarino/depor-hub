@@ -170,7 +170,7 @@ documentos raíz, los 24 snapshots/detalles y los 28 detalles de jugador.
 
 ```bash
 ruff check scripts
-pytest scripts -q                       # 271 passed
+pytest scripts -q                       # 272 passed
 python -m depor_hub.cli schemas
 git diff --exit-code packages/schemas   # sin diferencias
 python -m depor_hub.cli validate --data data/public/v1

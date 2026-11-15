@@ -1148,7 +1148,7 @@ def _age_hours(value: object, now: datetime) -> float | None:
 
 
 def _status_workflows(
-    runs: list[dict[str, object]], now: datetime
+    runs: list[dict[str, object]], now: datetime, current: str | None = None
 ) -> list[m.StatusWorkflow]:
     """Última pasada y último éxito de cada workflow, con su propia ventana.
 
@@ -1179,6 +1179,11 @@ def _status_workflows(
         if expected_hours is not None:
             age = _age_hours(last_success_at, now)
             stale = age is None or age > expected_hours
+        # El run en curso demuestra que el workflow sigue vivo. Health no puede
+        # observar su propia ejecución: sin esto, tras una parada larga el primer
+        # Health vuelve a salir rojo y no hay forma de recuperar el verde.
+        if filename == current:
+            stale = False
         out.append(
             m.StatusWorkflow(
                 name=name,
@@ -1231,7 +1236,7 @@ def cmd_status(args: argparse.Namespace) -> int:
         value = raw.get("workflow_runs") if isinstance(raw, dict) else raw
         if isinstance(value, list):
             runs = [run for run in value if isinstance(run, dict)]
-    workflows = _status_workflows(runs, now) if runs else []
+    workflows = _status_workflows(runs, now, getattr(args, "current_workflow", None)) if runs else []
 
     # Un fichero opcional ausente no rompe la app; los requeridos sí.
     required_missing = any(
@@ -1629,6 +1634,11 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--out", default="status.json")
     sp.add_argument("--now", default=None, help="Instante ISO para pruebas deterministas")
     sp.add_argument("--commit", default=os.environ.get("GITHUB_SHA", ""))
+    sp.add_argument(
+        "--current-workflow",
+        default=None,
+        help="Workflow que se está ejecutando: su frescura no puede depender de runs anteriores",
+    )
     sp.add_argument(
         "--soft",
         action="store_true",
