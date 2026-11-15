@@ -19,6 +19,8 @@ type Props = {
   remindersEnabled: boolean;
   onSave: (offsets: number[]) => Promise<SaveReminderResult>;
   onRemove: () => void;
+  /** F3-15: vuelve a pedir (o abrir) el permiso de alarmas exactas de Android. */
+  onRequestExactAlarm: () => Promise<boolean>;
   onEnableReminders: () => void;
   onOpenSettings: () => void;
 };
@@ -34,6 +36,7 @@ export function ReminderSheet({
   remindersEnabled,
   onSave,
   onRemove,
+  onRequestExactAlarm,
   onEnableReminders,
   onOpenSettings,
 }: Props) {
@@ -41,6 +44,7 @@ export function ReminderSheet({
   const { colors } = useTheme();
   const [selected, setSelected] = useState<number[]>(initialOffsets);
   const [denied, setDenied] = useState(false);
+  const [exactAlarmDenied, setExactAlarmDenied] = useState(false);
   const [now] = useState(() => Date.now());
 
   const start = Date.parse(match.utcDate);
@@ -59,6 +63,7 @@ export function ReminderSheet({
     if (!remindable) return;
     const result = await onSave(selected);
     if (result === 'saved') onClose();
+    else if (result === 'exactAlarmDenied') setExactAlarmDenied(true);
     else setDenied(true);
   };
 
@@ -152,6 +157,21 @@ export function ReminderSheet({
               <View style={[styles.notice, { borderColor: colors.danger }]}>
                 <Text style={{ color: colors.danger, fontSize: 15 }}>{t('reminder.permissionDenied')}</Text>
                 <Button variant="secondary" label={t('reminder.openSettings')} onPress={onOpenSettings} />
+              </View>
+            ) : null}
+
+            {exactAlarmDenied ? (
+              <View style={[styles.notice, { borderColor: colors.border }]}>
+                <Text style={{ color: colors.text, fontSize: 15 }}>
+                  {t('reminder.exactAlarmDenied')}
+                </Text>
+                <Button
+                  variant="secondary"
+                  label={t('reminder.exactAlarmEnable')}
+                  onPress={() => {
+                    void onRequestExactAlarm().then((granted) => setExactAlarmDenied(!granted));
+                  }}
+                />
               </View>
             ) : null}
 

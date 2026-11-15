@@ -301,7 +301,9 @@
       "hour": "Empieza en 1 hora ({{time}})",
       "minutes": "Empieza en 15 minutos ({{time}})",
       "start": "El partido empieza ahora ({{time}})"
-    }
+    },
+    "exactAlarmDenied": "Android puede retrasar los avisos si no permites las alarmas exactas.",
+    "exactAlarmEnable": "Permitir alarmas exactas"
   },
   "team": {
     "coach": "Entrenador",

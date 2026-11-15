@@ -44,7 +44,7 @@ jest.mock('@/theme/useTheme', () => {
 });
 
 jest.mock('@/features/reminders/notifications', () => ({
-  ensureReminderPermission: jest.fn(async () => true),
+  ensureReminderPermission: jest.fn(async () => 'granted'),
 }));
 
 jest.mock('@/features/calendar/system', () => ({

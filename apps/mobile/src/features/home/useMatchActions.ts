@@ -5,13 +5,13 @@ import type { MatchT } from '@/data/schemas';
 import { useMeta } from '@/data/queries';
 import { addMatchToCalendar, type CalendarResult } from '@/features/calendar/system';
 import { teamName } from '@/features/calendar/logic';
-import { ensureReminderPermission } from '@/features/reminders/notifications';
+import { ensureReminderPermission, requestExactAlarmPermission } from '@/features/reminders/notifications';
 import { isRemindable, offsetLabel } from '@/features/reminders/plan';
 import { useSettings } from '@/store/settings';
 import { buildIcs } from '@/utils/ics';
 import { formatMatchTime } from '@/utils/matchTime';
 
-export type SaveReminderResult = 'saved' | 'denied';
+export type SaveReminderResult = 'saved' | 'denied' | 'exactAlarmDenied';
 
 /**
  * Lógica compartida entre la Home y la ficha de partido: sede, recordatorio y
@@ -45,10 +45,12 @@ export function useMatchActions(match: MatchT) {
       removeStoredReminder(match.id);
       return 'saved';
     }
-    if (!(await ensureReminderPermission())) return 'denied';
+    const permission = await ensureReminderPermission();
+    if (permission === 'notifications_denied') return 'denied';
     if (!remindersEnabled) setRemindersEnabled(true);
     setReminderOffsets(match.id, nextOffsets);
-    return 'saved';
+    // El recordatorio se guarda igual: Android puede retrasarlo y la hoja lo avisa.
+    return permission === 'exact_alarm_denied' ? 'exactAlarmDenied' : 'saved';
   };
 
   const removeReminder = () => removeStoredReminder(match.id);
@@ -91,6 +93,7 @@ export function useMatchActions(match: MatchT) {
     removeReminder,
     addToCalendar,
     calendarStatus,
+    requestExactAlarm: requestExactAlarmPermission,
     openSystemSettings: () => void Linking.openSettings(),
   };
 }

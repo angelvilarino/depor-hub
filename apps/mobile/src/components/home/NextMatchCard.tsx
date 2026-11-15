@@ -92,6 +92,7 @@ export function NextMatchCard({
     removeReminder,
     addToCalendar,
     calendarStatus,
+    requestExactAlarm,
     openSystemSettings,
   } = useMatchActions(match);
   const target = Date.parse(match.utcDate);
@@ -227,6 +228,7 @@ export function NextMatchCard({
           remindersEnabled={remindersEnabled}
           onSave={saveReminder}
           onRemove={removeReminder}
+          onRequestExactAlarm={requestExactAlarm}
           onEnableReminders={() => setRemindersEnabled(true)}
           onOpenSettings={openSystemSettings}
         />

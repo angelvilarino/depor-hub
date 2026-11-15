@@ -301,7 +301,9 @@
       "hour": "Kick-off in 1 hour ({{time}})",
       "minutes": "Kick-off in 15 minutes ({{time}})",
       "start": "The match is starting now ({{time}})"
-    }
+    },
+    "exactAlarmDenied": "Android may delay reminders unless exact alarms are allowed.",
+    "exactAlarmEnable": "Allow exact alarms"
   },
   "team": {
     "coach": "Head coach",

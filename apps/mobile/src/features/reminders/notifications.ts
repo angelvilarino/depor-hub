@@ -28,13 +28,32 @@ async function ensureChannel(): Promise<void> {
   });
 }
 
-/** Permiso contextual: solo se llama al pulsar "Recordarme". */
-export async function ensureReminderPermission(): Promise<boolean> {
-  await ensureChannel(); // en Android 13+ el canal debe existir antes de pedir permiso
-  const current = await Notifications.getPermissionsAsync();
+export type ReminderPermission = 'granted' | 'notifications_denied' | 'exact_alarm_denied';
+
+const needsExactAlarm = (): boolean =>
+  Platform.OS === 'android' && Number(Platform.Version) >= 31;
+
+/**
+ * Comprueba el permiso de alarmas exactas (Android 12+, F3-15). Sin él el
+ * sistema puede retrasar el aviso; no se bloquea el recordatorio.
+ */
+export async function requestExactAlarmPermission(): Promise<boolean> {
+  if (!needsExactAlarm()) return true;
+  const current = await Notifications.getExactAlarmPermissionsAsync();
   if (current.granted) return true;
   if (!current.canAskAgain) return false;
-  return (await Notifications.requestPermissionsAsync()).granted;
+  return (await Notifications.requestExactAlarmPermissionsAsync()).granted;
+}
+
+/** Permiso contextual: solo se llama al pulsar "Recordarme". */
+export async function ensureReminderPermission(): Promise<ReminderPermission> {
+  await ensureChannel(); // en Android 13+ el canal debe existir antes de pedir permiso
+  const current = await Notifications.getPermissionsAsync();
+  const granted =
+    current.granted || (current.canAskAgain && (await Notifications.requestPermissionsAsync()).granted);
+  if (!granted) return 'notifications_denied';
+  // F3-15: en Android 12+ se pide además la alarma exacta; si se deniega, se avisa.
+  return (await requestExactAlarmPermission()) ? 'granted' : 'exact_alarm_denied';
 }
 
 /**

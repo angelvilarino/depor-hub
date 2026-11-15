@@ -103,6 +103,7 @@ function MatchDetailBody({
     saveReminder,
     removeReminder,
     addToCalendar,
+    requestExactAlarm,
     openSystemSettings,
   } = useMatchActions(match);
 
@@ -197,6 +198,7 @@ function MatchDetailBody({
               remindersEnabled={remindersEnabled}
               onSave={saveReminder}
               onRemove={removeReminder}
+              onRequestExactAlarm={requestExactAlarm}
               onEnableReminders={() => setRemindersEnabled(true)}
               onOpenSettings={openSystemSettings}
             />
