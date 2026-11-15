@@ -14,6 +14,7 @@ from .build import (
     build_news,
     load_existing,
     make_report,
+    write_home,
     write_news,
 )
 from .cluster import Candidate, build_stories, cluster_candidates, retain
@@ -30,6 +31,7 @@ __all__ = [
     "build_index",
     "load_existing",
     "run_ingest",
+    "write_home",
     "write_news",
 ]
 

@@ -784,6 +784,9 @@ def cmd_news(args: argparse.Namespace) -> int:
     changed = False
     if not args.dry_run:
         changed = news_ingest.write_news(out_dir, result, force=args.force)
+        # Si news.json no cambió, la portada conserva su updatedAt para no crear un commit vacío.
+        home_news = result.news if changed or existing is None else existing
+        changed = news_ingest.write_home(out_dir, home_news, http) or changed
         if args.social:
             social_config = load_social(Path(args.social))
             social = build_social(

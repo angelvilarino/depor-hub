@@ -29,7 +29,7 @@ jest.mock('@/data/queries', () => ({
   useMeta: () => mockMeta,
   useStandings: () => mockStandings,
   useFixtures: () => mockFixtures,
-  useNews: () => mockNews,
+  useHomeNews: () => mockNews,
   useSeason: () => mockSeason,
   useRivals: () => mockRivals,
 }));

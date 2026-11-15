@@ -413,6 +413,18 @@ class News(Public):
     stories: list[NewsStory]
 
 
+class NewsHome(Public):
+    """Vista de portada: las 5–6 historias que pinta Inicio (D1-05).
+
+    `thumbnailUrl` puede ser una ruta relativa a una miniatura propia; la app la
+    resuelve contra la base de datos. El resto de URLs siguen siendo absolutas.
+    """
+
+    updated_at: IsoDateTime
+    sources: list[NewsSource]
+    stories: list[NewsStory]
+
+
 SocialPlatform = Literal[
     "x", "instagram", "youtube", "tiktok", "facebook", "whatsapp", "twitch", "bluesky", "threads"
 ]
@@ -1189,6 +1201,7 @@ SPORTS_FILES = ("meta.json", "standings.json", "fixtures.json", "squad.json", "s
 # ya puede leer de forma opcional. Se exportan igual para mantener Pydantic como origen.
 NEWS_FILES: dict[str, type[Public]] = {
     "news.json": News,
+    "news-home.json": NewsHome,
     "social.json": SocialFeed,
 }
 
@@ -1203,7 +1216,7 @@ EXTRA_FILES: dict[str, type[Public]] = {
 }
 
 # Ficheros de EXTRA_FILES que no son obligatorios en `validate`: 404 = sin datos.
-OPTIONAL_FILES: frozenset[str] = frozenset({"titles.json", "rivalries.json"})
+OPTIONAL_FILES: frozenset[str] = frozenset({"titles.json", "rivalries.json", "news-home.json"})
 
 # Diagnóstico operativo (ADR 0027): se publica en la rama `status`, no en Pages.
 # Se genera su esquema con el resto, pero `validate` no lo exige en data/public/v1.

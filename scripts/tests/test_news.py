@@ -753,3 +753,65 @@ def test_audit_accepts_the_new_feed_fields(tmp_path: Path):
     assert rows[0].items == 3
     assert rows[0].relevant == 2
     assert "Relevantes" in news_audit.format_table(rows)
+
+
+def test_write_home_limits_stories_optimizes_thumbnails_and_is_idempotent(tmp_path: Path):
+    import io
+
+    from PIL import Image
+
+    buffer = io.BytesIO()
+    Image.new("RGB", (1200, 630), "#00478F").save(buffer, "PNG")
+    picture = buffer.getvalue()
+
+    class FakeThumbs(FakeHttp):
+        def fetch_image(self, url: str) -> bytes:
+            return picture
+
+    stories = [
+        m.NewsStory(
+            id=f"s{index}",
+            title="Titular repetido" if index < 2 else f"Titular {index}",
+            url=f"https://a.test/{index}",
+            source_id=f"src{index}",
+            published_at=NOW.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            thumbnail_url="https://cdn.test/foto.jpg",
+        )
+        for index in range(8)
+    ]
+    sources = [
+        m.NewsSource(
+            id=f"src{index}",
+            name=f"Medio {index}",
+            group="galicia",
+            homepage=f"https://src{index}.test/",
+        )
+        for index in range(8)
+    ]
+    news = m.News(
+        updated_at=NOW.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        sources=sources,
+        stories=stories,
+    )
+
+    assert news_ingest.write_home(tmp_path, news, FakeThumbs({})) is True
+    payload = json.loads((tmp_path / "news-home.json").read_text(encoding="utf-8"))
+    assert len(payload["stories"]) == 6
+    assert [item["sourceId"] for item in payload["stories"]] == [
+        "src0",
+        "src2",
+        "src3",
+        "src4",
+        "src5",
+        "src6",
+    ]
+    assert len(payload["sources"]) == 6
+    thumbnail = payload["stories"][0]["thumbnailUrl"]
+    assert thumbnail.startswith("img/news/") and thumbnail.endswith(".webp")
+    assert (tmp_path / thumbnail).stat().st_size < 40_000
+    assert m.NewsHome.model_validate_json((tmp_path / "news-home.json").read_text())
+
+    stale = tmp_path / "img" / "news" / "stale.webp"
+    stale.write_bytes(b"viejo")
+    assert news_ingest.write_home(tmp_path, news, FakeThumbs({})) is False
+    assert not stale.exists()

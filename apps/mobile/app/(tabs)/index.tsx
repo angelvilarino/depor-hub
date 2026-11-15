@@ -15,7 +15,7 @@ import type { MatchT, StandingRowT } from '@/data/schemas';
 import {
   useFixtures,
   useMeta,
-  useNews,
+  useHomeNews,
   useRivals,
   useSeason,
   useStandings,
@@ -41,7 +41,7 @@ export default function Home() {
   const meta = useMeta();
   const standings = useStandings();
   const fixtures = useFixtures();
-  const news = useNews();
+  const news = useHomeNews();
   const season = useSeason();
   const rivals = useRivals();
   const now = useNow(60_000);

@@ -13,13 +13,20 @@ def test_published_contract_passes_the_smoke_test():
     assert smoke.check_payloads(payloads) == []
 
 
-def test_missing_document_is_reported():
+def test_missing_required_document_is_reported():
     payloads = smoke.load_local(DATA)
-    payloads.pop("titles.json")
+    payloads.pop("fixtures.json")
 
     failures = smoke.check_payloads(payloads)
 
-    assert any("titles.json: no publicado" in failure for failure in failures)
+    assert any("fixtures.json: no publicado" in failure for failure in failures)
+
+
+def test_missing_optional_document_is_not_a_failure():
+    payloads = smoke.load_local(DATA)
+    payloads.pop("news-home.json")
+
+    assert smoke.check_payloads(payloads) == []
 
 
 def test_data_hash_mismatch_is_reported():

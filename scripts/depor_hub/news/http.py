@@ -86,6 +86,27 @@ class NewsHttp:
     def close(self) -> None:
         self._client.close()
 
+    def fetch_image(self, url: str, *, max_bytes: int = 4_000_000) -> bytes:
+        """Descarga una miniatura con el mismo ritmo por dominio que los feeds."""
+        if self.offline:
+            raise FeedError(f"sin red para la imagen {url} (modo offline)")
+        self._throttle(_host(url))
+        try:
+            response = self._client.get(url, headers={"Accept": "image/*"})
+        except httpx.HTTPError as exc:
+            raise FeedError(f"error de red en la imagen {url}: {exc}") from exc
+        if response.status_code in {403, 429} or response.status_code == 202:
+            raise FeedBlocked(f"{response.status_code} en la imagen {url}; no se insiste")
+        if response.status_code >= 400:
+            raise FeedError(f"{response.status_code} en la imagen {url}")
+        content_type = response.headers.get("content-type", "")
+        if not content_type.startswith("image/"):
+            raise FeedError(f"{url} no devuelve una imagen (content-type={content_type!r})")
+        body = response.content
+        if len(body) > max_bytes:
+            raise FeedError(f"la imagen {url} supera {max_bytes} B")
+        return body
+
     def _paths(self, feed_id: str) -> tuple[Path, Path]:
         return self.cache_dir / f"{feed_id}.xml", self.cache_dir / f"{feed_id}.meta.json"
 

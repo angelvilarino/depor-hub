@@ -28,17 +28,21 @@ export const LIVE_BASE_URL = process.env.EXPO_PUBLIC_LIVE_BASE_URL?.trim() ?? ''
 export const USING_LOCAL_DATA = !CONFIGURED_DATA_BASE_URL && __DEV__;
 
 /**
- * Resuelve una ruta relativa del contrato Club (`img/club/...`) contra la base
- * de datos. Nunca se guardan URLs externas en club.json: si algún día llega una
- * URL absoluta (datos antiguos), se respeta para no romper la caché.
+ * Resuelve una ruta relativa del contrato contra la base de datos. Se usa para
+ * las imágenes locales del club y para las miniaturas propias de la portada.
+ * Nunca se guardan URLs externas en esos campos: si llega una absoluta (datos
+ * antiguos), se respeta para no romper la caché.
  */
-export function clubImageUrl(path: string | null | undefined): string | null {
+export function dataImageUrl(path: string | null | undefined): string | null {
   const value = path?.trim();
   if (!value) return null;
   if (/^https?:\/\//i.test(value)) return value;
   if (!DATA_BASE_URL) return null;
   return `${DATA_BASE_URL.replace(/\/$/, '')}/${value.replace(/^\//, '')}`;
 }
+
+/** Alias histórico del contrato Club; comparte resolución con las miniaturas. */
+export const clubImageUrl = dataImageUrl;
 
 
 // Escudos de los equipos (ADR 0006): se cargan desde la URL de la API, nunca se almacenan en el repo.

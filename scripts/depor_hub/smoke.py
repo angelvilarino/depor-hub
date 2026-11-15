@@ -24,6 +24,7 @@ DOCUMENTS: tuple[str, ...] = (
     "season.json",
     "club.json",
     "news.json",
+    "news-home.json",
     "rivals.json",
     "social.json",
     "titles.json",
@@ -71,6 +72,8 @@ def check_payloads(payloads: dict[str, bytes]) -> list[str]:
     for name in DOCUMENTS:
         raw = payloads.get(name)
         if raw is None:
+            if name in m.OPTIONAL_FILES:
+                continue  # 404 explícito = la app muestra el estado vacío
             failures.append(f"{name}: no publicado")
             continue
         if not _parse(name, raw, failures, parsed):

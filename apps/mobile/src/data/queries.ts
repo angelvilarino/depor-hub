@@ -11,6 +11,7 @@ import {
   MatchSnapshot,
   Meta,
   News,
+  NewsHome,
   Player,
   Rivals,
   Rivalries,
@@ -109,6 +110,19 @@ export const usePlayer = (id: string | null) =>
     Boolean(id),
   );
 export const useNews = () => useOptionalData('news.json', News, NEWS_STALE_TIME);
+
+// D1-05: Inicio pide solo la portada. Si aún no existe (publicación anterior),
+// cae al feed completo una sola vez para no dejar la sección vacía.
+export function useHomeNews() {
+  const home = useOptionalData('news-home.json', NewsHome, NEWS_STALE_TIME);
+  const fallback = useOptionalData(
+    'news.json',
+    News,
+    NEWS_STALE_TIME,
+    home.isSuccess && home.data === null,
+  );
+  return { ...home, data: home.data ?? fallback.data ?? null };
+}
 export const useSocial = () => useOptionalData('social.json', SocialFeed, NEWS_STALE_TIME);
 export const useSeason = () => useOptionalData('season.json', Season, NEWS_STALE_TIME);
 export const useRivals = () => useOptionalData('rivals.json', Rivals, NEWS_STALE_TIME);

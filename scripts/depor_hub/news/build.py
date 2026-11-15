@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import io
 import json
 import os
 import tempfile
@@ -10,15 +12,22 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 
+from PIL import Image
+
 from depor_hub import models as m
+from depor_hub.enrich.http import SourceError
 
 from .cluster import Candidate, StoryCluster
 from .feeds import GROUP_ORDER, FeedConfig
 from .fetch import FeedFetch
-from .normalize import content_hash, iso_utc
+from .normalize import content_hash, fold, iso_utc
 
 ROLLING_DAYS = 14
 MAX_STORIES = 150
+HOME_STORIES = 6
+THUMB_MAX_SIDE = 480
+THUMB_MAX_BYTES = 40_000
+THUMB_QUALITIES = (62, 50, 40)
 
 
 @dataclass
@@ -140,6 +149,112 @@ def write_news(out_dir: Path | str, result: IngestResult, force: bool = False) -
         fh.write(text)
     try:
         m.News.model_validate_json(temp.read_text(encoding="utf-8"))
+        os.replace(temp, path)
+    finally:
+        temp.unlink(missing_ok=True)
+    return True
+
+
+def select_home_stories(stories: list[m.NewsStory], limit: int = HOME_STORIES) -> list[m.NewsStory]:
+    """Misma selección que la portada: sin títulos ni URLs repetidos (D1-05)."""
+    seen_titles: set[str] = set()
+    seen_urls: set[str] = set()
+    selected: list[m.NewsStory] = []
+    for story in stories:
+        title = " ".join(fold(story.title).split())
+        url = story.url.split("?", 1)[0]
+        if not title or title in seen_titles or url in seen_urls:
+            continue
+        seen_titles.add(title)
+        seen_urls.add(url)
+        selected.append(story)
+        if len(selected) >= limit:
+            break
+    return selected
+
+
+def build_home(news: m.News, limit: int = HOME_STORIES) -> m.NewsHome:
+    """Vista de portada con solo las historias y fuentes que pinta Inicio."""
+    stories = [story.model_copy(deep=True) for story in select_home_stories(news.stories, limit)]
+    source_ids = {story.source_id for story in stories}
+    source_ids.update(item.source_id for story in stories for item in story.also_in)
+    sources = [source for source in news.sources if source.id in source_ids]
+    return m.NewsHome(updated_at=news.updated_at, sources=sources, stories=stories)
+
+
+def _thumbnail_name(url: str) -> str:
+    return f"{hashlib.sha256(url.encode('utf-8')).hexdigest()[:16]}.webp"
+
+
+def optimize_thumbnail(data: bytes) -> bytes:
+    """Reduce una miniatura externa a ~480 px WebP para la portada (D1-05)."""
+    with Image.open(io.BytesIO(data)) as image:
+        picture = image.convert("RGB")
+        picture.thumbnail((THUMB_MAX_SIDE, THUMB_MAX_SIDE), Image.Resampling.LANCZOS)
+        output = b""
+        for quality in THUMB_QUALITIES:
+            buffer = io.BytesIO()
+            picture.save(buffer, "WEBP", quality=quality, method=6)
+            output = buffer.getvalue()
+            if len(output) <= THUMB_MAX_BYTES:
+                break
+        return output
+
+
+def _attach_home_thumbnails(
+    home: m.NewsHome, out_dir: Path, http: object | None
+) -> None:
+    """Descarga una sola vez y sustituye la URL externa por la miniatura propia."""
+    directory = out_dir / "img" / "news"
+    referenced: set[str] = set()
+    for story in home.stories:
+        url = story.thumbnail_url
+        if not url or not url.startswith(("http://", "https://")):
+            continue
+        name = _thumbnail_name(url)
+        referenced.add(name)
+        target = directory / name
+        if not target.exists() and http is not None:
+            fetch_image = getattr(http, "fetch_image", None)
+            if fetch_image is None:
+                continue  # dobles de prueba sin red: se mantiene la URL externa
+            try:
+                raw = fetch_image(url)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(optimize_thumbnail(raw))
+            except (SourceError, OSError, ValueError):
+                continue
+        if target.exists():
+            story.thumbnail_url = f"img/news/{name}"
+    if directory.is_dir():
+        for stale in directory.glob("*.webp"):
+            if stale.name not in referenced:
+                stale.unlink()
+
+
+def write_home(
+    out_dir: Path | str,
+    news: m.News,
+    http: object | None = None,
+    *,
+    limit: int = HOME_STORIES,
+) -> bool:
+    """Publica `news-home.json` y sus miniaturas; nunca hace fallar la ingesta."""
+    target = Path(out_dir)
+    home = build_home(news, limit)
+    _attach_home_thumbnails(home, target, http)
+    body = home.model_dump(mode="json", by_alias=True)
+    m.NewsHome.model_validate(body)
+    text = json.dumps(body, ensure_ascii=False, indent=2) + "\n"
+    path = target / "news-home.json"
+    if path.exists() and path.read_text(encoding="utf-8") == text:
+        return False
+    target.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=target, delete=False) as fh:
+        temp = Path(fh.name)
+        fh.write(text)
+    try:
+        m.NewsHome.model_validate_json(temp.read_text(encoding="utf-8"))
         os.replace(temp, path)
     finally:
         temp.unlink(missing_ok=True)

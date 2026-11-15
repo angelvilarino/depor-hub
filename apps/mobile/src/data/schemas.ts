@@ -383,6 +383,13 @@ export const News = z.strictObject({
   stories: z.array(NewsStory).default([]),
 });
 
+// D1-05: vista de portada con las 5–6 historias y solo las fuentes que usa.
+export const NewsHome = z.strictObject({
+  updatedAt: iso,
+  sources: z.array(NewsSource).default([]),
+  stories: z.array(NewsStory).default([]),
+});
+
 // Redes (H6): solo perfiles y publicaciones curadas a mano. social.json es opcional.
 export const SocialPlatform = z.enum([
   'x',
@@ -967,6 +974,7 @@ export type HeadToHeadMeetingT = z.infer<typeof HeadToHeadMeeting>;
 export type KeyPlayerT = z.infer<typeof KeyPlayer>;
 export type FixturesT = z.infer<typeof Fixtures>;
 export type NewsT = z.infer<typeof News>;
+export type NewsHomeT = z.infer<typeof NewsHome>;
 export type NewsStoryT = z.infer<typeof NewsStory>;
 export type NewsAlsoInT = z.infer<typeof NewsAlsoIn>;
 export type NewsGroupT = z.infer<typeof NewsGroup>;

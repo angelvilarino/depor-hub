@@ -3,6 +3,7 @@ import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslation } from 'react-i18next';
+import { dataImageUrl } from '@/config';
 import { PaperCard, SectionHeader } from '@/components/design/DesignSystem';
 import type { NewsAlsoInT, NewsSourceT, NewsStoryT } from '@/data/schemas';
 import {
@@ -38,8 +39,9 @@ function SourceMark({ source, name, compact = false }: { source?: NewsSourceT; n
 function StoryImage({ story, source, sourceLabel }: { story: NewsStoryT; source?: NewsSourceT; sourceLabel: string }) {
   const [failed, setFailed] = useState(false);
   const { colors } = useTheme();
-  if (story.thumbnailUrl && !failed) {
-    return <Image source={{ uri: story.thumbnailUrl }} cachePolicy="memory-disk" contentFit="cover" onError={() => setFailed(true)} style={styles.featureImage} />;
+  const uri = dataImageUrl(story.thumbnailUrl);
+  if (uri && !failed) {
+    return <Image source={{ uri }} cachePolicy="memory-disk" contentFit="cover" onError={() => setFailed(true)} style={styles.featureImage} />;
   }
   const badge = colors.news.sourceBadges[sourceBadgeIndex(source?.id ?? story.sourceId, colors.news.sourceBadges.length)]!;
   return (
@@ -53,8 +55,9 @@ function StoryThumb({ story, source, sourceLabel }: { story: NewsStoryT; source?
   const [failed, setFailed] = useState(false);
   const { colors } = useTheme();
   const badge = colors.news.sourceBadges[sourceBadgeIndex(source?.id ?? story.sourceId, colors.news.sourceBadges.length)]!;
-  if (story.thumbnailUrl && !failed) {
-    return <Image source={{ uri: story.thumbnailUrl }} cachePolicy="memory-disk" contentFit="cover" onError={() => setFailed(true)} style={styles.thumb} />;
+  const uri = dataImageUrl(story.thumbnailUrl);
+  if (uri && !failed) {
+    return <Image source={{ uri }} cachePolicy="memory-disk" contentFit="cover" onError={() => setFailed(true)} style={styles.thumb} />;
   }
   return (
     <View style={[styles.thumbFallback, { backgroundColor: badge }]}>
