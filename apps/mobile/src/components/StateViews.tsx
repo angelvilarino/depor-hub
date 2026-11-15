@@ -2,6 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { BodyText, Card } from '@/components/Screen';
 import { Button } from '@/components/Button';
+import { useOnline } from '@/data/useOnline';
 import { radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
@@ -22,9 +23,10 @@ export function LoadingState() {
 
 export function ErrorState({ onRetry }: { onRetry: () => void }) {
   const { t } = useTranslation();
+  const online = useOnline();
   return (
     <Card>
-      <BodyText>{t('data.error')}</BodyText>
+      <BodyText>{t(online ? 'data.error' : 'data.offlineError')}</BodyText>
       <Button label={t('data.retry')} onPress={onRetry} />
     </Card>
   );

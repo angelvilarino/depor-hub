@@ -12,7 +12,14 @@ onlineManager.setEventListener((setOnline) =>
   NetInfo.addEventListener((state) => setOnline(!!state.isConnected)),
 );
 
-export function DataProvider({ children }: { children: ReactNode }) {
+export function DataProvider({
+  children,
+  onHydrated,
+}: {
+  children: ReactNode;
+  /** Se llama cuando la caché persistida terminó de restaurarse (o falló). */
+  onHydrated?: () => void;
+}) {
   // Al volver a primer plano, refrescar los datos que estén caducados.
   useEffect(() => {
     const sub = AppState.addEventListener('change', (s) => focusManager.setFocused(s === 'active'));
@@ -22,6 +29,10 @@ export function DataProvider({ children }: { children: ReactNode }) {
   return (
     <PersistQueryClientProvider
       client={queryClient}
+      // F3-03: el splash espera a que la caché esté disponible para no enseñar
+      // esqueletos en el primer render sin red.
+      onSuccess={onHydrated}
+      onError={onHydrated}
       persistOptions={{
         persister,
         maxAge: GC_TIME,

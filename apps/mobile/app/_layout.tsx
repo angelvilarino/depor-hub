@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
 import { DataProvider } from '@/data/DataProvider';
@@ -25,25 +25,25 @@ export default function RootLayout() {
   const { colors, scheme } = useTheme();
   const { t } = useTranslation();
   const language = useSettings((s) => s.language);
+  const [cacheReady, setCacheReady] = useState(false);
   const [fontsLoaded, fontError] = useFonts({
     DeporDisplay: require('../assets/fonts/BarlowCondensed-SemiBold.ttf'),
     DeporHeadline: require('../assets/fonts/SourceSerif4-SemiBold.ttf'),
     DeporBody: require('../assets/fonts/Inter-Regular.ttf'),
   });
 
+  // F3-03: el splash no se oculta hasta tener fuentes y caché restaurada.
   useEffect(() => {
-    if (fontsLoaded || fontError) void SplashScreen.hideAsync();
-  }, [fontError, fontsLoaded]);
+    if ((fontsLoaded || fontError) && cacheReady) void SplashScreen.hideAsync();
+  }, [cacheReady, fontError, fontsLoaded]);
 
   useEffect(() => {
     void i18n.changeLanguage(resolveLanguage(language));
   }, [language]);
 
-  if (!fontsLoaded && !fontError) return null;
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <DataProvider>
+      <DataProvider onHydrated={() => setCacheReady(true)}>
         <ReminderSync />
         <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
         <Stack

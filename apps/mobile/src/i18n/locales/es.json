@@ -55,7 +55,8 @@
     "ago_days": "hace {{n}} d",
     "error": "No se han podido cargar los datos.",
     "notConfigured": "Falta la URL de datos (EXPO_PUBLIC_DATA_BASE_URL).",
-    "retry": "Reintentar"
+    "retry": "Reintentar",
+    "offlineError": "Sin conexión y todavía no hay datos guardados. Se reintentará cuando vuelvas a estar en línea."
   },
   "notFound": {
     "title": "Pantalla no encontrada",

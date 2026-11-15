@@ -55,7 +55,8 @@
     "ago_days": "{{n}} d ago",
     "error": "Couldn't load the data.",
     "notConfigured": "Data URL missing (EXPO_PUBLIC_DATA_BASE_URL).",
-    "retry": "Retry"
+    "retry": "Retry",
+    "offlineError": "You are offline and there is no saved data yet. It will retry when you are back online."
   },
   "notFound": {
     "title": "Screen not found",

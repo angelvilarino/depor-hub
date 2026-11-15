@@ -19,7 +19,7 @@ export async function fetchData<T extends z.ZodType>(
   name: string,
   schema: T,
   baseUrl: string = DATA_BASE_URL,
-  timeoutMs = 15000,
+  timeoutMs = 8000, // F3-03: mejor fallar y ofrecer reintento que esperar 45 s
 ): Promise<z.output<T>> {
   if (!baseUrl) {
     throw new DataError('not_configured', 'EXPO_PUBLIC_DATA_BASE_URL no está definida');

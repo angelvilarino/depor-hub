@@ -48,9 +48,10 @@ function useData<T extends z.ZodType>(name: string, schema: T) {
     staleTime: __DEV__ ? 0 : STALE_TIME,
     gcTime: GC_TIME,
     // No reintentar lo que no se arregla reintentando.
+    // Un solo reintento: con 8 s de timeout el peor caso baja de ~45 s a ~16 s.
     retry: (count, err) =>
       !(err instanceof DataError && (err.kind === 'not_configured' || err.kind === 'invalid')) &&
-      count < 2,
+      count < 1,
   });
 }
 
@@ -70,7 +71,7 @@ function useOptionalData<T extends z.ZodType>(
       !(
         err instanceof DataError &&
         (err.kind === 'not_configured' || err.kind === 'invalid' || err.status === 404)
-      ) && count < 2,
+      ) && count < 1,
   });
 }
 
