@@ -59,7 +59,13 @@ export function EscudoSection({ club }: { club: ClubT }) {
                     { backgroundColor: colors.surface, borderColor: colors.border },
                   ]}
                 >
-                  <ClubImage path={crest.image} label={name} width={92} height={92} />
+                  <ClubImage
+                    path={crest.image}
+                    thumbnailPath={crest.thumbnail}
+                    label={name}
+                    width={92}
+                    height={92}
+                  />
                   <View style={styles.text}>
                     <Text style={{ color: colors.text, fontSize: 17, fontWeight: '800' }}>{years}</Text>
                     {crest.description ? (
@@ -107,6 +113,7 @@ export function EscudoSection({ club }: { club: ClubT }) {
                     </Text>
                     <ClubImage
                       path={crest.image}
+                      thumbnailPath={crest.thumbnail}
                       label={t('club.escudo.versionName', { years })}
                       width={Math.min(110, (width - spacing.lg * 3) / 2)}
                       height={Math.min(110, (width - spacing.lg * 3) / 2)}

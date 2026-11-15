@@ -771,6 +771,7 @@ class CrestVersion(Public):
     year_to: Optional[int] = Field(default=None, ge=1800, le=2100)
     description: Optional[str] = None
     image: Optional[str] = None  # ruta relativa a data/public/v1, no URL externa
+    thumbnail: Optional[str] = None  # WebP ligero para la línea de tiempo (D1-04)
     media: Optional[MediaRef] = None
 
     @model_validator(mode="after")

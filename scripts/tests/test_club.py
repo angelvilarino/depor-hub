@@ -8,6 +8,10 @@ from pydantic import ValidationError
 
 from depor_hub import models as m
 from depor_hub.club import (
+    CREST_THUMB_MAX_BYTES,
+    CREST_THUMB_SIDE,
+    crest_thumbnail_path,
+    download_images,
     kits_coverage,
     load_club,
     load_image_sources,
@@ -16,6 +20,7 @@ from depor_hub.club import (
     read_lyrics,
     season_start,
     sorted_seasons,
+    thumbnail_image,
 )
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -291,3 +296,71 @@ def test_normalize_svg_is_passed_through():
     assert normalize_image("img/club/escudos/test.svg", data) == data
     with pytest.raises(ValueError):
         normalize_image("img/club/escudos/test.svg", b"no es un svg")
+
+
+def test_crest_thumbnail_path_only_applies_to_png_crests():
+    assert crest_thumbnail_path("img/club/escudos/1906.png") == "img/club/escudos/1906-thumb.webp"
+    assert crest_thumbnail_path("img/club/escudos/2026.svg") is None
+    assert crest_thumbnail_path("img/club/equipaciones/2026-27-home.jpg") is None
+
+
+def test_thumbnail_image_is_a_small_webp_with_alpha():
+    image = Image.new("RGBA", (512, 512), (0, 48, 143, 255))
+    image.paste((255, 255, 255, 0), (0, 0, 128, 128))
+    buffer = io.BytesIO()
+    image.save(buffer, format="PNG")
+
+    data = thumbnail_image(buffer.getvalue())
+    thumb = Image.open(io.BytesIO(data))
+
+    assert thumb.format == "WEBP"
+    assert max(thumb.size) <= CREST_THUMB_SIDE
+    assert len(data) <= CREST_THUMB_MAX_BYTES
+
+
+def test_publish_club_links_the_published_crest_thumbnails(tmp_path):
+    crest_dir = tmp_path / "img" / "club" / "escudos"
+    crest_dir.mkdir(parents=True)
+    (crest_dir / "1906-thumb.webp").write_bytes(b"miniatura")
+
+    changed, club = publish_club(MANUAL / "club.yml", MANUAL / "himnos", tmp_path, MANUAL, now=NOW)
+
+    assert changed
+    first = next(crest for crest in club.crests if crest.image == "img/club/escudos/1906.png")
+    assert first.thumbnail == "img/club/escudos/1906-thumb.webp"
+    svg = next(crest for crest in club.crests if (crest.image or "").endswith(".svg"))
+    assert svg.thumbnail is None
+
+
+def test_download_images_creates_crest_thumbnails_offline(tmp_path):
+    crest = tmp_path / "img" / "club" / "escudos" / "1906.png"
+    crest.parent.mkdir(parents=True)
+    image = Image.new("RGBA", (512, 512), (0, 48, 143, 255))
+    buffer = io.BytesIO()
+    image.save(buffer, format="PNG")
+    crest.write_bytes(buffer.getvalue())
+    sources = tmp_path / "sources.yml"
+    sources.write_text(
+        "sources:\n  img/club/escudos/1906.png:\n    url: https://example.test/1906.png\n",
+        encoding="utf-8",
+    )
+
+    stats = download_images(sources, tmp_path, offline=True)
+
+    assert stats["thumbnails"] == 1
+    thumbs = list((crest.parent).glob("*-thumb.webp"))
+    assert [thumb.name for thumb in thumbs] == ["1906-thumb.webp"]
+    assert thumbs[0].stat().st_size <= CREST_THUMB_MAX_BYTES
+
+
+def test_published_crest_thumbnails_exist_and_stay_under_the_budget():
+    published = json.loads((ROOT / "data" / "public" / "v1" / "club.json").read_text(encoding="utf-8"))
+    thumbs = [crest.get("thumbnail") for crest in published["crests"] if crest.get("thumbnail")]
+
+    assert len(thumbs) == 13  # los 13 escudos PNG; el SVG actual no necesita miniatura
+    for relative_path in thumbs:
+        target = ROOT / "data" / "public" / "v1" / relative_path
+        assert target.is_file()
+        assert target.stat().st_size <= CREST_THUMB_MAX_BYTES
+    section_bytes = sum((ROOT / "data" / "public" / "v1" / thumb).stat().st_size for thumb in thumbs)
+    assert section_bytes < 300_000

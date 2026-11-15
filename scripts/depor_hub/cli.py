@@ -854,7 +854,8 @@ def cmd_club_images(args: argparse.Namespace) -> int:
     size = club_data.images_size_mb(Path(args.out))
     print(
         f"images={stats['total']} written={stats['written']} unchanged={stats['unchanged']} "
-        f"missing={stats['missing']} failed={stats['failed']} total={size:.2f}MB"
+        f"missing={stats['missing']} failed={stats['failed']} "
+        f"thumbnails={stats['thumbnails']} total={size:.2f}MB"
     )
     _gh_output(changed="true" if stats["written"] else "false", images_mb=f"{size:.2f}")
     return 0

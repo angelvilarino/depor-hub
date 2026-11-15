@@ -11,6 +11,8 @@ import { useTheme } from '@/theme/useTheme';
 type Props = {
   /** Ruta relativa del contrato (`img/club/...`). */
   path: string | null | undefined;
+  /** Miniatura ligera del mismo contenido (D1-04); se intenta antes que `path`. */
+  thumbnailPath?: string | null;
   /** URL externa solo para medios publicados y verificados. */
   remoteUrl?: string | null;
   /** Texto alternativo para lectores de pantalla. */
@@ -31,6 +33,7 @@ type Props = {
  */
 export function ClubImage({
   path,
+  thumbnailPath,
   remoteUrl,
   label,
   width,
@@ -45,11 +48,13 @@ export function ClubImage({
   const { colors } = useTheme();
   const [failedUris, setFailedUris] = useState<string[]>([]);
   const localUri = clubImageUrl(path);
-  const preferredUri = remoteUrl?.trim() || localUri;
-  const uri = [preferredUri, localUri].find(
-    (candidate): candidate is string =>
-      candidate !== null && candidate.length > 0 && !failedUris.includes(candidate),
-  ) ?? null;
+  const thumbnailUri = clubImageUrl(thumbnailPath);
+  // Prioridad: medio verificado > miniatura local > original. Cada fallo pasa al siguiente.
+  const candidates = [remoteUrl?.trim(), thumbnailUri, localUri].filter(
+    (candidate, index, all): candidate is string =>
+      Boolean(candidate) && all.indexOf(candidate) === index,
+  );
+  const uri = candidates.find((candidate) => !failedUris.includes(candidate)) ?? null;
   const failed = uri === null;
   const hidden = {
     accessibilityElementsHidden: true,

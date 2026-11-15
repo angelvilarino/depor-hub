@@ -859,6 +859,18 @@
           ],
           "default": null
         },
+        "thumbnail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Thumbnail"
+        },
         "yearFrom": {
           "maximum": 2100,
           "minimum": 1800,

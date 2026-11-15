@@ -127,6 +127,17 @@ def derive_rivalries(path: Path) -> list[m.Rivalry] | None:
     ]
 
 
+def attach_crest_thumbnails(club: m.Club, out_dir: Path) -> m.Club:
+    """Rellena `thumbnail` con la miniatura WebP publicada junto al PNG original."""
+    crests: list[m.CrestVersion] = []
+    for crest in club.crests:
+        name = crest_thumbnail_path(crest.image or "")
+        if name is not None and (out_dir / name).is_file():
+            crest = crest.model_copy(update={"thumbnail": name})
+        crests.append(crest)
+    return club.model_copy(update={"crests": crests})
+
+
 def publish_club(
     config_path: Path,
     anthems_dir: Path,
@@ -144,6 +155,8 @@ def publish_club(
     documentos aún no se han publicado.
     """
     club = load_club(config_path, anthems_dir, manual_dir, now)
+    # D1-04: la línea de tiempo usa la miniatura WebP; el PNG original sigue disponible.
+    club = attach_crest_thumbnails(club, out_dir)
     if titles_path is not None:
         titles = derive_titles(titles_path)
         if titles is not None:
@@ -279,6 +292,56 @@ def _white_to_transparent(image: Any) -> Any:
     return result
 
 
+CREST_THUMB_SIDE = 232
+CREST_THUMB_MAX_BYTES = 20_000
+CREST_THUMB_QUALITIES = (72, 62, 50)
+
+
+def crest_thumbnail_path(relative_path: str) -> str | None:
+    """Ruta de la miniatura WebP de un escudo PNG; `None` para SVG u otras imágenes."""
+    path = Path(relative_path)
+    if path.suffix.lower() != ".png" or "/escudos/" not in f"/{relative_path}":
+        return None
+    return path.with_name(f"{path.stem}-thumb.webp").as_posix()
+
+
+def thumbnail_image(data: bytes) -> bytes:
+    """Miniatura WebP 2× del escudo de la línea de tiempo, con tope de peso (D1-04)."""
+    from PIL import Image
+
+    with Image.open(io.BytesIO(data)) as source:
+        picture = source.convert("RGBA")
+        picture.thumbnail((CREST_THUMB_SIDE, CREST_THUMB_SIDE), Image.Resampling.LANCZOS)
+        output = b""
+        for quality in CREST_THUMB_QUALITIES:
+            buffer = io.BytesIO()
+            picture.save(buffer, "WEBP", quality=quality, method=6)
+            output = buffer.getvalue()
+            if len(output) <= CREST_THUMB_MAX_BYTES:
+                break
+        return output
+
+
+def _write_crest_thumbnail(
+    out_dir: Path, relative_path: str, data: bytes, *, force: bool = False
+) -> bool:
+    """Escribe la miniatura si falta o cambió. Devuelve `True` si escribió."""
+    thumb_name = crest_thumbnail_path(relative_path)
+    if thumb_name is None:
+        return False
+    target = out_dir / thumb_name
+    try:
+        thumb = thumbnail_image(data)
+    except Exception as exc:  # noqa: BLE001 - una miniatura no invalida el escudo original
+        print(f"AVISO: no se pudo crear la miniatura de {relative_path}: {exc}")
+        return False
+    if target.exists() and not force and target.read_bytes() == thumb:
+        return False
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes(thumb)
+    return True
+
+
 def normalize_image(relative_path: str, raw: bytes) -> bytes:
     """Normaliza una imagen descargada según su ruta de destino.
 
@@ -334,7 +397,14 @@ def download_images(
 ) -> dict[str, int]:
     """Descarga y normaliza las imágenes declaradas. Devuelve contadores."""
     sources = load_image_sources(sources_path)
-    stats = {"total": len(sources), "written": 0, "unchanged": 0, "missing": 0, "failed": 0}
+    stats = {
+        "total": len(sources),
+        "written": 0,
+        "unchanged": 0,
+        "missing": 0,
+        "failed": 0,
+        "thumbnails": 0,
+    }
     failures: list[str] = []
 
     with httpx.Client(
@@ -347,6 +417,9 @@ def download_images(
             if offline:
                 if target.exists():
                     stats["unchanged"] += 1
+                    if _write_crest_thumbnail(out_dir, relative_path, target.read_bytes(), force=force):
+                        stats["written"] += 1
+                        stats["thumbnails"] += 1
                 else:
                     stats["missing"] += 1
                 continue
@@ -363,11 +436,21 @@ def download_images(
                 continue
 
             target.parent.mkdir(parents=True, exist_ok=True)
-            if target.exists() and not force and hashlib.sha256(target.read_bytes()).digest() == hashlib.sha256(data).digest():
+            unchanged = (
+                target.exists()
+                and not force
+                and hashlib.sha256(target.read_bytes()).digest() == hashlib.sha256(data).digest()
+            )
+            if unchanged:
                 stats["unchanged"] += 1
-                continue
-            target.write_bytes(data)
-            stats["written"] += 1
+                written = _write_crest_thumbnail(out_dir, relative_path, data, force=force)
+            else:
+                target.write_bytes(data)
+                stats["written"] += 1
+                written = _write_crest_thumbnail(out_dir, relative_path, data, force=force)
+            if written:
+                stats["written"] += 1
+                stats["thumbnails"] += 1
 
     for failure in failures:
         print(f"AVISO: no se pudo descargar {failure}")

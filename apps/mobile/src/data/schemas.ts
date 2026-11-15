@@ -519,6 +519,8 @@ export const CrestVersion = z.strictObject({
   description: optionalNull(),
   // Ruta relativa a data/public/v1; no es una URL externa.
   image: optionalNull(),
+  // D1-04: miniatura WebP para la línea de tiempo; el PNG original queda en `image`.
+  thumbnail: optionalNull(),
   media: MediaRef.nullable().default(null),
 });
 
