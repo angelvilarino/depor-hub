@@ -1,0 +1,403 @@
+{
+  "id": 172628,
+  "name": "Leo Román",
+  "position": "Goalkeeper",
+  "dateOfBirth": "2000-07-06",
+  "nationality": "Spain",
+  "shirtNumber": 13,
+  "contractUntil": "2031",
+  "heightCm": 189,
+  "birthPlace": "Ibiza, España",
+  "preferredFoot": "right",
+  "loanFrom": null,
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": 81,
+  "social": {
+    "x": null,
+    "instagram": "leo_rr0",
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/448520-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/leo-roman"
+    }
+  ],
+  "career": [
+    {
+      "club": "Peña Deportiva",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/b/b1/SCR_Pe%C3%B1a_Deportiva_logo.png/120px-SCR_Pe%C3%B1a_Deportiva_logo.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2017",
+      "to": "2020",
+      "appearances": 6,
+      "goals": 0,
+      "assists": null,
+      "minutes": 540,
+      "yellowCards": 3,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2017-18",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2019-20",
+          "appearances": 6,
+          "goals": 0,
+          "assists": null,
+          "minutes": 540,
+          "yellowCards": 3,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Mallorca",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/e/e0/Rcd_mallorca.svg/120px-Rcd_mallorca.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2020",
+      "to": "2023",
+      "appearances": 3,
+      "goals": 0,
+      "assists": null,
+      "minutes": 270,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2020-21",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2021-22",
+          "appearances": 2,
+          "goals": 0,
+          "assists": null,
+          "minutes": 180,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2022-23",
+          "appearances": 1,
+          "goals": 0,
+          "assists": null,
+          "minutes": 90,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Oviedo",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/6/6e/Real_Oviedo_logo.svg/120px-Real_Oviedo_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2023",
+      "to": "2024",
+      "appearances": 42,
+      "goals": 0,
+      "assists": null,
+      "minutes": 3780,
+      "yellowCards": 2,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2023-24",
+          "appearances": 42,
+          "goals": 0,
+          "assists": null,
+          "minutes": 3780,
+          "yellowCards": 2,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Mallorca",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/e/e0/Rcd_mallorca.svg/120px-Rcd_mallorca.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2024",
+      "to": "2026",
+      "appearances": 40,
+      "goals": 0,
+      "assists": null,
+      "minutes": 3600,
+      "yellowCards": 4,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2024-25",
+          "appearances": 7,
+          "goals": 0,
+          "assists": null,
+          "minutes": 630,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2025-26",
+          "appearances": 33,
+          "goals": 0,
+          "assists": null,
+          "minutes": 2970,
+          "yellowCards": 4,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 9,
+      "goals": 0,
+      "assists": null,
+      "minutes": 810,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 9,
+          "goals": 0,
+          "assists": null,
+          "minutes": 810,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 100,
+    "goals": 0,
+    "assists": null,
+    "minutes": 9000,
+    "yellowCards": 9,
+    "redCards": 0
+  },
+  "deporMatches": [
+    {
+      "date": "2026-10-16",
+      "opponent": "Levante",
+      "opponentCrestUrl": "https://crests.football-data.org/88.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-10-11",
+      "opponent": "Real Sociedad",
+      "opponentCrestUrl": "https://crests.football-data.org/92.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 2,
+      "opponentGoals": 3,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-20",
+      "opponent": "Betis",
+      "opponentCrestUrl": "https://crests.football-data.org/90.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-16",
+      "opponent": "Sevilla",
+      "opponentCrestUrl": "https://crests.football-data.org/559.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 0,
+      "opponentGoals": 1,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-13",
+      "opponent": "Getafe",
+      "opponentCrestUrl": "https://crests.football-data.org/82.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-05",
+      "opponent": "Villarreal",
+      "opponentCrestUrl": "https://crests.football-data.org/94.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 3,
+      "opponentGoals": 2,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-30",
+      "opponent": "Valencia",
+      "opponentCrestUrl": "https://crests.football-data.org/95.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 3,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-24",
+      "opponent": "Málaga",
+      "opponentCrestUrl": "https://crests.football-data.org/84.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-17",
+      "opponent": "Elche",
+      "opponentCrestUrl": "https://crests.football-data.org/285.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol + Wikipedia",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "heightCm": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "weightKg": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "Wikidata + Wikipedia (es) + Wikipedia (en)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "social": {
+      "source": "https://www.instagram.com/leo_rr0",
+      "confidence": "single_source",
+      "capturedAt": null
+    },
+    "photos": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "career": {
+      "source": "BDFutbol + Wikidata",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

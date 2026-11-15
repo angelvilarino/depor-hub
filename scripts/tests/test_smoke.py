@@ -31,3 +31,21 @@ def test_data_hash_mismatch_is_reported():
     failures = smoke.check_payloads(payloads)
 
     assert any("dataHash" in failure for failure in failures)
+
+
+def test_missing_player_detail_is_reported():
+    payloads = smoke.load_local(DATA)
+    payloads.pop("players/114100.json", None)
+
+    failures = smoke.check_payloads(payloads)
+
+    assert any("players/114100.json: no publicado" in failure for failure in failures)
+
+
+def test_invalid_player_detail_is_reported():
+    payloads = smoke.load_local(DATA)
+    payloads["players/114100.json"] = b'{"id": "not-an-int"}'
+
+    failures = smoke.check_payloads(payloads)
+
+    assert any("players/114100.json: no valida" in failure for failure in failures)

@@ -1,0 +1,218 @@
+{
+  "id": 298636,
+  "name": "Ede Bright",
+  "position": "Defence",
+  "dateOfBirth": "2007-02-18",
+  "nationality": "Poland",
+  "shirtNumber": 22,
+  "contractUntil": "2031",
+  "heightCm": 193,
+  "birthPlace": "Varsovia, Polonia",
+  "preferredFoot": "both",
+  "loanFrom": null,
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": null,
+  "social": {
+    "x": null,
+    "instagram": "bright_ede",
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/3595226-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/bright-ede"
+    }
+  ],
+  "career": [
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 6,
+      "goals": 0,
+      "assists": null,
+      "minutes": 461,
+      "yellowCards": 1,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 6,
+          "goals": 0,
+          "assists": null,
+          "minutes": 461,
+          "yellowCards": 1,
+          "redCards": 0
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 6,
+    "goals": 0,
+    "assists": null,
+    "minutes": 461,
+    "yellowCards": 1,
+    "redCards": 0
+  },
+  "deporMatches": [
+    {
+      "date": "2026-10-16",
+      "opponent": "Levante",
+      "opponentCrestUrl": "https://crests.football-data.org/88.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 85,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-10-11",
+      "opponent": "Real Sociedad",
+      "opponentCrestUrl": "https://crests.football-data.org/92.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 2,
+      "opponentGoals": 3,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-20",
+      "opponent": "Betis",
+      "opponentCrestUrl": "https://crests.football-data.org/90.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 1,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-30",
+      "opponent": "Valencia",
+      "opponentCrestUrl": "https://crests.football-data.org/95.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 3,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-24",
+      "opponent": "Málaga",
+      "opponentCrestUrl": "https://crests.football-data.org/84.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": false,
+      "minutes": 16,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-17",
+      "opponent": "Elche",
+      "opponentCrestUrl": "https://crests.football-data.org/285.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol + Wikipedia",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "heightCm": {
+      "source": "BDFutbol + official",
+      "confidence": "verified",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "social": {
+      "source": "https://www.instagram.com/bright_ede",
+      "confidence": "single_source",
+      "capturedAt": null
+    },
+    "photos": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "career": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

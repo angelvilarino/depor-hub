@@ -1,0 +1,369 @@
+{
+  "id": 213277,
+  "name": "José Giménez",
+  "position": "Defence",
+  "dateOfBirth": "1995-01-20",
+  "nationality": "Uruguay",
+  "shirtNumber": 20,
+  "contractUntil": "2027",
+  "heightCm": 186,
+  "birthPlace": "Toledo, Uruguay",
+  "preferredFoot": "right",
+  "loanFrom": "Atlético de Madrid",
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": 80,
+  "social": {
+    "x": "josemagimenez13",
+    "instagram": "josemariagimenez",
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/150773-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/jose-maria-gimenez"
+    }
+  ],
+  "career": [
+    {
+      "club": "Atlético de Madrid",
+      "crestUrl": "https://crests.football-data.org/78.png",
+      "role": "player",
+      "from": "2013",
+      "to": "2027",
+      "appearances": 270,
+      "goals": 6,
+      "assists": null,
+      "minutes": 21264,
+      "yellowCards": 66,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2013-14",
+          "appearances": 1,
+          "goals": 0,
+          "assists": null,
+          "minutes": 90,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2014-15",
+          "appearances": 20,
+          "goals": 1,
+          "assists": null,
+          "minutes": 1756,
+          "yellowCards": 3,
+          "redCards": 0
+        },
+        {
+          "season": "2015-16",
+          "appearances": 27,
+          "goals": 1,
+          "assists": null,
+          "minutes": 2430,
+          "yellowCards": 8,
+          "redCards": 0
+        },
+        {
+          "season": "2016-17",
+          "appearances": 17,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1013,
+          "yellowCards": 5,
+          "redCards": 0
+        },
+        {
+          "season": "2017-18",
+          "appearances": 23,
+          "goals": 1,
+          "assists": null,
+          "minutes": 1690,
+          "yellowCards": 6,
+          "redCards": 0
+        },
+        {
+          "season": "2018-19",
+          "appearances": 21,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1771,
+          "yellowCards": 5,
+          "redCards": 0
+        },
+        {
+          "season": "2019-20",
+          "appearances": 21,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1753,
+          "yellowCards": 2,
+          "redCards": 0
+        },
+        {
+          "season": "2020-21",
+          "appearances": 21,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1766,
+          "yellowCards": 5,
+          "redCards": 0
+        },
+        {
+          "season": "2021-22",
+          "appearances": 24,
+          "goals": 1,
+          "assists": null,
+          "minutes": 2047,
+          "yellowCards": 8,
+          "redCards": 0
+        },
+        {
+          "season": "2022-23",
+          "appearances": 28,
+          "goals": 2,
+          "assists": null,
+          "minutes": 2421,
+          "yellowCards": 9,
+          "redCards": 0
+        },
+        {
+          "season": "2023-24",
+          "appearances": 22,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1323,
+          "yellowCards": 5,
+          "redCards": 0
+        },
+        {
+          "season": "2024-25",
+          "appearances": 27,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1993,
+          "yellowCards": 5,
+          "redCards": 0
+        },
+        {
+          "season": "2025-26",
+          "appearances": 16,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1176,
+          "yellowCards": 4,
+          "redCards": 0
+        },
+        {
+          "season": "2026-27",
+          "appearances": 2,
+          "goals": 0,
+          "assists": null,
+          "minutes": 35,
+          "yellowCards": 1,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 6,
+      "goals": 0,
+      "assists": null,
+      "minutes": 509,
+      "yellowCards": 2,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 6,
+          "goals": 0,
+          "assists": null,
+          "minutes": 509,
+          "yellowCards": 2,
+          "redCards": 0
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 276,
+    "goals": 6,
+    "assists": null,
+    "minutes": 21773,
+    "yellowCards": 68,
+    "redCards": 0
+  },
+  "deporMatches": [
+    {
+      "date": "2026-10-16",
+      "opponent": "Levante",
+      "opponentCrestUrl": "https://crests.football-data.org/88.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 1,
+      "redCards": 0
+    },
+    {
+      "date": "2026-10-11",
+      "opponent": "Real Sociedad",
+      "opponentCrestUrl": "https://crests.football-data.org/92.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 2,
+      "opponentGoals": 3,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 1,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-20",
+      "opponent": "Betis",
+      "opponentCrestUrl": "https://crests.football-data.org/90.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-16",
+      "opponent": "Sevilla",
+      "opponentCrestUrl": "https://crests.football-data.org/559.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 0,
+      "opponentGoals": 1,
+      "result": "L",
+      "started": true,
+      "minutes": 83,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-13",
+      "opponent": "Getafe",
+      "opponentCrestUrl": "https://crests.football-data.org/82.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-05",
+      "opponent": "Villarreal",
+      "opponentCrestUrl": "https://crests.football-data.org/94.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 3,
+      "opponentGoals": 2,
+      "result": "W",
+      "started": true,
+      "minutes": 66,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol + Wikipedia",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "heightCm": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "weightKg": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "BDFutbol + Wikidata + Wikipedia (es) + Wikipedia (en)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "loanFrom": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "social": {
+      "source": "https://www.instagram.com/josemariagimenez + https://x.com/josemagimenez13",
+      "confidence": "single_source",
+      "capturedAt": null
+    },
+    "photos": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "career": {
+      "source": "BDFutbol + Wikidata",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

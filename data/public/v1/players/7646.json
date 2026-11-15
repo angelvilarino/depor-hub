@@ -1,0 +1,458 @@
+{
+  "id": 7646,
+  "name": "Angeliño",
+  "position": "Defence",
+  "dateOfBirth": "1997-01-04",
+  "nationality": "Spain",
+  "shirtNumber": 17,
+  "contractUntil": "2027",
+  "heightCm": 171,
+  "birthPlace": "Coristanco (A Coruña), España",
+  "preferredFoot": "both",
+  "loanFrom": "AS Roma",
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": 69,
+  "social": {
+    "x": "angel_tasende69",
+    "instagram": "angelino_69",
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/206978-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/angelino"
+    }
+  ],
+  "career": [
+    {
+      "club": "Manchester City",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/120px-Manchester_City_FC_badge.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2014",
+      "to": "2017",
+      "appearances": 0,
+      "goals": 0,
+      "assists": null,
+      "minutes": 0,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2014-15",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2015-16",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2016-17",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Girona",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/f/f7/Girona_FC_Logo.svg/120px-Girona_FC_Logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2016",
+      "to": "2017",
+      "appearances": 0,
+      "goals": 0,
+      "assists": null,
+      "minutes": 0,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2016-17",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Mallorca",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/e/e0/Rcd_mallorca.svg/120px-Rcd_mallorca.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2016",
+      "to": "2017",
+      "appearances": 17,
+      "goals": 0,
+      "assists": null,
+      "minutes": 1328,
+      "yellowCards": 6,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2016-17",
+          "appearances": 17,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1328,
+          "yellowCards": 6,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "NAC Breda",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Logo_NAC_Breda.svg/120px-Logo_NAC_Breda.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2017",
+      "to": "2018",
+      "appearances": 34,
+      "goals": 3,
+      "assists": null,
+      "minutes": 3060,
+      "yellowCards": 3,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2017-18",
+          "appearances": 34,
+          "goals": 3,
+          "assists": null,
+          "minutes": 3060,
+          "yellowCards": 3,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "PSV",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/0/05/PSV_Eindhoven.svg/120px-PSV_Eindhoven.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2018",
+      "to": "2019",
+      "appearances": 34,
+      "goals": 1,
+      "assists": null,
+      "minutes": 3050,
+      "yellowCards": 3,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2018-19",
+          "appearances": 34,
+          "goals": 1,
+          "assists": null,
+          "minutes": 3050,
+          "yellowCards": 3,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Manchester City",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/120px-Manchester_City_FC_badge.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2019",
+      "to": "2020",
+      "appearances": 6,
+      "goals": 0,
+      "assists": null,
+      "minutes": 421,
+      "yellowCards": 1,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2019-20",
+          "appearances": 6,
+          "goals": 0,
+          "assists": null,
+          "minutes": 421,
+          "yellowCards": 1,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "RB Leipzig",
+      "crestUrl": "https://en.wikipedia.org/wiki/Special:FilePath/RB_Leipzig_2014_logo.svg?width=96",
+      "role": "player",
+      "from": "2019",
+      "to": "2022",
+      "appearances": 68,
+      "goals": 7,
+      "assists": null,
+      "minutes": 5558,
+      "yellowCards": 7,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2019-20",
+          "appearances": 13,
+          "goals": 1,
+          "assists": null,
+          "minutes": 1095,
+          "yellowCards": 2,
+          "redCards": 0
+        },
+        {
+          "season": "2020-21",
+          "appearances": 26,
+          "goals": 4,
+          "assists": null,
+          "minutes": 2164,
+          "yellowCards": 2,
+          "redCards": 0
+        },
+        {
+          "season": "2021-22",
+          "appearances": 29,
+          "goals": 2,
+          "assists": null,
+          "minutes": 2299,
+          "yellowCards": 3,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Hoffenheim",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/TSG_Logo-Standard_4c.png/120px-TSG_Logo-Standard_4c.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2022",
+      "to": "2023",
+      "appearances": 33,
+      "goals": 0,
+      "assists": null,
+      "minutes": 2620,
+      "yellowCards": 2,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2022-23",
+          "appearances": 33,
+          "goals": 0,
+          "assists": null,
+          "minutes": 2620,
+          "yellowCards": 2,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Galatasaray",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Galatasaray_Sports_Club_Logo.svg/120px-Galatasaray_Sports_Club_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2023",
+      "to": "2024",
+      "appearances": 8,
+      "goals": 0,
+      "assists": null,
+      "minutes": 605,
+      "yellowCards": 1,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2023-24",
+          "appearances": 8,
+          "goals": 0,
+          "assists": null,
+          "minutes": 605,
+          "yellowCards": 1,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Roma",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/f/f7/AS_Roma_logo_%282017%29.svg/120px-AS_Roma_logo_%282017%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2023",
+      "to": "2026",
+      "appearances": 61,
+      "goals": 2,
+      "assists": null,
+      "minutes": 4746,
+      "yellowCards": 5,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2023-24",
+          "appearances": 16,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1148,
+          "yellowCards": 2,
+          "redCards": 0
+        },
+        {
+          "season": "2024-25",
+          "appearances": 38,
+          "goals": 2,
+          "assists": null,
+          "minutes": 3179,
+          "yellowCards": 1,
+          "redCards": 0
+        },
+        {
+          "season": "2025-26",
+          "appearances": 7,
+          "goals": 0,
+          "assists": null,
+          "minutes": 419,
+          "yellowCards": 2,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 2,
+      "goals": 0,
+      "assists": null,
+      "minutes": 69,
+      "yellowCards": 0,
+      "redCards": 1,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 2,
+          "goals": 0,
+          "assists": null,
+          "minutes": 69,
+          "yellowCards": 0,
+          "redCards": 1
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 263,
+    "goals": 13,
+    "assists": null,
+    "minutes": 21457,
+    "yellowCards": 28,
+    "redCards": 1
+  },
+  "deporMatches": [
+    {
+      "date": "2026-10-16",
+      "opponent": "Levante",
+      "opponentCrestUrl": "https://crests.football-data.org/88.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": false,
+      "minutes": 10,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-16",
+      "opponent": "Sevilla",
+      "opponentCrestUrl": "https://crests.football-data.org/559.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 0,
+      "opponentGoals": 1,
+      "result": "L",
+      "started": true,
+      "minutes": 59,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 1
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol + Wikipedia",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "heightCm": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "weightKg": {
+      "source": "BDFutbol + Wikipedia (es)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "BDFutbol + Wikipedia (es) + Wikipedia (en)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "loanFrom": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "social": {
+      "source": "Wikidata",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "photos": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "career": {
+      "source": "BDFutbol + Wikidata",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

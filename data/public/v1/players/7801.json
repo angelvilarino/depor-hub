@@ -1,0 +1,539 @@
+{
+  "id": 7801,
+  "name": "Pierre-Emerick Aubameyang",
+  "position": "Offence",
+  "dateOfBirth": "1989-06-18",
+  "nationality": "Gabon",
+  "shirtNumber": 7,
+  "contractUntil": "2028",
+  "heightCm": 187,
+  "birthPlace": "Laval, Mayenne, France",
+  "preferredFoot": "right",
+  "loanFrom": null,
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": 74,
+  "social": {
+    "x": "Aubameyang7",
+    "instagram": "auba",
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/101801-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/pierre-emerick-aubameyang"
+    }
+  ],
+  "career": [
+    {
+      "club": "Lille",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/3/3f/Lille_OSC_2018_logo.svg/120px-Lille_OSC_2018_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2009",
+      "to": "2010",
+      "appearances": 14,
+      "goals": 2,
+      "assists": null,
+      "minutes": 495,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2009-10",
+          "appearances": 14,
+          "goals": 2,
+          "assists": null,
+          "minutes": 495,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Monaco",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/c/cf/LogoASMonacoFC2021.svg/120px-LogoASMonacoFC2021.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2010",
+      "to": "2011",
+      "appearances": 19,
+      "goals": 2,
+      "assists": null,
+      "minutes": 1442,
+      "yellowCards": 1,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2010-11",
+          "appearances": 19,
+          "goals": 2,
+          "assists": null,
+          "minutes": 1442,
+          "yellowCards": 1,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Saint-Étienne",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Logo_AS_Saint-%C3%89tienne.svg/120px-Logo_AS_Saint-%C3%89tienne.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2010",
+      "to": "2013",
+      "appearances": 87,
+      "goals": 37,
+      "assists": null,
+      "minutes": 7142,
+      "yellowCards": 4,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2010-11",
+          "appearances": 14,
+          "goals": 2,
+          "assists": null,
+          "minutes": 775,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2011-12",
+          "appearances": 36,
+          "goals": 16,
+          "assists": null,
+          "minutes": 3153,
+          "yellowCards": 2,
+          "redCards": 0
+        },
+        {
+          "season": "2012-13",
+          "appearances": 37,
+          "goals": 19,
+          "assists": null,
+          "minutes": 3214,
+          "yellowCards": 2,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Borussia Dortmund",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/120px-Borussia_Dortmund_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2013",
+      "to": "2018",
+      "appearances": 144,
+      "goals": 98,
+      "assists": null,
+      "minutes": 11349,
+      "yellowCards": 14,
+      "redCards": 1,
+      "seasons": [
+        {
+          "season": "2013-14",
+          "appearances": 32,
+          "goals": 13,
+          "assists": null,
+          "minutes": 1955,
+          "yellowCards": 1,
+          "redCards": 0
+        },
+        {
+          "season": "2014-15",
+          "appearances": 33,
+          "goals": 16,
+          "assists": null,
+          "minutes": 2721,
+          "yellowCards": 4,
+          "redCards": 0
+        },
+        {
+          "season": "2015-16",
+          "appearances": 31,
+          "goals": 25,
+          "assists": null,
+          "minutes": 2474,
+          "yellowCards": 4,
+          "redCards": 0
+        },
+        {
+          "season": "2016-17",
+          "appearances": 32,
+          "goals": 31,
+          "assists": null,
+          "minutes": 2782,
+          "yellowCards": 3,
+          "redCards": 0
+        },
+        {
+          "season": "2017-18",
+          "appearances": 16,
+          "goals": 13,
+          "assists": null,
+          "minutes": 1417,
+          "yellowCards": 2,
+          "redCards": 1
+        }
+      ]
+    },
+    {
+      "club": "Arsenal",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/120px-Arsenal_FC.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2017",
+      "to": "2022",
+      "appearances": 128,
+      "goals": 68,
+      "assists": null,
+      "minutes": 10305,
+      "yellowCards": 8,
+      "redCards": 1,
+      "seasons": [
+        {
+          "season": "2017-18",
+          "appearances": 13,
+          "goals": 10,
+          "assists": null,
+          "minutes": 1058,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2018-19",
+          "appearances": 36,
+          "goals": 22,
+          "assists": null,
+          "minutes": 2731,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2019-20",
+          "appearances": 36,
+          "goals": 22,
+          "assists": null,
+          "minutes": 3139,
+          "yellowCards": 3,
+          "redCards": 1
+        },
+        {
+          "season": "2020-21",
+          "appearances": 29,
+          "goals": 10,
+          "assists": null,
+          "minutes": 2337,
+          "yellowCards": 2,
+          "redCards": 0
+        },
+        {
+          "season": "2021-22",
+          "appearances": 14,
+          "goals": 4,
+          "assists": null,
+          "minutes": 1040,
+          "yellowCards": 3,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Barcelona",
+      "crestUrl": "https://crests.football-data.org/81.png",
+      "role": "player",
+      "from": "2021",
+      "to": "2023",
+      "appearances": 18,
+      "goals": 11,
+      "assists": null,
+      "minutes": 1100,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2021-22",
+          "appearances": 17,
+          "goals": 11,
+          "assists": null,
+          "minutes": 1092,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2022-23",
+          "appearances": 1,
+          "goals": 0,
+          "assists": null,
+          "minutes": 8,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Chelsea",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/120px-Chelsea_FC.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2022",
+      "to": "2023",
+      "appearances": 15,
+      "goals": 1,
+      "assists": null,
+      "minutes": 550,
+      "yellowCards": 1,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2022-23",
+          "appearances": 15,
+          "goals": 1,
+          "assists": null,
+          "minutes": 550,
+          "yellowCards": 1,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Olympique de Marseille",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Olympique_de_Marseille_2026_logo.svg/120px-Olympique_de_Marseille_2026_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2023",
+      "to": "2026",
+      "appearances": 64,
+      "goals": 27,
+      "assists": null,
+      "minutes": 4675,
+      "yellowCards": 5,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2023-24",
+          "appearances": 34,
+          "goals": 17,
+          "assists": null,
+          "minutes": 2628,
+          "yellowCards": 4,
+          "redCards": 0
+        },
+        {
+          "season": "2025-26",
+          "appearances": 30,
+          "goals": 10,
+          "assists": null,
+          "minutes": 2047,
+          "yellowCards": 1,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 7,
+      "goals": 5,
+      "assists": null,
+      "minutes": 560,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 7,
+          "goals": 5,
+          "assists": null,
+          "minutes": 560,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 496,
+    "goals": 251,
+    "assists": null,
+    "minutes": 37618,
+    "yellowCards": 33,
+    "redCards": 2
+  },
+  "deporMatches": [
+    {
+      "date": "2026-09-20",
+      "opponent": "Betis",
+      "opponentCrestUrl": "https://crests.football-data.org/90.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": false,
+      "minutes": 25,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-16",
+      "opponent": "Sevilla",
+      "opponentCrestUrl": "https://crests.football-data.org/559.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 0,
+      "opponentGoals": 1,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-13",
+      "opponent": "Getafe",
+      "opponentCrestUrl": "https://crests.football-data.org/82.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 1,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-05",
+      "opponent": "Villarreal",
+      "opponentCrestUrl": "https://crests.football-data.org/94.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 3,
+      "opponentGoals": 2,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 1,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-30",
+      "opponent": "Valencia",
+      "opponentCrestUrl": "https://crests.football-data.org/95.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 3,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 1,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-24",
+      "opponent": "Málaga",
+      "opponentCrestUrl": "https://crests.football-data.org/84.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 1,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-17",
+      "opponent": "Elche",
+      "opponentCrestUrl": "https://crests.football-data.org/285.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 85,
+      "goals": 1,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol + Wikipedia",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "heightCm": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "weightKg": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "BDFutbol + Wikidata + Wikipedia (es) + Wikipedia (en)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "social": {
+      "source": "Wikidata",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "photos": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "career": {
+      "source": "BDFutbol + Wikidata",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

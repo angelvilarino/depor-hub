@@ -11,6 +11,7 @@ import {
   MatchSnapshot,
   Meta,
   News,
+  Player,
   Rivals,
   Rivalries,
   Season,
@@ -99,6 +100,14 @@ export function useFixtures() {
   return { ...published, data, refetch };
 }
 export const useSquad = () => useData('squad.json', Squad);
+// D1-03: la ficha descarga solo el detalle del jugador, no toda la plantilla.
+export const usePlayer = (id: string | null) =>
+  useOptionalData(
+    id ? `players/${id}.json` : '',
+    Player,
+    NEWS_STALE_TIME,
+    Boolean(id),
+  );
 export const useNews = () => useOptionalData('news.json', News, NEWS_STALE_TIME);
 export const useSocial = () => useOptionalData('social.json', SocialFeed, NEWS_STALE_TIME);
 export const useSeason = () => useOptionalData('season.json', Season, NEWS_STALE_TIME);

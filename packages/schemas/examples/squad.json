@@ -1,28 +1,91 @@
 {
-  "updatedAt": "2026-01-01T00:00:00Z",
+  "updatedAt": "2026-11-14T14:34:37Z",
   "coach": {
-    "name": "Entrenador Ejemplo",
-    "nationality": null,
-    "birthDate": "1975-05-10",
-    "since": "2025-07-01",
-    "contractUntil": "2027",
-    "provenance": {
-      "since": {
-        "source": "Fuente de ejemplo",
-        "confidence": "single_source",
-        "capturedAt": "2026-10-25"
-      }
-    },
+    "name": "Antonio Hidalgo",
+    "nationality": "Spain",
+    "birthDate": "1979-02-06",
     "birthPlace": "Granollers",
-    "photoUrl": "https://example.com/entrenador.jpg",
+    "photoUrl": "https://scdn.ovixia.app/images/scn1tr4b/production/a1cec405-4daa-441e-bb45-f1c7361ef4c8-4531x6793.jpg",
+    "since": "2025",
+    "contractUntil": null,
     "career": [
       {
-        "club": "Club de Origen",
-        "crestUrl": null,
+        "club": "FC Barcelona B",
+        "crestUrl": "https://crests.football-data.org/81.png",
         "role": "player",
         "from": "1998",
-        "to": "2002",
-        "appearances": 84,
+        "to": "2000",
+        "appearances": 66,
+        "goals": 4,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "CD Tenerife",
+        "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Escucdt.png/120px-Escucdt.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "role": "player",
+        "from": "2000",
+        "to": "2005",
+        "appearances": 122,
+        "goals": 15,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "Málaga CF",
+        "crestUrl": "https://crests.football-data.org/84.png",
+        "role": "player",
+        "from": "2005",
+        "to": "2008",
+        "appearances": 109,
+        "goals": 28,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "Real Zaragoza",
+        "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/6/69/Real_Zaragoza_logo.svg/120px-Real_Zaragoza_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "role": "player",
+        "from": "2008",
+        "to": "2009",
+        "appearances": 17,
+        "goals": 0,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "CA Osasuna",
+        "crestUrl": "https://crests.football-data.org/79.png",
+        "role": "player",
+        "from": "2008",
+        "to": "2009",
+        "appearances": 12,
+        "goals": 0,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "Albacete Balompié",
+        "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/3/37/Albacete_balompie.svg/120px-Albacete_balompie.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "role": "player",
+        "from": "2009",
+        "to": "2010",
+        "appearances": 33,
         "goals": 9,
         "assists": null,
         "minutes": null,
@@ -31,8 +94,120 @@
         "seasons": []
       },
       {
-        "club": "Club Actual",
+        "club": "CD Tenerife",
+        "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Escucdt.png/120px-Escucdt.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "role": "player",
+        "from": "2010",
+        "to": "2011",
+        "appearances": 29,
+        "goals": 3,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "CE Sabadell",
+        "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/CE_Sabadell_FC_1903.png/120px-CE_Sabadell_FC_1903.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "role": "player",
+        "from": "2012",
+        "to": "2015",
+        "appearances": 120,
+        "goals": 12,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "UE Cornellà",
+        "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/0/0d/UE_Cornella_crest.svg/120px-UE_Cornella_crest.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "role": "player",
+        "from": "2015",
+        "to": "2015",
+        "appearances": 5,
+        "goals": 0,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "EC Granollers",
         "crestUrl": null,
+        "role": "coach",
+        "from": "2016",
+        "to": "2016",
+        "appearances": null,
+        "goals": null,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "AEK Larnaca",
+        "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/f/f9/AEK_Larnaca_logo.svg/120px-AEK_Larnaca_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "role": "coach",
+        "from": "2016",
+        "to": "2019",
+        "appearances": null,
+        "goals": null,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "CE Sabadell",
+        "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/CE_Sabadell_FC_1903.png/120px-CE_Sabadell_FC_1903.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "role": "coach",
+        "from": "2019",
+        "to": "2021",
+        "appearances": null,
+        "goals": null,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "Sevilla Atlético",
+        "crestUrl": "https://crests.football-data.org/559.png",
+        "role": "coach",
+        "from": "2022",
+        "to": "2023",
+        "appearances": null,
+        "goals": null,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "SD Huesca",
+        "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/8/8a/Logo_of_SD_Huesca.svg/120px-Logo_of_SD_Huesca.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "role": "coach",
+        "from": "2023",
+        "to": "2025",
+        "appearances": null,
+        "goals": null,
+        "assists": null,
+        "minutes": null,
+        "yellowCards": null,
+        "redCards": null,
+        "seasons": []
+      },
+      {
+        "club": "Deportivo de La Coruña",
+        "crestUrl": "https://crests.football-data.org/560.png",
         "role": "coach",
         "from": "2025",
         "to": null,
@@ -47,41 +222,156 @@
     ],
     "staff": [
       {
-        "name": "Segundo Entrenador Ejemplo",
+        "name": "Antonio Hidalgo",
+        "role": "head_coach",
+        "photoUrl": null
+      },
+      {
+        "name": "Ignasi Salafranca",
         "role": "assistant_coach",
         "photoUrl": null
       },
       {
-        "name": "Preparador Físico Ejemplo",
+        "name": "Óscar Hernández",
+        "role": "technical_assistant",
+        "photoUrl": null
+      },
+      {
+        "name": "Alberto Casal",
+        "role": "goalkeeping_coach",
+        "photoUrl": null
+      },
+      {
+        "name": "Roberto Cabellud",
         "role": "fitness_coach",
         "photoUrl": null
+      },
+      {
+        "name": "Sergio Roca",
+        "role": "fitness_coach",
+        "photoUrl": null
+      },
+      {
+        "name": "Alejandro Antón",
+        "role": "analyst",
+        "photoUrl": null
+      },
+      {
+        "name": "Asier Marote",
+        "role": "analyst",
+        "photoUrl": null
+      },
+      {
+        "name": "Pablo Barros",
+        "role": "delegate",
+        "photoUrl": null
+      },
+      {
+        "name": "Arnau Domínguez",
+        "role": "kit_manager",
+        "photoUrl": null
+      },
+      {
+        "name": "Diego Díaz",
+        "role": "kit_manager",
+        "photoUrl": null
+      },
+      {
+        "name": "Alejandro Mejuto",
+        "role": "doctor",
+        "photoUrl": null
+      },
+      {
+        "name": "Adrián Lonut",
+        "role": "physiotherapist",
+        "photoUrl": null
+      },
+      {
+        "name": "Daniel Varela",
+        "role": "physiotherapist",
+        "photoUrl": null
+      },
+      {
+        "name": "Rubén Barreiro",
+        "role": "physiotherapist",
+        "photoUrl": null
+      },
+      {
+        "name": "Emilio J. Pena",
+        "role": "physiotherapist",
+        "photoUrl": null
+      },
+      {
+        "name": "Daniel Pedrosa",
+        "role": "nutritionist",
+        "photoUrl": null
+      },
+      {
+        "name": "Manuel Mosquera",
+        "role": "podiatrist",
+        "photoUrl": null
+      },
+      {
+        "name": "Fernando Rodríguez",
+        "role": "rehab_coach",
+        "photoUrl": null
+      },
+      {
+        "name": "Ignacio González",
+        "role": "rehab_coach",
+        "photoUrl": null
+      },
+      {
+        "name": "Joaquín Sorribas",
+        "role": "psychologist",
+        "photoUrl": null
       }
-    ]
+    ],
+    "provenance": {
+      "birthDate": {
+        "source": "Wikidata Q602465 + Wikipedia (es)",
+        "confidence": "cross_checked",
+        "capturedAt": "2026-10-26"
+      },
+      "birthPlace": {
+        "source": "Wikidata Q602465 + Wikipedia (es)",
+        "confidence": "cross_checked",
+        "capturedAt": "2026-10-26"
+      },
+      "photoUrl": {
+        "source": "Web oficial del RC Deportivo",
+        "confidence": "verified",
+        "capturedAt": "2026-10-26"
+      },
+      "since": {
+        "source": "Wikidata + Wikipedia + web oficial",
+        "confidence": "cross_checked",
+        "capturedAt": null
+      },
+      "career": {
+        "source": "Wikipedia (es)",
+        "confidence": "single_source",
+        "capturedAt": "2026-10-26"
+      },
+      "staff": {
+        "source": "Web oficial del RC Deportivo",
+        "confidence": "verified",
+        "capturedAt": "2026-10-26"
+      }
+    }
   },
   "players": [
     {
-      "id": 10,
-      "name": "Jugador Ejemplo",
-      "position": "Midfield",
-      "dateOfBirth": "2000-01-31",
+      "id": 79533,
+      "name": "Álvaro Fernández",
+      "position": "Goalkeeper",
+      "dateOfBirth": "1998-04-13",
       "nationality": "Spain",
-      "shirtNumber": 8,
-      "contractUntil": "2028",
-      "heightCm": 180,
-      "birthPlace": "A Coruña",
-      "preferredFoot": "right",
-      "loanFrom": null,
+      "shirtNumber": 25,
       "loanTo": null,
-      "marketValueEur": 2500000,
-      "weightKg": 74,
-      "social": {
-        "x": "jugador_ejemplo",
-        "instagram": "jugador.ejemplo",
-        "tiktok": null
-      },
       "photos": [
         {
-          "url": "https://cdn.bff.rcdeportivo.app/players/000000-large?v=21",
+          "url": "https://cdn.bff.rcdeportivo.app/players/328414-large?v=21",
           "role": "portrait",
           "width": null,
           "height": null,
@@ -89,78 +379,9 @@
           "licenseUrl": null,
           "author": "RC Deportivo de La Coruña",
           "credit": "© RC Deportivo de La Coruña",
-          "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/jugador-ejemplo"
+          "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/alvaro-ferllo"
         }
-      ],
-      "career": [
-        {
-          "club": "Club de Origen",
-          "crestUrl": "https://crests.football-data.org/77.png",
-          "from": "2018",
-          "to": "2022",
-          "appearances": 84,
-          "goals": 9,
-          "assists": null,
-          "minutes": 5120,
-          "yellowCards": 11,
-          "redCards": 0,
-          "seasons": [
-            {
-              "season": "2018-19",
-              "appearances": 20,
-              "goals": 2,
-              "assists": null,
-              "minutes": 1200,
-              "yellowCards": 3,
-              "redCards": 0
-            }
-          ],
-          "role": "player"
-        }
-      ],
-      "careerTotals": {
-        "appearances": 84,
-        "goals": 9,
-        "assists": null,
-        "minutes": 5120,
-        "yellowCards": 11,
-        "redCards": 0
-      },
-      "deporMatches": [
-        {
-          "date": "2026-09-13",
-          "opponent": "Getafe",
-          "opponentCrestUrl": "https://crests.football-data.org/82.png",
-          "competition": "LaLiga",
-          "home": false,
-          "teamGoals": 1,
-          "opponentGoals": 1,
-          "result": "D",
-          "started": true,
-          "minutes": 90,
-          "goals": 1,
-          "assists": null,
-          "yellowCards": 0,
-          "redCards": 0
-        }
-      ],
-      "provenance": {
-        "heightCm": {
-          "source": "Fuente de ejemplo",
-          "confidence": "single_source",
-          "capturedAt": "2026-10-25"
-        },
-        "marketValueEur": {
-          "source": "Estimación de ejemplo",
-          "confidence": "estimated",
-          "capturedAt": "2026-10-25"
-        },
-        "career": {
-          "source": "Fuente de ejemplo",
-          "confidence": "single_source",
-          "capturedAt": "2026-10-25"
-        }
-      }
+      ]
     }
   ]
 }

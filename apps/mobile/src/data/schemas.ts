@@ -874,6 +874,21 @@ export const StaffMember = z.strictObject({
     provenance: {},
   });
 
+// `z.object` (no estricto) para tolerar una `squad.json` monolítica en caché o
+// publicada antes de D1-03: la lista se pinta igual y el detalle se pide aparte.
+export const PlayerSummary = z.object({
+  id: z.number().int(),
+  name: z.string(),
+  position: z.string().nullable(),
+  dateOfBirth: z.string().nullable(),
+  nationality: z.string().nullable(),
+  shirtNumber: z.number().int().nullable(),
+  // ADR 0010: cesión de salida (el Depor cede al jugador a otro club).
+  loanTo: optionalNull(),
+  // ADR 0009: fotos con licencia; la lista solo necesita la primera.
+  photos: z.array(PlayerPhoto).default([]),
+});
+
 export const Player = z.strictObject({
   id: z.number().int(),
   name: z.string(),
@@ -911,7 +926,7 @@ export const Player = z.strictObject({
 export const Squad = z.strictObject({
   updatedAt: iso,
   coach: Coach.nullable(),
-  players: z.array(Player),
+  players: z.array(PlayerSummary),
 });
 
 export const StatusFile = z.strictObject({
@@ -961,6 +976,7 @@ export type SocialProfileT = z.infer<typeof SocialProfile>;
 export type SocialPinT = z.infer<typeof SocialPin>;
 export type SocialFeedT = z.infer<typeof SocialFeed>;
 export type SquadT = z.infer<typeof Squad>;
+export type PlayerSummaryT = z.infer<typeof PlayerSummary>;
 export type MatchT = z.infer<typeof Match>;
 export type MatchSnapshotT = z.infer<typeof MatchSnapshot>;
 export type MatchSideT = z.infer<typeof MatchSide>;

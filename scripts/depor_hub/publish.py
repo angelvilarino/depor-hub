@@ -21,13 +21,19 @@ def current_hash(out_dir: Path) -> str | None:
         return None
 
 
+def _model_for(name: str) -> type[m.Public] | None:
+    """Modelo que valida un fichero público, incluido el detalle por jugador."""
+    if name.startswith("players/") and name.endswith(".json"):
+        return m.Player
+    return {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}.get(name)
+
+
 def write_if_changed(
     out_dir: Path, files: dict[str, dict[str, Any]], data_hash: str, force: bool = False
 ) -> bool:
-    models = {**m.FILES, **m.NEWS_FILES, **m.EXTRA_FILES}
     # Validate the in-memory models before touching any published file.
     for name, body in files.items():
-        model = models.get(name)
+        model = _model_for(name)
         if model is not None:
             model.model_validate(body)
     if not force and current_hash(out_dir) == data_hash:
@@ -37,8 +43,9 @@ def write_if_changed(
         staged = Path(temp)
         for name, body in files.items():
             path = staged / name
+            path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(json.dumps(body, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-            model = models.get(name)
+            model = _model_for(name)
             if model is not None:
                 model.model_validate_json(path.read_text(encoding="utf-8"))
         # Replace only after every staged file is valid; publish meta last as commit marker.
@@ -46,7 +53,9 @@ def write_if_changed(
         if "meta.json" in files:
             order.append("meta.json")
         for name in order:
-            os.replace(staged / name, out_dir / name)
+            target = out_dir / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            os.replace(staged / name, target)
     return True
 
 

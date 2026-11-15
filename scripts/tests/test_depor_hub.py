@@ -143,7 +143,15 @@ def test_two_passes_with_new_timestamps_do_not_write_again(tmp_path):
 
 
 @pytest.mark.parametrize(
-    "name", [*m.FILES, *m.NEWS_FILES, *m.EXTRA_FILES, *m.SNAPSHOT_FILES, *m.MATCH_DETAIL_FILES]
+    "name",
+    [
+        *m.FILES,
+        *m.NEWS_FILES,
+        *m.EXTRA_FILES,
+        *m.SNAPSHOT_FILES,
+        *m.MATCH_DETAIL_FILES,
+        *m.PLAYER_FILES,
+    ],
 )
 def test_examples_validate(name):
     model = {
@@ -152,6 +160,7 @@ def test_examples_validate(name):
         **m.EXTRA_FILES,
         **m.SNAPSHOT_FILES,
         **m.MATCH_DETAIL_FILES,
+        **m.PLAYER_FILES,
     }[name]
     model.model_validate_json((EXAMPLES / name).read_text(encoding="utf-8"))
 
@@ -262,9 +271,63 @@ def test_client_raises_on_403():
 
 def test_ingest_integrity_rejects_incomplete_table_and_empty_squad():
     standings = m.Standings.model_validate_json((EXAMPLES / "standings.json").read_text())
-    squad = m.Squad.model_validate_json((EXAMPLES / "squad.json").read_text())
+    squad = m.SquadSummary.model_validate_json((EXAMPLES / "squad.json").read_text())
     with pytest.raises(SystemExit, match="clasificación incompleta"):
         _validate_ingest_integrity(standings.model_copy(update={"table": []}), squad)
     full_table = standings.model_copy(update={"table": [standings.table[0]] * 20})
     with pytest.raises(SystemExit, match="plantilla vacía; se conserva"):
         _validate_ingest_integrity(full_table, squad.model_copy(update={"players": []}))
+
+
+def _squad_with_two_players():
+    return m.Squad(
+        updated_at=NOW,
+        coach=None,
+        players=[m.Player(id=1, name="Uno"), m.Player(id=2, name="Dos")],
+    )
+
+
+def test_squad_payload_publishes_a_summary_and_one_detail_per_player():
+    from depor_hub.cli import _squad_payload
+
+    payload = _squad_payload(_squad_with_two_players())
+
+    assert set(payload) == {"squad.json", "players/1.json", "players/2.json"}
+    # La lista no lleva historial ni carrera: eso vive en el detalle.
+    assert "career" not in payload["squad.json"]["players"][0]
+    assert "deporMatches" not in payload["squad.json"]["players"][0]
+    assert payload["players/1.json"]["id"] == 1
+    assert "career" in payload["players/1.json"]
+
+
+def test_write_if_changed_creates_nested_player_details(tmp_path):
+    squad = _squad_with_two_players()
+    files = {
+        "squad.json": t.dump(t.build_squad_summary(squad)),
+        "players/1.json": t.dump(squad.players[0]),
+        "players/2.json": t.dump(squad.players[1]),
+        "meta.json": {
+            **json.loads((EXAMPLES / "meta.json").read_text(encoding="utf-8")),
+            "dataHash": "0000000000000000",
+        },
+    }
+
+    assert write_if_changed(tmp_path, files, "0000000000000000") is True
+    assert (tmp_path / "players" / "1.json").is_file()
+    assert (tmp_path / "players" / "2.json").is_file()
+    # El hash ya coincide: no se reescribe.
+    assert write_if_changed(tmp_path, files, "0000000000000000") is False
+
+
+def test_remove_stale_players_deletes_details_not_in_the_squad(tmp_path):
+    from depor_hub.cli import _remove_stale_players
+
+    directory = tmp_path / "players"
+    directory.mkdir()
+    for player_id in (1, 2, 3):
+        (directory / f"{player_id}.json").write_text("{}", encoding="utf-8")
+    (directory / "nota.txt").write_text("no tocar", encoding="utf-8")
+
+    _remove_stale_players(tmp_path, {1, 3})
+
+    assert sorted(path.stem for path in directory.iterdir()) == ["1", "3", "nota"]

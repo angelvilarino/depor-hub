@@ -298,6 +298,27 @@ def build_squad(team: s.FDTeam, updated_at: str) -> m.Squad:
     return m.Squad(updated_at=updated_at, coach=coach, players=players)
 
 
+def build_squad_summary(squad: m.Squad) -> m.SquadSummary:
+    """Reduce la plantilla a lo que pinta la lista; el detalle va por jugador."""
+    return m.SquadSummary(
+        updated_at=squad.updated_at,
+        coach=squad.coach,
+        players=[
+            m.PlayerSummary(
+                id=player.id,
+                name=player.name,
+                position=player.position,
+                date_of_birth=player.date_of_birth,
+                nationality=player.nationality,
+                shirt_number=player.shirt_number,
+                loan_to=player.loan_to,
+                photos=player.photos,
+            )
+            for player in squad.players
+        ],
+    )
+
+
 def build_meta(
     comp: s.FDCompetition, team: s.FDTeam, season: str, updated_at: str
 ) -> m.Meta:

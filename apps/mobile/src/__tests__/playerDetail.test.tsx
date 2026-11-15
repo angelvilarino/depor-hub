@@ -4,6 +4,7 @@ import type { FixturesT, PlayerT } from '@/data/schemas';
 import PlayerDetail from '../../app/player/[id]';
 
 const mockUseSquad = jest.fn();
+const mockUsePlayer = jest.fn();
 const mockUseFixtures = jest.fn();
 const mockUseMeta = jest.fn();
 const mockOpenURL = jest.fn();
@@ -17,6 +18,7 @@ jest.mock('@/theme/useReducedMotion', () => ({
 
 jest.mock('@/data/queries', () => ({
   useSquad: () => mockUseSquad(),
+  usePlayer: (id: string) => mockUsePlayer(id),
   useFixtures: () => mockUseFixtures(),
   useMeta: () => mockUseMeta(),
 }));
@@ -209,12 +211,27 @@ beforeAll(async () => {
 
 beforeEach(() => {
   mockUseSquad.mockReset();
+  mockUsePlayer.mockReset();
   mockUseFixtures.mockReset();
   mockUseMeta.mockReset();
   mockOpenURL.mockReset();
   mockPush.mockReset();
   mockReducedMotion = false;
   mockParams.id = '1';
+  // El detalle se pide aparte del resumen: en los tests devolvemos el mismo jugador.
+  mockUsePlayer.mockImplementation((id: string) => {
+    const current = mockUseSquad();
+    const found =
+      current?.data?.players.find((player: PlayerT) => String(player.id) === id) ?? null;
+    return {
+      data: found,
+      isPending: current?.isPending ?? false,
+      isFetching: false,
+      isError: false,
+      isRefetching: false,
+      refetch: jest.fn(),
+    };
+  });
   mockUseFixtures.mockReturnValue({ data: null });
   mockUseMeta.mockReturnValue({
     data: {

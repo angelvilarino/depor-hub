@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import { PlayerAvatar } from '@/components/PlayerAvatar';
-import type { PlayerT } from '@/data/schemas';
+import type { PlayerSummaryT } from '@/data/schemas';
 
 /**
  * Retrato del jugador con degradación segura.
@@ -30,7 +30,7 @@ export function PlayerPortrait({
   size = 44,
   quality = 'small',
 }: {
-  player: PlayerT;
+  player: PlayerSummaryT;
   size?: number;
   quality?: PortraitQuality;
 }) {

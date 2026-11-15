@@ -1,0 +1,291 @@
+{
+  "id": 246474,
+  "name": "Jonathan Asp-Jensen",
+  "position": "Midfield",
+  "dateOfBirth": "2006-01-14",
+  "nationality": "Denmark",
+  "shirtNumber": 18,
+  "contractUntil": "2031",
+  "heightCm": 182,
+  "birthPlace": "Gauerslund, Dinamarca",
+  "preferredFoot": "right",
+  "loanFrom": null,
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": null,
+  "social": {
+    "x": null,
+    "instagram": "jonathan_asp1",
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/3202224-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/jonathan-asp-jensen"
+    }
+  ],
+  "career": [
+    {
+      "club": "Bayern München",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg/120px-FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2023",
+      "to": "2025",
+      "appearances": 1,
+      "goals": 0,
+      "assists": null,
+      "minutes": 1,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2023-24",
+          "appearances": 1,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2024-25",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Grasshopper",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/GC_Z%C3%BCrich_Logo.svg/120px-GC_Z%C3%BCrich_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2025",
+      "to": "2026",
+      "appearances": 29,
+      "goals": 8,
+      "assists": null,
+      "minutes": 2406,
+      "yellowCards": 3,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2025-26",
+          "appearances": 29,
+          "goals": 8,
+          "assists": null,
+          "minutes": 2406,
+          "yellowCards": 3,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 7,
+      "goals": 0,
+      "assists": null,
+      "minutes": 248,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 7,
+          "goals": 0,
+          "assists": null,
+          "minutes": 248,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 37,
+    "goals": 8,
+    "assists": null,
+    "minutes": 2655,
+    "yellowCards": 3,
+    "redCards": 0
+  },
+  "deporMatches": [
+    {
+      "date": "2026-10-16",
+      "opponent": "Levante",
+      "opponentCrestUrl": "https://crests.football-data.org/88.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": false,
+      "minutes": 10,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-10-11",
+      "opponent": "Real Sociedad",
+      "opponentCrestUrl": "https://crests.football-data.org/92.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 2,
+      "opponentGoals": 3,
+      "result": "L",
+      "started": false,
+      "minutes": 11,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-20",
+      "opponent": "Betis",
+      "opponentCrestUrl": "https://crests.football-data.org/90.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 65,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-16",
+      "opponent": "Sevilla",
+      "opponentCrestUrl": "https://crests.football-data.org/559.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 0,
+      "opponentGoals": 1,
+      "result": "L",
+      "started": false,
+      "minutes": 33,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-30",
+      "opponent": "Valencia",
+      "opponentCrestUrl": "https://crests.football-data.org/95.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 3,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": false,
+      "minutes": 7,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-24",
+      "opponent": "Málaga",
+      "opponentCrestUrl": "https://crests.football-data.org/84.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 62,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-17",
+      "opponent": "Elche",
+      "opponentCrestUrl": "https://crests.football-data.org/285.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 60,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol + Wikipedia",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "heightCm": {
+      "source": "BDFutbol + Wikipedia (es) + Wikipedia (en) + official",
+      "confidence": "verified",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "BDFutbol + Wikidata",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "social": {
+      "source": "https://www.instagram.com/jonathan_asp1",
+      "confidence": "single_source",
+      "capturedAt": null
+    },
+    "photos": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "career": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

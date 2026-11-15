@@ -1,0 +1,171 @@
+{
+  "id": 245913,
+  "name": "Teun Gijselhart",
+  "position": "Midfield",
+  "dateOfBirth": "2005-04-06",
+  "nationality": "Netherlands",
+  "shirtNumber": 34,
+  "contractUntil": "2030",
+  "heightCm": 176,
+  "birthPlace": "Ámsterdam, Países Bajos",
+  "preferredFoot": "right",
+  "loanFrom": null,
+  "loanTo": "Al Ain (Emiratos Árabes Unidos)",
+  "marketValueEur": null,
+  "weightKg": null,
+  "social": {
+    "x": null,
+    "instagram": null,
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://scdn.ovixia.app/images/scn1tr4b/production/b85c03080c2957fe63d1e2651440aea5443ec981-2161x3841.png?w=800&auto=format",
+      "role": "portrait",
+      "width": 2161,
+      "height": 3841,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/noticias/teun-gijselhart-nuevo-jugador-del-depor"
+    }
+  ],
+  "career": [
+    {
+      "club": "Zwolle",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/PEC_Zwolle_logo.svg/120px-PEC_Zwolle_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2023",
+      "to": "2025",
+      "appearances": 3,
+      "goals": 0,
+      "assists": null,
+      "minutes": 36,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2023-24",
+          "appearances": 1,
+          "goals": 0,
+          "assists": null,
+          "minutes": 7,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2024-25",
+          "appearances": 2,
+          "goals": 0,
+          "assists": null,
+          "minutes": 29,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 1,
+      "goals": 0,
+      "assists": null,
+      "minutes": 26,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 1,
+          "goals": 0,
+          "assists": null,
+          "minutes": 26,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 4,
+    "goals": 0,
+    "assists": null,
+    "minutes": 62,
+    "yellowCards": 0,
+    "redCards": 0
+  },
+  "deporMatches": [
+    {
+      "date": "2026-08-30",
+      "opponent": "Valencia",
+      "opponentCrestUrl": "https://crests.football-data.org/95.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 3,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": false,
+      "minutes": 26,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "https://www.rcdeportivo.es/es/noticias/teun-gijselhart-nuevo-jugador-del-depor",
+      "confidence": "verified",
+      "capturedAt": null
+    },
+    "heightCm": {
+      "source": "Wikipedia (en)",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "BDFutbol + Wikidata + Wikipedia (es)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "https://www.fotmob.com/players/1466558/teun-gijselhart + https://en.soccerwiki.org/player.php?pid=145451",
+      "confidence": "cross_checked",
+      "capturedAt": null
+    },
+    "loanTo": {
+      "source": "https://www.rcdeportivo.es/es/noticias/teun-gijselhart-cedido-al-al-ain",
+      "confidence": "verified",
+      "capturedAt": null
+    },
+    "photos": {
+      "source": "https://www.rcdeportivo.es/es/noticias/teun-gijselhart-nuevo-jugador-del-depor",
+      "confidence": "single_source",
+      "capturedAt": null
+    },
+    "career": {
+      "source": "BDFutbol + Wikidata",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

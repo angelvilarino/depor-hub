@@ -492,7 +492,7 @@ class RelevanceIndex:
 
 
 def build_index(
-    squad: m.Squad | None,
+    squad: m.SquadSummary | None,
     coach_name: str | None = None,
     opponents: list[str] | None = None,
 ) -> RelevanceIndex:

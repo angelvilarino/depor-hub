@@ -1,0 +1,45 @@
+{
+  "id": 79533,
+  "name": "Álvaro Fernández",
+  "position": "Goalkeeper",
+  "dateOfBirth": "1998-04-13",
+  "nationality": "Spain",
+  "shirtNumber": 25,
+  "contractUntil": null,
+  "heightCm": null,
+  "birthPlace": null,
+  "preferredFoot": null,
+  "loanFrom": null,
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": null,
+  "social": {
+    "x": null,
+    "instagram": null,
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/328414-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/alvaro-ferllo"
+    }
+  ],
+  "career": [],
+  "careerTotals": {
+    "appearances": null,
+    "goals": null,
+    "assists": null,
+    "minutes": null,
+    "yellowCards": null,
+    "redCards": null
+  },
+  "deporMatches": [],
+  "provenance": {}
+}

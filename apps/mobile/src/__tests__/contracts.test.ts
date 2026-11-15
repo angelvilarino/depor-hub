@@ -6,6 +6,7 @@ import {
   MatchSnapshot,
   Meta,
   News,
+  Player,
   Rivals,
   Rivalries,
   Season,
@@ -30,6 +31,7 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
     ['standings.json', Standings],
     ['fixtures.json', Fixtures],
     ['squad.json', Squad],
+    ['player.json', Player],
     ['news.json', News],
     ['social.json', SocialFeed],
     ['season.json', Season],
@@ -61,6 +63,15 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
     ['rivalries.json', Rivalries],
   ] as const)('el publicado %s valida', (file, schema) => {
     expect(schema.safeParse(published(file)).success).toBe(true);
+  });
+
+  it('los detalles de jugador publicados validan', () => {
+    const playersDir = path.resolve(publishedDir, 'players');
+    const files = fs.readdirSync(playersDir).filter((name) => name.endsWith('.json'));
+    expect(files.length).toBeGreaterThan(0);
+    for (const file of files) {
+      expect(Player.safeParse(JSON.parse(fs.readFileSync(path.join(playersDir, file), 'utf8'))).success).toBe(true);
+    }
   });
 
   it('los snapshots publicados validan', () => {

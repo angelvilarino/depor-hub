@@ -19,7 +19,7 @@ import { PlayerPortrait } from '@/components/PlayerPortrait';
 import { Screen } from '@/components/Screen';
 import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
 import { useSquad } from '@/data/queries';
-import type { CoachT, PlayerT } from '@/data/schemas';
+import type { CoachT, PlayerSummaryT } from '@/data/schemas';
 import { countryLabel } from '@/features/squad/labels';
 import {
   ageFrom,
@@ -41,7 +41,7 @@ const VIEWS: { value: SquadView; icon: keyof typeof Ionicons.glyphMap }[] = [
   { value: 'list', icon: 'list-outline' },
 ];
 
-function positionAbbreviation(player: PlayerT, t: TFunction): string {
+function positionAbbreviation(player: PlayerSummaryT, t: TFunction): string {
   const group = positionGroup(player.position);
   if (group === 'OTHER') return player.position ?? t('team.filters.OTHER');
   return t(`team.filters.${group}`);
@@ -59,7 +59,7 @@ function LoanChip() {
   );
 }
 
-function SquadCard({ player, now }: { player: PlayerT; now: number }) {
+function SquadCard({ player, now }: { player: PlayerSummaryT; now: number }) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const age = ageFrom(player.dateOfBirth, now);
@@ -77,7 +77,7 @@ function SquadCard({ player, now }: { player: PlayerT; now: number }) {
       style={[styles.gridCard, { backgroundColor: colors.surface, borderColor: colors.border }]}
     >
       <View style={styles.portraitWrap}>
-        <PlayerPortrait player={player} size={88} quality="large" />
+        <PlayerPortrait player={player} size={88} />
       </View>
       {player.shirtNumber !== null ? (
         <View style={[styles.numberBadge, { backgroundColor: colors.primary }]}>
@@ -102,7 +102,7 @@ function SquadCard({ player, now }: { player: PlayerT; now: number }) {
   );
 }
 
-function SquadListRow({ player, now }: { player: PlayerT; now: number }) {
+function SquadListRow({ player, now }: { player: PlayerSummaryT; now: number }) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const age = ageFrom(player.dateOfBirth, now);
@@ -338,7 +338,7 @@ export default function TeamScreen() {
   }
 
   return (
-    <FlatList<PlayerT>
+    <FlatList<PlayerSummaryT>
       key={`squad-${squadView}`}
       style={{ backgroundColor: colors.background }}
       contentContainerStyle={styles.content}

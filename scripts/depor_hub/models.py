@@ -613,10 +613,37 @@ class Player(Public):
     provenance: dict[str, Provenance] = Field(default_factory=dict)
 
 
+class PlayerSummary(Public):
+    """Fila de plantilla: lo que pinta la lista sin descargar el historial (D1-03).
+
+    El detalle completo vive en ``players/{id}.json``. Si un campo no se muestra
+    en la lista, no se publica aquí.
+    """
+
+    id: int
+    name: str
+    position: Optional[str] = None
+    date_of_birth: Optional[str] = None
+    nationality: Optional[str] = None
+    shirt_number: Optional[int] = None
+    loan_to: Optional[str] = None  # ADR 0010: cedido por el Depor a otro club
+    photos: list[PlayerPhoto] = Field(default_factory=list)
+
+
 class Squad(Public):
+    """Contrato interno completo; se publica como ``SquadSummary`` + un detalle."""
+
     updated_at: IsoDateTime
     coach: Optional[Coach] = None
     players: list[Player]
+
+
+class SquadSummary(Public):
+    """``squad.json``: resumen de la plantilla y ficha del entrenador."""
+
+    updated_at: IsoDateTime
+    coach: Optional[Coach] = None
+    players: list[PlayerSummary]
 
 
 # --- H7: club (ADR 0025) -----------------------------------------------------
@@ -1143,9 +1170,15 @@ FILES: dict[str, type[Public]] = {
     "meta.json": Meta,
     "standings.json": Standings,
     "fixtures.json": Fixtures,
-    "squad.json": Squad,
+    "squad.json": SquadSummary,
     "season.json": Season,
     "club.json": Club,
+}
+
+# Detalle por jugador: `players/{id}.json`. No entra en FILES porque su nombre
+# depende del id; se valida y publica aparte (D1-03).
+PLAYER_FILES: dict[str, type[Public]] = {
+    "player.json": Player,
 }
 
 # Ficheros que alimentan meta.dataHash (solo datos deportivos). club.json tiene

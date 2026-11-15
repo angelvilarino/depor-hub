@@ -57,7 +57,7 @@ def run_ingest(
     *,
     feeds: list[FeedConfig],
     http: NewsHttp,
-    squad: m.Squad | None,
+    squad: m.SquadSummary | None,
     coach_name: str | None,
     opponents: list[str],
     existing: m.News | None,

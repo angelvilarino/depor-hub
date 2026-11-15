@@ -1,0 +1,336 @@
+{
+  "id": 289952,
+  "name": "Noé Carrillo",
+  "position": "Midfield",
+  "dateOfBirth": "2006-12-28",
+  "nationality": "Spain",
+  "shirtNumber": 6,
+  "contractUntil": "2029",
+  "heightCm": 176,
+  "birthPlace": "Teo (A Coruña), España",
+  "preferredFoot": "right",
+  "loanFrom": null,
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": 68,
+  "social": {
+    "x": null,
+    "instagram": "noecarrillo__",
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/3261431-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor-fabril/noe-carrillo"
+    }
+  ],
+  "career": [
+    {
+      "club": "Deportivo Fabril",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2024",
+      "to": "2026",
+      "appearances": 32,
+      "goals": 2,
+      "assists": null,
+      "minutes": 2268,
+      "yellowCards": 8,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2024-25",
+          "appearances": 10,
+          "goals": 0,
+          "assists": null,
+          "minutes": 577,
+          "yellowCards": 1,
+          "redCards": 0
+        },
+        {
+          "season": "2025-26",
+          "appearances": 22,
+          "goals": 2,
+          "assists": null,
+          "minutes": 1691,
+          "yellowCards": 7,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de La Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2025",
+      "to": "2026",
+      "appearances": 6,
+      "goals": 1,
+      "assists": null,
+      "minutes": 151,
+      "yellowCards": 1,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2025-26",
+          "appearances": 6,
+          "goals": 1,
+          "assists": null,
+          "minutes": 151,
+          "yellowCards": 1,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": "2027",
+      "appearances": 0,
+      "goals": 0,
+      "assists": null,
+      "minutes": 0,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo Fabril",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 1,
+      "goals": 0,
+      "assists": null,
+      "minutes": 61,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 1,
+          "goals": 0,
+          "assists": null,
+          "minutes": 61,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 39,
+    "goals": 3,
+    "assists": null,
+    "minutes": 2480,
+    "yellowCards": 9,
+    "redCards": 0
+  },
+  "deporMatches": [
+    {
+      "date": "2026-05-31",
+      "opponent": "Las Palmas",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/2/20/UD_Las_Palmas_logo.svg/120px-UD_Las_Palmas_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 2,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-05-17",
+      "opponent": "Andorra",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Logo_FC_Andorra_-_2021.svg/120px-Logo_FC_Andorra_-_2021.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 2,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": false,
+      "minutes": 26,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-05-08",
+      "opponent": "Cádiz",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/5/58/C%C3%A1diz_CF_logo.svg/120px-C%C3%A1diz_CF_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 0,
+      "result": "W",
+      "started": false,
+      "minutes": 16,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 1,
+      "redCards": 0
+    },
+    {
+      "date": "2026-05-01",
+      "opponent": "Leganés",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/b/b8/Club_Deportivo_Legan%C3%A9s_logo.svg/120px-Club_Deportivo_Legan%C3%A9s_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 2,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": false,
+      "minutes": 14,
+      "goals": 1,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-03-31",
+      "opponent": "Córdoba",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/9/96/C%C3%B3rdoba_CF_logo.svg/120px-C%C3%B3rdoba_CF_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 2,
+      "opponentGoals": 0,
+      "result": "W",
+      "started": false,
+      "minutes": 4,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-01-17",
+      "opponent": "Almería",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/4/4a/UD_Almeria_logo.svg/120px-UD_Almeria_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 2,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": false,
+      "minutes": 1,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-01-13",
+      "opponent": "Atlético de Madrid",
+      "opponentCrestUrl": "https://crests.football-data.org/78.png",
+      "competition": "COP",
+      "home": true,
+      "teamGoals": 0,
+      "opponentGoals": 1,
+      "result": "L",
+      "started": false,
+      "minutes": 24,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2025-12-16",
+      "opponent": "Mallorca",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/e/e0/Rcd_mallorca.svg/120px-Rcd_mallorca.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "COP",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 0,
+      "result": "W",
+      "started": false,
+      "minutes": 10,
+      "goals": 1,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "https://www.rcdeportivo.es/es/noticias/noe-carrillo-renueva-por-el-depor-hasta-2029",
+      "confidence": "verified",
+      "capturedAt": null
+    },
+    "heightCm": {
+      "source": "BDFutbol + Wikipedia (en) + official",
+      "confidence": "verified",
+      "capturedAt": "2026-10-26"
+    },
+    "weightKg": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "BDFutbol + Wikidata + Wikipedia (en)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "social": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "photos": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "career": {
+      "source": "BDFutbol + Wikidata",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

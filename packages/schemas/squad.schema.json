@@ -236,91 +236,6 @@
       "title": "CareerSeason",
       "type": "object"
     },
-    "CareerTotals": {
-      "additionalProperties": false,
-      "properties": {
-        "appearances": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Appearances"
-        },
-        "assists": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Assists"
-        },
-        "goals": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Goals"
-        },
-        "minutes": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Minutes"
-        },
-        "redCards": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Redcards"
-        },
-        "yellowCards": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Yellowcards"
-        }
-      },
-      "title": "CareerTotals",
-      "type": "object"
-    },
     "Coach": {
       "additionalProperties": false,
       "properties": {
@@ -431,377 +346,6 @@
         }
       },
       "title": "Coach",
-      "type": "object"
-    },
-    "Player": {
-      "additionalProperties": false,
-      "properties": {
-        "birthPlace": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Birthplace"
-        },
-        "career": {
-          "items": {
-            "$ref": "#/$defs/CareerEntry"
-          },
-          "title": "Career",
-          "type": "array"
-        },
-        "careerTotals": {
-          "$ref": "#/$defs/CareerTotals"
-        },
-        "contractUntil": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Contractuntil"
-        },
-        "dateOfBirth": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Dateofbirth"
-        },
-        "deporMatches": {
-          "items": {
-            "$ref": "#/$defs/PlayerMatch"
-          },
-          "title": "Depormatches",
-          "type": "array"
-        },
-        "heightCm": {
-          "anyOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Heightcm"
-        },
-        "id": {
-          "title": "Id",
-          "type": "integer"
-        },
-        "loanFrom": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Loanfrom"
-        },
-        "loanTo": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Loanto"
-        },
-        "marketValueEur": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Marketvalueeur"
-        },
-        "name": {
-          "title": "Name",
-          "type": "string"
-        },
-        "nationality": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Nationality"
-        },
-        "photos": {
-          "items": {
-            "$ref": "#/$defs/PlayerPhoto"
-          },
-          "title": "Photos",
-          "type": "array"
-        },
-        "position": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Position"
-        },
-        "preferredFoot": {
-          "anyOf": [
-            {
-              "enum": [
-                "left",
-                "right",
-                "both"
-              ],
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Preferredfoot"
-        },
-        "provenance": {
-          "additionalProperties": {
-            "$ref": "#/$defs/Provenance"
-          },
-          "title": "Provenance",
-          "type": "object"
-        },
-        "shirtNumber": {
-          "anyOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Shirtnumber"
-        },
-        "social": {
-          "$ref": "#/$defs/Social"
-        },
-        "weightKg": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Weightkg"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ],
-      "title": "Player",
-      "type": "object"
-    },
-    "PlayerMatch": {
-      "additionalProperties": false,
-      "description": "Partido disputado con el Depor. Las asistencias no se inventan: null si la fuente no las da.",
-      "properties": {
-        "assists": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Assists"
-        },
-        "competition": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Competition"
-        },
-        "date": {
-          "title": "Date",
-          "type": "string"
-        },
-        "goals": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Goals"
-        },
-        "home": {
-          "title": "Home",
-          "type": "boolean"
-        },
-        "minutes": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Minutes"
-        },
-        "opponent": {
-          "title": "Opponent",
-          "type": "string"
-        },
-        "opponentCrestUrl": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Opponentcresturl"
-        },
-        "opponentGoals": {
-          "anyOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Opponentgoals"
-        },
-        "redCards": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Redcards"
-        },
-        "result": {
-          "anyOf": [
-            {
-              "enum": [
-                "W",
-                "D",
-                "L"
-              ],
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Result"
-        },
-        "started": {
-          "anyOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Started"
-        },
-        "teamGoals": {
-          "anyOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Teamgoals"
-        },
-        "yellowCards": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Yellowcards"
-        }
-      },
-      "required": [
-        "date",
-        "opponent",
-        "home"
-      ],
-      "title": "PlayerMatch",
       "type": "object"
     },
     "PlayerPhoto": {
@@ -915,6 +459,93 @@
       "title": "PlayerPhoto",
       "type": "object"
     },
+    "PlayerSummary": {
+      "additionalProperties": false,
+      "description": "Fila de plantilla: lo que pinta la lista sin descargar el historial (D1-03).\n\nEl detalle completo vive en ``players/{id}.json``. Si un campo no se muestra\nen la lista, no se publica aqu\u00ed.",
+      "properties": {
+        "dateOfBirth": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dateofbirth"
+        },
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "loanTo": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Loanto"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "nationality": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nationality"
+        },
+        "photos": {
+          "items": {
+            "$ref": "#/$defs/PlayerPhoto"
+          },
+          "title": "Photos",
+          "type": "array"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Position"
+        },
+        "shirtNumber": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shirtnumber"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "PlayerSummary",
+      "type": "object"
+    },
     "Provenance": {
       "additionalProperties": false,
       "description": "De d\u00f3nde sale un dato y con qu\u00e9 confianza (ADR 0008).",
@@ -953,50 +584,6 @@
       "title": "Provenance",
       "type": "object"
     },
-    "Social": {
-      "additionalProperties": false,
-      "description": "Handles, no URLs. La app construye los enlaces oficiales.",
-      "properties": {
-        "instagram": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Instagram"
-        },
-        "tiktok": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Tiktok"
-        },
-        "x": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "X"
-        }
-      },
-      "title": "Social",
-      "type": "object"
-    },
     "StaffMember": {
       "additionalProperties": false,
       "description": "Miembro del cuerpo t\u00e9cnico publicado por la web oficial (ADR 0014).\n\n`role` es una clave estable (``head_coach``, ``assistant_coach``...); la app la\ntraduce y, si no la conoce, muestra el texto original sin inventar nada.",
@@ -1031,6 +618,7 @@
     }
   },
   "additionalProperties": false,
+  "description": "``squad.json``: resumen de la plantilla y ficha del entrenador.",
   "properties": {
     "coach": {
       "anyOf": [
@@ -1045,7 +633,7 @@
     },
     "players": {
       "items": {
-        "$ref": "#/$defs/Player"
+        "$ref": "#/$defs/PlayerSummary"
       },
       "title": "Players",
       "type": "array"
@@ -1059,6 +647,6 @@
     "updatedAt",
     "players"
   ],
-  "title": "Squad",
+  "title": "SquadSummary",
   "type": "object"
 }

@@ -37,6 +37,33 @@ MODELS: dict[str, type[m.Public]] = {
 }
 
 
+def _player_names(payloads: dict[str, bytes]) -> list[str]:
+    """Nombres `players/{id}.json` que anuncia el resumen de `squad.json`."""
+    raw = payloads.get("squad.json")
+    if raw is None:
+        return []
+    try:
+        summary = m.SquadSummary.model_validate_json(raw)
+    except ValueError:
+        return []
+    return [f"players/{row.id}.json" for row in summary.players]
+
+
+def _parse(
+    name: str, raw: bytes, failures: list[str], parsed: dict[str, dict[str, Any]]
+) -> bool:
+    try:
+        body = json.loads(raw)
+    except ValueError as exc:
+        failures.append(f"{name}: JSON ilegible ({exc})")
+        return False
+    if not isinstance(body, dict):
+        failures.append(f"{name}: la raíz no es un objeto")
+        return False
+    parsed[name] = body
+    return True
+
+
 def check_payloads(payloads: dict[str, bytes]) -> list[str]:
     """Devuelve una lista de fallos; vacía significa contrato publicado correcto."""
     failures: list[str] = []
@@ -46,26 +73,40 @@ def check_payloads(payloads: dict[str, bytes]) -> list[str]:
         if raw is None:
             failures.append(f"{name}: no publicado")
             continue
-        try:
-            body = json.loads(raw)
-        except ValueError as exc:
-            failures.append(f"{name}: JSON ilegible ({exc})")
-            continue
-        if not isinstance(body, dict):
-            failures.append(f"{name}: la raíz no es un objeto")
+        if not _parse(name, raw, failures, parsed):
             continue
         model = MODELS.get(name)
         if model is not None:
             try:
-                model.model_validate(body)
+                model.model_validate(parsed[name])
             except ValueError as exc:
                 failures.append(f"{name}: no valida ({exc})")
-                continue
-        parsed[name] = body
+                parsed.pop(name, None)
 
-    if all(name in parsed for name in m.SPORTS_FILES):
+    # D1-03: cada fila del resumen debe tener su detalle, y el hash los incluye.
+    details = _player_names(payloads)
+    for name in details:
+        raw = payloads.get(name)
+        if raw is None:
+            failures.append(f"{name}: no publicado")
+            continue
+        if not _parse(name, raw, failures, parsed):
+            continue
+        try:
+            m.Player.model_validate(parsed[name])
+        except ValueError as exc:
+            failures.append(f"{name}: no valida ({exc})")
+            parsed.pop(name, None)
+
+    complete = all(name in parsed for name in m.SPORTS_FILES) and all(
+        name in parsed for name in details
+    )
+    if complete:
         expected = parsed["meta.json"].get("dataHash")
-        digest = t.content_hash({name: parsed[name] for name in m.SPORTS_FILES})
+        digest = t.content_hash(
+            {name: parsed[name] for name in m.SPORTS_FILES}
+            | {name: parsed[name] for name in details}
+        )
         if expected != digest:
             failures.append(
                 f"meta.json: dataHash {expected!r} no coincide con el contenido ({digest!r})"
@@ -74,11 +115,16 @@ def check_payloads(payloads: dict[str, bytes]) -> list[str]:
 
 
 def load_local(data_dir: Path) -> dict[str, bytes]:
-    return {
+    payloads = {
         name: (data_dir / name).read_bytes()
         for name in DOCUMENTS
         if (data_dir / name).is_file()
     }
+    for name in _player_names(payloads):
+        target = data_dir / name
+        if target.is_file():
+            payloads[name] = target.read_bytes()
+    return payloads
 
 
 def fetch_published(base_url: str, timeout: float = 20.0) -> dict[str, bytes]:
@@ -86,6 +132,10 @@ def fetch_published(base_url: str, timeout: float = 20.0) -> dict[str, bytes]:
     payloads: dict[str, bytes] = {}
     with httpx.Client(timeout=timeout, follow_redirects=True) as client:
         for name in DOCUMENTS:
+            response = client.get(f"{base}/v1/{name}")
+            if response.status_code == 200:
+                payloads[name] = response.content
+        for name in _player_names(payloads):
             response = client.get(f"{base}/v1/{name}")
             if response.status_code == 200:
                 payloads[name] = response.content

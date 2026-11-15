@@ -6,6 +6,7 @@ import type {
   FixturesT,
   MatchT,
   PlayerMatchT,
+  PlayerSummaryT,
   PlayerT,
   SocialT,
   StaffMemberT,
@@ -25,7 +26,7 @@ export function positionGroup(position: string | null | undefined): PositionGrou
 }
 
 /** Con dorsal primero (ascendente); después por nombre. */
-export function compareSquad(a: PlayerT, b: PlayerT): number {
+export function compareSquad(a: PlayerSummaryT, b: PlayerSummaryT): number {
   const an = a.shirtNumber;
   const bn = b.shirtNumber;
   if (an !== null && bn !== null && an !== bn) return an - bn;
@@ -34,7 +35,7 @@ export function compareSquad(a: PlayerT, b: PlayerT): number {
   return a.name.localeCompare(b.name, 'es');
 }
 
-export function groupSquad(players: PlayerT[]): { group: PositionGroup; data: PlayerT[] }[] {
+export function groupSquad(players: PlayerSummaryT[]): { group: PositionGroup; data: PlayerSummaryT[] }[] {
   return GROUP_ORDER.map((group) => ({
     group,
     data: players.filter((p) => positionGroup(p.position) === group).sort(compareSquad),
@@ -50,7 +51,7 @@ export function normalizeSearch(text: string | null | undefined): string {
     .trim();
 }
 
-export function filterSquad(players: PlayerT[], query: string, group: PositionGroup | 'ALL'): PlayerT[] {
+export function filterSquad(players: PlayerSummaryT[], query: string, group: PositionGroup | 'ALL'): PlayerSummaryT[] {
   const needle = normalizeSearch(query);
   return players.filter((player) => {
     if (group !== 'ALL' && positionGroup(player.position) !== group) return false;
@@ -60,7 +61,7 @@ export function filterSquad(players: PlayerT[], query: string, group: PositionGr
   });
 }
 
-export function squadCounts(players: PlayerT[]): Record<PositionGroup | 'ALL', number> {
+export function squadCounts(players: PlayerSummaryT[]): Record<PositionGroup | 'ALL', number> {
   const counts: Record<PositionGroup | 'ALL', number> = {
     ALL: players.length,
     GK: 0,
@@ -74,7 +75,7 @@ export function squadCounts(players: PlayerT[]): Record<PositionGroup | 'ALL', n
 }
 
 /** Edad media redondeada; null si ningún jugador tiene fecha válida. */
-export function averageAge(players: PlayerT[], nowMs: number): number | null {
+export function averageAge(players: PlayerSummaryT[], nowMs: number): number | null {
   const ages = players
     .map((player) => ageFrom(player.dateOfBirth, nowMs))
     .filter((age): age is number => age !== null);

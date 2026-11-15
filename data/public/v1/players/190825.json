@@ -1,0 +1,296 @@
+{
+  "id": 190825,
+  "name": "Lorenzo Amatucci",
+  "position": "Midfield",
+  "dateOfBirth": "2004-02-05",
+  "nationality": "Italy",
+  "shirtNumber": 16,
+  "contractUntil": "2031",
+  "heightCm": 173,
+  "birthPlace": "Arezzo, Italia",
+  "preferredFoot": "right",
+  "loanFrom": null,
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": 73,
+  "social": {
+    "x": null,
+    "instagram": "lorenzo.amatucci",
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/884631-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/lorenzo-amatucci"
+    }
+  ],
+  "career": [
+    {
+      "club": "Fiorentina",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/ACF_Fiorentina_-_logo_%28Italy%2C_2022%29.svg/120px-ACF_Fiorentina_-_logo_%28Italy%2C_2022%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2022",
+      "to": "2024",
+      "appearances": 2,
+      "goals": 0,
+      "assists": null,
+      "minutes": 21,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2022-23",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        },
+        {
+          "season": "2023-24",
+          "appearances": 2,
+          "goals": 0,
+          "assists": null,
+          "minutes": 21,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Las Palmas",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/2/20/UD_Las_Palmas_logo.svg/120px-UD_Las_Palmas_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2025",
+      "to": "2026",
+      "appearances": 40,
+      "goals": 0,
+      "assists": null,
+      "minutes": 3338,
+      "yellowCards": 5,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2025-26",
+          "appearances": 40,
+          "goals": 0,
+          "assists": null,
+          "minutes": 3338,
+          "yellowCards": 5,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 7,
+      "goals": 0,
+      "assists": null,
+      "minutes": 573,
+      "yellowCards": 3,
+      "redCards": 1,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 7,
+          "goals": 0,
+          "assists": null,
+          "minutes": 573,
+          "yellowCards": 3,
+          "redCards": 1
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 49,
+    "goals": 0,
+    "assists": null,
+    "minutes": 3932,
+    "yellowCards": 8,
+    "redCards": 1
+  },
+  "deporMatches": [
+    {
+      "date": "2026-10-11",
+      "opponent": "Real Sociedad",
+      "opponentCrestUrl": "https://crests.football-data.org/92.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 2,
+      "opponentGoals": 3,
+      "result": "L",
+      "started": false,
+      "minutes": 33,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 1
+    },
+    {
+      "date": "2026-09-16",
+      "opponent": "Sevilla",
+      "opponentCrestUrl": "https://crests.football-data.org/559.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 0,
+      "opponentGoals": 1,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 1,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-13",
+      "opponent": "Getafe",
+      "opponentCrestUrl": "https://crests.football-data.org/82.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-09-05",
+      "opponent": "Villarreal",
+      "opponentCrestUrl": "https://crests.football-data.org/94.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 3,
+      "opponentGoals": 2,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 1,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-30",
+      "opponent": "Valencia",
+      "opponentCrestUrl": "https://crests.football-data.org/95.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 3,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-24",
+      "opponent": "Málaga",
+      "opponentCrestUrl": "https://crests.football-data.org/84.png",
+      "competition": "LaLiga",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-08-17",
+      "opponent": "Elche",
+      "opponentCrestUrl": "https://crests.football-data.org/285.png",
+      "competition": "LaLiga",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 1,
+      "redCards": 0
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol + Wikipedia",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "heightCm": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "weightKg": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "BDFutbol + Wikidata + Wikipedia (es) + Wikipedia (en)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "social": {
+      "source": "https://www.instagram.com/lorenzo.amatucci",
+      "confidence": "single_source",
+      "capturedAt": null
+    },
+    "photos": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "career": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

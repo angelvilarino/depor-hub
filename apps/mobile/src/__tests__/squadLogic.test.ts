@@ -1,4 +1,4 @@
-import { Squad } from '@/data/schemas';
+import { Player } from '@/data/schemas';
 import type { FixturesT, PlayerT } from '@/data/schemas';
 import {
   AVATAR_COLORS,
@@ -538,12 +538,12 @@ describe('avatar', () => {
   });
 });
 
-describe('contrato Squad', () => {
+describe('contrato Player', () => {
   it('JSON publicado antes del ADR 0007 (sin heightCm) valida y da null', () => {
     const old: Record<string, unknown> = { ...player() };
     delete old.heightCm;
-    const r = Squad.safeParse({ updatedAt: '2026-10-20T10:00:00Z', coach: null, players: [old] });
+    const r = Player.safeParse(old);
     expect(r.success).toBe(true);
-    if (r.success) expect(r.data.players[0]?.heightCm).toBeNull();
+    if (r.success) expect(r.data.heightCm).toBeNull();
   });
 });

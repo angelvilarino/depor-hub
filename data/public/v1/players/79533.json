@@ -1,0 +1,722 @@
+{
+  "id": 79533,
+  "name": "Álvaro Fernández",
+  "position": "Goalkeeper",
+  "dateOfBirth": "1998-04-13",
+  "nationality": "Spain",
+  "shirtNumber": 25,
+  "contractUntil": "2027",
+  "heightCm": 185,
+  "birthPlace": "Arnedo (La Rioja), España",
+  "preferredFoot": "right",
+  "loanFrom": null,
+  "loanTo": null,
+  "marketValueEur": null,
+  "weightKg": 80,
+  "social": {
+    "x": "alvaroferllo98",
+    "instagram": "alvaroferllo",
+    "tiktok": null
+  },
+  "photos": [
+    {
+      "url": "https://cdn.bff.rcdeportivo.app/players/328414-large?v=21",
+      "role": "portrait",
+      "width": null,
+      "height": null,
+      "license": "Uso editorial del club (sin licencia de reutilización)",
+      "licenseUrl": null,
+      "author": "RC Deportivo de La Coruña",
+      "credit": "© RC Deportivo de La Coruña",
+      "sourceUrl": "https://www.rcdeportivo.es/es/jugadores/depor/alvaro-ferllo"
+    }
+  ],
+  "career": [
+    {
+      "club": "Osasuna B",
+      "crestUrl": "https://crests.football-data.org/79.png",
+      "role": "player",
+      "from": "2014",
+      "to": "2017",
+      "appearances": 19,
+      "goals": 0,
+      "assists": null,
+      "minutes": 1710,
+      "yellowCards": 2,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2014-15",
+          "appearances": null,
+          "goals": null,
+          "assists": null,
+          "minutes": null,
+          "yellowCards": null,
+          "redCards": null
+        },
+        {
+          "season": "2016-17",
+          "appearances": 19,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1710,
+          "yellowCards": 2,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Osasuna",
+      "crestUrl": "https://crests.football-data.org/79.png",
+      "role": "player",
+      "from": "2016",
+      "to": "2017",
+      "appearances": 1,
+      "goals": 0,
+      "assists": null,
+      "minutes": 44,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2016-17",
+          "appearances": 1,
+          "goals": 0,
+          "assists": null,
+          "minutes": 44,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Extremadura UD",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/7/71/CD_Extremadura_logo.svg/120px-CD_Extremadura_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2018",
+      "to": "2019",
+      "appearances": 17,
+      "goals": 0,
+      "assists": null,
+      "minutes": 1530,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2018-19",
+          "appearances": 17,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1530,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Huesca",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/8/8a/Logo_of_SD_Huesca.svg/120px-Logo_of_SD_Huesca.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2019",
+      "to": "2021",
+      "appearances": 58,
+      "goals": 0,
+      "assists": null,
+      "minutes": 5220,
+      "yellowCards": 3,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2019-20",
+          "appearances": 36,
+          "goals": 0,
+          "assists": null,
+          "minutes": 3240,
+          "yellowCards": 3,
+          "redCards": 0
+        },
+        {
+          "season": "2020-21",
+          "appearances": 22,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1980,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Brentford",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/2/2a/Brentford_FC_crest.svg/120px-Brentford_FC_crest.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2021",
+      "to": "2022",
+      "appearances": 12,
+      "goals": 0,
+      "assists": null,
+      "minutes": 1080,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2021-22",
+          "appearances": 12,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1080,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Espanyol",
+      "crestUrl": "https://crests.football-data.org/80.png",
+      "role": "player",
+      "from": "2022",
+      "to": "2023",
+      "appearances": 11,
+      "goals": 0,
+      "assists": null,
+      "minutes": 990,
+      "yellowCards": 1,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2022-23",
+          "appearances": 11,
+          "goals": 0,
+          "assists": null,
+          "minutes": 990,
+          "yellowCards": 1,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Huesca",
+      "crestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/8/8a/Logo_of_SD_Huesca.svg/120px-Logo_of_SD_Huesca.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "role": "player",
+      "from": "2023",
+      "to": "2024",
+      "appearances": 42,
+      "goals": 0,
+      "assists": null,
+      "minutes": 3692,
+      "yellowCards": 3,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2023-24",
+          "appearances": 42,
+          "goals": 0,
+          "assists": null,
+          "minutes": 3692,
+          "yellowCards": 3,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Sevilla",
+      "crestUrl": "https://crests.football-data.org/559.png",
+      "role": "player",
+      "from": "2024",
+      "to": "2026",
+      "appearances": 9,
+      "goals": 0,
+      "assists": null,
+      "minutes": 746,
+      "yellowCards": 2,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2024-25",
+          "appearances": 9,
+          "goals": 0,
+          "assists": null,
+          "minutes": 746,
+          "yellowCards": 2,
+          "redCards": 0
+        },
+        {
+          "season": "2025-26",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de La Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2025",
+      "to": "2026",
+      "appearances": 22,
+      "goals": 0,
+      "assists": null,
+      "minutes": 1980,
+      "yellowCards": 2,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2025-26",
+          "appearances": 22,
+          "goals": 0,
+          "assists": null,
+          "minutes": 1980,
+          "yellowCards": 2,
+          "redCards": 0
+        }
+      ]
+    },
+    {
+      "club": "Deportivo de A Coruña",
+      "crestUrl": "https://crests.football-data.org/560.png",
+      "role": "player",
+      "from": "2026",
+      "to": null,
+      "appearances": 0,
+      "goals": 0,
+      "assists": null,
+      "minutes": 0,
+      "yellowCards": 0,
+      "redCards": 0,
+      "seasons": [
+        {
+          "season": "2026-27",
+          "appearances": 0,
+          "goals": 0,
+          "assists": null,
+          "minutes": 0,
+          "yellowCards": 0,
+          "redCards": 0
+        }
+      ]
+    }
+  ],
+  "careerTotals": {
+    "appearances": 191,
+    "goals": 0,
+    "assists": null,
+    "minutes": 16992,
+    "yellowCards": 13,
+    "redCards": 0
+  },
+  "deporMatches": [
+    {
+      "date": "2026-05-24",
+      "opponent": "Valladolid",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/a/a9/Real_Valladolid_CF_crest.svg/120px-Real_Valladolid_CF_crest.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 2,
+      "opponentGoals": 0,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-05-17",
+      "opponent": "Andorra",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Logo_FC_Andorra_-_2021.svg/120px-Logo_FC_Andorra_-_2021.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 2,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-05-08",
+      "opponent": "Cádiz",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/5/58/C%C3%A1diz_CF_logo.svg/120px-C%C3%A1diz_CF_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 0,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-05-01",
+      "opponent": "Leganés",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/b/b8/Club_Deportivo_Legan%C3%A9s_logo.svg/120px-Club_Deportivo_Legan%C3%A9s_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 2,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 1,
+      "redCards": 0
+    },
+    {
+      "date": "2026-04-25",
+      "opponent": "Burgos CF",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/d/d6/Burgos_CF_logo.svg/120px-Burgos_CF_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-04-20",
+      "opponent": "Mirandés",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Miranda_de_Ebro_-_Estadio_Municipal_de_Anduva_%28CD_Mirand%C3%A9s%29_04.jpg/120px-Miranda_de_Ebro_-_Estadio_Municipal_de_Anduva_%28CD_Mirand%C3%A9s%29_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 3,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 1,
+      "redCards": 0
+    },
+    {
+      "date": "2026-04-12",
+      "opponent": "Huesca",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/8/8a/Logo_of_SD_Huesca.svg/120px-Logo_of_SD_Huesca.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-04-04",
+      "opponent": "Málaga",
+      "opponentCrestUrl": "https://crests.football-data.org/84.png",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-03-31",
+      "opponent": "Córdoba",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/9/96/C%C3%B3rdoba_CF_logo.svg/120px-C%C3%B3rdoba_CF_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 2,
+      "opponentGoals": 0,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-03-28",
+      "opponent": "Sporting de Gijón",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/4/48/Real_Sporting_de_Gijon.svg/120px-Real_Sporting_de_Gijon.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-03-21",
+      "opponent": "Zaragoza",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/6/69/Real_Zaragoza_logo.svg/120px-Real_Zaragoza_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 2,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-03-14",
+      "opponent": "AD Ceuta FC",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/b/b3/AD_Ceuta_FC_logo.svg/120px-AD_Ceuta_FC_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 2,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-03-08",
+      "opponent": "Granada",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/d/d5/Logo_of_Granada_Club_de_F%C3%BAtbol.svg/120px-Logo_of_Granada_Club_de_F%C3%BAtbol.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 0,
+      "opponentGoals": 2,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-03-01",
+      "opponent": "Real Sociedad B",
+      "opponentCrestUrl": "https://crests.football-data.org/92.png",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 3,
+      "opponentGoals": 2,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-02-21",
+      "opponent": "Eibar",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/3/3b/SD_Eibar_logo_2016.svg/120px-SD_Eibar_logo_2016.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 1,
+      "opponentGoals": 0,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-02-15",
+      "opponent": "Castellón",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/f/f5/Logo_of_CD_Castell%C3%B3n.svg/120px-Logo_of_CD_Castell%C3%B3n.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 0,
+      "opponentGoals": 2,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-02-08",
+      "opponent": "Albacete",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/3/37/Albacete_balompie.svg/120px-Albacete_balompie.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 2,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-01-31",
+      "opponent": "Cultural Leonesa",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/5/5c/Logo_of_Cultural_y_Deportiva_Leonesa.svg/120px-Logo_of_Cultural_y_Deportiva_Leonesa.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 0,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-01-25",
+      "opponent": "Racing de Santander",
+      "opponentCrestUrl": "https://crests.football-data.org/5335.png",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 0,
+      "opponentGoals": 1,
+      "result": "L",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-01-17",
+      "opponent": "Almería",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/4/4a/UD_Almeria_logo.svg/120px-UD_Almeria_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 2,
+      "opponentGoals": 1,
+      "result": "W",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-01-10",
+      "opponent": "Las Palmas",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/2/20/UD_Las_Palmas_logo.svg/120px-UD_Las_Palmas_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": false,
+      "teamGoals": 1,
+      "opponentGoals": 1,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    },
+    {
+      "date": "2026-01-04",
+      "opponent": "Cádiz",
+      "opponentCrestUrl": "https://thumb.wikimedia.org/wikipedia/en/thumb/5/58/C%C3%A1diz_CF_logo.svg/120px-C%C3%A1diz_CF_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "competition": "LaLiga Hypermotion",
+      "home": true,
+      "teamGoals": 2,
+      "opponentGoals": 2,
+      "result": "D",
+      "started": true,
+      "minutes": 90,
+      "goals": 0,
+      "assists": null,
+      "yellowCards": 0,
+      "redCards": 0
+    }
+  ],
+  "provenance": {
+    "shirtNumber": {
+      "source": "BDFutbol + Wikipedia",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "contractUntil": {
+      "source": "Wikipedia",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "heightCm": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "weightKg": {
+      "source": "BDFutbol + Wikipedia (es)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "birthPlace": {
+      "source": "BDFutbol + Wikidata + Wikipedia (es) + Wikipedia (en)",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "preferredFoot": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "social": {
+      "source": "https://www.instagram.com/alvaroferllo + https://x.com/alvaroferllo98",
+      "confidence": "single_source",
+      "capturedAt": null
+    },
+    "photos": {
+      "source": "official",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "career": {
+      "source": "BDFutbol + Wikidata",
+      "confidence": "cross_checked",
+      "capturedAt": "2026-10-26"
+    },
+    "careerTotals": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    },
+    "deporMatches": {
+      "source": "BDFutbol",
+      "confidence": "single_source",
+      "capturedAt": "2026-10-26"
+    }
+  }
+}

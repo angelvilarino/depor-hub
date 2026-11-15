@@ -2,13 +2,13 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { PlayerPortrait } from '@/components/PlayerPortrait';
-import type { PlayerT } from '@/data/schemas';
+import type { PlayerSummaryT } from '@/data/schemas';
 import { countryLabel } from '@/features/squad/labels';
 import { ageFrom } from '@/features/squad/logic';
 import { minTouch, radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
-export function PlayerRow({ player, now }: { player: PlayerT; now: number }) {
+export function PlayerRow({ player, now }: { player: PlayerSummaryT; now: number }) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const age = ageFrom(player.dateOfBirth, now);

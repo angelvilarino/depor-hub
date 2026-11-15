@@ -56,7 +56,7 @@ def _client(raw_dir: Path | None) -> Client:
     )
 
 
-def _validate_ingest_integrity(standings: m.Standings, squad: m.Squad) -> None:
+def _validate_ingest_integrity(standings: m.Standings, squad: m.SquadSummary) -> None:
     if len(standings.table) != 20:
         raise SystemExit(
             f"ERROR: clasificación incompleta ({len(standings.table)} filas; se esperaban 20); "
@@ -78,6 +78,48 @@ def _gh_output(**values: str) -> None:
     with open(path, "a", encoding="utf-8") as fh:
         for key, value in values.items():
             fh.write(f"{key}={value}\n")
+
+
+def _squad_payload(squad: m.Squad) -> dict[str, dict]:
+    """``squad.json`` resumen + un ``players/{id}.json`` por jugador (D1-03)."""
+    payload: dict[str, dict] = {"squad.json": t.dump(t.build_squad_summary(squad))}
+    payload.update({f"players/{player.id}.json": t.dump(player) for player in squad.players})
+    return payload
+
+
+def _remove_stale_players(out_dir: Path, keep: set[int]) -> None:
+    """Borra detalles de jugadores que ya no están en la plantilla."""
+    directory = out_dir / "players"
+    if not directory.is_dir():
+        return
+    for target in directory.glob("*.json"):
+        try:
+            player_id = int(target.stem)
+        except ValueError:
+            continue
+        if player_id not in keep:
+            target.unlink()
+
+
+def _load_squad(path: Path) -> m.Squad:
+    """Reconstruye la plantilla completa desde el resumen y sus detalles.
+
+    Si aún no existe ``players/`` se interpreta el fichero como el ``squad.json``
+    monolítico anterior (compatibilidad con datos y tests del Lote 1).
+    """
+    players_dir = path.parent / "players"
+    if not players_dir.is_dir():
+        return m.Squad.model_validate_json(path.read_text(encoding="utf-8"))
+    summary = m.SquadSummary.model_validate_json(path.read_text(encoding="utf-8"))
+    players: list[m.Player] = []
+    for row in summary.players:
+        detail = players_dir / f"{row.id}.json"
+        if detail.is_file():
+            players.append(m.Player.model_validate_json(detail.read_text(encoding="utf-8")))
+        else:
+            # Resumen sin detalle (publicación a medias): al menos conserva la fila.
+            players.append(m.Player.model_validate(t.dump(row)))
+    return m.Squad(updated_at=summary.updated_at, coach=summary.coach, players=players)
 
 
 def cmd_ingest(args: argparse.Namespace) -> int:
@@ -135,16 +177,17 @@ def cmd_ingest(args: argparse.Namespace) -> int:
     files = {
         "standings.json": t.dump(standings),
         "fixtures.json": t.dump(fixtures),
-        "squad.json": t.dump(squad),
         "meta.json": t.dump(meta),
         "season.json": t.dump(
             t.build_season(matches_raw, fixtures, standings, team.id, season, now)
         ),
     }
+    files.update(_squad_payload(squad))
     digest = t.content_hash(files)
     files["meta.json"]["dataHash"] = digest
 
     changed = write_if_changed(Path(args.out), files, digest, force=args.force)
+    _remove_stale_players(Path(args.out), {player.id for player in squad.players})
     print(f"changed={'true' if changed else 'false'} hash={digest}")
     if args.if_due:
         # Solo se actualiza el estado cuando se ha hecho una pasada real (aunque no cambie el contenido).
@@ -643,14 +686,14 @@ def _load_model(path: Path, model: type) -> object | None:
     return model.model_validate_json(path.read_text(encoding="utf-8"))
 
 
-def _news_index(squad: m.Squad | None, coach_name: str | None, fixtures: m.Fixtures | None):
+def _news_index(squad: m.SquadSummary | None, coach_name: str | None, fixtures: m.Fixtures | None):
     opponents: list[str] = []
     for match in fixtures.matches if fixtures else []:
         opponents.extend([match.home.name, match.away.name])
     return build_index(squad, coach_name=coach_name, opponents=opponents)
 
 
-def _coach_name(coach_path: Path, squad: m.Squad | None) -> str | None:
+def _coach_name(coach_path: Path, squad: m.SquadSummary | None) -> str | None:
     if coach_path.exists():
         try:
             data = yaml.safe_load(coach_path.read_text(encoding="utf-8")) or {}
@@ -664,7 +707,7 @@ def _coach_name(coach_path: Path, squad: m.Squad | None) -> str | None:
 
 def cmd_news_audit(args: argparse.Namespace) -> int:
     feeds = load_feeds(Path(args.feeds))
-    squad = _load_model(Path(args.squad), m.Squad)
+    squad = _load_model(Path(args.squad), m.SquadSummary)
     fixtures = _load_model(Path(args.fixtures), m.Fixtures)
     coach_name = _coach_name(Path(args.coach), squad)
     index = _news_index(squad, coach_name, fixtures)
@@ -691,7 +734,7 @@ def cmd_news_audit(args: argparse.Namespace) -> int:
 
 def cmd_news(args: argparse.Namespace) -> int:
     feeds = load_feeds(Path(args.feeds))
-    squad = _load_model(Path(args.squad), m.Squad)
+    squad = _load_model(Path(args.squad), m.SquadSummary)
     fixtures = _load_model(Path(args.fixtures), m.Fixtures)
     coach_name = _coach_name(Path(args.coach), squad)
     out_dir = Path(args.out)
@@ -926,6 +969,7 @@ def cmd_schemas(args: argparse.Namespace) -> int:
         **m.STATUS_FILES,
         **m.SNAPSHOT_FILES,
         **m.MATCH_DETAIL_FILES,
+        **m.PLAYER_FILES,
     }
     for name, model in models.items():
         schema = model.model_json_schema(by_alias=True)
@@ -963,6 +1007,26 @@ def cmd_validate(args: argparse.Namespace) -> int:
             extras += 1
     if extras:
         print(f"Además, {extras} snapshots/detalles de partido válidos")
+
+    # D1-03: cada fila de `squad.json` debe tener su detalle, y viceversa.
+    squad_path = directory / "squad.json"
+    players_dir = directory / "players"
+    if squad_path.is_file():
+        summary = m.SquadSummary.model_validate_json(squad_path.read_text(encoding="utf-8"))
+        expected = {player.id for player in summary.players}
+        published = {
+            int(target.stem)
+            for target in players_dir.glob("*.json")
+            if target.stem.isdigit()
+        }
+        missing = sorted(expected - published)
+        if missing:
+            raise SystemExit(f"Faltan detalles de jugador: {missing}")
+        for player_id in sorted(expected):
+            m.Player.model_validate_json(
+                (players_dir / f"{player_id}.json").read_text(encoding="utf-8")
+            )
+        print(f"Además, {len(expected)} detalles de jugador válidos")
     return 0
 
 
@@ -1299,31 +1363,32 @@ def _import_csv(path: Path, extras_path: Path, squad: m.Squad) -> int:
 def _apply_to_public(
     squad_path: Path, extras_path: Path, out_dir: Path, coach_path: Path | None = None
 ) -> bool:
-    squad = m.Squad.model_validate_json(squad_path.read_text(encoding="utf-8"))
+    squad = _load_squad(squad_path)
     extras = load_extras(extras_path)
     updated = apply_extras(reset_enriched(squad), extras)
     if coach_path is not None:
         updated = apply_coach(reset_coach(updated), load_coach(coach_path))
+    updated = updated.model_copy(update={"updated_at": _now()})
     files: dict[str, dict] = {}
     for name in m.SPORTS_FILES:
         candidate = out_dir / name
         if candidate.exists():
             files[name] = json.loads(candidate.read_text(encoding="utf-8"))
-    files["squad.json"] = t.dump(updated)
-    files["squad.json"]["updatedAt"] = _now()
+    files.update(_squad_payload(updated))
     if "meta.json" not in files:
         print("AVISO: no hay meta.json; no se puede recalcular dataHash", file=sys.stderr)
         return False
     digest = t.content_hash(files)
     files["meta.json"]["dataHash"] = digest
     changed = write_if_changed(out_dir, files, digest)
+    _remove_stale_players(out_dir, {player.id for player in updated.players})
     print(f"changed={'true' if changed else 'false'} hash={digest}")
     return changed
 
 
 def cmd_enrich(args: argparse.Namespace) -> int:
     squad_path = Path(args.squad)
-    squad = m.Squad.model_validate_json(squad_path.read_text(encoding="utf-8"))
+    squad = _load_squad(squad_path)
 
     if args.export_template:
         _write_template(Path(args.export_template), squad)
