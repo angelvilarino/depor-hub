@@ -57,6 +57,17 @@
     "notConfigured": "Data URL missing (EXPO_PUBLIC_DATA_BASE_URL).",
     "retry": "Retry"
   },
+  "notFound": {
+    "title": "Screen not found",
+    "message": "This route does not exist or the link is broken.",
+    "home": "Go home"
+  },
+  "routeError": {
+    "title": "Something went wrong",
+    "message": "This screen could not be displayed. You can try again.",
+    "retry": "Try again",
+    "home": "Go home"
+  },
   "home": {
     "nextMatch": "Next match",
     "lastResult": "Last result",
@@ -609,7 +620,10 @@
     "mediaCredit": "Image credit",
     "openSource": "Open source",
     "mapActions": "Get directions",
-    "status": { "verified": "Verified", "pending_verification": "Pending verification" },
+    "status": {
+      "verified": "Verified",
+      "pending_verification": "Pending verification"
+    },
     "stats": {
       "founded": "Founded",
       "kitSeasons": "Seasons",

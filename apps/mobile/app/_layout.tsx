@@ -6,12 +6,20 @@ import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
 import { DataProvider } from '@/data/DataProvider';
+import { RouteErrorBoundary } from '@/components/RouteErrorBoundary';
 import { ReminderSync } from '@/features/reminders/ReminderSync';
 import i18n, { resolveLanguage } from '@/i18n';
 import { useSettings } from '@/store/settings';
 import { useTheme } from '@/theme/useTheme';
 
 void SplashScreen.preventAutoHideAsync();
+
+/** F3-02: cualquier enlace profundo vuelve a una ruta real. */
+export const unstable_settings = { initialRouteName: '(tabs)' };
+
+/** F3-02: un error de render en cualquier pantalla muestra recuperación, no blanco. */
+export const ErrorBoundary = RouteErrorBoundary;
+
 
 export default function RootLayout() {
   const { colors, scheme } = useTheme();

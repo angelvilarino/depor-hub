@@ -57,6 +57,17 @@
     "notConfigured": "Falta la URL de datos (EXPO_PUBLIC_DATA_BASE_URL).",
     "retry": "Reintentar"
   },
+  "notFound": {
+    "title": "Pantalla no encontrada",
+    "message": "La ruta no existe o el enlace está roto.",
+    "home": "Ir al inicio"
+  },
+  "routeError": {
+    "title": "Algo ha fallado",
+    "message": "Esta pantalla no se ha podido mostrar. Puedes intentarlo otra vez.",
+    "retry": "Reintentar",
+    "home": "Ir al inicio"
+  },
   "home": {
     "nextMatch": "Próximo partido",
     "lastResult": "Último resultado",
@@ -609,7 +620,10 @@
     "mediaCredit": "Crédito de imagen",
     "openSource": "Abrir fuente",
     "mapActions": "Cómo llegar",
-    "status": { "verified": "Verificado", "pending_verification": "Pendiente de verificación" },
+    "status": {
+      "verified": "Verificado",
+      "pending_verification": "Pendiente de verificación"
+    },
     "stats": {
       "founded": "Fundación",
       "kitSeasons": "Temporadas",
