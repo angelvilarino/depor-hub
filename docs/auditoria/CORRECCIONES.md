@@ -136,6 +136,56 @@ cd workers/live-proxy && npm test
 - **Reactivación pendiente:** ejecutar las instrucciones de
   `docs/operations.md#reactivar-actions` y verificar los 13 documentos en
   producción. Es el único paso que no se puede hacer con Actions pausado.
-- **Lote 2:** `squad.json` ligero, WebP de escudos, noticias de portada y
-  retratos pequeños.
+- **Lote 2:** cerrado en local (ver más abajo).
 - **Lote 3 en adelante:** release, offline, rediseño, gallego y cierre.
+
+## Lote 2 — Peso de datos e imágenes
+
+Estado: **cerrado en local** y publicado. La verificación en producción queda
+pendiente del siguiente run de News y de Health; el smoke local valida los 12
+documentos raíz, los 24 snapshots/detalles y los 28 detalles de jugador.
+
+| ID | Estado | Qué se ha corregido | Evidencia |
+|---|---|---|---|
+| D1-03 / F3-06 | Hecho | `squad.json` deja de ser un documento de 950 KB: se publica un resumen con id, nombre, posición, dorsal, foto y cesión, y un `players/{id}.json` por jugador con historial, carrera y procedencia. La ficha pide solo su detalle; el equipo pinta el resumen. `smoke` incluye `players/` en el hash deportivo y `validate` exige un detalle por fila. | `scripts/depor_hub/cli.py` (`_squad_payload`, `_remove_stale_players`), `scripts/depor_hub/transform.py` (`build_squad_summary`), `scripts/depor_hub/smoke.py`, `apps/mobile/src/data/queries.ts` (`usePlayer`), `apps/mobile/app/player/[id].tsx`; `squad.json` 30.225 B / 3.302 B gzip + 28 detalles (868 KB) |
+| D1-05 | Hecho | Inicio deja de descargar 150 historias y sus miniaturas externas: `news-home.json` publica 5–6 historias y solo las fuentes usadas; las imágenes se reducen a WebP de ~480 px (≤40 KB) en `img/news/`. `news.json` completo solo se pide al abrir Noticias. Si la portada aún no existe, la app cae al feed completo una vez. | `scripts/depor_hub/news/build.py` (`select_home_stories`, `build_home`, `optimize_thumbnail`, `write_home`), `scripts/depor_hub/news/http.py` (`fetch_image`), `apps/mobile/src/data/queries.ts` (`useHomeNews`), `apps/mobile/src/components/home/HeadlinesBlock.tsx`; portada 4.331 B / 1.499 B gzip + 4 WebP (47,6 KB) |
+| D1-04 | Hecho | La línea de tiempo de escudos usa una miniatura WebP de 232 px (≤20 KB) generada junto al PNG original; el modal sigue abriendo el PNG de 512 px. El contrato `CrestVersion` gana `thumbnail` y `ClubImage` encadena medio verificado → miniatura → original. | `scripts/depor_hub/club.py` (`thumbnail_image`, `crest_thumbnail_path`, `attach_crest_thumbnails`, `download_images`), `scripts/depor_hub/models.py`, `apps/mobile/src/components/club/ClubImage.tsx`, `apps/mobile/src/features/club/sections/EscudoSection.tsx`; 13 miniaturas (154 KB) + SVG actual (55 KB) |
+| D1-12 / F3-10 | Hecho | La cuadrícula de Equipo pide el retrato `-small` (~43 KB) y la ficha conserva `-large` en la cabecera. Se añade un test que comprueba la variante pedida por la cuadrícula. | `apps/mobile/app/(tabs)/team.tsx`, `apps/mobile/src/__tests__/team.test.tsx`; 28 retratos ≈ 1,2 MB |
+| F3-04 / D1-15 | Hecho | La caché persistida deja de ser una única entrada `deporhub-query-cache`: cada consulta vive en `deporhub-query:<hash>` y solo se reescribe cuando cambia su contenido. Metadatos (`timestamp`, `buster`) en una entrada pequeña; migración que descarta la caché monolítica anterior y `buster` a `data-v9`. | `apps/mobile/src/data/persister.ts`, `apps/mobile/src/data/DataProvider.tsx`, `apps/mobile/src/__tests__/persister.test.ts` |
+
+### Medición antes / después
+
+| Métrica | Antes | Después |
+|---|---:|---:|
+| `squad.json` | 950 KB (~60 KB gzip) | 30,2 KB (3,3 KB gzip) |
+| Equipo en frío | ~60 KB gzip + retratos `-large` | 3,3 KB gzip + 28 retratos `-small` (~1,2 MB) |
+| Home en frío | ~34 KB JSON + hasta 578 KB de miniaturas | 9,3 KB gzip JSON + 47,6 KB de WebP (**~57 KB**) |
+| Sección de escudos | 2,3 MB de PNG | 210 KB (154 KB de miniaturas + 55 KB del SVG actual) |
+| Miniatura de escudo | — | ≤ 20 KB (13/13) |
+| Retratos de la cuadrícula (28) | hasta 32,7 MB con `-large` | ~1,2 MB con `-small` |
+| Caché persistida | una entrada, reescritura completa | una clave por consulta; solo se reescribe lo que cambia |
+| Ficha de partido | — | snapshot ≤ 0,8 KB + detalle ≤ 9,8 KB (< 60 KB) |
+
+### Comandos de verificación ejecutados
+
+```bash
+ruff check scripts
+pytest scripts -q                       # 271 passed
+python -m depor_hub.cli schemas
+git diff --exit-code packages/schemas   # sin diferencias
+python -m depor_hub.cli validate --data data/public/v1
+python -m depor_hub.cli smoke --data data/public/v1
+npm run lint
+npm run typecheck
+npm test                                # 312 passed / 36 suites
+cd workers/live-proxy && npm test       # 4 passed
+```
+
+### Verificación en producción
+
+- News manual tras D1-05: run `43712616467`; debe publicar `news-home.json` y
+  `img/news/*.webp` y desplegar Pages.
+- Health diario después: debe quedar verde con 12 documentos raíz.
+- Data ya ejecutó el pipeline dividido en producción (`8ff9617`): conserva los
+  28 detalles y `squad.json` valida.
+
