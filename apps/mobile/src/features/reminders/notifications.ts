@@ -37,8 +37,21 @@ export async function ensureReminderPermission(): Promise<boolean> {
   return (await Notifications.requestPermissionsAsync()).granted;
 }
 
+/**
+ * Cola de sincronización (F3-16 / F5-05): dos efectos pueden pedir un refresco a
+ * la vez y cancelar lo que el otro acaba de programar. Las llamadas se ejecutan
+ * en serie, en orden de llegada; un fallo no bloquea las siguientes.
+ */
+let pending: Promise<void> = Promise.resolve();
+
+export function syncReminders(matches: MatchT[], remindMatches: ReminderMap): Promise<void> {
+  const next = pending.catch(() => undefined).then(() => applyReminders(matches, remindMatches));
+  pending = next;
+  return next;
+}
+
 /** Cancela los recordatorios propios y vuelve a programar según los datos actuales (cubre cambios de hora y aplazamientos). */
-export async function syncReminders(matches: MatchT[], remindMatches: ReminderMap): Promise<void> {
+async function applyReminders(matches: MatchT[], remindMatches: ReminderMap): Promise<void> {
   const scheduled = await Notifications.getAllScheduledNotificationsAsync();
   await Promise.all(
     scheduled
