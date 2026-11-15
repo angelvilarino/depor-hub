@@ -209,7 +209,7 @@ describe('Home', () => {
     expect(screen.queryByText(/Temporada/)).toBeNull();
   });
 
-  it('muestra el error global y reintenta las tres consultas', async () => {
+  it('muestra el error global y reintenta todas las consultas', async () => {
     mockMeta = query(undefined, { isError: true });
     mockStandings = query(undefined, { isError: true });
     mockFixtures = query(undefined, { isError: true });
@@ -219,9 +219,9 @@ describe('Home', () => {
     expect(screen.getByText('No se han podido cargar los datos.')).toBeTruthy();
     await fireEvent.press(screen.getByText('Reintentar'));
 
-    expect((mockMeta as { refetch: jest.Mock }).refetch).toHaveBeenCalled();
-    expect((mockStandings as { refetch: jest.Mock }).refetch).toHaveBeenCalled();
-    expect((mockFixtures as { refetch: jest.Mock }).refetch).toHaveBeenCalled();
+    for (const query of [mockMeta, mockStandings, mockFixtures, mockNews, mockSeason, mockRivals]) {
+      expect((query as { refetch: jest.Mock }).refetch).toHaveBeenCalled();
+    }
   });
 
   it('pinta los titulares solo cuando hay noticias', async () => {

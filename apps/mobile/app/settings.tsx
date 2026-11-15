@@ -6,7 +6,7 @@ import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { BodyText, Card, Screen } from '@/components/Screen';
-import { clearPersistedDataCache } from '@/data/persister';
+import { clearDataCache } from '@/data/cache';
 import { useMeta } from '@/data/queries';
 import type { LanguagePreference } from '@/i18n';
 import { type ThemePreference, useSettings } from '@/store/settings';
@@ -62,7 +62,7 @@ export default function SettingsScreen() {
   const clearCache = async () => {
     setClearing(true);
     try {
-      await clearPersistedDataCache();
+      await clearDataCache();
     } catch {
       setClearing(false);
       Alert.alert(t('settings.clearCacheError'));

@@ -100,10 +100,3 @@ export const persister: Persister = {
   },
 };
 
-/**
- * Borra solo la caché de datos persistida (no los ajustes ni los recordatorios).
- * La app volverá a descargar los JSON en la siguiente consulta o al reiniciar.
- */
-export async function clearPersistedDataCache(): Promise<void> {
-  await persister.removeClient();
-}

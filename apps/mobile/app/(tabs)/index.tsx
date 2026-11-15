@@ -46,10 +46,16 @@ export default function Home() {
   const rivals = useRivals();
   const now = useNow(60_000);
 
+  // F3-07: el gesto de refrescar invalida todo lo que pinta la portada.
   const refresh = () => {
-    void meta.refetch();
-    void standings.refetch();
-    void fixtures.refetch();
+    void Promise.allSettled([
+      meta.refetch(),
+      standings.refetch(),
+      fixtures.refetch(),
+      news.refetch(),
+      season.refetch(),
+      rivals.refetch(),
+    ]);
   };
 
   const matches = fixtures.data?.matches ?? NO_MATCHES;

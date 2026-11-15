@@ -121,7 +121,11 @@ export function useHomeNews() {
     NEWS_STALE_TIME,
     home.isSuccess && home.data === null,
   );
-  return { ...home, data: home.data ?? fallback.data ?? null };
+  // F3-07: al refrescar, la portada y su respaldo cuentan como una sola sección.
+  const refetch = async () => {
+    await Promise.allSettled([home.refetch(), fallback.refetch()]);
+  };
+  return { ...home, data: home.data ?? fallback.data ?? null, refetch };
 }
 export const useSocial = () => useOptionalData('social.json', SocialFeed, NEWS_STALE_TIME);
 export const useSeason = () => useOptionalData('season.json', Season, NEWS_STALE_TIME);

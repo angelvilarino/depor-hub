@@ -1,10 +1,11 @@
 import NetInfo from '@react-native-community/netinfo';
-import { QueryClient, focusManager, onlineManager } from '@tanstack/react-query';
+import { focusManager, onlineManager } from '@tanstack/react-query';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
-import { type ReactNode, useEffect, useState } from 'react';
+import { type ReactNode, useEffect } from 'react';
 import { AppState } from 'react-native';
 import { persister } from './persister';
 import { GC_TIME } from './queries';
+import { queryClient } from './queryClient';
 
 // Estado de red real (por defecto React Query asume "online" en móvil).
 onlineManager.setEventListener((setOnline) =>
@@ -12,10 +13,6 @@ onlineManager.setEventListener((setOnline) =>
 );
 
 export function DataProvider({ children }: { children: ReactNode }) {
-  const [client] = useState(
-    () => new QueryClient({ defaultOptions: { queries: { gcTime: GC_TIME } } }),
-  );
-
   // Al volver a primer plano, refrescar los datos que estén caducados.
   useEffect(() => {
     const sub = AppState.addEventListener('change', (s) => focusManager.setFocused(s === 'active'));
@@ -24,7 +21,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
 
   return (
     <PersistQueryClientProvider
-      client={client}
+      client={queryClient}
       persistOptions={{
         persister,
         maxAge: GC_TIME,
