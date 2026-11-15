@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T10:32:37Z",
+  "updatedAt": "2026-11-15T12:32:46Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "8b4f49366179100a",
+      "title": "Dépor ABANCA – Barça: Toca vestirse de matagigantes",
+      "url": "https://riazor.org/depor-abanca-barca-toca-vestirse-de-matagigantes",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-15T12:30:49Z",
+      "kind": "article",
+      "summary": "El Dépor ABANCA recibe este domingo (18:00 h) al Barça. Las blanquiazules tratarán de derribar al gigante del fútbol femenino con el…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "607edb31e78c4eb4",
       "title": "¿Cuándo vuelven los internacionales del Dépor a Abegondo?",
@@ -93,21 +107,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "img/news/bc94f1e14155a63f.webp",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4a9238c1361231f1",
-      "title": "Manuel Pablo: \"Hemos cometido errores y, como siempre, nos han perjudicado mucho\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-14/manuel-pablo-hemos-cometido-errores-siempre-han-perjudicado-891041.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-14T21:03:16Z",
-      "kind": "article",
-      "summary": "El técnico del Fabril analizó en rueda de prensa el empate del filial blanquiazul ante el Barakaldo (2-2)",
-      "thumbnailUrl": "img/news/d89437c70d64fcd0.webp",
       "tags": [
         "cantera",
         "partido"

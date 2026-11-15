@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T10:32:37Z",
+  "updatedAt": "2026-11-15T12:32:46Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "8b4f49366179100a",
+      "title": "Dépor ABANCA – Barça: Toca vestirse de matagigantes",
+      "url": "https://riazor.org/depor-abanca-barca-toca-vestirse-de-matagigantes",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-15T12:30:49Z",
+      "kind": "article",
+      "summary": "El Dépor ABANCA recibe este domingo (18:00 h) al Barça. Las blanquiazules tratarán de derribar al gigante del fútbol femenino con el…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "607edb31e78c4eb4",
       "title": "¿Cuándo vuelven los internacionales del Dépor a Abegondo?",
@@ -2131,20 +2145,6 @@
       "summary": "El técnico vasco no podrá sentarse en el banquillo en el encuentro del próximo sábado",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/03/6aea3976ef74c.r_d.1776-681-0.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "8b7fb35e300154ed",
-      "title": "Victoria balsámica ante el Osasuna que vuelve a instaurar la ilusión inicial",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/03/victoria-balsamica-ante-osasuna-vuelve-instaurar-ilusion-inicial/00031793734864535653775.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-03T19:46:00Z",
-      "kind": "article",
-      "summary": "La recuperación de Aubameyang multiplica la amenaza ofensiva del Dépor",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/-9Jp4FQMX9ufQTutCYQAV5HWN-0=/768x/2026/11/03/00121793734623659937410/Foto/i_20261102_231936002.jpg",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
