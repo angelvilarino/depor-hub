@@ -141,9 +141,9 @@ cd workers/live-proxy && npm test
 
 ## Lote 2 — Peso de datos e imágenes
 
-Estado: **cerrado en local** y publicado. La verificación en producción queda
-pendiente del siguiente run de News y de Health; el smoke local valida los 12
-documentos raíz, los 24 snapshots/detalles y los 28 detalles de jugador.
+Estado: **cerrado** y verificado en producción. El smoke contra Pages valida los
+12 documentos raíz y los documentos por jugador/escudo; News y Health quedaron
+verdes tras los runs `43712616467` y `43712932558`.
 
 | ID | Estado | Qué se ha corregido | Evidencia |
 |---|---|---|---|
@@ -183,9 +183,16 @@ cd workers/live-proxy && npm test       # 4 passed
 
 ### Verificación en producción
 
-- News manual tras D1-05: run `43712616467`; debe publicar `news-home.json` y
-  `img/news/*.webp` y desplegar Pages.
-- Health diario después: debe quedar verde con 12 documentos raíz.
+- News manual tras D1-05: run `43712616467`, **verde**. Publicó
+  `news-home.json` (4.331 B), `img/news/*.webp` y desplegó Pages; el smoke
+  contra `https://angelvilarino.github.io/depor-hub` devuelve
+  `smoke ok: 12 documentos válidos` y `players/114100.json` y
+  `escudos/1906-thumb.webp` responden 200.
+- Health: run `43712725602` salió **rojo** por un deadlock propio (PIPE-12): tras
+  una parada de cinco días, `status.json` marcaba Health `stale=true` y el run no
+  podía observarse a sí mismo para recuperar el verde. Corregido con
+  `--current-workflow health.yml`: el run `43712932558` queda **verde** y
+  `status.json` publica `ok=true` con Data, News, Rivals y CI verdes.
 - Data ya ejecutó el pipeline dividido en producción (`8ff9617`): conserva los
   28 detalles y `squad.json` valida.
 

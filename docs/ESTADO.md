@@ -23,7 +23,7 @@ H0 (andamiaje), H1 (contratos + ingesta + Pages), H2 (capa de datos), H3 (calend
 
 ## H0.2 — Salud del pipeline y `status.json` (hecho, ADR 0027)
 
-- `health.yml` lee los últimos runs de Data/News/Rivals/Health/CI, resume los JSON publicados y publica `status.json` en la rama `status` una vez al día. No usa Pages: el diagnóstico sobrevive a un deploy roto. Publica el estado y **después** pone su run en rojo si `ok=false`; su propio run no cuenta para `ok` para evitar un bucle (PIPE-12).
+- `health.yml` lee los últimos runs de Data/News/Rivals/Health/CI, resume los JSON publicados y publica `status.json` en la rama `status` una vez al día. No usa Pages: el diagnóstico sobrevive a un deploy roto. Publica el estado y **después** pone su run en rojo si `ok=false`; su propio run no cuenta para `ok` para evitar un bucle (PIPE-12). El run en curso pasa `--current-workflow health.yml`: tras una parada larga no puede observar su propia ejecución, así que su frescura no depende de runs anteriores y el primer Health puede recuperar el verde.
 - `status.json` distingue presencia de ficheros y conclusión de workflows; cada workflow tiene su ventana de frescura (Data 36 h, News 6 h, Rivals 8 días, Health 30 h) y `CI` no caduca. El club es estático y no tiene workflow. `cmd_status` sale con código 1 si el estado es rojo y `--soft` permite publicarlo igualmente.
 - Data, News y Rivals comparten el grupo `main-write` y el workflow reutilizable `publish.yml`; Pages se serializa en `pages-deploy` y hay un deploy por commit (PIPE-06, PIPE-16). El push reintenta 5 veces con `git rebase --abort` ante conflictos transitorios.
 - No hay cron externo implementado ni se promete uno; la operación manual está en [`docs/operations.md`](operations.md).
