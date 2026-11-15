@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T08:05:32Z",
+  "updatedAt": "2026-11-15T10:04:07Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "a4321d245c100efa",
+      "title": "Noé Carrillo no ha dicho su última palabra",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-15/noe-carrillo-no-dicho-ultima-palabra-depor-891089.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-15T09:33:45Z",
+      "kind": "article",
+      "summary": "Noé Carrillo aprovecha el parón para reivindicarse con el Fabril y reclamar su sitio en el Dépor",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/15/6af97b72d759b.r_d.1290-1070-0.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "2585a7728cd2e95a",
       "title": "Noé Carrillo, líder absoluto del Fabril a la espera de su oportunidad en LaLiga",
@@ -2137,18 +2151,6 @@
           "publishedAt": "2026-11-03T14:00:11Z"
         }
       ]
-    },
-    {
-      "id": "275475cec3a0db4d",
-      "title": "En vídeo: la charla de Roberto Cabellud y un frustrado Lucas Noubi tras el Dépor-Osasuna",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-03/en-video-la-charla-de-roberto-cabellud-y-un-frustrado-lucas-noubi-tras-el-depor-osasuna-888697.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-03T16:47:04Z",
-      "kind": "article",
-      "summary": "El preparador físico Roberto Cabellud y Lucas Noubi mantuvieron una charla sobre el césped de Riazor tras el Dépor-Osasuna",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/03/FCvG6F8Cdsr_jxKob774P.jpeg",
-      "tags": [],
-      "alsoIn": []
     }
   ]
 }
