@@ -2,6 +2,11 @@
 // Si cambias algo aquí, cambia también el modelo Pydantic y los ejemplos en packages/schemas/examples.
 import { z } from 'zod';
 
+// F3-05: en el borde de la app se toleran campos desconocidos. Un despliegue de
+// datos puede añadir un campo antes de que la app lo conozca; `z.object` lo
+// descarta y conserva el resto. La validación estricta vive en CI (Pydantic +
+// `validate` + JSON Schema), no en el dispositivo.
+
 const iso = z.string().refine((s) => !Number.isNaN(Date.parse(s)), 'fecha ISO inválida');
 
 // Campos añadidos en ADR 0006 (crestUrl, venue, referee): Python siempre los emite, pero aquí
@@ -10,19 +15,19 @@ const optionalNull = () => z.string().nullable().default(null);
 const optionalInt = () => z.number().int().nullable().default(null);
 
 export const Confidence = z.enum(['verified', 'cross_checked', 'single_source', 'estimated']);
-export const Provenance = z.strictObject({
+export const Provenance = z.object({
   source: z.string(),
   confidence: Confidence.default('single_source'),
   capturedAt: optionalNull(),
 });
 
-export const Social = z.strictObject({
+export const Social = z.object({
   x: optionalNull(),
   instagram: optionalNull(),
   tiktok: optionalNull(),
 });
 
-export const PlayerPhoto = z.strictObject({
+export const PlayerPhoto = z.object({
   url: z.string(),
   role: z.enum(['portrait', 'action', 'other']).default('portrait'),
   width: z.number().int().positive().nullable().default(null),
@@ -34,7 +39,7 @@ export const PlayerPhoto = z.strictObject({
   sourceUrl: optionalNull(),
 });
 
-export const CareerSeason = z.strictObject({
+export const CareerSeason = z.object({
   season: z.string(),
   appearances: optionalInt(),
   goals: optionalInt(),
@@ -44,7 +49,7 @@ export const CareerSeason = z.strictObject({
   redCards: optionalInt(),
 });
 
-export const CareerEntry = z.strictObject({
+export const CareerEntry = z.object({
   club: z.string(),
   // ADR 0012: escudo externo del club; tolerado ausente en JSON y caché anteriores.
   crestUrl: optionalNull(),
@@ -61,7 +66,7 @@ export const CareerEntry = z.strictObject({
   seasons: z.array(CareerSeason).default([]),
 });
 
-export const CareerTotals = z.strictObject({
+export const CareerTotals = z.object({
   appearances: optionalInt(),
   goals: optionalInt(),
   assists: optionalInt(),
@@ -70,7 +75,7 @@ export const CareerTotals = z.strictObject({
   redCards: optionalInt(),
 });
 
-export const PlayerMatch = z.strictObject({
+export const PlayerMatch = z.object({
   date: z.string(),
   opponent: z.string(),
   // ADR 0012: escudo externo del rival; tolerado ausente en JSON y caché anteriores.
@@ -88,7 +93,7 @@ export const PlayerMatch = z.strictObject({
   redCards: optionalInt(),
 });
 
-export const TeamRef = z.strictObject({
+export const TeamRef = z.object({
   id: z.number().int(),
   name: z.string(),
   shortName: z.string().nullable(),
@@ -96,7 +101,7 @@ export const TeamRef = z.strictObject({
   crestUrl: optionalNull(),
 });
 
-export const Meta = z.strictObject({
+export const Meta = z.object({
   schemaVersion: z.literal(1),
   season: z.string(),
   competitionCode: z.string(),
@@ -104,10 +109,10 @@ export const Meta = z.strictObject({
   team: TeamRef.extend({ venue: z.string().nullable() }).strict(),
   updatedAt: iso,
   dataHash: z.string(),
-  source: z.strictObject({ name: z.string(), url: z.string().nullable(), note: z.string().nullable() }),
+  source: z.object({ name: z.string(), url: z.string().nullable(), note: z.string().nullable() }),
 });
 
-export const StandingRow = z.strictObject({
+export const StandingRow = z.object({
   position: z.number().int(),
   team: TeamRef,
   played: z.number().int(),
@@ -121,7 +126,7 @@ export const StandingRow = z.strictObject({
   form: z.string().nullable(),
 });
 
-export const Standings = z.strictObject({
+export const Standings = z.object({
   updatedAt: iso,
   season: z.string(),
   matchday: z.number().int().nullable(),
@@ -129,7 +134,7 @@ export const Standings = z.strictObject({
 });
 
 // Temporada y contexto (H5.2, ADR 0017). Aditivo y opcional: la Home funciona con 404.
-export const SeasonSummary = z.strictObject({
+export const SeasonSummary = z.object({
   position: z.number().int().positive(),
   points: z.number().int().nonnegative(),
   played: z.number().int().nonnegative(),
@@ -141,7 +146,7 @@ export const SeasonSummary = z.strictObject({
   goalDifference: z.number().int(),
 });
 
-export const SeasonFormMatch = z.strictObject({
+export const SeasonFormMatch = z.object({
   matchId: z.number().int(),
   matchday: optionalInt(),
   date: z.string(),
@@ -152,7 +157,7 @@ export const SeasonFormMatch = z.strictObject({
   result: z.enum(['W', 'D', 'L']),
 });
 
-export const PositionPoint = z.strictObject({
+export const PositionPoint = z.object({
   matchday: z.number().int().nonnegative(),
   position: z.number().int().positive(),
   points: z.number().int().nonnegative(),
@@ -170,7 +175,7 @@ export const Season = z.object({
   provenance: z.record(z.string(), Provenance).default({}),
 });
 
-export const HeadToHeadMeeting = z.strictObject({
+export const HeadToHeadMeeting = z.object({
   date: z.string(),
   competition: z.string(),
   round: optionalNull(),
@@ -181,7 +186,7 @@ export const HeadToHeadMeeting = z.strictObject({
   deporResult: z.enum(['W', 'D', 'L']),
 });
 
-export const HeadToHead = z.strictObject({
+export const HeadToHead = z.object({
   scope: z.literal('all_official_matches').default('all_official_matches'),
   source: z.string().default('BDFutbol'),
   confidence: z.enum(['verified', 'cross_checked', 'single_source', 'estimated']).default('single_source'),
@@ -195,7 +200,7 @@ export const HeadToHead = z.strictObject({
   meetings: z.array(HeadToHeadMeeting).default([]),
 });
 
-export const KeyPlayer = z.strictObject({
+export const KeyPlayer = z.object({
   id: z.number().int(),
   name: z.string(),
   goals: z.number().int().nonnegative(),
@@ -203,7 +208,7 @@ export const KeyPlayer = z.strictObject({
   playedMatches: optionalInt(),
 });
 
-export const Rival = z.strictObject({
+export const Rival = z.object({
   team: TeamRef,
   bdfutbolId: optionalNull(),
   coach: optionalNull(),
@@ -211,13 +216,13 @@ export const Rival = z.strictObject({
   headToHead: HeadToHead.nullable().default(null),
 });
 
-export const Rivals = z.strictObject({
+export const Rivals = z.object({
   updatedAt: iso,
   season: z.string(),
   rivals: z.array(Rival).default([]),
 });
 
-export const Score = z.strictObject({
+export const Score = z.object({
   home: z.number().int().nullable(),
   away: z.number().int().nullable(),
   halfTimeHome: z.number().int().nullable(),
@@ -225,7 +230,7 @@ export const Score = z.strictObject({
   winner: z.string().nullable(),
 });
 
-export const Match = z.strictObject({
+export const Match = z.object({
   id: z.number().int(),
   utcDate: iso,
   status: z.string(), // la app mapea estados conocidos; los desconocidos no deben romper el parseo
@@ -239,7 +244,7 @@ export const Match = z.strictObject({
   referee: optionalNull(),
 });
 
-export const Fixtures = z.strictObject({
+export const Fixtures = z.object({
   updatedAt: iso,
   season: z.string(),
   matches: z.array(Match),
@@ -247,7 +252,7 @@ export const Fixtures = z.strictObject({
 
 // Snapshot congelado de un partido terminado (ADR 0028). Se escribe una sola vez y
 // solo contiene datos publicados por la fuente: sin eventos, alineaciones ni estadísticas.
-export const MatchSnapshot = z.strictObject({
+export const MatchSnapshot = z.object({
   matchId: z.number().int(),
   season: z.string(),
   capturedAt: iso,
@@ -269,34 +274,34 @@ export const MatchSnapshot = z.strictObject({
 export const MatchSide = z.enum(['home', 'away']);
 export const MatchCardKind = z.enum(['yellow', 'red', 'second_yellow']);
 
-export const MatchDetailTeam = z.strictObject({
+export const MatchDetailTeam = z.object({
   name: z.string(),
   bdfutbolId: z.number().int().positive().nullable().default(null),
 });
 
-export const MatchDetailPlayer = z.strictObject({
+export const MatchDetailPlayer = z.object({
   name: z.string(),
   shirtNumber: z.number().int().nonnegative().nullable().default(null),
   bdfutbolId: z.number().int().positive().nullable().default(null),
 });
 
-export const MatchDetailLineup = z.strictObject({
+export const MatchDetailLineup = z.object({
   coach: optionalNull(),
   starters: z.array(MatchDetailPlayer).default([]),
   substitutes: z.array(MatchDetailPlayer).default([]),
 });
 
-export const MatchDetailLineups = z.strictObject({
+export const MatchDetailLineups = z.object({
   home: MatchDetailLineup,
   away: MatchDetailLineup,
 });
 
-export const MatchDetailScoreAfter = z.strictObject({
+export const MatchDetailScoreAfter = z.object({
   home: z.number().int().nonnegative(),
   away: z.number().int().nonnegative(),
 });
 
-export const MatchDetailGoal = z.strictObject({
+export const MatchDetailGoal = z.object({
   minute: z.number().int().nonnegative(),
   minuteLabel: z.string(),
   team: MatchSide,
@@ -306,7 +311,7 @@ export const MatchDetailGoal = z.strictObject({
   scoreAfter: MatchDetailScoreAfter.nullable().default(null),
 });
 
-export const MatchDetailCard = z.strictObject({
+export const MatchDetailCard = z.object({
   minute: z.number().int().nonnegative(),
   minuteLabel: z.string(),
   team: MatchSide,
@@ -314,7 +319,7 @@ export const MatchDetailCard = z.strictObject({
   kind: MatchCardKind,
 });
 
-export const MatchDetailSubstitution = z.strictObject({
+export const MatchDetailSubstitution = z.object({
   minute: z.number().int().nonnegative(),
   minuteLabel: z.string(),
   team: MatchSide,
@@ -322,7 +327,7 @@ export const MatchDetailSubstitution = z.strictObject({
   playerIn: optionalNull(),
 });
 
-export const MatchDetail = z.strictObject({
+export const MatchDetail = z.object({
   matchId: z.number().int(),
   season: z.string(),
   source: z.string().default('BDFutbol'),
@@ -348,7 +353,7 @@ export const MatchDetail = z.strictObject({
 // rompe el anterior `items`/`meta`; la app se actualiza al mismo tiempo que el JSON.
 export const NewsGroup = z.enum(['club', 'galicia', 'nacional']);
 
-export const NewsSource = z.strictObject({
+export const NewsSource = z.object({
   id: z.string(),
   name: z.string(),
   group: NewsGroup,
@@ -357,14 +362,14 @@ export const NewsSource = z.strictObject({
   iconUrl: z.string().nullable().optional(),
 });
 
-export const NewsAlsoIn = z.strictObject({
+export const NewsAlsoIn = z.object({
   sourceId: z.string(),
   title: z.string(),
   url: z.string(),
   publishedAt: iso,
 });
 
-export const NewsStory = z.strictObject({
+export const NewsStory = z.object({
   id: z.string(),
   title: z.string(),
   url: z.string(),
@@ -377,14 +382,14 @@ export const NewsStory = z.strictObject({
   alsoIn: z.array(NewsAlsoIn).default([]),
 });
 
-export const News = z.strictObject({
+export const News = z.object({
   updatedAt: iso,
   sources: z.array(NewsSource).default([]),
   stories: z.array(NewsStory).default([]),
 });
 
 // D1-05: vista de portada con las 5–6 historias y solo las fuentes que usa.
-export const NewsHome = z.strictObject({
+export const NewsHome = z.object({
   updatedAt: iso,
   sources: z.array(NewsSource).default([]),
   stories: z.array(NewsStory).default([]),
@@ -403,7 +408,7 @@ export const SocialPlatform = z.enum([
   'threads',
 ]);
 
-export const SocialProfile = z.strictObject({
+export const SocialProfile = z.object({
   id: z.string(),
   platform: SocialPlatform,
   name: z.string(),
@@ -411,7 +416,7 @@ export const SocialProfile = z.strictObject({
   handle: optionalNull(),
 });
 
-export const SocialPin = z.strictObject({
+export const SocialPin = z.object({
   id: z.string(),
   platform: SocialPlatform,
   url: z.string(),
@@ -421,7 +426,7 @@ export const SocialPin = z.strictObject({
   source: optionalNull(),
 });
 
-export const SocialFeed = z.strictObject({
+export const SocialFeed = z.object({
   updatedAt: iso,
   dataHash: z.string().default(''),
   profiles: z.array(SocialProfile).default([]),
@@ -431,13 +436,13 @@ export const SocialFeed = z.strictObject({
 // Club (H7, ADR 0025). El contrato no publica source/confidence/status: la app no
 // muestra procedencia. Todos los campos nuevos tienen default para tolerar un
 // club.json mínimo o una caché anterior.
-export const ClubContact = z.strictObject({
+export const ClubContact = z.object({
   email: optionalNull(),
   phone: optionalNull(),
   address: optionalNull(),
 });
 
-export const ClubIdentity = z.strictObject({
+export const ClubIdentity = z.object({
   officialName: z.string(),
   shortName: optionalNull(),
   foundedYear: z.number().int().min(1800).max(2100).nullable().default(null),
@@ -459,7 +464,7 @@ export const MediaKind = z.enum(['photo', 'video', 'audio', 'document']);
 export const MediaOrigin = z.enum(['commons', 'club_official', 'press', 'other']);
 export const DataStatus = z.enum(['verified', 'pending_verification']);
 
-export const MediaRef = z.strictObject({
+export const MediaRef = z.object({
   url: z.string(),
   kind: MediaKind.default('photo'),
   width: z.number().int().nonnegative().nullable().default(null),
@@ -481,7 +486,7 @@ export const LyricsRightsStatus = z.enum([
   'unknown',
 ]);
 
-export const AnthemLyricsRights = z.strictObject({
+export const AnthemLyricsRights = z.object({
   status: LyricsRightsStatus.default('unknown'),
   holder: optionalNull(),
   license: optionalNull(),
@@ -491,13 +496,13 @@ export const AnthemLyricsRights = z.strictObject({
   verifiedAt: optionalNull(),
 });
 
-export const AnthemCredit = z.strictObject({
+export const AnthemCredit = z.object({
   role: z.string(),
   names: z.array(z.string()).default([]),
   text: optionalNull(),
 });
 
-export const Anthem = z.strictObject({
+export const Anthem = z.object({
   id: z.string(),
   title: z.string(),
   kind: AnthemKind.nullable().default(null),
@@ -512,7 +517,7 @@ export const Anthem = z.strictObject({
   lyricsRights: AnthemLyricsRights.nullable().default(null),
 });
 
-export const CrestVersion = z.strictObject({
+export const CrestVersion = z.object({
   id: z.string(),
   yearFrom: z.number().int().min(1800).max(2100),
   yearTo: z.number().int().min(1800).max(2100).nullable().default(null),
@@ -534,7 +539,7 @@ export const KitType = z.enum([
   'special',
 ]);
 
-export const Kit = z.strictObject({
+export const Kit = z.object({
   type: KitType,
   manufacturer: optionalNull(),
   chestSponsor: optionalNull(),
@@ -546,22 +551,22 @@ export const Kit = z.strictObject({
   media: MediaRef.nullable().default(null),
 });
 
-export const SeasonKits = z.strictObject({
+export const SeasonKits = z.object({
   season: z.string().regex(/^\d{4}-\d{2}$/),
   kits: z.array(Kit).default([]),
 });
 
-export const StadiumCoordinates = z.strictObject({
+export const StadiumCoordinates = z.object({
   lat: z.number().min(-90).max(90),
   lon: z.number().min(-180).max(180),
 });
 
-export const CapacityZone = z.strictObject({
+export const CapacityZone = z.object({
   zone: z.string(),
   seats: z.number().int().nonnegative(),
 });
 
-export const CapacityAlternative = z.strictObject({
+export const CapacityAlternative = z.object({
   label: z.string(),
   total: z.number().int().nonnegative(),
   note: optionalNull(),
@@ -569,7 +574,7 @@ export const CapacityAlternative = z.strictObject({
   status: DataStatus.default('pending_verification'),
 });
 
-export const VenueSchedule = z.strictObject({
+export const VenueSchedule = z.object({
   days: optionalNull(),
   hours: optionalNull(),
   note: optionalNull(),
@@ -578,7 +583,7 @@ export const VenueSchedule = z.strictObject({
   status: DataStatus.default('pending_verification'),
 });
 
-export const VenueAccess = z.strictObject({
+export const VenueAccess = z.object({
   publicTransport: optionalNull(),
   parking: optionalNull(),
   accessibility: optionalNull(),
@@ -587,7 +592,7 @@ export const VenueAccess = z.strictObject({
   status: DataStatus.default('pending_verification'),
 });
 
-export const Tenure = z.strictObject({
+export const Tenure = z.object({
   club: z.string(),
   fromYear: z.number().int().min(1800).max(2100).nullable().default(null),
   toYear: z.number().int().min(1800).max(2100).nullable().default(null),
@@ -609,7 +614,7 @@ export const Capacity = z
     'capacity.total debe ser la suma del desglose',
   );
 
-export const Stadium = z.strictObject({
+export const Stadium = z.object({
   name: z.string(),
   address: optionalNull(),
   coordinates: StadiumCoordinates.nullable().default(null),
@@ -629,26 +634,26 @@ export const Stadium = z.strictObject({
   media: z.array(MediaRef).default([]),
 });
 
-export const Price = z.strictObject({
+export const Price = z.object({
   label: z.string(),
   priceEur: z.number().nonnegative().nullable().default(null),
   note: optionalNull(),
 });
 
-export const Tickets = z.strictObject({
+export const Tickets = z.object({
   season: optionalNull(),
   zones: z.array(Price).default([]),
   purchaseUrl: optionalNull(),
   note: optionalNull(),
 });
 
-export const ClubLink = z.strictObject({
+export const ClubLink = z.object({
   id: z.string(),
   label: z.string(),
   url: z.string(),
 });
 
-export const Museum = z.strictObject({
+export const Museum = z.object({
   name: optionalNull(),
   location: optionalNull(),
   description: optionalNull(),
@@ -658,7 +663,7 @@ export const Museum = z.strictObject({
   links: z.array(ClubLink).default([]),
 });
 
-export const TrainingCenter = z.strictObject({
+export const TrainingCenter = z.object({
   name: optionalNull(),
   location: optionalNull(),
   description: optionalNull(),
@@ -666,12 +671,12 @@ export const TrainingCenter = z.strictObject({
   coordinates: StadiumCoordinates.nullable().default(null),
 });
 
-export const BoardMember = z.strictObject({
+export const BoardMember = z.object({
   name: z.string(),
   role: optionalNull(),
 });
 
-export const Board = z.strictObject({
+export const Board = z.object({
   president: optionalNull(),
   members: z.array(BoardMember).default([]),
   sportingDirector: optionalNull(),
@@ -680,7 +685,7 @@ export const Board = z.strictObject({
 
 export const SponsorRole = z.enum(['principal', 'technical', 'official', 'collaborator', 'other']);
 
-export const Sponsor = z.strictObject({
+export const Sponsor = z.object({
   name: z.string(),
   role: SponsorRole.default('official'),
   category: optionalNull(),
@@ -693,7 +698,7 @@ export const Sponsor = z.strictObject({
   status: DataStatus.default('pending_verification'),
 });
 
-export const Sponsors = z.strictObject({
+export const Sponsors = z.object({
   principal: optionalNull(),
   technical: optionalNull(),
   official: z.array(z.string()).default([]),
@@ -702,14 +707,14 @@ export const Sponsors = z.strictObject({
   details: z.array(Sponsor).default([]),
 });
 
-export const Title = z.strictObject({
+export const Title = z.object({
   competition: z.string(),
   years: z.array(z.number().int()).default([]),
 });
 
 export const TitleScope = z.enum(['national', 'regional', 'international', 'other']);
 
-export const GoalScorer = z.strictObject({
+export const GoalScorer = z.object({
   player: z.string(),
   goals: z.number().int().nonnegative(),
   minute: z.number().int().min(0).max(130).nullable().default(null),
@@ -717,7 +722,7 @@ export const GoalScorer = z.strictObject({
   note: optionalNull(),
 });
 
-export const FinalMatch = z.strictObject({
+export const FinalMatch = z.object({
   date: optionalNull(),
   competition: optionalNull(),
   round: optionalNull(),
@@ -732,14 +737,14 @@ export const FinalMatch = z.strictObject({
   sourceUrl: optionalNull(),
 });
 
-export const TitleSquadMember = z.strictObject({
+export const TitleSquadMember = z.object({
   name: z.string(),
   role: optionalNull(),
   appearances: z.number().int().nonnegative().nullable().default(null),
   goals: z.number().int().nonnegative().nullable().default(null),
 });
 
-export const TitleEdition = z.strictObject({
+export const TitleEdition = z.object({
   competition: z.string(),
   year: z.number().int().min(1800).max(2100),
   season: optionalNull(),
@@ -756,18 +761,18 @@ export const TitleEdition = z.strictObject({
   provenance: Provenance,
 });
 
-export const Titles = z.strictObject({
+export const Titles = z.object({
   updatedAt: iso,
   editions: z.array(TitleEdition).default([]),
 });
 
-export const Rivalry = z.strictObject({
+export const Rivalry = z.object({
   rival: z.string(),
   description: optionalNull(),
   sinceYear: z.number().int().min(1800).max(2100).nullable().default(null),
 });
 
-export const RivalryMeeting = z.strictObject({
+export const RivalryMeeting = z.object({
   date: z.string(),
   competition: optionalNull(),
   round: optionalNull(),
@@ -779,12 +784,12 @@ export const RivalryMeeting = z.strictObject({
   sourceUrl: optionalNull(),
 });
 
-export const RivalryFact = z.strictObject({
+export const RivalryFact = z.object({
   text: z.string(),
   provenance: Provenance,
 });
 
-export const RivalryDetail = z.strictObject({
+export const RivalryDetail = z.object({
   rival: z.string(),
   rivalBdfutbolId: optionalNull(),
   description: optionalNull(),
@@ -798,12 +803,12 @@ export const RivalryDetail = z.strictObject({
   provenance: Provenance,
 });
 
-export const Rivalries = z.strictObject({
+export const Rivalries = z.object({
   updatedAt: iso,
   rivalries: z.array(RivalryDetail).default([]),
 });
 
-export const ClubLinks = z.strictObject({
+export const ClubLinks = z.object({
   website: optionalNull(),
   app: optionalNull(),
   x: optionalNull(),
@@ -819,7 +824,7 @@ export const ClubLinks = z.strictObject({
   others: z.array(ClubLink).default([]),
 });
 
-export const Club = z.strictObject({
+export const Club = z.object({
   updatedAt: iso,
   identity: ClubIdentity,
   anthems: z.array(Anthem).default([]),
@@ -852,7 +857,7 @@ export const Club = z.strictObject({
   media: z.array(MediaRef).default([]),
 });
 
-export const StaffMember = z.strictObject({
+export const StaffMember = z.object({
   name: z.string(),
   role: z.string(),
   photoUrl: optionalNull(),
@@ -898,7 +903,7 @@ export const PlayerSummary = z.object({
   photos: z.array(PlayerPhoto).default([]),
 });
 
-export const Player = z.strictObject({
+export const Player = z.object({
   id: z.number().int(),
   name: z.string(),
   position: z.string().nullable(),
@@ -932,13 +937,13 @@ export const Player = z.strictObject({
   provenance: z.record(z.string(), Provenance).default({}),
 });
 
-export const Squad = z.strictObject({
+export const Squad = z.object({
   updatedAt: iso,
   coach: Coach.nullable(),
   players: z.array(PlayerSummary),
 });
 
-export const StatusFile = z.strictObject({
+export const StatusFile = z.object({
   name: z.string(),
   present: z.boolean(),
   updatedAt: optionalNull(),
@@ -946,7 +951,7 @@ export const StatusFile = z.strictObject({
   detail: optionalNull(),
 });
 
-export const StatusWorkflow = z.strictObject({
+export const StatusWorkflow = z.object({
   name: z.string(),
   file: z.string(),
   conclusion: optionalNull(),
@@ -954,7 +959,7 @@ export const StatusWorkflow = z.strictObject({
   url: optionalNull(),
 });
 
-export const Status = z.strictObject({
+export const Status = z.object({
   updatedAt: iso,
   commit: optionalNull(),
   ok: z.boolean(),

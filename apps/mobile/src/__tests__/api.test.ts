@@ -45,8 +45,14 @@ describe('fetchData', () => {
   });
 
   it('JSON que no cumple el contrato: invalid', async () => {
-    fetchMock.mockReturnValue(respond(200, { ...example, extra: true }));
+    fetchMock.mockReturnValue(respond(200, { ...example, players: 'no-es-una-lista' }));
     expect(await kindOf(fetchData('squad.json', Squad, BASE))).toBe('invalid');
+  });
+
+  it('un campo desconocido no invalida el documento (F3-05)', async () => {
+    fetchMock.mockReturnValue(respond(200, { ...example, extra: true }));
+    const parsed = await fetchData('squad.json', Squad, BASE);
+    expect(parsed.players.length).toBeGreaterThan(0);
   });
 
   it('fallo de red: network', async () => {
