@@ -73,6 +73,35 @@ beforeEach(() => {
 });
 
 describe('pantalla de plantilla', () => {
+  it('la cuadrícula pide el retrato -small, no el -large de 1 MB', async () => {
+    mockUseSquad.mockReturnValue(
+      squad([
+        {
+          ...basePlayer,
+          photos: [
+            {
+              url: 'https://cdn.bff.rcdeportivo.app/players/1-large.jpg',
+              role: 'portrait',
+              width: null,
+              height: null,
+              license: null,
+              licenseUrl: null,
+              author: null,
+              credit: null,
+              sourceUrl: null,
+            },
+          ],
+        },
+      ]),
+    );
+    await render(<TeamScreen />);
+
+    const portrait = screen.getByLabelText('Jugador Uno');
+    expect(portrait.props.source[0].uri).toBe(
+      'https://cdn.bff.rcdeportivo.app/players/1-small.jpg',
+    );
+  });
+
   it('muestra la cuadrícula por defecto con resumen y contadores reales', async () => {
     mockUseSquad.mockReturnValue(squad(threePlayers));
     await render(<TeamScreen />);
