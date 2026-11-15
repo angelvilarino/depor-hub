@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T10:04:07Z",
+  "updatedAt": "2026-11-15T10:32:37Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "607edb31e78c4eb4",
+      "title": "¿Cuándo vuelven los internacionales del Dépor a Abegondo?",
+      "url": "https://riazor.org/cuando-vuelven-internacionales-depor-abegondo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-15T10:00:00Z",
+      "kind": "article",
+      "summary": "Los internacionales del Deportivo harán frente a las últimas citas con sus selecciones antes de regresar al trabajo diario en Abegondo. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "a4321d245c100efa",
       "title": "Noé Carrillo no ha dicho su última palabra",
@@ -2132,25 +2146,6 @@
         "partido"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "6a79f59bc4e587b5",
-      "title": "Aubameyang-Adama, una conexión especial para el Deportivo",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/03/auba/00031793734413213948950.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-03T19:45:00Z",
-      "kind": "article",
-      "summary": "El equipo cuenta con un balance goleador positivo cuando coinciden ariete y extremo, que establecieron una gran relación tras su paso por…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/oXL6cJifPJCkdLoJqJcRYMvyLSM=/768x/2026/11/03/00121793734862358832282/Foto/j_20261103_203505000.jpg",
-      "tags": [],
-      "alsoIn": [
-        {
-          "sourceId": "riazor",
-          "title": "‘No Aubameyang, no party’ para el Deportivo: «Es alguien especial para nosotros»",
-          "url": "https://riazor.org/no-aubameyang-no-party-deportivo",
-          "publishedAt": "2026-11-03T14:00:11Z"
-        }
-      ]
     }
   ]
 }
