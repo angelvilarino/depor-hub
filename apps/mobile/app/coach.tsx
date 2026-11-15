@@ -7,7 +7,7 @@ import { CareerTimeline } from '@/components/CareerTimeline';
 import { CoachPortrait } from '@/components/CoachPortrait';
 import { BodyText, Card, Screen } from '@/components/Screen';
 import { SegmentedControl } from '@/components/SegmentedControl';
-import { EmptyState, LoadingState } from '@/components/StateViews';
+import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
 import { useFixtures, useSquad } from '@/data/queries';
 import { countryLabel } from '@/features/squad/labels';
 import {
@@ -46,7 +46,13 @@ export default function CoachScreen() {
     return (
       <Screen>
         {screenOptions}
-        {squad.isPending ? <LoadingState /> : <EmptyState message={t('coach.notFound')} />}
+        {squad.isPending ? (
+          <LoadingState />
+        ) : squad.isError ? (
+          <ErrorState onRetry={() => void squad.refetch()} />
+        ) : (
+          <EmptyState message={t('coach.notFound')} />
+        )}
       </Screen>
     );
   }

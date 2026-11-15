@@ -169,4 +169,17 @@ describe('ficha del entrenador', () => {
 
     expect(screen.getByText('No se ha encontrado la ficha del entrenador.')).toBeTruthy();
   });
+
+  it('un fallo de red no se presenta como entrenador inexistente (F3-22)', async () => {
+    mockUseSquad.mockReturnValue({
+      ...squad(null),
+      data: undefined,
+      isPending: false,
+      isError: true,
+    });
+    await render(<CoachScreen />);
+
+    expect(screen.getByText('No se han podido cargar los datos.')).toBeTruthy();
+    expect(screen.queryByText('No se ha encontrado la ficha del entrenador.')).toBeNull();
+  });
 });

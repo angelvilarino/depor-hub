@@ -7,6 +7,10 @@ let mockMatch = makeMatch();
 let mockFixtures: { season: string; matches: (typeof mockMatch)[] } | null = null;
 let mockSnapshot: Record<string, unknown> | null = null;
 let mockDetail: Record<string, unknown> | null = null;
+let mockFixturesError = false;
+let mockSnapshotError = false;
+const mockFixturesRefetch = jest.fn();
+const mockSnapshotRefetch = jest.fn();
 const mockNow = Date.parse('2026-11-04T10:00:00Z');
 
 jest.mock('expo-router', () => ({
@@ -21,16 +25,17 @@ jest.mock('@/data/queries', () => ({
     dataUpdatedAt: 0,
     isPending: false,
     isFetching: false,
-    isError: false,
+    isError: mockFixturesError,
     isRefetching: false,
-    refetch: jest.fn(),
+    refetch: mockFixturesRefetch,
   }),
   useMeta: () => ({ data: { season: '2026-27' } }),
   useMatchSnapshot: () => ({
     data: mockSnapshot,
     isPending: false,
     isFetching: false,
-    isError: false,
+    isError: mockSnapshotError,
+    refetch: mockSnapshotRefetch,
   }),
   useMatchDetail: () => ({
     data: mockDetail,
@@ -75,6 +80,10 @@ beforeEach(() => {
   mockFixtures = null;
   mockSnapshot = null;
   mockDetail = null;
+  mockFixturesError = false;
+  mockSnapshotError = false;
+  mockFixturesRefetch.mockReset();
+  mockSnapshotRefetch.mockReset();
 });
 
 describe('Ficha de partido', () => {
@@ -242,5 +251,18 @@ describe('Ficha de partido', () => {
     expect(screen.getByText('Pendiente de actualizar')).toBeTruthy();
     expect(screen.queryByText('Recordarme')).toBeNull();
     expect(screen.queryByText('Resultado final')).toBeNull();
+  });
+});
+
+describe('Partido sin conexión (F3-22)', () => {
+  it('un fallo de red no se presenta como partido inexistente', async () => {
+    mockFixtures = { season: '2026-27', matches: [] };
+    mockFixturesError = true;
+    mockSnapshotError = true;
+
+    await render(<MatchDetail />);
+
+    expect(screen.getByText('No se han podido cargar los datos.')).toBeTruthy();
+    expect(screen.queryByText('No se ha encontrado el partido.')).toBeNull();
   });
 });

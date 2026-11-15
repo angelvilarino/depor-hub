@@ -10,7 +10,7 @@ import { CareerTimeline } from '@/components/CareerTimeline';
 import { PlayerPortrait, portraitUrl } from '@/components/PlayerPortrait';
 import { BodyText, Card, Screen } from '@/components/Screen';
 import { SegmentedControl } from '@/components/SegmentedControl';
-import { EmptyState, LoadingState } from '@/components/StateViews';
+import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
 import { TeamCrest } from '@/components/TeamCrest';
 import { useFixtures, useMeta, usePlayer, useSquad } from '@/data/queries';
 import type { PlayerMatchT, PlayerPhotoT, PlayerT } from '@/data/schemas';
@@ -293,7 +293,13 @@ export default function PlayerDetail() {
     return (
       <Screen>
         <Stack.Screen options={{ title: t('player.title') }} />
-        {squad.isPending ? <LoadingState /> : <EmptyState message={t('player.notFound')} />}
+        {squad.isPending ? (
+          <LoadingState />
+        ) : squad.isError ? (
+          <ErrorState onRetry={() => void squad.refetch()} />
+        ) : (
+          <EmptyState message={t('player.notFound')} />
+        )}
       </Screen>
     );
   }
@@ -304,6 +310,8 @@ export default function PlayerDetail() {
         <Stack.Screen options={{ title: t('player.title') }} />
         {playerDoc.isPending ? (
           <LoadingState />
+        ) : playerDoc.isError ? (
+          <ErrorState onRetry={() => void playerDoc.refetch()} />
         ) : (
           <EmptyState message={t('player.notFound')} />
         )}

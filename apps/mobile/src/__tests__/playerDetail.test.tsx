@@ -410,4 +410,33 @@ describe('ficha de jugador', () => {
 
     expect(screen.getByText('No se ha encontrado al jugador.')).toBeTruthy();
   });
+
+  it('un fallo de red de la plantilla no se presenta como jugador inexistente (F3-22)', async () => {
+    mockUseSquad.mockReturnValue({
+      ...squad([]),
+      data: undefined,
+      isPending: false,
+      isError: true,
+    });
+    await render(<PlayerDetail />);
+
+    expect(screen.getByText('No se han podido cargar los datos.')).toBeTruthy();
+    expect(screen.queryByText('No se ha encontrado al jugador.')).toBeNull();
+  });
+
+  it('un fallo de red del detalle ofrece reintentar (F3-22)', async () => {
+    mockUseSquad.mockReturnValue(squad([basePlayer]));
+    mockUsePlayer.mockReturnValue({
+      data: undefined,
+      isPending: false,
+      isFetching: false,
+      isError: true,
+      isRefetching: false,
+      refetch: jest.fn(),
+    });
+    await render(<PlayerDetail />);
+
+    expect(screen.getByText('No se han podido cargar los datos.')).toBeTruthy();
+    expect(screen.queryByText('No se ha encontrado al jugador.')).toBeNull();
+  });
 });

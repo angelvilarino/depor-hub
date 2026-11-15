@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { BodyText, Card, Screen } from '@/components/Screen';
-import { EmptyState, LoadingState } from '@/components/StateViews';
+import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
 import { TeamCrest } from '@/components/TeamCrest';
 import type { MatchDetailT, MatchT } from '@/data/schemas';
 import { useFixtures, useMatchDetail, useMatchSnapshot, useMeta } from '@/data/queries';
@@ -41,13 +41,27 @@ export default function MatchDetail() {
     fixtures.data?.matches.find((m) => String(m.id) === id) ??
     (snapshot.data ? snapshotToMatch(snapshot.data) : undefined);
   const waiting = !match && (fixtures.isPending || (season !== null && snapshot.isPending));
+  // F3-22: un fallo de red no es un partido inexistente; se ofrece reintentar.
+  const failed =
+    !match && (fixtures.isError || (season !== null && snapshot.isError));
   const screenOptions = <Stack.Screen options={{ title: t('match.title') }} />;
 
   if (!match) {
     return (
       <Screen>
         {screenOptions}
-        {waiting ? <LoadingState /> : <EmptyState message={t('match.notFound')} />}
+        {waiting ? (
+          <LoadingState />
+        ) : failed ? (
+          <ErrorState
+            onRetry={() => {
+              void fixtures.refetch();
+              if (season !== null) void snapshot.refetch();
+            }}
+          />
+        ) : (
+          <EmptyState message={t('match.notFound')} />
+        )}
       </Screen>
     );
   }
