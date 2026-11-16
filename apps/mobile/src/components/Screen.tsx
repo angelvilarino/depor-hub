@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
-import { RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { radius, spacing, text } from '@/theme/tokens';
+import { RefreshControl, ScrollView, StyleSheet, Text } from 'react-native';
+import Animated, { FadeIn } from 'react-native-reanimated';
+import { motion, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type ScreenProps = { children: ReactNode; refreshing?: boolean; onRefresh?: () => void };
@@ -25,9 +26,12 @@ export function Screen({ children, refreshing = false, onRefresh }: ScreenProps)
 export function Card({ children }: { children: ReactNode }) {
   const { colors } = useTheme();
   return (
-    <View style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+    <Animated.View
+      entering={FadeIn.duration(motion.fast)}
+      style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}
+    >
       {children}
-    </View>
+    </Animated.View>
   );
 }
 

@@ -3,12 +3,15 @@ import { LinearGradient } from 'expo-linear-gradient';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { SHOW_CLUB_CREST_AS_BRAND } from '@/config';
 import type { TeamRefT } from '@/data/schemas';
-import { minTouch, radius, spacing, text, typography } from '@/theme/tokens';
+import { minTouch, motion, radius, spacing, text, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
+
+const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
 
 export function PosterCard({
   children,
@@ -19,7 +22,8 @@ export function PosterCard({
 }) {
   const { colors } = useTheme();
   return (
-    <LinearGradient
+    <AnimatedGradient
+      entering={FadeInDown.duration(motion.standard)}
       colors={[...colors.poster.stops]}
       locations={[0, 0.56, 1]}
       start={{ x: 0, y: 0 }}
@@ -27,7 +31,7 @@ export function PosterCard({
       style={[styles.poster, style]}
     >
       {children}
-    </LinearGradient>
+    </AnimatedGradient>
   );
 }
 
@@ -41,9 +45,12 @@ export function PaperCard({
   const { colors } = useTheme();
   const paper = colors.paper;
   return (
-    <View style={[styles.paper, { backgroundColor: paper.background, borderColor: paper.border }, style]}>
+    <Animated.View
+      entering={FadeInUp.duration(motion.standard).delay(motion.stagger)}
+      style={[styles.paper, { backgroundColor: paper.background, borderColor: paper.border }, style]}
+    >
       {children}
-    </View>
+    </Animated.View>
   );
 }
 

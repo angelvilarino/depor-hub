@@ -4,6 +4,13 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 
 jest.mock('react-native-reanimated', () => {
   const Native = require('react-native');
+  const builder = () => {
+    const animation = {};
+    for (const method of ['duration', 'delay', 'reduceMotion', 'withCallback', 'springify', 'damping']) {
+      animation[method] = () => animation;
+    }
+    return animation;
+  };
   return {
     __esModule: true,
     default: {
@@ -13,7 +20,13 @@ jest.mock('react-native-reanimated', () => {
     },
     runOnJS: (callback) => callback,
     useAnimatedStyle: (factory) => factory(),
+    useSharedValue: (value) => ({ value }),
+    withSpring: (value) => value,
     withTiming: (value) => value,
+    FadeIn: builder(),
+    FadeInDown: builder(),
+    FadeInUp: builder(),
+    ReduceMotion: { System: 'system', Never: 'never', Always: 'always' },
   };
 });
 jest.mock('react-native-gesture-handler', () => {
