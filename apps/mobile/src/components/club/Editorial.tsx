@@ -4,6 +4,7 @@ import { Image } from 'expo-image';
 import { useEffect, useMemo, useState } from 'react';
 import { Alert, Animated, Linking, Modal, Platform, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { Pressable } from '@/components/Pressable';
+import { SectionHeader as BaseSectionHeader } from '@/components/design/DesignSystem';
 import { useTranslation } from 'react-i18next';
 import type { MediaRefT } from '@/data/schemas';
 import { useReducedMotion } from '@/theme/useReducedMotion';
@@ -39,8 +40,8 @@ export function HeroHeader({
 }
 
 export function SectionHeader({ title, subtitle, icon }: { title: string; subtitle?: string; icon?: IconName }) {
-  const { colors } = useTheme();
-  return <View style={styles.sectionHeader}>{icon ? <Ionicons name={icon} size={23} color={colors.primary} /> : null}<View style={{ flex: 1 }}><Text accessibilityRole="header" style={{ color: colors.text, ...text.heading, fontWeight: '800' }}>{title}</Text>{subtitle ? <Text style={{ color: colors.textMuted, ...text.body, fontFamily: typography.headline }}>{subtitle}</Text> : null}</View></View>;
+  // D-03: el chrome de Club usa el mismo encabezado que el resto de la app.
+  return <BaseSectionHeader title={title} subtitle={subtitle} icon={icon} variant="flat" />;
 }
 
 export function StatCounter({ value, label, suffix, locale }: { value: number; label: string; suffix?: string; locale?: string }) {
@@ -172,20 +173,20 @@ const styles = StyleSheet.create({
   heroTitle: { color: imageTokens.text, fontFamily: typography.display, ...text.hero },
   heroSubtitle: { color: imageTokens.muted, fontFamily: typography.headline, ...text.bodyLarge },
   chips: { flexDirection: 'row', gap: spacing.xs, flexWrap: 'wrap' },
-  heroChip: { backgroundColor: imageTokens.veil, borderRadius: radius.pill, paddingHorizontal: spacing.sm, paddingVertical: 5 },
+  heroChip: { backgroundColor: imageTokens.veil, borderRadius: radius.pill, paddingHorizontal: spacing.sm, paddingVertical: spacing.xs },
   heroChipText: { color: imageTokens.text, ...text.caption, fontWeight: '700' },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  stat: { minWidth: 94, flexGrow: 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, padding: spacing.sm, gap: 2 },
+  stat: { minWidth: 94, flexGrow: 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, padding: spacing.sm, gap: spacing.xs },
   filterChip: { paddingHorizontal: spacing.sm, minHeight: 44, justifyContent: 'center', borderRadius: radius.pill, borderWidth: StyleSheet.hairlineWidth },
   timelineRow: { minHeight: 44, flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
-  timelineAxis: { width: 16, alignItems: 'center', alignSelf: 'stretch' }, dot: { width: 10, height: 10, borderRadius: 5, marginTop: 4 }, line: { width: 2, flex: 1, marginTop: 3 },
-  credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 8, backgroundColor: imageTokens.scrim, borderRadius: radius.pill }, creditText: { color: imageTokens.text, ...text.caption },
+  timelineAxis: { width: 16, alignItems: 'center', alignSelf: 'stretch' }, dot: { width: 10, height: 10, borderRadius: 5, marginTop: spacing.xs }, line: { width: 2, flex: 1, marginTop: spacing.xs },
+  credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.xs, paddingHorizontal: spacing.sm, backgroundColor: imageTokens.scrim, borderRadius: radius.pill }, creditText: { color: imageTokens.text, ...text.caption },
   inlineCredit: { position: 'relative', top: 0, right: 0, alignSelf: 'flex-start', marginTop: spacing.xs },
   galleryPhoto: { width: 228, height: 156, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, overflow: 'hidden' },
   photoFallback: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.xs },
   modalPhotoFallback: { alignItems: 'center', justifyContent: 'center' },
   galleryBackdrop: { flex: 1, backgroundColor: imageTokens.backdrop, justifyContent: 'center', alignItems: 'center' },
   galleryClose: { minWidth: 44, minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: spacing.xs, paddingHorizontal: spacing.md },
-  confidence: { flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', gap: 4, borderWidth: 1, borderRadius: radius.pill, paddingHorizontal: 7, paddingVertical: 3 },
+  confidence: { flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', gap: spacing.xs, borderWidth: 1, borderRadius: radius.pill, paddingHorizontal: spacing.sm, paddingVertical: spacing.xs },
   mapAction: { minHeight: 48, paddingHorizontal: spacing.md, borderRadius: radius.pill, alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
 });

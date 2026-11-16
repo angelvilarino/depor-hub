@@ -3,13 +3,11 @@ import { BodyText } from '@/components/Screen';
 import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
+import { SectionHeader } from '@/components/design/DesignSystem';
+
 export function SectionTitle({ children }: { children: string }) {
-  const { colors } = useTheme();
-  return (
-    <Text accessibilityRole="header" style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>
-      {children}
-    </Text>
-  );
+  // D-03: un solo encabezado de sección en toda la app.
+  return <SectionHeader title={children} variant="flat" />;
 }
 
 export function InfoRow({ label, value }: { label: string; value: string | null | undefined }) {
@@ -63,7 +61,7 @@ export function MutedText({ children }: { children: string }) {
 }
 
 const styles = StyleSheet.create({
-  infoRow: { gap: 2 },
+  infoRow: { gap: spacing.xs },
   tag: {
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.xs,

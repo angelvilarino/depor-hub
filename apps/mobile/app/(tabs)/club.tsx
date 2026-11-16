@@ -140,16 +140,18 @@ export default function ClubScreen() {
               </View>
             </Card>
             {timelineEntries.length ? <Card><SectionHeader title={t('club.timeline')} subtitle={t('club.timelineSubtitle')} icon="time-outline" /><Timeline entries={timelineEntries} filters /></Card> : null}
-            <Card>
+            {/* D-24: la rejilla de secciones ya no vive dentro de otra tarjeta;
+                cada baldosa es una superficie plana sobre el fondo. */}
+            <View style={{ gap: spacing.sm }}>
               <SectionHeader title={t('club.explore')} subtitle={t('club.exploreSubtitle')} icon="compass-outline" />
               <View style={styles.sectionGrid}>
                 {CLUB_SECTIONS.map((section) => {
                   const badge = sectionBadge(club, section.id, i18n.language, rivalriesQuery.data?.rivalries.length ?? club.rivalries.length);
                   const image = sectionImage(club, section.id);
-                  return <Pressable key={section.id} accessibilityRole="button" accessibilityLabel={t(`club.sections.${section.id}.title`)} onPress={() => router.push(`/club/${section.id}`)} style={[styles.sectionTile, { backgroundColor: colors.background, borderColor: colors.border }]}>
+                  return <Pressable key={section.id} accessibilityRole="button" accessibilityLabel={t(`club.sections.${section.id}.title`)} onPress={() => router.push(`/club/${section.id}`)} style={[styles.sectionTile, { backgroundColor: colors.surface, borderColor: colors.border }]}>
                     <View style={styles.tileArtwork}>
                       {image ? <View style={StyleSheet.absoluteFill}><ClubTileImage uri={image} /></View> : null}
-                      <View style={[styles.tileIcon, { backgroundColor: colors.surface }]}><Ionicons name={section.icon as IconName} size={24} color={colors.primary} /></View>
+                      <View style={[styles.tileIcon, { backgroundColor: colors.background }]}><Ionicons name={section.icon as IconName} size={24} color={colors.primary} /></View>
                       {badge ? <View style={[styles.tileBadge, { backgroundColor: colors.primary }]}><Text style={{ color: colors.onPrimary, ...text.caption, fontWeight: '800' }}>{badge}</Text></View> : null}
                     </View>
                     <Text style={[styles.tileTitle, { color: colors.text }]}>{t(`club.sections.${section.id}.title`)}</Text>
@@ -157,7 +159,7 @@ export default function ClubScreen() {
                   </Pressable>;
                 })}
               </View>
-            </Card>
+            </View>
             {club.facts.length ? <Card><SectionHeader title={t('club.facts')} icon="book-outline" />{club.facts.map((fact) => <BodyText key={fact}>{fact}</BodyText>)}</Card> : null}
             {identity.contact.email || identity.contact.phone ? <Card><SectionHeader title={t('club.contact')} icon="call-outline" />{identity.contact.email ? <Text style={[styles.value, { color: colors.text }]}>{identity.contact.email}</Text> : null}{identity.contact.phone ? <Text style={[styles.value, { color: colors.text }]}>{identity.contact.phone}</Text> : null}</Card> : null}
           </>;
@@ -174,6 +176,6 @@ function ClubTileImage({ uri }: { uri: string }) {
 const styles = StyleSheet.create({
   unofficial: { ...text.caption }, stats: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
   motto: { fontFamily: typography.headline, ...text.title, textAlign: 'center' },
-  identityGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md }, identityItem: { minWidth: '42%', flexGrow: 1, gap: 2 }, label: { ...text.caption, fontWeight: '700' }, value: { ...text.bodyLarge },
-  sectionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm }, sectionTile: { width: '47%', minHeight: 150, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden', padding: spacing.sm, gap: 4 }, tileArtwork: { height: 66, justifyContent: 'center', alignItems: 'center', overflow: 'hidden', borderRadius: radius.sm }, tileIcon: { width: 44, height: 44, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center' }, tileBadge: { position: 'absolute', right: 5, top: 5, minWidth: 28, height: 28, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5 }, tileTitle: { ...text.bodyLarge, fontWeight: '800' }, tileSubtitle: { ...text.caption },
+  identityGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md }, identityItem: { minWidth: '42%', flexGrow: 1, gap: spacing.xs }, label: { ...text.caption, fontWeight: '700' }, value: { ...text.bodyLarge },
+  sectionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm }, sectionTile: { width: '47%', minHeight: 150, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden', padding: spacing.sm, gap: spacing.xs }, tileArtwork: { height: 66, justifyContent: 'center', alignItems: 'center', overflow: 'hidden', borderRadius: radius.sm }, tileIcon: { width: 44, height: 44, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center' }, tileBadge: { position: 'absolute', right: 5, top: 5, minWidth: 28, height: 28, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', paddingHorizontal: spacing.xs }, tileTitle: { ...text.bodyLarge, fontWeight: '800' }, tileSubtitle: { ...text.caption },
 });

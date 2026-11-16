@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { ReactNode } from 'react';
@@ -54,27 +55,41 @@ export function PaperCard({
   );
 }
 
+type IconName = React.ComponentProps<typeof Ionicons>['name'];
+
+/**
+ * D-03/D-24: un único encabezado de sección para cartel, papel y superficie
+ * plana. `flat` es la variante que va dentro de una tarjeta.
+ */
 export function SectionHeader({
   title,
   subtitle,
   variant = 'paper',
   trailing,
+  icon,
 }: {
   title: string;
   subtitle?: string;
-  variant?: 'poster' | 'paper';
+  variant?: 'poster' | 'paper' | 'flat';
   trailing?: ReactNode;
+  icon?: IconName;
 }) {
   const { colors } = useTheme();
   const paper = colors.paper;
   const isPoster = variant === 'poster';
+  const isFlat = variant === 'flat';
+  const subtitleColor = isPoster ? colors.poster.muted : isFlat ? colors.textMuted : paper.muted;
+  const titleColor = isPoster ? colors.poster.text : isFlat ? colors.text : paper.text;
   return (
     <View style={styles.sectionHeader}>
+      {icon ? (
+        <Ionicons name={icon} size={23} color={isPoster ? colors.poster.accent : colors.primary} />
+      ) : null}
       <View style={styles.sectionText}>
         {subtitle ? (
           <Text
             style={{
-              color: isPoster ? colors.poster.muted : paper.muted,
+              color: subtitleColor,
               ...text.caption,
               letterSpacing: 1.2,
               textTransform: 'uppercase',
@@ -87,7 +102,7 @@ export function SectionHeader({
         <Text
           accessibilityRole="header"
           style={{
-            color: isPoster ? colors.poster.text : paper.text,
+            color: titleColor,
             fontFamily: typography.headline,
             ...text.heading,
           }}
@@ -231,12 +246,12 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.sm },
-  sectionText: { flex: 1, gap: 2 },
+  sectionText: { flex: 1, gap: spacing.xs },
   chip: { minHeight: minTouch, borderWidth: 1, borderRadius: radius.pill, paddingHorizontal: spacing.md, alignItems: 'center', justifyContent: 'center' },
-  statTile: { gap: 3, minWidth: 68 },
+  statTile: { gap: spacing.xs, minWidth: 68 },
   crestBadge: { alignItems: 'center', justifyContent: 'center', borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.pill },
   brand: { minHeight: minTouch, flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   brandMark: { width: 38, height: 38, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   brandImage: { width: 30, height: 30 },
-  brandCopy: { flex: 1, gap: 1 },
+  brandCopy: { flex: 1, gap: spacing.xs },
 });
