@@ -131,6 +131,32 @@ npm test
 cd workers/live-proxy && npm test
 ```
 
+## Lote 4 — Sistema de diseño y navegación
+
+Estado: **en curso (16-nov-2026)**. Cerrados D-01, D-02, D-12, D-04, D-08 y
+D-26 (color y familias); quedan D-03, D-24 y la auditoría de accesibilidad en
+dispositivo.
+
+| ID | Estado | Qué se ha corregido | Evidencia |
+|---|---|---|---|
+| D-01 | Hecho | El `Stack` raíz usa `headerBackButtonDisplayMode: 'minimal'` y se retiran los `headerBackTitle` que filtraban `(tabs)`/«Equipo» al botón atrás. Las fichas de jugador, entrenador, club e himno vuelven solo con la flecha. | `apps/mobile/app/_layout.tsx`, `app/club/[section].tsx`, `app/club/himno/[id].tsx` |
+| D-02 | Hecho | En la variante `poster` de `HeadToHeadBar`, las etiquetas G/E/P pasan a una pastilla clara (`winBackground`/`drawBackground`/`lossBackground`) con texto oscuro; el color semántico ya no se usa como texto sobre azul (1,02–1,58:1). | `src/components/rival/HeadToHeadBar.tsx`; `src/__tests__/headToHeadBar.test.tsx` |
+| D-12 | Hecho | El papel oscuro sube de `#151D2A` a `#202D42`: 1,35:1 contra el fondo `#0B1220` y borde visible (1,42:1). En claro se mantiene el borde como separador (1,46:1). | `src/theme/tokens.ts`, `src/__tests__/tokens.test.ts` |
+| D-04 | Hecho | Escala tipográfica de 8 pasos (`caption`, `body`, `bodyLarge`, `subtitle`, `title`, `heading`, `display`, `hero`, `numeral`) con interlineado. Se sustituyen los 323 `fontSize` literales por spreads de `text.*`; un test falla si vuelve un literal. | `src/theme/tokens.ts`; `src/__tests__/tokensHygiene.test.ts`; migración en Inicio, Noticias, Club, Partido, Jugador, Entrenador, Rival, Ajustes y componentes compartidos |
+| D-08 | Hecho | `Pressable` propio inyecta el estado `pressed` global (opacidad 0,68) y `hitSlop` 8; `PosterCard`, `PaperCard` y `Card` entran con Reanimated (`FadeInDown`, `FadeInUp`, `FadeIn`) respetando «reducir movimiento» del sistema. | `src/components/Pressable.tsx`, `src/components/design/DesignSystem.tsx`, `src/components/Screen.tsx`; `src/__tests__/pressable.test.tsx` |
+| D-26 | Hecho en color y familias; espaciado pendiente | Cero hex fuera de `tokens.ts`: se añaden `onImage`, `rating`, `kitColors`, `avatarPalette` e `imageTokens` (scrim, degradado, velo). Las familias literales (`SourceSerif4`, `BarlowCondensed`) pasan a `typography`. Queda revisar que el espaciado 4/8 cubra ≥90 % de los márgenes. | `src/theme/tokens.ts`; `src/__tests__/tokensHygiene.test.ts`; `ClubImage`, `Editorial`, `PlayerAvatar`, `SeasonCard`, `(tabs)/club` |
+| D-22 | Hecho en texto; auditoría pendiente | Se eliminan los textos de 9–11 pt (mínimo 12) y el `hitSlop` global amplía los targets pequeños; los botones de icono existentes ya declaran `accessibilityLabel`. Falta pasar la auditoría de accesibilidad en un dispositivo real. | `src/components/Pressable.tsx`, `src/components/TeamCrest.tsx`, `src/components/PlayerAvatar.tsx`, `src/components/home/PositionChart.tsx` |
+| D-24 | Parcial | La píldora de contexto duplicada desaparece con D-01. No se han encontrado `<Card>` literalmente anidados; queda revisar en capturas las tarjetas que se ven como superficies dentro de otra. | `apps/mobile/app/_layout.tsx` |
+| D-03 | Pendiente | El sistema ya tiene tres superficies (`PosterCard`, `PaperCard`, `Card`), pero la migración pantalla a pantalla y el inventario de `SectionHeader` siguen abiertos. | — |
+
+### Verificación del Lote 4
+
+```bash
+npm run lint
+npm run typecheck
+npm test                                 # 340 passed / 44 suites
+```
+
 ### Lo que sigue
 
 - **Reactivación pendiente:** ejecutar las instrucciones de
