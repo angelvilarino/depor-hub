@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T18:06:01Z",
+  "updatedAt": "2026-11-16T19:03:53Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -24,9 +24,32 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "1ea2b3d104e89d2a",
+      "title": "Los 16 minutos del «atropello» en Riazor",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/16/16-minutos-atropello-riazor/00031794853657577162549.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-16T18:30:00Z",
+      "kind": "article",
+      "summary": "Así fue la secuencia de hechos que impidió un triunfo histórico del Dépor Abanca sobre el Barça",
+      "thumbnailUrl": "img/news/65aaf98132c1f71d.webp",
+      "tags": [
+        "cantera",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "e246eb46995a56cc",
       "title": "El Dépor recuperará esta semana a sus internacionales a cuentagotas",
@@ -105,20 +128,6 @@
       "kind": "article",
       "summary": "Desde las 14.00 horas, nuevo episodio del videopodcast de Dxt Campeón respondiendo en vivo a las preguntas de la audiencia",
       "thumbnailUrl": "img/news/505c7bf1d3ea619e.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "790247c3e37d3aa6",
-      "title": "Cedidos del Dépor: Patiño aprovecha el parón para coger ritmo y sumar minutos",
-      "url": "https://riazor.org/cedidos-depor-patino-aprovecha-paron-ritmo-minutos",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-16T11:00:11Z",
-      "kind": "article",
-      "summary": "Repasamos la jornada de los cedidos por el Deportivo. Charlie Patiño volvió a ser titular con el Bochum en un amistoso durante el parón de…",
-      "thumbnailUrl": null,
       "tags": [
         "partido"
       ],
