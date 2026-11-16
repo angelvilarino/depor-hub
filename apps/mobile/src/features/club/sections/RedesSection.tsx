@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/Screen';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubLinksT, ClubT } from '@/data/schemas';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 import { InfoRow, SectionTitle } from './ui';
@@ -46,7 +46,7 @@ function LinkRow({
       style={styles.row}
     >
       <Ionicons name={icon} size={20} color={colors.primary} />
-      <Text style={{ color: colors.primary, fontSize: 16, fontWeight: '600', flex: 1 }}>
+      <Text style={{ color: colors.primary, ...text.bodyLarge, fontWeight: '600', flex: 1 }}>
         {label}
       </Text>
       <Ionicons name="open-outline" size={18} color={colors.primary} />
@@ -102,7 +102,7 @@ export function RedesSection({ club }: { club: ClubT }) {
               style={styles.row}
             >
               <Ionicons name="mail-outline" size={20} color={colors.primary} />
-              <Text selectable style={{ color: colors.primary, fontSize: 16, flex: 1 }}>
+              <Text selectable style={{ color: colors.primary, ...text.bodyLarge, flex: 1 }}>
                 {email}
               </Text>
             </Pressable>
@@ -115,7 +115,7 @@ export function RedesSection({ club }: { club: ClubT }) {
               style={styles.row}
             >
               <Ionicons name="call-outline" size={20} color={colors.primary} />
-              <Text selectable style={{ color: colors.primary, fontSize: 16, flex: 1 }}>
+              <Text selectable style={{ color: colors.primary, ...text.bodyLarge, flex: 1 }}>
                 {phone}
               </Text>
             </Pressable>

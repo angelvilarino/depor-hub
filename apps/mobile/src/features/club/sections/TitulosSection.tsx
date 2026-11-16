@@ -8,7 +8,7 @@ import { ConfidenceBadge, SectionHeader } from '@/components/club/Editorial';
 import { useTitles } from '@/data/queries';
 import type { ClubT } from '@/data/schemas';
 import { formatDate, titleTotal } from '@/features/club/logic';
-import { radius, spacing, typography } from '@/theme/tokens';
+import { radius, spacing, typography, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { TagList } from './ui';
 
@@ -31,7 +31,7 @@ export function TitulosSection({ club }: { club: ClubT }) {
     <View style={{ gap: spacing.md }}>
       <Card>
         <SectionHeader title={t('club.titulos.title')} subtitle={t('club.titulos.editorialSubtitle')} icon="trophy-outline" />
-        <Text style={{ color: colors.text, fontSize: 15 }}>
+        <Text style={{ color: colors.text, ...text.bodyLarge }}>
           {t('club.titulos.total', {
             total,
             competitions: club.titles.length,
@@ -49,9 +49,9 @@ export function TitulosSection({ club }: { club: ClubT }) {
         const score = match?.homeGoals !== null && match?.homeGoals !== undefined && match.awayGoals !== null ? `${match.homeGoals}–${match.awayGoals}` : null;
         const locale = i18n.language;
         return <Card key={`${edition.competition}-${edition.year}`}>
-          <View style={styles.editionHeader}><View style={{ flex: 1 }}><Text style={{ color: colors.primary, fontSize: 13, fontWeight: '800' }}>{edition.year}</Text><Text style={{ color: colors.text, fontSize: 18, fontWeight: '800' }}>{edition.competition}</Text></View><ConfidenceBadge label={t('club.titulos.confidence')} status={edition.status} /></View>
-          {rival ? <Text style={{ color: colors.text, fontFamily: typography.headline, fontSize: 17 }}>{t('club.titulos.finalAgainst', { rival })}</Text> : null}
-          {score ? <Text accessibilityLabel={t('club.titulos.score', { score })} style={{ color: colors.primary, fontSize: 32, fontWeight: '900' }}>{score}</Text> : null}
+          <View style={styles.editionHeader}><View style={{ flex: 1 }}><Text style={{ color: colors.primary, ...text.body, fontWeight: '800' }}>{edition.year}</Text><Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>{edition.competition}</Text></View><ConfidenceBadge label={t('club.titulos.confidence')} status={edition.status} /></View>
+          {rival ? <Text style={{ color: colors.text, fontFamily: typography.headline, ...text.subtitle }}>{t('club.titulos.finalAgainst', { rival })}</Text> : null}
+          {score ? <Text accessibilityLabel={t('club.titulos.score', { score })} style={{ color: colors.primary, ...text.display, fontWeight: '900' }}>{score}</Text> : null}
           {match?.date ? <Text style={{ color: colors.textMuted }}>{formatDate(match.date, locale)}</Text> : null}
           {match?.venue ? <Text style={{ color: colors.textMuted }}>{match.venue}</Text> : null}
           {edition.coach ? <View style={{ gap: spacing.xs }}>
@@ -70,7 +70,7 @@ export function TitulosSection({ club }: { club: ClubT }) {
             /> : null}
             {edition.squad.map((player) => <Text key={player.name} style={{ color: colors.text }}>{player.name}{player.role ? ` · ${player.role}` : ''}</Text>)}
           </View> : null}
-          {edition.note ? <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 20 }}>{edition.note}</Text> : null}
+          {edition.note ? <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>{edition.note}</Text> : null}
           {match?.sourceUrl ? <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(match.sourceUrl!)} style={{ minHeight: 44, justifyContent: 'center' }}><Text style={{ color: colors.primary, fontWeight: '700' }}>{t('club.titulos.source')}</Text></Pressable> : null}
         </Card>;
       })}
@@ -86,10 +86,10 @@ export function TitulosSection({ club }: { club: ClubT }) {
             ]}
           >
             <View style={styles.header}>
-              <Text style={{ color: colors.text, fontSize: 16, fontWeight: '700', flex: 1 }}>
+              <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700', flex: 1 }}>
                 {title.competition}
               </Text>
-              <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+              <Text style={{ color: colors.textMuted, ...text.body }}>
                 {t('club.titulos.count', { count: title.years.length })}
               </Text>
             </View>
@@ -106,7 +106,7 @@ function FieldProvenance({ source, confidence }: { source: string; confidence: s
   const { colors } = useTheme();
   const url = source.match(/https?:\/\/[^\s)]+/)?.[0];
   const label = t('club.titulos.fieldProvenance', { source, confidence });
-  const content = <Text style={{ color: colors.textMuted, fontSize: 12 }}>{label}</Text>;
+  const content = <Text style={{ color: colors.textMuted, ...text.caption }}>{label}</Text>;
 
   return url ? (
     <Pressable

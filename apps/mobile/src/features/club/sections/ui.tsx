@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { BodyText } from '@/components/Screen';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 export function SectionTitle({ children }: { children: string }) {
   const { colors } = useTheme();
   return (
-    <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 18, fontWeight: '800' }}>
+    <Text accessibilityRole="header" style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>
       {children}
     </Text>
   );
@@ -17,8 +17,8 @@ export function InfoRow({ label, value }: { label: string; value: string | null 
   if (!value) return null;
   return (
     <View style={styles.infoRow}>
-      <Text style={{ color: colors.textMuted, fontSize: 13, fontWeight: '600' }}>{label}</Text>
-      <Text selectable style={{ color: colors.text, fontSize: 15 }}>
+      <Text style={{ color: colors.textMuted, ...text.body, fontWeight: '600' }}>{label}</Text>
+      <Text selectable style={{ color: colors.text, ...text.bodyLarge }}>
         {value}
       </Text>
     </View>
@@ -29,7 +29,7 @@ export function Tag({ children }: { children: string }) {
   const { colors } = useTheme();
   return (
     <View style={[styles.tag, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-      <Text style={{ color: colors.text, fontSize: 13 }}>{children}</Text>
+      <Text style={{ color: colors.text, ...text.body }}>{children}</Text>
     </View>
   );
 }
@@ -50,7 +50,7 @@ export function Bullets({ items }: { items: string[] }) {
     <View style={{ gap: spacing.xs }}>
       {items.map((item) => (
         <View key={item} style={styles.bullet}>
-          <Text style={{ color: colors.primary, fontSize: 15 }}>•</Text>
+          <Text style={{ color: colors.primary, ...text.bodyLarge }}>•</Text>
           <BodyText>{item}</BodyText>
         </View>
       ))}

@@ -7,7 +7,7 @@ import { EmptyState } from '@/components/StateViews';
 import type { AnthemT } from '@/data/schemas';
 import { anthemKindKey, anthemShareText, creditRoleKey } from '@/features/club/logic';
 import { SectionTitle, Tag } from '@/features/club/sections/ui';
-import { spacing } from '@/theme/tokens';
+import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
@@ -26,7 +26,7 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
   return (
     <View style={{ gap: spacing.md }}>
       <Card>
-        <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 28, fontWeight: '800' }}>
+        <Text accessibilityRole="header" style={{ color: colors.text, ...text.display, fontWeight: '800' }}>
           {anthem.title}
         </Text>
         <View style={styles.tags}>
@@ -34,7 +34,7 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
           {meta ? <Tag>{meta}</Tag> : null}
         </View>
         {anthem.description ? (
-          <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
+          <Text style={{ color: colors.text, ...text.bodyLarge, lineHeight: 22 }}>
             {anthem.description}
           </Text>
         ) : null}
@@ -43,9 +43,9 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
       {anthem.media?.kind === 'video' && anthem.media.origin === 'club_official' && anthem.media.status === 'verified' ? (
         <Card>
           <SectionTitle>{t('club.himnos.playback')}</SectionTitle>
-          <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 20 }}>{t('club.himnos.playbackHint')}</Text>
+          <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>{t('club.himnos.playbackHint')}</Text>
           <Button label={t('club.himnos.playOfficial')} onPress={() => void WebBrowser.openBrowserAsync(anthem.media!.url)} />
-          {anthem.media.credit ? <Text style={{ color: colors.textMuted, fontSize: 12 }}>{anthem.media.credit}</Text> : null}
+          {anthem.media.credit ? <Text style={{ color: colors.textMuted, ...text.caption }}>{anthem.media.credit}</Text> : null}
         </Card>
       ) : null}
 
@@ -56,11 +56,11 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
             <Text
               selectable
               maxFontSizeMultiplier={2}
-              style={{ color: colors.text, fontSize: 18, lineHeight: 28 }}
+              style={{ color: colors.text, ...text.subtitle, lineHeight: 28 }}
             >
               {anthem.lyrics}
             </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+            <Text style={{ color: colors.textMuted, ...text.body }}>
               {t('club.himnos.readHint')}
             </Text>
             <Button label={t('club.himnos.share')} onPress={() => void share()} />
@@ -80,16 +80,16 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
           <SectionTitle>{t('club.himnos.credits')}</SectionTitle>
           {anthem.credits.map((credit, index) => (
             <View key={`${credit.role}-${index}`} style={{ gap: spacing.xs }}>
-              <Text style={{ color: colors.textMuted, fontSize: 13, fontWeight: '700' }}>
+              <Text style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}>
                 {t(creditRoleKey(credit.role))}
               </Text>
               {credit.names.map((name) => (
-                <Text key={name} style={{ color: colors.text, fontSize: 15 }}>
+                <Text key={name} style={{ color: colors.text, ...text.bodyLarge }}>
                   {name}
                 </Text>
               ))}
               {credit.text ? (
-                <Text style={{ color: colors.text, fontSize: 15 }}>{credit.text}</Text>
+                <Text style={{ color: colors.text, ...text.bodyLarge }}>{credit.text}</Text>
               ) : null}
             </View>
           ))}

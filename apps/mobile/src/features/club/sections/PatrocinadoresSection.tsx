@@ -4,7 +4,7 @@ import { Timeline } from '@/components/club/Editorial';
 import { Card } from '@/components/Screen';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { SectionTitle } from './ui';
 
@@ -83,7 +83,7 @@ export function PatrocinadoresSection({ club }: { club: ClubT }) {
           <View style={styles.groups}>
             {groups.map((group) => (
               <View key={group.role} style={styles.group}>
-                <Text accessibilityRole="header" style={{ color: colors.textMuted, fontSize: 13, fontWeight: '700' }}>
+                <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}>
                   {group.label}
                 </Text>
                 <View style={styles.grid}>
@@ -97,15 +97,15 @@ export function PatrocinadoresSection({ club }: { club: ClubT }) {
                         style={[styles.tile, { backgroundColor: colors.background, borderColor: colors.border }]}
                       >
                         <View style={[styles.monogram, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-                          <Text style={{ color: colors.text, fontSize: 14, fontWeight: '800' }}>
+                          <Text style={{ color: colors.text, ...text.body, fontWeight: '800' }}>
                             {monogram(name)}
                           </Text>
                         </View>
-                        <Text style={{ color: colors.text, fontSize: 14, fontWeight: '700', flexShrink: 1 }}>
+                        <Text style={{ color: colors.text, ...text.body, fontWeight: '700', flexShrink: 1 }}>
                           {name}
                         </Text>
                         {detail?.category ? (
-                          <Text style={{ color: colors.textMuted, fontSize: 12 }}>{detail.category}</Text>
+                          <Text style={{ color: colors.textMuted, ...text.caption }}>{detail.category}</Text>
                         ) : null}
                       </View>
                     );

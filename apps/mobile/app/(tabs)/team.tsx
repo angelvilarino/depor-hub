@@ -30,7 +30,7 @@ import {
   type PositionGroup,
 } from '@/features/squad/logic';
 import { useSettings, type SquadView } from '@/store/settings';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type Filter = PositionGroup | 'ALL';
@@ -52,7 +52,7 @@ function LoanChip() {
   const { colors } = useTheme();
   return (
     <View style={[styles.loanChip, { borderColor: colors.primary }]}>
-      <Text style={{ color: colors.primary, fontSize: 12, fontWeight: '700' }}>
+      <Text style={{ color: colors.primary, ...text.caption, fontWeight: '700' }}>
         {t('team.loaned')}
       </Text>
     </View>
@@ -81,19 +81,19 @@ function SquadCard({ player, now }: { player: PlayerSummaryT; now: number }) {
       </View>
       {player.shirtNumber !== null ? (
         <View style={[styles.numberBadge, { backgroundColor: colors.primary }]}>
-          <Text style={{ color: colors.onPrimary, fontSize: 12, fontWeight: '800' }}>
+          <Text style={{ color: colors.onPrimary, ...text.caption, fontWeight: '800' }}>
             {player.shirtNumber}
           </Text>
         </View>
       ) : null}
       <Text
         numberOfLines={2}
-        style={{ color: colors.text, fontSize: 15, fontWeight: '700', textAlign: 'center' }}
+        style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700', textAlign: 'center' }}
       >
         {player.name}
       </Text>
       {details ? (
-        <Text numberOfLines={1} style={{ color: colors.textMuted, fontSize: 12 }}>
+        <Text numberOfLines={1} style={{ color: colors.textMuted, ...text.caption }}>
           {details}
         </Text>
       ) : null}
@@ -130,11 +130,11 @@ function SquadListRow({ player, now }: { player: PlayerSummaryT; now: number }) 
       </Text>
       <PlayerPortrait player={player} size={40} quality="small" />
       <View style={styles.listText}>
-        <Text numberOfLines={2} style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>
+        <Text numberOfLines={2} style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
           {player.name}
         </Text>
         {subtitle ? (
-          <Text numberOfLines={2} style={{ color: colors.textMuted, fontSize: 12 }}>
+          <Text numberOfLines={2} style={{ color: colors.textMuted, ...text.caption }}>
             {subtitle}
           </Text>
         ) : null}
@@ -166,12 +166,12 @@ function CoachCard({ coach }: { coach: CoachT | null }) {
     >
       <CoachPortrait name={coach.name} photoUrl={coach.photoUrl} size={48} />
       <View style={{ flex: 1, gap: 1 }}>
-        <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>
+        <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '700' }}>
           {t('team.coach').toUpperCase()}
         </Text>
-        <Text style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>{coach.name}</Text>
+        <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{coach.name}</Text>
         {nationality ? (
-          <Text style={{ color: colors.textMuted, fontSize: 13 }}>{nationality}</Text>
+          <Text style={{ color: colors.textMuted, ...text.body }}>{nationality}</Text>
         ) : null}
       </View>
       <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
@@ -239,7 +239,7 @@ export default function TeamScreen() {
       </View>
 
       <View style={styles.toolbar}>
-        <Text style={{ color: colors.textMuted, fontSize: 14, flex: 1 }}>
+        <Text style={{ color: colors.textMuted, ...text.body, flex: 1 }}>
           {t('team.summary', { count: visible.length })}
         </Text>
         <View
@@ -296,7 +296,7 @@ export default function TeamScreen() {
               <Text
                 style={{
                   color: selected ? colors.onPrimary : colors.text,
-                  fontSize: 13,
+                  ...text.body,
                   fontWeight: '700',
                 }}
               >
@@ -398,7 +398,7 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: spacing.md,
   },
-  searchInput: { flex: 1, minHeight: minTouch, fontSize: 16, paddingVertical: spacing.sm },
+  searchInput: { flex: 1, minHeight: minTouch, ...text.bodyLarge, paddingVertical: spacing.sm },
   iconButton: { minHeight: minTouch, minWidth: minTouch, alignItems: 'center', justifyContent: 'center' },
   toolbar: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   viewToggle: {
@@ -462,10 +462,10 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
   },
-  listNumber: { width: 32, textAlign: 'center', fontSize: 14, fontWeight: '700' },
+  listNumber: { width: 32, textAlign: 'center', ...text.body, fontWeight: '700' },
   listPortraitSpacer: { width: 40 },
   listText: { flex: 1, gap: 1 },
-  listAge: { width: 34, textAlign: 'center', fontSize: 13, fontWeight: '600' },
+  listAge: { width: 34, textAlign: 'center', ...text.body, fontWeight: '600' },
   listHeader: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -474,5 +474,5 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.xs,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  listHeaderPlayer: { flex: 1, fontSize: 12, fontWeight: '700', textTransform: 'uppercase' },
+  listHeaderPlayer: { flex: 1, ...text.caption, fontWeight: '700', textTransform: 'uppercase' },
 });

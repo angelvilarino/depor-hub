@@ -10,7 +10,7 @@ import type { ClubT } from '@/data/schemas';
 import { ClubGate } from '@/features/club/ClubGate';
 import { CLUB_SECTIONS, currentCrest, formatSeats, titleTotal, type ClubSectionId } from '@/features/club/logic';
 import { useTheme } from '@/theme/useTheme';
-import { spacing, radius, typography } from '@/theme/tokens';
+import { spacing, radius, typography, text } from '@/theme/tokens';
 import { clubImageUrl } from '@/config';
 import { HeroHeader, SectionHeader, StatCounter, Timeline, type TimelineEntry } from '@/components/club/Editorial';
 
@@ -150,7 +150,7 @@ export default function ClubScreen() {
                     <View style={styles.tileArtwork}>
                       {image ? <View style={StyleSheet.absoluteFill}><ClubTileImage uri={image} /></View> : null}
                       <View style={[styles.tileIcon, { backgroundColor: colors.surface }]}><Ionicons name={section.icon as IconName} size={24} color={colors.primary} /></View>
-                      {badge ? <View style={[styles.tileBadge, { backgroundColor: colors.primary }]}><Text style={{ color: colors.onPrimary, fontSize: 12, fontWeight: '800' }}>{badge}</Text></View> : null}
+                      {badge ? <View style={[styles.tileBadge, { backgroundColor: colors.primary }]}><Text style={{ color: colors.onPrimary, ...text.caption, fontWeight: '800' }}>{badge}</Text></View> : null}
                     </View>
                     <Text style={[styles.tileTitle, { color: colors.text }]}>{t(`club.sections.${section.id}.title`)}</Text>
                     <Text numberOfLines={2} style={[styles.tileSubtitle, { color: colors.textMuted }]}>{t(`club.sections.${section.id}.subtitle`)}</Text>
@@ -172,8 +172,8 @@ function ClubTileImage({ uri }: { uri: string }) {
 }
 
 const styles = StyleSheet.create({
-  unofficial: { fontSize: 12, lineHeight: 17 }, stats: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
-  motto: { fontFamily: typography.headline, fontSize: 20, textAlign: 'center' },
-  identityGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md }, identityItem: { minWidth: '42%', flexGrow: 1, gap: 2 }, label: { fontSize: 12, fontWeight: '700' }, value: { fontSize: 15 },
-  sectionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm }, sectionTile: { width: '47%', minHeight: 150, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden', padding: spacing.sm, gap: 4 }, tileArtwork: { height: 66, justifyContent: 'center', alignItems: 'center', overflow: 'hidden', borderRadius: radius.sm }, tileIcon: { width: 44, height: 44, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center' }, tileBadge: { position: 'absolute', right: 5, top: 5, minWidth: 28, height: 28, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5 }, tileTitle: { fontSize: 16, fontWeight: '800' }, tileSubtitle: { fontSize: 12, lineHeight: 16 },
+  unofficial: { ...text.caption }, stats: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
+  motto: { fontFamily: typography.headline, ...text.title, textAlign: 'center' },
+  identityGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md }, identityItem: { minWidth: '42%', flexGrow: 1, gap: 2 }, label: { ...text.caption, fontWeight: '700' }, value: { ...text.bodyLarge },
+  sectionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm }, sectionTile: { width: '47%', minHeight: 150, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden', padding: spacing.sm, gap: 4 }, tileArtwork: { height: 66, justifyContent: 'center', alignItems: 'center', overflow: 'hidden', borderRadius: radius.sm }, tileIcon: { width: 44, height: 44, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center' }, tileBadge: { position: 'absolute', right: 5, top: 5, minWidth: 28, height: 28, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5 }, tileTitle: { ...text.bodyLarge, fontWeight: '800' }, tileSubtitle: { ...text.caption },
 });

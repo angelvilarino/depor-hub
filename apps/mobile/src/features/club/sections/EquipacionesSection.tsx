@@ -13,7 +13,7 @@ import { MediaCredit } from '@/components/club/Editorial';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT, KitT, SeasonKitsT } from '@/data/schemas';
 import { decadeLabel, groupSeasonsByDecade, kitTypeKey } from '@/features/club/logic';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type DecadeSection = { title: string; decade: number; data: SeasonKitsT[] };
@@ -49,26 +49,26 @@ function KitRow({ season, kit }: { season: string; kit: KitT }) {
         {kit.media?.kind === 'photo' && kit.media.status === 'verified' ? (
           <MediaCredit media={kit.media} inline />
         ) : kit.image?.toLowerCase().endsWith('.svg') ? (
-          <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>
+          <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '700' }}>
             {t('club.equipaciones.illustration')}
           </Text>
         ) : null}
       </View>
       <View style={styles.kitText}>
-        <Text style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>{type}</Text>
-        {details ? <Text style={{ color: colors.textMuted, fontSize: 13 }}>{details}</Text> : null}
+        <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{type}</Text>
+        {details ? <Text style={{ color: colors.textMuted, ...text.body }}>{details}</Text> : null}
         {extraSponsors.map((line) => (
-          <Text key={line} style={{ color: colors.textMuted, fontSize: 13 }}>
+          <Text key={line} style={{ color: colors.textMuted, ...text.body }}>
             {line}
           </Text>
         ))}
         {colorsText ? (
-          <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+          <Text style={{ color: colors.textMuted, ...text.body }}>
             {t('club.equipaciones.colorsValue', { colors: colorsText })}
           </Text>
         ) : null}
         {kit.description ? (
-          <Text style={{ color: colors.textMuted, fontSize: 13 }}>{kit.description}</Text>
+          <Text style={{ color: colors.textMuted, ...text.body }}>{kit.description}</Text>
         ) : null}
       </View>
     </View>
@@ -83,8 +83,8 @@ function SeasonCard({ season }: { season: SeasonKitsT }) {
       style={[styles.seasonCard, { backgroundColor: colors.surface, borderColor: colors.border }]}
     >
       <View style={styles.seasonHeader}>
-        <Text style={{ color: colors.text, fontSize: 18, fontWeight: '800' }}>{season.season}</Text>
-        <Text style={{ color: colors.textMuted, fontSize: 12 }}>
+        <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>{season.season}</Text>
+        <Text style={{ color: colors.textMuted, ...text.caption }}>
           {t('club.equipaciones.kitCount', { count: season.kits.length })}
         </Text>
       </View>
@@ -193,14 +193,14 @@ export function EquipacionesSection({ club }: { club: ClubT }) {
         initialNumToRender={6}
         contentContainerStyle={styles.listContent}
         ListHeaderComponent={
-          <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 20 }}>
+          <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>
             {t('club.equipaciones.intro')}
           </Text>
         }
         renderSectionHeader={({ section }) => (
           <Text
             accessibilityRole="header"
-            style={{ color: colors.text, fontSize: 22, fontWeight: '800', marginTop: spacing.sm }}
+            style={{ color: colors.text, ...text.heading, fontWeight: '800', marginTop: spacing.sm }}
           >
             {section.title}
           </Text>

@@ -7,7 +7,7 @@ import { HeroHeader, MapActions, PhotoGallery } from '@/components/club/Editoria
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
 import { formatPrice } from '@/features/club/logic';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 import { InfoRow, MutedText, SectionTitle } from './ui';
@@ -35,7 +35,7 @@ export function MuseoSection({ club }: { club: ClubT }) {
       <PhotoGallery photos={verifiedPhotos} />
       <Card>
         {museum.description ? (
-          <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
+          <Text style={{ color: colors.text, ...text.bodyLarge, lineHeight: 22 }}>
             {museum.description}
           </Text>
         ) : null}
@@ -50,11 +50,11 @@ export function MuseoSection({ club }: { club: ClubT }) {
           {museum.prices.map((price) => (
             <View key={price.label} style={{ gap: 2 }}>
               <View style={styles.row}>
-                <Text style={{ color: colors.text, fontSize: 15, fontWeight: '600' }}>
+                <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '600' }}>
                   {price.label}
                 </Text>
                 {price.priceEur !== null ? (
-                  <Text style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>
+                  <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
                     {formatPrice(price.priceEur, i18n.language)}
                   </Text>
                 ) : null}
@@ -76,7 +76,7 @@ export function MuseoSection({ club }: { club: ClubT }) {
               onPress={() => void openExternal(link.url)}
               style={styles.link}
             >
-              <Text style={{ color: colors.primary, fontSize: 16, fontWeight: '600', flex: 1 }}>
+              <Text style={{ color: colors.primary, ...text.bodyLarge, fontWeight: '600', flex: 1 }}>
                 {link.label}
               </Text>
               <Ionicons name="open-outline" size={18} color={colors.primary} />

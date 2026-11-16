@@ -10,7 +10,7 @@ import { Card } from '@/components/Screen';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT, CrestVersionT } from '@/data/schemas';
 import { crestYearRange } from '@/features/club/logic';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { SectionTitle } from './ui';
 
@@ -30,10 +30,10 @@ export function EscudoSection({ club }: { club: ClubT }) {
     <View style={{ gap: spacing.md }}>
       <Card>
         <SectionTitle>{t('club.escudo.introTitle')}</SectionTitle>
-        <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
+        <Text style={{ color: colors.text, ...text.bodyLarge, lineHeight: 22 }}>
           {t('club.escudo.intro')}
         </Text>
-        <Text style={{ color: colors.textMuted, fontSize: 13 }}>{t('club.escudo.zoomHint')}</Text>
+        <Text style={{ color: colors.textMuted, ...text.body }}>{t('club.escudo.zoomHint')}</Text>
       </Card>
 
       <View style={styles.timeline}>
@@ -68,9 +68,9 @@ export function EscudoSection({ club }: { club: ClubT }) {
                     height={92}
                   />
                   <View style={styles.text}>
-                    <Text style={{ color: colors.text, fontSize: 17, fontWeight: '800' }}>{years}</Text>
+                    <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>{years}</Text>
                     {crest.description ? (
-                      <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 20 }}>
+                      <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>
                         {crest.description}
                       </Text>
                     ) : null}
@@ -120,7 +120,7 @@ export function EscudoSection({ club }: { club: ClubT }) {
                       height={Math.min(110, (width - spacing.lg * 3) / 2)}
                     />
                     {crest.description ? (
-                      <Text style={{ color: colors.textMuted, fontSize: 12, textAlign: 'center' }}>
+                      <Text style={{ color: colors.textMuted, ...text.caption, textAlign: 'center' }}>
                         {crest.description}
                       </Text>
                     ) : null}
@@ -161,11 +161,11 @@ export function EscudoSection({ club }: { club: ClubT }) {
                 width={modalSize}
                 height={modalSize}
               />
-              <Text style={{ color: colors.text, fontSize: 20, fontWeight: '800' }}>
+              <Text style={{ color: colors.text, ...text.title, fontWeight: '800' }}>
                 {crestYearRange(selected, t('club.escudo.present'))}
               </Text>
               {selected.description ? (
-                <Text style={{ color: colors.textMuted, fontSize: 14, textAlign: 'center' }}>
+                <Text style={{ color: colors.textMuted, ...text.body, textAlign: 'center' }}>
                   {selected.description}
                 </Text>
               ) : null}

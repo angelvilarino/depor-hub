@@ -7,7 +7,7 @@ import { HeroHeader } from '@/components/club/Editorial';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
 import { openMapLocation } from '@/features/club/openMap';
-import { spacing } from '@/theme/tokens';
+import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { Bullets, InfoRow, MutedText, SectionTitle } from './ui';
 
@@ -38,7 +38,7 @@ export function TrainingSection({ club }: { club: ClubT }) {
       <HeroHeader title={training.name ?? t('club.sections.training.title')} subtitle={training.location} icon="barbell-outline" />
       <Card>
         {training.description ? (
-          <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
+          <Text style={{ color: colors.text, ...text.bodyLarge, lineHeight: 22 }}>
             {training.description}
           </Text>
         ) : null}

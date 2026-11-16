@@ -8,7 +8,7 @@ import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
 import { capacityShare, formatDate, formatSeats } from '@/features/club/logic';
 import { openMapLocation } from '@/features/club/openMap';
-import { spacing } from '@/theme/tokens';
+import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 import { InfoRow, MutedText, SectionTitle } from './ui';
@@ -54,7 +54,7 @@ export function EstadioSection({ club }: { club: ClubT }) {
       <PhotoGallery photos={verifiedPhotos} />
       <Card>
         {stadium.description ? (
-          <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
+          <Text style={{ color: colors.text, ...text.bodyLarge, lineHeight: 22 }}>
             {stadium.description}
           </Text>
         ) : null}
@@ -80,10 +80,10 @@ export function EstadioSection({ club }: { club: ClubT }) {
                   return (
                     <View key={zone.zone} style={{ gap: spacing.xs }}>
                       <View style={styles.zoneRow}>
-                        <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }}>
+                        <Text style={{ color: colors.text, ...text.body, fontWeight: '600' }}>
                           {zone.zone}
                         </Text>
-                        <Text style={{ color: colors.textMuted, fontSize: 14 }}>
+                        <Text style={{ color: colors.textMuted, ...text.body }}>
                           {t('club.estadio.zoneValue', {
                             seats: formatSeats(zone.seats, locale),
                             share: Math.round(share),
@@ -100,7 +100,7 @@ export function EstadioSection({ club }: { club: ClubT }) {
                 })}
               </View>
             ) : null}
-            <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+            <Text style={{ color: colors.textMuted, ...text.body }}>
               {t('club.estadio.capacityNote')}
             </Text>
             {capacitySourceUrl ? (

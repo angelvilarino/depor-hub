@@ -7,7 +7,7 @@ import { Card } from '@/components/Screen';
 import { EmptyState, LoadingState } from '@/components/StateViews';
 import { useSquad } from '@/data/queries';
 import type { ClubT } from '@/data/schemas';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { MutedText, SectionTitle } from './ui';
 
@@ -33,13 +33,13 @@ function PersonNode({
         importantForAccessibility="no-hide-descendants"
         style={[styles.avatar, { backgroundColor: colors.primary }]}
       >
-        <Text style={{ color: colors.onPrimary, fontSize: 14, fontWeight: '800' }}>
+        <Text style={{ color: colors.onPrimary, ...text.body, fontWeight: '800' }}>
           {initialsFor(name)}
         </Text>
       </View>
       <View style={styles.personText}>
-        <Text style={{ color: colors.textMuted, fontSize: 13, fontWeight: '600' }}>{role}</Text>
-        <Text style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>{name}</Text>
+        <Text style={{ color: colors.textMuted, ...text.body, fontWeight: '600' }}>{role}</Text>
+        <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{name}</Text>
       </View>
       {onPress ? <Ionicons name="chevron-forward" size={20} color={colors.textMuted} /> : null}
     </>
@@ -93,7 +93,7 @@ export function JuntaSection({ club }: { club: ClubT }) {
         {hasPresident && (hasMembers || hasDirector || coach) ? <Connector /> : null}
         {hasMembers ? (
           <>
-            <Text accessibilityRole="header" style={{ color: colors.textMuted, fontSize: 13, fontWeight: '700' }}>
+            <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}>
               {t('club.junta.members')}
             </Text>
             <View style={[styles.members, { borderLeftColor: colors.border }]}>

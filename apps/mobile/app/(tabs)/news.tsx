@@ -32,7 +32,7 @@ import {
 } from '@/features/news/logic';
 import { useNow } from '@/features/home/useNow';
 import { useNewsRead } from '@/store/news';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 
@@ -257,7 +257,7 @@ export default function NewsScreen() {
         )}
         renderSectionHeader={({ section }) => (
           <View style={[styles.dayHeader, { backgroundColor: colors.background }]}>
-            <Text style={{ color: colors.textMuted, fontSize: 13, fontWeight: '700' }}>
+            <Text style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}>
               {dayLabel(section, i18n.language, now, t)}
             </Text>
           </View>
@@ -266,12 +266,12 @@ export default function NewsScreen() {
           <View style={styles.header}>
             {banner}
             <View style={styles.summary}>
-              <Text style={{ color: colors.text, fontSize: 20, fontWeight: '700' }}>
+              <Text style={{ color: colors.text, ...text.title, fontWeight: '700' }}>
                 {t('news.count', { count: filtered.length })}
               </Text>
               {unread > 0 ? (
                 <View style={[styles.unreadPill, { borderColor: colors.border }]}>
-                  <Text style={{ color: colors.primary, fontSize: 12, fontWeight: '700' }}>
+                  <Text style={{ color: colors.primary, ...text.caption, fontWeight: '700' }}>
                     {t('news.unreadCount', { count: countLabel(unread) })}
                   </Text>
                 </View>
@@ -285,14 +285,14 @@ export default function NewsScreen() {
                   style={styles.markAll}
                 >
                   <Ionicons name="checkmark-done-outline" size={16} color={colors.primary} />
-                  <Text style={{ color: colors.primary, fontSize: 13, fontWeight: '600' }}>
+                  <Text style={{ color: colors.primary, ...text.body, fontWeight: '600' }}>
                     {t('news.markAllShort')}
                   </Text>
                 </Pressable>
               ) : null}
             </View>
             {active > 0 ? (
-              <Text style={{ color: colors.textMuted, fontSize: 12 }}>
+              <Text style={{ color: colors.textMuted, ...text.caption }}>
                 {t('news.activeFilters', { count: active })}
               </Text>
             ) : null}
@@ -310,7 +310,7 @@ export default function NewsScreen() {
             <Text
               style={{
                 color: colors.textMuted,
-                fontSize: 12,
+                ...text.caption,
                 textAlign: 'center',
                 paddingVertical: spacing.md,
               }}
@@ -329,7 +329,7 @@ export default function NewsScreen() {
 
       {undo ? (
         <View style={[styles.undo, { backgroundColor: colors.text }]}>
-          <Text style={{ color: colors.background, flex: 1, fontSize: 14 }}>
+          <Text style={{ color: colors.background, flex: 1, ...text.body }}>
             {t('news.markedCount', { count: undo.count })}
           </Text>
           <Pressable
@@ -338,7 +338,7 @@ export default function NewsScreen() {
             onPress={undoMarkAll}
             style={styles.undoButton}
           >
-            <Text style={{ color: colors.background, fontWeight: '700', fontSize: 14 }}>
+            <Text style={{ color: colors.background, fontWeight: '700', ...text.body }}>
               {t('news.undo')}
             </Text>
           </Pressable>

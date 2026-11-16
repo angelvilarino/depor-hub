@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import type { MediaRefT } from '@/data/schemas';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { mapUrl, webMapUrl } from '@/features/club/logic';
-import { imageTokens, radius, spacing, typography } from '@/theme/tokens';
+import { imageTokens, radius, spacing, text, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
@@ -40,7 +40,7 @@ export function HeroHeader({
 
 export function SectionHeader({ title, subtitle, icon }: { title: string; subtitle?: string; icon?: IconName }) {
   const { colors } = useTheme();
-  return <View style={styles.sectionHeader}>{icon ? <Ionicons name={icon} size={23} color={colors.primary} /> : null}<View style={{ flex: 1 }}><Text accessibilityRole="header" style={{ color: colors.text, fontSize: 21, fontWeight: '800' }}>{title}</Text>{subtitle ? <Text style={{ color: colors.textMuted, fontSize: 14, fontFamily: typography.headline }}>{subtitle}</Text> : null}</View></View>;
+  return <View style={styles.sectionHeader}>{icon ? <Ionicons name={icon} size={23} color={colors.primary} /> : null}<View style={{ flex: 1 }}><Text accessibilityRole="header" style={{ color: colors.text, ...text.heading, fontWeight: '800' }}>{title}</Text>{subtitle ? <Text style={{ color: colors.textMuted, ...text.body, fontFamily: typography.headline }}>{subtitle}</Text> : null}</View></View>;
 }
 
 export function StatCounter({ value, label, suffix, locale }: { value: number; label: string; suffix?: string; locale?: string }) {
@@ -57,7 +57,7 @@ export function StatCounter({ value, label, suffix, locale }: { value: number; l
   const { colors } = useTheme();
   const displayed = reduceMotion ? value : shown;
   const formatter = new Intl.NumberFormat(locale);
-  return <View style={[styles.stat, { backgroundColor: colors.surface, borderColor: colors.border }]}><Text accessibilityLabel={`${formatter.format(value)}${suffix ?? ''} ${label}`} style={{ color: colors.primary, fontSize: 25, fontWeight: '900' }}>{formatter.format(displayed)}{suffix ?? ''}</Text><Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '600' }}>{label}</Text></View>;
+  return <View style={[styles.stat, { backgroundColor: colors.surface, borderColor: colors.border }]}><Text accessibilityLabel={`${formatter.format(value)}${suffix ?? ''} ${label}`} style={{ color: colors.primary, ...text.heading, fontWeight: '900' }}>{formatter.format(displayed)}{suffix ?? ''}</Text><Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '600' }}>{label}</Text></View>;
 }
 
 export type TimelineEntry = { year: string; title: string; detail?: string | null; category?: string };
@@ -73,7 +73,7 @@ export function Timeline({ entries, filters = false }: { entries: TimelineEntry[
     {visible.map((entry, index) => {
       const key = `${entry.year}-${entry.title}`;
       const isOpen = expanded === key;
-      return <Pressable key={key} accessibilityRole="button" accessibilityState={{ expanded: isOpen }} onPress={() => setExpanded(isOpen ? null : key)} style={styles.timelineRow}><View style={styles.timelineAxis}><View style={[styles.dot, { backgroundColor: colors.primary }]} />{index < visible.length - 1 ? <View style={[styles.line, { backgroundColor: colors.border }]} /> : null}</View><View style={{ flex: 1, paddingBottom: spacing.md }}><Text style={{ color: colors.primary, fontWeight: '800', fontSize: 13 }}>{entry.year}</Text><Text style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>{entry.title}</Text>{isOpen && entry.detail ? <Text style={{ color: colors.textMuted, lineHeight: 20 }}>{entry.detail}</Text> : null}</View><Ionicons name={isOpen ? 'chevron-up' : 'chevron-down'} size={18} color={colors.textMuted} /></Pressable>;
+      return <Pressable key={key} accessibilityRole="button" accessibilityState={{ expanded: isOpen }} onPress={() => setExpanded(isOpen ? null : key)} style={styles.timelineRow}><View style={styles.timelineAxis}><View style={[styles.dot, { backgroundColor: colors.primary }]} />{index < visible.length - 1 ? <View style={[styles.line, { backgroundColor: colors.border }]} /> : null}</View><View style={{ flex: 1, paddingBottom: spacing.md }}><Text style={{ color: colors.primary, fontWeight: '800', ...text.body }}>{entry.year}</Text><Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{entry.title}</Text>{isOpen && entry.detail ? <Text style={{ color: colors.textMuted, lineHeight: 20 }}>{entry.detail}</Text> : null}</View><Ionicons name={isOpen ? 'chevron-up' : 'chevron-down'} size={18} color={colors.textMuted} /></Pressable>;
     })}
   </View>;
 }
@@ -132,7 +132,7 @@ function GalleryThumb({ photo, label, borderColor, onPress }: { photo: MediaRefT
   const { colors } = useTheme();
   const [failed, setFailed] = useState(false);
   return <Pressable accessibilityRole="button" accessibilityLabel={label} onPress={onPress} style={[styles.galleryPhoto, { borderColor, backgroundColor: colors.background }]}>
-    {!failed ? <Image source={{ uri: photo.url }} onError={() => setFailed(true)} contentFit="cover" cachePolicy="memory-disk" style={StyleSheet.absoluteFill} /> : <View style={styles.photoFallback}><Ionicons name="image-outline" size={32} color={imageTokens.text} /><Text style={{ color: imageTokens.text, fontSize: 12 }}>—</Text></View>}
+    {!failed ? <Image source={{ uri: photo.url }} onError={() => setFailed(true)} contentFit="cover" cachePolicy="memory-disk" style={StyleSheet.absoluteFill} /> : <View style={styles.photoFallback}><Ionicons name="image-outline" size={32} color={imageTokens.text} /><Text style={{ color: imageTokens.text, ...text.caption }}>—</Text></View>}
     <MediaCredit media={photo} />
   </Pressable>;
 }
@@ -145,7 +145,7 @@ function ModalPhoto({ photo, width, height }: { photo: MediaRefT; width: number;
 export function ConfidenceBadge({ label, status }: { label: string; status: string }) {
   const { colors } = useTheme();
   const { t } = useTranslation();
-  return status === 'verified' ? null : <View accessibilityLabel={`${label}: ${t(`club.status.${status}`, { defaultValue: status })}`} style={[styles.confidence, { borderColor: colors.border }]}><Ionicons name="alert-circle-outline" size={14} color={colors.textMuted} /><Text style={{ color: colors.textMuted, fontSize: 12 }}>{label} · {t(`club.status.${status}`, { defaultValue: status })}</Text></View>;
+  return status === 'verified' ? null : <View accessibilityLabel={`${label}: ${t(`club.status.${status}`, { defaultValue: status })}`} style={[styles.confidence, { borderColor: colors.border }]}><Ionicons name="alert-circle-outline" size={14} color={colors.textMuted} /><Text style={{ color: colors.textMuted, ...text.caption }}>{label} · {t(`club.status.${status}`, { defaultValue: status })}</Text></View>;
 }
 
 export function MapActions({ latitude, longitude, label }: { latitude: number; longitude: number; label: string }) {
@@ -169,17 +169,17 @@ const styles = StyleSheet.create({
   hero: { minHeight: 242, justifyContent: 'flex-end', overflow: 'hidden', borderRadius: radius.md },
   heroMark: { position: 'absolute', right: 20, top: 26 }, heroCopy: { padding: spacing.lg, gap: spacing.xs },
   emblem: { position: 'absolute', top: spacing.md, left: spacing.md, width: 70, height: 70 },
-  heroTitle: { color: imageTokens.text, fontFamily: typography.display, fontSize: 40, lineHeight: 44 },
-  heroSubtitle: { color: imageTokens.muted, fontFamily: typography.headline, fontSize: 16 },
+  heroTitle: { color: imageTokens.text, fontFamily: typography.display, ...text.hero },
+  heroSubtitle: { color: imageTokens.muted, fontFamily: typography.headline, ...text.bodyLarge },
   chips: { flexDirection: 'row', gap: spacing.xs, flexWrap: 'wrap' },
   heroChip: { backgroundColor: imageTokens.veil, borderRadius: radius.pill, paddingHorizontal: spacing.sm, paddingVertical: 5 },
-  heroChipText: { color: imageTokens.text, fontSize: 12, fontWeight: '700' },
+  heroChipText: { color: imageTokens.text, ...text.caption, fontWeight: '700' },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   stat: { minWidth: 94, flexGrow: 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, padding: spacing.sm, gap: 2 },
   filterChip: { paddingHorizontal: spacing.sm, minHeight: 44, justifyContent: 'center', borderRadius: radius.pill, borderWidth: StyleSheet.hairlineWidth },
   timelineRow: { minHeight: 44, flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
   timelineAxis: { width: 16, alignItems: 'center', alignSelf: 'stretch' }, dot: { width: 10, height: 10, borderRadius: 5, marginTop: 4 }, line: { width: 2, flex: 1, marginTop: 3 },
-  credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 8, backgroundColor: imageTokens.scrim, borderRadius: radius.pill }, creditText: { color: imageTokens.text, fontSize: 12 },
+  credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 8, backgroundColor: imageTokens.scrim, borderRadius: radius.pill }, creditText: { color: imageTokens.text, ...text.caption },
   inlineCredit: { position: 'relative', top: 0, right: 0, alignSelf: 'flex-start', marginTop: spacing.xs },
   galleryPhoto: { width: 228, height: 156, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, overflow: 'hidden' },
   photoFallback: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.xs },

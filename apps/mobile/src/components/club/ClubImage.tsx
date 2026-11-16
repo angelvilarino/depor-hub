@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { clubImageUrl } from '@/config';
-import { kitColors, radius, spacing } from '@/theme/tokens';
+import { kitColors, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type Props = {
@@ -83,12 +83,12 @@ export function ClubImage({
           style={styles.placeholder}
         >
           {illustrationColors?.length ? <KitIllustration colors={illustrationColors} /> : <Ionicons name="image-outline" size={Math.max(18, Math.min(width, height) * 0.32)} color={colors.textMuted} />}
-          {illustrationColors?.length ? <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>{t('club.equipaciones.illustration')}</Text> : placeholderLabel === null ? null : (
+          {illustrationColors?.length ? <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '700' }}>{t('club.equipaciones.illustration')}</Text> : placeholderLabel === null ? null : (
             <Text
               numberOfLines={2}
               style={{
                 color: colors.textMuted,
-                fontSize: Math.max(9, Math.min(12, width * 0.14)),
+                fontSize: text.caption.fontSize,
                 textAlign: 'center',
               }}
             >

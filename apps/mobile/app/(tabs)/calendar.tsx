@@ -13,7 +13,7 @@ import { useFixtures, useMeta, useStandings } from '@/data/queries';
 import { groupByMonth, splitMatches } from '@/features/calendar/logic';
 import { useNow } from '@/features/home/useNow';
 import { shareIcs } from '@/features/calendar/system';
-import { spacing } from '@/theme/tokens';
+import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { buildIcs } from '@/utils/ics';
 import { formatMonth } from '@/utils/matchTime';
@@ -103,7 +103,7 @@ export default function CalendarScreen() {
       ListHeaderComponent={header}
       ListEmptyComponent={<EmptyState message={t(tab === 'upcoming' ? 'calendar.emptyUpcoming' : 'calendar.emptyResults')} />}
       renderSectionHeader={({ section }) => (
-        <Text accessibilityRole="header" style={{ color: colors.textMuted, fontSize: 14, fontWeight: '700', textTransform: 'capitalize', paddingTop: spacing.sm }}>{section.title}</Text>
+        <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.body, fontWeight: '700', textTransform: 'capitalize', paddingTop: spacing.sm }}>{section.title}</Text>
       )}
       renderItem={({ item }) => <MatchCard match={item} />}
       ItemSeparatorComponent={() => <View style={{ height: spacing.sm }} />}

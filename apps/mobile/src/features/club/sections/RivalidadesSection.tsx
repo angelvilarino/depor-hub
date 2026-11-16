@@ -6,7 +6,7 @@ import { EmptyState } from '@/components/StateViews';
 import { ConfidenceBadge, SectionHeader, Timeline } from '@/components/club/Editorial';
 import { useRivalries } from '@/data/queries';
 import type { ClubT } from '@/data/schemas';
-import { spacing } from '@/theme/tokens';
+import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { InfoRow, SectionTitle } from './ui';
 
@@ -30,7 +30,7 @@ export function RivalidadesSection({ club }: { club: ClubT }) {
           <Card key={rivalry.rival}>
             <SectionTitle>{rivalry.rival}</SectionTitle>
             {rivalry.description ? (
-              <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
+              <Text style={{ color: colors.text, ...text.bodyLarge, lineHeight: 22 }}>
                 {rivalry.description}
               </Text>
             ) : null}
@@ -65,7 +65,7 @@ export function RivalidadesSection({ club }: { club: ClubT }) {
             {balance.sourceUrl ? <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(balance.sourceUrl!)} style={{ minHeight: 44, justifyContent: 'center' }}><Text style={{ color: colors.primary, fontWeight: '700' }}>{t('club.rivalidades.source')}</Text></Pressable> : null}
             {meetings.length ? <View style={{ gap: spacing.sm }}><SectionHeader title={t('club.rivalidades.meetings')} icon="time-outline" /><Timeline entries={meetings} filters /></View> : null}
           </> : null}
-          {rivalry.facts.length ? <View style={{ gap: spacing.xs }}>{rivalry.facts.map((fact, index) => <View key={`${fact.text}-${index}`} style={{ gap: 2 }}><Text style={{ color: colors.text }}>{fact.text}</Text><Text style={{ color: colors.textMuted, fontSize: 12 }}>{fact.provenance.source}</Text></View>)}</View> : null}
+          {rivalry.facts.length ? <View style={{ gap: spacing.xs }}>{rivalry.facts.map((fact, index) => <View key={`${fact.text}-${index}`} style={{ gap: 2 }}><Text style={{ color: colors.text }}>{fact.text}</Text><Text style={{ color: colors.textMuted, ...text.caption }}>{fact.provenance.source}</Text></View>)}</View> : null}
         </Card>;
       })}
     </View>
@@ -76,6 +76,6 @@ const styles = {
   header: { flexDirection: 'row' as const, alignItems: 'center' as const, justifyContent: 'space-between' as const, gap: spacing.sm },
   stats: { flexDirection: 'row' as const, flexWrap: 'wrap' as const, gap: spacing.sm },
   stat: { flex: 1, minWidth: 60, alignItems: 'center' as const, gap: 2 },
-  statNumber: { fontSize: 24, fontWeight: '900' as const },
+  statNumber: { ...text.heading, fontWeight: '900' as const },
   bar: { flexDirection: 'row' as const, overflow: 'hidden' as const, borderRadius: 4 },
 };

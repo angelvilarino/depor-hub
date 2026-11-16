@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
 import { anthemKindKey } from '@/features/club/logic';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 export function HimnosSection({ club }: { club: ClubT }) {
@@ -45,11 +45,11 @@ export function HimnosSection({ club }: { club: ClubT }) {
               <Ionicons name="musical-notes" size={22} color={colors.primary} />
             </View>
             <View style={styles.text}>
-              <Text style={{ color: colors.text, fontSize: 18, fontWeight: '800' }}>
+              <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>
                 {anthem.title}
               </Text>
-              <Text style={{ color: colors.textMuted, fontSize: 13 }}>{meta}</Text>
-              <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+              <Text style={{ color: colors.textMuted, ...text.body }}>{meta}</Text>
+              <Text style={{ color: colors.textMuted, ...text.body }}>
                 {lyricsAllowed ? t('club.himnos.hasLyrics') : anthem.lyrics && anthem.lyricsRights?.sourceUrl ? t('club.himnos.rightsPending') : t('club.himnos.noLyricsShort')}
               </Text>
             </View>
