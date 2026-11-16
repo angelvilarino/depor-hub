@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T19:32:50Z",
+  "updatedAt": "2026-11-16T20:04:21Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "f228380d67149a10",
+      "title": "Lucas Viña, el estreno del RomboQuiz y la entrevista con IFFE, esta noche en Son de Riazor",
+      "url": "https://riazor.org/son-de-riazor-lucas-vina-romboquiz",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-16T19:40:04Z",
+      "kind": "article",
+      "summary": "Son de Riazor vuelve esta noche a las 21:00 con Lucas Viña, ex del Fabril, la actualidad del Dépor y el estreno del RomboQuiz, un concurso…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/son-de-riazor-lucas-vina-702x336-1.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "d2ba10fd600db995",
       "title": "¿Estuviste en Riazor apoyando al Deportivo contra el Barça? ¡Búscate en nuestra galería!",
@@ -108,7 +122,7 @@
       "publishedAt": "2026-11-16T14:15:05Z",
       "kind": "article",
       "summary": "El Deportivo organiza un torneo por su 120 aniversario entre aficionados del club con final en Riazor. Te explicamos cómo te puedes…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/16/6afaef3c82336.r_d.1544-739-0.jpg",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/05/25/6a147d89239e5.jpg",
       "tags": [
         "aficion",
         "club"
@@ -116,15 +130,15 @@
       "alsoIn": [
         {
           "sourceId": "dxt-campeon",
-          "title": "El Dépor organiza un torneo de fútbol 7 para sus aficionados... con la final en Riazor",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/el-depor-organiza-un-torneo-de-futbol-7-para-sus-aficionados-con-la-final-en-riazor-891254.html",
-          "publishedAt": "2026-11-16T12:00:46Z"
-        },
-        {
-          "sourceId": "dxt-campeon",
           "title": "El Dépor aprueba este martes las cuentas del ascenso y un tope de remuneración para sus administradores",
           "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/el-depor-aprueba-este-martes-las-cuentas-del-ascenso-y-un-tope-de-remuneracion-para-sus-administradores-891321.html",
           "publishedAt": "2026-11-16T16:54:41Z"
+        },
+        {
+          "sourceId": "dxt-campeon",
+          "title": "El Dépor organiza un torneo de fútbol 7 para sus aficionados... con la final en Riazor",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/el-depor-organiza-un-torneo-de-futbol-7-para-sus-aficionados-con-la-final-en-riazor-891254.html",
+          "publishedAt": "2026-11-16T12:00:46Z"
         }
       ]
     },
@@ -2159,20 +2173,6 @@
       "summary": null,
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/FaVTxF-mkrqtZ797Rq3mPuxIsaE=/768x/2026/11/05/00121793891163049890163/Foto/i_20261102_233230002.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "fc329796602a452c",
-      "title": "Quagliata: «El partido contra el Espanyol es difícil, pero podemos ganar a cualquiera»",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/05/quagliata-partido-contra-espanyol-dificil-podemos-ganar-/00031793884568599309518.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-05T14:04:00Z",
-      "kind": "article",
-      "summary": "El lateral italiano, mejor jugador del Dépor del mes de octubre, elogió a Yeremay y Aubameyang y defendió a Leo Román: «El otro día…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/5f51xj9I0QUYJM9fCrLXDqjcs4s=/768x/2026/11/05/00121793886122164743471/Foto/h_20261017_183501000.jpg",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
