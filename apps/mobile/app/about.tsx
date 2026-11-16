@@ -1,5 +1,6 @@
 import Constants from 'expo-constants';
-import { Pressable, SectionList, StyleSheet, Text, View } from 'react-native';
+import { SectionList, StyleSheet, Text, View } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/Screen';
 import licenses from '@/data/licenses.json';

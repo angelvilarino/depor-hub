@@ -1,12 +1,12 @@
 import { useMemo, useRef, useState } from 'react';
 import {
-  Pressable,
   ScrollView,
   SectionList,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { ClubImage } from '@/components/club/ClubImage';
 import { MediaCredit } from '@/components/club/Editorial';
@@ -49,7 +49,7 @@ function KitRow({ season, kit }: { season: string; kit: KitT }) {
         {kit.media?.kind === 'photo' && kit.media.status === 'verified' ? (
           <MediaCredit media={kit.media} inline />
         ) : kit.image?.toLowerCase().endsWith('.svg') ? (
-          <Text style={{ color: colors.textMuted, fontSize: 11, fontWeight: '700' }}>
+          <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>
             {t('club.equipaciones.illustration')}
           </Text>
         ) : null}

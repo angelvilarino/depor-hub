@@ -1,6 +1,7 @@
 import { useLocalSearchParams, router } from 'expo-router';
 import { useMemo } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { Screen } from '@/components/Screen';
 import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
@@ -121,7 +122,7 @@ export default function RivalScreen() {
         </View>
         {form.length > 0 ? (
           <View style={styles.section}>
-            <Text style={{ color: colors.poster.muted, fontSize: 11, fontWeight: '800', letterSpacing: 0.8, textTransform: 'uppercase' }}>{t('home.rival.form')}</Text>
+            <Text style={{ color: colors.poster.muted, fontSize: 12, fontWeight: '800', letterSpacing: 0.8, textTransform: 'uppercase' }}>{t('home.rival.form')}</Text>
             <FormChips results={form} variant="poster" />
           </View>
         ) : null}

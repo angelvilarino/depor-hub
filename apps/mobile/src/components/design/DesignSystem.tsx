@@ -2,7 +2,8 @@ import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { SHOW_CLUB_CREST_AS_BRAND } from '@/config';
 import type { TeamRefT } from '@/data/schemas';
@@ -67,7 +68,7 @@ export function SectionHeader({
           <Text
             style={{
               color: isPoster ? colors.poster.muted : paper.muted,
-              fontSize: 11,
+              fontSize: 12,
               letterSpacing: 1.2,
               textTransform: 'uppercase',
               fontFamily: typography.body,
@@ -202,7 +203,7 @@ export function BrandMark({ team }: { team: TeamRefT | null }) {
         <Text style={{ color: colors.text, fontFamily: typography.headline, fontSize: 20 }}>
           Depor Hub
         </Text>
-        <Text style={{ color: colors.textMuted, fontSize: 11 }}>{t('common.unofficial')}</Text>
+        <Text style={{ color: colors.textMuted, fontSize: 12 }}>{t('common.unofficial')}</Text>
       </View>
     </View>
   );

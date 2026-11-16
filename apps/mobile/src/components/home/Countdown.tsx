@@ -50,7 +50,7 @@ function UnitBox({ unit, reducedMotion, urgent }: { unit: Unit; reducedMotion: b
       >
         {String(unit.value).padStart(2, '0')}
       </Animated.Text>
-      <Text style={{ color: colors.textMuted, fontSize: 9, letterSpacing: 0.7, textTransform: 'uppercase' }}>
+      <Text style={{ color: colors.textMuted, fontSize: 12, letterSpacing: 0.7, textTransform: 'uppercase' }}>
         {unit.label}
       </Text>
     </View>

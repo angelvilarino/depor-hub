@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 import { SettingsHeaderAction } from '../../app/(tabs)/_layout';
 
 const mockPush = jest.fn();
@@ -32,7 +33,7 @@ describe('settings header action', () => {
     const button = getByTestId('settings-header-button');
     expect(button.props.accessibilityRole).toBe('button');
     expect(button.props.accessibilityLabel).toBe('Ajustes');
-    expect(button.props.style).toEqual(
+    expect(StyleSheet.flatten(button.props.style)).toEqual(
       expect.objectContaining({
         width: 44,
         height: 44,

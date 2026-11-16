@@ -79,7 +79,7 @@ export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT |
           </View>
         ))}
       </View>
-      <Text style={{ color: muted, fontSize: 11 }}>
+      <Text style={{ color: muted, fontSize: 12 }}>
         {t('home.rival.headToHeadScope', { source: head.source })} · {head.played} {t('home.rival.matchesShort')}
       </Text>
       <Text style={{ color: textColor, fontSize: 14, fontWeight: '700' }}>

@@ -83,7 +83,7 @@ export function ClubImage({
           style={styles.placeholder}
         >
           {illustrationColors?.length ? <KitIllustration colors={illustrationColors} /> : <Ionicons name="image-outline" size={Math.max(18, Math.min(width, height) * 0.32)} color={colors.textMuted} />}
-          {illustrationColors?.length ? <Text style={{ color: colors.textMuted, fontSize: 10, fontWeight: '700' }}>{t('club.equipaciones.illustration')}</Text> : placeholderLabel === null ? null : (
+          {illustrationColors?.length ? <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>{t('club.equipaciones.illustration')}</Text> : placeholderLabel === null ? null : (
             <Text
               numberOfLines={2}
               style={{

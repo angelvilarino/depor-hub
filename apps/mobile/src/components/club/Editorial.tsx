@@ -2,7 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Image } from 'expo-image';
 import { useEffect, useMemo, useState } from 'react';
-import { Alert, Animated, Linking, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Alert, Animated, Linking, Modal, Platform, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import type { MediaRefT } from '@/data/schemas';
 import { useReducedMotion } from '@/theme/useReducedMotion';
@@ -143,7 +144,7 @@ function ModalPhoto({ photo, width, height }: { photo: MediaRefT; width: number;
 export function ConfidenceBadge({ label, status }: { label: string; status: string }) {
   const { colors } = useTheme();
   const { t } = useTranslation();
-  return status === 'verified' ? null : <View accessibilityLabel={`${label}: ${t(`club.status.${status}`, { defaultValue: status })}`} style={[styles.confidence, { borderColor: colors.border }]}><Ionicons name="alert-circle-outline" size={14} color={colors.textMuted} /><Text style={{ color: colors.textMuted, fontSize: 11 }}>{label} · {t(`club.status.${status}`, { defaultValue: status })}</Text></View>;
+  return status === 'verified' ? null : <View accessibilityLabel={`${label}: ${t(`club.status.${status}`, { defaultValue: status })}`} style={[styles.confidence, { borderColor: colors.border }]}><Ionicons name="alert-circle-outline" size={14} color={colors.textMuted} /><Text style={{ color: colors.textMuted, fontSize: 12 }}>{label} · {t(`club.status.${status}`, { defaultValue: status })}</Text></View>;
 }
 
 export function MapActions({ latitude, longitude, label }: { latitude: number; longitude: number; label: string }) {
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
   filterChip: { paddingHorizontal: spacing.sm, minHeight: 44, justifyContent: 'center', borderRadius: radius.pill, borderWidth: StyleSheet.hairlineWidth },
   timelineRow: { minHeight: 44, flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
   timelineAxis: { width: 16, alignItems: 'center', alignSelf: 'stretch' }, dot: { width: 10, height: 10, borderRadius: 5, marginTop: 4 }, line: { width: 2, flex: 1, marginTop: 3 },
-  credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 8, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: radius.pill }, creditText: { color: '#fff', fontSize: 11 },
+  credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 8, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: radius.pill }, creditText: { color: '#fff', fontSize: 12 },
   inlineCredit: { position: 'relative', top: 0, right: 0, alignSelf: 'flex-start', marginTop: spacing.xs },
   galleryPhoto: { width: 228, height: 156, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, overflow: 'hidden' },
   photoFallback: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.xs },

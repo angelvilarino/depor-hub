@@ -4,7 +4,8 @@ import * as Linking from 'expo-linking';
 import { Stack, router, useLocalSearchParams } from 'expo-router';
 import type { TFunction } from 'i18next';
 import { useMemo, useState } from 'react';
-import { Modal, PanResponder, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Modal, PanResponder, StyleSheet, Text, View } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { CareerTimeline } from '@/components/CareerTimeline';
 import { PlayerPortrait, portraitUrl } from '@/components/PlayerPortrait';
@@ -84,7 +85,7 @@ function StatStrip({ values }: { values: Stat[] }) {
           <Text style={{ color: colors.text, fontSize: 18, fontWeight: '800' }}>
             {formatNumber(item.value ?? 0, i18n.language)}
           </Text>
-          <Text style={{ color: colors.textMuted, fontSize: 11, fontWeight: '600' }}>
+          <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '600' }}>
             {item.label}
           </Text>
         </View>
@@ -508,7 +509,7 @@ export default function PlayerDetail() {
               >
                 {player.shirtNumber}
               </Text>
-              <Text style={{ color: colors.textMuted, fontSize: 10, fontWeight: '700' }}>
+              <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>
                 {t('player.shirtNumber').toUpperCase()}
               </Text>
             </View>

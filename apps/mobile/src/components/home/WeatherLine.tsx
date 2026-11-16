@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Animated, Pressable, StyleSheet, Text, View, type DimensionValue } from 'react-native';
+import { Animated, StyleSheet, Text, View, type DimensionValue } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import type { TFunction } from 'i18next';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
 import { useTranslation } from 'react-i18next';
@@ -156,9 +157,9 @@ export function WeatherLine({
         </View>
       ) : null}
       <View style={styles.attributionRow}>
-        <Text style={{ color: paper.muted, fontSize: 11 }}>{t('home.weather.attribution')}</Text>
+        <Text style={{ color: paper.muted, fontSize: 12 }}>{t('home.weather.attribution')}</Text>
         {offline && capturedAt > 0 && now !== undefined ? (
-          <Text style={{ color: paper.muted, fontSize: 11 }}>
+          <Text style={{ color: paper.muted, fontSize: 12 }}>
             {t('home.weather.cached', { ago: ageLabel(capturedAt, currentTime, t) })}
           </Text>
         ) : null}
@@ -175,7 +176,7 @@ const styles = StyleSheet.create({
   ticketMain: { minHeight: minTouch, flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   weatherMain: { minWidth: 76, gap: 0 },
   temperature: { fontFamily: typography.display, fontSize: 36, lineHeight: 38 },
-  condition: { fontSize: 11 },
+  condition: { fontSize: 12 },
   weatherMetrics: { flex: 1, justifyContent: 'center', gap: spacing.xs },
   rainMetric: { gap: 3 },
   rainLabel: { flexDirection: 'row', justifyContent: 'space-between' },
@@ -184,7 +185,7 @@ const styles = StyleSheet.create({
   attributionRow: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.sm },
   hours: { borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm, flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
   hour: { minWidth: 54, alignItems: 'center', gap: 2 },
-  hourTime: { fontSize: 11 },
+  hourTime: { fontSize: 12 },
   hourTemp: { fontFamily: typography.display, fontSize: 20 },
-  hourRain: { fontSize: 11 },
+  hourRain: { fontSize: 12 },
 });

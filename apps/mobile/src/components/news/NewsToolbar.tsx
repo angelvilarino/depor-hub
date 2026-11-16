@@ -1,12 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
 import {
-  Pressable,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View,
 } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { SegmentedControl } from '@/components/SegmentedControl';
 import type { NewsGroupT } from '@/data/schemas';
@@ -86,7 +86,7 @@ export function NewsToolbar({
           <Ionicons name="options-outline" size={22} color={colors.text} />
           {active > 0 ? (
             <View style={[styles.badge, { backgroundColor: colors.primary }]}>
-              <Text style={{ color: colors.onPrimary, fontSize: 10, fontWeight: '700' }}>
+              <Text style={{ color: colors.onPrimary, fontSize: 12, fontWeight: '700' }}>
                 {active}
               </Text>
             </View>

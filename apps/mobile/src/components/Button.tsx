@@ -1,4 +1,5 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { minTouch, radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 

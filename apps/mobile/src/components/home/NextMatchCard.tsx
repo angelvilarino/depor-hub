@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Animated, StyleSheet, Text, View } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { PosterCard, SectionHeader } from '@/components/design/DesignSystem';
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
   side: { flex: 1, minWidth: 0, alignItems: 'center', gap: spacing.xs },
   crestBox: { minHeight: 76, alignItems: 'center', justifyContent: 'center' },
   teamName: { fontFamily: typography.display, fontSize: 23, lineHeight: 26, textAlign: 'center' },
-  sideLabel: { fontSize: 11, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
+  sideLabel: { fontSize: 12, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
   vsBox: { width: 50, minHeight: 76, alignItems: 'center', justifyContent: 'center' },
   vs: { fontFamily: typography.display, fontSize: 18 },
   stateBlock: { alignItems: 'center', gap: spacing.sm },

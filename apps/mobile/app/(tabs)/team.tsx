@@ -4,7 +4,6 @@ import type { TFunction } from 'i18next';
 import { useMemo, useState } from 'react';
 import {
   FlatList,
-  Pressable,
   RefreshControl,
   ScrollView,
   StyleSheet,
@@ -12,6 +11,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { CoachPortrait } from '@/components/CoachPortrait';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
@@ -52,7 +52,7 @@ function LoanChip() {
   const { colors } = useTheme();
   return (
     <View style={[styles.loanChip, { borderColor: colors.primary }]}>
-      <Text style={{ color: colors.primary, fontSize: 11, fontWeight: '700' }}>
+      <Text style={{ color: colors.primary, fontSize: 12, fontWeight: '700' }}>
         {t('team.loaned')}
       </Text>
     </View>

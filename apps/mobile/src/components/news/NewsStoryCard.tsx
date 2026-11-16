@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import type { NewsSourceT, NewsStoryT } from '@/data/schemas';
 import { newsAge, sourceMonogram } from '@/features/news/logic';
@@ -80,7 +81,7 @@ export function NewsStoryCard({ story, sources, read, onOpen, onTag, now }: Prop
                   style={styles.sourceLogo}
                 />
               ) : (
-                <Text style={{ color: colors.onPrimary, fontSize: 11, fontWeight: '700' }}>
+                <Text style={{ color: colors.onPrimary, fontSize: 12, fontWeight: '700' }}>
                   {sourceMonogram(name)}
                 </Text>
               )}

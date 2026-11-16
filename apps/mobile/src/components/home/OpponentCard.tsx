@@ -1,5 +1,6 @@
 import { router } from 'expo-router';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { CrestBadge, PosterCard, SectionHeader } from '@/components/design/DesignSystem';
 import { HeadToHeadBar } from '@/components/rival/HeadToHeadBar';
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
   rank: { fontFamily: typography.numeric, fontSize: 32, lineHeight: 36 },
   points: { fontSize: 15, fontWeight: '700' },
   block: { gap: spacing.xs },
-  label: { fontSize: 11, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
+  label: { fontSize: 12, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
   coachCard: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm },
   coachInitials: { width: 42, height: 42, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
   coachText: { gap: 2 },

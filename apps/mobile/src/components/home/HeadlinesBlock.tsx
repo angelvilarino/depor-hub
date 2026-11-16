@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslation } from 'react-i18next';
@@ -167,7 +168,7 @@ export function HeadlinesBlock({
                     <SourceMark source={source} name={name} compact />
                     <View style={styles.metaCopy}>
                       <Text numberOfLines={1} style={{ color: paper.text, fontSize: 12, fontWeight: '700' }}>{name}</Text>
-                      <Text style={{ color: paper.muted, fontSize: 11 }}>{relative(story.publishedAt)}</Text>
+                      <Text style={{ color: paper.muted, fontSize: 12 }}>{relative(story.publishedAt)}</Text>
                     </View>
                   </View>
                 </View>
@@ -179,7 +180,7 @@ export function HeadlinesBlock({
                   onPress={() => setExpandedStory(expandedStory === story.id ? null : story.id)}
                   style={styles.listCoverage}
                 >
-                  <Text style={{ color: paper.accent, fontWeight: '700', fontSize: 11 }}>{t('news.alsoInCount', { count: story.alsoIn.length })}</Text>
+                  <Text style={{ color: paper.accent, fontWeight: '700', fontSize: 12 }}>{t('news.alsoInCount', { count: story.alsoIn.length })}</Text>
                 </Pressable>
               ) : null}
               {expandedStory === story.id ? (
@@ -217,7 +218,7 @@ function AlternateStory({
       <View style={styles.metaCopy}>
         <Text style={{ color: paper.text, fontSize: 13, fontWeight: '700' }}>{name}</Text>
         <Text style={{ color: paper.text, fontSize: 13 }}>{item.title}</Text>
-        <Text style={{ color: paper.muted, fontSize: 11 }}>{relative(item.publishedAt)}</Text>
+        <Text style={{ color: paper.muted, fontSize: 12 }}>{relative(item.publishedAt)}</Text>
       </View>
     </Pressable>
   );
