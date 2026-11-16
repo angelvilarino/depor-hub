@@ -16,7 +16,7 @@ import {
   type NewsFilters,
   type NewsKindFilter,
 } from '@/features/news/logic';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type Props = {
@@ -86,7 +86,7 @@ export function NewsToolbar({
           <Ionicons name="options-outline" size={22} color={colors.text} />
           {active > 0 ? (
             <View style={[styles.badge, { backgroundColor: colors.primary }]}>
-              <Text style={{ color: colors.onPrimary, fontSize: 12, fontWeight: '700' }}>
+              <Text style={{ color: colors.onPrimary, ...text.caption, fontWeight: '700' }}>
                 {active}
               </Text>
             </View>
@@ -147,7 +147,7 @@ export function NewsToolbar({
               <Text
                 style={{
                   color: selected ? colors.onPrimary : colors.text,
-                  fontSize: 13,
+                  ...text.body,
                   fontWeight: '600',
                 }}
               >
@@ -164,7 +164,7 @@ export function NewsToolbar({
             onPress={onClear}
             style={styles.clear}
           >
-            <Text style={{ color: colors.primary, fontSize: 13, fontWeight: '600' }}>
+            <Text style={{ color: colors.primary, ...text.body, fontWeight: '600' }}>
               {t('news.clearFiltersCount', { count: active })}
             </Text>
           </Pressable>
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.sm,
     minHeight: minTouch,
   },
-  input: { flex: 1, fontSize: 15, minHeight: minTouch },
+  input: { flex: 1, ...text.bodyLarge, minHeight: minTouch },
   chips: { gap: spacing.sm, alignItems: 'center' },
   chip: {
     minHeight: 32,

@@ -4,7 +4,7 @@ import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import type { NewsFilters, SourceOption } from '@/features/news/logic';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type Props = {
@@ -54,7 +54,7 @@ export function NewsFiltersSheet({
         >
           <View style={[styles.handle, { backgroundColor: colors.border }]} />
           <View style={styles.header}>
-            <Text style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>
+            <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '700' }}>
               {t('news.filtersTitle')}
             </Text>
             <Pressable
@@ -72,7 +72,7 @@ export function NewsFiltersSheet({
               {t('news.sources')}
             </Text>
             {sources.length === 0 ? (
-              <Text style={{ color: colors.textMuted, fontSize: 14 }}>{t('news.noSources')}</Text>
+              <Text style={{ color: colors.textMuted, ...text.body }}>{t('news.noSources')}</Text>
             ) : (
               sources.map((source) => {
                 const checked = filters.sourceIds.includes(source.id);
@@ -93,10 +93,10 @@ export function NewsFiltersSheet({
                       size={22}
                       color={checked ? colors.primary : colors.textMuted}
                     />
-                    <Text style={{ color: colors.text, flex: 1, fontSize: 15 }}>
+                    <Text style={{ color: colors.text, flex: 1, ...text.bodyLarge }}>
                       {source.name}
                     </Text>
-                    <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+                    <Text style={{ color: colors.textMuted, ...text.body }}>
                       {source.items}
                     </Text>
                   </Pressable>
@@ -108,7 +108,7 @@ export function NewsFiltersSheet({
               {t('news.tagsTitle')}
             </Text>
             {tags.length === 0 ? (
-              <Text style={{ color: colors.textMuted, fontSize: 14 }}>{t('news.noTags')}</Text>
+              <Text style={{ color: colors.textMuted, ...text.body }}>{t('news.noTags')}</Text>
             ) : (
               tags.map(({ tag, items }) => {
                 const checked = filters.tags.includes(tag);
@@ -129,10 +129,10 @@ export function NewsFiltersSheet({
                       size={22}
                       color={checked ? colors.primary : colors.textMuted}
                     />
-                    <Text style={{ color: colors.text, flex: 1, fontSize: 15 }}>
+                    <Text style={{ color: colors.text, flex: 1, ...text.bodyLarge }}>
                       {t(`news.tags.${tag}`)}
                     </Text>
-                    <Text style={{ color: colors.textMuted, fontSize: 13 }}>{items}</Text>
+                    <Text style={{ color: colors.textMuted, ...text.body }}>{items}</Text>
                   </Pressable>
                 );
               })
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   },
   close: { width: minTouch, height: minTouch, alignItems: 'center', justifyContent: 'center' },
   content: { paddingHorizontal: spacing.lg, paddingBottom: spacing.md, gap: spacing.xs },
-  heading: { fontSize: 13, fontWeight: '700', marginTop: spacing.md, textTransform: 'uppercase' },
+  heading: { ...text.body, fontWeight: '700', marginTop: spacing.md, textTransform: 'uppercase' },
   option: {
     minHeight: minTouch,
     flexDirection: 'row',

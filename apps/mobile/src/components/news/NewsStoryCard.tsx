@@ -6,7 +6,7 @@ import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import type { NewsSourceT, NewsStoryT } from '@/data/schemas';
 import { newsAge, sourceMonogram } from '@/features/news/logic';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type Props = {
@@ -81,19 +81,19 @@ export function NewsStoryCard({ story, sources, read, onOpen, onTag, now }: Prop
                   style={styles.sourceLogo}
                 />
               ) : (
-                <Text style={{ color: colors.onPrimary, fontSize: 12, fontWeight: '700' }}>
+                <Text style={{ color: colors.onPrimary, ...text.caption, fontWeight: '700' }}>
                   {sourceMonogram(name)}
                 </Text>
               )}
             </View>
             <Text
               numberOfLines={1}
-              style={{ color: colors.textMuted, flexShrink: 1, fontSize: 12, fontWeight: '600' }}
+              style={{ color: colors.textMuted, flexShrink: 1, ...text.caption, fontWeight: '600' }}
             >
               {name}
             </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 12 }}>·</Text>
-            <Text style={{ color: colors.textMuted, fontSize: 12 }}>{relative}</Text>
+            <Text style={{ color: colors.textMuted, ...text.caption }}>·</Text>
+            <Text style={{ color: colors.textMuted, ...text.caption }}>{relative}</Text>
             {!read ? (
               <View
                 accessibilityLabel={t('news.unread')}
@@ -108,17 +108,16 @@ export function NewsStoryCard({ story, sources, read, onOpen, onTag, now }: Prop
             numberOfLines={3}
             style={{
               color: colors.text,
-              fontSize: 16,
+              ...text.bodyLarge,
               fontWeight: read ? '600' : '700',
-              lineHeight: 21,
-            }}
+                          }}
           >
             {story.title}
           </Text>
           {story.summary ? (
             <Text
               numberOfLines={2}
-              style={{ color: colors.textMuted, fontSize: 14, lineHeight: 19 }}
+              style={{ color: colors.textMuted, ...text.body }}
             >
               {story.summary}
             </Text>
@@ -150,7 +149,7 @@ export function NewsStoryCard({ story, sources, read, onOpen, onTag, now }: Prop
               >
                 <Text
                   numberOfLines={1}
-                  style={{ color: colors.primary, fontSize: 12, fontWeight: '600' }}
+                  style={{ color: colors.primary, ...text.caption, fontWeight: '600' }}
                 >
                   {tagLabel(tag, t)}
                 </Text>
@@ -166,7 +165,7 @@ export function NewsStoryCard({ story, sources, read, onOpen, onTag, now }: Prop
               onPress={() => setExpanded((value) => !value)}
               style={styles.alsoButton}
             >
-              <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '600' }}>
+              <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '600' }}>
                 {t('news.alsoInCount', { count: alternatives.length })}
               </Text>
               <Ionicons
@@ -196,10 +195,10 @@ export function NewsStoryCard({ story, sources, read, onOpen, onTag, now }: Prop
                 onPress={() => onOpen({ ...story, url: alternative.url, title: alternative.title })}
                 style={styles.alternative}
               >
-                <Text numberOfLines={2} style={{ color: colors.text, fontSize: 13 }}>
+                <Text numberOfLines={2} style={{ color: colors.text, ...text.body }}>
                   {alternative.title}
                 </Text>
-                <Text style={{ color: colors.textMuted, fontSize: 12 }}>{altName}</Text>
+                <Text style={{ color: colors.textMuted, ...text.caption }}>{altName}</Text>
               </Pressable>
             );
           })}

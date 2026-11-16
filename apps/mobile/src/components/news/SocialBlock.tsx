@@ -5,7 +5,7 @@ import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/Screen';
 import type { SocialFeedT, SocialPinT, SocialPlatformT, SocialProfileT } from '@/data/schemas';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 
@@ -48,9 +48,9 @@ function ProfileChip({ profile }: { profile: SocialProfileT }) {
     >
       <Ionicons name={ICONS[profile.platform]} size={18} color={colors.primary} />
       <View>
-        <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }}>{label}</Text>
+        <Text style={{ color: colors.text, ...text.body, fontWeight: '600' }}>{label}</Text>
         {profile.handle ? (
-          <Text style={{ color: colors.textMuted, fontSize: 12 }}>{profile.handle}</Text>
+          <Text style={{ color: colors.textMuted, ...text.caption }}>{profile.handle}</Text>
         ) : null}
       </View>
     </Pressable>
@@ -81,10 +81,10 @@ function PinCard({ pin }: { pin: SocialPinT }) {
           <Ionicons name={ICONS[pin.platform]} size={26} color={colors.primary} />
         </View>
       )}
-      <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }} numberOfLines={3}>
+      <Text style={{ color: colors.text, ...text.body, fontWeight: '600' }} numberOfLines={3}>
         {pin.title}
       </Text>
-      <Text style={{ color: colors.textMuted, fontSize: 12 }}>
+      <Text style={{ color: colors.textMuted, ...text.caption }}>
         {[platform, pin.publishedAt
           ? new Intl.DateTimeFormat(i18n.language, {
               day: 'numeric',
@@ -107,10 +107,10 @@ export function SocialBlock({ social }: { social: SocialFeedT | null }) {
 
   return (
     <Card>
-      <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>
+      <Text accessibilityRole="header" style={{ color: colors.text, ...text.subtitle, fontWeight: '700' }}>
         {t('news.socialTitle')}
       </Text>
-      <Text style={{ color: colors.textMuted, fontSize: 13 }}>{t('news.socialNote')}</Text>
+      <Text style={{ color: colors.textMuted, ...text.body }}>{t('news.socialNote')}</Text>
 
       {social.profiles.length > 0 ? (
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.row}>
@@ -122,7 +122,7 @@ export function SocialBlock({ social }: { social: SocialFeedT | null }) {
 
       {social.pins.length > 0 ? (
         <View style={{ gap: spacing.sm }}>
-          <Text style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>
+          <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
             {t('news.pinsTitle')}
           </Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.row}>
