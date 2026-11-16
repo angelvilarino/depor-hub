@@ -196,3 +196,56 @@ cd workers/live-proxy && npm test       # 4 passed
 - Data ya ejecutó el pipeline dividido en producción (`8ff9617`): conserva los
   28 detalles y `squad.json` valida.
 
+## Lote 3 — Release y resiliencia
+
+Estado: **aplicado en local**. El APK de `preview` está en la cola de EAS; falta
+instalarlo en un dispositivo y cerrar la medición real de arranque (F3-14), que
+necesita hardware de gama media. El resto de criterios se comprueba con tests.
+
+| ID | Estado | Qué se ha corregido | Evidencia |
+|---|---|---|---|
+| F3-01 / F5-11 | Hecho en config; APK en cola | Se añade `eas.json` con `appVersionSource: local`, perfil `base` (Node 22.23.3 y `EXPO_PUBLIC_DATA_BASE_URL` de producción), `preview` (APK de distribución interna) y `production` (incremento automático). `app.json` fija versión `1.0.0`, `android.versionCode: 1` e `ios.buildNumber: "1"`; el proyecto queda vinculado a `@vilaa_7/depor-hub` (`69d22d01-8a14-4773-9328-8ae9213e9ef1`) y EAS crea el keystore remoto. | `apps/mobile/eas.json`, `apps/mobile/app.json`; build `8df81fb4-6a02-48aa-adca-55735f3df414` (`preview`, Android, creado y en cola) |
+| F3-03 | Hecho | La app es offline-first de verdad: `networkMode: 'offlineFirst'`, timeout de 8 s y un solo reintento (el peor caso baja de ~45 s a ~16 s). El splash no se oculta hasta que las fuentes y la caché persistida están listas, así que el primer frame ya muestra datos guardados. Sin red y sin caché, `ErrorState` dice que no hay datos guardados y ofrece reintentar en vez de dejar un esqueleto. | `apps/mobile/src/data/queryClient.ts`, `api.ts`, `queries.ts`, `DataProvider.tsx`, `app/_layout.tsx`, `StateViews.tsx`; `src/__tests__/offline.test.tsx` |
+| F3-02 | Hecho | Cualquier ruta desconocida cae en `+not-found` con salida al inicio; un error de render en cualquier pantalla lo captura `RouteErrorBoundary` exportado como `ErrorBoundary` del layout raíz; `unstable_settings.initialRouteName` devuelve los enlaces profundos a una ruta real. | `apps/mobile/app/+not-found.tsx`, `src/components/RouteErrorBoundary.tsx`, `app/_layout.tsx`; `src/__tests__/navigation.test.tsx` |
+| F3-05 | Hecho | Los 85 `z.strictObject` del espejo Zod pasan a `z.object`: un campo nuevo publicado antes de que la app lo conozca se descarta y el resto del documento sigue validando. La validación estricta se queda en CI (Pydantic + JSON Schema). | `apps/mobile/src/data/schemas.ts`; tests de campo desconocido en raíz, anidado y documento inválido en `contracts.test.ts` y `api.test.ts` |
+| F3-15 | Hecho | `SCHEDULE_EXACT_ALARM` queda declarado y, en Android 12+, se pide aparte de las notificaciones. Si se deniega, el recordatorio **se guarda igual** y la hoja avisa de que Android puede retrasarlo, con un botón para volver a pedirlo. | `apps/mobile/src/features/reminders/notifications.ts` (`requestExactAlarmPermission`, `ReminderPermission`), `ReminderSheet.tsx`, `useMatchActions.ts`; `src/__tests__/notifications.test.ts` (iOS, Android 12+ concedido y denegado) |
+| F3-16 / F5-05 | Hecho | `syncReminders` pasa a una cola de promesas: dos efectos ya no cancelan lo que el otro acaba de programar y un fallo no bloquea la pasada siguiente. | `apps/mobile/src/features/reminders/notifications.ts`; test de concurrencia y de fallo aislado en `src/__tests__/notifications.test.ts` |
+| F3-14 | Parcial: instrumentación y protocolo, sin medidas reales | Cinco marcas de arranque (`layout`, `fonts`, `cache`, `splash`, `home`) con `performance.mark`, una línea `[startup]` por arranque en desarrollo y un comando reproducible que calcula p50/p95 de diez arranques en frío (`adb shell am start -W` + `scripts/startup-report.mjs`). Falta la tanda en un dispositivo de gama media: este entorno no lo tiene y un emulador no representa el objetivo. | `apps/mobile/src/perf/startup.ts`, `app/_layout.tsx`, `app/(tabs)/index.tsx`, `scripts/startup-report.mjs`, `docs/auditoria/ARRANQUE.md`; `src/__tests__/startup.test.ts` |
+| F3-07 | Hecho | El refresco de la portada deja de recargar 3 de 6 consultas: invalida meta, clasificación, partidos, noticias, temporada y rivales; `useHomeNews` refresca portada y respaldo como una sola sección. | `apps/mobile/app/(tabs)/index.tsx`, `src/data/queries.ts`; `src/__tests__/home.test.tsx` comprueba las seis |
+| F3-08 | Hecho | «Borrar caché» vacía la caché en memoria y la persistida: el `QueryClient` vive fuera de React (`data/queryClient.ts`) y `clearDataCache()` limpia ambas. No toca ajustes, tema ni recordatorios. | `apps/mobile/src/data/queryClient.ts`, `src/data/cache.ts`, `app/settings.tsx`; `src/__tests__/cache.test.ts` |
+| F3-22 | Hecho | Partido, Jugador y Entrenador distinguen un fallo de red de un registro inexistente: muestran `ErrorState` con reintento en lugar de «no encontrado». | `apps/mobile/app/match/[id].tsx`, `app/player/[id].tsx`, `app/coach.tsx`; tests en `matchDetail.test.tsx`, `playerDetail.test.tsx` y `coach.test.tsx` |
+
+### Medición antes / después
+
+| Métrica | Antes | Después |
+|---|---:|---:|
+| Peor caso de carga sin red | 3 intentos × 15 s = 45 s | 1 reintento × 8 s ≈ 16 s, con caché al instante |
+| Consultas que refresca la portada | 3 de 6 | 6 de 6 |
+| Objetos Zod estrictos en el borde | 85 | 0 (la estricta queda en CI) |
+| `syncReminders` concurrentes | podían cancelarse entre sí | cola en serie, con test |
+| Alarmas exactas Android 12+ | sin permiso declarado | permiso declarado, pedido aparte y degradado con aviso |
+| Rutas desconocidas o error de render | pantalla en blanco | `+not-found` / `ErrorBoundary` con reintento e inicio |
+| Caché borrada | solo AsyncStorage | memoria + AsyncStorage |
+| Tests Jest | 312 / 36 suites | **331 / 41 suites** |
+
+### Comandos de verificación ejecutados
+
+```bash
+.venv/bin/ruff check scripts
+.venv/bin/pytest scripts -q              # 272 passed
+.venv/bin/python -m depor_hub.cli schemas
+git diff --exit-code packages/schemas     # sin diferencias
+npm run lint
+npm run typecheck
+npm test                                 # 331 passed / 41 suites
+cd workers/live-proxy && npm test        # 4 passed
+node scripts/startup-report.mjs < arranque.txt   # p50/p95, pendiente de dispositivo
+```
+
+### Lo que sigue
+
+- Instalar el APK de `preview` en un Android real y rellenar la tabla de
+  `docs/auditoria/ARRANQUE.md` con diez arranques en frío (p50/p95).
+- Verificar en ese dispositivo el modo avión (datos con antigüedad, sin
+  esqueletos) y el recordatorio con ±1 min de precisión.
+- Lote 4 en adelante: sistema de diseño, navegación y chrome.
