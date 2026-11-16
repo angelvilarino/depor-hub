@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type ScreenProps = { children: ReactNode; refreshing?: boolean; onRefresh?: () => void };
@@ -33,7 +33,7 @@ export function Card({ children }: { children: ReactNode }) {
 
 export function BodyText({ children, muted }: { children: ReactNode; muted?: boolean }) {
   const { colors } = useTheme();
-  return <Text style={{ color: muted ? colors.textMuted : colors.text, fontSize: 16 }}>{children}</Text>;
+  return <Text style={{ color: muted ? colors.textMuted : colors.text, ...text.bodyLarge }}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({

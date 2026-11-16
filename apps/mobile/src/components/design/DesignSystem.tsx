@@ -7,7 +7,7 @@ import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { SHOW_CLUB_CREST_AS_BRAND } from '@/config';
 import type { TeamRefT } from '@/data/schemas';
-import { minTouch, radius, spacing, typography } from '@/theme/tokens';
+import { minTouch, radius, spacing, text, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 export function PosterCard({
@@ -68,7 +68,7 @@ export function SectionHeader({
           <Text
             style={{
               color: isPoster ? colors.poster.muted : paper.muted,
-              fontSize: 12,
+              ...text.caption,
               letterSpacing: 1.2,
               textTransform: 'uppercase',
               fontFamily: typography.body,
@@ -82,8 +82,7 @@ export function SectionHeader({
           style={{
             color: isPoster ? colors.poster.text : paper.text,
             fontFamily: typography.headline,
-            fontSize: 23,
-            lineHeight: 29,
+            ...text.heading,
           }}
         >
           {title}
@@ -108,7 +107,7 @@ export function Chip({
   const { colors } = useTheme();
   const paper = colors.paper;
   const content = (
-    <Text style={{ color: selected ? colors.onPrimary : paper.accent, fontSize: 13, fontWeight: '700' }}>
+    <Text style={{ color: selected ? colors.onPrimary : paper.accent, ...text.body, fontWeight: '700' }}>
       {label}
     </Text>
   );
@@ -138,11 +137,11 @@ export function StatTile({ label, value }: { label: string; value: string | numb
   const paper = colors.paper;
   return (
     <View style={styles.statTile}>
-      <Text style={{ color: paper.muted, fontSize: 12 }}>{label}</Text>
+      <Text style={{ color: paper.muted, ...text.caption }}>{label}</Text>
       <Text
         adjustsFontSizeToFit
         maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
-        style={{ color: paper.text, fontFamily: typography.numeric, fontSize: 23 }}
+        style={{ color: paper.text, fontFamily: typography.numeric, ...text.heading }}
       >
         {value}
       </Text>
@@ -170,7 +169,7 @@ export function CrestBadge({ team, size = 52 }: { team: TeamRefT; size?: number 
           style={{ width: size * 0.82, height: size * 0.82 }}
         />
       ) : (
-        <Text style={{ color: colors.textMuted, fontSize: Math.max(10, size * 0.25), fontWeight: '800' }}>
+        <Text style={{ color: colors.textMuted, fontSize: Math.max(text.caption.fontSize, size * 0.25), fontWeight: '800' }}>
           {(team.tla ?? team.name.slice(0, 3)).toUpperCase()}
         </Text>
       )}
@@ -196,14 +195,14 @@ export function BrandMark({ team }: { team: TeamRefT | null }) {
             style={styles.brandImage}
           />
         ) : (
-          <Text style={{ color: colors.primary, fontSize: 13, fontWeight: '900' }}>DH</Text>
+          <Text style={{ color: colors.primary, ...text.body, fontWeight: '900' }}>DH</Text>
         )}
       </View>
       <View style={styles.brandCopy}>
-        <Text style={{ color: colors.text, fontFamily: typography.headline, fontSize: 20 }}>
+        <Text style={{ color: colors.text, fontFamily: typography.headline, ...text.title }}>
           Depor Hub
         </Text>
-        <Text style={{ color: colors.textMuted, fontSize: 12 }}>{t('common.unofficial')}</Text>
+        <Text style={{ color: colors.textMuted, ...text.caption }}>{t('common.unofficial')}</Text>
       </View>
     </View>
   );

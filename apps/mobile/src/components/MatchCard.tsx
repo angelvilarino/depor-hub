@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import type { MatchT } from '@/data/schemas';
 import { TeamCrest } from '@/components/TeamCrest';
 import { outcome, teamName } from '@/features/calendar/logic';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { formatMatchDate, formatMatchTime } from '@/utils/matchTime';
 
@@ -33,10 +33,10 @@ export function MatchCard({ match }: { match: MatchT }) {
       style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}
     >
       <View style={styles.dateCol}>
-        <Text style={{ color: colors.text, fontSize: 13, fontWeight: '600' }}>{date}</Text>
-        <Text style={{ color: colors.textMuted, fontSize: 13 }}>{time ?? t('calendar.timeTbc')}</Text>
+        <Text style={{ color: colors.text, ...text.body, fontWeight: '600' }}>{date}</Text>
+        <Text style={{ color: colors.textMuted, ...text.body }}>{time ?? t('calendar.timeTbc')}</Text>
         {!PLAIN.has(match.status) && (
-          <Text style={{ color: colors.danger, fontSize: 12 }}>
+          <Text style={{ color: colors.danger, ...text.caption }}>
             {t(`calendar.status.${match.status}`, { defaultValue: match.status })}
           </Text>
         )}
@@ -47,12 +47,12 @@ export function MatchCard({ match }: { match: MatchT }) {
             <TeamCrest team={r.team} size={22} />
             <Text
               numberOfLines={1}
-              style={{ flex: 1, color: colors.text, fontSize: 16, fontWeight: r.depor ? '700' : '400' }}
+              style={{ flex: 1, color: colors.text, ...text.bodyLarge, fontWeight: r.depor ? '700' : '400' }}
             >
               {teamName(r.team)}
             </Text>
             {hasScore && (
-              <Text style={{ color: colors.text, fontSize: 16, fontWeight: r.depor ? '700' : '400' }}>{r.goals}</Text>
+              <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: r.depor ? '700' : '400' }}>{r.goals}</Text>
             )}
           </View>
         ))}

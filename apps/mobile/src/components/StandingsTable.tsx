@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { TeamCrest } from '@/components/TeamCrest';
 import type { StandingsT } from '@/data/schemas';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text as typeScale } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 export function StandingsTable({
@@ -21,7 +21,7 @@ export function StandingsTable({
       style={{
         width,
         textAlign: 'center',
-        fontSize: 14,
+        ...typeScale.body,
         fontWeight: bold ? '700' : '400',
         color: muted ? colors.textMuted : colors.text,
       }}
@@ -34,7 +34,7 @@ export function StandingsTable({
       <View style={styles.row}>
         {cell(t('calendar.col.pos'), 28, true, true)}
         <View style={{ width: 20 }} />
-        <Text style={{ flex: 1, color: colors.textMuted, fontSize: 14, fontWeight: '700' }}>{t('calendar.col.team')}</Text>
+        <Text style={{ flex: 1, color: colors.textMuted, ...typeScale.body, fontWeight: '700' }}>{t('calendar.col.team')}</Text>
         {!compact && cell(t('calendar.col.played'), 32, true, true)}
         {!compact && cell(t('calendar.col.goalDiff'), 36, true, true)}
         {cell(t('calendar.col.points'), 36, true, true)}
@@ -50,7 +50,7 @@ export function StandingsTable({
           >
             {cell(r.position, 28, me)}
             <TeamCrest team={r.team} size={20} />
-            <Text numberOfLines={1} style={{ flex: 1, color: colors.text, fontSize: 15, fontWeight: me ? '700' : '400' }}>
+            <Text numberOfLines={1} style={{ flex: 1, color: colors.text, ...typeScale.bodyLarge, fontWeight: me ? '700' : '400' }}>
               {r.team.shortName ?? r.team.name}
             </Text>
             {!compact && cell(r.played, 32, me)}

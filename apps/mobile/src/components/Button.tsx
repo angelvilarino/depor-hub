@@ -1,6 +1,6 @@
 import { StyleSheet, Text } from 'react-native';
 import { Pressable } from '@/components/Pressable';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type Props = { label: string; onPress: () => void; variant?: 'primary' | 'secondary'; disabled?: boolean };
@@ -27,7 +27,7 @@ export function Button({ label, onPress, variant = 'primary', disabled }: Props)
         adjustsFontSizeToFit
         minimumFontScale={0.85}
         numberOfLines={1}
-        style={{ color: primary ? colors.onPrimary : colors.text, fontSize: 16, fontWeight: '600' }}
+        style={{ color: primary ? colors.onPrimary : colors.text, ...text.bodyLarge, fontWeight: '600' }}
       >
         {label}
       </Text>

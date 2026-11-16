@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { freshness } from '@/data/freshness';
 import { useOnline } from '@/data/useOnline';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text as typeScale } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type Props = {
@@ -40,7 +40,7 @@ export function FreshnessBanner({ dataUpdatedAt, isFetching, isError, maxAgeHour
 
   return (
     <View style={[styles.box, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-      <Text style={{ color: offline ? colors.danger : colors.textMuted, fontSize: 14 }}>{text}</Text>
+      <Text style={{ color: offline ? colors.danger : colors.textMuted, ...typeScale.body }}>{text}</Text>
     </View>
   );
 }

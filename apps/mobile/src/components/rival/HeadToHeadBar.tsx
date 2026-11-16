@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { HeadToHeadT } from '@/data/schemas';
-import { motion, radius, spacing } from '@/theme/tokens';
+import { motion, radius, spacing, text } from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 
@@ -73,16 +73,16 @@ export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT |
                 : null
             }
           >
-            <Text style={{ color: barColors[result], fontSize: 12, fontWeight: '700' }}>
+            <Text style={{ color: barColors[result], ...text.caption, fontWeight: '700' }}>
               {t(`calendar.outcome.${result}`)} {counts[index]}
             </Text>
           </View>
         ))}
       </View>
-      <Text style={{ color: muted, fontSize: 12 }}>
+      <Text style={{ color: muted, ...text.caption }}>
         {t('home.rival.headToHeadScope', { source: head.source })} · {head.played} {t('home.rival.matchesShort')}
       </Text>
-      <Text style={{ color: textColor, fontSize: 14, fontWeight: '700' }}>
+      <Text style={{ color: textColor, ...text.body, fontWeight: '700' }}>
         {t('home.rival.goalsRecord', { goalsFor: head.goalsFor, goalsAgainst: head.goalsAgainst })}
       </Text>
     </View>

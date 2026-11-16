@@ -156,3 +156,16 @@ export const typography = {
   numeric: 'DeporDisplay',
   displayMaxFontSizeMultiplier: 1.5,
 } as const;
+// D-04: escala única (8 pasos) con interlineado incluido. Migración por
+// pantallas; los literales restantes se sustituyen por estos estilos.
+export const text = {
+  caption: { fontSize: 12, lineHeight: 16 },
+  body: { fontSize: 14, lineHeight: 20 },
+  bodyLarge: { fontSize: 16, lineHeight: 22 },
+  subtitle: { fontSize: 18, lineHeight: 24 },
+  title: { fontSize: 20, lineHeight: 26 },
+  heading: { fontSize: 23, lineHeight: 29 },
+  display: { fontSize: 32, lineHeight: 38 },
+  hero: { fontSize: 40, lineHeight: 44 },
+  numeral: { fontSize: 64, lineHeight: 66 },
+} as const;

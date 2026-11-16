@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SHOW_TEAM_CREST } from '@/config';
 import { useTheme } from '@/theme/useTheme';
+import { text } from '@/theme/tokens';
 
 type Props = {
   team: { name: string; tla: string | null; crestUrl?: string | null };
@@ -49,7 +50,7 @@ export function TeamCrest({ team, size = 24 }: Props) {
           <Text
             style={{
               color: colors.textMuted,
-              fontSize: Math.max(8, size * 0.32),
+              fontSize: Math.max(text.caption.fontSize, size * 0.32),
               fontWeight: '700',
             }}
           >

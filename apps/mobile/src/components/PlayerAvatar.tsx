@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { avatarColor, initials } from '@/features/squad/logic';
 
@@ -11,7 +12,7 @@ export function PlayerAvatar({ id, name, size = 44 }: { id: number; name: string
       importantForAccessibility="no-hide-descendants"
       style={[styles.circle, { width: size, height: size, borderRadius: size / 2, backgroundColor: avatarColor(id) }]}
     >
-      <Text style={{ color: colors.onImage, fontSize: Math.round(size * 0.38), fontWeight: '700' }}>{initials(name)}</Text>
+      <Text style={{ color: colors.onImage, fontSize: Math.max(text.caption.fontSize, Math.round(size * 0.38)), fontWeight: '700' }}>{initials(name)}</Text>
     </View>
   );
 }

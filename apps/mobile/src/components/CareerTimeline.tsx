@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { TeamCrest } from '@/components/TeamCrest';
 import type { CareerEntryT } from '@/data/schemas';
 import { formatNumber, mergeCareerPeriods, seasonRange } from '@/features/squad/logic';
-import { spacing } from '@/theme/tokens';
+import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type Props = { career: CareerEntryT[]; emptyLabel?: string };
@@ -22,7 +22,7 @@ export function CareerTimeline({ career, emptyLabel }: Props) {
 
   if (entries.length === 0) {
     return (
-      <Text style={{ color: colors.textMuted, fontSize: 14 }}>
+      <Text style={{ color: colors.textMuted, ...text.body }}>
         {emptyLabel ?? t('player.careerEmpty')}
       </Text>
     );
@@ -66,11 +66,11 @@ export function CareerTimeline({ career, emptyLabel }: Props) {
                 />
                 <Text style={[styles.club, { color: colors.text }]}>{entry.club}</Text>
                 {range ? (
-                  <Text style={{ color: colors.textMuted, fontSize: 13 }}>{range}</Text>
+                  <Text style={{ color: colors.textMuted, ...text.body }}>{range}</Text>
                 ) : null}
               </View>
               {stats.length > 0 ? (
-                <Text style={{ color: colors.textMuted, fontSize: 13 }}>{stats.join(' · ')}</Text>
+                <Text style={{ color: colors.textMuted, ...text.body }}>{stats.join(' · ')}</Text>
               ) : null}
             </View>
           </View>
@@ -88,5 +88,5 @@ const styles = StyleSheet.create({
   line: { flex: 1, width: 2, marginVertical: 2 },
   body: { flex: 1, gap: 2, paddingBottom: spacing.md, paddingTop: 2 },
   head: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  club: { flex: 1, fontSize: 15, fontWeight: '700' },
+  club: { flex: 1, ...text.bodyLarge, fontWeight: '700' },
 });

@@ -6,7 +6,7 @@ import { PlayerPortrait } from '@/components/PlayerPortrait';
 import type { PlayerSummaryT } from '@/data/schemas';
 import { countryLabel } from '@/features/squad/labels';
 import { ageFrom } from '@/features/squad/logic';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 export function PlayerRow({ player, now }: { player: PlayerSummaryT; now: number }) {
@@ -32,17 +32,17 @@ export function PlayerRow({ player, now }: { player: PlayerSummaryT; now: number
     >
       <PlayerPortrait player={player} size={44} />
       <View style={styles.text}>
-        <Text numberOfLines={1} style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+        <Text numberOfLines={1} style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
           {player.name}
         </Text>
         {subtitle ? (
-          <Text numberOfLines={1} style={{ color: colors.textMuted, fontSize: 14 }}>
+          <Text numberOfLines={1} style={{ color: colors.textMuted, ...text.body }}>
             {subtitle}
           </Text>
         ) : null}
       </View>
       {player.shirtNumber !== null ? (
-        <Text style={{ color: colors.textMuted, fontSize: 18, fontWeight: '700' }}>{player.shirtNumber}</Text>
+        <Text style={{ color: colors.textMuted, ...text.subtitle, fontWeight: '700' }}>{player.shirtNumber}</Text>
       ) : null}
     </Pressable>
   );
