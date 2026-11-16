@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T12:32:46Z",
+  "updatedAt": "2026-11-16T17:17:40Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -28,87 +28,98 @@
   ],
   "stories": [
     {
-      "id": "8b4f49366179100a",
-      "title": "Dépor ABANCA – Barça: Toca vestirse de matagigantes",
-      "url": "https://riazor.org/depor-abanca-barca-toca-vestirse-de-matagigantes",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-15T12:30:49Z",
-      "kind": "article",
-      "summary": "El Dépor ABANCA recibe este domingo (18:00 h) al Barça. Las blanquiazules tratarán de derribar al gigante del fútbol femenino con el…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "607edb31e78c4eb4",
-      "title": "¿Cuándo vuelven los internacionales del Dépor a Abegondo?",
-      "url": "https://riazor.org/cuando-vuelven-internacionales-depor-abegondo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-15T10:00:00Z",
-      "kind": "article",
-      "summary": "Los internacionales del Deportivo harán frente a las últimas citas con sus selecciones antes de regresar al trabajo diario en Abegondo. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "a4321d245c100efa",
-      "title": "Noé Carrillo no ha dicho su última palabra",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-15/noe-carrillo-no-dicho-ultima-palabra-depor-891089.html",
+      "id": "e246eb46995a56cc",
+      "title": "El Dépor recuperará esta semana a a sus internacionales a cuentagotas",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/el-depor-recuperara-esta-semana-a-a-sus-internacionales-a-cuentagotas-891323.html",
       "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-15T09:33:45Z",
+      "publishedAt": "2026-11-16T16:30:21Z",
       "kind": "article",
-      "summary": "Noé Carrillo aprovecha el parón para reivindicarse con el Fabril y reclamar su sitio en el Dépor",
-      "thumbnailUrl": "img/news/8c16c7b3800e7789.webp",
-      "tags": [
-        "cantera"
-      ],
+      "summary": "Giménez, el último en regresar, no entrenará con el equipo hasta el día antes del duelo liguero ante el Alavés",
+      "thumbnailUrl": "img/news/3079bc5f3d238ed4.webp",
+      "tags": [],
       "alsoIn": []
     },
     {
-      "id": "2585a7728cd2e95a",
-      "title": "Noé Carrillo, líder absoluto del Fabril a la espera de su oportunidad en LaLiga",
-      "url": "https://riazor.org/noe-carrillo-lider-fabril-espera-oportunidad-laliga",
+      "id": "4d9f1071928b3171",
+      "title": "El objetivo de Benassi: un Dépor entre los mejores clubes de Europa con fichajes ‘de videojuego’ como Aubameyang",
+      "url": "https://riazor.org/benassi-depor-mejores-clubes-europa-aubameyang",
       "sourceId": "riazor",
-      "publishedAt": "2026-11-15T07:00:45Z",
+      "publishedAt": "2026-11-16T16:30:08Z",
       "kind": "article",
-      "summary": "El canterano ha visto puerta en los dos últimos partidos y golpea la puerta del primer equipo en busca de su debut en Primera. La entrada…",
-      "thumbnailUrl": null,
+      "summary": "El consejero delegado del Deportivo se mostró ambicioso en La Gazzetta dello Sport hablando sobre el proyecto en mente para el club. La…",
+      "thumbnailUrl": "img/news/946ebec40bedb772.webp",
       "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "cdf90412bde798fa",
-      "title": "El lugar que la historia merece",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-15/el-lugar-que-la-historia-merece-891086.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-15T04:00:00Z",
-      "kind": "article",
-      "summary": "‘Falas Dépor’ reunió ayer a personas decisivas para preservar los recuerdos de clubes punteros",
-      "thumbnailUrl": "img/news/ae90d2ebff8f9af4.webp",
-      "tags": [
+        "fichajes",
         "club"
       ],
       "alsoIn": []
     },
     {
-      "id": "b8cf169d17de4987",
-      "title": "Resumen del Fabril 2 - 2 Barakaldo",
-      "url": "https://youtube.com/watch?v=d6vOsJMKmD4",
+      "id": "ff8df7e82f9751a2",
+      "title": "El Dépor organiza un torneo de fútbol 7 entre sus abonados con final en Riazor",
+      "url": "https://riazor.org/depor-torneo-futbol-7-abonados-final-riazor",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-16T14:15:05Z",
+      "kind": "article",
+      "summary": "El Deportivo organiza un torneo por su 120 aniversario entre aficionados del club con final en Riazor. Te explicamos cómo te puedes…",
+      "thumbnailUrl": "img/news/1321565fdcbc75b2.webp",
+      "tags": [
+        "aficion",
+        "club"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "El Dépor organiza un torneo de fútbol 7 para sus aficionados... con la final en Riazor",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/el-depor-organiza-un-torneo-de-futbol-7-para-sus-aficionados-con-la-final-en-riazor-891254.html",
+          "publishedAt": "2026-11-16T12:00:46Z"
+        },
+        {
+          "sourceId": "dxt-campeon",
+          "title": "El Dépor aprueba este martes las cuentas del ascenso y un tope de remuneración para sus administradores",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/el-depor-aprueba-este-martes-las-cuentas-del-ascenso-y-un-tope-de-remuneracion-para-sus-administradores-891321.html",
+          "publishedAt": "2026-11-16T16:54:41Z"
+        }
+      ]
+    },
+    {
+      "id": "68b297d049db66cf",
+      "title": "Sorteo entradas Deportivo Alavés - RC Deportivo | Jornada 13 | Temporada 26/27",
+      "url": "https://youtube.com/watch?v=Gsff4rr-saM",
       "sourceId": "youtube-club",
-      "publishedAt": "2026-11-14T22:12:13Z",
+      "publishedAt": "2026-11-16T12:55:03Z",
       "kind": "video",
       "summary": null,
-      "thumbnailUrl": "img/news/bc94f1e14155a63f.webp",
+      "thumbnailUrl": "img/news/208d50a7ea9534e4.webp",
       "tags": [
-        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e6d052dcb740df88",
+      "title": "Orden y Talento #55 en directo | Preguntas y respuestas del primer tercio de Liga del Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/orden-y-talento-55-en-directo-preguntas-y-respuestas-del-primer-tercio-de-liga-del-depor-891255.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-16T11:59:12Z",
+      "kind": "article",
+      "summary": "Desde las 14.00 horas, nuevo episodio del videopodcast de Dxt Campeón respondiendo en vivo a las preguntas de la audiencia",
+      "thumbnailUrl": "img/news/505c7bf1d3ea619e.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "790247c3e37d3aa6",
+      "title": "Cedidos del Dépor: Patiño aprovecha el parón para coger ritmo y sumar minutos",
+      "url": "https://riazor.org/cedidos-depor-patino-aprovecha-paron-ritmo-minutos",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-16T11:00:11Z",
+      "kind": "article",
+      "summary": "Repasamos la jornada de los cedidos por el Deportivo. Charlie Patiño volvió a ser titular con el Bochum en un amistoso durante el parón de…",
+      "thumbnailUrl": null,
+      "tags": [
         "partido"
       ],
       "alsoIn": []
