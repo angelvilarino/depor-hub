@@ -17,10 +17,11 @@ const PRESSED_OPACITY = 0.68;
  * `Pressable` de React Native en la app para que ninguna pantalla quede
  * estática al toque.
  */
-export function Pressable({ style, ...rest }: PressableProps) {
+export function Pressable({ style, hitSlop = 8, ...rest }: PressableProps) {
   return (
     <NativePressable
       {...rest}
+      hitSlop={hitSlop}
       style={(state: PressableStateCallbackType): StyleProp<ViewStyle> => [
         typeof style === 'function' ? style(state) : style,
         state.pressed ? { opacity: PRESSED_OPACITY } : null,
