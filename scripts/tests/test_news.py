@@ -815,3 +815,63 @@ def test_write_home_limits_stories_optimizes_thumbnails_and_is_idempotent(tmp_pa
     stale.write_bytes(b"viejo")
     assert news_ingest.write_home(tmp_path, news, FakeThumbs({})) is False
     assert not stale.exists()
+
+
+def test_cmd_news_keeps_the_client_open_until_the_home_is_written(tmp_path: Path, monkeypatch):
+    """Regresión del run 43758631748: la portada pedía miniaturas con el cliente ya cerrado."""
+    from types import SimpleNamespace
+
+    from depor_hub import cli
+
+    root = Path(__file__).parents[2]
+    events: list[str] = []
+
+    class FakeNewsHttp:
+        def __init__(self, **kwargs):
+            self.closed = False
+            events.append("open")
+
+        def close(self):
+            self.closed = True
+            events.append("close")
+
+    result = SimpleNamespace(
+        news=SimpleNamespace(stories=[object()] * 5, sources=[]),
+        errors=[],
+        report=SimpleNamespace(render=lambda: ""),
+    )
+
+    monkeypatch.setattr(cli, "NewsHttp", FakeNewsHttp)
+    monkeypatch.setattr(cli.news_ingest, "load_existing", lambda path: None)
+    monkeypatch.setattr(
+        cli.news_ingest, "run_ingest", lambda **kwargs: events.append("ingest") or result
+    )
+    monkeypatch.setattr(cli.news_ingest, "write_news", lambda *args, **kwargs: True)
+
+    def write_home(out, news, http):
+        assert http.closed is False, "la portada necesita el cliente abierto"
+        events.append("home")
+        return True
+
+    monkeypatch.setattr(cli.news_ingest, "write_home", write_home)
+
+    args = SimpleNamespace(
+        feeds=str(root / "data/manual/news_feeds.yml"),
+        squad=str(root / "data/public/v1/squad.json"),
+        fixtures=str(root / "data/public/v1/fixtures.json"),
+        coach=str(root / "data/manual/coach.yml"),
+        out=str(tmp_path),
+        raw=str(tmp_path / "raw"),
+        interval=0.0,
+        threshold=None,
+        dedupe_threshold=0.52,
+        min_stories=1,
+        social=None,
+        offline=True,
+        force=False,
+        dry_run=False,
+        report=False,
+    )
+
+    assert cli.cmd_news(args) == 0
+    assert events == ["open", "ingest", "home", "close"]

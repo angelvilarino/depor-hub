@@ -746,63 +746,64 @@ def cmd_news(args: argparse.Namespace) -> int:
         offline=args.offline,
     )
     try:
-        result = news_ingest.run_ingest(
-            feeds=feeds,
-            http=http,
-            squad=squad,
-            coach_name=coach_name,
-            opponents=[
-                name
-                for match in (fixtures.matches if fixtures else [])
-                for name in (match.home.name, match.away.name)
-            ],
-            existing=existing,
-            now=datetime.now(UTC),
-            threshold=args.threshold,
-            dedupe_threshold=args.dedupe_threshold,
-            force=args.force,
-        )
-    except news_ingest.AllFeedsFailed as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
-        _gh_output(changed="false", failed="true")
-        return 1
-    finally:
-        http.close()
-
-    if args.report:
-        print(result.report.render())
-
-    if not args.dry_run and len(result.news.stories) < args.min_stories:
-        print(
-            f"ERROR: solo {len(result.news.stories)} historias; mínimo requerido "
-            f"{args.min_stories}. Se conserva news.json anterior.",
-            file=sys.stderr,
-        )
-        _gh_output(changed="false", failed="true")
-        return 1
-
-    changed = False
-    if not args.dry_run:
-        changed = news_ingest.write_news(out_dir, result, force=args.force)
-        # Si news.json no cambió, la portada conserva su updatedAt para no crear un commit vacío.
-        home_news = result.news if changed or existing is None else existing
-        changed = news_ingest.write_home(out_dir, home_news, http) or changed
-        if args.social:
-            social_config = load_social(Path(args.social))
-            social = build_social(
-                social_config,
-                datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        try:
+            result = news_ingest.run_ingest(
+                feeds=feeds,
+                http=http,
+                squad=squad,
+                coach_name=coach_name,
+                opponents=[
+                    name
+                    for match in (fixtures.matches if fixtures else [])
+                    for name in (match.home.name, match.away.name)
+                ],
+                existing=existing,
+                now=datetime.now(UTC),
+                threshold=args.threshold,
+                dedupe_threshold=args.dedupe_threshold,
+                force=args.force,
             )
-            changed = write_social(out_dir, social, force=args.force) or changed
-    print(
-        f"changed={'true' if changed else 'false'} stories={len(result.news.stories)} "
-        f"sources={len(result.news.sources)} errors={len(result.errors)}"
-    )
-    for error in result.errors:
-        print(f"AVISO: {error}", file=sys.stderr)
-    _gh_output(changed="true" if changed else "false", failed="false")
-    return 0
+        except news_ingest.AllFeedsFailed as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            _gh_output(changed="false", failed="true")
+            return 1
 
+        if args.report:
+            print(result.report.render())
+
+        if not args.dry_run and len(result.news.stories) < args.min_stories:
+            print(
+                f"ERROR: solo {len(result.news.stories)} historias; mínimo requerido "
+                f"{args.min_stories}. Se conserva news.json anterior.",
+                file=sys.stderr,
+            )
+            _gh_output(changed="false", failed="true")
+            return 1
+
+        changed = False
+        if not args.dry_run:
+            changed = news_ingest.write_news(out_dir, result, force=args.force)
+            # Si news.json no cambió, la portada conserva su updatedAt para no crear un commit vacío.
+            home_news = result.news if changed or existing is None else existing
+            changed = news_ingest.write_home(out_dir, home_news, http) or changed
+            if args.social:
+                social_config = load_social(Path(args.social))
+                social = build_social(
+                    social_config,
+                    datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                )
+                changed = write_social(out_dir, social, force=args.force) or changed
+        print(
+            f"changed={'true' if changed else 'false'} stories={len(result.news.stories)} "
+            f"sources={len(result.news.sources)} errors={len(result.errors)}"
+        )
+        for error in result.errors:
+            print(f"AVISO: {error}", file=sys.stderr)
+        _gh_output(changed="true" if changed else "false", failed="false")
+        return 0
+    finally:
+        # La portada descarga sus miniaturas con este cliente: se cierra al final.
+        http.close()
 
 def cmd_social(args: argparse.Namespace) -> int:
     config = load_social(Path(args.source))
