@@ -61,6 +61,9 @@ export default function RootLayout() {
             headerStyle: { backgroundColor: colors.surface },
             headerTintColor: colors.text,
             contentStyle: { backgroundColor: colors.background },
+            // D-01/D-24: el título del grupo padre (`(tabs)`, «Equipo») no se
+            // filtra al botón atrás; las fichas vuelven solo con la flecha.
+            headerBackButtonDisplayMode: 'minimal',
           }}
         >
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -69,22 +72,13 @@ export default function RootLayout() {
             options={{ presentation: 'modal', title: t('settings.title') }}
           />
           <Stack.Screen name="match/[id]" options={{ title: t('match.title') }} />
-          <Stack.Screen
-            name="player/[id]"
-            options={{ title: t('player.title'), headerBackTitle: t('tabs.team') }}
-          />
-          <Stack.Screen
-            name="coach"
-            options={{ title: t('coach.title'), headerBackTitle: t('tabs.team') }}
-          />
+          <Stack.Screen name="player/[id]" options={{ title: t('player.title') }} />
+          <Stack.Screen name="coach" options={{ title: t('coach.title') }} />
           <Stack.Screen name="rival/[teamId]" options={{ title: t('home.rivalProfile') }} />
-          <Stack.Screen
-            name="club/[section]"
-            options={{ title: t('tabs.club'), headerBackTitle: t('tabs.club') }}
-          />
+          <Stack.Screen name="club/[section]" options={{ title: t('tabs.club') }} />
           <Stack.Screen
             name="club/himno/[id]"
-            options={{ title: t('club.sections.himnos.title'), headerBackTitle: t('tabs.club') }}
+            options={{ title: t('club.sections.himnos.title') }}
           />
           <Stack.Screen name="about" options={{ presentation: 'modal', title: t('about.title') }} />
         </Stack>

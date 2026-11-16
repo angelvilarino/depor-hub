@@ -37,9 +37,15 @@ export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT |
 
   if (!head) return null;
   const isPoster = variant === 'poster';
+  const poster = colors.poster.outcome;
+  // D-02: sobre el cartel, las etiquetas G/E/P van en una pastilla clara con
+  // texto oscuro (≥4,5:1); el color semántico no se usa como texto sobre azul.
   const barColors: Record<Result, string> = isPoster
-    ? { W: colors.poster.outcome.winText, D: colors.poster.outcome.drawText, L: colors.poster.outcome.lossText }
+    ? { W: poster.winText, D: poster.drawText, L: poster.lossText }
     : { W: colors.win, D: colors.draw, L: colors.loss };
+  const labelBackground: Record<Result, string | undefined> = isPoster
+    ? { W: poster.winBackground, D: poster.drawBackground, L: poster.lossBackground }
+    : { W: undefined, D: undefined, L: undefined };
   const textColor = isPoster ? colors.poster.text : paper.text;
   const muted = isPoster ? colors.poster.muted : paper.muted;
 
@@ -59,9 +65,18 @@ export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT |
       </View>
       <View style={styles.labels}>
         {ORDER.map((result, index) => (
-          <Text key={result} style={{ color: barColors[result], fontSize: 12, fontWeight: '700' }}>
-            {t(`calendar.outcome.${result}`)} {counts[index]}
-          </Text>
+          <View
+            key={result}
+            style={
+              labelBackground[result]
+                ? [styles.label, { backgroundColor: labelBackground[result] }]
+                : null
+            }
+          >
+            <Text style={{ color: barColors[result], fontSize: 12, fontWeight: '700' }}>
+              {t(`calendar.outcome.${result}`)} {counts[index]}
+            </Text>
+          </View>
         ))}
       </View>
       <Text style={{ color: muted, fontSize: 11 }}>
@@ -76,6 +91,7 @@ export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT |
 
 const styles = StyleSheet.create({
   container: { gap: spacing.xs },
+  label: { borderRadius: radius.pill, paddingHorizontal: 6 },
   bar: { height: 10, flexDirection: 'row', overflow: 'hidden', borderRadius: radius.pill },
   labels: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.xs },
 });

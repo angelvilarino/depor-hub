@@ -16,7 +16,7 @@ export default function AnthemScreen() {
 
   return (
     <Screen>
-      <Stack.Screen options={{ title, headerBackTitle: t('club.sections.himnos.title') }} />
+      <Stack.Screen options={{ title }} />
       <ClubGate query={query}>
         {(club) => {
           const current = club.anthems.find((item) => item.id === id) ?? null;

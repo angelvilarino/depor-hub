@@ -19,7 +19,7 @@ export default function ClubSectionScreen() {
   const Component = id ? CLUB_SECTION_COMPONENTS[id] : null;
   const query = useClub();
   const title = id ? t(`club.sections.${id}.title`) : t('club.sections.unknownTitle');
-  const screenOptions = <Stack.Screen options={{ title, headerBackTitle: t('tabs.club') }} />;
+  const screenOptions = <Stack.Screen options={{ title }} />;
 
   if (!Component) {
     return (

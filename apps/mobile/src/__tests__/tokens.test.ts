@@ -44,4 +44,16 @@ describe.each([
   ])('poster outcome %s >= 4.5', (_label, fg, bg) => {
     expect(contrastRatio(fg, bg)).toBeGreaterThanOrEqual(AA);
   });
+
+  // D-12: el papel debe leerse como una superficie; el borde lo separa del
+  // fondo cuando el contraste de relleno no llega.
+  it('paper border is visible against paper (>= 1.3)', () => {
+    expect(contrastRatio(c.paper.border, c.paper.background)).toBeGreaterThanOrEqual(1.3);
+  });
+});
+
+describe('separación de superficies (D-12)', () => {
+  it('el papel oscuro se separa del fondo >= 1.3:1', () => {
+    expect(contrastRatio(darkColors.paper.background, darkColors.background)).toBeGreaterThanOrEqual(1.3);
+  });
 });

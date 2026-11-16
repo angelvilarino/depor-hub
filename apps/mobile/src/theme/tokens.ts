@@ -98,7 +98,9 @@ export const darkColors: ColorTokens = {
     },
   },
   paper: {
-    background: '#151D2A',
+    // D-12: el papel oscuro necesita separarse del fondo (1,35:1) para no
+    // desaparecer como bloque editorial.
+    background: '#202D42',
     text: '#F1F5F9',
     muted: '#B7C4D2',
     border: '#394555',
