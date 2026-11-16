@@ -127,7 +127,7 @@ export function JuntaSection({ club }: { club: ClubT }) {
 
 const styles = StyleSheet.create({
   orgChart: { gap: spacing.sm },
-  connector: { width: 2, height: spacing.md, marginLeft: 19 },
+  connector: { width: 2, height: spacing.md, marginLeft: spacing.lg },
   members: {
     gap: spacing.xs,
     borderLeftWidth: 2,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
     borderRadius: radius.sm,
   },
-  personText: { flex: 1, gap: 2 },
+  personText: { flex: 1, gap: spacing.xs },
   avatar: {
     width: 40,
     height: 40,

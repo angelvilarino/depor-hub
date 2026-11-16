@@ -157,7 +157,7 @@ export default function SettingsScreen() {
           onPress={() => router.push('/about')}
           style={styles.linkRow}
         >
-          <View style={{ flex: 1, gap: 2 }}>
+          <View style={{ flex: 1, gap: spacing.xs }}>
             <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '600' }}>
               {t('settings.about')}
             </Text>

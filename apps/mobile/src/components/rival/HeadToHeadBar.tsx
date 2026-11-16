@@ -91,7 +91,7 @@ export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT |
 
 const styles = StyleSheet.create({
   container: { gap: spacing.xs },
-  label: { borderRadius: radius.pill, paddingHorizontal: 6 },
+  label: { borderRadius: radius.pill, paddingHorizontal: spacing.sm },
   bar: { height: 10, flexDirection: 'row', overflow: 'hidden', borderRadius: radius.pill },
   labels: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.xs },
 });

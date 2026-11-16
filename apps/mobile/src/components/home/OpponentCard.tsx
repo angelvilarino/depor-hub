@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   label: { ...text.caption, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
   coachCard: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm },
   coachInitials: { width: 42, height: 42, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
-  coachText: { gap: 2 },
+  coachText: { gap: spacing.xs },
   coachName: { fontFamily: typography.headline, ...text.subtitle },
   openLink: { ...text.body, fontWeight: '800', alignSelf: 'flex-end' },
 });

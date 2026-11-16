@@ -102,7 +102,7 @@ function PositionChartBody({ points, matches, selectedMatchday, onSelectMatchday
       style={{ gap: spacing.xs }}
     >
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-        <View style={{ flex: 1, gap: 2 }}>
+        <View style={{ flex: 1, gap: spacing.xs }}>
           <Animated.Text
             accessibilityLiveRegion="polite"
             maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}

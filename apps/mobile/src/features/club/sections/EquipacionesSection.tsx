@@ -235,6 +235,6 @@ const styles = StyleSheet.create({
   },
   seasonHeader: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
   kitRow: { flexDirection: 'row', gap: spacing.md, alignItems: 'center' },
-  kitText: { flex: 1, gap: 2 },
+  kitText: { flex: 1, gap: spacing.xs },
   divider: { height: StyleSheet.hairlineWidth, marginVertical: spacing.sm },
 });

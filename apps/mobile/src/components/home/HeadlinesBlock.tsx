@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
   featureHeading: { gap: spacing.sm },
   featureTitle: { fontFamily: typography.headline, ...text.heading },
   meta: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  metaCopy: { flex: 1, minWidth: 0, gap: 2 },
+  metaCopy: { flex: 1, minWidth: 0, gap: spacing.xs },
   sourceMark: { alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   coverageButton: { minHeight: minTouch, alignSelf: 'flex-start', justifyContent: 'center', paddingHorizontal: spacing.xs },
   alternateList: { borderTopWidth: StyleSheet.hairlineWidth, gap: spacing.sm, paddingTop: spacing.sm },

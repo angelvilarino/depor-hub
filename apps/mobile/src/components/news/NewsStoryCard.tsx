@@ -238,11 +238,11 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     justifyContent: 'center',
   },
-  alsoButton: { minHeight: 28, flexDirection: 'row', alignItems: 'center', gap: 2 },
+  alsoButton: { minHeight: 28, flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
   alternatives: {
     borderTopWidth: StyleSheet.hairlineWidth,
     paddingTop: spacing.sm,
     gap: spacing.sm,
   },
-  alternative: { gap: 2, minHeight: minTouch, justifyContent: 'center' },
+  alternative: { gap: spacing.xs, minHeight: minTouch, justifyContent: 'center' },
 });

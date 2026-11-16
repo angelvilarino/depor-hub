@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
   },
-  dateCol: { width: 84, gap: 2 },
+  dateCol: { width: 84, gap: spacing.xs },
   teams: { flex: 1, gap: spacing.xs },
   teamRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
 });

@@ -213,16 +213,16 @@ export default function CoachScreen() {
 
 const styles = StyleSheet.create({
   hero: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  heroText: { flex: 1, gap: 2 },
+  heroText: { flex: 1, gap: spacing.xs },
   personalGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  personalItem: { width: '47%', gap: 2 },
+  personalItem: { width: '47%', gap: spacing.xs },
   recordGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   recordItem: {
     flexGrow: 1,
     flexBasis: '22%',
     minWidth: 64,
     alignItems: 'center',
-    gap: 1,
+    gap: spacing.xs,
     paddingVertical: spacing.xs,
     borderRadius: radius.sm,
   },

@@ -58,5 +58,5 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
   },
-  text: { flex: 1, gap: 2 },
+  text: { flex: 1, gap: spacing.xs },
 });

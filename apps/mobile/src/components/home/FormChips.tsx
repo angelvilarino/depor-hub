@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   chip: {
     minWidth: 28,
     minHeight: 28,
-    paddingHorizontal: 6,
+    paddingHorizontal: spacing.sm,
     borderRadius: 14,
     borderWidth: 1.5,
     alignItems: 'center',

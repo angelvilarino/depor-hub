@@ -65,7 +65,7 @@ export function RivalidadesSection({ club }: { club: ClubT }) {
             {balance.sourceUrl ? <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(balance.sourceUrl!)} style={{ minHeight: 44, justifyContent: 'center' }}><Text style={{ color: colors.primary, fontWeight: '700' }}>{t('club.rivalidades.source')}</Text></Pressable> : null}
             {meetings.length ? <View style={{ gap: spacing.sm }}><SectionHeader title={t('club.rivalidades.meetings')} icon="time-outline" /><Timeline entries={meetings} filters /></View> : null}
           </> : null}
-          {rivalry.facts.length ? <View style={{ gap: spacing.xs }}>{rivalry.facts.map((fact, index) => <View key={`${fact.text}-${index}`} style={{ gap: 2 }}><Text style={{ color: colors.text }}>{fact.text}</Text><Text style={{ color: colors.textMuted, ...text.caption }}>{fact.provenance.source}</Text></View>)}</View> : null}
+          {rivalry.facts.length ? <View style={{ gap: spacing.xs }}>{rivalry.facts.map((fact, index) => <View key={`${fact.text}-${index}`} style={{ gap: spacing.xs }}><Text style={{ color: colors.text }}>{fact.text}</Text><Text style={{ color: colors.textMuted, ...text.caption }}>{fact.provenance.source}</Text></View>)}</View> : null}
         </Card>;
       })}
     </View>
@@ -75,7 +75,7 @@ export function RivalidadesSection({ club }: { club: ClubT }) {
 const styles = {
   header: { flexDirection: 'row' as const, alignItems: 'center' as const, justifyContent: 'space-between' as const, gap: spacing.sm },
   stats: { flexDirection: 'row' as const, flexWrap: 'wrap' as const, gap: spacing.sm },
-  stat: { flex: 1, minWidth: 60, alignItems: 'center' as const, gap: 2 },
+  stat: { flex: 1, minWidth: 60, alignItems: 'center' as const, gap: spacing.xs },
   statNumber: { ...text.heading, fontWeight: '900' as const },
   bar: { flexDirection: 'row' as const, overflow: 'hidden' as const, borderRadius: 4 },
 };

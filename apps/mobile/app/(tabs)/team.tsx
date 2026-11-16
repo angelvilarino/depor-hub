@@ -165,7 +165,7 @@ function CoachCard({ coach }: { coach: CoachT | null }) {
       style={[styles.coachCard, { backgroundColor: colors.surface, borderColor: colors.border }]}
     >
       <CoachPortrait name={coach.name} photoUrl={coach.photoUrl} size={48} />
-      <View style={{ flex: 1, gap: 1 }}>
+      <View style={{ flex: 1, gap: spacing.xs }}>
         <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '700' }}>
           {t('team.coach').toUpperCase()}
         </Text>
@@ -405,7 +405,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: radius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    padding: 2,
+    padding: spacing.xs,
   },
   viewButton: {
     minWidth: minTouch,
@@ -427,7 +427,7 @@ const styles = StyleSheet.create({
     width: '48%',
     minHeight: 168,
     alignItems: 'center',
-    gap: 2,
+    gap: spacing.xs,
     padding: spacing.sm,
     marginBottom: spacing.sm,
     borderRadius: radius.md,
@@ -440,15 +440,15 @@ const styles = StyleSheet.create({
     right: spacing.sm,
     minWidth: 26,
     height: 26,
-    paddingHorizontal: 5,
+    paddingHorizontal: spacing.xs,
     borderRadius: 13,
     alignItems: 'center',
     justifyContent: 'center',
   },
   loanChip: {
-    marginTop: 2,
+    marginTop: spacing.xs,
     paddingHorizontal: spacing.sm,
-    paddingVertical: 1,
+    paddingVertical: spacing.xs,
     borderRadius: radius.sm,
     borderWidth: StyleSheet.hairlineWidth,
   },
@@ -464,7 +464,7 @@ const styles = StyleSheet.create({
   },
   listNumber: { width: 32, textAlign: 'center', ...text.body, fontWeight: '700' },
   listPortraitSpacer: { width: 40 },
-  listText: { flex: 1, gap: 1 },
+  listText: { flex: 1, gap: spacing.xs },
   listAge: { width: 34, textAlign: 'center', ...text.body, fontWeight: '600' },
   listHeader: {
     flexDirection: 'row',

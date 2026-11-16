@@ -48,7 +48,7 @@ export function MuseoSection({ club }: { club: ClubT }) {
         <Card>
           <SectionTitle>{t('club.museo.prices')}</SectionTitle>
           {museum.prices.map((price) => (
-            <View key={price.label} style={{ gap: 2 }}>
+            <View key={price.label} style={{ gap: spacing.xs }}>
               <View style={styles.row}>
                 <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '600' }}>
                   {price.label}

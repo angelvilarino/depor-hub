@@ -84,9 +84,9 @@ const styles = StyleSheet.create({
   timeline: { gap: 0 },
   row: { flexDirection: 'row', gap: spacing.sm },
   rail: { width: 16, alignItems: 'center' },
-  dot: { width: 10, height: 10, borderRadius: 5, marginTop: 6 },
-  line: { flex: 1, width: 2, marginVertical: 2 },
-  body: { flex: 1, gap: 2, paddingBottom: spacing.md, paddingTop: 2 },
+  dot: { width: 10, height: 10, borderRadius: 5, marginTop: spacing.xs },
+  line: { flex: 1, width: 2, marginVertical: spacing.xs },
+  body: { flex: 1, gap: spacing.xs, paddingBottom: spacing.md, paddingTop: spacing.xs },
   head: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   club: { flex: 1, ...text.bodyLarge, fontWeight: '700' },
 });

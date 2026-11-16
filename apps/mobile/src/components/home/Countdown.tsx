@@ -101,5 +101,5 @@ export function Countdown({ targetMs, onExpire }: { targetMs: number; onExpire?:
 
 const styles = StyleSheet.create({
   countdown: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.xs },
-  unitBox: { flex: 1, minWidth: 0, minHeight: 62, alignItems: 'center', justifyContent: 'center', borderRadius: radius.sm, borderWidth: 2, paddingVertical: spacing.xs, gap: 1 },
+  unitBox: { flex: 1, minWidth: 0, minHeight: 62, alignItems: 'center', justifyContent: 'center', borderRadius: radius.sm, borderWidth: 2, paddingVertical: spacing.xs, gap: spacing.xs },
 });

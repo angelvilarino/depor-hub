@@ -78,6 +78,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text: { flex: 1, gap: 2 },
+  text: { flex: 1, gap: spacing.xs },
   play: { minWidth: 44, minHeight: 44, justifyContent: 'center', alignItems: 'center' },
 });

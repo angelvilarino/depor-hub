@@ -7,6 +7,11 @@ const allowed = new Set([path.join(root, 'src/theme/tokens.ts')]);
 const hex = /#[0-9a-f]{3,8}\b/i;
 const fontSize = /fontSize:\s*\d/;
 const fontFamily = /fontFamily:\s*['"]/;
+// D-26: el espaciado sale de `spacing` (rejilla 4/8). Un 0 explícito es válido.
+const spacingProps = 'padding|margin|gap|rowGap|columnGap';
+const literalSpacing = new RegExp(
+  `\\b(?:${spacingProps})(?:Top|Bottom|Left|Right|Horizontal|Vertical)?\\s*:\\s*[1-9]\\d*\\b`,
+);
 
 function walk(dir: string): string[] {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -43,5 +48,9 @@ describe('higiene de tokens (D-04, D-26)', () => {
 
   it('no hay familias tipográficas literales fuera de tokens.ts', () => {
     expect(offenders(fontFamily)).toEqual([]);
+  });
+
+  it('no hay espaciados literales fuera de tokens.ts', () => {
+    expect(offenders(literalSpacing)).toEqual([]);
   });
 });
