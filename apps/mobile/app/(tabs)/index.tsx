@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
@@ -32,6 +32,7 @@ import {
   selectPostponedNotice,
 } from '@/features/home/logic';
 import { useNow } from '@/features/home/useNow';
+import { logStartup, markStartup } from '@/perf/startup';
 
 const NO_MATCHES: MatchT[] = [];
 const NO_TABLE: StandingRowT[] = [];
@@ -45,6 +46,12 @@ export default function Home() {
   const season = useSeason();
   const rivals = useRivals();
   const now = useNow(60_000);
+
+  // F3-14: primer render de la portada; cierra el camino crítico del arranque.
+  useEffect(() => {
+    markStartup('home');
+    logStartup();
+  }, []);
 
   // F3-07: el gesto de refrescar invalida todo lo que pinta la portada.
   const refresh = () => {
@@ -159,7 +166,6 @@ export default function Home() {
           onSeeAll={() => router.push('/news')}
         />
       ) : null}
-
     </Screen>
   );
 }
