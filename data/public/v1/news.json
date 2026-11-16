@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T19:03:53Z",
+  "updatedAt": "2026-11-16T19:32:50Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "d2ba10fd600db995",
+      "title": "¿Estuviste en Riazor apoyando al Deportivo contra el Barça? ¡Búscate en nuestra galería!",
+      "url": "https://dxtcampeon.elidealgallego.com/audiovisuales/galerias/2026-11-16/estuviste-en-riazor-apoyando-al-deportivo-contra-el-barca-buscate-en-nuestra-galeria-891357.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-16T18:50:28Z",
+      "kind": "article",
+      "summary": "Más de 4.000 aficionados presenciaron el histórico empate del conjunto blanquiazul ante las blaugranas",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/16/6afb4ee7d3665.JPG",
+      "tags": [
+        "partido",
+        "aficion"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "1ea2b3d104e89d2a",
       "title": "Los 16 minutos del «atropello» en Riazor",
@@ -2159,27 +2174,6 @@
         "partido"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "78822378e57b838c",
-      "title": "Quagliata sobre la posible llamada de la selección: «Pienso en conseguir puntos con el Dépor, que para mí es lo más importante»",
-      "url": "https://riazor.org/quagliata-seleccion-no-pienso-eso-depor-importante",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-05T14:00:28Z",
-      "kind": "article",
-      "summary": "Quaglita -en rueda de prensa tras recibir el premio a jugador del mes en el Deportivo- mostró su apoyo públicamente a Leo Román…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "dxt-campeon",
-          "title": "Quagliata: \"No pienso en la selección, pienso en trabajar y conseguir puntos con el Dépor\"",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/quagliata-no-pienso-en-la-seleccion-pienso-en-trabajar-y-conseguir-puntos-con-el-depor-889159.html",
-          "publishedAt": "2026-11-05T12:43:50Z"
-        }
-      ]
     }
   ]
 }

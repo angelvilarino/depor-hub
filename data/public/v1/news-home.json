@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T19:03:53Z",
+  "updatedAt": "2026-11-16T19:32:50Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -35,6 +35,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "d2ba10fd600db995",
+      "title": "¿Estuviste en Riazor apoyando al Deportivo contra el Barça? ¡Búscate en nuestra galería!",
+      "url": "https://dxtcampeon.elidealgallego.com/audiovisuales/galerias/2026-11-16/estuviste-en-riazor-apoyando-al-deportivo-contra-el-barca-buscate-en-nuestra-galeria-891357.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-16T18:50:28Z",
+      "kind": "article",
+      "summary": "Más de 4.000 aficionados presenciaron el histórico empate del conjunto blanquiazul ante las blaugranas",
+      "thumbnailUrl": "img/news/1a9696b33b1a3d6b.webp",
+      "tags": [
+        "partido",
+        "aficion"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "1ea2b3d104e89d2a",
       "title": "Los 16 minutos del «atropello» en Riazor",
@@ -114,20 +129,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "img/news/208d50a7ea9534e4.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e6d052dcb740df88",
-      "title": "Orden y Talento #55 en directo | Preguntas y respuestas del primer tercio de Liga del Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/orden-y-talento-55-en-directo-preguntas-y-respuestas-del-primer-tercio-de-liga-del-depor-891255.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-16T11:59:12Z",
-      "kind": "article",
-      "summary": "Desde las 14.00 horas, nuevo episodio del videopodcast de Dxt Campeón respondiendo en vivo a las preguntas de la audiencia",
-      "thumbnailUrl": "img/news/505c7bf1d3ea619e.webp",
       "tags": [
         "partido"
       ],
