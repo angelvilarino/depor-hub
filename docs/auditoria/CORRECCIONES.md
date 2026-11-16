@@ -242,6 +242,13 @@ cd workers/live-proxy && npm test        # 4 passed
 node scripts/startup-report.mjs < arranque.txt   # p50/p95, pendiente de dispositivo
 ```
 
+### Nota operativa
+
+Al empujar el Lote 3, GitHub tenía Actions **desactivado a nivel de repositorio**
+(`enabled=false`): los push no generaron CI y el dispatch de News quedó en cola.
+Se reactivó el 16-nov-2026, se relanzó News (run `43916776317`, **verde**, publicó
+`e0e2ab5`) y se forzó CI sobre `main` con un commit vacío (`28de34d`).
+
 ### Lo que sigue
 
 - Instalar el APK de `preview` en un Android real y rellenar la tabla de
