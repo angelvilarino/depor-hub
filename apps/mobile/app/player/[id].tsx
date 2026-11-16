@@ -33,7 +33,7 @@ import {
   summarizeMatches,
   type SocialLink,
 } from '@/features/squad/logic';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 
@@ -82,10 +82,10 @@ function StatStrip({ values }: { values: Stat[] }) {
       {present.map((item) => (
         <View key={item.key} style={styles.stat}>
           <Ionicons name={item.icon} size={17} color={item.color ?? colors.textMuted} />
-          <Text style={{ color: colors.text, fontSize: 18, fontWeight: '800' }}>
+          <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>
             {formatNumber(item.value ?? 0, i18n.language)}
           </Text>
-          <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '600' }}>
+          <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '600' }}>
             {item.label}
           </Text>
         </View>
@@ -169,15 +169,15 @@ function PhotoModal({
           />
           <View style={styles.attribution}>
             {photo.credit ? (
-              <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }}>{photo.credit}</Text>
+              <Text style={{ color: colors.text, ...text.body, fontWeight: '600' }}>{photo.credit}</Text>
             ) : null}
             {author ? (
-              <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+              <Text style={{ color: colors.textMuted, ...text.body }}>
                 {t('player.photoAuthor', { author })}
               </Text>
             ) : null}
             {photo.license ? (
-              <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+              <Text style={{ color: colors.textMuted, ...text.body }}>
                 {t('player.photoLicense', { license: photo.license })}
               </Text>
             ) : null}
@@ -187,12 +187,12 @@ function PhotoModal({
                 onPress={() => void Linking.openURL(photo.sourceUrl as string)}
                 style={styles.sourceLink}
               >
-                <Text style={{ color: colors.primary, fontSize: 13, fontWeight: '700' }}>
+                <Text style={{ color: colors.primary, ...text.body, fontWeight: '700' }}>
                   {t('player.photoSource')}
                 </Text>
               </Pressable>
             ) : null}
-            <Text style={{ color: colors.textMuted, fontSize: 12 }}>{t('player.photoNote')}</Text>
+            <Text style={{ color: colors.textMuted, ...text.caption }}>{t('player.photoNote')}</Text>
           </View>
         </View>
       </View>
@@ -227,15 +227,15 @@ function MatchRow({
         team={{ name: match.opponent, tla: null, crestUrl: match.opponentCrestUrl }}
       />
       <View style={styles.matchText}>
-        <Text style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>
+        <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
           {match.opponent}
         </Text>
         {subtitle ? (
-          <Text style={{ color: colors.textMuted, fontSize: 12 }}>{subtitle}</Text>
+          <Text style={{ color: colors.textMuted, ...text.caption }}>{subtitle}</Text>
         ) : null}
       </View>
       {score ? (
-        <Text style={{ color: colors.text, fontSize: 15, fontWeight: '700' }}>{score}</Text>
+        <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{score}</Text>
       ) : null}
       {result && color ? (
         <View
@@ -243,7 +243,7 @@ function MatchRow({
           accessibilityLabel={resultLong ?? undefined}
           style={[styles.resultChip, { borderColor: color }]}
         >
-          <Text style={{ color, fontSize: 12, fontWeight: '800' }}>
+          <Text style={{ color, ...text.caption, fontWeight: '800' }}>
             {t(`calendar.outcome.${result}`)}
           </Text>
         </View>
@@ -492,24 +492,24 @@ export default function PlayerDetail() {
           <View style={styles.heroText}>
             <Text
               accessibilityRole="header"
-              style={{ color: colors.text, fontSize: 24, fontWeight: '800' }}
+              style={{ color: colors.text, ...text.heading, fontWeight: '800' }}
             >
               {player.name}
             </Text>
             <View style={styles.identityRow}>
               <TeamCrest size={18} team={deporTeam} />
-              <Text style={{ color: colors.textMuted, fontSize: 13, flex: 1 }}>{identity}</Text>
+              <Text style={{ color: colors.textMuted, ...text.body, flex: 1 }}>{identity}</Text>
             </View>
           </View>
           {player.shirtNumber !== null ? (
             <View style={styles.numberBlock}>
               <Text
                 accessibilityLabel={`${t('player.shirtNumber')} ${player.shirtNumber}`}
-                style={{ color: colors.primary, fontSize: 44, fontWeight: '900', lineHeight: 46 }}
+                style={{ color: colors.primary, ...text.hero, fontWeight: '900', lineHeight: 46 }}
               >
                 {player.shirtNumber}
               </Text>
-              <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>
+              <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '700' }}>
                 {t('player.shirtNumber').toUpperCase()}
               </Text>
             </View>
@@ -535,7 +535,7 @@ export default function PlayerDetail() {
         {stats.length > 0 ? (
           <StatStrip values={stats} />
         ) : (
-          <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+          <Text style={{ color: colors.textMuted, ...text.body }}>
             {scope === 'season' ? t('player.noSeasonStats') : t('player.noStats')}
           </Text>
         )}
@@ -555,14 +555,14 @@ export default function PlayerDetail() {
         <>
           {bio.length > 0 ? (
             <Card>
-              <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+              <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
                 {t('player.bioTitle')}
               </Text>
               <View style={styles.bioGrid}>
                 {bio.map((item) => (
                   <View key={item.key} style={styles.bioItem}>
-                    <Text style={{ color: colors.textMuted, fontSize: 12 }}>{item.label}</Text>
-                    <Text style={{ color: colors.text, fontSize: 15, fontWeight: '600' }}>
+                    <Text style={{ color: colors.textMuted, ...text.caption }}>{item.label}</Text>
+                    <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '600' }}>
                       {item.value}
                     </Text>
                   </View>
@@ -573,7 +573,7 @@ export default function PlayerDetail() {
 
           {social.length > 0 ? (
             <Card>
-              <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+              <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
                 {t('player.socialTitle')}
               </Text>
               <View style={styles.socialRow}>
@@ -586,7 +586,7 @@ export default function PlayerDetail() {
                     style={[styles.socialButton, { borderColor: colors.border }]}
                   >
                     <Ionicons name={SOCIAL_ICON[link.network]} size={20} color={colors.primary} />
-                    <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }}>
+                    <Text style={{ color: colors.text, ...text.body, fontWeight: '600' }}>
                       {t(`player.social.${link.network}`)}
                     </Text>
                   </Pressable>
@@ -597,7 +597,7 @@ export default function PlayerDetail() {
 
           {pending.length > 0 ? (
             <Card>
-              <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+              <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
                 {t('player.pendingTitle')}
               </Text>
               <BodyText muted>{t('player.pendingBody')}</BodyText>
@@ -618,11 +618,11 @@ export default function PlayerDetail() {
 
       {tab === 'matches' ? (
         <Card>
-          <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+          <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
             {t('player.deporMatchesTitle')}
           </Text>
           {scopeSummary ? (
-            <Text style={{ color: colors.textMuted, fontSize: 13 }}>
+            <Text style={{ color: colors.textMuted, ...text.body }}>
               {[
                 `${scopeSummary.appearances} ${t('player.stats.appearancesShort')}`,
                 scopeSummary.goals !== null
@@ -653,7 +653,7 @@ export default function PlayerDetail() {
 
       {tab === 'career' ? (
         <Card>
-          <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+          <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
             {t('player.careerTitle')}
           </Text>
           <CareerTimeline career={player.career} />
@@ -688,7 +688,7 @@ const styles = StyleSheet.create({
   numberBlock: { alignItems: 'center', minWidth: 48 },
   loanRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, marginTop: spacing.sm },
   loanChip: {
-    fontSize: 12,
+    ...text.caption,
     fontWeight: '700',
     paddingHorizontal: spacing.sm,
     paddingVertical: 3,
@@ -735,7 +735,7 @@ const styles = StyleSheet.create({
   },
   pendingRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   pendingChip: {
-    fontSize: 12,
+    ...text.caption,
     paddingHorizontal: spacing.sm,
     paddingVertical: 4,
     borderRadius: radius.sm,

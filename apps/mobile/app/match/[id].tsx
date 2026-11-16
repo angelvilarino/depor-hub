@@ -14,7 +14,7 @@ import { snapshotToMatch } from '@/features/match/snapshot';
 import { useMatchActions } from '@/features/home/useMatchActions';
 import { useNow } from '@/features/home/useNow';
 import { ReminderSheet } from '@/features/reminders/ReminderSheet';
-import { spacing } from '@/theme/tokens';
+import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { formatMatchDate } from '@/utils/matchTime';
 
@@ -23,8 +23,8 @@ function InfoRow({ label, value }: { label: string; value: string | null }) {
   if (!value) return null;
   return (
     <View style={styles.infoRow}>
-      <Text style={{ color: colors.textMuted, fontSize: 14 }}>{label}</Text>
-      <Text style={{ color: colors.text, fontSize: 16 }}>{value}</Text>
+      <Text style={{ color: colors.textMuted, ...text.body }}>{label}</Text>
+      <Text style={{ color: colors.text, ...text.bodyLarge }}>{value}</Text>
     </View>
   );
 }
@@ -153,7 +153,7 @@ function MatchDetailBody({
           <Text
             style={{
               color: live ? colors.danger : colors.textMuted,
-              fontSize: 14,
+              ...text.body,
               fontWeight: live ? '800' : '400',
             }}
           >
@@ -362,16 +362,16 @@ function MatchDetailSections({ detail }: { detail: MatchDetailT }) {
 const styles = StyleSheet.create({
   board: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.sm },
   side: { flex: 1, alignItems: 'center', gap: spacing.sm },
-  team: { fontSize: 16, fontWeight: '700', textAlign: 'center' },
-  score: { fontSize: 28, fontWeight: '700' },
+  team: { ...text.bodyLarge, fontWeight: '700', textAlign: 'center' },
+  score: { ...text.display, fontWeight: '700' },
   infoRow: { gap: 2 },
-  sectionTitle: { fontSize: 18, fontWeight: '700' },
+  sectionTitle: { ...text.subtitle, fontWeight: '700' },
   lineup: { gap: 2 },
-  lineupTeam: { fontSize: 16, fontWeight: '700' },
-  lineupLabel: { fontSize: 12, fontWeight: '700', letterSpacing: 0.5, marginTop: spacing.xs, textTransform: 'uppercase' },
-  playerLine: { fontSize: 15 },
-  metaLine: { fontSize: 14 },
-  eventLine: { fontSize: 15, lineHeight: 22 },
+  lineupTeam: { ...text.bodyLarge, fontWeight: '700' },
+  lineupLabel: { ...text.caption, fontWeight: '700', letterSpacing: 0.5, marginTop: spacing.xs, textTransform: 'uppercase' },
+  playerLine: { ...text.bodyLarge },
+  metaLine: { ...text.body },
+  eventLine: { ...text.bodyLarge, lineHeight: 22 },
   statusRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.xs },
   liveDot: { width: 8, height: 8, borderRadius: 4 },
 });

@@ -11,7 +11,7 @@ import { clearDataCache } from '@/data/cache';
 import { useMeta } from '@/data/queries';
 import type { LanguagePreference } from '@/i18n';
 import { type ThemePreference, useSettings } from '@/store/settings';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 function Chips<T extends string>(props: {
@@ -127,14 +127,14 @@ export default function SettingsScreen() {
       <Card>
         <BodyText>{t('settings.data')}</BodyText>
         <View style={styles.infoRow}>
-          <Text style={{ color: colors.textMuted, fontSize: 13 }}>{t('settings.dataVersion')}</Text>
-          <Text selectable style={{ color: colors.text, fontSize: 14 }} numberOfLines={1}>
+          <Text style={{ color: colors.textMuted, ...text.body }}>{t('settings.dataVersion')}</Text>
+          <Text selectable style={{ color: colors.text, ...text.body }} numberOfLines={1}>
             {meta.data?.dataHash ?? '—'}
           </Text>
         </View>
         <View style={styles.infoRow}>
-          <Text style={{ color: colors.textMuted, fontSize: 13 }}>{t('settings.dataUpdatedAt')}</Text>
-          <Text style={{ color: colors.text, fontSize: 14 }}>
+          <Text style={{ color: colors.textMuted, ...text.body }}>{t('settings.dataUpdatedAt')}</Text>
+          <Text style={{ color: colors.text, ...text.body }}>
             {meta.data ? formatDateTime(meta.data.updatedAt, i18n.language) : '—'}
           </Text>
         </View>
@@ -158,10 +158,10 @@ export default function SettingsScreen() {
           style={styles.linkRow}
         >
           <View style={{ flex: 1, gap: 2 }}>
-            <Text style={{ color: colors.text, fontSize: 16, fontWeight: '600' }}>
+            <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '600' }}>
               {t('settings.about')}
             </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 13 }}>{t('settings.aboutHint')}</Text>
+            <Text style={{ color: colors.textMuted, ...text.body }}>{t('settings.aboutHint')}</Text>
           </View>
           <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
         </Pressable>

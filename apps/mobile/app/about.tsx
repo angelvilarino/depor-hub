@@ -4,7 +4,7 @@ import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/Screen';
 import licenses from '@/data/licenses.json';
-import { spacing } from '@/theme/tokens';
+import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 
@@ -38,43 +38,43 @@ export default function AboutScreen() {
           <Card>
             <Text
               accessibilityRole="header"
-              style={{ color: colors.text, fontSize: 26, fontWeight: '800' }}
+              style={{ color: colors.text, ...text.display, fontWeight: '800' }}
             >
               {t('about.app')}
             </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 15 }}>
+            <Text style={{ color: colors.textMuted, ...text.bodyLarge }}>
               {t('about.version', { version })}
             </Text>
-            <Text style={{ color: colors.text, fontSize: 15, lineHeight: 22 }}>
+            <Text style={{ color: colors.text, ...text.bodyLarge, lineHeight: 22 }}>
               {t('common.unofficial')}
             </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 21 }}>
+            <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 21 }}>
               {t('about.mission')}
             </Text>
           </Card>
 
           <Card>
-            <Text style={{ color: colors.text, fontSize: 17, fontWeight: '700' }}>
+            <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '700' }}>
               {t('about.contact')}
             </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 14 }}>{t('about.contactHint')}</Text>
+            <Text style={{ color: colors.textMuted, ...text.body }}>{t('about.contactHint')}</Text>
             <Pressable
               accessibilityRole="link"
               accessibilityLabel={t('about.contactLink')}
               onPress={() => void openExternal(ISSUES_URL)}
               style={styles.link}
             >
-              <Text style={{ color: colors.primary, fontSize: 15, fontWeight: '600' }}>
+              <Text style={{ color: colors.primary, ...text.bodyLarge, fontWeight: '600' }}>
                 {t('about.contactLink')}
               </Text>
             </Pressable>
           </Card>
 
           <View style={{ gap: spacing.xs }}>
-            <Text style={{ color: colors.text, fontSize: 20, fontWeight: '800' }}>
+            <Text style={{ color: colors.text, ...text.title, fontWeight: '800' }}>
               {t('about.licenses')}
             </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 14, lineHeight: 20 }}>
+            <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>
               {t('about.licensesIntro', {
                 count: licenses.count,
                 groups: licenses.licenses.length,
@@ -85,18 +85,18 @@ export default function AboutScreen() {
       }
       renderSectionHeader={({ section }) => (
         <View style={[styles.sectionHeader, { borderBottomColor: colors.border }]}>
-          <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '800' }}>
+          <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '800' }}>
             {section.title}
           </Text>
-          <Text style={{ color: colors.textMuted, fontSize: 12 }}>{section.count}</Text>
+          <Text style={{ color: colors.textMuted, ...text.caption }}>{section.count}</Text>
         </View>
       )}
       renderItem={({ item }) => (
         <View style={styles.row}>
-          <Text style={{ color: colors.text, fontSize: 14, flex: 1 }} numberOfLines={2}>
+          <Text style={{ color: colors.text, ...text.body, flex: 1 }} numberOfLines={2}>
             {item.name}
           </Text>
-          <Text style={{ color: colors.textMuted, fontSize: 12 }}>{item.version}</Text>
+          <Text style={{ color: colors.textMuted, ...text.caption }}>{item.version}</Text>
         </View>
       )}
     />

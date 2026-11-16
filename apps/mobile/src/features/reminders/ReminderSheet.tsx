@@ -6,7 +6,7 @@ import { Button } from '@/components/Button';
 import type { MatchT } from '@/data/schemas';
 import { offsetLabel, REMINDER_OFFSETS } from '@/features/reminders/plan';
 import type { SaveReminderResult } from '@/features/home/useMatchActions';
-import { minTouch, radius, spacing } from '@/theme/tokens';
+import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { formatReminderDateTime } from '@/utils/matchTime';
 
@@ -88,20 +88,20 @@ export function ReminderSheet({
           style={[styles.sheet, { backgroundColor: colors.surface, borderColor: colors.border }]}
         >
           <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-            <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 20, fontWeight: '700' }}>
+            <Text accessibilityRole="header" style={{ color: colors.text, ...text.title, fontWeight: '700' }}>
               {t('reminder.title')}
             </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 15 }}>{t('reminder.explanation')}</Text>
+            <Text style={{ color: colors.textMuted, ...text.bodyLarge }}>{t('reminder.explanation')}</Text>
 
             {!remindersEnabled ? (
               <View style={[styles.notice, { borderColor: colors.border }]}>
-                <Text style={{ color: colors.text, fontSize: 15 }}>{t('reminder.globalOff')}</Text>
+                <Text style={{ color: colors.text, ...text.bodyLarge }}>{t('reminder.globalOff')}</Text>
                 <Button variant="secondary" label={t('reminder.enable')} onPress={onEnableReminders} />
               </View>
             ) : null}
 
             {!remindable ? (
-              <Text style={{ color: colors.textMuted, fontSize: 15 }}>{t('reminder.tbc')}</Text>
+              <Text style={{ color: colors.textMuted, ...text.bodyLarge }}>{t('reminder.tbc')}</Text>
             ) : null}
 
             <View style={styles.chips}>
@@ -127,43 +127,43 @@ export function ReminderSheet({
                     <Text
                       style={{
                         color: checked ? colors.onPrimary : colors.text,
-                        fontSize: 15,
+                        ...text.bodyLarge,
                         fontWeight: '600',
                       }}
                     >
                       {offsetLabel(offset, t)}
                     </Text>
                     {past ? (
-                      <Text style={{ color: colors.textMuted, fontSize: 12 }}>{t('reminder.past')}</Text>
+                      <Text style={{ color: colors.textMuted, ...text.caption }}>{t('reminder.past')}</Text>
                     ) : null}
                   </Pressable>
                 );
               })}
             </View>
 
-            <Text style={{ color: colors.text, fontSize: 15, fontWeight: '600' }}>
+            <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '600' }}>
               {t('reminder.previewTitle')}
             </Text>
             {previews.length > 0 ? (
               previews.map((preview) => (
-                <Text key={preview} style={{ color: colors.textMuted, fontSize: 14 }}>
+                <Text key={preview} style={{ color: colors.textMuted, ...text.body }}>
                   {preview}
                 </Text>
               ))
             ) : (
-              <Text style={{ color: colors.textMuted, fontSize: 14 }}>{t('reminder.previewEmpty')}</Text>
+              <Text style={{ color: colors.textMuted, ...text.body }}>{t('reminder.previewEmpty')}</Text>
             )}
 
             {denied ? (
               <View style={[styles.notice, { borderColor: colors.danger }]}>
-                <Text style={{ color: colors.danger, fontSize: 15 }}>{t('reminder.permissionDenied')}</Text>
+                <Text style={{ color: colors.danger, ...text.bodyLarge }}>{t('reminder.permissionDenied')}</Text>
                 <Button variant="secondary" label={t('reminder.openSettings')} onPress={onOpenSettings} />
               </View>
             ) : null}
 
             {exactAlarmDenied ? (
               <View style={[styles.notice, { borderColor: colors.border }]}>
-                <Text style={{ color: colors.text, fontSize: 15 }}>
+                <Text style={{ color: colors.text, ...text.bodyLarge }}>
                   {t('reminder.exactAlarmDenied')}
                 </Text>
                 <Button

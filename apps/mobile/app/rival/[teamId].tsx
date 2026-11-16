@@ -12,7 +12,7 @@ import { useMeta, useRivals, useStandings } from '@/data/queries';
 import type { HeadToHeadMeetingT, RivalT } from '@/data/schemas';
 import { teamName } from '@/features/calendar/logic';
 import { openExternal } from '@/utils/openExternal';
-import { spacing, typography } from '@/theme/tokens';
+import { spacing, typography, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 function normalized(text: string) {
@@ -52,7 +52,7 @@ function MeetingCard({ meeting, rival, depor }: { meeting: HeadToHeadMeetingT; r
   });
   return (
     <View accessible accessibilityLabel={label} style={[styles.meeting, { borderColor: colors.paper.border }]}>
-      <Text style={{ color: colors.paper.muted, fontSize: 12 }}>{date} · {meeting.competition}</Text>
+      <Text style={{ color: colors.paper.muted, ...text.caption }}>{date} · {meeting.competition}</Text>
       <View style={styles.meetingTeams}>
         <CrestBadge team={homeTeam} size={38} />
         <Text style={[styles.meetingScore, { color: colors.paper.text }]}>
@@ -63,7 +63,7 @@ function MeetingCard({ meeting, rival, depor }: { meeting: HeadToHeadMeetingT; r
           {t(`calendar.outcome.${meeting.deporResult}`)}
         </Text>
       </View>
-      <Text style={{ color: colors.paper.text, fontSize: 13 }}>
+      <Text style={{ color: colors.paper.text, ...text.body }}>
         {meeting.home} · {meeting.away}
       </Text>
     </View>
@@ -122,7 +122,7 @@ export default function RivalScreen() {
         </View>
         {form.length > 0 ? (
           <View style={styles.section}>
-            <Text style={{ color: colors.poster.muted, fontSize: 12, fontWeight: '800', letterSpacing: 0.8, textTransform: 'uppercase' }}>{t('home.rival.form')}</Text>
+            <Text style={{ color: colors.poster.muted, ...text.caption, fontWeight: '800', letterSpacing: 0.8, textTransform: 'uppercase' }}>{t('home.rival.form')}</Text>
             <FormChips results={form} variant="poster" />
           </View>
         ) : null}
@@ -149,7 +149,7 @@ export default function RivalScreen() {
             <StatTile label={t('home.rival.goalsAgainstShort')} value={head.goalsAgainst} />
           </View>
           <HeadToHeadBar head={head} />
-          <Text style={{ color: colors.paper.muted, fontSize: 12 }}>
+          <Text style={{ color: colors.paper.muted, ...text.caption }}>
             {t('home.rival.confidence', { confidence: t(`common.confidenceLevel.${head.confidence}`) })}
           </Text>
           <Pressable
@@ -158,7 +158,7 @@ export default function RivalScreen() {
             onPress={() => void openExternal(head.sourceUrl)}
             style={styles.sourceLink}
           >
-            <Text style={{ color: colors.paper.accent, fontSize: 13, fontWeight: '700' }}>
+            <Text style={{ color: colors.paper.accent, ...text.body, fontWeight: '700' }}>
               {t('home.rival.sourceLink')} ↗
             </Text>
           </Pressable>
@@ -183,17 +183,17 @@ export default function RivalScreen() {
 const styles = StyleSheet.create({
   profileHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   profileCopy: { flex: 1, minWidth: 0, gap: spacing.xs },
-  name: { fontFamily: typography.display, fontSize: 32, lineHeight: 38 },
-  position: { fontFamily: typography.numeric, fontSize: 21 },
+  name: { fontFamily: typography.display, ...text.display, lineHeight: 38 },
+  position: { fontFamily: typography.numeric, ...text.title },
   section: { gap: spacing.xs },
   coachRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   coachMonogram: { width: 48, height: 48, borderWidth: StyleSheet.hairlineWidth, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
-  coachName: { fontFamily: typography.headline, fontSize: 20 },
+  coachName: { fontFamily: typography.headline, ...text.title },
   stats: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.md },
   sourceLink: { minHeight: 44, justifyContent: 'center', alignSelf: 'flex-start' },
   meetings: { gap: spacing.sm },
   meeting: { borderWidth: StyleSheet.hairlineWidth, borderRadius: 12, padding: spacing.sm, gap: spacing.xs },
   meetingTeams: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.md },
-  meetingScore: { fontFamily: typography.numeric, fontSize: 28 },
-  meetingResult: { fontWeight: '900', fontSize: 14, width: 22, textAlign: 'center' },
+  meetingScore: { fontFamily: typography.numeric, ...text.display },
+  meetingResult: { fontWeight: '900', ...text.body, width: 22, textAlign: 'center' },
 });

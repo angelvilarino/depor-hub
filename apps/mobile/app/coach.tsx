@@ -18,7 +18,7 @@ import {
   formatPartialDate,
   groupStaff,
 } from '@/features/squad/logic';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type CareerRole = 'player' | 'coach';
@@ -26,7 +26,7 @@ type CareerRole = 'player' | 'coach';
 function SectionTitle({ children }: { children: string }) {
   const { colors } = useTheme();
   return (
-    <Text accessibilityRole="header" style={{ color: colors.text, fontSize: 16, fontWeight: '700' }}>
+    <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
       {children}
     </Text>
   );
@@ -110,16 +110,16 @@ export default function CoachScreen() {
           <View style={styles.heroText}>
             <Text
               accessibilityRole="header"
-              style={{ color: colors.text, fontSize: 24, fontWeight: '800' }}
+              style={{ color: colors.text, ...text.heading, fontWeight: '800' }}
             >
               {coach.name}
             </Text>
-            <Text style={{ color: colors.textMuted, fontSize: 14 }}>{t('coach.role')}</Text>
+            <Text style={{ color: colors.textMuted, ...text.body }}>{t('coach.role')}</Text>
             {nationality ? (
-              <Text style={{ color: colors.textMuted, fontSize: 14 }}>{nationality}</Text>
+              <Text style={{ color: colors.textMuted, ...text.body }}>{nationality}</Text>
             ) : null}
             {since ? (
-              <Text style={{ color: colors.textMuted, fontSize: 14 }}>
+              <Text style={{ color: colors.textMuted, ...text.body }}>
                 {t('coach.sinceValue', { year: since })}
               </Text>
             ) : null}
@@ -133,8 +133,8 @@ export default function CoachScreen() {
           <View style={styles.personalGrid}>
             {personal.map((item) => (
               <View key={item.key} style={styles.personalItem}>
-                <Text style={{ color: colors.textMuted, fontSize: 12 }}>{item.label}</Text>
-                <Text style={{ color: colors.text, fontSize: 15, fontWeight: '600' }}>
+                <Text style={{ color: colors.textMuted, ...text.caption }}>{item.label}</Text>
+                <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '600' }}>
                   {item.value}
                 </Text>
               </View>
@@ -149,10 +149,10 @@ export default function CoachScreen() {
           <View style={styles.recordGrid}>
             {recordItems.map((item) => (
               <View key={item.key} style={styles.recordItem}>
-                <Text style={{ color: colors.text, fontSize: 20, fontWeight: '800' }}>
+                <Text style={{ color: colors.text, ...text.title, fontWeight: '800' }}>
                   {item.value}
                 </Text>
-                <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '600' }}>
+                <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '600' }}>
                   {item.label}
                 </Text>
               </View>
@@ -182,16 +182,16 @@ export default function CoachScreen() {
       {staffGroups.length > 0 ? (
         <Card>
           <SectionTitle>{t('coach.staffTitle')}</SectionTitle>
-          <Text style={{ color: colors.textMuted, fontSize: 13 }}>{t('coach.staffNote')}</Text>
+          <Text style={{ color: colors.textMuted, ...text.body }}>{t('coach.staffNote')}</Text>
           {staffGroups.map((group) => (
             <View key={group.role} style={styles.staffGroup}>
-              <Text style={{ color: colors.textMuted, fontSize: 12, fontWeight: '700' }}>
+              <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '700' }}>
                 {t(`coach.staffRole.${group.role}`, { defaultValue: group.role }).toUpperCase()}
               </Text>
               {group.members.map((member, index) => (
                 <View key={`${member.name}-${index}`} style={styles.staffRow}>
                   <CoachPortrait name={member.name} photoUrl={member.photoUrl} size={32} />
-                  <Text style={{ color: colors.text, fontSize: 15 }}>{member.name}</Text>
+                  <Text style={{ color: colors.text, ...text.bodyLarge }}>{member.name}</Text>
                 </View>
               ))}
             </View>
@@ -202,7 +202,7 @@ export default function CoachScreen() {
       <Card>
         <View style={styles.sourceRow}>
           <Ionicons name="information-circle-outline" size={18} color={colors.textMuted} />
-          <Text style={{ color: colors.textMuted, fontSize: 13, flex: 1 }}>
+          <Text style={{ color: colors.textMuted, ...text.body, flex: 1 }}>
             {t('coach.sourceNote')}
           </Text>
         </View>
