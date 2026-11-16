@@ -53,7 +53,7 @@ function FormTile({
     >
       <View style={[styles.crestRing, { borderColor: tone }]}>
         <CrestBadge team={match.opponent} size={38} />
-        <View style={[styles.resultBadge, { backgroundColor: tone }]}>
+        <View style={[styles.resultBadge, { backgroundColor: tone, borderColor: paper.background }]}>
           <Text style={[styles.resultLetter, { color: colors.onPrimary }]}>{t(`calendar.outcome.${match.result}`)}</Text>
         </View>
       </View>
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
   formStrip: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.xs },
   formTile: { minWidth: minTouch + 14, minHeight: 72, alignItems: 'center', justifyContent: 'center', gap: 4, borderWidth: 1.5, borderColor: 'transparent', borderRadius: 12, padding: 4 },
   crestRing: { width: 48, height: 48, borderWidth: 2, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
-  resultBadge: { position: 'absolute', right: -4, bottom: -4, width: 20, height: 20, borderRadius: 10, borderWidth: 2, borderColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
+  resultBadge: { position: 'absolute', right: -4, bottom: -4, width: 20, height: 20, borderRadius: 10, borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
   resultLetter: { fontSize: 12, fontWeight: '900' },
   matchDetail: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: spacing.sm, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm },
   matchCopy: { flex: 1, minWidth: 100 },

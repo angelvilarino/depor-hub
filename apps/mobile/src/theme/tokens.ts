@@ -36,6 +36,8 @@ export type ColorTokens = {
   win: string;
   draw: string;
   loss: string;
+  onImage: string;
+  rating: string;
   poster: PosterTokens;
   paper: PaperTokens;
   news: NewsTokens;
@@ -53,6 +55,8 @@ export const lightColors: ColorTokens = {
   win: '#0B6B4F',
   draw: '#8A5A00',
   loss: '#B3261E',
+  onImage: '#FFFFFF',
+  rating: '#C5A13B',
   poster: {
     stops: ['#003D75', '#00478F', '#075FA3'],
     text: '#FFFFFF',
@@ -86,6 +90,8 @@ export const darkColors: ColorTokens = {
   win: '#5FD3A6',
   draw: '#F2C14E',
   loss: '#F2B8B5',
+  onImage: '#FFFFFF',
+  rating: '#F4C542',
   poster: {
     stops: ['#003D75', '#00478F', '#075FA3'],
     text: '#FFFFFF',
@@ -110,6 +116,35 @@ export const darkColors: ColorTokens = {
 };
 
 export const spacing = { xs: 4, sm: 8, md: 16, lg: 24, xl: 32 } as const;
+// Paleta de equipaciones y avatares: son colores de dominio, no de interfaz.
+export const kitColors = {
+  white: '#F8FAFC',
+  blue: '#0876BD',
+  navy: '#102A43',
+  black: '#111827',
+  red: '#C62828',
+  yellow: '#F4C542',
+  orange: '#F97316',
+  gray: '#9CA3AF',
+  green: '#16804A',
+  purple: '#7047A3',
+  maroon: '#7F1D35',
+  pink: '#DB2777',
+  gold: '#C5A13B',
+  lightBlue: '#66B8E8',
+  teal: '#0F9E9A',
+  outline: '#475569',
+} as const;
+export const avatarPalette = ['#00478F', '#0B6B4F', '#7B3F98', '#9A3412', '#1F5F8B', '#8A2B4A'] as const;
+export const imageTokens = {
+  text: '#FFFFFF',
+  muted: '#F1F5F9',
+  scrim: 'rgba(0,0,0,0.5)',
+  backdrop: 'rgba(0,0,0,0.94)',
+  veil: 'rgba(255,255,255,0.16)',
+  heroFrom: 'rgba(4,19,36,0.14)',
+  heroTo: 'rgba(4,19,36,0.92)',
+} as const;
 export const radius = { sm: 8, md: 12, lg: 20, poster: 24, pill: 999 } as const;
 export const minTouch = 44;
 export const elevation = { paper: 1, poster: 4 } as const;

@@ -8,7 +8,7 @@ import { ConfidenceBadge, SectionHeader } from '@/components/club/Editorial';
 import { useTitles } from '@/data/queries';
 import type { ClubT } from '@/data/schemas';
 import { formatDate, titleTotal } from '@/features/club/logic';
-import { radius, spacing } from '@/theme/tokens';
+import { radius, spacing, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { TagList } from './ui';
 
@@ -50,7 +50,7 @@ export function TitulosSection({ club }: { club: ClubT }) {
         const locale = i18n.language;
         return <Card key={`${edition.competition}-${edition.year}`}>
           <View style={styles.editionHeader}><View style={{ flex: 1 }}><Text style={{ color: colors.primary, fontSize: 13, fontWeight: '800' }}>{edition.year}</Text><Text style={{ color: colors.text, fontSize: 18, fontWeight: '800' }}>{edition.competition}</Text></View><ConfidenceBadge label={t('club.titulos.confidence')} status={edition.status} /></View>
-          {rival ? <Text style={{ color: colors.text, fontFamily: 'SourceSerif4-SemiBold', fontSize: 17 }}>{t('club.titulos.finalAgainst', { rival })}</Text> : null}
+          {rival ? <Text style={{ color: colors.text, fontFamily: typography.headline, fontSize: 17 }}>{t('club.titulos.finalAgainst', { rival })}</Text> : null}
           {score ? <Text accessibilityLabel={t('club.titulos.score', { score })} style={{ color: colors.primary, fontSize: 32, fontWeight: '900' }}>{score}</Text> : null}
           {match?.date ? <Text style={{ color: colors.textMuted }}>{formatDate(match.date, locale)}</Text> : null}
           {match?.venue ? <Text style={{ color: colors.textMuted }}>{match.venue}</Text> : null}

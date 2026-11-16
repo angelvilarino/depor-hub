@@ -377,7 +377,7 @@ export default function PlayerDetail() {
           label: t('player.stats.yellowCardsShort'),
           value: scopeSummary.yellowCards,
           icon: 'card-outline',
-          color: '#EAB308',
+          color: colors.rating,
         },
         {
           key: 'redCards',
@@ -414,7 +414,7 @@ export default function PlayerDetail() {
           label: t('player.stats.yellowCardsShort'),
           value: totals.yellowCards,
           icon: 'card-outline',
-          color: '#EAB308',
+          color: colors.rating,
         },
         {
           key: 'redCards',

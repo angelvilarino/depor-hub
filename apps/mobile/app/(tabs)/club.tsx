@@ -10,7 +10,7 @@ import type { ClubT } from '@/data/schemas';
 import { ClubGate } from '@/features/club/ClubGate';
 import { CLUB_SECTIONS, currentCrest, formatSeats, titleTotal, type ClubSectionId } from '@/features/club/logic';
 import { useTheme } from '@/theme/useTheme';
-import { spacing, radius } from '@/theme/tokens';
+import { spacing, radius, typography } from '@/theme/tokens';
 import { clubImageUrl } from '@/config';
 import { HeroHeader, SectionHeader, StatCounter, Timeline, type TimelineEntry } from '@/components/club/Editorial';
 
@@ -134,9 +134,9 @@ export default function ClubScreen() {
             <Card>
               <SectionHeader title={t('club.identity')} subtitle={identity.officialName} icon="information-circle-outline" />
               <View style={styles.identityGrid}>
-                {identity.colors.length ? <View style={styles.identityItem}><Text style={styles.label}>{t('club.colors')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.colors.join(' · ')}</Text></View> : null}
-                {identity.president ? <View style={styles.identityItem}><Text style={styles.label}>{t('club.president')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.president}</Text></View> : null}
-                {identity.headquarters ? <View style={styles.identityItem}><Text style={styles.label}>{t('club.headquarters')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.headquarters}</Text></View> : null}
+                {identity.colors.length ? <View style={styles.identityItem}><Text style={[styles.label, { color: colors.textMuted }]}>{t('club.colors')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.colors.join(' · ')}</Text></View> : null}
+                {identity.president ? <View style={styles.identityItem}><Text style={[styles.label, { color: colors.textMuted }]}>{t('club.president')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.president}</Text></View> : null}
+                {identity.headquarters ? <View style={styles.identityItem}><Text style={[styles.label, { color: colors.textMuted }]}>{t('club.headquarters')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.headquarters}</Text></View> : null}
               </View>
             </Card>
             {timelineEntries.length ? <Card><SectionHeader title={t('club.timeline')} subtitle={t('club.timelineSubtitle')} icon="time-outline" /><Timeline entries={timelineEntries} filters /></Card> : null}
@@ -149,7 +149,7 @@ export default function ClubScreen() {
                   return <Pressable key={section.id} accessibilityRole="button" accessibilityLabel={t(`club.sections.${section.id}.title`)} onPress={() => router.push(`/club/${section.id}`)} style={[styles.sectionTile, { backgroundColor: colors.background, borderColor: colors.border }]}>
                     <View style={styles.tileArtwork}>
                       {image ? <View style={StyleSheet.absoluteFill}><ClubTileImage uri={image} /></View> : null}
-                      <View style={styles.tileIcon}><Ionicons name={section.icon as IconName} size={24} color={colors.primary} /></View>
+                      <View style={[styles.tileIcon, { backgroundColor: colors.surface }]}><Ionicons name={section.icon as IconName} size={24} color={colors.primary} /></View>
                       {badge ? <View style={[styles.tileBadge, { backgroundColor: colors.primary }]}><Text style={{ color: colors.onPrimary, fontSize: 12, fontWeight: '800' }}>{badge}</Text></View> : null}
                     </View>
                     <Text style={[styles.tileTitle, { color: colors.text }]}>{t(`club.sections.${section.id}.title`)}</Text>
@@ -173,7 +173,7 @@ function ClubTileImage({ uri }: { uri: string }) {
 
 const styles = StyleSheet.create({
   unofficial: { fontSize: 12, lineHeight: 17 }, stats: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
-  motto: { fontFamily: 'SourceSerif4-SemiBold', fontSize: 20, textAlign: 'center' },
-  identityGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md }, identityItem: { minWidth: '42%', flexGrow: 1, gap: 2 }, label: { color: '#64748B', fontSize: 12, fontWeight: '700' }, value: { fontSize: 15 },
-  sectionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm }, sectionTile: { width: '47%', minHeight: 150, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden', padding: spacing.sm, gap: 4 }, tileArtwork: { height: 66, justifyContent: 'center', alignItems: 'center', overflow: 'hidden', borderRadius: radius.sm }, tileIcon: { width: 44, height: 44, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.88)' }, tileBadge: { position: 'absolute', right: 5, top: 5, minWidth: 28, height: 28, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5 }, tileTitle: { fontSize: 16, fontWeight: '800' }, tileSubtitle: { fontSize: 12, lineHeight: 16 },
+  motto: { fontFamily: typography.headline, fontSize: 20, textAlign: 'center' },
+  identityGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md }, identityItem: { minWidth: '42%', flexGrow: 1, gap: 2 }, label: { fontSize: 12, fontWeight: '700' }, value: { fontSize: 15 },
+  sectionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm }, sectionTile: { width: '47%', minHeight: 150, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden', padding: spacing.sm, gap: 4 }, tileArtwork: { height: 66, justifyContent: 'center', alignItems: 'center', overflow: 'hidden', borderRadius: radius.sm }, tileIcon: { width: 44, height: 44, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center' }, tileBadge: { position: 'absolute', right: 5, top: 5, minWidth: 28, height: 28, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5 }, tileTitle: { fontSize: 16, fontWeight: '800' }, tileSubtitle: { fontSize: 12, lineHeight: 16 },
 });

@@ -33,6 +33,7 @@ import {
   summarizeMatches,
 } from '@/features/squad/logic';
 import { contrastRatio } from '@/utils/contrast';
+import { imageTokens } from '@/theme/tokens';
 
 const player = (over: Partial<PlayerT> = {}): PlayerT => ({
   id: 1,
@@ -534,7 +535,7 @@ describe('avatar', () => {
   it('color estable y con contraste AA frente a blanco', () => {
     expect(avatarColor(42)).toBe(avatarColor(42));
     expect(avatarColor(-7)).toBeDefined();
-    AVATAR_COLORS.forEach((c) => expect(contrastRatio('#FFFFFF', c)).toBeGreaterThanOrEqual(4.5));
+    AVATAR_COLORS.forEach((c) => expect(contrastRatio(imageTokens.text, c)).toBeGreaterThanOrEqual(4.5));
   });
 });
 

@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import type { MediaRefT } from '@/data/schemas';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { mapUrl, webMapUrl } from '@/features/club/logic';
-import { radius, spacing } from '@/theme/tokens';
+import { imageTokens, radius, spacing, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
@@ -25,8 +25,8 @@ export function HeroHeader({
   return (
     <View style={[styles.hero, { backgroundColor: colors.primary }]}>
       {imageUri ? <Image source={{ uri: imageUri }} onError={() => setImageFailed(true)} contentFit="cover" transition={160} style={StyleSheet.absoluteFill} /> : null}
-      <LinearGradient colors={['rgba(4,19,36,0.14)', 'rgba(4,19,36,0.92)']} style={StyleSheet.absoluteFill} />
-      {!imageUri ? <Ionicons name={icon} size={92} color="rgba(255,255,255,0.16)" style={styles.heroMark} /> : null}
+      <LinearGradient colors={[imageTokens.heroFrom, imageTokens.heroTo]} style={StyleSheet.absoluteFill} />
+      {!imageUri ? <Ionicons name={icon} size={92} color={imageTokens.veil} style={styles.heroMark} /> : null}
       {emblem ? <Image source={{ uri: emblem }} contentFit="contain" style={styles.emblem} /> : null}
       <View style={styles.heroCopy}>
         <Text accessibilityRole="header" style={styles.heroTitle}>{title}</Text>
@@ -40,7 +40,7 @@ export function HeroHeader({
 
 export function SectionHeader({ title, subtitle, icon }: { title: string; subtitle?: string; icon?: IconName }) {
   const { colors } = useTheme();
-  return <View style={styles.sectionHeader}>{icon ? <Ionicons name={icon} size={23} color={colors.primary} /> : null}<View style={{ flex: 1 }}><Text accessibilityRole="header" style={{ color: colors.text, fontSize: 21, fontWeight: '800' }}>{title}</Text>{subtitle ? <Text style={{ color: colors.textMuted, fontSize: 14, fontFamily: 'SourceSerif4-SemiBold' }}>{subtitle}</Text> : null}</View></View>;
+  return <View style={styles.sectionHeader}>{icon ? <Ionicons name={icon} size={23} color={colors.primary} /> : null}<View style={{ flex: 1 }}><Text accessibilityRole="header" style={{ color: colors.text, fontSize: 21, fontWeight: '800' }}>{title}</Text>{subtitle ? <Text style={{ color: colors.textMuted, fontSize: 14, fontFamily: typography.headline }}>{subtitle}</Text> : null}</View></View>;
 }
 
 export function StatCounter({ value, label, suffix, locale }: { value: number; label: string; suffix?: string; locale?: string }) {
@@ -81,7 +81,7 @@ export function Timeline({ entries, filters = false }: { entries: TimelineEntry[
 export function MediaCredit({ media, inline = false }: { media: MediaRefT; inline?: boolean }) {
   const { t } = useTranslation();
   const label = [media.credit, media.author, media.license].filter(Boolean).join(' · ') || media.sourceUrl || media.url;
-  return <Pressable accessibilityRole="button" accessibilityLabel={`${t('club.mediaCredit')}: ${label}`} onPress={() => Alert.alert(t('club.mediaCredit'), label, media.sourceUrl ? [{ text: t('common.close'), style: 'cancel' }, { text: t('club.openSource'), onPress: () => void Linking.openURL(media.sourceUrl!) }] : [{ text: t('common.close') }])} style={[styles.credit, inline && styles.inlineCredit]}><Ionicons name="information-circle-outline" size={18} color="#fff" /><Text numberOfLines={1} style={styles.creditText}>{t('club.mediaCredit')}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" accessibilityLabel={`${t('club.mediaCredit')}: ${label}`} onPress={() => Alert.alert(t('club.mediaCredit'), label, media.sourceUrl ? [{ text: t('common.close'), style: 'cancel' }, { text: t('club.openSource'), onPress: () => void Linking.openURL(media.sourceUrl!) }] : [{ text: t('common.close') }])} style={[styles.credit, inline && styles.inlineCredit]}><Ionicons name="information-circle-outline" size={18} color={imageTokens.text} /><Text numberOfLines={1} style={styles.creditText}>{t('club.mediaCredit')}</Text></Pressable>;
 }
 
 export function PhotoGallery({ photos }: { photos: MediaRefT[] }) {
@@ -119,8 +119,8 @@ export function PhotoGallery({ photos }: { photos: MediaRefT[] }) {
             onPress={() => setSelected(null)}
             style={styles.galleryClose}
           >
-            <Ionicons name="close" size={24} color="#fff" />
-            <Text style={{ color: '#fff', fontWeight: '700' }}>{t('common.close')}</Text>
+            <Ionicons name="close" size={24} color={imageTokens.text} />
+            <Text style={{ color: imageTokens.text, fontWeight: '700' }}>{t('common.close')}</Text>
           </Pressable>
         </View> : null}
       </View>
@@ -129,16 +129,17 @@ export function PhotoGallery({ photos }: { photos: MediaRefT[] }) {
 }
 
 function GalleryThumb({ photo, label, borderColor, onPress }: { photo: MediaRefT; label: string; borderColor: string; onPress: () => void }) {
+  const { colors } = useTheme();
   const [failed, setFailed] = useState(false);
-  return <Pressable accessibilityRole="button" accessibilityLabel={label} onPress={onPress} style={[styles.galleryPhoto, { borderColor, backgroundColor: '#0B1220' }]}>
-    {!failed ? <Image source={{ uri: photo.url }} onError={() => setFailed(true)} contentFit="cover" cachePolicy="memory-disk" style={StyleSheet.absoluteFill} /> : <View style={styles.photoFallback}><Ionicons name="image-outline" size={32} color="#fff" /><Text style={{ color: '#fff', fontSize: 12 }}>—</Text></View>}
+  return <Pressable accessibilityRole="button" accessibilityLabel={label} onPress={onPress} style={[styles.galleryPhoto, { borderColor, backgroundColor: colors.background }]}>
+    {!failed ? <Image source={{ uri: photo.url }} onError={() => setFailed(true)} contentFit="cover" cachePolicy="memory-disk" style={StyleSheet.absoluteFill} /> : <View style={styles.photoFallback}><Ionicons name="image-outline" size={32} color={imageTokens.text} /><Text style={{ color: imageTokens.text, fontSize: 12 }}>—</Text></View>}
     <MediaCredit media={photo} />
   </Pressable>;
 }
 
 function ModalPhoto({ photo, width, height }: { photo: MediaRefT; width: number; height: number }) {
   const [failed, setFailed] = useState(false);
-  return failed ? <View style={[styles.modalPhotoFallback, { width, height }]}><Ionicons name="image-outline" size={44} color="#fff" /></View> : <Image source={{ uri: photo.url }} onError={() => setFailed(true)} contentFit="contain" cachePolicy="memory-disk" style={{ width, height }} />;
+  return failed ? <View style={[styles.modalPhotoFallback, { width, height }]}><Ionicons name="image-outline" size={44} color={imageTokens.text} /></View> : <Image source={{ uri: photo.url }} onError={() => setFailed(true)} contentFit="contain" cachePolicy="memory-disk" style={{ width, height }} />;
 }
 
 export function ConfidenceBadge({ label, status }: { label: string; status: string }) {
@@ -168,22 +169,22 @@ const styles = StyleSheet.create({
   hero: { minHeight: 242, justifyContent: 'flex-end', overflow: 'hidden', borderRadius: radius.md },
   heroMark: { position: 'absolute', right: 20, top: 26 }, heroCopy: { padding: spacing.lg, gap: spacing.xs },
   emblem: { position: 'absolute', top: spacing.md, left: spacing.md, width: 70, height: 70 },
-  heroTitle: { color: '#fff', fontFamily: 'BarlowCondensed-SemiBold', fontSize: 40, lineHeight: 44 },
-  heroSubtitle: { color: '#F1F5F9', fontFamily: 'SourceSerif4-SemiBold', fontSize: 16 },
+  heroTitle: { color: imageTokens.text, fontFamily: typography.display, fontSize: 40, lineHeight: 44 },
+  heroSubtitle: { color: imageTokens.muted, fontFamily: typography.headline, fontSize: 16 },
   chips: { flexDirection: 'row', gap: spacing.xs, flexWrap: 'wrap' },
-  heroChip: { backgroundColor: 'rgba(255,255,255,0.16)', borderRadius: radius.pill, paddingHorizontal: spacing.sm, paddingVertical: 5 },
-  heroChipText: { color: '#fff', fontSize: 12, fontWeight: '700' },
+  heroChip: { backgroundColor: imageTokens.veil, borderRadius: radius.pill, paddingHorizontal: spacing.sm, paddingVertical: 5 },
+  heroChipText: { color: imageTokens.text, fontSize: 12, fontWeight: '700' },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   stat: { minWidth: 94, flexGrow: 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, padding: spacing.sm, gap: 2 },
   filterChip: { paddingHorizontal: spacing.sm, minHeight: 44, justifyContent: 'center', borderRadius: radius.pill, borderWidth: StyleSheet.hairlineWidth },
   timelineRow: { minHeight: 44, flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
   timelineAxis: { width: 16, alignItems: 'center', alignSelf: 'stretch' }, dot: { width: 10, height: 10, borderRadius: 5, marginTop: 4 }, line: { width: 2, flex: 1, marginTop: 3 },
-  credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 8, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: radius.pill }, creditText: { color: '#fff', fontSize: 12 },
+  credit: { position: 'absolute', top: 8, right: 8, minHeight: 44, minWidth: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 8, backgroundColor: imageTokens.scrim, borderRadius: radius.pill }, creditText: { color: imageTokens.text, fontSize: 12 },
   inlineCredit: { position: 'relative', top: 0, right: 0, alignSelf: 'flex-start', marginTop: spacing.xs },
   galleryPhoto: { width: 228, height: 156, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, overflow: 'hidden' },
   photoFallback: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.xs },
   modalPhotoFallback: { alignItems: 'center', justifyContent: 'center' },
-  galleryBackdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.94)', justifyContent: 'center', alignItems: 'center' },
+  galleryBackdrop: { flex: 1, backgroundColor: imageTokens.backdrop, justifyContent: 'center', alignItems: 'center' },
   galleryClose: { minWidth: 44, minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: spacing.xs, paddingHorizontal: spacing.md },
   confidence: { flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', gap: 4, borderWidth: 1, borderRadius: radius.pill, paddingHorizontal: 7, paddingVertical: 3 },
   mapAction: { minHeight: 48, paddingHorizontal: spacing.md, borderRadius: radius.pill, alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: spacing.xs },

@@ -11,6 +11,7 @@ import type {
   SocialT,
   StaffMemberT,
 } from '@/data/schemas';
+import { avatarPalette } from '@/theme/tokens';
 
 export type PositionGroup = 'GK' | 'DF' | 'MF' | 'FW' | 'OTHER';
 export const GROUP_ORDER: PositionGroup[] = ['GK', 'DF', 'MF', 'FW', 'OTHER'];
@@ -550,6 +551,6 @@ export function initials(name: string): string {
 }
 
 // Todos con contraste >= 4.5 frente a texto blanco (comprobado en tests).
-export const AVATAR_COLORS = ['#00478F', '#0B6B4F', '#7B3F98', '#9A3412', '#1F5F8B', '#8A2B4A'] as const;
+export const AVATAR_COLORS = avatarPalette;
 export const avatarColor = (id: number): string =>
   AVATAR_COLORS[Math.abs(id) % AVATAR_COLORS.length] ?? AVATAR_COLORS[0];
