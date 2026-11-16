@@ -8,6 +8,7 @@ import { Modal, PanResponder, StyleSheet, Text, View } from 'react-native';
 import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { CareerTimeline } from '@/components/CareerTimeline';
+import { SectionHeader } from '@/components/design/DesignSystem';
 import { PlayerPortrait, portraitUrl } from '@/components/PlayerPortrait';
 import { BodyText, Card, Screen } from '@/components/Screen';
 import { SegmentedControl } from '@/components/SegmentedControl';
@@ -555,9 +556,7 @@ export default function PlayerDetail() {
         <>
           {bio.length > 0 ? (
             <Card>
-              <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
-                {t('player.bioTitle')}
-              </Text>
+              <SectionHeader title={t('player.bioTitle')} variant="flat" />
               <View style={styles.bioGrid}>
                 {bio.map((item) => (
                   <View key={item.key} style={styles.bioItem}>
@@ -573,9 +572,7 @@ export default function PlayerDetail() {
 
           {social.length > 0 ? (
             <Card>
-              <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
-                {t('player.socialTitle')}
-              </Text>
+              <SectionHeader title={t('player.socialTitle')} variant="flat" />
               <View style={styles.socialRow}>
                 {social.map((link) => (
                   <Pressable
@@ -597,9 +594,7 @@ export default function PlayerDetail() {
 
           {pending.length > 0 ? (
             <Card>
-              <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
-                {t('player.pendingTitle')}
-              </Text>
+              <SectionHeader title={t('player.pendingTitle')} variant="flat" />
               <BodyText muted>{t('player.pendingBody')}</BodyText>
               <View style={styles.pendingRow}>
                 {pending.map((field) => (
@@ -618,9 +613,7 @@ export default function PlayerDetail() {
 
       {tab === 'matches' ? (
         <Card>
-          <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
-            {t('player.deporMatchesTitle')}
-          </Text>
+          <SectionHeader title={t('player.deporMatchesTitle')} variant="flat" />
           {scopeSummary ? (
             <Text style={{ color: colors.textMuted, ...text.body }}>
               {[
@@ -653,9 +646,7 @@ export default function PlayerDetail() {
 
       {tab === 'career' ? (
         <Card>
-          <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
-            {t('player.careerTitle')}
-          </Text>
+          <SectionHeader title={t('player.careerTitle')} variant="flat" />
           <CareerTimeline career={player.career} />
         </Card>
       ) : null}

@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { CareerTimeline } from '@/components/CareerTimeline';
 import { CoachPortrait } from '@/components/CoachPortrait';
+import { SectionHeader } from '@/components/design/DesignSystem';
 import { BodyText, Card, Screen } from '@/components/Screen';
 import { SegmentedControl } from '@/components/SegmentedControl';
 import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
@@ -24,12 +25,8 @@ import { useTheme } from '@/theme/useTheme';
 type CareerRole = 'player' | 'coach';
 
 function SectionTitle({ children }: { children: string }) {
-  const { colors } = useTheme();
-  return (
-    <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
-      {children}
-    </Text>
-  );
+  // D-03: mismo encabezado de sección que el resto de la app.
+  return <SectionHeader title={children} variant="flat" />;
 }
 
 export default function CoachScreen() {
