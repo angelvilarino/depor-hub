@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
 import { countdownParts, type CountdownParts } from '@/features/home/logic';
 import { useCountdown } from '@/features/home/useCountdown';
-import { motion, radius, spacing, typography } from '@/theme/tokens';
+import { motion, radius, spacing, text, typography } from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 
@@ -42,15 +42,14 @@ function UnitBox({ unit, reducedMotion, urgent }: { unit: Unit; reducedMotion: b
         style={{
           color: colors.primary,
           fontFamily: typography.numeric,
-          fontSize: 30,
-          lineHeight: 34,
+          ...text.display,
           opacity: transition,
           transform: [{ translateY: transition.interpolate({ inputRange: [0, 1], outputRange: [5, 0] }) }],
         }}
       >
         {String(unit.value).padStart(2, '0')}
       </Animated.Text>
-      <Text style={{ color: colors.textMuted, fontSize: 12, letterSpacing: 0.7, textTransform: 'uppercase' }}>
+      <Text style={{ color: colors.textMuted, ...text.caption, letterSpacing: 0.7, textTransform: 'uppercase' }}>
         {unit.label}
       </Text>
     </View>

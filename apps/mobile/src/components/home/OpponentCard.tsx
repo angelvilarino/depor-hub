@@ -8,7 +8,7 @@ import { FormChips } from '@/components/home/FormChips';
 import type { RivalT } from '@/data/schemas';
 import { teamName } from '@/features/calendar/logic';
 import type { FormResult, OpponentInfo } from '@/features/home/logic';
-import { radius, spacing, typography } from '@/theme/tokens';
+import { radius, spacing, text, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 function parseForm(value: string | null): FormResult[] {
@@ -69,7 +69,7 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
         {rival?.coach ? (
           <View style={[styles.coachCard, { borderColor: colors.poster.muted }]}>
             <View style={[styles.coachInitials, { backgroundColor: colors.poster.text }]}>
-              <Text style={{ color: colors.primary, fontSize: 13, fontWeight: '900' }}>{initials(rival.coach)}</Text>
+              <Text style={{ color: colors.primary, ...text.body, fontWeight: '900' }}>{initials(rival.coach)}</Text>
             </View>
             <View style={styles.coachText}>
               <Text style={[styles.label, { color: colors.poster.muted }]}>{t('home.rival.coach')}</Text>
@@ -97,15 +97,15 @@ const styles = StyleSheet.create({
   pressable: { gap: spacing.md, minHeight: 44 },
   teamBlock: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   teamText: { flex: 1, minWidth: 0, gap: spacing.xs },
-  teamName: { fontFamily: typography.display, fontSize: 30, lineHeight: 34 },
+  teamName: { fontFamily: typography.display, ...text.display },
   rankRow: { flexDirection: 'row', alignItems: 'baseline', gap: spacing.sm },
-  rank: { fontFamily: typography.numeric, fontSize: 32, lineHeight: 36 },
-  points: { fontSize: 15, fontWeight: '700' },
+  rank: { fontFamily: typography.numeric, ...text.display },
+  points: { ...text.bodyLarge, fontWeight: '700' },
   block: { gap: spacing.xs },
-  label: { fontSize: 12, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
+  label: { ...text.caption, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
   coachCard: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm },
   coachInitials: { width: 42, height: 42, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
   coachText: { gap: 2 },
-  coachName: { fontFamily: typography.headline, fontSize: 17 },
-  openLink: { fontSize: 13, fontWeight: '800', alignSelf: 'flex-end' },
+  coachName: { fontFamily: typography.headline, ...text.subtitle },
+  openLink: { ...text.body, fontWeight: '800', alignSelf: 'flex-end' },
 });

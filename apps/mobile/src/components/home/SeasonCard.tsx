@@ -11,7 +11,7 @@ import { FormChips } from '@/components/home/FormChips';
 import type { SeasonFormMatchT, SeasonT, StandingRowT } from '@/data/schemas';
 import { teamName } from '@/features/calendar/logic';
 import type { FormResult, SeasonSummary } from '@/features/home/logic';
-import { minTouch, spacing, typography } from '@/theme/tokens';
+import { minTouch, spacing, text, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 function formDate(date: string, locale: string): string {
@@ -57,7 +57,7 @@ function FormTile({
           <Text style={[styles.resultLetter, { color: colors.onPrimary }]}>{t(`calendar.outcome.${match.result}`)}</Text>
         </View>
       </View>
-      <Text numberOfLines={1} style={{ maxWidth: 76, textAlign: 'center', color: paper.text, fontSize: 12 }}>
+      <Text numberOfLines={1} style={{ maxWidth: 76, textAlign: 'center', color: paper.text, ...text.caption }}>
         {match.opponent.shortName ?? teamName(match.opponent)}
       </Text>
     </Pressable>
@@ -145,13 +145,13 @@ export function SeasonCard({
                 />
               ))}
             </View>
-            <Text style={{ color: paper.muted, fontSize: 12 }}>{t('home.seasonCard.formLegend')}</Text>
+            <Text style={{ color: paper.muted, ...text.caption }}>{t('home.seasonCard.formLegend')}</Text>
             {selectedMatch && selectedLabel ? (
               <View style={[styles.matchDetail, { borderColor: paper.border }]}>
                 <CrestBadge team={selectedMatch.opponent} size={46} />
                 <View style={styles.matchCopy}>
                   <Text style={[styles.opponent, { color: paper.text }]}>{teamName(selectedMatch.opponent)}</Text>
-                  <Text style={{ color: paper.muted, fontSize: 12 }}>
+                  <Text style={{ color: paper.muted, ...text.caption }}>
                     {formDate(selectedMatch.date, i18n.language)} · {selectedMatch.home ? t('home.local') : t('home.away')}
                   </Text>
                 </View>
@@ -166,9 +166,9 @@ export function SeasonCard({
           </View>
         ) : form.length > 0 ? (
           <View style={styles.block}>
-            <Text style={{ color: paper.muted, fontSize: 13 }}>{t('home.seasonCard.form')}</Text>
+            <Text style={{ color: paper.muted, ...text.body }}>{t('home.seasonCard.form')}</Text>
             <FormChips results={form} />
-            <Text style={{ color: paper.muted, fontSize: 12 }}>{t('home.seasonCard.formLegend')}</Text>
+            <Text style={{ color: paper.muted, ...text.caption }}>{t('home.seasonCard.formLegend')}</Text>
           </View>
         ) : null}
 
@@ -207,9 +207,9 @@ const styles = StyleSheet.create({
   formTile: { minWidth: minTouch + 14, minHeight: 72, alignItems: 'center', justifyContent: 'center', gap: 4, borderWidth: 1.5, borderColor: 'transparent', borderRadius: 12, padding: 4 },
   crestRing: { width: 48, height: 48, borderWidth: 2, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
   resultBadge: { position: 'absolute', right: -4, bottom: -4, width: 20, height: 20, borderRadius: 10, borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
-  resultLetter: { fontSize: 12, fontWeight: '900' },
+  resultLetter: { ...text.caption, fontWeight: '900' },
   matchDetail: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: spacing.sm, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm },
   matchCopy: { flex: 1, minWidth: 100 },
-  opponent: { fontFamily: typography.headline, fontSize: 17 },
-  score: { fontFamily: typography.numeric, fontSize: 24 },
+  opponent: { fontFamily: typography.headline, ...text.subtitle },
+  score: { fontFamily: typography.numeric, ...text.heading },
 });

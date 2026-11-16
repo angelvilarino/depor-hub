@@ -16,7 +16,7 @@ import {
   sourceName,
   topHeadlines,
 } from '@/features/news/logic';
-import { minTouch, spacing, typography } from '@/theme/tokens';
+import { minTouch, spacing, text, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 
@@ -31,7 +31,7 @@ function SourceMark({ source, name, compact = false }: { source?: NewsSourceT; n
       {uri ? (
         <Image source={{ uri }} cachePolicy="memory-disk" contentFit="contain" onError={() => setFailed(true)} style={{ width: size * 0.7, height: size * 0.7 }} />
       ) : (
-        <Text style={{ color: colors.poster.text, fontSize: compact ? 13 : 15, fontWeight: '900' }}>{sourceMonogram(name)}</Text>
+        <Text style={{ color: colors.poster.text, ...(compact ? text.body : text.bodyLarge), fontWeight: '900' }}>{sourceMonogram(name)}</Text>
       )}
     </View>
   );
@@ -62,7 +62,7 @@ function StoryThumb({ story, source, sourceLabel }: { story: NewsStoryT; source?
   }
   return (
     <View style={[styles.thumbFallback, { backgroundColor: badge }]}>
-      <Text style={{ color: colors.poster.text, fontWeight: '900', fontSize: 13 }}>{sourceMonogram(sourceLabel)}</Text>
+      <Text style={{ color: colors.poster.text, fontWeight: '900', ...text.body }}>{sourceMonogram(sourceLabel)}</Text>
     </View>
   );
 }
@@ -99,7 +99,7 @@ export function HeadlinesBlock({
         title={t('home.headlines')}
         trailing={onSeeAll ? (
           <Pressable accessibilityRole="link" accessibilityLabel={t('home.seeAllHeadlines')} onPress={onSeeAll} style={styles.seeAll}>
-            <Text style={{ color: paper.accent, fontSize: 14, fontWeight: '700' }}>{t('home.seeAllHeadlines')}</Text>
+            <Text style={{ color: paper.accent, ...text.body, fontWeight: '700' }}>{t('home.seeAllHeadlines')}</Text>
           </Pressable>
         ) : undefined}
       />
@@ -120,8 +120,8 @@ export function HeadlinesBlock({
             <View style={styles.meta}>
               <SourceMark source={featuredSource} name={featuredSourceName} compact />
               <View style={styles.metaCopy}>
-                <Text style={{ color: paper.text, fontSize: 13, fontWeight: '700' }}>{featuredSourceName}</Text>
-                <Text style={{ color: paper.muted, fontSize: 12 }}>{relative(featured.publishedAt)}</Text>
+                <Text style={{ color: paper.text, ...text.body, fontWeight: '700' }}>{featuredSourceName}</Text>
+                <Text style={{ color: paper.muted, ...text.caption }}>{relative(featured.publishedAt)}</Text>
               </View>
             </View>
           </View>
@@ -135,7 +135,7 @@ export function HeadlinesBlock({
               onPress={() => setExpandedStory(alternatesOpen ? null : featured.id)}
               style={styles.coverageButton}
             >
-              <Text style={{ color: paper.accent, fontWeight: '700', fontSize: 12 }}>
+              <Text style={{ color: paper.accent, fontWeight: '700', ...text.caption }}>
                 {t('news.alsoInCount', { count: featured.alsoIn.length })} {alternatesOpen ? '−' : '+'}
               </Text>
             </Pressable>
@@ -167,8 +167,8 @@ export function HeadlinesBlock({
                   <View style={styles.listMeta}>
                     <SourceMark source={source} name={name} compact />
                     <View style={styles.metaCopy}>
-                      <Text numberOfLines={1} style={{ color: paper.text, fontSize: 12, fontWeight: '700' }}>{name}</Text>
-                      <Text style={{ color: paper.muted, fontSize: 12 }}>{relative(story.publishedAt)}</Text>
+                      <Text numberOfLines={1} style={{ color: paper.text, ...text.caption, fontWeight: '700' }}>{name}</Text>
+                      <Text style={{ color: paper.muted, ...text.caption }}>{relative(story.publishedAt)}</Text>
                     </View>
                   </View>
                 </View>
@@ -180,7 +180,7 @@ export function HeadlinesBlock({
                   onPress={() => setExpandedStory(expandedStory === story.id ? null : story.id)}
                   style={styles.listCoverage}
                 >
-                  <Text style={{ color: paper.accent, fontWeight: '700', fontSize: 12 }}>{t('news.alsoInCount', { count: story.alsoIn.length })}</Text>
+                  <Text style={{ color: paper.accent, fontWeight: '700', ...text.caption }}>{t('news.alsoInCount', { count: story.alsoIn.length })}</Text>
                 </Pressable>
               ) : null}
               {expandedStory === story.id ? (
@@ -216,9 +216,9 @@ function AlternateStory({
     <Pressable accessibilityRole="link" accessibilityLabel={t('news.openAlsoIn', { source: name, title: item.title })} onPress={() => void open(item.url)} style={styles.alternate}>
       <SourceMark source={source} name={name} compact />
       <View style={styles.metaCopy}>
-        <Text style={{ color: paper.text, fontSize: 13, fontWeight: '700' }}>{name}</Text>
-        <Text style={{ color: paper.text, fontSize: 13 }}>{item.title}</Text>
-        <Text style={{ color: paper.muted, fontSize: 12 }}>{relative(item.publishedAt)}</Text>
+        <Text style={{ color: paper.text, ...text.body, fontWeight: '700' }}>{name}</Text>
+        <Text style={{ color: paper.text, ...text.body }}>{item.title}</Text>
+        <Text style={{ color: paper.muted, ...text.caption }}>{relative(item.publishedAt)}</Text>
       </View>
     </Pressable>
   );
@@ -231,9 +231,9 @@ const styles = StyleSheet.create({
   featureImageWrap: { overflow: 'hidden', borderRadius: 12 },
   featureImage: { width: '100%', aspectRatio: 1.78 },
   featureFallback: { alignItems: 'center', justifyContent: 'center' },
-  fallbackMonogram: { fontFamily: typography.display, fontSize: 64, fontWeight: '700', opacity: 0.9 },
+  fallbackMonogram: { fontFamily: typography.display, ...text.numeral, fontWeight: '700', opacity: 0.9 },
   featureHeading: { gap: spacing.sm },
-  featureTitle: { fontFamily: typography.headline, fontSize: 25, lineHeight: 31 },
+  featureTitle: { fontFamily: typography.headline, ...text.heading },
   meta: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   metaCopy: { flex: 1, minWidth: 0, gap: 2 },
   sourceMark: { alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
   listItem: { borderBottomWidth: StyleSheet.hairlineWidth, paddingVertical: spacing.sm },
   listPress: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.sm, minHeight: minTouch },
   listCopy: { flex: 1, minWidth: 0, gap: spacing.xs },
-  listTitle: { fontFamily: typography.headline, fontSize: 17, lineHeight: 22 },
+  listTitle: { fontFamily: typography.headline, ...text.subtitle },
   listMeta: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
   thumb: { width: 70, height: 54, borderRadius: 8 },
   thumbFallback: { width: 70, height: 54, borderRadius: 8, alignItems: 'center', justifyContent: 'center' },

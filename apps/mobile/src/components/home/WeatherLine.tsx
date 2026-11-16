@@ -5,7 +5,7 @@ import type { TFunction } from 'i18next';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
 import { useTranslation } from 'react-i18next';
 import { weatherKey, type Weather, type WeatherHour } from '@/features/home/weather';
-import { motion, minTouch, radius, spacing, typography, type PaperTokens } from '@/theme/tokens';
+import { motion, minTouch, radius, spacing, text, typography, type PaperTokens } from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 
@@ -137,8 +137,8 @@ export function WeatherLine({
           {rain !== null ? (
             <View style={styles.rainMetric}>
               <View style={styles.rainLabel}>
-                <Text style={{ color: paper.muted, fontSize: 12 }}>{t('home.weather.rain')}</Text>
-                <Text style={{ color: paper.text, fontSize: 12, fontWeight: '700' }}>{rain}%</Text>
+                <Text style={{ color: paper.muted, ...text.caption }}>{t('home.weather.rain')}</Text>
+                <Text style={{ color: paper.text, ...text.caption, fontWeight: '700' }}>{rain}%</Text>
               </View>
               <View style={[styles.rainTrack, { backgroundColor: paper.border }]}>
                 <View style={[styles.rainFill, { width: `${Math.max(0, Math.min(100, rain))}%` as DimensionValue, backgroundColor: paper.accent }]} />
@@ -146,7 +146,7 @@ export function WeatherLine({
             </View>
           ) : null}
           {weather.windKmh !== null ? (
-            <Text style={{ color: paper.muted, fontSize: 12 }}>{t('home.weather.wind', { n: weather.windKmh })}</Text>
+            <Text style={{ color: paper.muted, ...text.caption }}>{t('home.weather.wind', { n: weather.windKmh })}</Text>
           ) : null}
         </View>
       </Pressable>
@@ -157,9 +157,9 @@ export function WeatherLine({
         </View>
       ) : null}
       <View style={styles.attributionRow}>
-        <Text style={{ color: paper.muted, fontSize: 12 }}>{t('home.weather.attribution')}</Text>
+        <Text style={{ color: paper.muted, ...text.caption }}>{t('home.weather.attribution')}</Text>
         {offline && capturedAt > 0 && now !== undefined ? (
-          <Text style={{ color: paper.muted, fontSize: 12 }}>
+          <Text style={{ color: paper.muted, ...text.caption }}>
             {t('home.weather.cached', { ago: ageLabel(capturedAt, currentTime, t) })}
           </Text>
         ) : null}
@@ -175,8 +175,8 @@ const styles = StyleSheet.create({
   notchRight: { right: -9 },
   ticketMain: { minHeight: minTouch, flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   weatherMain: { minWidth: 76, gap: 0 },
-  temperature: { fontFamily: typography.display, fontSize: 36, lineHeight: 38 },
-  condition: { fontSize: 12 },
+  temperature: { fontFamily: typography.display, ...text.display },
+  condition: { ...text.caption },
   weatherMetrics: { flex: 1, justifyContent: 'center', gap: spacing.xs },
   rainMetric: { gap: 3 },
   rainLabel: { flexDirection: 'row', justifyContent: 'space-between' },
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   attributionRow: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.sm },
   hours: { borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm, flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
   hour: { minWidth: 54, alignItems: 'center', gap: 2 },
-  hourTime: { fontSize: 12 },
-  hourTemp: { fontFamily: typography.display, fontSize: 20 },
-  hourRain: { fontSize: 12 },
+  hourTime: { ...text.caption },
+  hourTemp: { fontFamily: typography.display, ...text.title },
+  hourRain: { ...text.caption },
 });

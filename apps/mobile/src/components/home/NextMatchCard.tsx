@@ -16,7 +16,7 @@ import { competitionLabel } from '@/features/home/text';
 import { useMatchActions } from '@/features/home/useMatchActions';
 import { useNow } from '@/features/home/useNow';
 import { useWeather } from '@/features/home/useWeather';
-import { motion, minTouch, radius, spacing, typography } from '@/theme/tokens';
+import { motion, minTouch, radius, spacing, text, typography } from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 import { formatMatchDateShort } from '@/utils/matchTime';
@@ -58,7 +58,7 @@ function LiveBadge({ label }: { label: string }) {
   return (
     <View accessible accessibilityLabel={label} style={[styles.liveBadge, { borderColor: colors.poster.text }]}>
       <Animated.View style={[styles.liveDot, { backgroundColor: colors.poster.accent, opacity }]} />
-      <Text style={{ color: colors.poster.text, fontSize: 12, fontWeight: '800', letterSpacing: 1 }}>
+      <Text style={{ color: colors.poster.text, ...text.caption, fontWeight: '800', letterSpacing: 1 }}>
         {label}
       </Text>
     </View>
@@ -158,7 +158,7 @@ export function NextMatchCard({
             <Text style={[styles.tbcDays, { color: colors.poster.text }]}>
               {daysUntil <= 0 ? t('home.matchToday') : t('home.daysUntil', { count: daysUntil })}
             </Text>
-            <Text style={{ color: colors.poster.muted, fontSize: 14 }}>{t('calendar.timeTbc')}</Text>
+            <Text style={{ color: colors.poster.muted, ...text.body }}>{t('calendar.timeTbc')}</Text>
           </View>
         ) : visiblePhase === 'awaiting_result' ? (
           <Text style={[styles.stateText, { color: colors.poster.text }]}>{t('home.awaitingResult')}</Text>
@@ -181,7 +181,7 @@ export function NextMatchCard({
           onPress={() => router.push(`/match/${postponed.id}`)}
           style={[styles.postponed, { borderColor: colors.poster.muted }]}
         >
-          <Text style={{ color: colors.poster.text, fontSize: 13 }}>
+          <Text style={{ color: colors.poster.text, ...text.body }}>
             {t('home.postponedNotice', {
               teams: `${teamName(postponed.home)} – ${teamName(postponed.away)}`,
               date: formatMatchDateShort(postponed.utcDate, postponed.status, i18n.language),
@@ -208,7 +208,7 @@ export function NextMatchCard({
               onPress={() => setSheetOpen(true)}
             />
           ) : (
-            <Text style={{ color: colors.poster.muted, fontSize: 13, textAlign: 'center' }}>
+            <Text style={{ color: colors.poster.muted, ...text.body, textAlign: 'center' }}>
               {t('match.reminderNeedsTime')}
             </Text>
           )}
@@ -243,19 +243,19 @@ const styles = StyleSheet.create({
   teamsRow: { flexDirection: 'row', alignItems: 'flex-start' },
   side: { flex: 1, minWidth: 0, alignItems: 'center', gap: spacing.xs },
   crestBox: { minHeight: 76, alignItems: 'center', justifyContent: 'center' },
-  teamName: { fontFamily: typography.display, fontSize: 23, lineHeight: 26, textAlign: 'center' },
-  sideLabel: { fontSize: 12, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
+  teamName: { fontFamily: typography.display, ...text.heading, textAlign: 'center' },
+  sideLabel: { ...text.caption, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
   vsBox: { width: 50, minHeight: 76, alignItems: 'center', justifyContent: 'center' },
-  vs: { fontFamily: typography.display, fontSize: 18 },
+  vs: { fontFamily: typography.display, ...text.subtitle },
   stateBlock: { alignItems: 'center', gap: spacing.sm },
-  heroScore: { fontFamily: typography.numeric, fontSize: 44, lineHeight: 50 },
+  heroScore: { fontFamily: typography.numeric, ...text.hero },
   liveBadge: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, borderWidth: 1, borderRadius: radius.pill, paddingHorizontal: spacing.sm, minHeight: 30 },
   liveDot: { width: 8, height: 8, borderRadius: radius.pill },
   tbc: { alignItems: 'center', gap: spacing.xs },
-  tbcDays: { fontFamily: typography.display, fontSize: 27 },
-  stateText: { fontFamily: typography.headline, fontSize: 21, textAlign: 'center' },
-  dateLine: { fontFamily: typography.display, fontSize: 22, lineHeight: 27, textAlign: 'center', letterSpacing: 0.6 },
-  venue: { fontSize: 14, textAlign: 'center' },
+  tbcDays: { fontFamily: typography.display, ...text.display },
+  stateText: { fontFamily: typography.headline, ...text.title, textAlign: 'center' },
+  dateLine: { fontFamily: typography.display, ...text.title, textAlign: 'center', letterSpacing: 0.6 },
+  venue: { ...text.body, textAlign: 'center' },
   postponed: { minHeight: minTouch, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.sm, padding: spacing.sm, justifyContent: 'center' },
   actions: { flexDirection: 'row', gap: spacing.sm },
   action: { flex: 1, minWidth: 0, justifyContent: 'center', minHeight: minTouch },

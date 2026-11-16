@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { FormResult } from '@/features/home/logic';
-import { spacing } from '@/theme/tokens';
+import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 const TONE = {
@@ -43,7 +43,7 @@ export function FormChips({ results, variant = 'paper' }: { results: FormResult[
               color: variant === 'poster'
                 ? colors.poster.outcome[result === 'W' ? 'winText' : result === 'L' ? 'lossText' : 'drawText']
                 : colors[TONE[result]],
-              fontSize: 14,
+              ...text.body,
               fontWeight: '700',
             }}
           >

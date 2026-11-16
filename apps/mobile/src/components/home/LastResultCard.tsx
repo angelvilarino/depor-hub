@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { CrestBadge, PosterCard, SectionHeader } from '@/components/design/DesignSystem';
 import type { MatchT } from '@/data/schemas';
 import { outcome, teamName } from '@/features/calendar/logic';
-import { radius, spacing, typography } from '@/theme/tokens';
+import { radius, spacing, text, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { formatMatchDate } from '@/utils/matchTime';
 
@@ -60,7 +60,7 @@ export function LastResultCard({ match }: { match: MatchT }) {
       </Pressable>
       {result ? (
         <View style={[styles.outcome, { backgroundColor: resultBackground }]}>
-          <Text style={{ color, fontSize: 13, fontWeight: '900' }}>
+          <Text style={{ color, ...text.body, fontWeight: '900' }}>
             {t(`calendar.outcome.${result}`)} · {t(`calendar.outcomeLong.${result}`)}
           </Text>
         </View>
@@ -72,9 +72,9 @@ export function LastResultCard({ match }: { match: MatchT }) {
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   side: { flex: 1, minWidth: 0, alignItems: 'center', gap: spacing.xs },
-  name: { fontFamily: typography.display, fontSize: 18, lineHeight: 21, textAlign: 'center' },
+  name: { fontFamily: typography.display, ...text.subtitle, textAlign: 'center' },
   scoreBox: { alignItems: 'center', gap: spacing.xs },
-  score: { fontFamily: typography.numeric, fontSize: 40, lineHeight: 46, textAlign: 'center' },
-  date: { fontSize: 12, textAlign: 'center' },
+  score: { fontFamily: typography.numeric, ...text.hero, textAlign: 'center' },
+  date: { ...text.caption, textAlign: 'center' },
   outcome: { alignSelf: 'center', borderRadius: radius.pill, paddingHorizontal: spacing.md, paddingVertical: spacing.xs },
 });

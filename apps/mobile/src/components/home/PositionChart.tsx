@@ -10,7 +10,7 @@ import Svg, { Circle, Line, Polyline, Text as SvgText } from 'react-native-svg';
 import { useTranslation } from 'react-i18next';
 import type { PositionPointT, SeasonFormMatchT } from '@/data/schemas';
 import { positionChartIndex } from '@/features/home/logic';
-import { motion, spacing, typography } from '@/theme/tokens';
+import { motion, spacing, text, typography } from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 
@@ -106,11 +106,11 @@ function PositionChartBody({ points, matches, selectedMatchday, onSelectMatchday
           <Animated.Text
             accessibilityLiveRegion="polite"
             maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
-            style={{ color: paper.text, fontFamily: typography.headline, fontSize: 16 }}
+            style={{ color: paper.text, fontFamily: typography.headline, ...text.bodyLarge }}
           >
             {detail}
           </Animated.Text>
-          {date ? <Animated.Text style={{ color: paper.muted, fontSize: 12 }}>{date} · {match?.home ? t('home.local') : t('home.away')}</Animated.Text> : null}
+          {date ? <Animated.Text style={{ color: paper.muted, ...text.caption }}>{date} · {match?.home ? t('home.local') : t('home.away')}</Animated.Text> : null}
         </View>
         {match ? (
           <PressMatchResult result={match.result} label={outcome ?? ''} />
@@ -122,14 +122,14 @@ function PositionChartBody({ points, matches, selectedMatchday, onSelectMatchday
             {[best, worst].map((position, index) => (
               <Line key={`${position}-${index}`} x1={padding} y1={y(position)} x2={chartWidth - padding} y2={y(position)} stroke={colors.paper.border} strokeWidth={1} />
             ))}
-            <SvgText x={1} y={y(best) + 4} fill={paper.muted} fontSize={10}>{best}º</SvgText>
-            <SvgText x={1} y={y(worst) + 4} fill={paper.muted} fontSize={10}>{worst}º</SvgText>
+            <SvgText x={1} y={y(best) + 4} fill={paper.muted} fontSize={text.caption.fontSize}>{best}º</SvgText>
+            <SvgText x={1} y={y(worst) + 4} fill={paper.muted} fontSize={text.caption.fontSize}>{worst}º</SvgText>
             <Polyline points={coords} fill="none" stroke={paper.accent} strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />
             {points.map((point, index) => (
               <Circle key={point.matchday} cx={x(index)} cy={y(point.position)} r={index === selectedIndex ? 6 : 3} fill={paper.accent} />
             ))}
-            {bestDay != null ? <SvgText x={x(points.findIndex((point) => point.matchday === bestDay))} y={y(best) - 8} fill={paper.text} fontSize={10}>{t('home.seasonCard.best')}</SvgText> : null}
-            {worstDay != null ? <SvgText x={x(points.findIndex((point) => point.matchday === worstDay))} y={y(worst) + 14} fill={paper.text} fontSize={10}>{t('home.seasonCard.worst')}</SvgText> : null}
+            {bestDay != null ? <SvgText x={x(points.findIndex((point) => point.matchday === bestDay))} y={y(best) - 8} fill={paper.text} fontSize={text.caption.fontSize}>{t('home.seasonCard.best')}</SvgText> : null}
+            {worstDay != null ? <SvgText x={x(points.findIndex((point) => point.matchday === worstDay))} y={y(worst) + 14} fill={paper.text} fontSize={text.caption.fontSize}>{t('home.seasonCard.worst')}</SvgText> : null}
           </Svg>
           <Animated.View pointerEvents="none" style={[{ position: 'absolute', top: padding, bottom: padding, width: 1, backgroundColor: paper.accent }, animatedGuide]} />
         </View>
