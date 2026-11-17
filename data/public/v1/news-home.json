@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T08:32:50Z",
+  "updatedAt": "2026-11-17T10:04:36Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,17 +16,23 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
-    },
-    {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "554634cfe4475560",
+      "title": "Nsongo Bil, un león indomable: asalto a la titularidad y nuevo gol con Camerún",
+      "url": "https://riazor.org/nsongo-bil-leon-indomable-titularidad-gol-camerun",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-17T10:00:13Z",
+      "kind": "article",
+      "summary": "El delantero del Deportivo se ha ganado poco a poco un lugar en los planes del seleccionador David Pagou de cara a la Copa de África. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "2a4b8aa1d92928bc",
       "title": "El Dépor vota este martes las cuentas del año del ascenso a Primera División",
@@ -96,21 +102,6 @@
       "tags": [
         "partido",
         "aficion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "1ea2b3d104e89d2a",
-      "title": "Los 16 minutos del «atropello» en Riazor",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/16/16-minutos-atropello-riazor/00031794853657577162549.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-16T18:30:00Z",
-      "kind": "article",
-      "summary": "Así fue la secuencia de hechos que impidió un triunfo histórico del Dépor Abanca sobre el Barça",
-      "thumbnailUrl": "img/news/65aaf98132c1f71d.webp",
-      "tags": [
-        "cantera",
-        "club"
       ],
       "alsoIn": []
     }

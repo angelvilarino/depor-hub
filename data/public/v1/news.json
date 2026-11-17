@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T08:32:50Z",
+  "updatedAt": "2026-11-17T10:04:36Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "554634cfe4475560",
+      "title": "Nsongo Bil, un león indomable: asalto a la titularidad y nuevo gol con Camerún",
+      "url": "https://riazor.org/nsongo-bil-leon-indomable-titularidad-gol-camerun",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-17T10:00:13Z",
+      "kind": "article",
+      "summary": "El delantero del Deportivo se ha ganado poco a poco un lugar en los planes del seleccionador David Pagou de cara a la Copa de África. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "2a4b8aa1d92928bc",
       "title": "El Dépor vota este martes las cuentas del año del ascenso a Primera División",
@@ -2162,20 +2176,6 @@
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/sYOPPJkChc5Yoz0VHNVZC2N-uHY=/768x/2026/11/05/00121793907242137259874/Foto/I16F9110.jpg",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "9cf8e60a3b14c42a",
-      "title": "Cinco victorias en 2026: el dato del Espanyol del que el Dépor no debe fiarse",
-      "url": "https://riazor.org/cinco-victorias-2026-dato-espanyol-depor-no-fiarse",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-05T18:00:00Z",
-      "kind": "article",
-      "summary": "El Espanyol es el equipo del fútbol profesional nacional con menos victorias -en partido oficial- en 2026. Cinco triunfos en 33 partidos…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }
