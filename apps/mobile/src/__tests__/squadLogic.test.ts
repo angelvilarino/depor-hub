@@ -12,7 +12,6 @@ import {
   countryFlag,
   filterSquad,
   fixtureForMatch,
-  formatEuro,
   formatNumber,
   formatPartialDate,
   groupSquad,
@@ -25,7 +24,6 @@ import {
   normalizeSearch,
   pendingFields,
   positionGroup,
-  provenanceSummary,
   seasonRange,
   shortSeason,
   socialLinks,
@@ -48,7 +46,6 @@ const player = (over: Partial<PlayerT> = {}): PlayerT => ({
   preferredFoot: null,
   loanFrom: null,
   loanTo: null,
-  marketValueEur: null,
   weightKg: null,
   social: { x: null, instagram: null, tiktok: null },
   photos: [],
@@ -433,23 +430,6 @@ describe('totales y partidos', () => {
     expect(socialLinks({ x: null, instagram: null, tiktok: null })).toEqual([]);
   });
 
-  it('valor de mercado en euros', () => {
-    expect(formatEuro(null, 'es')).toBeNull();
-    expect(formatEuro(5_000_000, 'es')).toContain('5');
-    expect(formatEuro(5_000_000, 'es')).toContain('€');
-  });
-
-  it('resumen de procedencia con la confianza más baja', () => {
-    const prov = {
-      career: { source: 'BDFutbol + Wikidata', confidence: 'cross_checked' as const },
-      careerTotals: { source: 'BDFutbol', confidence: 'single_source' as const },
-    };
-    expect(provenanceSummary(prov, ['career', 'careerTotals'])).toEqual({
-      sources: ['BDFutbol', 'Wikidata'],
-      confidence: 'single_source',
-    });
-    expect(provenanceSummary(prov, ['unknown'])).toBeNull();
-  });
 });
 
 describe('partido de la ficha y fixture', () => {

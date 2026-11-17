@@ -177,21 +177,10 @@ class HeadToHead(Public):
     meetings: list[HeadToHeadMeeting] = Field(default_factory=list)
 
 
-class KeyPlayer(Public):
-    """Contrato legado: la publicación actual no incluye estadísticas individuales de rivales."""
-
-    id: int
-    name: str
-    goals: int = Field(ge=0)
-    assists: Optional[int] = Field(default=None, ge=0)
-    played_matches: Optional[int] = Field(default=None, ge=0)
-
-
 class Rival(Public):
     team: TeamRef
     bdfutbol_id: Optional[str] = None
     coach: Optional[str] = None
-    key_players: list[KeyPlayer] = Field(default_factory=list)
     head_to_head: Optional[HeadToHead] = None
 
 
@@ -425,40 +414,6 @@ class NewsHome(Public):
     stories: list[NewsStory]
 
 
-SocialPlatform = Literal[
-    "x", "instagram", "youtube", "tiktok", "facebook", "whatsapp", "twitch", "bluesky", "threads"
-]
-
-
-class SocialProfile(Public):
-    """Perfil oficial enlazado desde data/manual/social_pins.yml (ADR 0016)."""
-
-    id: str
-    platform: SocialPlatform
-    name: str
-    url: str
-    handle: Optional[str] = None
-
-
-class SocialPin(Public):
-    """Publicación concreta curada a mano. Nunca se obtiene por scraping."""
-
-    id: str
-    platform: SocialPlatform
-    url: str
-    title: str
-    published_at: Optional[IsoDateTime] = None
-    image_url: Optional[str] = None
-    source: Optional[str] = None
-
-
-class SocialFeed(Public):
-    updated_at: IsoDateTime
-    data_hash: str = ""
-    profiles: list[SocialProfile] = Field(default_factory=list)
-    pins: list[SocialPin] = Field(default_factory=list)
-
-
 class Provenance(Public):
     """De dónde sale un dato y con qué confianza (ADR 0008)."""
 
@@ -615,7 +570,6 @@ class Player(Public):
     preferred_foot: Optional[PreferredFoot] = None
     loan_from: Optional[str] = None
     loan_to: Optional[str] = None  # ADR 0010: cedido por el Depor a otro club
-    market_value_eur: Optional[int] = Field(default=None, ge=0)  # SIEMPRE estimación
     weight_kg: Optional[int] = Field(default=None, ge=0)
     social: Social = Field(default_factory=Social)
     photos: list[PlayerPhoto] = Field(default_factory=list)
@@ -1203,7 +1157,6 @@ SPORTS_FILES = ("meta.json", "standings.json", "fixtures.json", "squad.json", "s
 NEWS_FILES: dict[str, type[Public]] = {
     "news.json": News,
     "news-home.json": NewsHome,
-    "social.json": SocialFeed,
 }
 
 # Contexto que se publica en su propio comando (rivals.json): la app lo trata como

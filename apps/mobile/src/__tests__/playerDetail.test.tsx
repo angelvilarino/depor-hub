@@ -55,7 +55,6 @@ const basePlayer: PlayerT = {
   preferredFoot: 'left',
   loanFrom: null,
   loanTo: null,
-  marketValueEur: 5_000_000,
   weightKg: 80,
   social: { x: 'deporhub', instagram: null, tiktok: null },
   photos: [
@@ -256,9 +255,6 @@ describe('ficha de jugador', () => {
     expect(screen.getByText(`🇪🇸 España · Portero · ${expectedAge} años`)).toBeTruthy();
     expect(screen.getByText(/Arnedo \(La Rioja\), España/)).toBeTruthy();
     expect(screen.getByText(/Izquierdo/)).toBeTruthy();
-    expect(screen.getByText(/5\.000\.000/)).toBeTruthy();
-    expect(screen.getByText(/Estimación/)).toBeTruthy();
-
     // Las estadísticas de temporada viven en la ficha, sin un segundo segmentado.
     expect(screen.getByText('90')).toBeTruthy();
     expect(screen.getAllByText('PJ').length).toBeGreaterThan(0);
@@ -369,7 +365,6 @@ describe('ficha de jugador', () => {
       preferredFoot: null,
       loanFrom: null,
       loanTo: null,
-      marketValueEur: null,
       weightKg: null,
       social: { x: null, instagram: null, tiktok: null },
       photos: [],

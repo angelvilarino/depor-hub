@@ -866,7 +866,6 @@ def test_cmd_news_keeps_the_client_open_until_the_home_is_written(tmp_path: Path
         threshold=None,
         dedupe_threshold=0.52,
         min_stories=1,
-        social=None,
         offline=True,
         force=False,
         dry_run=False,

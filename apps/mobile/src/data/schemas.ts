@@ -200,19 +200,10 @@ export const HeadToHead = z.object({
   meetings: z.array(HeadToHeadMeeting).default([]),
 });
 
-export const KeyPlayer = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  goals: z.number().int().nonnegative(),
-  assists: optionalInt(),
-  playedMatches: optionalInt(),
-});
-
 export const Rival = z.object({
   team: TeamRef,
   bdfutbolId: optionalNull(),
   coach: optionalNull(),
-  keyPlayers: z.array(KeyPlayer).default([]),
   headToHead: HeadToHead.nullable().default(null),
 });
 
@@ -393,44 +384,6 @@ export const NewsHome = z.object({
   updatedAt: iso,
   sources: z.array(NewsSource).default([]),
   stories: z.array(NewsStory).default([]),
-});
-
-// Redes (H6): solo perfiles y publicaciones curadas a mano. social.json es opcional.
-export const SocialPlatform = z.enum([
-  'x',
-  'instagram',
-  'youtube',
-  'tiktok',
-  'facebook',
-  'whatsapp',
-  'twitch',
-  'bluesky',
-  'threads',
-]);
-
-export const SocialProfile = z.object({
-  id: z.string(),
-  platform: SocialPlatform,
-  name: z.string(),
-  url: z.string(),
-  handle: optionalNull(),
-});
-
-export const SocialPin = z.object({
-  id: z.string(),
-  platform: SocialPlatform,
-  url: z.string(),
-  title: z.string(),
-  publishedAt: optionalNull(),
-  imageUrl: optionalNull(),
-  source: optionalNull(),
-});
-
-export const SocialFeed = z.object({
-  updatedAt: iso,
-  dataHash: z.string().default(''),
-  profiles: z.array(SocialProfile).default([]),
-  pins: z.array(SocialPin).default([]),
 });
 
 // Club (H7, ADR 0025). El contrato no publica source/confidence/status: la app no
@@ -919,7 +872,6 @@ export const Player = z.object({
   loanFrom: optionalNull(),
   // ADR 0010: cesión de salida (el Depor cede al jugador a otro club).
   loanTo: optionalNull(),
-  marketValueEur: optionalInt(),
   weightKg: optionalInt(),
   social: Social.default({ x: null, instagram: null, tiktok: null }),
   // ADR 0009: fotos con licencia; tolerado ausente (default []) para JSON y caché anteriores.
@@ -978,7 +930,6 @@ export type RivalsT = z.infer<typeof Rivals>;
 export type RivalT = z.infer<typeof Rival>;
 export type HeadToHeadT = z.infer<typeof HeadToHead>;
 export type HeadToHeadMeetingT = z.infer<typeof HeadToHeadMeeting>;
-export type KeyPlayerT = z.infer<typeof KeyPlayer>;
 export type FixturesT = z.infer<typeof Fixtures>;
 export type NewsT = z.infer<typeof News>;
 export type NewsHomeT = z.infer<typeof NewsHome>;
@@ -986,10 +937,6 @@ export type NewsStoryT = z.infer<typeof NewsStory>;
 export type NewsAlsoInT = z.infer<typeof NewsAlsoIn>;
 export type NewsGroupT = z.infer<typeof NewsGroup>;
 export type NewsSourceT = z.infer<typeof NewsSource>;
-export type SocialPlatformT = z.infer<typeof SocialPlatform>;
-export type SocialProfileT = z.infer<typeof SocialProfile>;
-export type SocialPinT = z.infer<typeof SocialPin>;
-export type SocialFeedT = z.infer<typeof SocialFeed>;
 export type SquadT = z.infer<typeof Squad>;
 export type PlayerSummaryT = z.infer<typeof PlayerSummary>;
 export type MatchT = z.infer<typeof Match>;

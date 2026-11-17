@@ -30,7 +30,6 @@ FIELD_KEYS = {
     "preferredFoot",
     "loanFrom",
     "loanTo",
-    "marketValueEur",
     "social",
     "photos",
     "career",
@@ -48,7 +47,6 @@ _PROVENANCE_KEYS = {
     "preferred_foot": "preferredFoot",
     "loan_from": "loanFrom",
     "loan_to": "loanTo",
-    "market_value_eur": "marketValueEur",
     "social": "social",
     "photos": "photos",
     "career": "career",
@@ -303,7 +301,6 @@ class PlayerExtra(BaseModel):
     preferred_foot: Optional[m.PreferredFoot] = None
     loan_from: Optional[str] = None
     loan_to: Optional[str] = None
-    market_value_eur: Optional[int] = Field(default=None, ge=0, le=500_000_000)
     social: Optional[SocialExtra] = None
     photos: list[PhotoExtra] = Field(default_factory=list)
     career: list[CareerExtra] = Field(default_factory=list)
@@ -347,7 +344,6 @@ class PlayerExtra(BaseModel):
                 self.preferred_foot,
                 self.loan_from,
                 self.loan_to,
-                self.market_value_eur,
             )
         ) or bool(self.career) or bool(self.depor_matches)
         has_data = has_data or bool(self.photos)
@@ -358,11 +354,6 @@ class PlayerExtra(BaseModel):
         unknown = set(self.provenance) - FIELD_KEYS
         if unknown:
             raise ValueError(f"provenance con campos desconocidos: {sorted(unknown)}")
-        if self.market_value_eur is not None:
-            prov = self.provenance.get("marketValueEur")
-            conf = prov.confidence if prov else self.confidence
-            if conf != "estimated":
-                raise ValueError("market_value_eur es siempre una estimación (confidence=estimated)")
         return self
 
 
@@ -642,7 +633,6 @@ def apply_extras(squad: m.Squad, extras: dict[int, PlayerExtra]) -> m.Squad:
         _fill(p, e, updates, provenance, "preferred_foot", e.preferred_foot)
         _fill(p, e, updates, provenance, "loan_from", e.loan_from)
         _fill(p, e, updates, provenance, "loan_to", e.loan_to)
-        _fill(p, e, updates, provenance, "market_value_eur", e.market_value_eur)
 
         if e.social is not None and e.social.has_data():
             social = p.social.model_copy(

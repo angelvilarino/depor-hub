@@ -26,7 +26,6 @@ DOCUMENTS: tuple[str, ...] = (
     "news.json",
     "news-home.json",
     "rivals.json",
-    "social.json",
     "titles.json",
     "rivalries.json",
 )

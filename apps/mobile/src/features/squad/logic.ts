@@ -2,7 +2,6 @@
 import type {
   CareerEntryT,
   CareerTotalsT,
-  ConfidenceT,
   FixturesT,
   MatchT,
   PlayerMatchT,
@@ -479,38 +478,6 @@ export function socialLinks(social: SocialT): SocialLink[] {
     const handle = social[network];
     return handle ? [{ network, handle, url: SOCIAL_BASE[network](handle) }] : [];
   });
-}
-
-const CONFIDENCE_RANK: Record<ConfidenceT, number> = {
-  estimated: 0,
-  single_source: 1,
-  cross_checked: 2,
-  verified: 3,
-};
-
-/** Une fuentes y queda con la confianza más baja de los campos consultados. */
-export function provenanceSummary(
-  provenance: Record<string, { source: string; confidence: ConfidenceT }>,
-  fields: string[],
-): { sources: string[]; confidence: ConfidenceT } | null {
-  const entries = fields.map((field) => provenance[field]).filter((p) => p !== undefined);
-  if (entries.length === 0) return null;
-  const sources = [...new Set(entries.flatMap((p) => p.source.split(' + ').map((s) => s.trim())).filter(Boolean))];
-  const confidence = entries.reduce<ConfidenceT>(
-    (lowest, p) => (CONFIDENCE_RANK[p.confidence] < CONFIDENCE_RANK[lowest] ? p.confidence : lowest),
-    entries[0]?.confidence ?? 'single_source',
-  );
-  return { sources, confidence };
-}
-
-/** Valor de mercado en euros; siempre se muestra como estimación en la UI. */
-export function formatEuro(value: number | null | undefined, locale: string): string | null {
-  if (value === null || value === undefined) return null;
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency: 'EUR',
-    maximumFractionDigits: 0,
-  }).format(value);
 }
 
 export type PendingField =

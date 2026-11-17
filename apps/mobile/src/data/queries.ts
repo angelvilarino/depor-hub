@@ -16,7 +16,6 @@ import {
   Rivals,
   Rivalries,
   Season,
-  SocialFeed,
   Squad,
   Standings,
   Titles,
@@ -128,7 +127,6 @@ export function useHomeNews() {
   };
   return { ...home, data: home.data ?? fallback.data ?? null, refetch };
 }
-export const useSocial = () => useOptionalData('social.json', SocialFeed, NEWS_STALE_TIME);
 export const useSeason = () => useOptionalData('season.json', Season, NEWS_STALE_TIME);
 export const useRivals = () => useOptionalData('rivals.json', Rivals, NEWS_STALE_TIME);
 // La ficha de un partido terminado sigue funcionando con un snapshot congelado cuando

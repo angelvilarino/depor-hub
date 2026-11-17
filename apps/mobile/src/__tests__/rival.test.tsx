@@ -55,7 +55,6 @@ beforeEach(() => {
         ? {
             ...rival,
             coach: 'Entrenador de prueba',
-            keyPlayers: [{ id: 99, name: 'Jugador individual oculto', goals: 99, assists: 20, playedMatches: 30 }],
           }
         : rival,
     ),

@@ -231,7 +231,6 @@ def test_build_rivals_uses_only_real_data():
     rival = data.rivals[0]
     assert rival.coach == "Entrenador Real"
     assert rival.bdfutbol_id == "27"
-    assert rival.key_players == []
     assert rival.head_to_head is head
 
 
@@ -258,7 +257,6 @@ def test_build_rivals_without_sources_keeps_nulls():
     data = r.build_rivals("2026-27", 1, fixtures, None, [], {}, {}, NOW)
     rival = data.rivals[0]
     assert rival.coach is None
-    assert rival.key_players == []
     assert rival.head_to_head is None
     assert rival.bdfutbol_id is None
 

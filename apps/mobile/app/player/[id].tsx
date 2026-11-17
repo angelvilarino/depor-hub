@@ -21,7 +21,6 @@ import {
   ageFrom,
   countryFlag,
   fixtureForMatch,
-  formatEuro,
   formatNumber,
   formatPartialDate,
   hasCareerTotals,
@@ -342,7 +341,6 @@ export default function PlayerDetail() {
   const previousMatches = matches.filter((match) => !seasonMatches.includes(match));
   const seasonSummary = summarizeMatches(seasonMatches);
   const social = socialLinks(player.social);
-  const marketValue = formatEuro(player.marketValueEur, locale);
   const photo =
     player.photos?.find((item) => item.role === 'portrait') ?? player.photos?.[0] ?? null;
   const seasonLabel = shortSeason(fixtures.data?.season);
@@ -448,11 +446,6 @@ export default function PlayerDetail() {
         key: 'contract',
         icon: 'document-text-outline',
         text: contract ? `${t('player.contract')} ${contract}` : '',
-      },
-      {
-        key: 'marketValue',
-        icon: 'cash-outline',
-        text: marketValue ? `${marketValue} · ${t('player.estimated')}` : '',
       },
     ] as { key: string; icon: keyof typeof Ionicons.glyphMap; text: string }[]
   ).filter((fact) => fact.text.length > 0);

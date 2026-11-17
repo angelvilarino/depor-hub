@@ -197,7 +197,7 @@ def test_status_reads_one_window_per_workflow_from_a_directory(tmp_path):
 def test_status_ignores_missing_optional_files_and_unreadable_updated_at(tmp_path):
     data = make_data(tmp_path)
     (data / "club.json").unlink(missing_ok=True)
-    (data / "social.json").unlink(missing_ok=True)
+    (data / "news-home.json").unlink(missing_ok=True)
     (data / "standings.json").write_text(json.dumps({"foo": "bar"}), encoding="utf-8")
 
     code, status = run_status(tmp_path, data, make_runs(tmp_path))

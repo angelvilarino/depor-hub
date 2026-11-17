@@ -143,58 +143,6 @@
       "title": "HeadToHeadMeeting",
       "type": "object"
     },
-    "KeyPlayer": {
-      "additionalProperties": false,
-      "description": "Contrato legado: la publicaci\u00f3n actual no incluye estad\u00edsticas individuales de rivales.",
-      "properties": {
-        "assists": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Assists"
-        },
-        "goals": {
-          "minimum": 0,
-          "title": "Goals",
-          "type": "integer"
-        },
-        "id": {
-          "title": "Id",
-          "type": "integer"
-        },
-        "name": {
-          "title": "Name",
-          "type": "string"
-        },
-        "playedMatches": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Playedmatches"
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "goals"
-      ],
-      "title": "KeyPlayer",
-      "type": "object"
-    },
     "Rival": {
       "additionalProperties": false,
       "properties": {
@@ -232,13 +180,6 @@
             }
           ],
           "default": null
-        },
-        "keyPlayers": {
-          "items": {
-            "$ref": "#/$defs/KeyPlayer"
-          },
-          "title": "Keyplayers",
-          "type": "array"
         },
         "team": {
           "$ref": "#/$defs/TeamRef"

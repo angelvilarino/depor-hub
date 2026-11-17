@@ -39,7 +39,6 @@ from .news.feeds import load_feeds
 from .news.http import NewsHttp
 from .news.relevance import build_index
 from .publish import write_if_changed, write_optional
-from .social import build_social, load_social, write_social
 
 COMPETITION = "PD"
 
@@ -786,13 +785,6 @@ def cmd_news(args: argparse.Namespace) -> int:
             # Si news.json no cambió, la portada conserva su updatedAt para no crear un commit vacío.
             home_news = result.news if changed or existing is None else existing
             changed = news_ingest.write_home(out_dir, home_news, http) or changed
-            if args.social:
-                social_config = load_social(Path(args.social))
-                social = build_social(
-                    social_config,
-                    datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                )
-                changed = write_social(out_dir, social, force=args.force) or changed
         print(
             f"changed={'true' if changed else 'false'} stories={len(result.news.stories)} "
             f"sources={len(result.news.sources)} errors={len(result.errors)}"
@@ -804,20 +796,6 @@ def cmd_news(args: argparse.Namespace) -> int:
     finally:
         # La portada descarga sus miniaturas con este cliente: se cierra al final.
         http.close()
-
-def cmd_social(args: argparse.Namespace) -> int:
-    config = load_social(Path(args.source))
-    social = build_social(config, datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"))
-    changed = False
-    if not args.dry_run:
-        changed = write_social(Path(args.out), social, force=args.force)
-    print(
-        f"changed={'true' if changed else 'false'} profiles={len(social.profiles)} "
-        f"pins={len(social.pins)} hash={social.data_hash}"
-    )
-    _gh_output(changed="true" if changed else "false")
-    return 0
-
 
 def cmd_club(args: argparse.Namespace) -> int:
     """Publica club.json desde el YAML curado y las letras de los himnos."""
@@ -1046,7 +1024,6 @@ _STATUS_DATA_FILES: tuple[tuple[str, bool], ...] = (
     ("club.json", False),
     ("news.json", False),
     ("rivals.json", False),
-    ("social.json", False),
     ("titles.json", False),
     ("rivalries.json", False),
 )
@@ -1247,7 +1224,6 @@ def cmd_status(args: argparse.Namespace) -> int:
             "club.json",
             "news.json",
             "rivals.json",
-            "social.json",
             "titles.json",
             "rivalries.json",
         }
@@ -1287,7 +1263,6 @@ CSV_FIELDS = [
     "birth_place",
     "preferred_foot",
     "loan_from",
-    "market_value_eur",
     "source",
     "confidence",
     "captured_at",
@@ -1311,7 +1286,6 @@ def _write_template(path: Path, squad: m.Squad) -> None:
                     "birth_place": player.birth_place or "",
                     "preferred_foot": player.preferred_foot or "",
                     "loan_from": player.loan_from or "",
-                    "market_value_eur": player.market_value_eur or "",
                     "source": "",
                     "confidence": "single_source",
                     "captured_at": "",
@@ -1326,7 +1300,6 @@ def _clean_csv_row(row: dict[str, str]) -> dict[str, object]:
         "shirt_number",
         "height_cm",
         "weight_kg",
-        "market_value_eur",
     ):
         value = (row.get(key) or "").strip()
         if value:
@@ -1741,7 +1714,6 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("--threshold", type=int, default=None, help="Umbral de relevancia")
     sp.add_argument("--dedupe-threshold", type=float, default=0.52)
     sp.add_argument("--min-stories", type=int, default=5)
-    sp.add_argument("--social", default="data/manual/social_pins.yml")
     sp.add_argument("--offline", action="store_true", help="Usa solo la caché local")
     sp.add_argument("--force", action="store_true")
     sp.add_argument("--dry-run", action="store_true")
@@ -1772,19 +1744,11 @@ def main(argv: list[str] | None = None) -> int:
     news_ing.add_argument("--threshold", type=int, default=None)
     news_ing.add_argument("--dedupe-threshold", type=float, default=0.52)
     news_ing.add_argument("--min-stories", type=int, default=5)
-    news_ing.add_argument("--social", default="data/manual/social_pins.yml")
     news_ing.add_argument("--offline", action="store_true")
     news_ing.add_argument("--force", action="store_true")
     news_ing.add_argument("--dry-run", action="store_true")
     news_ing.add_argument("--report", action="store_true")
     news_ing.set_defaults(fn=cmd_news)
-
-    sp = sub.add_parser("social", help="Publica los perfiles y pins curados de redes")
-    sp.add_argument("--source", default="data/manual/social_pins.yml")
-    sp.add_argument("--out", default="data/public/v1")
-    sp.add_argument("--force", action="store_true")
-    sp.add_argument("--dry-run", action="store_true")
-    sp.set_defaults(fn=cmd_social)
 
     sp = sub.add_parser("club", help="Publica la ficha completa del club (ADR 0025)")
     sp.add_argument("--config", default="data/manual/club.yml")

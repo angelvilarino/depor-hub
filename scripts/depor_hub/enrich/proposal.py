@@ -939,7 +939,6 @@ _LEGACY_KEYS = {
     "birthPlace": "birth_place",
     "preferredFoot": "preferred_foot",
     "loanFrom": "loan_from",
-    "marketValueEur": "market_value_eur",
     "licenseUrl": "license_url",
     "sourceUrl": "source_url",
     "crestUrl": "crest_url",

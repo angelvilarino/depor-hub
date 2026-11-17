@@ -777,19 +777,6 @@
       "default": null,
       "title": "Loanto"
     },
-    "marketValueEur": {
-      "anyOf": [
-        {
-          "minimum": 0,
-          "type": "integer"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Marketvalueeur"
-    },
     "name": {
       "title": "Name",
       "type": "string"

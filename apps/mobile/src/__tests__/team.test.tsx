@@ -29,7 +29,6 @@ const basePlayer: PlayerT = {
   preferredFoot: null,
   loanFrom: null,
   loanTo: null,
-  marketValueEur: null,
   weightKg: null,
   social: { x: null, instagram: null, tiktok: null },
   photos: [],
