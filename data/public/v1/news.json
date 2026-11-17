@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T05:32:43Z",
+  "updatedAt": "2026-11-17T06:07:14Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "c87bdbf6c82f0dfd",
+      "title": "Lucas Viña: «Villares tenía un potencial increíble y sabías que tarde o temprano le iba a llegar la oportunidad»",
+      "url": "https://riazor.org/lucas-vina-villares-tarde-temprano-oportunidad",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-17T06:00:12Z",
+      "kind": "article",
+      "summary": "El exjugador del Fabril recordó en 'Son de Riazor' su etapa en A Coruña después de ganar el derbi barcelonés entre Europa y Sant Andreu…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/lucas-vina-sant-andreu-1600x900-1.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "4c9def0793fdb0d1",
       "title": "El calendario del Dépor hasta Navidad: una montaña rusa con dos ochomiles",
@@ -2158,21 +2172,6 @@
       "thumbnailUrl": null,
       "tags": [
         "club",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "14866f4d17cb68c9",
-      "title": "Marisa explica su buen momento de forma con el Dépor ABANCA: «He venido del Mundial con un plus de confianza»",
-      "url": "https://riazor.org/marisa-depor-abanca-venido-mundial-plus-confianza",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-05T16:00:34Z",
-      "kind": "article",
-      "summary": "Marisa ha sido escogida como mejor jugadora del mes en el Dépor ABANCA. En tres partidos tras su regreso del Mundial anotó dos goles y dio…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
         "partido"
       ],
       "alsoIn": []

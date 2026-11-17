@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T05:32:43Z",
+  "updatedAt": "2026-11-17T06:07:14Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "c87bdbf6c82f0dfd",
+      "title": "Lucas Viña: «Villares tenía un potencial increíble y sabías que tarde o temprano le iba a llegar la oportunidad»",
+      "url": "https://riazor.org/lucas-vina-villares-tarde-temprano-oportunidad",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-17T06:00:12Z",
+      "kind": "article",
+      "summary": "El exjugador del Fabril recordó en 'Son de Riazor' su etapa en A Coruña después de ganar el derbi barcelonés entre Europa y Sant Andreu…",
+      "thumbnailUrl": "img/news/6d8180f4dae0559f.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "4c9def0793fdb0d1",
       "title": "El calendario del Dépor hasta Navidad: una montaña rusa con dos ochomiles",
@@ -95,21 +109,6 @@
       "summary": "Giménez, el último en regresar, no entrenará con el equipo hasta el día antes del duelo liguero ante el Alavés",
       "thumbnailUrl": "img/news/3079bc5f3d238ed4.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "4d9f1071928b3171",
-      "title": "El objetivo de Benassi: un Dépor entre los mejores clubes de Europa con fichajes ‘de videojuego’ como Aubameyang",
-      "url": "https://riazor.org/benassi-depor-mejores-clubes-europa-aubameyang",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-16T16:30:08Z",
-      "kind": "article",
-      "summary": "El consejero delegado del Deportivo se mostró ambicioso en La Gazzetta dello Sport hablando sobre el proyecto en mente para el club. La…",
-      "thumbnailUrl": "img/news/946ebec40bedb772.webp",
-      "tags": [
-        "fichajes",
-        "club"
-      ],
       "alsoIn": []
     }
   ]
