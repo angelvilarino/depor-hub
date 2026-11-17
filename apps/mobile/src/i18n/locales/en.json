@@ -194,8 +194,10 @@
   },
   "calendar": {
     "upcoming": "Upcoming",
+    "next": "NEXT",
     "results": "Results",
     "standings": "Table",
+    "title": "Calendar",
     "emptyUpcoming": "No upcoming matches.",
     "emptyResults": "No results yet.",
     "emptyStandings": "Table not available.",
@@ -249,12 +251,11 @@
     "addToCalendar": "Add to calendar",
     "addError": "The match could not be added to your calendar.",
     "addErrorHint": "Try sharing the calendar from the Calendar tab.",
-    "lineups": "Line-ups and events",
+    "lineups": "Line-ups",
+    "timeline": "Timeline",
     "liveNow": "LIVE",
     "finished": "Final result",
     "detailUnavailable": "Line-ups and events unavailable",
-    "detailUnavailableHint": "There is no BDFutbol report for this match yet. Events and statistics are not inferred from the result.",
-    "liveUnavailable": "Live updates only cover the score and status; this source does not provide events, line-ups or statistics.",
     "dataSource": "Score and status: football-data.org",
     "calendarSaved": "Added to calendar",
     "calendarShared": "Calendar file shared",
@@ -265,6 +266,8 @@
     "substitutions": "Substitutions",
     "coach": "Coach",
     "starters": "Starters",
+    "substitutesCount": "Substitutes ({{count}})",
+    "substitutesHide": "Hide substitutes",
     "substitutes": "Substitutes",
     "penalty": "penalty",
     "ownGoal": "own goal",
@@ -273,7 +276,9 @@
     "secondYellow": "second yellow",
     "playerOut": "Off",
     "playerIn": "On",
-    "noEvents": "The source does not publish goals, cards or substitutions for this match."
+    "noEvents": "The source does not publish goals, cards or substitutions for this match.",
+    "noEventsShort": "No goals, cards or substitutions published.",
+    "liveNoEvents": "No live events published."
   },
   "reminder": {
     "channel": "Match reminders",
@@ -307,6 +312,7 @@
     "exactAlarmEnable": "Allow exact alarms"
   },
   "team": {
+    "title": "Squad",
     "coach": "Head coach",
     "empty": "Squad not available.",
     "searchPlaceholder": "Search by name or number",
@@ -371,7 +377,9 @@
     "photoAuthor": "Author: {{author}}",
     "photoNote": "Photos are linked from their original source with attribution; they are not redistributed.",
     "careerTitle": "Career",
+    "careerStatsTitle": "Career totals",
     "deporMatchesTitle": "Matches with Depor",
+    "statsTitle": "Season",
     "matchHome": "Home",
     "matchAway": "Away",
     "stats": {
@@ -389,7 +397,6 @@
       "redCardsShort": "RC"
     },
     "pendingTitle": "Pending data",
-    "pendingBody": "We don't have these details from a reliable source yet; they are never made up.",
     "positionName": {
       "GK": "Goalkeeper",
       "DF": "Defender",
@@ -428,6 +435,8 @@
     "noSeasonStats": "No matches for Depor this season.",
     "noStats": "No statistics with a reliable source yet.",
     "matchesEmpty": "No matches recorded for Depor.",
+    "previousSeasons": "Previous seasons ({{count}})",
+    "previousSeasonsHide": "Hide previous seasons",
     "careerEmpty": "No career recorded."
   },
   "country": {
@@ -520,6 +529,8 @@
     "searchPlaceholder": "Search headlines, outlet or tag",
     "searchClear": "Clear search",
     "filters": "Filters",
+    "kindTitle": "Type",
+    "groupTitle": "Sections",
     "filtersTitle": "Filters",
     "sources": "Outlets",
     "noSources": "No outlets with stories.",

@@ -194,8 +194,10 @@
   },
   "calendar": {
     "upcoming": "Próximos",
+    "next": "PRÓXIMO",
     "results": "Resultados",
     "standings": "Clasificación",
+    "title": "Calendario",
     "emptyUpcoming": "No hay partidos pendientes.",
     "emptyResults": "Todavía no hay resultados.",
     "emptyStandings": "Clasificación no disponible.",
@@ -249,12 +251,11 @@
     "addToCalendar": "Añadir al calendario",
     "addError": "No se ha podido añadir el partido al calendario.",
     "addErrorHint": "Prueba a compartir el calendario desde la pestaña Calendario.",
-    "lineups": "Alineaciones y eventos",
+    "lineups": "Alineaciones",
+    "timeline": "Línea temporal",
     "liveNow": "EN JUEGO",
     "finished": "Resultado final",
     "detailUnavailable": "Alineaciones y eventos no disponibles",
-    "detailUnavailableHint": "Todavía no hay ficha de BDFutbol para este partido. No se deducen eventos ni estadísticas a partir del resultado.",
-    "liveUnavailable": "En directo solo se actualizan el marcador y el estado; esta fuente no ofrece eventos, alineaciones ni estadísticas.",
     "dataSource": "Marcador y estado: football-data.org",
     "calendarSaved": "Añadido al calendario",
     "calendarShared": "Archivo de calendario compartido",
@@ -265,6 +266,8 @@
     "substitutions": "Cambios",
     "coach": "Entrenador",
     "starters": "Titulares",
+    "substitutesCount": "Suplentes ({{count}})",
+    "substitutesHide": "Ocultar suplentes",
     "substitutes": "Suplentes",
     "penalty": "penalti",
     "ownGoal": "en propia puerta",
@@ -273,7 +276,9 @@
     "secondYellow": "doble amarilla",
     "playerOut": "Sale",
     "playerIn": "Entra",
-    "noEvents": "La fuente no publica goles, tarjetas ni cambios para este partido."
+    "noEvents": "La fuente no publica goles, tarjetas ni cambios para este partido.",
+    "noEventsShort": "Sin goles, tarjetas ni cambios publicados.",
+    "liveNoEvents": "En directo no hay eventos publicados."
   },
   "reminder": {
     "channel": "Recordatorios de partido",
@@ -307,6 +312,7 @@
     "exactAlarmEnable": "Permitir alarmas exactas"
   },
   "team": {
+    "title": "Plantilla",
     "coach": "Entrenador",
     "empty": "La plantilla no está disponible.",
     "searchPlaceholder": "Buscar por nombre o dorsal",
@@ -371,7 +377,9 @@
     "photoAuthor": "Autoría: {{author}}",
     "photoNote": "Las fotos se enlazan desde su fuente original con atribución; no se redistribuyen.",
     "careerTitle": "Trayectoria",
+    "careerStatsTitle": "Totales de carrera",
     "deporMatchesTitle": "Partidos con el Depor",
+    "statsTitle": "Temporada",
     "matchHome": "Local",
     "matchAway": "Visitante",
     "stats": {
@@ -389,7 +397,6 @@
       "redCardsShort": "TR"
     },
     "pendingTitle": "Datos pendientes",
-    "pendingBody": "Todavía no tenemos estos datos con una fuente fiable; no se inventan.",
     "positionName": {
       "GK": "Portero",
       "DF": "Defensa",
@@ -428,6 +435,8 @@
     "noSeasonStats": "Sin partidos con el Depor en esta temporada.",
     "noStats": "Todavía no hay estadísticas con fuente fiable.",
     "matchesEmpty": "No hay partidos registrados con el Depor.",
+    "previousSeasons": "Temporadas anteriores ({{count}})",
+    "previousSeasonsHide": "Ocultar temporadas anteriores",
     "careerEmpty": "Sin trayectoria registrada."
   },
   "country": {
@@ -520,6 +529,8 @@
     "searchPlaceholder": "Buscar titulares, medio o etiqueta",
     "searchClear": "Borrar búsqueda",
     "filters": "Filtros",
+    "kindTitle": "Tipo",
+    "groupTitle": "Secciones",
     "filtersTitle": "Filtros",
     "sources": "Fuentes",
     "noSources": "No hay fuentes con noticias.",

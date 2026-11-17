@@ -28,17 +28,26 @@
   },
   "calendar": {
     "upcoming": "Próximos",
+    "next": "PRÓXIMO",
     "results": "Resultados",
     "standings": "Clasificación",
+    "title": "Calendario",
     "timeTbc": "Hora por confirmar",
     "matchday": "Xornada {{n}}"
   },
   "match": {
     "title": "Partido",
+    "timeline": "Liña temporal",
     "remind": "Lembrarme",
-    "addToCalendar": "Engadir ao calendario"
+    "addToCalendar": "Engadir ao calendario",
+    "substitutesCount": "Suplentes ({{count}})",
+    "substitutesHide": "Ocultar suplentes",
+    "noEventsShort": "Sen goles, tarxetas nin cambios publicados.",
+    "liveNoEvents": "En directo non hai eventos publicados.",
+    "lineups": "Aliñacións"
   },
   "team": {
+    "title": "Cadro",
     "coach": "Adestrador",
     "summary_one": "{{count}} xogador",
     "summary_other": "{{count}} xogadores",
@@ -80,7 +89,9 @@
     "photoAuthor": "Autoría: {{author}}",
     "photoNote": "As fotos enlázanse desde a súa fonte orixinal con atribución; non se redistribúen.",
     "careerTitle": "Traxectoria",
+    "careerStatsTitle": "Totais de carreira",
     "deporMatchesTitle": "Partidos co Depor",
+    "statsTitle": "Tempada",
     "matchHome": "Local",
     "matchAway": "Visitante",
     "stats": {
@@ -127,7 +138,9 @@
     },
     "loanFromValue": "Cedido por {{club}}",
     "loanToValue": "Cedido a {{club}}",
-    "careerEmpty": "Sen traxectoria rexistrada."
+    "careerEmpty": "Sen traxectoria rexistrada.",
+    "previousSeasons": "Tempadas anteriores ({{count}})",
+    "previousSeasonsHide": "Ocultar tempadas anteriores"
   },
   "coach": {
     "title": "Adestrador",
@@ -160,6 +173,8 @@
     "searchPlaceholder": "Buscar titulares, medio ou etiqueta",
     "searchClear": "Borrar busca",
     "filters": "Filtros",
+    "kindTitle": "Tipo",
+    "groupTitle": "Seccións",
     "filtersTitle": "Filtros",
     "sources": "Fontes",
     "noSources": "Non hai fontes con novas.",
