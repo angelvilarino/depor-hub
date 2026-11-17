@@ -1,9 +1,44 @@
 version: 2
+
 updates:
+  # App y tooling raíz (Expo, React Native, Jest, ESLint, Prettier).
   - package-ecosystem: npm
     directory: /
-    schedule: { interval: weekly }
+    schedule:
+      interval: weekly
     open-pull-requests-limit: 5
+    groups:
+      expo:
+        patterns:
+          - expo*
+          - "@expo/*"
+      react-native:
+        patterns:
+          - react-native*
+          - "@react-native/**"
+      tooling:
+        patterns:
+          - eslint*
+          - prettier
+          - jest*
+          - "@testing-library/*"
+  # Worker del proxy en directo (Cloudflare + Wrangler).
+  - package-ecosystem: npm
+    directory: /workers/live-proxy
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+  # Pipeline de datos: scripts/pyproject.toml + requirements.lock.
+  - package-ecosystem: pip
+    directory: /scripts
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
   - package-ecosystem: github-actions
     directory: /
-    schedule: { interval: weekly }
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns:
+          - "*"
