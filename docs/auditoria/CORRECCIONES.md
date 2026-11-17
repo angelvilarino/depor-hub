@@ -165,6 +165,37 @@ npm test                                 # 342 passed / 44 suites
 - **Lote 2:** cerrado en local (ver más abajo).
 - **Lote 3 en adelante:** release, offline, rediseño, gallego y cierre.
 
+## Lote 5 — Fichas como interfaces
+
+Estado: **aplicado (17-nov-2026)**. Cerrados D-05, D-06, D-07, D-09, D-10,
+D-11 y D-20; D-21 y D-23 se dan por cubiertos en lo que afecta a estas fichas
+(fechas con `Intl`, orden G/E/P global y capitalización con locale). El gallego
+sigue parcial (212/713) con caída a ES: la decisión de completarlo o retirarlo
+queda para el Lote 6.
+
+| ID | Estado | Qué se ha corregido | Evidencia |
+|---|---|---|---|
+| D-05 | Hecho | La ficha de partido deja de ser un documento: cartel con marcador grande y estado, una sola cabecera de contexto (competición y jornada), sede y árbitro en una tarjeta de dos filas, alineaciones en dos columnas con dorsal y línea temporal única que funde goles, tarjetas y cambios por minuto. Los equipos ya no se repiten por bloque y las fuentes quedan al pie. **Límite honesto:** BDFutbol no publica posición ni formación, así que no se dibuja un campo táctico; se listan los once reales y los suplentes se colapsan. | `app/match/[id].tsx`; `src/components/match/MatchScoreboard.tsx`, `MatchLineups.tsx`, `MatchTimeline.tsx`; `src/features/match/timeline.ts`; `src/__tests__/matchDetail.test.tsx`, `timeline.test.ts` |
+| D-06 | Hecho | Un solo encabezado por pantalla y el nombre del equipo una vez por contexto: Equipo abre con un cartel «Plantilla» que integra al entrenador (sin tarjeta aparte), la ficha de jugador pierde el escudo duplicado del hero y la de partido usa los equipos solo en el marcador y en las alineaciones. | `app/(tabs)/team.tsx`; `app/player/[id].tsx`; `app/match/[id].tsx` |
+| D-07 | Hecho | Se elimina la prosa que explicaba la UI: `player.pendingBody`, `match.detailUnavailableHint` y `match.liveUnavailable` desaparecen. Los vacíos usan `EmptyState` o una línea corta; los datos pendientes son pastillas con el nombre del campo. | `app/player/[id].tsx`; `app/match/[id].tsx`; `src/i18n/locales/*.json` |
+| D-09 | Hecho | La ficha de jugador es un cromo: retrato y dorsal en el cartel, estadísticas de temporada con número grande, un único segmentado (Resumen/Partidos/Carrera) y los datos biográficos como filas con icono. La trayectoria va en el raíl de Carrera con sus totales. Los partidos históricos se separan de la temporada publicada en un desplegable. | `app/player/[id].tsx`; `src/__tests__/playerDetail.test.tsx` |
+| D-10 | Hecho | Cada fila del calendario muestra competición y jornada; el próximo partido lleva borde primario, pastilla `PRÓXIMO` y su hora. Los meses se agrupan con cabecera sticky. | `src/components/MatchCard.tsx`; `app/(tabs)/calendar.tsx` |
+| D-11 | Hecho | El mes se capitaliza con `capitalizeFirst` y el locale, no con `textTransform: 'capitalize'`: «Noviembre de 2026», no «Noviembre De 2026». | `app/(tabs)/calendar.tsx`; `src/utils/text.ts` |
+| D-20 | Hecho | Noticias deja un solo truncado (titular a 3 líneas, sin resumen) y un único acceso a filtros: tipo y secciones se mueven a la hoja inferior junto a fuentes y etiquetas. La barra queda en título, búsqueda y filtros con contador. | `src/components/news/NewsToolbar.tsx`, `NewsStoryCard.tsx`, `NewsFiltersSheet.tsx`; `app/(tabs)/news.tsx`; `src/__tests__/news.test.tsx` |
+| D-21 / D-23 | Hecho en estas fichas | Fechas con `Intl.DateTimeFormat` en el locale, sin ISO; mismo orden G/E/P en toda la app; miles y euros con `Intl.NumberFormat`. | `app/rival/[teamId].tsx`; `src/features/squad/logic.ts`; `src/features/calendar/logic.ts` |
+
+### Verificación del Lote 5
+
+```bash
+npm run lint
+npm run typecheck
+npm test                                 # 346 passed / 45 suites
+```
+
+Sin cambios en Python, Worker ni esquemas: el lote es solo de interfaz y claves
+de traducción.
+
+
 ## Lote 2 — Peso de datos e imágenes
 
 Estado: **cerrado** y verificado en producción. El smoke contra Pages valida los
