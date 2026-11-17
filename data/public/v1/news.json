@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T17:33:08Z",
+  "updatedAt": "2026-11-17T19:04:20Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -147,12 +147,19 @@
       "publishedAt": "2026-11-17T08:00:03Z",
       "kind": "article",
       "summary": "La Junta de Accionistas, con el 99,86% del capital representado, da el visto bueno a un ejercicio con 12,17 millones de pérdidas y 72,7 de…",
-      "thumbnailUrl": null,
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/17/6afc9f68bcf86.r_d.811-1192-0.webp",
       "tags": [
         "partido",
         "club"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "El Dépor ya prepara el encuentro ante el Alavés, todavía sin los internacionales, pero con cuatro fabrilistas",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/el-depor-ya-prepara-el-encuentro-ante-el-alaves-todavia-sin-los-internacionales-pero-con-cuatro-fabrilistas-891586.html",
+          "publishedAt": "2026-11-17T18:42:23Z"
+        }
+      ]
     },
     {
       "id": "c87bdbf6c82f0dfd",
