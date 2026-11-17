@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { Card } from '@/components/Screen';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubLinksT, ClubT } from '@/data/schemas';
-import { radius, spacing, text } from '@/theme/tokens';
+import { linkHandle } from '@/features/club/logic';
+import { imageTokens, radius, socialColors, spacing, text, type SocialColor } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 import { InfoRow, SectionTitle } from './ui';
@@ -13,29 +14,51 @@ import { InfoRow, SectionTitle } from './ui';
 type LinkKey = Exclude<keyof ClubLinksT, 'others'>;
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
 
-const LINKS: { key: LinkKey; label: string; icon: IconName }[] = [
-  { key: 'website', label: 'club.redes.website', icon: 'globe-outline' },
+type LinkItem = {
+  key: LinkKey;
+  label: string;
+  icon: IconName;
+  tint?: SocialColor;
+  /** Un enlace interno se rotula con su ruta, no con la marca. */
+  handle?: boolean;
+};
+
+const LINKS: LinkItem[] = [
+  { key: 'website', label: 'club.redes.website', icon: 'globe-outline', handle: true },
   { key: 'app', label: 'club.redes.app', icon: 'phone-portrait-outline' },
-  { key: 'x', label: 'X', icon: 'logo-twitter' },
-  { key: 'instagram', label: 'Instagram', icon: 'logo-instagram' },
-  { key: 'tiktok', label: 'TikTok', icon: 'logo-tiktok' },
-  { key: 'youtube', label: 'YouTube', icon: 'logo-youtube' },
-  { key: 'facebook', label: 'Facebook', icon: 'logo-facebook' },
-  { key: 'twitch', label: 'Twitch', icon: 'logo-twitch' },
-  { key: 'whatsapp', label: 'WhatsApp', icon: 'logo-whatsapp' },
+  { key: 'x', label: 'X', icon: 'logo-x', tint: 'x', handle: true },
+  { key: 'instagram', label: 'Instagram', icon: 'logo-instagram', tint: 'instagram', handle: true },
+  { key: 'tiktok', label: 'TikTok', icon: 'logo-tiktok', tint: 'tiktok', handle: true },
+  { key: 'youtube', label: 'YouTube', icon: 'logo-youtube', tint: 'youtube', handle: true },
+  { key: 'facebook', label: 'Facebook', icon: 'logo-facebook', tint: 'facebook', handle: true },
+  { key: 'twitch', label: 'Twitch', icon: 'logo-twitch', tint: 'twitch', handle: true },
+  { key: 'whatsapp', label: 'WhatsApp', icon: 'logo-whatsapp', tint: 'whatsapp', handle: true },
   { key: 'store', label: 'club.redes.store', icon: 'cart-outline' },
   { key: 'tickets', label: 'club.redes.tickets', icon: 'ticket-outline' },
   { key: 'museum', label: 'club.redes.museum', icon: 'business-outline' },
 ];
 
+function BrandMark({ icon, tint }: { icon: IconName; tint?: SocialColor }) {
+  const { colors } = useTheme();
+  return (
+    <View style={[styles.mark, { backgroundColor: tint ? socialColors[tint] : colors.primary, borderColor: colors.border }]}>
+      <Ionicons name={icon} size={18} color={tint ? imageTokens.text : colors.onPrimary} />
+    </View>
+  );
+}
+
 function LinkRow({
   label,
   url,
   icon,
+  tint,
+  handle = false,
 }: {
   label: string;
   url: string;
   icon: IconName;
+  tint?: SocialColor;
+  handle?: boolean;
 }) {
   const { colors } = useTheme();
   return (
@@ -45,10 +68,11 @@ function LinkRow({
       onPress={() => void openExternal(url)}
       style={styles.row}
     >
-      <Ionicons name={icon} size={20} color={colors.primary} />
-      <Text style={{ color: colors.primary, ...text.bodyLarge, fontWeight: '600', flex: 1 }}>
-        {label}
-      </Text>
+      <BrandMark icon={icon} tint={tint} />
+      <View style={styles.rowText}>
+        <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{label}</Text>
+        {handle ? <Text numberOfLines={1} style={{ color: colors.textMuted, ...text.caption }}>{linkHandle(url)}</Text> : null}
+      </View>
       <Ionicons name="open-outline" size={18} color={colors.primary} />
     </Pressable>
   );
@@ -77,7 +101,7 @@ export function RedesSection({ club }: { club: ClubT }) {
             const url = links[item.key];
             if (!url) return null;
             const label = item.label.startsWith('club.') ? t(item.label) : item.label;
-            return <LinkRow key={item.key} label={label} url={url} icon={item.icon} />;
+            return <LinkRow key={item.key} label={label} url={url} icon={item.icon} tint={item.tint} handle={item.handle} />;
           })}
         </Card>
       ) : null}
@@ -86,7 +110,7 @@ export function RedesSection({ club }: { club: ClubT }) {
         <Card>
           <SectionTitle>{t('club.redes.other')}</SectionTitle>
           {links.others.map((link) => (
-            <LinkRow key={link.id} label={link.label} url={link.url} icon="link-outline" />
+            <LinkRow key={link.id} label={link.label} url={link.url} icon="link-outline" handle />
           ))}
         </Card>
       ) : null}
@@ -101,10 +125,8 @@ export function RedesSection({ club }: { club: ClubT }) {
               onPress={() => void Linking.openURL(`mailto:${email}`)}
               style={styles.row}
             >
-              <Ionicons name="mail-outline" size={20} color={colors.primary} />
-              <Text selectable style={{ color: colors.primary, ...text.bodyLarge, flex: 1 }}>
-                {email}
-              </Text>
+              <BrandMark icon="mail-outline" />
+              <Text selectable style={{ color: colors.text, ...text.bodyLarge, flex: 1 }}>{email}</Text>
             </Pressable>
           ) : null}
           {phone ? (
@@ -114,10 +136,8 @@ export function RedesSection({ club }: { club: ClubT }) {
               onPress={() => void Linking.openURL(`tel:${phone.replace(/[^\d+]/g, '')}`)}
               style={styles.row}
             >
-              <Ionicons name="call-outline" size={20} color={colors.primary} />
-              <Text selectable style={{ color: colors.primary, ...text.bodyLarge, flex: 1 }}>
-                {phone}
-              </Text>
+              <BrandMark icon="call-outline" />
+              <Text selectable style={{ color: colors.text, ...text.bodyLarge, flex: 1 }}>{phone}</Text>
             </Pressable>
           ) : null}
           <InfoRow label={t('club.redes.address')} value={contact.address} />
@@ -129,10 +149,19 @@ export function RedesSection({ club }: { club: ClubT }) {
 
 const styles = StyleSheet.create({
   row: {
-    minHeight: 44,
+    minHeight: 48,
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
     borderRadius: radius.sm,
+  },
+  rowText: { flex: 1, gap: spacing.xs },
+  mark: {
+    width: 38,
+    height: 38,
+    borderRadius: radius.sm,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
