@@ -14,7 +14,7 @@ import { Screen } from '@/components/Screen';
 import { SegmentedControl } from '@/components/SegmentedControl';
 import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
 import { TeamCrest } from '@/components/TeamCrest';
-import { useFixtures, useMeta, usePlayer, useSquad } from '@/data/queries';
+import { useFixtures, usePlayer, useSquad } from '@/data/queries';
 import type { PlayerMatchT, PlayerPhotoT, PlayerT } from '@/data/schemas';
 import { countryLabel } from '@/features/squad/labels';
 import {
@@ -289,7 +289,6 @@ export default function PlayerDetail() {
   const squad = useSquad();
   const playerDoc = usePlayer(id ?? null);
   const fixtures = useFixtures();
-  const meta = useMeta();
   const [now] = useState(() => Date.now()); // fuera del render: regla react-hooks/purity
   const [photoOpen, setPhotoOpen] = useState(false);
   const [tab, setTab] = useState<Tab>('summary');
@@ -347,13 +346,6 @@ export default function PlayerDetail() {
   const photo =
     player.photos?.find((item) => item.role === 'portrait') ?? player.photos?.[0] ?? null;
   const seasonLabel = shortSeason(fixtures.data?.season);
-  const deporTeam = meta.data?.team ?? {
-    id: 560,
-    name: 'Deportivo',
-    shortName: 'Depor',
-    tla: 'DEP',
-    crestUrl: null,
-  };
 
   const identity = [nationality, position, age !== null ? t('player.ageValue', { n: age }) : null]
     .filter(Boolean)
