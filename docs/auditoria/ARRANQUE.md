@@ -64,6 +64,11 @@ primer plano. Se anota el modelo del dispositivo y la versión de Android.
 |---|---|---|---:|---:|---:|---|
 | — | pendiente de dispositivo físico | — | — | — | — | **sin medir** |
 
+El APK ya está compilado: build `8df81fb4-6a02-48aa-adca-55735f3df414`
+(`preview`, Android, `versionCode 1`, estado **FINISHED**). Se descarga de
+`https://expo.dev/artifacts/eas/Tfsrnz1mNNBxiSILIhf2CgSsEaigo8H8mhVzRxqpMqY.apk`;
+falta el dispositivo para instalar y ejecutar la tanda.
+
 Las marcas están instrumentadas y el comando es reproducible, pero este
 entorno no tiene un dispositivo de gama media donde ejecutar la tanda: un
 emulador o un simulador no representan el objetivo. La tabla se rellena con la

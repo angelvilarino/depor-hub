@@ -133,9 +133,9 @@ cd workers/live-proxy && npm test
 
 ## Lote 4 — Sistema de diseño y navegación
 
-Estado: **en curso (16-nov-2026)**. Cerrados D-01, D-02, D-12, D-04, D-08 y
-D-26 (color y familias); quedan D-03, D-24 y la auditoría de accesibilidad en
-dispositivo.
+Estado: **aplicado (17-nov-2026)**. Cerrados D-01, D-02, D-03, D-04, D-08,
+D-12, D-24 y D-26; D-22 queda hecho en código y pendiente solo de la auditoría
+en un dispositivo real.
 
 | ID | Estado | Qué se ha corregido | Evidencia |
 |---|---|---|---|
@@ -144,17 +144,17 @@ dispositivo.
 | D-12 | Hecho | El papel oscuro sube de `#151D2A` a `#202D42`: 1,35:1 contra el fondo `#0B1220` y borde visible (1,42:1). En claro se mantiene el borde como separador (1,46:1). | `src/theme/tokens.ts`, `src/__tests__/tokens.test.ts` |
 | D-04 | Hecho | Escala tipográfica de 8 pasos (`caption`, `body`, `bodyLarge`, `subtitle`, `title`, `heading`, `display`, `hero`, `numeral`) con interlineado. Se sustituyen los 323 `fontSize` literales por spreads de `text.*`; un test falla si vuelve un literal. | `src/theme/tokens.ts`; `src/__tests__/tokensHygiene.test.ts`; migración en Inicio, Noticias, Club, Partido, Jugador, Entrenador, Rival, Ajustes y componentes compartidos |
 | D-08 | Hecho | `Pressable` propio inyecta el estado `pressed` global (opacidad 0,68) y `hitSlop` 8; `PosterCard`, `PaperCard` y `Card` entran con Reanimated (`FadeInDown`, `FadeInUp`, `FadeIn`) respetando «reducir movimiento» del sistema. | `src/components/Pressable.tsx`, `src/components/design/DesignSystem.tsx`, `src/components/Screen.tsx`; `src/__tests__/pressable.test.tsx` |
-| D-26 | Hecho en color y familias; espaciado pendiente | Cero hex fuera de `tokens.ts`: se añaden `onImage`, `rating`, `kitColors`, `avatarPalette` e `imageTokens` (scrim, degradado, velo). Las familias literales (`SourceSerif4`, `BarlowCondensed`) pasan a `typography`. Queda revisar que el espaciado 4/8 cubra ≥90 % de los márgenes. | `src/theme/tokens.ts`; `src/__tests__/tokensHygiene.test.ts`; `ClubImage`, `Editorial`, `PlayerAvatar`, `SeasonCard`, `(tabs)/club` |
-| D-22 | Hecho en texto; auditoría pendiente | Se eliminan los textos de 9–11 pt (mínimo 12) y el `hitSlop` global amplía los targets pequeños; los botones de icono existentes ya declaran `accessibilityLabel`. Falta pasar la auditoría de accesibilidad en un dispositivo real. | `src/components/Pressable.tsx`, `src/components/TeamCrest.tsx`, `src/components/PlayerAvatar.tsx`, `src/components/home/PositionChart.tsx` |
-| D-24 | Parcial | La píldora de contexto duplicada desaparece con D-01. No se han encontrado `<Card>` literalmente anidados; queda revisar en capturas las tarjetas que se ven como superficies dentro de otra. | `apps/mobile/app/_layout.tsx` |
-| D-03 | Pendiente | El sistema ya tiene tres superficies (`PosterCard`, `PaperCard`, `Card`), pero la migración pantalla a pantalla y el inventario de `SectionHeader` siguen abiertos. | — |
+| D-26 | Hecho | Cero hex fuera de `tokens.ts`: se añaden `onImage`, `rating`, `kitColors`, `avatarPalette` e `imageTokens` (scrim, degradado, velo). Las familias literales (`SourceSerif4`, `BarlowCondensed`) pasan a `typography`. El espaciado de la app (399 declaraciones de padding/margin/gap) ya no tiene ningún literal fuera de la rejilla 4/8: todo sale de `spacing` y un test impide volver a introducirlos. | `src/theme/tokens.ts`; `src/__tests__/tokensHygiene.test.ts`; `ClubImage`, `Editorial`, `PlayerAvatar`, `SeasonCard`, `(tabs)/club` |
+| D-22 | Hecho en código; auditoría en dispositivo pendiente | Se eliminan los textos de 9–11 pt (mínimo 12) y el `Pressable` propio aplica `hitSlop` 8 por defecto a toda superficie tocable (test incluido); los botones de icono declaran `accessibilityLabel`. Falta pasar la auditoría de accesibilidad real en un dispositivo. | `src/components/Pressable.tsx`; `src/__tests__/pressable.test.tsx`; `TeamCrest`, `PlayerAvatar`, `PositionChart` |
+| D-24 | Hecho | La píldora duplicada desaparece con D-01. La rejilla de secciones de Club ya no vive dentro de una tarjeta: cada baldosa es una superficie plana sobre el fondo, sin `Card` dentro de `Card` ni superficies de otro color anidadas. | `apps/mobile/app/(tabs)/club.tsx` |
+| D-03 | Hecho | Un único `SectionHeader` con tres variantes (`poster`, `paper`, `flat`), usado por Inicio, Noticias, Club, Jugador, Entrenador y Rival; los wrappers de Club (`Editorial` y `sections/ui`) y las fichas de jugador y entrenador delegan en él. Inventario: 43 usos en 25 archivos; 9 de las 10 pantallas con secciones lo usan (Calendario conserva encabezados de grupo de fecha, deliberadamente compactos). | `src/components/design/DesignSystem.tsx`, `src/components/club/Editorial.tsx`, `src/features/club/sections/ui.tsx`, `app/player/[id].tsx`, `app/coach.tsx`, `app/(tabs)/club.tsx` |
 
 ### Verificación del Lote 4
 
 ```bash
 npm run lint
 npm run typecheck
-npm test                                 # 340 passed / 44 suites
+npm test                                 # 342 passed / 44 suites
 ```
 
 ### Lo que sigue
@@ -224,13 +224,14 @@ cd workers/live-proxy && npm test       # 4 passed
 
 ## Lote 3 — Release y resiliencia
 
-Estado: **aplicado en local**. El APK de `preview` está en la cola de EAS; falta
-instalarlo en un dispositivo y cerrar la medición real de arranque (F3-14), que
-necesita hardware de gama media. El resto de criterios se comprueba con tests.
+Estado: **aplicado**. El APK de `preview` está compilado (build
+`8df81fb4-6a02-48aa-adca-55735f3df414`, `versionCode 1`); falta instalarlo en un
+dispositivo y cerrar la medición real de arranque (F3-14), que necesita hardware
+de gama media. El resto de criterios se comprueba con tests.
 
 | ID | Estado | Qué se ha corregido | Evidencia |
 |---|---|---|---|
-| F3-01 / F5-11 | Hecho en config; APK en cola | Se añade `eas.json` con `appVersionSource: local`, perfil `base` (Node 22.23.3 y `EXPO_PUBLIC_DATA_BASE_URL` de producción), `preview` (APK de distribución interna) y `production` (incremento automático). `app.json` fija versión `1.0.0`, `android.versionCode: 1` e `ios.buildNumber: "1"`; el proyecto queda vinculado a `@vilaa_7/depor-hub` (`69d22d01-8a14-4773-9328-8ae9213e9ef1`) y EAS crea el keystore remoto. | `apps/mobile/eas.json`, `apps/mobile/app.json`; build `8df81fb4-6a02-48aa-adca-55735f3df414` (`preview`, Android, creado y en cola) |
+| F3-01 / F5-11 | Hecho; APK compilado | Se añade `eas.json` con `appVersionSource: local`, perfil `base` (Node 22.23.3 y `EXPO_PUBLIC_DATA_BASE_URL` de producción), `preview` (APK de distribución interna) y `production` (incremento automático). `app.json` fija versión `1.0.0`, `android.versionCode: 1` e `ios.buildNumber: "1"`; el proyecto queda vinculado a `@vilaa_7/depor-hub` (`69d22d01-8a14-4773-9328-8ae9213e9ef1`) y EAS crea el keystore remoto. | `apps/mobile/eas.json`, `apps/mobile/app.json`; build `8df81fb4-6a02-48aa-adca-55735f3df414` (`preview`, Android, **FINISHED**, `versionCode 1`); APK en `https://expo.dev/artifacts/eas/Tfsrnz1mNNBxiSILIhf2CgSsEaigo8H8mhVzRxqpMqY.apk` |
 | F3-03 | Hecho | La app es offline-first de verdad: `networkMode: 'offlineFirst'`, timeout de 8 s y un solo reintento (el peor caso baja de ~45 s a ~16 s). El splash no se oculta hasta que las fuentes y la caché persistida están listas, así que el primer frame ya muestra datos guardados. Sin red y sin caché, `ErrorState` dice que no hay datos guardados y ofrece reintentar en vez de dejar un esqueleto. | `apps/mobile/src/data/queryClient.ts`, `api.ts`, `queries.ts`, `DataProvider.tsx`, `app/_layout.tsx`, `StateViews.tsx`; `src/__tests__/offline.test.tsx` |
 | F3-02 | Hecho | Cualquier ruta desconocida cae en `+not-found` con salida al inicio; un error de render en cualquier pantalla lo captura `RouteErrorBoundary` exportado como `ErrorBoundary` del layout raíz; `unstable_settings.initialRouteName` devuelve los enlaces profundos a una ruta real. | `apps/mobile/app/+not-found.tsx`, `src/components/RouteErrorBoundary.tsx`, `app/_layout.tsx`; `src/__tests__/navigation.test.tsx` |
 | F3-05 | Hecho | Los 85 `z.strictObject` del espejo Zod pasan a `z.object`: un campo nuevo publicado antes de que la app lo conozca se descarta y el resto del documento sigue validando. La validación estricta se queda en CI (Pydantic + JSON Schema). | `apps/mobile/src/data/schemas.ts`; tests de campo desconocido en raíz, anidado y documento inválido en `contracts.test.ts` y `api.test.ts` |
