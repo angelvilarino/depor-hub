@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T06:07:14Z",
+  "updatedAt": "2026-11-17T08:32:50Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "2a4b8aa1d92928bc",
+      "title": "El Dépor vota este martes las cuentas del año del ascenso a Primera División",
+      "url": "https://riazor.org/depor-vota-martes-cuentas-ano-ascenso-primera-division",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-17T08:00:03Z",
+      "kind": "article",
+      "summary": "El club cerró 2025-26 con 12,17 millones de pérdidas, casi 25 de cifra de negocio y 72,7 de patrimonio neto. La Junta de Accionistas fija…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "c87bdbf6c82f0dfd",
       "title": "Lucas Viña: «Villares tenía un potencial increíble y sabías que tarde o temprano le iba a llegar la oportunidad»",
@@ -97,18 +112,6 @@
         "cantera",
         "club"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "e246eb46995a56cc",
-      "title": "El Dépor recuperará esta semana a sus internacionales a cuentagotas",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/el-depor-recuperara-esta-semana-a-a-sus-internacionales-a-cuentagotas-891323.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-16T16:30:21Z",
-      "kind": "article",
-      "summary": "Giménez, el último en regresar, no entrenará con el equipo hasta el día antes del duelo liguero ante el Alavés",
-      "thumbnailUrl": "img/news/3079bc5f3d238ed4.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
