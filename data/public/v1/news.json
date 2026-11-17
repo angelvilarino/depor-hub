@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T19:04:20Z",
+  "updatedAt": "2026-11-17T19:33:12Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "8be519be8b79ffcb",
+      "title": "El Dépor ya prepara el partido ante el Alavés sin los internacionales, pero con Zaka y Ede",
+      "url": "https://riazor.org/depor-prepara-partido-alaves-espera-internacionales",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-17T19:00:48Z",
+      "kind": "article",
+      "summary": "El Deportivo inicia la semana de entrenamientos sin ninguno de sus internacionales y con la mirada puesta en Mendizorrotza, estadio que…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "bbe52f82e240f409",
       "title": "Rodri podría regresar frente al Dépor",
@@ -2172,20 +2187,6 @@
       "thumbnailUrl": "https://i1.ytimg.com/vi/hXSXOgJCE44/hqdefault.jpg",
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ec8c9497e0d7b321",
-      "title": "Rueda de prensa de Antonio Hidalgo previa al RCD Espanyol - RC Deportivo",
-      "url": "https://youtube.com/watch?v=BcZoHslaj3E",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-06T09:12:01Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i3.ytimg.com/vi/BcZoHslaj3E/hqdefault.jpg",
-      "tags": [
         "partido"
       ],
       "alsoIn": []

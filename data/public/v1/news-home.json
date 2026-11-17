@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T19:04:20Z",
+  "updatedAt": "2026-11-17T19:33:12Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "8be519be8b79ffcb",
+      "title": "El Dépor ya prepara el partido ante el Alavés sin los internacionales, pero con Zaka y Ede",
+      "url": "https://riazor.org/depor-prepara-partido-alaves-espera-internacionales",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-17T19:00:48Z",
+      "kind": "article",
+      "summary": "El Deportivo inicia la semana de entrenamientos sin ninguno de sus internacionales y con la mirada puesta en Mendizorrotza, estadio que…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "bbe52f82e240f409",
       "title": "Rodri podría regresar frente al Dépor",
@@ -92,20 +107,6 @@
       "thumbnailUrl": "img/news/66fbffd7fa5cebda.webp",
       "tags": [
         "fichajes"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "c8b5737e817fdb5f",
-      "title": "El Dépor aprueba las cuentas de la 2025-26 y confirma un consejo de administración de seis miembros",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/el-depor-aprueba-las-cuentas-de-la-2025-26-y-confirma-un-consejo-de-administracion-de-seis-miembros-891444.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-17T10:15:13Z",
-      "kind": "article",
-      "summary": "El club celebró este martes la Junta General de accionistas, en la que todos los puntos del día se aprobaron por unanimidad",
-      "thumbnailUrl": "img/news/650cd92bbddf4b9b.webp",
-      "tags": [
-        "club"
       ],
       "alsoIn": []
     }
