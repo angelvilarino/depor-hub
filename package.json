@@ -15,17 +15,16 @@
     "lint": "npm run lint -w apps/mobile",
     "typecheck": "npm run typecheck -w apps/mobile",
     "test": "npm run test -w apps/mobile",
+    "audit": "node scripts/audit.mjs",
     "format": "prettier --write ."
   },
   "devDependencies": {
     "@testing-library/react-native": "^14.1.0",
     "eslint": "^9.39.5",
-    "prettier": "^3.3.0"
-  },
-  "dependencies": {
     "eslint-config-expo": "~58.0.4",
     "jest": "~30.5.2",
-    "jest-expo": "~58.0.12"
+    "jest-expo": "~58.0.12",
+    "prettier": "^3.3.0"
   },
   "overrides": {
     "react": "19.3.0"
