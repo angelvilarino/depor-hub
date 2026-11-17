@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 import MatchDetail from '../../app/match/[id]';
 import i18n from '@/i18n';
 import { makeMatch } from '@/test-utils/matches';
@@ -100,8 +100,8 @@ describe('Ficha de partido', () => {
     expect(screen.getByText('Resultado final')).toBeTruthy();
     expect(screen.getByText('2 – 1')).toBeTruthy();
     expect(screen.getByText('Alineaciones y eventos no disponibles')).toBeTruthy();
-    expect(screen.getByText(/No se deducen eventos ni estadísticas/)).toBeTruthy();
     expect(screen.getByText('Marcador y estado: football-data.org')).toBeTruthy();
+    expect(screen.queryByText('Alineaciones y eventos: BDFutbol')).toBeNull();
     expect(screen.queryByText('Recordarme')).toBeNull();
   });
 
@@ -117,7 +117,7 @@ describe('Ficha de partido', () => {
 
     expect(screen.getByText('EN JUEGO')).toBeTruthy();
     expect(screen.getByText('1 – 0')).toBeTruthy();
-    expect(screen.getByText(/En directo solo se actualizan el marcador y el estado/)).toBeTruthy();
+    expect(screen.getByText('En directo no hay eventos publicados.')).toBeTruthy();
     expect(screen.queryByText('Recordarme')).toBeNull();
   });
 
@@ -225,16 +225,19 @@ describe('Ficha de partido', () => {
 
     await render(<MatchDetail />);
 
-    expect(screen.getByText('Alineaciones y eventos')).toBeTruthy();
+    expect(screen.getByText('Alineaciones')).toBeTruthy();
     expect(screen.getByText('Entrenador: Antonio Hidalgo')).toBeTruthy();
-    expect(screen.getByText('9 · Aubameyang')).toBeTruthy();
-    expect(screen.getByText('19 · Eddahchouri')).toBeTruthy();
-    expect(screen.getByText('Goles')).toBeTruthy();
-    expect(screen.getByText(/Aubameyang \(penalti\)/)).toBeTruthy();
-    expect(screen.getByText('Tarjetas')).toBeTruthy();
-    expect(screen.getByText(/Redondo \(amarilla\)/)).toBeTruthy();
-    expect(screen.getByText('Cambios')).toBeTruthy();
-    expect(screen.getByText(/Jensen → Eddahchouri/)).toBeTruthy();
+    expect(screen.getByLabelText('9 Aubameyang')).toBeTruthy();
+    expect(screen.queryByLabelText('19 Eddahchouri')).toBeNull();
+
+    await fireEvent.press(screen.getByText('Suplentes (1)'));
+    expect(screen.getByLabelText('19 Eddahchouri')).toBeTruthy();
+
+    expect(screen.getByText('Línea temporal')).toBeTruthy();
+    expect(screen.getByLabelText("21' Deportivo Aubameyang (penalti)")).toBeTruthy();
+    expect(screen.getByLabelText("60' Deportivo Jensen → Eddahchouri")).toBeTruthy();
+    expect(screen.getByLabelText("65' Atleti Redondo (amarilla)")).toBeTruthy();
+    expect(screen.getByText('Marcador y estado: football-data.org')).toBeTruthy();
     expect(screen.getByText('Alineaciones y eventos: BDFutbol')).toBeTruthy();
     expect(screen.queryByText('Alineaciones y eventos no disponibles')).toBeNull();
   });

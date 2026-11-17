@@ -1,14 +1,18 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
-import { BodyText, Card, Screen } from '@/components/Screen';
+import { PaperCard } from '@/components/design/DesignSystem';
+import { MatchLineups } from '@/components/match/MatchLineups';
+import { MatchScoreboard } from '@/components/match/MatchScoreboard';
+import { MatchTimeline } from '@/components/match/MatchTimeline';
+import { Screen } from '@/components/Screen';
 import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
-import { TeamCrest } from '@/components/TeamCrest';
 import type { MatchDetailT, MatchT } from '@/data/schemas';
 import { useFixtures, useMatchDetail, useMatchSnapshot, useMeta } from '@/data/queries';
-import { teamName } from '@/features/calendar/logic';
+import { competitionLabel } from '@/features/home/text';
 import { matchPhase } from '@/features/home/logic';
 import { snapshotToMatch } from '@/features/match/snapshot';
 import { useMatchActions } from '@/features/home/useMatchActions';
@@ -16,18 +20,6 @@ import { useNow } from '@/features/home/useNow';
 import { ReminderSheet } from '@/features/reminders/ReminderSheet';
 import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
-import { formatMatchDate } from '@/utils/matchTime';
-
-function InfoRow({ label, value }: { label: string; value: string | null }) {
-  const { colors } = useTheme();
-  if (!value) return null;
-  return (
-    <View style={styles.infoRow}>
-      <Text style={{ color: colors.textMuted, ...text.body }}>{label}</Text>
-      <Text style={{ color: colors.text, ...text.bodyLarge }}>{value}</Text>
-    </View>
-  );
-}
 
 export default function MatchDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -71,6 +63,11 @@ export default function MatchDetail() {
       {screenOptions}
       <MatchDetailBody
         match={match}
+        competitionName={competitionLabel(
+          meta.data?.competitionCode,
+          meta.data?.competitionName,
+          t,
+        )}
         detail={detail.data ?? null}
         detailPending={detail.isFetching}
       />
@@ -80,20 +77,21 @@ export default function MatchDetail() {
 
 function MatchDetailBody({
   match,
+  competitionName,
   detail,
   detailPending,
 }: {
   match: MatchT;
+  competitionName: string | null;
   detail: MatchDetailT | null;
   detailPending: boolean;
 }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { colors } = useTheme();
   const [sheetOpen, setSheetOpen] = useState(false);
   const {
     venue,
     time,
-    title,
     remindable,
     reminded,
     reminderOffsets,
@@ -107,18 +105,12 @@ function MatchDetailBody({
     openSystemSettings,
   } = useMatchActions(match);
 
-  const locale = i18n.language;
   const now = useNow(60_000);
   const phase = matchPhase(match, now);
   const live = phase === 'live';
   const finished = phase === 'finished';
   const canPlan = phase === 'upcoming' || phase === 'tbc';
   const referee = match.referee ?? null;
-  const hasScore = match.score.home !== null && match.score.away !== null;
-  const ht =
-    match.score.halfTimeHome !== null && match.score.halfTimeAway !== null
-      ? `${match.score.halfTimeHome}–${match.score.halfTimeAway}`
-      : null;
   const statusLabel = live
     ? t('match.liveNow')
     : finished
@@ -126,53 +118,37 @@ function MatchDetailBody({
       : phase === 'awaiting_result'
         ? t('home.awaitingResult')
         : t(`calendar.status.${match.status}`, { defaultValue: match.status });
-
-  const side = (team: typeof match.home) => (
-    <View style={styles.side}>
-      <TeamCrest team={team} size={56} />
-      <Text style={[styles.team, { color: colors.text }]}>{teamName(team)}</Text>
-    </View>
-  );
+  const hasMeta = Boolean(venue || referee);
 
   return (
     <Screen>
-      <Card>
-        <View
-          accessible
-          accessibilityLabel={`${title}. ${hasScore ? `${match.score.home}–${match.score.away}` : ''}`}
-          style={styles.board}
-        >
-          {side(match.home)}
-          <Text style={[styles.score, { color: colors.text }]}>
-            {hasScore ? `${match.score.home} – ${match.score.away}` : (time ?? 'vs')}
-          </Text>
-          {side(match.away)}
-        </View>
-        <View style={styles.statusRow}>
-          {live ? <View style={[styles.liveDot, { backgroundColor: colors.danger }]} /> : null}
-          <Text
-            style={{
-              color: live ? colors.danger : colors.textMuted,
-              ...text.body,
-              fontWeight: live ? '800' : '400',
-            }}
-          >
-            {statusLabel}
-          </Text>
-        </View>
-      </Card>
+      <MatchScoreboard
+        match={match}
+        competitionName={competitionName}
+        time={time}
+        statusLabel={statusLabel}
+        live={live}
+      />
 
-      <Card>
-        <InfoRow label={t('match.date')} value={formatMatchDate(match.utcDate, match.status, locale, 'long')} />
-        <InfoRow label={t('match.time')} value={time ?? t('calendar.timeTbc')} />
-        <InfoRow label={t('match.matchday')} value={match.matchday !== null ? String(match.matchday) : null} />
-        <InfoRow label={t('match.venue')} value={venue} />
-        <InfoRow label={t('match.referee')} value={referee} />
-        <InfoRow label={t('match.halfTime')} value={ht} />
-      </Card>
+      {hasMeta ? (
+        <PaperCard>
+          {venue ? (
+            <View style={styles.metaRow}>
+              <Ionicons name="location-outline" size={18} color={colors.paper.muted} />
+              <Text style={{ color: colors.paper.text, flex: 1, ...text.body }}>{venue}</Text>
+            </View>
+          ) : null}
+          {referee ? (
+            <View style={styles.metaRow}>
+              <Ionicons name="person-outline" size={18} color={colors.paper.muted} />
+              <Text style={{ color: colors.paper.text, flex: 1, ...text.body }}>{referee}</Text>
+            </View>
+          ) : null}
+        </PaperCard>
+      ) : null}
 
       {canPlan ? (
-        <Card>
+        <PaperCard>
           {remindable ? (
             <Button
               variant={reminded ? 'secondary' : 'primary'}
@@ -184,9 +160,15 @@ function MatchDetailBody({
               onPress={() => setSheetOpen(true)}
             />
           ) : (
-            <BodyText muted>{t('match.reminderNeedsTime')}</BodyText>
+            <Text style={{ color: colors.paper.muted, ...text.body }}>
+              {t('match.reminderNeedsTime')}
+            </Text>
           )}
-          <Button variant="secondary" label={t('match.addToCalendar')} onPress={() => void addToCalendar()} />
+          <Button
+            variant="secondary"
+            label={t('match.addToCalendar')}
+            onPress={() => void addToCalendar()}
+          />
           {sheetOpen ? (
             <ReminderSheet
               visible
@@ -203,175 +185,43 @@ function MatchDetailBody({
               onOpenSettings={openSystemSettings}
             />
           ) : null}
-        </Card>
+        </PaperCard>
       ) : null}
 
-      {finished && detail ? <MatchDetailSections detail={detail} /> : null}
+      {finished && detail ? (
+        <>
+          <MatchLineups match={match} detail={detail} />
+          <MatchTimeline match={match} detail={detail} />
+        </>
+      ) : null}
 
       {finished && !detail ? (
-        <Card>
-          <BodyText>{detailPending ? t('match.detailLoading') : t('match.detailUnavailable')}</BodyText>
-          {!detailPending ? (
-            <BodyText muted>{t('match.detailUnavailableHint')}</BodyText>
-          ) : null}
-          <BodyText muted>{t('match.dataSource')}</BodyText>
-        </Card>
+        detailPending ? (
+          <PaperCard>
+            <Text style={{ color: colors.paper.muted, ...text.body }}>
+              {t('match.detailLoading')}
+            </Text>
+          </PaperCard>
+        ) : (
+          <EmptyState message={t('match.detailUnavailable')} />
+        )
       ) : null}
 
-      {live ? (
-        <Card>
-          <BodyText>{t('match.detailUnavailable')}</BodyText>
-          <BodyText muted>{t('match.liveUnavailable')}</BodyText>
-          <BodyText muted>{t('match.dataSource')}</BodyText>
-        </Card>
-      ) : null}
+      {live ? <EmptyState message={t('match.liveNoEvents')} /> : null}
+
+      <View style={styles.sources}>
+        <Text style={{ color: colors.textMuted, ...text.caption }}>{t('match.dataSource')}</Text>
+        {detail ? (
+          <Text style={{ color: colors.textMuted, ...text.caption }}>
+            {t('match.detailSource')}
+          </Text>
+        ) : null}
+      </View>
     </Screen>
   );
 }
 
-function MatchDetailSections({ detail }: { detail: MatchDetailT }) {
-  const { t } = useTranslation();
-  const { colors } = useTheme();
-  const sideName = (side: 'home' | 'away') =>
-    side === 'home' ? detail.home.name : detail.away.name;
-  const playerLabel = (player: MatchDetailT['lineups']['home']['starters'][number]) =>
-    player.shirtNumber !== null ? `${player.shirtNumber} · ${player.name}` : player.name;
-
-  const lineupBlock = (side: 'home' | 'away') => {
-    const lineup = detail.lineups[side];
-    return (
-      <View key={side} style={styles.lineup}>
-        <Text style={[styles.lineupTeam, { color: colors.text }]}>{sideName(side)}</Text>
-        {lineup.coach ? (
-          <Text style={[styles.metaLine, { color: colors.textMuted }]}>
-            {t('match.coach')}: {lineup.coach}
-          </Text>
-        ) : null}
-        {lineup.starters.length ? (
-          <>
-            <Text style={[styles.lineupLabel, { color: colors.textMuted }]}>
-              {t('match.starters')}
-            </Text>
-            {lineup.starters.map((player, index) => (
-              <Text key={`${side}-in-${index}`} style={[styles.playerLine, { color: colors.text }]}>
-                {playerLabel(player)}
-              </Text>
-            ))}
-          </>
-        ) : null}
-        {lineup.substitutes.length ? (
-          <>
-            <Text style={[styles.lineupLabel, { color: colors.textMuted }]}>
-              {t('match.substitutes')}
-            </Text>
-            {lineup.substitutes.map((player, index) => (
-              <Text key={`${side}-sub-${index}`} style={[styles.playerLine, { color: colors.text }]}>
-                {playerLabel(player)}
-              </Text>
-            ))}
-          </>
-        ) : null}
-      </View>
-    );
-  };
-
-  const cardLabel = (kind: MatchDetailT['cards'][number]['kind']) =>
-    kind === 'red'
-      ? t('match.red')
-      : kind === 'second_yellow'
-        ? t('match.secondYellow')
-        : t('match.yellow');
-
-  const substitutionLabel = (sub: MatchDetailT['substitutions'][number]) => {
-    if (sub.playerOut && sub.playerIn) return `${sub.playerOut} → ${sub.playerIn}`;
-    if (sub.playerOut) return `${t('match.playerOut')}: ${sub.playerOut}`;
-    return `${t('match.playerIn')}: ${sub.playerIn}`;
-  };
-
-  const hasEvents =
-    detail.goals.length > 0 || detail.cards.length > 0 || detail.substitutions.length > 0;
-
-  return (
-    <>
-      <Card>
-        <Text style={[styles.sectionTitle, { color: colors.text }]}>{t('match.lineups')}</Text>
-        {lineupBlock('home')}
-        {lineupBlock('away')}
-      </Card>
-
-      {detail.goals.length ? (
-        <Card>
-          <Text style={[styles.sectionTitle, { color: colors.text }]}>{t('match.goals')}</Text>
-          {detail.goals.map((goal, index) => (
-            <Text key={`goal-${index}`} style={[styles.eventLine, { color: colors.text }]}>
-              <Text style={{ color: colors.textMuted }}>
-                {goal.minuteLabel}&apos; · {sideName(goal.team)} ·{' '}
-              </Text>
-              {goal.player}
-              {goal.penalty ? ` (${t('match.penalty')})` : ''}
-              {goal.ownGoal ? ` (${t('match.ownGoal')})` : ''}
-              {goal.scoreAfter ? ` · ${goal.scoreAfter.home}–${goal.scoreAfter.away}` : ''}
-            </Text>
-          ))}
-        </Card>
-      ) : null}
-
-      {detail.cards.length ? (
-        <Card>
-          <Text style={[styles.sectionTitle, { color: colors.text }]}>{t('match.cards')}</Text>
-          {detail.cards.map((card, index) => (
-            <Text key={`card-${index}`} style={[styles.eventLine, { color: colors.text }]}>
-              <Text style={{ color: colors.textMuted }}>
-                {card.minuteLabel}&apos; · {sideName(card.team)} ·{' '}
-              </Text>
-              {card.player} ({cardLabel(card.kind)})
-            </Text>
-          ))}
-        </Card>
-      ) : null}
-
-      {detail.substitutions.length ? (
-        <Card>
-          <Text style={[styles.sectionTitle, { color: colors.text }]}>
-            {t('match.substitutions')}
-          </Text>
-          {detail.substitutions.map((sub, index) => (
-            <Text key={`sub-${index}`} style={[styles.eventLine, { color: colors.text }]}>
-              <Text style={{ color: colors.textMuted }}>
-                {sub.minuteLabel}&apos; · {sideName(sub.team)} ·{' '}
-              </Text>
-              {substitutionLabel(sub)}
-            </Text>
-          ))}
-        </Card>
-      ) : null}
-
-      {hasEvents ? null : (
-        <Card>
-          <BodyText muted>{t('match.noEvents')}</BodyText>
-        </Card>
-      )}
-
-      <Card>
-        <BodyText muted>{t('match.detailSource')}</BodyText>
-      </Card>
-    </>
-  );
-}
-
 const styles = StyleSheet.create({
-  board: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.sm },
-  side: { flex: 1, alignItems: 'center', gap: spacing.sm },
-  team: { ...text.bodyLarge, fontWeight: '700', textAlign: 'center' },
-  score: { ...text.display, fontWeight: '700' },
-  infoRow: { gap: spacing.xs },
-  sectionTitle: { ...text.subtitle, fontWeight: '700' },
-  lineup: { gap: spacing.xs },
-  lineupTeam: { ...text.bodyLarge, fontWeight: '700' },
-  lineupLabel: { ...text.caption, fontWeight: '700', letterSpacing: 0.5, marginTop: spacing.xs, textTransform: 'uppercase' },
-  playerLine: { ...text.bodyLarge },
-  metaLine: { ...text.body },
-  eventLine: { ...text.bodyLarge, lineHeight: 22 },
-  statusRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.xs },
-  liveDot: { width: 8, height: 8, borderRadius: 4 },
+  metaRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  sources: { gap: spacing.xs, paddingTop: spacing.sm },
 });
