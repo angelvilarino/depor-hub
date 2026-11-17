@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T10:33:25Z",
+  "updatedAt": "2026-11-17T12:06:11Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "5145404bd01d37f6",
+      "title": "Mariano Díaz sonó para el Dépor, le marcó 23 días después y ahora le espera con el Alavés",
+      "url": "https://riazor.org/mariano-diaz-sono-depor-marco-23-dias-despues-ahora-espera-alaves",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-17T12:00:57Z",
+      "kind": "article",
+      "summary": "El 17 de noviembre de 2016 Mariano Díaz estaba en la agenda del Dépor. Diez años después le espera con el Alavés: cuatro goles en Liga y…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/real-madrid-vs-deportivo-goals-m.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "a20115185f02189a",
+      "title": "Antonio Hidalgo explica cómo influyó el Barcelona en el fichaje de Aubameyang: \"Nos dieron unas referencias increíbles\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/antonio-hidalgo-explica-como-influyo-el-barcelona-en-el-fichaje-de-aubameyang-nos-dieron-unas-referencias-increibles-891455.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-17T11:40:09Z",
+      "kind": "article",
+      "summary": "El técnico aprovechó su estancia en Barcelona para ofrecer una entrevista a Catalunya Radio",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/17/6afc371ec954b.r_d.1488-1118-0.jpg",
+      "tags": [
+        "fichajes"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "c8b5737e817fdb5f",
       "title": "El Dépor aprueba las cuentas de la 2025-26 y confirma un consejo de administración de seis miembros",
@@ -2152,30 +2180,6 @@
       "kind": "article",
       "summary": "Antonio Hidalgo introdujo ante Osasuna variantes en la ocupación de los espacios y los roles de sus jugadores para adaptarse a cada momento",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/05/6aec8f8f1cc18.r_d.1315-1921-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "267d8c30d6afb3ba",
-      "title": "Lucas Noubi busca de nuevo el oásis de Bégica sub-21",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/lucas-noubi-busca-de-nuevo-el-oasis-de-begica-sub-889223.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-06T04:00:00Z",
-      "kind": "article",
-      "summary": "El seleccionador Gill Swerts publica este viernes la lista, en la que el central espera estar a pesar de perder su puesto en el Dépor",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/08/27/6a907a2993160.r_d.1810-995-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "b5274c73775be80a",
-      "title": "Italia convoca a Lorenzo Amatucci para su selección sub-21, con la que podría medirse a otro deportivista",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-05/italia-convoca-a-lorenzo-amatucci-para-su-seleccion-sub-21-con-la-que-podria-medirse-a-otro-deportivista-889315.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-05T20:57:38Z",
-      "kind": "article",
-      "summary": "Jugará dos amistosos, ante Francia en la localidad natal de Aubameyang, y frente a la Bélgica de Lucas Noubi",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/09/12/6aa5a252b8fb6.r_d.1573-1143-0.jpg",
       "tags": [],
       "alsoIn": []
     }

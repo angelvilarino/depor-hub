@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T10:33:25Z",
+  "updatedAt": "2026-11-17T12:06:11Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "5145404bd01d37f6",
+      "title": "Mariano Díaz sonó para el Dépor, le marcó 23 días después y ahora le espera con el Alavés",
+      "url": "https://riazor.org/mariano-diaz-sono-depor-marco-23-dias-despues-ahora-espera-alaves",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-17T12:00:57Z",
+      "kind": "article",
+      "summary": "El 17 de noviembre de 2016 Mariano Díaz estaba en la agenda del Dépor. Diez años después le espera con el Alavés: cuatro goles en Liga y…",
+      "thumbnailUrl": "img/news/8d943ddb0b22e7a7.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "a20115185f02189a",
+      "title": "Antonio Hidalgo explica cómo influyó el Barcelona en el fichaje de Aubameyang: \"Nos dieron unas referencias increíbles\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/antonio-hidalgo-explica-como-influyo-el-barcelona-en-el-fichaje-de-aubameyang-nos-dieron-unas-referencias-increibles-891455.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-17T11:40:09Z",
+      "kind": "article",
+      "summary": "El técnico aprovechó su estancia en Barcelona para ofrecer una entrevista a Catalunya Radio",
+      "thumbnailUrl": "img/news/66fbffd7fa5cebda.webp",
+      "tags": [
+        "fichajes"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "c8b5737e817fdb5f",
       "title": "El Dépor aprueba las cuentas de la 2025-26 y confirma un consejo de administración de seis miembros",
@@ -71,34 +99,6 @@
       "kind": "article",
       "summary": "El exjugador del Fabril recordó en 'Son de Riazor' su etapa en A Coruña después de ganar el derbi barcelonés entre Europa y Sant Andreu…",
       "thumbnailUrl": "img/news/6d8180f4dae0559f.webp",
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4c9def0793fdb0d1",
-      "title": "El calendario del Dépor hasta Navidad: una montaña rusa con dos ochomiles",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/el-calendario-del-depor-hasta-navidad-una-montana-rusa-con-dos-ochomiles-891405.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-17T04:00:00Z",
-      "kind": "article",
-      "summary": "El equipo blanquiazul retoma la Liga ante el Alavés y recibirá en Riazor a Barcelona y Madrid para cerrar noviembre y diciembre",
-      "thumbnailUrl": "img/news/fa8fe9d578f14027.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "f228380d67149a10",
-      "title": "Lucas Viña, el estreno del RomboQuiz y la entrevista con IFFE, esta noche en Son de Riazor",
-      "url": "https://riazor.org/son-de-riazor-lucas-vina-romboquiz",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-16T19:40:04Z",
-      "kind": "article",
-      "summary": "Son de Riazor vuelve esta noche a las 21:00 con Lucas Viña, ex del Fabril, la actualidad del Dépor y el estreno del RomboQuiz, un concurso…",
-      "thumbnailUrl": "img/news/785f18dde61f85d5.webp",
       "tags": [
         "cantera"
       ],
