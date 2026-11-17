@@ -14,10 +14,13 @@ import {
   formatPrice,
   formatSeats,
   groupSeasonsByDecade,
+  linkHandle,
   mapUrl,
+  museumPieces,
   seasonStart,
   sortSeasons,
   titleTotal,
+  trainingFacts,
   webMapUrl,
 } from '@/features/club/logic';
 
@@ -110,6 +113,28 @@ describe('lógica del Club', () => {
     expect(formatDate('1944-10-29', 'es')).toContain('1944');
     expect(formatDate(null, 'es')).toBeNull();
     expect(formatPrice(10, 'es')).toContain('€');
+  });
+
+  it('extrae la cifra del museo y una etiqueta legible para cada enlace', () => {
+    expect(museumPieces(club.museum?.description)).toBe(250);
+    expect(museumPieces('Sin cifras publicadas')).toBeNull();
+    expect(museumPieces(null)).toBeNull();
+    expect(linkHandle('https://x.com/RCDeportivo')).toBe('x.com/RCDeportivo');
+    expect(linkHandle('https://www.rcdeportivo.es/')).toBe('rcdeportivo.es');
+    expect(linkHandle('texto sin formato')).toBe('texto sin formato');
+  });
+
+  it('separa las cifras de la ciudad deportiva de las notas cualitativas', () => {
+    const { facts, notes } = trainingFacts(club.trainingCenter?.facilities ?? []);
+    expect(facts).toEqual([
+      { value: 140000, suffix: ' m²', label: 'superficie' },
+      { value: 8, suffix: null, label: 'campos con las dimensiones de Riazor' },
+      { value: 3, suffix: null, label: 'campos de calentamiento' },
+    ]);
+    expect(notes).toEqual([
+      'Diseño del estudio Populous',
+      'Energías renovables y reutilización de agua',
+    ]);
   });
 
   it('calcula el total de títulos y prepara el texto para compartir', () => {

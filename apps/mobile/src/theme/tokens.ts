@@ -136,6 +136,18 @@ export const kitColors = {
   outline: '#475569',
 } as const;
 export const avatarPalette = ['#00478F', '#0B6B4F', '#7B3F98', '#9A3412', '#1F5F8B', '#8A2B4A'] as const;
+// D-17: colores de marca de los canales oficiales. Son colores de dominio,
+// no de interfaz; viven aquí para no repetir hexadecimales en las pantallas.
+export const socialColors = {
+  x: '#0F1419',
+  instagram: '#E4405F',
+  tiktok: '#010101',
+  youtube: '#FF0000',
+  facebook: '#1877F2',
+  twitch: '#9146FF',
+  whatsapp: '#25D366',
+} as const;
+export type SocialColor = keyof typeof socialColors;
 export const imageTokens = {
   text: '#FFFFFF',
   muted: '#F1F5F9',

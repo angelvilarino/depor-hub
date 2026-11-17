@@ -191,3 +191,54 @@ export function anthemShareText(anthem: AnthemT): string {
 export function titleTotal(titles: TitleT[]): number {
   return titles.reduce((sum, title) => sum + title.years.length, 0);
 }
+
+/** Número de piezas citado en la descripción del museo, si está publicado. */
+export function museumPieces(text: string | null | undefined): number | null {
+  const match = /(\d[\d.]*)\s*(?:piezas|obras|fondos)\b/i.exec(text ?? '');
+  if (!match) return null;
+  const value = Number(match[1]!.replace(/\./g, ''));
+  return Number.isFinite(value) ? value : null;
+}
+
+/** Etiqueta compacta y legible de un enlace: `x.com/RCDeportivo`. */
+export function linkHandle(url: string): string {
+  try {
+    const parsed = new URL(url);
+    const path = parsed.pathname.replace(/\/+$/, '');
+    return `${parsed.hostname.replace(/^www\./, '')}${path}`;
+  } catch {
+    return url;
+  }
+}
+
+export type FacilityFact = { value: number; suffix: string | null; label: string };
+
+const FACILITY = /^(\d[\d.,]*)\s*(m²|m2|ha)?\s*(.*)$/;
+
+/**
+ * D-19: separa las instalaciones con cifra (superficie, campos) de las notas
+ * cualitativas para poder darles jerarquía de dato, no de lista.
+ */
+export function trainingFacts(facilities: string[]): {
+  facts: FacilityFact[];
+  notes: string[];
+} {
+  const facts: FacilityFact[] = [];
+  const notes: string[] = [];
+  for (const facility of facilities) {
+    const match = FACILITY.exec(facility.trim());
+    const value = match ? Number(match[1]!.replace(/\./g, '').replace(',', '.')) : Number.NaN;
+    if (!match || !Number.isFinite(value)) {
+      notes.push(facility);
+      continue;
+    }
+    const unit = match[2] ?? null;
+    const label = match[3]!.trim().replace(/^de\s+/i, '');
+    facts.push({
+      value,
+      suffix: unit === 'm²' ? ' m²' : unit ? ` ${unit}` : null,
+      label: label || facility,
+    });
+  }
+  return { facts, notes };
+}
