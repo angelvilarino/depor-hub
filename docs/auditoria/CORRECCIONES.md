@@ -195,6 +195,44 @@ npm test                                 # 346 passed / 45 suites
 Sin cambios en Python, Worker ni esquemas: el lote es solo de interfaz y claves
 de traducción.
 
+## Lote 6 — Club con criterio editorial
+
+Estado: **aplicado (17-nov-2026)**. Cerrados D-13, D-14, D-15, D-16, D-17,
+D-18 y D-19. El criterio de aceptación era que ninguna sección de Club quedara
+por debajo de 2,5; la revisión visual final sigue pendiente de un dispositivo
+real. El gallego mantiene la caída a ES: sus claves nuevas se resuelven por
+`fallbackLng`.
+
+| ID | Estado | Qué se ha corregido | Evidencia |
+|---|---|---|---|
+| D-13 | Hecho | La rejilla de «Explorar el club» deja de romperse: cada baldosa separa el icono y el contador en una cabecera propia (el badge ya no tapa el icono), la miniatura es cuadrada (`aspectRatio: 1`), el título se trunca a dos líneas y la altura mínima es estable. | `apps/mobile/app/(tabs)/club.tsx` |
+| D-14 | Hecho | Los filtros de la cronología dejan de ocupar una fila permanente: un único control «Filtrar» de 44 pt despliega los chips a demanda y se cierra al elegir. El contenido domina el viewport. | `apps/mobile/src/components/club/Editorial.tsx`; `src/__tests__/club.test.tsx` |
+| D-15 | Hecho | Los patrocinadores abandonan las cajas con monograma: pasan a ser una lista tipográfica por papel, con la nota o categoría verificada como segunda línea y el enlace oficial como única acción. ABANCA y Nike ya publican `url`. | `apps/mobile/src/features/club/sections/PatrocinadoresSection.tsx`; `data/public/v1/club.json`; `src/__tests__/club.test.tsx` |
+| D-16 | Hecho | Los himnos dejan de ser una lista de tarjetas con hueco de reproductor: el oficial abre como cartel editorial (tipo, título, autoría, descripción y acción de vídeo oficial) y el resto se lee como índice tipográfico. Ambas vías llevan a la ficha con letra y créditos. | `apps/mobile/src/features/club/sections/HimnosSection.tsx`; `src/__tests__/club.test.tsx` |
+| D-17 | Hecho | Cada red usa su icono y color de marca (incluido el logotipo actual de X, `logo-x`), las filas tienen 48 pt y muestran la ruta pública como contexto. Los colores de marca viven en `socialColors`, fuera de las pantallas. | `apps/mobile/src/features/club/sections/RedesSection.tsx`; `src/theme/tokens.ts`; `src/__tests__/club.test.tsx` |
+| D-18 | Hecho | El museo pasa a visitante guiado: la descripción abre «La visita», la cifra de piezas publicada (250) se extrae del copy verificado y se muestra como dato, el horario ausente se declara pendiente en la web oficial, el mapa sigue disponible y la entrada se separa del resto de enlaces. Se elimina la ubicación duplicada y el enlace repetido. | `apps/mobile/src/features/club/sections/MuseoSection.tsx`; `src/features/club/logic.ts`; `src/__tests__/clubLogic.test.ts`, `club.test.tsx` |
+| D-19 | Hecho | La ciudad deportiva deja de ser una lista de bullets: 140.000 m² abre como cifra protagonista, los 8 campos y los 3 campos de calentamiento se leen como estadísticas y solo las notas cualitativas (Populous, renovables) quedan como lista. La extracción es una función pura probada. **Límite honesto:** el contrato no publica coordenadas de Abegondo, así que no se dibuja un plano; la jerarquía recae en la cifra y las instalaciones. | `apps/mobile/src/features/club/sections/TrainingSection.tsx`; `src/features/club/logic.ts`; `src/__tests__/clubLogic.test.ts`, `club.test.tsx` |
+
+### Verificación del Lote 6
+
+```bash
+npm run lint
+npm run typecheck
+npm test                                 # 350 passed / 45 suites
+```
+
+Sin cambios en Python, Worker ni esquemas: el lote es solo de interfaz y claves
+de traducción ES/EN (GL cae a ES).
+
+### Lo que sigue
+
+- Revisar visualmente Club y sus secciones en un dispositivo real, en claro y
+  oscuro, con texto grande y «Reducir movimiento».
+- Decidir si el gallego se completa o se retira; hoy las claves nuevas caen a
+  ES y el resto de la app mantiene la misma proporción.
+- Cerrar la medición de arranque y la auditoría de accesibilidad (Lote 3/4), que
+  siguen bloqueadas por la falta de hardware.
+
 
 ## Lote 2 — Peso de datos e imágenes
 
