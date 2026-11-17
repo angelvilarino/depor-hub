@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T20:04:21Z",
+  "updatedAt": "2026-11-17T05:32:43Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "4c9def0793fdb0d1",
+      "title": "El calendario del Dépor hasta Navidad: una montaña rusa con dos ochomiles",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/el-calendario-del-depor-hasta-navidad-una-montana-rusa-con-dos-ochomiles-891405.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-17T04:00:00Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul retoma la Liga ante el Alavés y recibirá en Riazor a Barcelona y Madrid para cerrar noviembre y diciembre",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/08/12/6a7cec1332b25.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "f228380d67149a10",
       "title": "Lucas Viña, el estreno del RomboQuiz y la entrevista con IFFE, esta noche en Son de Riazor",
@@ -2161,18 +2175,6 @@
         "cantera",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "dea57a9932461cb0",
-      "title": "Dépor-Osasuna: tres puntos de ofensiva",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/05/depor-osasuna-tres-puntos-ofensiva/00031793890825356112268.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-05T15:07:00Z",
-      "kind": "article",
-      "summary": null,
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/FaVTxF-mkrqtZ797Rq3mPuxIsaE=/768x/2026/11/05/00121793891163049890163/Foto/i_20261102_233230002.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]
