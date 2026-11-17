@@ -3,6 +3,7 @@ import { Alert, RefreshControl, SectionList, StyleSheet, Text, View } from 'reac
 import { router, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
+import { PosterCard, SectionHeader } from '@/components/design/DesignSystem';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
 import { MatchCard } from '@/components/MatchCard';
 import { Screen } from '@/components/Screen';
@@ -12,11 +13,13 @@ import { StandingsTable } from '@/components/StandingsTable';
 import { useFixtures, useMeta, useStandings } from '@/data/queries';
 import { groupByMonth, splitMatches } from '@/features/calendar/logic';
 import { useNow } from '@/features/home/useNow';
+import { competitionLabel } from '@/features/home/text';
 import { shareIcs } from '@/features/calendar/system';
 import { spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { buildIcs } from '@/utils/ics';
 import { formatMonth } from '@/utils/matchTime';
+import { capitalizeFirst } from '@/utils/text';
 
 type Tab = 'upcoming' | 'results' | 'standings';
 
@@ -43,6 +46,13 @@ export default function CalendarScreen() {
   const query = tab === 'standings' ? standings : fixtures;
   const refreshing = fixtures.isRefetching || standings.isRefetching;
   const refresh = () => { void fixtures.refetch(); void standings.refetch(); void meta.refetch(); };
+  const competition = competitionLabel(
+    meta.data?.competitionCode,
+    meta.data?.competitionName,
+    t,
+  );
+  const subtitle = [meta.data?.season, competition].filter(Boolean).join(' · ');
+  const nextId = tab === 'upcoming' ? (upcoming[0]?.id ?? null) : null;
 
   const onExport = async () => {
     if (!fixtures.data) return;
@@ -61,12 +71,22 @@ export default function CalendarScreen() {
   const header = (
     <View style={styles.header}>
       <FreshnessBanner dataUpdatedAt={query.dataUpdatedAt} isFetching={query.isFetching} isError={query.isError} />
-      <SegmentedControl<Tab> value={tab} onChange={setTab} options={[
-        { value: 'upcoming', label: t('calendar.upcoming') },
-        { value: 'results', label: t('calendar.results') },
-        { value: 'standings', label: t('calendar.standings') },
-      ]} />
-      {tab === 'upcoming' && fixtures.data ? <Button variant="secondary" label={t('calendar.export')} onPress={() => void onExport()} /> : null}
+      <PosterCard>
+        <SectionHeader
+          icon="calendar-outline"
+          subtitle={subtitle || undefined}
+          title={t('calendar.title')}
+          variant="poster"
+        />
+        <SegmentedControl<Tab> value={tab} onChange={setTab} options={[
+          { value: 'upcoming', label: t('calendar.upcoming') },
+          { value: 'results', label: t('calendar.results') },
+          { value: 'standings', label: t('calendar.standings') },
+        ]} />
+        {tab === 'upcoming' && fixtures.data ? (
+          <Button variant="secondary" label={t('calendar.export')} onPress={() => void onExport()} />
+        ) : null}
+      </PosterCard>
     </View>
   );
 
@@ -91,7 +111,10 @@ export default function CalendarScreen() {
   }
 
   const list = tab === 'upcoming' ? upcoming : results;
-  const sections = groupByMonth(list).map((g) => ({ title: formatMonth(g.key, i18n.language), data: g.data }));
+  const sections = groupByMonth(list).map((g) => ({
+    title: capitalizeFirst(formatMonth(g.key, i18n.language), i18n.language),
+    data: g.data,
+  }));
 
   return (
     <SectionList
@@ -99,14 +122,23 @@ export default function CalendarScreen() {
       contentContainerStyle={styles.content}
       sections={sections}
       keyExtractor={(m) => String(m.id)}
-      stickySectionHeadersEnabled={false}
+      stickySectionHeadersEnabled
       ListHeaderComponent={header}
       ListEmptyComponent={<EmptyState message={t(tab === 'upcoming' ? 'calendar.emptyUpcoming' : 'calendar.emptyResults')} />}
       renderSectionHeader={({ section }) => (
-        <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.body, fontWeight: '700', textTransform: 'capitalize', paddingTop: spacing.sm }}>{section.title}</Text>
+        <View style={[styles.month, { backgroundColor: colors.background }]}>
+          <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}>
+            {section.title}
+          </Text>
+        </View>
       )}
-      renderItem={({ item }) => <MatchCard match={item} />}
-      ItemSeparatorComponent={() => <View style={{ height: spacing.sm }} />}
+      renderItem={({ item }) => (
+        <MatchCard
+          competitionName={competition}
+          highlight={item.id === nextId}
+          match={item}
+        />
+      )}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={colors.primary} />}
     />
   );
@@ -115,4 +147,5 @@ export default function CalendarScreen() {
 const styles = StyleSheet.create({
   content: { padding: spacing.md, gap: spacing.sm },
   header: { gap: spacing.md, marginBottom: spacing.sm },
+  month: { paddingTop: spacing.sm, paddingBottom: spacing.xs },
 });
