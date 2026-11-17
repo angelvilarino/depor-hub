@@ -621,6 +621,8 @@
     },
     "timelineFilterAll": "Filter timeline: all sections",
     "timelineFilterCategory": "Filter timeline: {{category}}",
+    "timelineFilterOpen": "Filter timeline",
+    "timelineFilterToggle": "Filter",
     "timelineEvents": {
       "crest": "Crest {{years}}",
       "stadiumOpening": "{{name}} opens",
@@ -712,6 +714,8 @@
     },
     "himnos": {
       "empty": "No anthems have been documented.",
+      "other": "Other anthems",
+      "openDetail": "Read the page",
       "hasLyrics": "Lyrics available",
       "noLyricsShort": "Lyrics pending",
       "lyrics": "Lyrics",
@@ -793,6 +797,9 @@
       "empty": "No museum data.",
       "location": "Location",
       "schedule": "Opening hours",
+      "schedulePending": "Opening hours and availability on the official website.",
+      "visit": "The visit",
+      "pieces": "pieces in the collection",
       "prices": "Visits",
       "links": "Links"
     },
@@ -800,7 +807,8 @@
       "empty": "No training centre data.",
       "location": "Location",
       "openMap": "Open in maps",
-      "facilities": "Facilities"
+      "facilities": "Facilities",
+      "project": "Project figures"
     },
     "junta": {
       "empty": "No board data.",
@@ -822,6 +830,7 @@
       "collaborators": "Partners",
       "other": "Other agreements",
       "timeline": "Verified agreement tenures",
+      "openSite": "Open {{name}} website",
       "until": "Until {{year}}",
       "roles": {
         "principal": "Main sponsor",

@@ -621,6 +621,8 @@
     },
     "timelineFilterAll": "Filtrar cronología: todas las secciones",
     "timelineFilterCategory": "Filtrar cronología: {{category}}",
+    "timelineFilterOpen": "Filtrar cronología",
+    "timelineFilterToggle": "Filtrar",
     "timelineEvents": {
       "crest": "Escudo {{years}}",
       "stadiumOpening": "Inauguración de {{name}}",
@@ -712,6 +714,8 @@
     },
     "himnos": {
       "empty": "No hay himnos documentados.",
+      "other": "Otros himnos",
+      "openDetail": "Leer la ficha",
       "hasLyrics": "Letra disponible",
       "noLyricsShort": "Letra pendiente",
       "lyrics": "Letra",
@@ -793,6 +797,9 @@
       "empty": "No hay datos del museo.",
       "location": "Ubicación",
       "schedule": "Horario",
+      "schedulePending": "Horario y disponibilidad en la web oficial.",
+      "visit": "La visita",
+      "pieces": "piezas en la colección",
       "prices": "Visitas",
       "links": "Enlaces"
     },
@@ -800,7 +807,8 @@
       "empty": "No hay datos de la ciudad deportiva.",
       "location": "Ubicación",
       "openMap": "Abrir en el mapa",
-      "facilities": "Instalaciones"
+      "facilities": "Instalaciones",
+      "project": "Cifras del proyecto"
     },
     "junta": {
       "empty": "No hay datos de la junta directiva.",
@@ -822,6 +830,7 @@
       "collaborators": "Colaboradores",
       "other": "Otros acuerdos",
       "timeline": "Vigencia de acuerdos verificados",
+      "openSite": "Abrir web de {{name}}",
       "until": "Hasta {{year}}",
       "roles": {
         "principal": "Patrocinador principal",
