@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T12:06:11Z",
+  "updatedAt": "2026-11-17T17:04:32Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,9 +16,43 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "marca",
+      "name": "Marca",
+      "group": "nacional",
+      "kind": "article",
+      "homepage": "https://www.marca.com/futbol/deportivo.html",
+      "iconUrl": "https://www.marca.com/apple-touch-icon.png"
     }
   ],
   "stories": [
+    {
+      "id": "6f6d61bc2f0d6170",
+      "title": "La hora de Aubameyang",
+      "url": "https://marca.com/futbol/deportivo/2026/11/17/hora-aubameyang.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-17T16:44:10Z",
+      "kind": "article",
+      "summary": "El gabonés quiere liderar al Dépor en su visita a Mendizorroza desde el inicio. Las tres victorias del cuadro gallego fueron con Auba en…",
+      "thumbnailUrl": "img/news/b7d0d2c43729090c.webp",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "47684379ac901797",
+      "title": "Hugo Novoa se reencuentra con el Dépor tras un gol 'a lo Djalminha' que le abrió las puertas en Vitoria",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/hugo-novoa-se-reencuentra-con-el-depor-tras-un-gol-a-lo-djalminha-que-le-abrio-las-puertas-en-vitoria-891533.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-17T16:34:45Z",
+      "kind": "article",
+      "summary": "Sin minutos en las ocho primeras jornadas, su diana en Balaídos le ha otorgado continuidad en los planes de Sánchez Flores en el Alavés",
+      "thumbnailUrl": "img/news/53b789f6d17cf5a5.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "5145404bd01d37f6",
       "title": "Mariano Díaz sonó para el Dépor, le marcó 23 días después y ahora le espera con el Alavés",
@@ -72,35 +106,6 @@
       "thumbnailUrl": null,
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "2a4b8aa1d92928bc",
-      "title": "El Dépor aprueba por unanimidad las cuentas del año del ascenso a Primera División",
-      "url": "https://riazor.org/depor-vota-martes-cuentas-ano-ascenso-primera-division",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-17T08:00:03Z",
-      "kind": "article",
-      "summary": "La Junta de Accionistas, con el 99,86% del capital representado, da el visto bueno a un ejercicio con 12,17 millones de pérdidas y 72,7 de…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido",
-        "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "c87bdbf6c82f0dfd",
-      "title": "Lucas Viña: «Villares tenía un potencial increíble y sabías que tarde o temprano le iba a llegar la oportunidad»",
-      "url": "https://riazor.org/lucas-vina-villares-tarde-temprano-oportunidad",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-17T06:00:12Z",
-      "kind": "article",
-      "summary": "El exjugador del Fabril recordó en 'Son de Riazor' su etapa en A Coruña después de ganar el derbi barcelonés entre Europa y Sant Andreu…",
-      "thumbnailUrl": "img/news/6d8180f4dae0559f.webp",
-      "tags": [
-        "cantera"
       ],
       "alsoIn": []
     }

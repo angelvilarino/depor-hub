@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T12:06:11Z",
+  "updatedAt": "2026-11-17T17:04:32Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "6f6d61bc2f0d6170",
+      "title": "La hora de Aubameyang",
+      "url": "https://marca.com/futbol/deportivo/2026/11/17/hora-aubameyang.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-17T16:44:10Z",
+      "kind": "article",
+      "summary": "El gabonés quiere liderar al Dépor en su visita a Mendizorroza desde el inicio. Las tres victorias del cuadro gallego fueron con Auba en…",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/02/6ae8e8b0c0b86.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "47684379ac901797",
+      "title": "Hugo Novoa se reencuentra con el Dépor tras un gol 'a lo Djalminha' que le abrió las puertas en Vitoria",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/hugo-novoa-se-reencuentra-con-el-depor-tras-un-gol-a-lo-djalminha-que-le-abrio-las-puertas-en-vitoria-891533.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-17T16:34:45Z",
+      "kind": "article",
+      "summary": "Sin minutos en las ocho primeras jornadas, su diana en Balaídos le ha otorgado continuidad en los planes de Sánchez Flores en el Alavés",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/17/6afc7c119bb6b.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "5145404bd01d37f6",
       "title": "Mariano Díaz sonó para el Dépor, le marcó 23 días después y ahora le espera con el Alavés",
@@ -2155,32 +2181,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "8de15f963e7f9435",
-      "title": "Antonio Hidalgo repasa la situación de la enfermería del Dépor: \"¿Casadó? Tiene muchas ganas y podría ir convocado\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/antonio-hidalgo-repasa-la-situacion-de-la-enfermeria-del-depor-casado-tiene-muchas-ganas-y-podria-ir-convocado-889343.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-06T09:04:27Z",
-      "kind": "article",
-      "summary": "El técnico reconoce su sorpresa por la evolución del catalán y de Aubameyang",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/09/01/6a96c75152674.r_d.1500-1000-0.jpg",
-      "tags": [
-        "lesiones"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "de06c8db7039d494",
-      "title": "Hidalgo amplía el repertorio táctico del Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/hidalgo-amplia-el-repertorio-tactico-del-depor-889189.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-06T04:00:00Z",
-      "kind": "article",
-      "summary": "Antonio Hidalgo introdujo ante Osasuna variantes en la ocupación de los espacios y los roles de sus jugadores para adaptarse a cada momento",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/05/6aec8f8f1cc18.r_d.1315-1921-0.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]
