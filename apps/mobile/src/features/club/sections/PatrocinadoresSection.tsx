@@ -1,20 +1,53 @@
+import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
+import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { Timeline } from '@/components/club/Editorial';
 import { Card } from '@/components/Screen';
 import { EmptyState } from '@/components/StateViews';
-import type { ClubT } from '@/data/schemas';
+import type { ClubT, SponsorT } from '@/data/schemas';
 import { radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
+import { openExternal } from '@/utils/openExternal';
 import { SectionTitle } from './ui';
 
 type SponsorRole = 'principal' | 'technical' | 'official' | 'collaborator' | 'other';
 
-function monogram(name: string) {
-  const words = name.trim().split(/\s+/).filter(Boolean);
-  return words.length > 1
-    ? words.slice(0, 2).map((word) => Array.from(word)[0] ?? '').join('').toLocaleUpperCase()
-    : Array.from(name).slice(0, 2).join('').toLocaleUpperCase();
+function keyFor(name: string): string {
+  return name.trim().toLocaleLowerCase();
+}
+
+function SponsorRow({ name, role, detail }: { name: string; role: string; detail?: SponsorT }) {
+  const { t } = useTranslation();
+  const { colors } = useTheme();
+  const url = detail?.url ?? null;
+  // D-15: sin logo no hay tarjeta ni monograma; la fila es tipográfica y el
+  // enlace, cuando existe, es la única acción.
+  const secondary = detail?.note ?? detail?.category ?? null;
+  const content = (
+    <>
+      <View style={styles.rowText}>
+        <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{name}</Text>
+        {secondary ? <Text style={{ color: colors.textMuted, ...text.caption }}>{secondary}</Text> : null}
+      </View>
+      {url ? <Ionicons name="open-outline" size={18} color={colors.primary} /> : null}
+    </>
+  );
+
+  return url ? (
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={t('club.patrocinadores.openSite', { name })}
+      onPress={() => void openExternal(url)}
+      style={[styles.row, { borderTopColor: colors.border }]}
+    >
+      {content}
+    </Pressable>
+  ) : (
+    <View accessible accessibilityLabel={`${role}: ${name}`} style={[styles.row, { borderTopColor: colors.border }]}>
+      {content}
+    </View>
+  );
 }
 
 export function PatrocinadoresSection({ club }: { club: ClubT }) {
@@ -25,6 +58,7 @@ export function PatrocinadoresSection({ club }: { club: ClubT }) {
   if (!sponsors) return <EmptyState message={t('club.patrocinadores.empty')} />;
 
   const verifiedDetails = sponsors.details.filter((sponsor) => sponsor.status === 'verified');
+  const detailsByName = new Map(verifiedDetails.map((sponsor) => [keyFor(sponsor.name), sponsor]));
   const baseNames: Record<SponsorRole, string[]> = {
     principal: sponsors.principal ? [sponsors.principal] : [],
     technical: sponsors.technical ? [sponsors.technical] : [],
@@ -46,7 +80,7 @@ export function PatrocinadoresSection({ club }: { club: ClubT }) {
   const groups = categories.flatMap(({ role, label }) => {
     const seen = new Set<string>();
     const names = baseNames[role].filter((name) => {
-      const key = name.trim().toLocaleLowerCase();
+      const key = keyFor(name);
       if (!key || seen.has(key)) return false;
       seen.add(key);
       return true;
@@ -63,11 +97,7 @@ export function PatrocinadoresSection({ club }: { club: ClubT }) {
           ? `${sponsor.sinceYear}–${t('club.present')}`
           : t('club.patrocinadores.until', { year: sponsor.untilYear });
       const role = t(`club.patrocinadores.roles.${sponsor.role}`);
-      const detail = [
-        role,
-        sponsor.category,
-        sponsor.note,
-      ].filter(Boolean).join(' · ');
+      const detail = [role, sponsor.category, sponsor.note].filter(Boolean).join(' · ');
       return { year, title: sponsor.name, detail };
     });
 
@@ -83,34 +113,12 @@ export function PatrocinadoresSection({ club }: { club: ClubT }) {
           <View style={styles.groups}>
             {groups.map((group) => (
               <View key={group.role} style={styles.group}>
-                <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}>
+                <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.caption, fontWeight: '800', letterSpacing: 1, textTransform: 'uppercase' }}>
                   {group.label}
                 </Text>
-                <View style={styles.grid}>
-                  {group.names.map((name) => {
-                    const detail = verifiedDetails.find((sponsor) => sponsor.name === name);
-                    return (
-                      <View
-                        key={name}
-                        accessible
-                        accessibilityLabel={`${group.label}: ${name}`}
-                        style={[styles.tile, { backgroundColor: colors.background, borderColor: colors.border }]}
-                      >
-                        <View style={[styles.monogram, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-                          <Text style={{ color: colors.text, ...text.body, fontWeight: '800' }}>
-                            {monogram(name)}
-                          </Text>
-                        </View>
-                        <Text style={{ color: colors.text, ...text.body, fontWeight: '700', flexShrink: 1 }}>
-                          {name}
-                        </Text>
-                        {detail?.category ? (
-                          <Text style={{ color: colors.textMuted, ...text.caption }}>{detail.category}</Text>
-                        ) : null}
-                      </View>
-                    );
-                  })}
-                </View>
+                {group.names.map((name) => (
+                  <SponsorRow key={`${group.role}-${name}`} name={name} role={group.label} detail={detailsByName.get(keyFor(name))} />
+                ))}
               </View>
             ))}
           </View>
@@ -130,25 +138,14 @@ export function PatrocinadoresSection({ club }: { club: ClubT }) {
 const styles = StyleSheet.create({
   groups: { gap: spacing.md },
   group: { gap: spacing.xs },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
-  tile: {
-    flexBasis: '47%',
-    flexGrow: 1,
-    maxWidth: '49%',
-    minHeight: 88,
+  row: {
+    minHeight: 48,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.xs,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: radius.md,
-    padding: spacing.sm,
-  },
-  monogram: {
-    width: 36,
-    height: 36,
+    gap: spacing.sm,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderRadius: radius.sm,
-    borderWidth: StyleSheet.hairlineWidth,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingVertical: spacing.sm,
   },
+  rowText: { flex: 1, gap: spacing.xs },
 });
