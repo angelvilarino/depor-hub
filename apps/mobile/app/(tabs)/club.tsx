@@ -148,14 +148,19 @@ export default function ClubScreen() {
                 {CLUB_SECTIONS.map((section) => {
                   const badge = sectionBadge(club, section.id, i18n.language, rivalriesQuery.data?.rivalries.length ?? club.rivalries.length);
                   const image = sectionImage(club, section.id);
+                  // D-13: cabecera propia para icono y badge, título a dos líneas
+                  // y altura estable para que ninguna baldosa desborde la rejilla.
                   return <Pressable key={section.id} accessibilityRole="button" accessibilityLabel={t(`club.sections.${section.id}.title`)} onPress={() => router.push(`/club/${section.id}`)} style={[styles.sectionTile, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-                    <View style={styles.tileArtwork}>
-                      {image ? <View style={StyleSheet.absoluteFill}><ClubTileImage uri={image} /></View> : null}
-                      <View style={[styles.tileIcon, { backgroundColor: colors.background }]}><Ionicons name={section.icon as IconName} size={24} color={colors.primary} /></View>
+                    <View style={styles.tileHead}>
+                      <View style={[styles.tileMark, { backgroundColor: colors.background, borderColor: colors.border }]}>
+                        {image
+                          ? <Image source={{ uri: image }} contentFit="contain" style={styles.tileArtwork} />
+                          : <Ionicons name={section.icon as IconName} size={22} color={colors.primary} />}
+                      </View>
                       {badge ? <View style={[styles.tileBadge, { backgroundColor: colors.primary }]}><Text style={{ color: colors.onPrimary, ...text.caption, fontWeight: '800' }}>{badge}</Text></View> : null}
                     </View>
-                    <Text style={[styles.tileTitle, { color: colors.text }]}>{t(`club.sections.${section.id}.title`)}</Text>
-                    <Text numberOfLines={2} style={[styles.tileSubtitle, { color: colors.textMuted }]}>{t(`club.sections.${section.id}.subtitle`)}</Text>
+                    <Text numberOfLines={2} maxFontSizeMultiplier={1.2} style={[styles.tileTitle, { color: colors.text }]}>{t(`club.sections.${section.id}.title`)}</Text>
+                    <Text numberOfLines={2} maxFontSizeMultiplier={1.2} style={[styles.tileSubtitle, { color: colors.textMuted }]}>{t(`club.sections.${section.id}.subtitle`)}</Text>
                   </Pressable>;
                 })}
               </View>
@@ -169,13 +174,16 @@ export default function ClubScreen() {
   );
 }
 
-function ClubTileImage({ uri }: { uri: string }) {
-  return <Image source={{ uri }} contentFit="cover" style={StyleSheet.absoluteFill} />;
-}
-
 const styles = StyleSheet.create({
   unofficial: { ...text.caption }, stats: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
   motto: { fontFamily: typography.headline, ...text.title, textAlign: 'center' },
   identityGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md }, identityItem: { minWidth: '42%', flexGrow: 1, gap: spacing.xs }, label: { ...text.caption, fontWeight: '700' }, value: { ...text.bodyLarge },
-  sectionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm }, sectionTile: { width: '47%', minHeight: 150, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden', padding: spacing.sm, gap: spacing.xs }, tileArtwork: { height: 66, justifyContent: 'center', alignItems: 'center', overflow: 'hidden', borderRadius: radius.sm }, tileIcon: { width: 44, height: 44, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center' }, tileBadge: { position: 'absolute', right: 5, top: 5, minWidth: 28, height: 28, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', paddingHorizontal: spacing.xs }, tileTitle: { ...text.bodyLarge, fontWeight: '800' }, tileSubtitle: { ...text.caption },
+  sectionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  sectionTile: { width: '47%', flexGrow: 1, minHeight: 164, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden', padding: spacing.sm, gap: spacing.xs },
+  tileHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.xs },
+  tileMark: { width: 44, aspectRatio: 1, borderRadius: radius.sm, borderWidth: StyleSheet.hairlineWidth, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+  tileArtwork: { width: 38, height: 38 },
+  tileBadge: { minWidth: 28, height: 28, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', paddingHorizontal: spacing.xs },
+  tileTitle: { ...text.subtitle, fontWeight: '800' },
+  tileSubtitle: { ...text.caption },
 });

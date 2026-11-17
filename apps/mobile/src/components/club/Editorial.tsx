@@ -67,10 +67,26 @@ export function Timeline({ entries, filters = false }: { entries: TimelineEntry[
   const { t } = useTranslation();
   const [category, setCategory] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
+  // D-14: los filtros no ocupan una fila permanente; se despliegan a demanda.
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const categories = [...new Set(entries.map((entry) => entry.category).filter((x): x is string => Boolean(x)))];
   const visible = entries.filter((entry) => !category || entry.category === category);
   return <View style={{ gap: spacing.sm }}>
-    {filters && categories.length ? <View style={styles.chips}>{[null, ...categories].map((item) => <Pressable key={item ?? 'all'} accessibilityRole="button" accessibilityLabel={item ? t('club.timelineFilterCategory', { category: item }) : t('club.timelineFilterAll')} accessibilityState={{ selected: category === item }} onPress={() => setCategory(item)} style={[styles.filterChip, { backgroundColor: category === item ? colors.primary : colors.surface, borderColor: colors.border }]}><Text style={{ color: category === item ? colors.onPrimary : colors.text }}>{item ?? t('club.titulos.all')}</Text></Pressable>)}</View> : null}
+    {filters && categories.length ? <>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={t('club.timelineFilterOpen')}
+        accessibilityState={{ expanded: filtersOpen }}
+        onPress={() => setFiltersOpen((open) => !open)}
+        style={[styles.filterToggle, { backgroundColor: colors.surface, borderColor: colors.border }]}
+      >
+        <Ionicons name="funnel-outline" size={18} color={colors.primary} />
+        <Text style={{ color: colors.text, ...text.body, fontWeight: '700', flex: 1 }}>{category ?? t('club.titulos.all')}</Text>
+        <Text style={{ color: colors.textMuted, ...text.caption }}>{t('club.timelineFilterToggle')}</Text>
+        <Ionicons name={filtersOpen ? 'chevron-up' : 'chevron-down'} size={16} color={colors.textMuted} />
+      </Pressable>
+      {filtersOpen ? <View style={styles.chips}>{[null, ...categories].map((item) => <Pressable key={item ?? 'all'} accessibilityRole="button" accessibilityLabel={item ? t('club.timelineFilterCategory', { category: item }) : t('club.timelineFilterAll')} accessibilityState={{ selected: category === item }} onPress={() => { setCategory(item); setFiltersOpen(false); }} style={[styles.filterChip, { backgroundColor: category === item ? colors.primary : colors.surface, borderColor: colors.border }]}><Text style={{ color: category === item ? colors.onPrimary : colors.text }}>{item ?? t('club.titulos.all')}</Text></Pressable>)}</View> : null}
+    </> : null}
     {visible.map((entry, index) => {
       const key = `${entry.year}-${entry.title}`;
       const isOpen = expanded === key;
@@ -177,6 +193,7 @@ const styles = StyleSheet.create({
   heroChipText: { color: imageTokens.text, ...text.caption, fontWeight: '700' },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   stat: { minWidth: 94, flexGrow: 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, padding: spacing.sm, gap: spacing.xs },
+  filterToggle: { minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: spacing.xs, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.sm, paddingHorizontal: spacing.sm },
   filterChip: { paddingHorizontal: spacing.sm, minHeight: 44, justifyContent: 'center', borderRadius: radius.pill, borderWidth: StyleSheet.hairlineWidth },
   timelineRow: { minHeight: 44, flexDirection: 'row', gap: spacing.sm, alignItems: 'flex-start' },
   timelineAxis: { width: 16, alignItems: 'center', alignSelf: 'stretch' }, dot: { width: 10, height: 10, borderRadius: 5, marginTop: spacing.xs }, line: { width: 2, flex: 1, marginTop: spacing.xs },
