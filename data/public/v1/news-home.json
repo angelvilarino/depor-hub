@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T17:04:32Z",
+  "updatedAt": "2026-11-17T17:33:08Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "bbe52f82e240f409",
+      "title": "Rodri podría regresar frente al Dépor",
+      "url": "https://marca.com/futbol/barcelona/2026/11/17/rodri-podria-regresar-frente-depor.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-17T17:09:03Z",
+      "kind": "article",
+      "summary": "La previsión es que se incorpore al grupo al regreso del partido en Azerbaiyán frente al Sabah",
+      "thumbnailUrl": "img/news/fbfe25f44ebaef11.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "6f6d61bc2f0d6170",
       "title": "La hora de Aubameyang",
@@ -92,20 +106,6 @@
       "thumbnailUrl": "img/news/650cd92bbddf4b9b.webp",
       "tags": [
         "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "554634cfe4475560",
-      "title": "Nsongo Bil, un león indomable: asalto a la titularidad y nuevo gol con Camerún",
-      "url": "https://riazor.org/nsongo-bil-leon-indomable-titularidad-gol-camerun",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-17T10:00:13Z",
-      "kind": "article",
-      "summary": "El delantero del Deportivo se ha ganado poco a poco un lugar en los planes del seleccionador David Pagou de cara a la Copa de África. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }

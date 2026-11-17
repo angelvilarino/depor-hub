@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T17:04:32Z",
+  "updatedAt": "2026-11-17T17:33:08Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "bbe52f82e240f409",
+      "title": "Rodri podría regresar frente al Dépor",
+      "url": "https://marca.com/futbol/barcelona/2026/11/17/rodri-podria-regresar-frente-depor.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-17T17:09:03Z",
+      "kind": "article",
+      "summary": "La previsión es que se incorpore al grupo al regreso del partido en Azerbaiyán frente al Sabah",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/17/6afc87d3b0497.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "6f6d61bc2f0d6170",
       "title": "La hora de Aubameyang",
@@ -2164,20 +2178,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i3.ytimg.com/vi/BcZoHslaj3E/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "151abd5b5d13ecd9",
-      "title": "Hidalgo, optimista con la vuelta de Casadó: «Está con muchas ganas, veremos si puede venir convocado»",
-      "url": "https://riazor.org/hidalgo-optimista-vuelta-casado-venir-convocado",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-06T09:10:00Z",
-      "kind": "article",
-      "summary": "El técnico catalán, en rueda de prensa, aseguró que Marc Casadó podría volver a una convocatoria este sábado (16:15 horas) ante el…",
-      "thumbnailUrl": null,
       "tags": [
         "partido"
       ],
