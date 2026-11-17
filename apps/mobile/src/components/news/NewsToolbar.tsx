@@ -1,21 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
-import { SegmentedControl } from '@/components/SegmentedControl';
-import type { NewsGroupT } from '@/data/schemas';
-import {
-  activeFilterCount,
-  GROUP_ORDER,
-  type NewsFilters,
-  type NewsKindFilter,
-} from '@/features/news/logic';
+import { activeFilterCount, type NewsFilters } from '@/features/news/logic';
 import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
@@ -23,12 +10,8 @@ type Props = {
   filters: NewsFilters;
   query: string;
   searching: boolean;
-  groups: NewsGroupT[];
   onQueryChange: (value: string) => void;
   onToggleSearch: () => void;
-  onKindChange: (kind: NewsKindFilter) => void;
-  onToggleGroup: (group: NewsGroupT) => void;
-  onClear: () => void;
   onOpenFilters: () => void;
 };
 
@@ -36,18 +19,13 @@ export function NewsToolbar({
   filters,
   query,
   searching,
-  groups,
   onQueryChange,
   onToggleSearch,
-  onKindChange,
-  onToggleGroup,
-  onClear,
   onOpenFilters,
 }: Props) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const active = activeFilterCount(filters);
-  const visibleGroups = GROUP_ORDER.filter((group) => groups.includes(group));
 
   return (
     <View
@@ -66,17 +44,9 @@ export function NewsToolbar({
         >
           <Ionicons name="search" size={22} color={colors.text} />
         </Pressable>
-        <View style={styles.segment}>
-          <SegmentedControl
-            value={filters.kind}
-            onChange={onKindChange}
-            options={[
-              { value: 'all', label: t('news.kind.all') },
-              { value: 'article', label: t('news.kind.article') },
-              { value: 'video', label: t('news.kind.video') },
-            ]}
-          />
-        </View>
+        <Text numberOfLines={1} style={{ color: colors.text, flex: 1, ...text.title, fontWeight: '700' }}>
+          {t('tabs.news')}
+        </Text>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={t('news.filters')}
@@ -119,57 +89,6 @@ export function NewsToolbar({
           ) : null}
         </View>
       ) : null}
-
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.chips}
-        keyboardShouldPersistTaps="handled"
-      >
-        {visibleGroups.map((group) => {
-          const selected = filters.groups.includes(group);
-          return (
-            <Pressable
-              key={group}
-              accessibilityRole="button"
-              accessibilityState={{ selected }}
-              accessibilityLabel={t(`news.group.${group}`)}
-              hitSlop={8}
-              onPress={() => onToggleGroup(group)}
-              style={[
-                styles.chip,
-                {
-                  backgroundColor: selected ? colors.primary : colors.surface,
-                  borderColor: selected ? colors.primary : colors.border,
-                },
-              ]}
-            >
-              <Text
-                style={{
-                  color: selected ? colors.onPrimary : colors.text,
-                  ...text.body,
-                  fontWeight: '600',
-                }}
-              >
-                {t(`news.group.${group}`)}
-              </Text>
-            </Pressable>
-          );
-        })}
-        {active > 0 ? (
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={t('news.clearFiltersCount', { count: active })}
-            hitSlop={8}
-            onPress={onClear}
-            style={styles.clear}
-          >
-            <Text style={{ color: colors.primary, ...text.body, fontWeight: '600' }}>
-              {t('news.clearFiltersCount', { count: active })}
-            </Text>
-          </Pressable>
-        ) : null}
-      </ScrollView>
     </View>
   );
 }
@@ -188,7 +107,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  segment: { flex: 1 },
   badge: {
     position: 'absolute',
     top: 4,
@@ -210,13 +128,4 @@ const styles = StyleSheet.create({
     minHeight: minTouch,
   },
   input: { flex: 1, ...text.bodyLarge, minHeight: minTouch },
-  chips: { gap: spacing.sm, alignItems: 'center' },
-  chip: {
-    minHeight: 32,
-    paddingHorizontal: spacing.md,
-    borderRadius: radius.lg,
-    borderWidth: StyleSheet.hairlineWidth,
-    justifyContent: 'center',
-  },
-  clear: { minHeight: 32, justifyContent: 'center', paddingHorizontal: spacing.sm },
 });

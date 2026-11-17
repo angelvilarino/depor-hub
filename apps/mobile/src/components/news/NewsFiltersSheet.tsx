@@ -3,16 +3,27 @@ import { Modal, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
-import type { NewsFilters, SourceOption } from '@/features/news/logic';
+import type { NewsGroupT } from '@/data/schemas';
+import {
+  GROUP_ORDER,
+  type NewsFilters,
+  type NewsKindFilter,
+  type SourceOption,
+} from '@/features/news/logic';
 import { minTouch, radius, spacing, text } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
+
+const KINDS: NewsKindFilter[] = ['all', 'article', 'video'];
 
 type Props = {
   visible: boolean;
   onClose: () => void;
   sources: SourceOption[];
   tags: { tag: string; items: number }[];
+  groups: NewsGroupT[];
   filters: NewsFilters;
+  onKindChange: (kind: NewsKindFilter) => void;
+  onToggleGroup: (group: NewsGroupT) => void;
   onToggleSource: (id: string) => void;
   onToggleTag: (tag: string) => void;
   onClear: () => void;
@@ -23,7 +34,10 @@ export function NewsFiltersSheet({
   onClose,
   sources,
   tags,
+  groups,
   filters,
+  onKindChange,
+  onToggleGroup,
   onToggleSource,
   onToggleTag,
   onClear,
@@ -68,6 +82,76 @@ export function NewsFiltersSheet({
           </View>
 
           <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+            <Text style={[styles.heading, { color: colors.textMuted }]}>
+              {t('news.kindTitle')}
+            </Text>
+            <View style={styles.kindRow}>
+              {KINDS.map((kind) => {
+                const selected = filters.kind === kind;
+                return (
+                  <Pressable
+                    key={kind}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected }}
+                    accessibilityLabel={t(`news.kind.${kind}`)}
+                    onPress={() => onKindChange(kind)}
+                    style={[
+                      styles.kindChip,
+                      {
+                        backgroundColor: selected ? colors.primary : 'transparent',
+                        borderColor: selected ? colors.primary : colors.border,
+                      },
+                    ]}
+                  >
+                    <Text
+                      style={{
+                        color: selected ? colors.onPrimary : colors.text,
+                        ...text.body,
+                        fontWeight: '600',
+                      }}
+                    >
+                      {t(`news.kind.${kind}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+            <Text style={[styles.heading, { color: colors.textMuted }]}>
+              {t('news.groupTitle')}
+            </Text>
+            <View style={styles.kindRow}>
+              {GROUP_ORDER.filter((group) => groups.includes(group)).map((group) => {
+                const selected = filters.groups.includes(group);
+                return (
+                  <Pressable
+                    key={group}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected }}
+                    accessibilityLabel={t(`news.group.${group}`)}
+                    onPress={() => onToggleGroup(group)}
+                    style={[
+                      styles.kindChip,
+                      {
+                        backgroundColor: selected ? colors.primary : 'transparent',
+                        borderColor: selected ? colors.primary : colors.border,
+                      },
+                    ]}
+                  >
+                    <Text
+                      style={{
+                        color: selected ? colors.onPrimary : colors.text,
+                        ...text.body,
+                        fontWeight: '600',
+                      }}
+                    >
+                      {t(`news.group.${group}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
             <Text style={[styles.heading, { color: colors.textMuted }]}>
               {t('news.sources')}
             </Text>
@@ -173,6 +257,14 @@ const styles = StyleSheet.create({
   close: { width: minTouch, height: minTouch, alignItems: 'center', justifyContent: 'center' },
   content: { paddingHorizontal: spacing.lg, paddingBottom: spacing.md, gap: spacing.xs },
   heading: { ...text.body, fontWeight: '700', marginTop: spacing.md, textTransform: 'uppercase' },
+  kindRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  kindChip: {
+    minHeight: 36,
+    justifyContent: 'center',
+    paddingHorizontal: spacing.md,
+    borderRadius: radius.lg,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
   option: {
     minHeight: minTouch,
     flexDirection: 'row',

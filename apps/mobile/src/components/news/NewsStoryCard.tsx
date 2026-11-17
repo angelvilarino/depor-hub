@@ -110,18 +110,10 @@ export function NewsStoryCard({ story, sources, read, onOpen, onTag, now }: Prop
               color: colors.text,
               ...text.bodyLarge,
               fontWeight: read ? '600' : '700',
-                          }}
+            }}
           >
             {story.title}
           </Text>
-          {story.summary ? (
-            <Text
-              numberOfLines={2}
-              style={{ color: colors.textMuted, ...text.body }}
-            >
-              {story.summary}
-            </Text>
-          ) : null}
         </View>
         {story.thumbnailUrl && !failedImage ? (
           <Image

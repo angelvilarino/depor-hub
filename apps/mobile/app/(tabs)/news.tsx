@@ -229,7 +229,6 @@ export default function NewsScreen() {
         filters={effectiveFilters}
         query={query}
         searching={searching}
-        groups={groups}
         onQueryChange={setQuery}
         onToggleSearch={() => {
           setSearching((value) => {
@@ -237,9 +236,6 @@ export default function NewsScreen() {
             return !value;
           });
         }}
-        onKindChange={toggleKind}
-        onToggleGroup={toggleGroup}
-        onClear={clearFilters}
         onOpenFilters={() => setSheetOpen(true)}
       />
       <SectionList
@@ -350,7 +346,10 @@ export default function NewsScreen() {
         onClose={() => setSheetOpen(false)}
         sources={sourceList}
         tags={tags}
+        groups={groups}
         filters={effectiveFilters}
+        onKindChange={toggleKind}
+        onToggleGroup={toggleGroup}
         onToggleSource={toggleSource}
         onToggleTag={toggleTag}
         onClear={clearFilters}

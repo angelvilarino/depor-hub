@@ -114,7 +114,7 @@ describe('pantalla Noticias', () => {
     expect(screen.getAllByText('1 noticia').length).toBeGreaterThan(0);
   });
 
-  it('filtra por grupo y limpia con el contador', async () => {
+  it('filtra por grupo y limpia con la hoja', async () => {
     mockNews = query(
       news([
         story({ id: 'n01' }),
@@ -122,10 +122,15 @@ describe('pantalla Noticias', () => {
       ]),
     );
     await render(<NewsScreen />);
+    await fireEvent.press(screen.getByLabelText('Filtros'));
     await fireEvent.press(screen.getByLabelText('Nacional'));
+    await fireEvent.press(screen.getAllByLabelText('Cerrar').at(-1)!);
     expect(screen.queryByText('Titular n01')).toBeNull();
     expect(screen.getByText('Titular n02')).toBeTruthy();
-    await fireEvent.press(screen.getByLabelText('Limpiar (1)'));
+
+    await fireEvent.press(screen.getByLabelText('Filtros'));
+    await fireEvent.press(screen.getByText('Quitar filtros'));
+    await fireEvent.press(screen.getAllByLabelText('Cerrar').at(-1)!);
     expect(screen.getByText('Titular n01')).toBeTruthy();
     expect(screen.getByText('Titular n02')).toBeTruthy();
   });
