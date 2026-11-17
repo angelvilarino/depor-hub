@@ -14,6 +14,7 @@ import {
 import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { CoachPortrait } from '@/components/CoachPortrait';
+import { PosterCard, SectionHeader } from '@/components/design/DesignSystem';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
 import { PlayerPortrait } from '@/components/PlayerPortrait';
 import { Screen } from '@/components/Screen';
@@ -147,7 +148,7 @@ function SquadListRow({ player, now }: { player: PlayerSummaryT; now: number }) 
   );
 }
 
-function CoachCard({ coach }: { coach: CoachT | null }) {
+function CoachRow({ coach }: { coach: CoachT | null }) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   if (!coach?.name) return null;
@@ -162,19 +163,21 @@ function CoachCard({ coach }: { coach: CoachT | null }) {
       accessibilityLabel={[coach.name, t('team.coach'), nationality].filter(Boolean).join('. ')}
       accessibilityRole="button"
       onPress={() => router.push('/coach')}
-      style={[styles.coachCard, { backgroundColor: colors.surface, borderColor: colors.border }]}
+      style={styles.coachRow}
     >
-      <CoachPortrait name={coach.name} photoUrl={coach.photoUrl} size={48} />
+      <CoachPortrait name={coach.name} photoUrl={coach.photoUrl} size={44} />
       <View style={{ flex: 1, gap: spacing.xs }}>
-        <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '700' }}>
-          {t('team.coach').toUpperCase()}
+        <Text style={{ color: colors.poster.muted, ...text.caption, fontWeight: '700' }}>
+          {t('team.coach').toLocaleUpperCase()}
         </Text>
-        <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{coach.name}</Text>
+        <Text style={{ color: colors.poster.text, ...text.bodyLarge, fontWeight: '700' }}>
+          {coach.name}
+        </Text>
         {nationality ? (
-          <Text style={{ color: colors.textMuted, ...text.body }}>{nationality}</Text>
+          <Text style={{ color: colors.poster.muted, ...text.body }}>{nationality}</Text>
         ) : null}
       </View>
-      <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
+      <Ionicons name="chevron-forward" size={20} color={colors.poster.muted} />
     </Pressable>
   );
 }
@@ -208,7 +211,10 @@ export default function TeamScreen() {
         isFetching={squad.isFetching}
         isError={squad.isError}
       />
-      <CoachCard coach={coach} />
+      <PosterCard>
+        <SectionHeader icon="people-outline" title={t('team.title')} variant="poster" />
+        <CoachRow coach={coach} />
+      </PosterCard>
 
       <View
         style={[styles.search, { backgroundColor: colors.surface, borderColor: colors.border }]}
@@ -380,14 +386,11 @@ export default function TeamScreen() {
 const styles = StyleSheet.create({
   content: { padding: spacing.md, paddingBottom: spacing.xl },
   header: { gap: spacing.md, marginBottom: spacing.md },
-  coachCard: {
-    minHeight: minTouch + spacing.sm,
+  coachRow: {
+    minHeight: minTouch,
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.md,
-    padding: spacing.sm,
-    borderRadius: radius.md,
-    borderWidth: StyleSheet.hairlineWidth,
   },
   search: {
     minHeight: minTouch,
