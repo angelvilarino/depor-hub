@@ -109,6 +109,10 @@ describe('pestaña Club', () => {
     expect(screen.getByText('Composición actual de la junta')).toBeTruthy();
     expect(screen.getByText('Acuerdo con Nike')).toBeTruthy();
 
+    fireEvent.press(screen.getByRole('button', { name: 'Filtrar cronología' }));
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Filtrar cronología: Títulos' })).toBeTruthy();
+    });
     fireEvent.press(screen.getByRole('button', { name: 'Filtrar cronología: Títulos' }));
     await waitFor(() => {
       expect(screen.queryByText('Escudo 1906–1908')).toBeNull();
@@ -177,7 +181,7 @@ describe('secciones del Club', () => {
     expect(screen.getAllByText('Letra pendiente')).toHaveLength(2);
     expect(screen.getAllByText('Letra disponible en la fuente')).toHaveLength(1);
 
-    fireEvent.press(screen.getByText('Voa'));
+    fireEvent.press(screen.getByRole('button', { name: 'Leer la ficha: Voa' }));
     expect(mockPush).toHaveBeenCalledWith('/club/himno/voa');
   });
 
@@ -305,6 +309,8 @@ describe('secciones del Club', () => {
     expect(screen.queryByText('Horario')).toBeNull();
     expect(screen.queryByText('Abierto')).toBeNull();
     expect(screen.queryByText('Cerrado')).toBeNull();
+    expect(screen.getByLabelText('250 piezas en la colección')).toBeTruthy();
+    expect(screen.getByText('Horario y disponibilidad en la web oficial.')).toBeTruthy();
     fireEvent.press(screen.getByLabelText('Cómo llegar'));
     await waitFor(() => expect(linking).toHaveBeenCalled());
     expect(String(linking.mock.calls[0]?.[0])).toContain('maps.apple.com');
@@ -368,7 +374,8 @@ describe('secciones del Club', () => {
     expect(screen.getByText('Proveedor técnico')).toBeTruthy();
     expect(screen.getByText('Patrocinadores oficiales')).toBeTruthy();
     expect(screen.getByText('ABANCA')).toBeTruthy();
-    expect(screen.getByText('AB')).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Abrir web de ABANCA' })).toBeTruthy();
+    expect(screen.getByText('Patrocinador principal y titular de los derechos de nombre del estadio.')).toBeTruthy();
     expect(screen.getByText('2026–actualidad')).toBeTruthy();
     expect(screen.getAllByText('Nike')).toHaveLength(2);
     expect(screen.getAllByText('ABANCA')).toHaveLength(1);
@@ -392,6 +399,27 @@ describe('secciones del Club', () => {
       expect(linking).toHaveBeenCalledWith('https://www.bdfutbol.com/es/t/t1994-9513.html');
     });
     linking.mockRestore();
+  });
+
+  it('presenta la ciudad deportiva con una cifra protagonista y sus notas', async () => {
+    mockParams = { section: 'training' };
+    await render(<ClubSectionScreen />);
+
+    expect(screen.getByText('Dépor Training Center')).toBeTruthy();
+    expect(screen.getByText(/140\.000/)).toBeTruthy();
+    expect(screen.getByText('superficie')).toBeTruthy();
+    expect(screen.getByText('campos con las dimensiones de Riazor')).toBeTruthy();
+    expect(screen.getByText('Energías renovables y reutilización de agua')).toBeTruthy();
+  });
+
+  it('rotula los canales con su marca y su ruta, sin el pájaro antiguo', async () => {
+    mockParams = { section: 'redes' };
+    await render(<ClubSectionScreen />);
+
+    expect(screen.getByText('x.com/RCDeportivo')).toBeTruthy();
+    expect(screen.getByText('instagram.com/rcdeportivo')).toBeTruthy();
+    expect(screen.getByLabelText('X')).toBeTruthy();
+    expect(screen.getByLabelText('Instagram')).toBeTruthy();
   });
 
   it('muestra el balance enlazado del derbi gallego', async () => {
