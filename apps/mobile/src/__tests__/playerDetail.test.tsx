@@ -254,30 +254,28 @@ describe('ficha de jugador', () => {
 
     expect(screen.getByText('Jugador Completo')).toBeTruthy();
     expect(screen.getByText(`🇪🇸 España · Portero · ${expectedAge} años`)).toBeTruthy();
-    expect(screen.getByText('Arnedo (La Rioja), España')).toBeTruthy();
-    expect(screen.getByText('Izquierdo')).toBeTruthy();
+    expect(screen.getByText(/Arnedo \(La Rioja\), España/)).toBeTruthy();
+    expect(screen.getByText(/Izquierdo/)).toBeTruthy();
     expect(screen.getByText(/5\.000\.000/)).toBeTruthy();
     expect(screen.getByText(/Estimación/)).toBeTruthy();
 
-    // La franja arranca en el ámbito «Depor»: solo el partido de esta temporada.
+    // Las estadísticas de temporada viven en la ficha, sin un segundo segmentado.
     expect(screen.getByText('90')).toBeTruthy();
     expect(screen.getAllByText('PJ').length).toBeGreaterThan(0);
     expect(screen.getAllByText('min').length).toBeGreaterThan(0);
     expect(screen.getByText('Resumen')).toBeTruthy();
     expect(screen.getByText('Partidos')).toBeTruthy();
-    expect(screen.getAllByText('Carrera').length).toBe(2);
+    expect(screen.getAllByText('Carrera').length).toBe(1);
     expect(screen.queryByText(/Fuente:/)).toBeNull();
   });
 
-  it('cambia al ámbito Carrera y muestra los totales y la trayectoria', async () => {
+  it('la pestaña Carrera muestra los totales y la trayectoria', async () => {
     mockUseSquad.mockReturnValue(squad([basePlayer]));
     await render(<PlayerDetail />);
 
-    await fireEvent.press(screen.getAllByText('Carrera')[0]!);
+    await fireEvent.press(screen.getByText('Carrera'));
     expect(screen.getByText('191')).toBeTruthy();
     expect(screen.getByText('16.992')).toBeTruthy();
-
-    await fireEvent.press(screen.getAllByText('Carrera')[1]!);
     expect(screen.getByText('Club Antiguo')).toBeTruthy();
     expect(screen.getByText('2014–')).toBeTruthy();
     expect(screen.getByText('2020–2022')).toBeTruthy();
@@ -308,10 +306,9 @@ describe('ficha de jugador', () => {
     expect(screen.getByText('Valladolid')).toBeTruthy();
     expect(screen.queryByText('Rival Antiguo')).toBeNull();
 
-    await fireEvent.press(screen.getAllByText('Carrera')[0]!);
+    await fireEvent.press(screen.getByText('Temporadas anteriores (1)'));
     expect(screen.getByText('Rival Antiguo')).toBeTruthy();
   });
-
   it('abre las redes oficiales con Ionicons y Linking', async () => {
     mockUseSquad.mockReturnValue(squad([basePlayer]));
     await render(<PlayerDetail />);
@@ -394,7 +391,7 @@ describe('ficha de jugador', () => {
 
     expect(screen.getByText('Sin Datos')).toBeTruthy();
     expect(screen.getByText(/Datos pendientes/)).toBeTruthy();
-    expect(screen.getByText(/no se inventan/)).toBeTruthy();
+    expect(screen.getByText('Dorsal')).toBeTruthy();
     expect(screen.getByText('Fecha de nacimiento')).toBeTruthy();
     expect(screen.getByText('Sin partidos con el Depor en esta temporada.')).toBeTruthy();
     expect(screen.queryByText('Trayectoria')).toBeNull();

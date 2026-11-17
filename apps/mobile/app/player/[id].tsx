@@ -8,9 +8,9 @@ import { Modal, PanResponder, StyleSheet, Text, View } from 'react-native';
 import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { CareerTimeline } from '@/components/CareerTimeline';
-import { SectionHeader } from '@/components/design/DesignSystem';
+import { PaperCard, PosterCard, SectionHeader } from '@/components/design/DesignSystem';
 import { PlayerPortrait, portraitUrl } from '@/components/PlayerPortrait';
-import { BodyText, Card, Screen } from '@/components/Screen';
+import { Screen } from '@/components/Screen';
 import { SegmentedControl } from '@/components/SegmentedControl';
 import { EmptyState, ErrorState, LoadingState } from '@/components/StateViews';
 import { TeamCrest } from '@/components/TeamCrest';
@@ -34,7 +34,7 @@ import {
   summarizeMatches,
   type SocialLink,
 } from '@/features/squad/logic';
-import { minTouch, radius, spacing, text } from '@/theme/tokens';
+import { minTouch, radius, spacing, text, typography } from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 
@@ -46,7 +46,6 @@ type Stat = {
   color?: string;
 };
 type Tab = 'summary' | 'matches' | 'career';
-type Scope = 'season' | 'career';
 
 const SOCIAL_ICON: Record<SocialLink['network'], keyof typeof Ionicons.glyphMap> = {
   x: 'logo-x',
@@ -67,7 +66,7 @@ function resultColor(result: PlayerMatchT['result'], colors: ReturnType<typeof u
   return null;
 }
 
-function StatStrip({ values }: { values: Stat[] }) {
+function StatGrid({ values }: { values: Stat[] }) {
   const { colors } = useTheme();
   const { i18n } = useTranslation();
   const present = values.filter((item) => item.value !== null);
@@ -78,17 +77,24 @@ function StatStrip({ values }: { values: Stat[] }) {
       accessibilityLabel={present
         .map((item) => `${item.label}: ${formatNumber(item.value ?? 0, i18n.language)}`)
         .join('. ')}
-      style={[styles.statsStrip, { borderTopColor: colors.border }]}
+      style={styles.statsGrid}
     >
       {present.map((item) => (
         <View key={item.key} style={styles.stat}>
-          <Ionicons name={item.icon} size={17} color={item.color ?? colors.textMuted} />
-          <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>
+          <Text
+            adjustsFontSizeToFit
+            maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
+            numberOfLines={1}
+            style={{ color: colors.paper.text, fontFamily: typography.numeric, ...text.display }}
+          >
             {formatNumber(item.value ?? 0, i18n.language)}
           </Text>
-          <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '600' }}>
-            {item.label}
-          </Text>
+          <View style={styles.statLabel}>
+            <Ionicons name={item.icon} size={12} color={item.color ?? colors.paper.muted} />
+            <Text style={{ color: colors.paper.muted, ...text.caption, fontWeight: '600' }}>
+              {item.label}
+            </Text>
+          </View>
         </View>
       ))}
     </View>
@@ -287,7 +293,7 @@ export default function PlayerDetail() {
   const [now] = useState(() => Date.now()); // fuera del render: regla react-hooks/purity
   const [photoOpen, setPhotoOpen] = useState(false);
   const [tab, setTab] = useState<Tab>('summary');
-  const [scope, setScope] = useState<Scope>('season');
+  const [showPrevious, setShowPrevious] = useState(false);
   const summary = squad.data?.players.find((p) => String(p.id) === id);
   const player = playerDoc.data;
 
@@ -334,8 +340,8 @@ export default function PlayerDetail() {
   const totals = player.careerTotals;
   const matches = player.deporMatches;
   const seasonMatches = matchesInSeason(matches, fixtures.data?.season);
-  const scopeMatches = scope === 'career' ? matches : seasonMatches;
-  const scopeSummary = summarizeMatches(scopeMatches);
+  const previousMatches = matches.filter((match) => !seasonMatches.includes(match));
+  const seasonSummary = summarizeMatches(seasonMatches);
   const social = socialLinks(player.social);
   const marketValue = formatEuro(player.marketValueEur, locale);
   const photo =
@@ -353,37 +359,37 @@ export default function PlayerDetail() {
     .filter(Boolean)
     .join(' · ');
 
-  const seasonValues: Stat[] = scopeSummary
+  const seasonValues: Stat[] = seasonSummary
     ? [
         {
           key: 'appearances',
           label: t('player.stats.appearancesShort'),
-          value: scopeSummary.appearances,
+          value: seasonSummary.appearances,
           icon: 'calendar-outline',
         },
         {
           key: 'goals',
           label: t('player.stats.goalsShort'),
-          value: scopeSummary.goals,
+          value: seasonSummary.goals,
           icon: 'football-outline',
         },
         {
           key: 'minutes',
           label: t('player.stats.minutesShort'),
-          value: scopeSummary.minutes,
+          value: seasonSummary.minutes,
           icon: 'time-outline',
         },
         {
           key: 'yellowCards',
           label: t('player.stats.yellowCardsShort'),
-          value: scopeSummary.yellowCards,
+          value: seasonSummary.yellowCards,
           icon: 'card-outline',
           color: colors.rating,
         },
         {
           key: 'redCards',
           label: t('player.stats.redCardsShort'),
-          value: scopeSummary.redCards,
+          value: seasonSummary.redCards,
           icon: 'card-outline',
           color: colors.loss,
         },
@@ -427,53 +433,43 @@ export default function PlayerDetail() {
       ]
     : [];
 
-  const stats = scope === 'career' ? careerValues : seasonValues;
-
-  const bio = [
-    { key: 'birth', label: t('player.birth'), value: birth },
-    { key: 'birthPlace', label: t('player.birthPlace'), value: player.birthPlace },
-    {
-      key: 'height',
-      label: t('player.height'),
-      value: height !== null ? t('player.heightValue', { n: height }) : null,
-    },
-    {
-      key: 'weight',
-      label: t('player.weight'),
-      value: player.weightKg !== null ? t('player.weightValue', { n: player.weightKg }) : null,
-    },
-    {
-      key: 'preferredFoot',
-      label: t('player.preferredFoot'),
-      value: player.preferredFoot ? t(`player.foot.${player.preferredFoot}`) : null,
-    },
-    {
-      key: 'contract',
-      label: t('player.contract'),
-      value: formatPartialDate(player.contractUntil, locale),
-    },
-    {
-      key: 'marketValue',
-      label: t('player.marketValue'),
-      value: marketValue ? `${marketValue} · ${t('player.estimated')}` : null,
-    },
-  ].filter((item) => item.value);
-
-  const scopeOptions = [
-    {
-      value: 'season' as const,
-      label: seasonLabel
-        ? t('player.scope.depor', { season: seasonLabel })
-        : t('player.scope.deporShort'),
-    },
-    { value: 'career' as const, label: t('player.scope.career') },
-  ];
+  const contract = formatPartialDate(player.contractUntil, locale);
+  const facts = (
+    [
+      {
+        key: 'birth',
+        icon: 'calendar-outline',
+        text: [birth, player.birthPlace].filter(Boolean).join(' · '),
+      },
+      {
+        key: 'physical',
+        icon: 'body-outline',
+        text: [
+          height !== null ? t('player.heightValue', { n: height }) : null,
+          player.weightKg !== null ? t('player.weightValue', { n: player.weightKg }) : null,
+          player.preferredFoot ? t(`player.foot.${player.preferredFoot}`) : null,
+        ]
+          .filter(Boolean)
+          .join(' · '),
+      },
+      {
+        key: 'contract',
+        icon: 'document-text-outline',
+        text: contract ? `${t('player.contract')} ${contract}` : '',
+      },
+      {
+        key: 'marketValue',
+        icon: 'cash-outline',
+        text: marketValue ? `${marketValue} · ${t('player.estimated')}` : '',
+      },
+    ] as { key: string; icon: keyof typeof Ionicons.glyphMap; text: string }[]
+  ).filter((fact) => fact.text.length > 0);
 
   return (
     <Screen>
       <Stack.Screen options={{ title: '' }} />
 
-      <Card>
+      <PosterCard>
         <View style={styles.hero}>
           {photo ? (
             <Pressable
@@ -482,36 +478,44 @@ export default function PlayerDetail() {
               onPress={() => setPhotoOpen(true)}
               style={styles.portraitButton}
             >
-              <PlayerPortrait player={player} quality="large" size={96} />
+              <PlayerPortrait player={player} quality="large" size={88} />
               <View style={[styles.zoomBadge, { backgroundColor: colors.primary }]}>
                 <Ionicons name="expand" size={12} color={colors.onPrimary} />
               </View>
             </Pressable>
           ) : (
-            <PlayerPortrait player={player} quality="large" size={96} />
+            <PlayerPortrait player={player} quality="large" size={88} />
           )}
           <View style={styles.heroText}>
             <Text
               accessibilityRole="header"
-              style={{ color: colors.text, ...text.heading, fontWeight: '800' }}
+              numberOfLines={2}
+              style={{
+                color: colors.poster.text,
+                fontFamily: typography.headline,
+                ...text.heading,
+              }}
             >
               {player.name}
             </Text>
             <View style={styles.identityRow}>
-              <TeamCrest size={18} team={deporTeam} />
-              <Text style={{ color: colors.textMuted, ...text.body, flex: 1 }}>{identity}</Text>
+              <Text style={{ color: colors.poster.muted, flex: 1, ...text.body }}>{identity}</Text>
             </View>
           </View>
           {player.shirtNumber !== null ? (
             <View style={styles.numberBlock}>
               <Text
                 accessibilityLabel={`${t('player.shirtNumber')} ${player.shirtNumber}`}
-                style={{ color: colors.primary, ...text.hero, fontWeight: '900', lineHeight: 46 }}
+                style={{
+                  color: colors.poster.accent,
+                  fontFamily: typography.numeric,
+                  ...text.display,
+                }}
               >
                 {player.shirtNumber}
               </Text>
-              <Text style={{ color: colors.textMuted, ...text.caption, fontWeight: '700' }}>
-                {t('player.shirtNumber').toUpperCase()}
+              <Text style={{ color: colors.poster.muted, ...text.caption, fontWeight: '700' }}>
+                {t('player.shirtNumber').toLocaleUpperCase(i18n.language)}
               </Text>
             </View>
           ) : null}
@@ -520,27 +524,43 @@ export default function PlayerDetail() {
         {player.loanFrom || player.loanTo ? (
           <View style={styles.loanRow}>
             {player.loanFrom ? (
-              <Text style={[styles.loanChip, { color: colors.primary, borderColor: colors.primary }]}>
+              <Text
+                style={[
+                  styles.loanChip,
+                  { color: colors.poster.text, borderColor: colors.poster.muted },
+                ]}
+              >
                 {t('player.loanFromValue', { club: player.loanFrom })}
               </Text>
             ) : null}
             {player.loanTo ? (
-              <Text style={[styles.loanChip, { color: colors.primary, borderColor: colors.primary }]}>
+              <Text
+                style={[
+                  styles.loanChip,
+                  { color: colors.poster.text, borderColor: colors.poster.muted },
+                ]}
+              >
                 {t('player.loanToValue', { club: player.loanTo })}
               </Text>
             ) : null}
           </View>
         ) : null}
+      </PosterCard>
 
-        <SegmentedControl<Scope> onChange={setScope} options={scopeOptions} value={scope} />
-        {stats.length > 0 ? (
-          <StatStrip values={stats} />
+      <PaperCard>
+        <SectionHeader
+          icon="stats-chart-outline"
+          title={t('player.statsTitle')}
+          subtitle={seasonLabel ? `Depor ${seasonLabel}` : undefined}
+        />
+        {seasonValues.length > 0 ? (
+          <StatGrid values={seasonValues} />
         ) : (
-          <Text style={{ color: colors.textMuted, ...text.body }}>
-            {scope === 'season' ? t('player.noSeasonStats') : t('player.noStats')}
+          <Text style={{ color: colors.paper.muted, ...text.body }}>
+            {t('player.noSeasonStats')}
           </Text>
         )}
-      </Card>
+      </PaperCard>
 
       <SegmentedControl<Tab>
         onChange={setTab}
@@ -554,25 +574,23 @@ export default function PlayerDetail() {
 
       {tab === 'summary' ? (
         <>
-          {bio.length > 0 ? (
-            <Card>
-              <SectionHeader title={t('player.bioTitle')} variant="flat" />
-              <View style={styles.bioGrid}>
-                {bio.map((item) => (
-                  <View key={item.key} style={styles.bioItem}>
-                    <Text style={{ color: colors.textMuted, ...text.caption }}>{item.label}</Text>
-                    <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '600' }}>
-                      {item.value}
-                    </Text>
-                  </View>
-                ))}
-              </View>
-            </Card>
+          {facts.length > 0 ? (
+            <PaperCard>
+              <SectionHeader icon="person-outline" title={t('player.bioTitle')} />
+              {facts.map((fact) => (
+                <View key={fact.key} style={styles.factRow}>
+                  <Ionicons name={fact.icon} size={18} color={colors.paper.muted} />
+                  <Text style={{ color: colors.paper.text, flex: 1, ...text.body }}>
+                    {fact.text}
+                  </Text>
+                </View>
+              ))}
+            </PaperCard>
           ) : null}
 
           {social.length > 0 ? (
-            <Card>
-              <SectionHeader title={t('player.socialTitle')} variant="flat" />
+            <PaperCard>
+              <SectionHeader icon="share-social-outline" title={t('player.socialTitle')} />
               <View style={styles.socialRow}>
                 {social.map((link) => (
                   <Pressable
@@ -580,57 +598,63 @@ export default function PlayerDetail() {
                     accessibilityLabel={`${t(`player.social.${link.network}`)} @${link.handle}`}
                     accessibilityRole="link"
                     onPress={() => void Linking.openURL(link.url)}
-                    style={[styles.socialButton, { borderColor: colors.border }]}
+                    style={[styles.socialButton, { borderColor: colors.paper.border }]}
                   >
-                    <Ionicons name={SOCIAL_ICON[link.network]} size={20} color={colors.primary} />
-                    <Text style={{ color: colors.text, ...text.body, fontWeight: '600' }}>
+                    <Ionicons
+                      name={SOCIAL_ICON[link.network]}
+                      size={20}
+                      color={colors.paper.accent}
+                    />
+                    <Text style={{ color: colors.paper.text, ...text.body, fontWeight: '600' }}>
                       {t(`player.social.${link.network}`)}
                     </Text>
                   </Pressable>
                 ))}
               </View>
-            </Card>
+            </PaperCard>
           ) : null}
 
           {pending.length > 0 ? (
-            <Card>
-              <SectionHeader title={t('player.pendingTitle')} variant="flat" />
-              <BodyText muted>{t('player.pendingBody')}</BodyText>
+            <PaperCard>
+              <SectionHeader icon="alert-circle-outline" title={t('player.pendingTitle')} />
               <View style={styles.pendingRow}>
                 {pending.map((field) => (
                   <Text
                     key={field}
-                    style={[styles.pendingChip, { color: colors.textMuted, borderColor: colors.border }]}
+                    style={[
+                      styles.pendingChip,
+                      { color: colors.paper.muted, borderColor: colors.paper.border },
+                    ]}
                   >
                     {t(`player.field.${field}`)}
                   </Text>
                 ))}
               </View>
-            </Card>
+            </PaperCard>
           ) : null}
         </>
       ) : null}
 
       {tab === 'matches' ? (
-        <Card>
-          <SectionHeader title={t('player.deporMatchesTitle')} variant="flat" />
-          {scopeSummary ? (
-            <Text style={{ color: colors.textMuted, ...text.body }}>
+        <PaperCard>
+          <SectionHeader icon="calendar-outline" title={t('player.deporMatchesTitle')} />
+          {seasonSummary ? (
+            <Text style={{ color: colors.paper.muted, ...text.body }}>
               {[
-                `${scopeSummary.appearances} ${t('player.stats.appearancesShort')}`,
-                scopeSummary.goals !== null
-                  ? `${scopeSummary.goals} ${t('player.stats.goalsShort')}`
+                `${seasonSummary.appearances} ${t('player.stats.appearancesShort')}`,
+                seasonSummary.goals !== null
+                  ? `${seasonSummary.goals} ${t('player.stats.goalsShort')}`
                   : null,
-                scopeSummary.minutes !== null
-                  ? `${scopeSummary.minutes} ${t('player.stats.minutesShort')}`
+                seasonSummary.minutes !== null
+                  ? `${seasonSummary.minutes} ${t('player.stats.minutesShort')}`
                   : null,
               ]
                 .filter(Boolean)
                 .join(' · ')}
             </Text>
           ) : null}
-          {scopeMatches.length > 0 ? (
-            scopeMatches.map((match) => (
+          {seasonMatches.length > 0 ? (
+            seasonMatches.map((match) => (
               <MatchRow
                 key={`${match.date}-${match.opponent}`}
                 fixtureId={fixtureForMatch(match, fixtures.data)?.id ?? null}
@@ -639,16 +663,61 @@ export default function PlayerDetail() {
               />
             ))
           ) : (
-            <BodyText muted>{t('player.matchesEmpty')}</BodyText>
+            <Text style={{ color: colors.paper.muted, ...text.body }}>
+              {t('player.matchesEmpty')}
+            </Text>
           )}
-        </Card>
+          {previousMatches.length > 0 ? (
+            <>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ expanded: showPrevious }}
+                onPress={() => setShowPrevious((value) => !value)}
+                style={styles.matchToggle}
+              >
+                <Text style={{ color: colors.paper.accent, ...text.body, fontWeight: '700' }}>
+                  {showPrevious
+                    ? t('player.previousSeasonsHide')
+                    : t('player.previousSeasons', { count: previousMatches.length })}
+                </Text>
+                <Ionicons
+                  name={showPrevious ? 'chevron-up' : 'chevron-down'}
+                  size={16}
+                  color={colors.paper.accent}
+                />
+              </Pressable>
+              {showPrevious
+                ? previousMatches.map((match) => (
+                    <MatchRow
+                      key={`${match.date}-${match.opponent}`}
+                      fixtureId={fixtureForMatch(match, fixtures.data)?.id ?? null}
+                      locale={locale}
+                      match={match}
+                    />
+                  ))
+                : null}
+            </>
+          ) : null}
+        </PaperCard>
       ) : null}
 
       {tab === 'career' ? (
-        <Card>
-          <SectionHeader title={t('player.careerTitle')} variant="flat" />
-          <CareerTimeline career={player.career} />
-        </Card>
+        <>
+          <PaperCard>
+            <SectionHeader icon="stats-chart-outline" title={t('player.careerStatsTitle')} />
+            {careerValues.length > 0 ? (
+              <StatGrid values={careerValues} />
+            ) : (
+              <Text style={{ color: colors.paper.muted, ...text.body }}>
+                {t('player.noStats')}
+              </Text>
+            )}
+          </PaperCard>
+          <PaperCard>
+            <SectionHeader icon="git-branch-outline" title={t('player.careerTitle')} />
+            <CareerTimeline career={player.career} />
+          </PaperCard>
+        </>
       ) : null}
 
       <PhotoModal
@@ -663,7 +732,7 @@ export default function PlayerDetail() {
 
 const styles = StyleSheet.create({
   hero: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  portraitButton: { width: 96, height: 96 },
+  portraitButton: { width: 88, height: 88 },
   zoomBadge: {
     position: 'absolute',
     right: 0,
@@ -686,16 +755,20 @@ const styles = StyleSheet.create({
     borderRadius: radius.sm,
     borderWidth: StyleSheet.hairlineWidth,
   },
-  statsStrip: {
+  statsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: spacing.sm,
-    paddingTop: spacing.md,
-    borderTopWidth: StyleSheet.hairlineWidth,
   },
-  stat: { flexGrow: 1, minWidth: 48, alignItems: 'center', gap: spacing.xs },
-  bioGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  bioItem: { width: '47%', gap: spacing.xs },
+  stat: { flexBasis: '30%', flexGrow: 1, alignItems: 'center', gap: spacing.xs },
+  statLabel: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
+  factRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, minHeight: 28 },
+  matchToggle: {
+    minHeight: minTouch,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
   socialRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   socialButton: {
     minHeight: minTouch,
