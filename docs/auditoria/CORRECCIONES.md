@@ -352,3 +352,53 @@ Se reactivó el 16-nov-2026, se relanzó News (run `43916776317`, **verde**, pub
 - Verificar en ese dispositivo el modo avión (datos con antigüedad, sin
   esqueletos) y el recordatorio con ±1 min de precisión.
 - Lote 4 en adelante: sistema de diseño, navegación y chrome.
+
+## Lote 7 — Higiene, contratos y documentación
+
+Estado: **aplicado y verificado**. La salida de este lote es que un clon limpio
+arranca con las instrucciones del README, sin pasos ocultos, y que CI comprueba
+lo que antes solo se revisaba a mano. Quedan fuera las medidas que exigen un
+dispositivo real (arranque p50/p95, modo avión y recordatorios).
+
+| ID | Estado | Qué se ha corregido | Evidencia |
+|---|---|---|---|
+| D1-06 | Hecho | Se retiran `social.json`, `keyPlayers` y `marketValueEur`: no los leía ninguna pantalla y viajaban vacíos. Pydantic, JSON Schema, Zod, datos, ejemplos, i18n y pruebas quedan sin referencias. `provenance` **se conserva**: es la traza de fuente por campo; lo que se retira es el código cliente que la resumía (`provenanceSummary`) y `formatEuro`. | `scripts/depor_hub/`, `packages/schemas/`, `apps/mobile/src/data/schemas.ts`; `meta.dataHash` recalculado; `smoke` de 11 documentos |
+| D1-07 | Hecho | Un test compara cada JSON Schema con su objeto Zod, incluidos todos los `$defs`; Pydantic sigue siendo la fuente y CI falla si `cli schemas` deja diferencias. Detectó que `StatusWorkflow` no declaraba `expectedWithinHours`, `lastSuccessAt` ni `stale`. | `apps/mobile/src/__tests__/schemaParity.test.ts`, `src/data/schemas.ts` |
+| D1-10 | Hecho | Un test comprueba que todo campo enriquecido publicado lleva procedencia, que no queda ningún `confidence: conflict` y que los únicos huecos son los tres pesos sin fuente. Precedencia fijada: `squad_overrides.yml` > `squad_extras.yml` > propuesta automática. | `scripts/tests/test_completion.py` |
+| D1-11 | Hecho | `squad_enrich.proposed.yml` sale del índice: es un artefacto de 800 KB que se descarga del workflow `enrich`. `squad_extras.yml` se mantiene porque es fuente curada, no una propuesta. | `.gitignore`, `git ls-files data/manual` |
+| PIPE-13 / F5-10 | Hecho | CI añade job del Worker (`npm ci` + tests), smoke de los 11 documentos con Pydantic, Prettier (`format:check`) y comprobación de licencias. La auditoría de dependencias deja de ser informativa. | `.github/workflows/ci.yml`; run `44344019047` con los jobs `mobile`, `worker`, `python` y `secrets` en verde |
+| F5-03 | Hecho | `npm audit --omit=dev` es bloqueante con una allowlist de toolchain fechada y acotada por raíces alcanzables (`scripts/audit.mjs`): un aviso nuevo en una dependencia de ejecución rompe el job. | `npm run audit` → 58 `high`, 0 `critical`, 66 aceptadas de toolchain (revisado 2026-11-17) |
+| F5-04 | Hecho | `scripts/requirements.lock` fija Python con hashes y se instala en un venv limpio; Dependabot cubre `pip` y el `package-lock.json` del Worker. | `pip install -r scripts/requirements.lock` en venv nuevo + smoke; `.github/dependabot.yml` |
+| F5-09 | Hecho | Todas las acciones de las workflows van fijadas por SHA con la versión en comentario. | `.github/workflows/*.yml`, `.github/dependabot.yml` |
+| F5-13 | Hecho | El Worker deja de responder `Access-Control-Allow-Origin: *`: refleja el origen permitido (`ALLOWED_ORIGINS`, por defecto Pages). La app nativa no envía `Origin`. | `workers/live-proxy/src/index.js`; `test/index.test.mjs` (9 tests) |
+| F5-14 | Hecho | `openExternal` exige `http(s)` con host y devuelve `false` para `javascript:`, `file:`, `data:` e `intent://`. | `apps/mobile/src/utils/openExternal.ts`; `src/__tests__/openExternal.test.ts` |
+| F5-15 | Hecho | `.gitignore` cubre `.pytest_cache/`, `.ruff_cache/`, `.mypy_cache/`, `coverage/`, `htmlcov/` y `*.pyc`. | `.gitignore` |
+| F5-07 | Hecho en arranque y caché | Tests de la puerta del splash (no oculta hasta fuentes + caché; un error de fuente no bloquea) y de `DataProvider` (aviso de hidratación en éxito y error, solo se persisten consultas `success`, primer plano con `focusManager`). `app/_layout.tsx` pasa de 0 % a **100 %** de sentencias y líneas; `DataProvider.tsx` a **90 % / 100 %**. `settings.tsx` sigue sin test de pantalla. | `src/__tests__/startupGate.test.tsx`, `src/__tests__/dataProvider.test.tsx`, `jest.setup.js` |
+| F5-08 / PIPE-14 | Hecho | README con el arranque real (`nvm use`, `npm install`) y la cadencia vigente; `operations.md` ya no promete un cron externo; ADR 0016, 0017 y 0018 marcados como superados en lo que no rige; cifras de imágenes y licencias sustituidas por las medidas. ADR 0036 registra las decisiones. | `README.md`, `docs/ESTADO.md`, `docs/operations.md`, `docs/sources.md`, `docs/adr/0036-higiene-contrato-auditoria.md` |
+
+### Comandos de verificación ejecutados
+
+```bash
+.venv/bin/ruff check scripts                # All checks passed
+.venv/bin/pytest scripts -q                 # 272 passed
+.venv/bin/python -m depor_hub.cli validate --data data/public/v1
+.venv/bin/python -m depor_hub.cli smoke --data data/public/v1   # 11 documentos
+.venv/bin/python -m depor_hub.cli schemas
+git diff --exit-code packages/schemas       # sin diferencias
+npm run lint                                # 0 errores
+npm run typecheck
+npm test -- --ci                            # 373 passed / 48 suites
+npm run format:check                        # All matched files use Prettier
+npm run audit                               # 58 high, 0 critical; toolchain acotada
+npm run licenses && git diff --exit-code apps/mobile/src/data/licenses.json
+cd workers/live-proxy && npm ci && npm test # 9 passed
+# venv limpio: pip install -r scripts/requirements.lock + smoke
+```
+
+### Lo que sigue
+
+- Medir en un Android real el arranque p50/p95, el modo avión y el recordatorio
+  con ±1 minuto; sin dispositivo no se puede cerrar F3-14.
+- `app/settings.tsx` sigue a 0 % de cobertura de pantalla.
+- El gallego sigue parcial con caída a ES: falta decidir si se completa o se
+  retira.
