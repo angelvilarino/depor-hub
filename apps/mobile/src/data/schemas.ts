@@ -907,6 +907,9 @@ export const StatusWorkflow = z.object({
   name: z.string(),
   file: z.string(),
   conclusion: optionalNull(),
+  expectedWithinHours: optionalInt(),
+  lastSuccessAt: optionalNull(),
+  stale: z.boolean().nullable().default(null),
   updatedAt: optionalNull(),
   url: optionalNull(),
 });
