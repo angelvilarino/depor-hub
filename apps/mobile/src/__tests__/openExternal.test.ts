@@ -1,6 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import { Linking } from 'react-native';
-import { openExternal } from '@/utils/openExternal';
+import { isSafeExternalUrl, openExternal } from '@/utils/openExternal';
 
 jest.mock('expo-web-browser', () => ({ openBrowserAsync: jest.fn() }));
 
@@ -31,5 +31,22 @@ describe('openExternal', () => {
     browser.mockRejectedValueOnce(new Error('no disponible'));
     jest.spyOn(Linking, 'openURL').mockRejectedValueOnce(new Error('sin app'));
     await expect(openExternal('https://example.test/c')).resolves.toBe(false);
+  });
+
+  it.each([
+    'javascript:alert(1)',
+    'file:///etc/passwd',
+    'data:text/html,hola',
+    'intent://scan/#Intent;scheme=zxing;end',
+    'no-es-una-url',
+  ])('rechaza el esquema inseguro %s', async (url) => {
+    await expect(openExternal(url)).resolves.toBe(false);
+    expect(browser).not.toHaveBeenCalled();
+    expect(isSafeExternalUrl(url)).toBe(false);
+  });
+
+  it('acepta http y https', () => {
+    expect(isSafeExternalUrl('https://example.test/a?b=1')).toBe(true);
+    expect(isSafeExternalUrl('http://example.test')).toBe(true);
   });
 });
