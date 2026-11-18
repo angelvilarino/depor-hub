@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T19:03:48Z",
+  "updatedAt": "2026-11-18T19:33:03Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "83e8dd72ae16cbf6",
+      "title": "La afición del Dépor se las ingenia para estar en Mendizorroza: \"Unos cogimos para grada local y a otros les dejaron los abonos gente del Alavés\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-18/la-aficion-del-depor-se-las-ingenia-para-estar-en-mendizorroza-unos-cogimos-para-grada-local-y-a-otros-les-dejaron-los-abonos-gente-del-alaves-891771.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-18T19:11:22Z",
+      "kind": "article",
+      "summary": "Diferentes peñas del Deportivo relatan cómo se las han ingeniado para conseguir entradas en la grada local",
+      "thumbnailUrl": "img/news/d6cfce13fc1a4eb7.webp",
+      "tags": [
+        "aficion"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "85f65613ec932264",
+      "title": "CONTRAPUNTO | ¿Aubameyang debe ser titular en el Alavés – Deportivo?",
+      "url": "https://riazor.org/contrapunto-aubameyang-titular-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-18T19:00:23Z",
+      "kind": "article",
+      "summary": "Debatimos y te damos la opción de votar sobre la necesidad de que Aubameyang sea titular en el partido de este sábado en Vitoria. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "89ae317eb5cd5c5f",
       "title": "Un frontón en Mendizorroza: el Dépor mide su defensa del área ante el mejor centrador de Primera",
@@ -72,33 +100,6 @@
       "thumbnailUrl": null,
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "978bdeb4bd7a4f80",
-      "title": "Antídoto FIFA para Lucas Noubi: el parón le abre las puertas del once en el Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-18/antidoto-fifa-para-lucas-noubi-el-paron-le-abre-las-puertas-del-once-en-el-depor-891689.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-18T13:00:51Z",
-      "kind": "article",
-      "summary": "El belga regresa como el internacional con más minutos en un escenario delicado para Hidalgo a la hora de elegir defensa ante el Alavés",
-      "thumbnailUrl": "img/news/bcee3fb68acf3528.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "8be519be8b79ffcb",
-      "title": "El Dépor ya prepara el partido ante el Alavés sin los internacionales, pero con Zaka y Ede",
-      "url": "https://riazor.org/depor-prepara-partido-alaves-espera-internacionales",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-17T19:00:48Z",
-      "kind": "article",
-      "summary": "El Deportivo inicia la semana de entrenamientos sin ninguno de sus internacionales y con la mirada puesta en Mendizorrotza, estadio que…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido",
-        "club"
       ],
       "alsoIn": []
     }

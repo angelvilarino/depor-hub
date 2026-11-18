@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T19:03:48Z",
+  "updatedAt": "2026-11-18T19:33:03Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "83e8dd72ae16cbf6",
+      "title": "La afición del Dépor se las ingenia para estar en Mendizorroza: \"Unos cogimos para grada local y a otros les dejaron los abonos gente del Alavés\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-18/la-aficion-del-depor-se-las-ingenia-para-estar-en-mendizorroza-unos-cogimos-para-grada-local-y-a-otros-les-dejaron-los-abonos-gente-del-alaves-891771.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-18T19:11:22Z",
+      "kind": "article",
+      "summary": "Diferentes peñas del Deportivo relatan cómo se las han ingeniado para conseguir entradas en la grada local",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/18/6afde415688d7.r_d.1054-773-0.jpg",
+      "tags": [
+        "aficion"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "85f65613ec932264",
+      "title": "CONTRAPUNTO | ¿Aubameyang debe ser titular en el Alavés – Deportivo?",
+      "url": "https://riazor.org/contrapunto-aubameyang-titular-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-18T19:00:23Z",
+      "kind": "article",
+      "summary": "Debatimos y te damos la opción de votar sobre la necesidad de que Aubameyang sea titular en el partido de este sábado en Vitoria. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "89ae317eb5cd5c5f",
       "title": "Un frontón en Mendizorroza: el Dépor mide su defensa del área ante el mejor centrador de Primera",
@@ -2151,34 +2179,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/31/6ae5f192d8d4e.r_d.541-827-0.webp",
       "tags": [
         "lesiones",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4dd84130ee0e77ac",
-      "title": "El Dépor visita a un Espanyol en reconstrucción tras la llegada de Eder Sarabia",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/06/depor-visita-espanyol-reconstruccion-tras-llegada-eder-sarabia/00031793985869083985690.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-06T17:33:00Z",
-      "kind": "article",
-      "summary": "El cuadro perico, en el puesto 14 de la clasificación, no gana como local desde la primera jornada de Liga ante el Levante",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/qOaAEaUTHrnrK-f7KlILT43gZr0=/768x/2026/11/06/00121793986262553276607/Foto/efe_20261104_162126868.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "8e0bd051ff19bfa0",
-      "title": "David Gordo, sobre Mella: «Nunca pensó que podría jugar de lateral y lo está haciendo muy bien»",
-      "url": "https://riazor.org/david-gordo-sobre-mella-nunca-penso-que-podria-jugar-de-lateral-y-lo-esta-haciendo-muy-bien",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-06T16:18:47Z",
-      "kind": "article",
-      "summary": "David Gordo, seleccionador sub-21, explica la convocatoria de David Mella y destaca su adaptación al lateral en el Deportivo: «Lo está…",
-      "thumbnailUrl": null,
-      "tags": [
         "partido"
       ],
       "alsoIn": []
