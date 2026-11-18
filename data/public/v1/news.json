@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T17:04:27Z",
+  "updatedAt": "2026-11-18T18:04:45Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "18016d664c152513",
+      "title": "El balón parado vuelve a castigar al Fabril por cuarta jornada consecutiva",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-18/el-balon-parado-vuelve-a-castigar-al-fabril-por-cuarta-jornada-consecutiva-891696.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-18T18:01:08Z",
+      "kind": "article",
+      "summary": "El 38,1% de los goles recibidos esta temporada han llegado en acciones de estrategia",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/18/6afd8fabceebf.r_d.1319-1083-0.jpg",
+      "tags": [
+        "partido",
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "65614d016b399a1d",
       "title": "Hugo Novoa, seis años en la cantera del Dépor y un primer gol en Primera marcado en Balaídos",
@@ -2165,20 +2180,6 @@
       "kind": "article",
       "summary": "Alejandro Quintero dirigirá por primera vez un partido del equipo coruñés",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/06/6aedf387bd28c.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "626f87512a4afb1e",
-      "title": "Altas, bajas y posible once del Dépor ante el Espanyol: mantener lo que funciona o reforzar la medular",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/altas-bajas-y-posible-once-del-depor-ante-el-espanyol-mantener-lo-que-funciona-o-reforzar-la-medular-889240.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-06T15:05:20Z",
-      "kind": "article",
-      "summary": "El buen partido ante Osasuna invita a Hidalgo a mantener el bloque, aunque la llegada de Eder Sarabia introduce incertidumbre en el…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/05/6aecc701ce367.r_d.1450-1028-0.jpg",
       "tags": [
         "partido"
       ],

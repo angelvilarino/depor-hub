@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T17:04:27Z",
+  "updatedAt": "2026-11-18T18:04:45Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "18016d664c152513",
+      "title": "El balón parado vuelve a castigar al Fabril por cuarta jornada consecutiva",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-18/el-balon-parado-vuelve-a-castigar-al-fabril-por-cuarta-jornada-consecutiva-891696.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-18T18:01:08Z",
+      "kind": "article",
+      "summary": "El 38,1% de los goles recibidos esta temporada han llegado en acciones de estrategia",
+      "thumbnailUrl": "img/news/bad4e823489034ff.webp",
+      "tags": [
+        "partido",
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "65614d016b399a1d",
       "title": "Hugo Novoa, seis años en la cantera del Dépor y un primer gol en Primera marcado en Balaídos",
@@ -95,18 +110,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "6f6d61bc2f0d6170",
-      "title": "La hora de Aubameyang",
-      "url": "https://marca.com/futbol/deportivo/2026/11/17/hora-aubameyang.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-17T16:44:10Z",
-      "kind": "article",
-      "summary": "El gabonés quiere liderar al Dépor en su visita a Mendizorroza desde el inicio. Las tres victorias del cuadro gallego fueron con Auba en…",
-      "thumbnailUrl": "img/news/b7d0d2c43729090c.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
