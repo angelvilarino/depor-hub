@@ -7,8 +7,15 @@ android/
 .env.*
 !.env.example
 __pycache__/
+*.pyc
 *.egg-info/
 .venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+coverage/
 data/raw/*
 !data/raw/.gitkeep
 # Propuestas generadas por `club titles` / `club probe-media`: se revisan en local
