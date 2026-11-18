@@ -2,7 +2,7 @@
 
 Regla general: solo datos públicos, con User-Agent identificable y contacto (`CONTACT_EMAIL`), respeto de `robots.txt`, ritmo entre peticiones, caché local en `data/raw/` y **ningún intento de saltar 403, 429, captchas o muros de pago**. Si una fuente bloquea, se documenta y se sigue sin ella.
 
-> **Aviso operativo (14-nov-2026).** GitHub Actions está deshabilitado a nivel de repositorio desde el 11-nov-2026. Las frecuencias de esta tabla describen lo que ejecutarán los workflows **cuando se reactiven**; hoy no hay crons corriendo y los datos publicados están congelados. La cadencia se revisará en el Lote 1 antes de reactivar (ver `docs/auditoria/INFORME.md`).
+> **Estado operativo (18-nov-2026).** GitHub Actions está reactivado y los crons publican y despliegan Pages con la cadencia de esta tabla. El estado vigente y las cifras medidas viven en `docs/ESTADO.md`.
 
 ## Fuentes en uso
 

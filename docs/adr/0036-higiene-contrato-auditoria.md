@@ -44,5 +44,6 @@
 - La allowlist de auditoría caduca: `scripts/audit.mjs` lleva la fecha de
   revisión y la lista de raíces de toolchain debe revisarse en cada subida de
   Expo o Jest.
-- Los documentos de auditoría se conservan como registro histórico; el estado
-  vigente vive en [`docs/ESTADO.md`](../ESTADO.md).
+- El corpus de la auditoría (informe, parciales y capturas) no se versiona: el
+  estado vigente vive en [`docs/ESTADO.md`](../ESTADO.md) y el protocolo de
+  arranque en [`docs/auditoria/ARRANQUE.md`](../auditoria/ARRANQUE.md).
