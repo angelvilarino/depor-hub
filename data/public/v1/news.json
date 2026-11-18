@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T19:33:03Z",
+  "updatedAt": "2026-11-18T20:04:31Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "148d7b3f47b18e61",
+      "title": "Mendizorroza vuelve a entrelazar a Hugo Novoa con sus orígenes",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/18/mendizorroza-vuelve-entrelazar-hugo-novoa-origenes/00031795029241102256204.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-18T19:17:00Z",
+      "kind": "article",
+      "summary": "«Ya en la cantera del Dépor era un misil, cuando cogía el balón era capaz de llevarse a jugadores solo por carrera», relata uno de sus…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/bsOAfkIyUxo4UI_63I4JipbLyEM=/768x/2026/11/18/00121795029212275203633/Foto/HNN.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "83e8dd72ae16cbf6",
       "title": "La afición del Dépor se las ingenia para estar en Mendizorroza: \"Unos cogimos para grada local y a otros les dejaron los abonos gente del Alavés\"",
@@ -2166,21 +2180,6 @@
       "summary": "El futbolista del Dépor ha sido convocado como defensa para los amistosos frente a Japón y Albania: «En la vida pensó que podría jugar de…",
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/xP2ROa0zGRqY6rgelQjc6K8-BCI=/768x/2026/11/06/00121793986322183219915/Foto/h_20261103_144138000.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "c78fae484b336059",
-      "title": "Marc Casadó viaja con el Deportivo a Barcelona y apunta a su regreso",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/marc-casado-viaja-con-el-deportivo-a-barcelona-y-apunta-a-su-regreso-889456.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-06T17:34:10Z",
-      "kind": "article",
-      "summary": "Un mes y medio después de su lesión, el centrocampista catalán entra en la convocatoria para medirse al Espanyol",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/31/6ae5f192d8d4e.r_d.541-827-0.webp",
-      "tags": [
-        "lesiones",
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

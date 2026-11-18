@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T19:33:03Z",
+  "updatedAt": "2026-11-18T20:04:31Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,9 +16,31 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "148d7b3f47b18e61",
+      "title": "Mendizorroza vuelve a entrelazar a Hugo Novoa con sus orígenes",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/18/mendizorroza-vuelve-entrelazar-hugo-novoa-origenes/00031795029241102256204.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-18T19:17:00Z",
+      "kind": "article",
+      "summary": "«Ya en la cantera del Dépor era un misil, cuando cogía el balón era capaz de llevarse a jugadores solo por carrera», relata uno de sus…",
+      "thumbnailUrl": "img/news/ad4c670d85f5e0fc.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "83e8dd72ae16cbf6",
       "title": "La afición del Dépor se las ingenia para estar en Mendizorroza: \"Unos cogimos para grada local y a otros les dejaron los abonos gente del Alavés\"",
@@ -85,20 +107,6 @@
       "thumbnailUrl": null,
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4606ceb3cec736d0",
-      "title": "El Dépor respondón: suma más puntos cuando empieza perdiendo (8) que cuando marca primero (6)",
-      "url": "https://riazor.org/depor-respondon-suma-puntos-empieza-perdiendo-marca-primero",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-18T14:00:17Z",
-      "kind": "article",
-      "summary": "El Deportivo ha sumado 8 puntos en los partidos que empezó perdiendo y 6 en los que marcó primero. Los datos de las doce jornadas, partido…",
-      "thumbnailUrl": null,
-      "tags": [
         "partido"
       ],
       "alsoIn": []
