@@ -26,7 +26,8 @@ export function MatchScoreboard({ match, competitionName, time, statusLabel, liv
     match.score.halfTimeHome !== null && match.score.halfTimeAway !== null
       ? `${match.score.halfTimeHome}–${match.score.halfTimeAway}`
       : null;
-  const subtitle = match.matchday !== null ? t('calendar.matchday', { n: match.matchday }) : undefined;
+  const subtitle =
+    match.matchday !== null ? t('calendar.matchday', { n: match.matchday }) : undefined;
   const summary = [
     `${teamName(match.home)} ${score} ${teamName(match.away)}`,
     statusLabel,
@@ -109,7 +110,12 @@ const styles = StyleSheet.create({
   center: { minWidth: 88, alignItems: 'center', gap: spacing.xs },
   score: { fontFamily: typography.numeric, ...text.hero, textAlign: 'center' },
   halfTime: { ...text.caption, textAlign: 'center' },
-  footer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.sm },
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.sm,
+  },
   status: {
     flexDirection: 'row',
     alignItems: 'center',

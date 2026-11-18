@@ -15,8 +15,11 @@ import { minTouch, spacing, text, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
 function formDate(date: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', timeZone: 'UTC' })
-    .format(new Date(`${date}T12:00:00Z`));
+  return new Intl.DateTimeFormat(locale, {
+    day: 'numeric',
+    month: 'short',
+    timeZone: 'UTC',
+  }).format(new Date(`${date}T12:00:00Z`));
 }
 
 function score(match: SeasonFormMatchT) {
@@ -49,15 +52,25 @@ function FormTile({
       accessibilityLabel={label}
       accessibilityState={{ selected }}
       onPress={onPress}
-      style={[styles.formTile, selected && { borderColor: paper.accent, backgroundColor: colors.surface }]}
+      style={[
+        styles.formTile,
+        selected && { borderColor: paper.accent, backgroundColor: colors.surface },
+      ]}
     >
       <View style={[styles.crestRing, { borderColor: tone }]}>
         <CrestBadge team={match.opponent} size={38} />
-        <View style={[styles.resultBadge, { backgroundColor: tone, borderColor: paper.background }]}>
-          <Text style={[styles.resultLetter, { color: colors.onPrimary }]}>{t(`calendar.outcome.${match.result}`)}</Text>
+        <View
+          style={[styles.resultBadge, { backgroundColor: tone, borderColor: paper.background }]}
+        >
+          <Text style={[styles.resultLetter, { color: colors.onPrimary }]}>
+            {t(`calendar.outcome.${match.result}`)}
+          </Text>
         </View>
       </View>
-      <Text numberOfLines={1} style={{ maxWidth: 76, textAlign: 'center', color: paper.text, ...text.caption }}>
+      <Text
+        numberOfLines={1}
+        style={{ maxWidth: 76, textAlign: 'center', color: paper.text, ...text.caption }}
+      >
         {match.opponent.shortName ?? teamName(match.opponent)}
       </Text>
     </Pressable>
@@ -99,19 +112,26 @@ export function SeasonCard({
     () => [...(evolution ?? [])].sort((a, b) => a.matchday - b.matchday),
     [evolution],
   );
-  const activeMatchday = selectedMatchday ?? points.at(-1)?.matchday ?? recent.at(-1)?.matchday ?? null;
+  const activeMatchday =
+    selectedMatchday ?? points.at(-1)?.matchday ?? recent.at(-1)?.matchday ?? null;
   const selectedMatch = chronological.find((item) => item.matchday === activeMatchday) ?? null;
   if (!stats) return null;
 
   const seasonCaption = [
     seasonName,
     matchday != null ? t('home.seasonCard.matchday', { matchday }) : null,
-  ].filter(Boolean).join(' · ');
+  ]
+    .filter(Boolean)
+    .join(' · ');
   const record = `${stats.won}-${stats.drawn}-${stats.lost}`;
   const goals = `${stats.goalsFor}-${stats.goalsAgainst}`;
-  const average = stats.played > 0
-    ? new Intl.NumberFormat(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(stats.points / stats.played)
-    : '—';
+  const average =
+    stats.played > 0
+      ? new Intl.NumberFormat(i18n.language, {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }).format(stats.points / stats.played)
+      : '—';
   const selectedLabel = selectedMatch
     ? t('home.seasonCard.formA11y', {
         result: t(`calendar.outcomeLong.${selectedMatch.result}`),
@@ -128,13 +148,19 @@ export function SeasonCard({
           <StatTile label={t('calendar.col.played')} value={stats.played} />
           <StatTile label={t('home.stats.record')} value={record} />
           <StatTile label={t('home.stats.goals')} value={goals} />
-          <StatTile label={t('calendar.col.goalDiff')} value={stats.goalDifference > 0 ? `+${stats.goalDifference}` : stats.goalDifference} />
+          <StatTile
+            label={t('calendar.col.goalDiff')}
+            value={stats.goalDifference > 0 ? `+${stats.goalDifference}` : stats.goalDifference}
+          />
           <StatTile label={t('home.seasonCard.pointsPerGame')} value={average} />
         </View>
 
         {recent.length > 0 ? (
           <View style={styles.block}>
-            <SectionHeader title={t('home.seasonCard.form')} subtitle={t('home.seasonCard.formOrder')} />
+            <SectionHeader
+              title={t('home.seasonCard.form')}
+              subtitle={t('home.seasonCard.formOrder')}
+            />
             <View style={styles.formStrip}>
               {recent.map((item) => (
                 <FormTile
@@ -145,17 +171,27 @@ export function SeasonCard({
                 />
               ))}
             </View>
-            <Text style={{ color: paper.muted, ...text.caption }}>{t('home.seasonCard.formLegend')}</Text>
+            <Text style={{ color: paper.muted, ...text.caption }}>
+              {t('home.seasonCard.formLegend')}
+            </Text>
             {selectedMatch && selectedLabel ? (
               <View style={[styles.matchDetail, { borderColor: paper.border }]}>
                 <CrestBadge team={selectedMatch.opponent} size={46} />
                 <View style={styles.matchCopy}>
-                  <Text style={[styles.opponent, { color: paper.text }]}>{teamName(selectedMatch.opponent)}</Text>
+                  <Text style={[styles.opponent, { color: paper.text }]}>
+                    {teamName(selectedMatch.opponent)}
+                  </Text>
                   <Text style={{ color: paper.muted, ...text.caption }}>
-                    {formDate(selectedMatch.date, i18n.language)} · {selectedMatch.home ? t('home.local') : t('home.away')}
+                    {formDate(selectedMatch.date, i18n.language)} ·{' '}
+                    {selectedMatch.home ? t('home.local') : t('home.away')}
                   </Text>
                 </View>
-                <Text accessibilityLabel={selectedLabel} style={[styles.score, { color: paper.text }]}>{score(selectedMatch)}</Text>
+                <Text
+                  accessibilityLabel={selectedLabel}
+                  style={[styles.score, { color: paper.text }]}
+                >
+                  {score(selectedMatch)}
+                </Text>
                 <Button
                   variant="secondary"
                   label={t('home.seasonCard.viewMatch')}
@@ -168,7 +204,9 @@ export function SeasonCard({
           <View style={styles.block}>
             <Text style={{ color: paper.muted, ...text.body }}>{t('home.seasonCard.form')}</Text>
             <FormChips results={form} />
-            <Text style={{ color: paper.muted, ...text.caption }}>{t('home.seasonCard.formLegend')}</Text>
+            <Text style={{ color: paper.muted, ...text.caption }}>
+              {t('home.seasonCard.formLegend')}
+            </Text>
           </View>
         ) : null}
 
@@ -204,11 +242,45 @@ const styles = StyleSheet.create({
   stats: { flexDirection: 'row', flexWrap: 'wrap', columnGap: spacing.lg, rowGap: spacing.md },
   block: { gap: spacing.xs },
   formStrip: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.xs },
-  formTile: { minWidth: minTouch + 14, minHeight: 72, alignItems: 'center', justifyContent: 'center', gap: spacing.xs, borderWidth: 1.5, borderColor: 'transparent', borderRadius: 12, padding: spacing.xs },
-  crestRing: { width: 48, height: 48, borderWidth: 2, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
-  resultBadge: { position: 'absolute', right: -4, bottom: -4, width: 20, height: 20, borderRadius: 10, borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
+  formTile: {
+    minWidth: minTouch + 14,
+    minHeight: 72,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.xs,
+    borderWidth: 1.5,
+    borderColor: 'transparent',
+    borderRadius: 12,
+    padding: spacing.xs,
+  },
+  crestRing: {
+    width: 48,
+    height: 48,
+    borderWidth: 2,
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  resultBadge: {
+    position: 'absolute',
+    right: -4,
+    bottom: -4,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   resultLetter: { ...text.caption, fontWeight: '900' },
-  matchDetail: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: spacing.sm, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm },
+  matchDetail: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: spacing.sm,
+  },
   matchCopy: { flex: 1, minWidth: 100 },
   opponent: { fontFamily: typography.headline, ...text.subtitle },
   score: { fontFamily: typography.numeric, ...text.heading },

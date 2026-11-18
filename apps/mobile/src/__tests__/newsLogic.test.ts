@@ -23,8 +23,20 @@ const NOW = Date.parse('2026-10-27T12:00:00Z');
 
 const sources: NewsSourceT[] = [
   { id: 'medio-a', name: 'Medio A', group: 'galicia', kind: 'article', homepage: 'https://a.test' },
-  { id: 'medio-b', name: 'Medio B', group: 'nacional', kind: 'article', homepage: 'https://b.test' },
-  { id: 'youtube', name: 'RC Deportivo', group: 'club', kind: 'video', homepage: 'https://yt.test' },
+  {
+    id: 'medio-b',
+    name: 'Medio B',
+    group: 'nacional',
+    kind: 'article',
+    homepage: 'https://b.test',
+  },
+  {
+    id: 'youtube',
+    name: 'RC Deportivo',
+    group: 'club',
+    kind: 'video',
+    homepage: 'https://yt.test',
+  },
 ];
 
 function story(overrides: Partial<NewsStoryT> = {}): NewsStoryT {
@@ -69,7 +81,9 @@ describe('lógica de noticias', () => {
     expect(filterNews(stories, { ...EMPTY_FILTERS, text: 'medio b' }, sources)).toHaveLength(1);
     expect(filterNews(stories, { ...EMPTY_FILTERS, text: 'partido' }, sources)).toHaveLength(2);
     expect(filterNews(stories, { ...EMPTY_FILTERS, kind: 'video' }, sources)).toHaveLength(1);
-    expect(filterNews(stories, { ...EMPTY_FILTERS, groups: ['nacional'] }, sources)).toHaveLength(1);
+    expect(filterNews(stories, { ...EMPTY_FILTERS, groups: ['nacional'] }, sources)).toHaveLength(
+      1,
+    );
     expect(
       filterNews(stories, { ...EMPTY_FILTERS, groups: ['club', 'galicia'] }, sources),
     ).toHaveLength(2);
@@ -108,7 +122,11 @@ describe('lógica de noticias', () => {
       story({ id: 'b', publishedAt: '2026-10-27T23:30:00Z' }),
       story({ id: 'c', publishedAt: '2026-10-27T08:00:00Z' }),
     ]);
-    expect(sections.map((section) => section.key)).toEqual(['2026-10-28', '2026-10-27', '2026-10-26']);
+    expect(sections.map((section) => section.key)).toEqual([
+      '2026-10-28',
+      '2026-10-27',
+      '2026-10-26',
+    ]);
     expect(sections[1]!.data.map((entry) => entry.id)).toEqual(['c']);
     expect(todayKey(Date.parse('2026-10-27T23:30:00Z'))).toBe('2026-10-28');
   });

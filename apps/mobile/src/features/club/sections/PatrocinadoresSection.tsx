@@ -28,7 +28,9 @@ function SponsorRow({ name, role, detail }: { name: string; role: string; detail
     <>
       <View style={styles.rowText}>
         <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{name}</Text>
-        {secondary ? <Text style={{ color: colors.textMuted, ...text.caption }}>{secondary}</Text> : null}
+        {secondary ? (
+          <Text style={{ color: colors.textMuted, ...text.caption }}>{secondary}</Text>
+        ) : null}
       </View>
       {url ? <Ionicons name="open-outline" size={18} color={colors.primary} /> : null}
     </>
@@ -44,7 +46,11 @@ function SponsorRow({ name, role, detail }: { name: string; role: string; detail
       {content}
     </Pressable>
   ) : (
-    <View accessible accessibilityLabel={`${role}: ${name}`} style={[styles.row, { borderTopColor: colors.border }]}>
+    <View
+      accessible
+      accessibilityLabel={`${role}: ${name}`}
+      style={[styles.row, { borderTopColor: colors.border }]}
+    >
       {content}
     </View>
   );
@@ -91,11 +97,12 @@ export function PatrocinadoresSection({ club }: { club: ClubT }) {
   const timelineEntries = verifiedDetails
     .filter((sponsor) => sponsor.sinceYear !== null || sponsor.untilYear !== null)
     .map((sponsor) => {
-      const year = sponsor.sinceYear && sponsor.untilYear
-        ? `${sponsor.sinceYear}–${sponsor.untilYear}`
-        : sponsor.sinceYear
-          ? `${sponsor.sinceYear}–${t('club.present')}`
-          : t('club.patrocinadores.until', { year: sponsor.untilYear });
+      const year =
+        sponsor.sinceYear && sponsor.untilYear
+          ? `${sponsor.sinceYear}–${sponsor.untilYear}`
+          : sponsor.sinceYear
+            ? `${sponsor.sinceYear}–${t('club.present')}`
+            : t('club.patrocinadores.until', { year: sponsor.untilYear });
       const role = t(`club.patrocinadores.roles.${sponsor.role}`);
       const detail = [role, sponsor.category, sponsor.note].filter(Boolean).join(' · ');
       return { year, title: sponsor.name, detail };
@@ -113,11 +120,25 @@ export function PatrocinadoresSection({ club }: { club: ClubT }) {
           <View style={styles.groups}>
             {groups.map((group) => (
               <View key={group.role} style={styles.group}>
-                <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.caption, fontWeight: '800', letterSpacing: 1, textTransform: 'uppercase' }}>
+                <Text
+                  accessibilityRole="header"
+                  style={{
+                    color: colors.textMuted,
+                    ...text.caption,
+                    fontWeight: '800',
+                    letterSpacing: 1,
+                    textTransform: 'uppercase',
+                  }}
+                >
                   {group.label}
                 </Text>
                 {group.names.map((name) => (
-                  <SponsorRow key={`${group.role}-${name}`} name={name} role={group.label} detail={detailsByName.get(keyFor(name))} />
+                  <SponsorRow
+                    key={`${group.role}-${name}`}
+                    name={name}
+                    role={group.label}
+                    detail={detailsByName.get(keyFor(name))}
+                  />
                 ))}
               </View>
             ))}

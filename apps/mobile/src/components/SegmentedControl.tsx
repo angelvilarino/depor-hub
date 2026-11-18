@@ -23,7 +23,9 @@ export function SegmentedControl<T extends string>({ value, options, onChange }:
             onPress={() => onChange(o.value)}
             style={[styles.item, { backgroundColor: selected ? colors.primary : 'transparent' }]}
           >
-            <Text style={{ color: selected ? colors.onPrimary : colors.text, fontWeight: '600' }}>{o.label}</Text>
+            <Text style={{ color: selected ? colors.onPrimary : colors.text, fontWeight: '600' }}>
+              {o.label}
+            </Text>
           </Pressable>
         );
       })}
@@ -32,6 +34,17 @@ export function SegmentedControl<T extends string>({ value, options, onChange }:
 }
 
 const styles = StyleSheet.create({
-  row: { flexDirection: 'row', borderRadius: radius.lg, borderWidth: StyleSheet.hairlineWidth, padding: spacing.xs },
-  item: { flex: 1, minHeight: minTouch, alignItems: 'center', justifyContent: 'center', borderRadius: radius.md },
+  row: {
+    flexDirection: 'row',
+    borderRadius: radius.lg,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: spacing.xs,
+  },
+  item: {
+    flex: 1,
+    minHeight: minTouch,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: radius.md,
+  },
 });

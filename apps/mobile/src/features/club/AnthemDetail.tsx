@@ -26,7 +26,10 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
   return (
     <View style={{ gap: spacing.md }}>
       <Card>
-        <Text accessibilityRole="header" style={{ color: colors.text, ...text.display, fontWeight: '800' }}>
+        <Text
+          accessibilityRole="header"
+          style={{ color: colors.text, ...text.display, fontWeight: '800' }}
+        >
           {anthem.title}
         </Text>
         <View style={styles.tags}>
@@ -40,18 +43,30 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
         ) : null}
       </Card>
 
-      {anthem.media?.kind === 'video' && anthem.media.origin === 'club_official' && anthem.media.status === 'verified' ? (
+      {anthem.media?.kind === 'video' &&
+      anthem.media.origin === 'club_official' &&
+      anthem.media.status === 'verified' ? (
         <Card>
           <SectionTitle>{t('club.himnos.playback')}</SectionTitle>
-          <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>{t('club.himnos.playbackHint')}</Text>
-          <Button label={t('club.himnos.playOfficial')} onPress={() => void WebBrowser.openBrowserAsync(anthem.media!.url)} />
-          {anthem.media.credit ? <Text style={{ color: colors.textMuted, ...text.caption }}>{anthem.media.credit}</Text> : null}
+          <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>
+            {t('club.himnos.playbackHint')}
+          </Text>
+          <Button
+            label={t('club.himnos.playOfficial')}
+            onPress={() => void WebBrowser.openBrowserAsync(anthem.media!.url)}
+          />
+          {anthem.media.credit ? (
+            <Text style={{ color: colors.textMuted, ...text.caption }}>{anthem.media.credit}</Text>
+          ) : null}
         </Card>
       ) : null}
 
       <Card>
         <SectionTitle>{t('club.himnos.lyrics')}</SectionTitle>
-        {anthem.lyrics && ['licensed', 'public_domain', 'permission_granted'].includes(anthem.lyricsRights?.status ?? 'unknown') ? (
+        {anthem.lyrics &&
+        ['licensed', 'public_domain', 'permission_granted'].includes(
+          anthem.lyricsRights?.status ?? 'unknown',
+        ) ? (
           <>
             <Text
               selectable
@@ -68,10 +83,15 @@ export function AnthemDetail({ anthem }: { anthem: AnthemT }) {
         ) : anthem.lyricsRights?.sourceUrl ? (
           <>
             <EmptyState message={t('club.himnos.rightsPending')} />
-            <Button label={t('club.himnos.sourceLyrics')} onPress={() => void WebBrowser.openBrowserAsync(anthem.lyricsRights!.sourceUrl!)} />
+            <Button
+              label={t('club.himnos.sourceLyrics')}
+              onPress={() => void WebBrowser.openBrowserAsync(anthem.lyricsRights!.sourceUrl!)}
+            />
           </>
         ) : (
-          <EmptyState message={anthem.lyrics ? t('club.himnos.rightsPending') : t('club.himnos.noLyrics')} />
+          <EmptyState
+            message={anthem.lyrics ? t('club.himnos.rightsPending') : t('club.himnos.noLyrics')}
+          />
         )}
       </Card>
 

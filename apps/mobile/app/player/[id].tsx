@@ -58,7 +58,10 @@ function positionLabel(player: PlayerT, t: TFunction): string | null {
   return t(`player.positionName.${group}`);
 }
 
-function resultColor(result: PlayerMatchT['result'], colors: ReturnType<typeof useTheme>['colors']) {
+function resultColor(
+  result: PlayerMatchT['result'],
+  colors: ReturnType<typeof useTheme>['colors'],
+) {
   if (result === 'W') return colors.win;
   if (result === 'D') return colors.draw;
   if (result === 'L') return colors.loss;
@@ -175,7 +178,9 @@ function PhotoModal({
           />
           <View style={styles.attribution}>
             {photo.credit ? (
-              <Text style={{ color: colors.text, ...text.body, fontWeight: '600' }}>{photo.credit}</Text>
+              <Text style={{ color: colors.text, ...text.body, fontWeight: '600' }}>
+                {photo.credit}
+              </Text>
             ) : null}
             {author ? (
               <Text style={{ color: colors.textMuted, ...text.body }}>
@@ -198,7 +203,9 @@ function PhotoModal({
                 </Text>
               </Pressable>
             ) : null}
-            <Text style={{ color: colors.textMuted, ...text.caption }}>{t('player.photoNote')}</Text>
+            <Text style={{ color: colors.textMuted, ...text.caption }}>
+              {t('player.photoNote')}
+            </Text>
           </View>
         </View>
       </View>
@@ -275,7 +282,11 @@ function MatchRow({
   }
 
   return (
-    <View accessible accessibilityLabel={label} style={[styles.matchRow, { borderTopColor: colors.border }]}>
+    <View
+      accessible
+      accessibilityLabel={label}
+      style={[styles.matchRow, { borderTopColor: colors.border }]}
+    >
       {content}
     </View>
   );
@@ -693,9 +704,7 @@ export default function PlayerDetail() {
             {careerValues.length > 0 ? (
               <StatGrid values={careerValues} />
             ) : (
-              <Text style={{ color: colors.paper.muted, ...text.body }}>
-                {t('player.noStats')}
-              </Text>
+              <Text style={{ color: colors.paper.muted, ...text.body }}>{t('player.noStats')}</Text>
             )}
           </PaperCard>
           <PaperCard>
@@ -799,7 +808,14 @@ const styles = StyleSheet.create({
     paddingTop: spacing.lg,
     gap: spacing.sm,
   },
-  grabber: { position: 'absolute', top: 8, alignSelf: 'center', width: 40, height: 4, borderRadius: 2 },
+  grabber: {
+    position: 'absolute',
+    top: 8,
+    alignSelf: 'center',
+    width: 40,
+    height: 4,
+    borderRadius: 2,
+  },
   modalClose: {
     position: 'absolute',
     top: 4,

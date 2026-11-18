@@ -35,7 +35,9 @@ export function compareSquad(a: PlayerSummaryT, b: PlayerSummaryT): number {
   return a.name.localeCompare(b.name, 'es');
 }
 
-export function groupSquad(players: PlayerSummaryT[]): { group: PositionGroup; data: PlayerSummaryT[] }[] {
+export function groupSquad(
+  players: PlayerSummaryT[],
+): { group: PositionGroup; data: PlayerSummaryT[] }[] {
   return GROUP_ORDER.map((group) => ({
     group,
     data: players.filter((p) => positionGroup(p.position) === group).sort(compareSquad),
@@ -51,7 +53,11 @@ export function normalizeSearch(text: string | null | undefined): string {
     .trim();
 }
 
-export function filterSquad(players: PlayerSummaryT[], query: string, group: PositionGroup | 'ALL'): PlayerSummaryT[] {
+export function filterSquad(
+  players: PlayerSummaryT[],
+  query: string,
+  group: PositionGroup | 'ALL',
+): PlayerSummaryT[] {
   const needle = normalizeSearch(query);
   return players.filter((player) => {
     if (group !== 'ALL' && positionGroup(player.position) !== group) return false;
@@ -154,14 +160,19 @@ export function formatPartialDate(value: string | null | undefined, locale: stri
   const opts: Intl.DateTimeFormatOptions = day
     ? { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }
     : { month: 'long', year: 'numeric', timeZone: 'UTC' };
-  return new Intl.DateTimeFormat(locale, opts).format(new Date(Date.UTC(year, month - 1, day ?? 1)));
+  return new Intl.DateTimeFormat(locale, opts).format(
+    new Date(Date.UTC(year, month - 1, day ?? 1)),
+  );
 }
 
 /**
  * Rango de carrera: una sola temporada se escribe "2009-10"; varias, "2014–2017".
  * Si sigue en el club, "2026–". null si no hay inicio.
  */
-export function seasonRange(from: string | null | undefined, to: string | null | undefined): string | null {
+export function seasonRange(
+  from: string | null | undefined,
+  to: string | null | undefined,
+): string | null {
   const start = from?.slice(0, 4);
   if (!start) return null;
   const end = to?.slice(0, 4);
@@ -455,8 +466,7 @@ export function fixtureForMatch(
 ): MatchT | null {
   if (!fixtures) return null;
   const candidates = fixtures.matches.filter(
-    (fixture) =>
-      fixture.utcDate.slice(0, 10) === match.date && fixture.deporIsHome === match.home,
+    (fixture) => fixture.utcDate.slice(0, 10) === match.date && fixture.deporIsHome === match.home,
   );
   const matches = candidates.filter((fixture) => opponentMatches(match, fixture));
   const unique = [...new Map(matches.map((fixture) => [fixture.id, fixture])).values()];
@@ -511,7 +521,11 @@ export function pendingFields(p: PlayerT): PendingField[] {
 export function initials(name: string): string {
   const words = name.trim().split(/\s+/).filter(Boolean);
   if (words.length === 0) return '?';
-  if (words.length === 1) return Array.from(words[0] ?? '?').slice(0, 2).join('').toUpperCase();
+  if (words.length === 1)
+    return Array.from(words[0] ?? '?')
+      .slice(0, 2)
+      .join('')
+      .toUpperCase();
   const first = Array.from(words[0] ?? '')[0] ?? '';
   const last = Array.from(words[words.length - 1] ?? '')[0] ?? '';
   return (first + last).toUpperCase();

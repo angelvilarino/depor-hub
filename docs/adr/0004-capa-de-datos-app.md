@@ -1,4 +1,5 @@
 # ADR 0004 — Capa de datos de la app (H2)
+
 - **Estado:** aceptada
 - **Decisión:** `fetchData` (fetch + timeout + validación Zod, nunca datos sin validar) → TanStack Query con caché persistida en AsyncStorage (7 días), estado de red real con NetInfo y revalidación al volver a primer plano.
 - **Offline:** si falla la red o el contrato cambia, la app sigue mostrando el último dato válido guardado y lo indica en el banner («Sin conexión · último dato hace X»).

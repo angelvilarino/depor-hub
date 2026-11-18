@@ -242,7 +242,13 @@ describe('carrera', () => {
     ];
     const merged = mergeCareerPeriods(input);
     expect(merged).toHaveLength(2);
-    expect(merged[0]).toMatchObject({ club: 'Depor', from: '2014', to: '2017', appearances: 30, goals: 5 });
+    expect(merged[0]).toMatchObject({
+      club: 'Depor',
+      from: '2014',
+      to: '2017',
+      appearances: 30,
+      goals: 5,
+    });
     expect(merged[1]?.club).toBe('Rival');
     expect(input[0]?.to).toBe('2015');
   });
@@ -292,7 +298,10 @@ describe('entrenador y cuerpo técnico', () => {
       updatedAt: '2026-10-20T10:00:00Z',
       season: '2026-27',
       matches: [
-        finished({ id: 1, score: { home: 2, away: 1, halfTimeHome: 1, halfTimeAway: 0, winner: 'HOME_TEAM' } }),
+        finished({
+          id: 1,
+          score: { home: 2, away: 1, halfTimeHome: 1, halfTimeAway: 0, winner: 'HOME_TEAM' },
+        }),
         finished({
           id: 2,
           utcDate: '2026-09-01T18:00:00Z',
@@ -372,7 +381,14 @@ describe('totales y partidos', () => {
         { ...base, date: '2026-01-01', minutes: 90, goals: 1 },
         { ...base, date: '2026-02-01', minutes: 30, goals: 0, yellowCards: 1 },
       ]),
-    ).toEqual({ appearances: 2, goals: 1, assists: null, minutes: 120, yellowCards: 1, redCards: null });
+    ).toEqual({
+      appearances: 2,
+      goals: 1,
+      assists: null,
+      minutes: 120,
+      yellowCards: 1,
+      redCards: null,
+    });
   });
 
   it('filtra los partidos de la temporada publicada y conserva los de julio y junio', () => {
@@ -429,7 +445,6 @@ describe('totales y partidos', () => {
     ]);
     expect(socialLinks({ x: null, instagram: null, tiktok: null })).toEqual([]);
   });
-
 });
 
 describe('partido de la ficha y fixture', () => {
@@ -491,7 +506,9 @@ describe('partido de la ficha y fixture', () => {
 
   it('encuentra el fixture por fecha, localía y rival', () => {
     expect(fixtureForMatch(match(), fixtures([fixture()]))?.id).toBe(42);
-    expect(fixtureForMatch(match({ opponent: 'Real Valladolid' }), fixtures([fixture()]))?.id).toBe(42);
+    expect(fixtureForMatch(match({ opponent: 'Real Valladolid' }), fixtures([fixture()]))?.id).toBe(
+      42,
+    );
   });
 
   it('no enlaza si cambia la fecha, la localía o el rival', () => {
@@ -515,7 +532,9 @@ describe('avatar', () => {
   it('color estable y con contraste AA frente a blanco', () => {
     expect(avatarColor(42)).toBe(avatarColor(42));
     expect(avatarColor(-7)).toBeDefined();
-    AVATAR_COLORS.forEach((c) => expect(contrastRatio(imageTokens.text, c)).toBeGreaterThanOrEqual(4.5));
+    AVATAR_COLORS.forEach((c) =>
+      expect(contrastRatio(imageTokens.text, c)).toBeGreaterThanOrEqual(4.5),
+    );
   });
 });
 

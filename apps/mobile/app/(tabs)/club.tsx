@@ -8,25 +8,52 @@ import { BodyText, Card, Screen } from '@/components/Screen';
 import { useClub, useRivalries } from '@/data/queries';
 import type { ClubT } from '@/data/schemas';
 import { ClubGate } from '@/features/club/ClubGate';
-import { CLUB_SECTIONS, currentCrest, formatSeats, titleTotal, type ClubSectionId } from '@/features/club/logic';
+import {
+  CLUB_SECTIONS,
+  currentCrest,
+  formatSeats,
+  titleTotal,
+  type ClubSectionId,
+} from '@/features/club/logic';
 import { useTheme } from '@/theme/useTheme';
 import { spacing, radius, typography, text } from '@/theme/tokens';
 import { clubImageUrl } from '@/config';
-import { HeroHeader, SectionHeader, StatCounter, Timeline, type TimelineEntry } from '@/components/club/Editorial';
+import {
+  HeroHeader,
+  SectionHeader,
+  StatCounter,
+  Timeline,
+  type TimelineEntry,
+} from '@/components/club/Editorial';
 
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
-function sectionBadge(club: ClubT, id: ClubSectionId, locale: string, rivalryCount: number): string | null {
+function sectionBadge(
+  club: ClubT,
+  id: ClubSectionId,
+  locale: string,
+  rivalryCount: number,
+): string | null {
   switch (id) {
-    case 'himnos': return club.anthems.length ? String(club.anthems.length) : null;
-    case 'escudo': return club.crests.length ? String(club.crests.length) : null;
-    case 'equipaciones': return club.kits.length ? String(club.kits.length) : null;
-    case 'estadio': return club.stadium?.capacity ? formatSeats(club.stadium.capacity.total, locale) : null;
-    case 'junta': return club.board ? String(club.board.members.length + 1) : null;
-    case 'patrocinadores': return club.sponsors ? String(club.sponsors.official.length) : null;
-    case 'titulos': return club.titles.length ? String(titleTotal(club.titles)) : null;
-    case 'rivalidades': return rivalryCount ? String(rivalryCount) : null;
-    case 'redes': return null;
-    default: return null;
+    case 'himnos':
+      return club.anthems.length ? String(club.anthems.length) : null;
+    case 'escudo':
+      return club.crests.length ? String(club.crests.length) : null;
+    case 'equipaciones':
+      return club.kits.length ? String(club.kits.length) : null;
+    case 'estadio':
+      return club.stadium?.capacity ? formatSeats(club.stadium.capacity.total, locale) : null;
+    case 'junta':
+      return club.board ? String(club.board.members.length + 1) : null;
+    case 'patrocinadores':
+      return club.sponsors ? String(club.sponsors.official.length) : null;
+    case 'titulos':
+      return club.titles.length ? String(titleTotal(club.titles)) : null;
+    case 'rivalidades':
+      return rivalryCount ? String(rivalryCount) : null;
+    case 'redes':
+      return null;
+    default:
+      return null;
   }
 }
 
@@ -49,7 +76,9 @@ export default function ClubScreen() {
           const identity = club.identity;
           const crest = currentCrest(club.crests);
           const place = [identity.city, identity.country].filter(Boolean).join(', ');
-          const founded = identity.foundedYear ? t('club.founded', { year: identity.foundedYear }) : null;
+          const founded = identity.foundedYear
+            ? t('club.founded', { year: identity.foundedYear })
+            : null;
           const subtitle = [founded, place].filter(Boolean).join(' · ');
           const timelineEntries: TimelineEntry[] = [
             ...club.crests.map((item) => ({
@@ -63,22 +92,28 @@ export default function ClubScreen() {
             ...(club.stadium
               ? [
                   ...(club.stadium.openedOn
-                    ? [{
-                        year: club.stadium.openedOn.slice(0, 4),
-                        title: t('club.timelineEvents.stadiumOpening', { name: club.stadium.name }),
-                        detail: club.stadium.openedOn,
-                        category: t('club.timelineCategories.stadium'),
-                      }]
+                    ? [
+                        {
+                          year: club.stadium.openedOn.slice(0, 4),
+                          title: t('club.timelineEvents.stadiumOpening', {
+                            name: club.stadium.name,
+                          }),
+                          detail: club.stadium.openedOn,
+                          category: t('club.timelineCategories.stadium'),
+                        },
+                      ]
                     : []),
                   ...club.stadium.renovations.flatMap((renovation) => {
                     const year = renovation.match(/^\d{4}/)?.[0];
                     return year
-                      ? [{
-                          year,
-                          title: t('club.timelineEvents.stadiumRenovation'),
-                          detail: renovation,
-                          category: t('club.timelineCategories.stadium'),
-                        }]
+                      ? [
+                          {
+                            year,
+                            title: t('club.timelineEvents.stadiumRenovation'),
+                            detail: renovation,
+                            category: t('club.timelineCategories.stadium'),
+                          },
+                        ]
                       : [];
                   }),
                 ]
@@ -91,83 +126,238 @@ export default function ClubScreen() {
               })),
             ),
             ...(club.sponsors?.details ?? [])
-              .filter((sponsor) => (
-                sponsor.status === 'verified'
-                && (sponsor.sinceYear !== null || sponsor.untilYear !== null)
-              ))
+              .filter(
+                (sponsor) =>
+                  sponsor.status === 'verified' &&
+                  (sponsor.sinceYear !== null || sponsor.untilYear !== null),
+              )
               .map((sponsor) => ({
-                year: sponsor.sinceYear && sponsor.untilYear
-                  ? `${sponsor.sinceYear}–${sponsor.untilYear}`
-                  : sponsor.sinceYear
-                    ? `${sponsor.sinceYear}–${t('club.present')}`
-                    : t('club.patrocinadores.until', { year: sponsor.untilYear }),
+                year:
+                  sponsor.sinceYear && sponsor.untilYear
+                    ? `${sponsor.sinceYear}–${sponsor.untilYear}`
+                    : sponsor.sinceYear
+                      ? `${sponsor.sinceYear}–${t('club.present')}`
+                      : t('club.patrocinadores.until', { year: sponsor.untilYear }),
                 title: t('club.timelineEvents.sponsor', { name: sponsor.name }),
                 detail: t(`club.patrocinadores.roles.${sponsor.role}`),
                 category: t('club.timelineCategories.sponsors'),
               })),
-            ...(club.board && (club.board.president || club.board.members.length || club.board.sportingDirector)
-              ? [{
-                  year: t('club.present'),
-                  title: t('club.timelineEvents.board'),
-                  detail: club.board.note,
-                  category: t('club.timelineCategories.board'),
-                }]
+            ...(club.board &&
+            (club.board.president || club.board.members.length || club.board.sportingDirector)
+              ? [
+                  {
+                    year: t('club.present'),
+                    title: t('club.timelineEvents.board'),
+                    detail: club.board.note,
+                    category: t('club.timelineCategories.board'),
+                  },
+                ]
               : []),
           ].sort((a, b) => {
             const yearA = Number.parseInt(a.year, 10);
             const yearB = Number.parseInt(b.year, 10);
-            return (Number.isNaN(yearA) ? Number.POSITIVE_INFINITY : yearA)
-              - (Number.isNaN(yearB) ? Number.POSITIVE_INFINITY : yearB);
+            return (
+              (Number.isNaN(yearA) ? Number.POSITIVE_INFINITY : yearA) -
+              (Number.isNaN(yearB) ? Number.POSITIVE_INFINITY : yearB)
+            );
           });
           const stats = [
-            identity.foundedYear ? { value: identity.foundedYear, label: t('club.stats.founded') } : null,
-            club.kits.length ? { value: club.kits.length, label: t('club.stats.kitSeasons') } : null,
-            titleTotal(club.titles) ? { value: titleTotal(club.titles), label: t('club.stats.titles') } : null,
-            club.stadium?.capacity ? { value: club.stadium.capacity.total, label: t('club.stats.capacity') } : null,
+            identity.foundedYear
+              ? { value: identity.foundedYear, label: t('club.stats.founded') }
+              : null,
+            club.kits.length
+              ? { value: club.kits.length, label: t('club.stats.kitSeasons') }
+              : null,
+            titleTotal(club.titles)
+              ? { value: titleTotal(club.titles), label: t('club.stats.titles') }
+              : null,
+            club.stadium?.capacity
+              ? { value: club.stadium.capacity.total, label: t('club.stats.capacity') }
+              : null,
           ].filter((item): item is { value: number; label: string } => item !== null);
 
-          return <>
-            <HeroHeader title={identity.shortName ?? identity.officialName} subtitle={subtitle} chips={identity.nicknames} icon="shield-outline" emblem={clubImageUrl(crest?.image)} />
-            <Text style={[styles.unofficial, { color: colors.textMuted }]}>{t('common.unofficial')}</Text>
-            {stats.length ? <View style={styles.stats}>{stats.map((stat) => <StatCounter key={stat.label} value={stat.value} label={stat.label} />)}</View> : null}
-            {identity.motto ? <Card><Text style={[styles.motto, { color: colors.text }]}>{identity.motto}</Text></Card> : null}
-            <Card>
-              <SectionHeader title={t('club.identity')} subtitle={identity.officialName} icon="information-circle-outline" />
-              <View style={styles.identityGrid}>
-                {identity.colors.length ? <View style={styles.identityItem}><Text style={[styles.label, { color: colors.textMuted }]}>{t('club.colors')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.colors.join(' · ')}</Text></View> : null}
-                {identity.president ? <View style={styles.identityItem}><Text style={[styles.label, { color: colors.textMuted }]}>{t('club.president')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.president}</Text></View> : null}
-                {identity.headquarters ? <View style={styles.identityItem}><Text style={[styles.label, { color: colors.textMuted }]}>{t('club.headquarters')}</Text><Text style={[styles.value, { color: colors.text }]}>{identity.headquarters}</Text></View> : null}
-              </View>
-            </Card>
-            {timelineEntries.length ? <Card><SectionHeader title={t('club.timeline')} subtitle={t('club.timelineSubtitle')} icon="time-outline" /><Timeline entries={timelineEntries} filters /></Card> : null}
-            {/* D-24: la rejilla de secciones ya no vive dentro de otra tarjeta;
-                cada baldosa es una superficie plana sobre el fondo. */}
-            <View style={{ gap: spacing.sm }}>
-              <SectionHeader title={t('club.explore')} subtitle={t('club.exploreSubtitle')} icon="compass-outline" />
-              <View style={styles.sectionGrid}>
-                {CLUB_SECTIONS.map((section) => {
-                  const badge = sectionBadge(club, section.id, i18n.language, rivalriesQuery.data?.rivalries.length ?? club.rivalries.length);
-                  const image = sectionImage(club, section.id);
-                  // D-13: cabecera propia para icono y badge, título a dos líneas
-                  // y altura estable para que ninguna baldosa desborde la rejilla.
-                  return <Pressable key={section.id} accessibilityRole="button" accessibilityLabel={t(`club.sections.${section.id}.title`)} onPress={() => router.push(`/club/${section.id}`)} style={[styles.sectionTile, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-                    <View style={styles.tileHead}>
-                      <View style={[styles.tileMark, { backgroundColor: colors.background, borderColor: colors.border }]}>
-                        {image
-                          ? <Image source={{ uri: image }} contentFit="contain" style={styles.tileArtwork} />
-                          : <Ionicons name={section.icon as IconName} size={22} color={colors.primary} />}
-                      </View>
-                      {badge ? <View style={[styles.tileBadge, { backgroundColor: colors.primary }]}><Text style={{ color: colors.onPrimary, ...text.caption, fontWeight: '800' }}>{badge}</Text></View> : null}
+          return (
+            <>
+              <HeroHeader
+                title={identity.shortName ?? identity.officialName}
+                subtitle={subtitle}
+                chips={identity.nicknames}
+                icon="shield-outline"
+                emblem={clubImageUrl(crest?.image)}
+              />
+              <Text style={[styles.unofficial, { color: colors.textMuted }]}>
+                {t('common.unofficial')}
+              </Text>
+              {stats.length ? (
+                <View style={styles.stats}>
+                  {stats.map((stat) => (
+                    <StatCounter key={stat.label} value={stat.value} label={stat.label} />
+                  ))}
+                </View>
+              ) : null}
+              {identity.motto ? (
+                <Card>
+                  <Text style={[styles.motto, { color: colors.text }]}>{identity.motto}</Text>
+                </Card>
+              ) : null}
+              <Card>
+                <SectionHeader
+                  title={t('club.identity')}
+                  subtitle={identity.officialName}
+                  icon="information-circle-outline"
+                />
+                <View style={styles.identityGrid}>
+                  {identity.colors.length ? (
+                    <View style={styles.identityItem}>
+                      <Text style={[styles.label, { color: colors.textMuted }]}>
+                        {t('club.colors')}
+                      </Text>
+                      <Text style={[styles.value, { color: colors.text }]}>
+                        {identity.colors.join(' · ')}
+                      </Text>
                     </View>
-                    <Text numberOfLines={2} maxFontSizeMultiplier={1.2} style={[styles.tileTitle, { color: colors.text }]}>{t(`club.sections.${section.id}.title`)}</Text>
-                    <Text numberOfLines={2} maxFontSizeMultiplier={1.2} style={[styles.tileSubtitle, { color: colors.textMuted }]}>{t(`club.sections.${section.id}.subtitle`)}</Text>
-                  </Pressable>;
-                })}
+                  ) : null}
+                  {identity.president ? (
+                    <View style={styles.identityItem}>
+                      <Text style={[styles.label, { color: colors.textMuted }]}>
+                        {t('club.president')}
+                      </Text>
+                      <Text style={[styles.value, { color: colors.text }]}>
+                        {identity.president}
+                      </Text>
+                    </View>
+                  ) : null}
+                  {identity.headquarters ? (
+                    <View style={styles.identityItem}>
+                      <Text style={[styles.label, { color: colors.textMuted }]}>
+                        {t('club.headquarters')}
+                      </Text>
+                      <Text style={[styles.value, { color: colors.text }]}>
+                        {identity.headquarters}
+                      </Text>
+                    </View>
+                  ) : null}
+                </View>
+              </Card>
+              {timelineEntries.length ? (
+                <Card>
+                  <SectionHeader
+                    title={t('club.timeline')}
+                    subtitle={t('club.timelineSubtitle')}
+                    icon="time-outline"
+                  />
+                  <Timeline entries={timelineEntries} filters />
+                </Card>
+              ) : null}
+              {/* D-24: la rejilla de secciones ya no vive dentro de otra tarjeta;
+                cada baldosa es una superficie plana sobre el fondo. */}
+              <View style={{ gap: spacing.sm }}>
+                <SectionHeader
+                  title={t('club.explore')}
+                  subtitle={t('club.exploreSubtitle')}
+                  icon="compass-outline"
+                />
+                <View style={styles.sectionGrid}>
+                  {CLUB_SECTIONS.map((section) => {
+                    const badge = sectionBadge(
+                      club,
+                      section.id,
+                      i18n.language,
+                      rivalriesQuery.data?.rivalries.length ?? club.rivalries.length,
+                    );
+                    const image = sectionImage(club, section.id);
+                    // D-13: cabecera propia para icono y badge, título a dos líneas
+                    // y altura estable para que ninguna baldosa desborde la rejilla.
+                    return (
+                      <Pressable
+                        key={section.id}
+                        accessibilityRole="button"
+                        accessibilityLabel={t(`club.sections.${section.id}.title`)}
+                        onPress={() => router.push(`/club/${section.id}`)}
+                        style={[
+                          styles.sectionTile,
+                          { backgroundColor: colors.surface, borderColor: colors.border },
+                        ]}
+                      >
+                        <View style={styles.tileHead}>
+                          <View
+                            style={[
+                              styles.tileMark,
+                              { backgroundColor: colors.background, borderColor: colors.border },
+                            ]}
+                          >
+                            {image ? (
+                              <Image
+                                source={{ uri: image }}
+                                contentFit="contain"
+                                style={styles.tileArtwork}
+                              />
+                            ) : (
+                              <Ionicons
+                                name={section.icon as IconName}
+                                size={22}
+                                color={colors.primary}
+                              />
+                            )}
+                          </View>
+                          {badge ? (
+                            <View style={[styles.tileBadge, { backgroundColor: colors.primary }]}>
+                              <Text
+                                style={{
+                                  color: colors.onPrimary,
+                                  ...text.caption,
+                                  fontWeight: '800',
+                                }}
+                              >
+                                {badge}
+                              </Text>
+                            </View>
+                          ) : null}
+                        </View>
+                        <Text
+                          numberOfLines={2}
+                          maxFontSizeMultiplier={1.2}
+                          style={[styles.tileTitle, { color: colors.text }]}
+                        >
+                          {t(`club.sections.${section.id}.title`)}
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          maxFontSizeMultiplier={1.2}
+                          style={[styles.tileSubtitle, { color: colors.textMuted }]}
+                        >
+                          {t(`club.sections.${section.id}.subtitle`)}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
               </View>
-            </View>
-            {club.facts.length ? <Card><SectionHeader title={t('club.facts')} icon="book-outline" />{club.facts.map((fact) => <BodyText key={fact}>{fact}</BodyText>)}</Card> : null}
-            {identity.contact.email || identity.contact.phone ? <Card><SectionHeader title={t('club.contact')} icon="call-outline" />{identity.contact.email ? <Text style={[styles.value, { color: colors.text }]}>{identity.contact.email}</Text> : null}{identity.contact.phone ? <Text style={[styles.value, { color: colors.text }]}>{identity.contact.phone}</Text> : null}</Card> : null}
-          </>;
+              {club.facts.length ? (
+                <Card>
+                  <SectionHeader title={t('club.facts')} icon="book-outline" />
+                  {club.facts.map((fact) => (
+                    <BodyText key={fact}>{fact}</BodyText>
+                  ))}
+                </Card>
+              ) : null}
+              {identity.contact.email || identity.contact.phone ? (
+                <Card>
+                  <SectionHeader title={t('club.contact')} icon="call-outline" />
+                  {identity.contact.email ? (
+                    <Text style={[styles.value, { color: colors.text }]}>
+                      {identity.contact.email}
+                    </Text>
+                  ) : null}
+                  {identity.contact.phone ? (
+                    <Text style={[styles.value, { color: colors.text }]}>
+                      {identity.contact.phone}
+                    </Text>
+                  ) : null}
+                </Card>
+              ) : null}
+            </>
+          );
         }}
       </ClubGate>
     </Screen>
@@ -175,15 +365,48 @@ export default function ClubScreen() {
 }
 
 const styles = StyleSheet.create({
-  unofficial: { ...text.caption }, stats: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
+  unofficial: { ...text.caption },
+  stats: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
   motto: { fontFamily: typography.headline, ...text.title, textAlign: 'center' },
-  identityGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md }, identityItem: { minWidth: '42%', flexGrow: 1, gap: spacing.xs }, label: { ...text.caption, fontWeight: '700' }, value: { ...text.bodyLarge },
+  identityGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
+  identityItem: { minWidth: '42%', flexGrow: 1, gap: spacing.xs },
+  label: { ...text.caption, fontWeight: '700' },
+  value: { ...text.bodyLarge },
   sectionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  sectionTile: { width: '47%', flexGrow: 1, minHeight: 164, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden', padding: spacing.sm, gap: spacing.xs },
-  tileHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.xs },
-  tileMark: { width: 44, aspectRatio: 1, borderRadius: radius.sm, borderWidth: StyleSheet.hairlineWidth, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+  sectionTile: {
+    width: '47%',
+    flexGrow: 1,
+    minHeight: 164,
+    borderRadius: radius.md,
+    borderWidth: StyleSheet.hairlineWidth,
+    overflow: 'hidden',
+    padding: spacing.sm,
+    gap: spacing.xs,
+  },
+  tileHead: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.xs,
+  },
+  tileMark: {
+    width: 44,
+    aspectRatio: 1,
+    borderRadius: radius.sm,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
   tileArtwork: { width: 38, height: 38 },
-  tileBadge: { minWidth: 28, height: 28, borderRadius: radius.pill, justifyContent: 'center', alignItems: 'center', paddingHorizontal: spacing.xs },
+  tileBadge: {
+    minWidth: 28,
+    height: 28,
+    borderRadius: radius.pill,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: spacing.xs,
+  },
   tileTitle: { ...text.subtitle, fontWeight: '800' },
   tileSubtitle: { ...text.caption },
 });

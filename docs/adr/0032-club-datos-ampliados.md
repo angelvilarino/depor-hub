@@ -28,14 +28,14 @@ fuente, confianza y fecha de captura.
 Se añaden campos opcionales con `default=null`/`default=[]`; los campos legados no
 cambian de tipo:
 
-| Bloque | Campos nuevos |
-|---|---|
-| `Anthem` | `media`, `lyricsRights` |
-| `CrestVersion` | `media` |
-| `Kit` | `media` |
-| `Stadium` | `schedule`, `accessDetails`, `capacityAlternatives`, `tenants`, `media` |
-| `Sponsors` | `details` |
-| `Club` | `media` |
+| Bloque         | Campos nuevos                                                           |
+| -------------- | ----------------------------------------------------------------------- |
+| `Anthem`       | `media`, `lyricsRights`                                                 |
+| `CrestVersion` | `media`                                                                 |
+| `Kit`          | `media`                                                                 |
+| `Stadium`      | `schedule`, `accessDetails`, `capacityAlternatives`, `tenants`, `media` |
+| `Sponsors`     | `details`                                                               |
+| `Club`         | `media`                                                                 |
 
 `MediaRef` publica `url`, `kind`, `width`, `height`, `license`, `licenseUrl`,
 `author`, `credit`, `sourceUrl`, `origin` y `verifiedAt`. La URL es siempre la

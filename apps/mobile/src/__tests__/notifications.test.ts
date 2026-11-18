@@ -2,10 +2,7 @@ import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import { makeMatch } from '@/test-utils/matches';
 import i18n from '@/i18n';
-import {
-  ensureReminderPermission,
-  syncReminders,
-} from '@/features/reminders/notifications';
+import { ensureReminderPermission, syncReminders } from '@/features/reminders/notifications';
 
 jest.mock('expo-notifications', () => ({
   setNotificationHandler: jest.fn(),

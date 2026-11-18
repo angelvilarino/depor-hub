@@ -7,10 +7,22 @@ describe('compatibilidad de contratos H5.3', () => {
       season: '2026-27',
       team: { id: 560, name: 'RC Deportivo La Coruña', shortName: 'Deportivo', tla: 'DEP' },
       summary: {
-        position: 11, points: 11, played: 10, won: 2, drawn: 5, lost: 3,
-        goalsFor: 13, goalsAgainst: 13, goalDifference: 0,
+        position: 11,
+        points: 11,
+        played: 10,
+        won: 2,
+        drawn: 5,
+        lost: 3,
+        goalsFor: 13,
+        goalsAgainst: 13,
+        goalDifference: 0,
       },
-      whatIsAtStake: { position: 11, points: 11, scenarios: [], assumption: 'other_results_unchanged' },
+      whatIsAtStake: {
+        position: 11,
+        points: 11,
+        scenarios: [],
+        assumption: 'other_results_unchanged',
+      },
     };
     const parsed = Season.parse(previous);
     expect(parsed.season).toBe('2026-27');
@@ -19,10 +31,14 @@ describe('compatibilidad de contratos H5.3', () => {
 
   it('acepta fuentes de noticias antiguas y el icono opcional', () => {
     const source = {
-      id: 'medio', name: 'Medio', group: 'galicia', homepage: 'https://example.test',
+      id: 'medio',
+      name: 'Medio',
+      group: 'galicia',
+      homepage: 'https://example.test',
     };
     expect(NewsSource.parse(source).iconUrl).toBeUndefined();
-    expect(NewsSource.parse({ ...source, iconUrl: 'https://example.test/icon.png' }).iconUrl)
-      .toBe('https://example.test/icon.png');
+    expect(NewsSource.parse({ ...source, iconUrl: 'https://example.test/icon.png' }).iconUrl).toBe(
+      'https://example.test/icon.png',
+    );
   });
 });

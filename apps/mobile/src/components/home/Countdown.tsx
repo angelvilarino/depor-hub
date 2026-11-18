@@ -19,7 +19,15 @@ function units(parts: CountdownParts, t: TFunction): Unit[] {
   ];
 }
 
-function UnitBox({ unit, reducedMotion, urgent }: { unit: Unit; reducedMotion: boolean; urgent: boolean }) {
+function UnitBox({
+  unit,
+  reducedMotion,
+  urgent,
+}: {
+  unit: Unit;
+  reducedMotion: boolean;
+  urgent: boolean;
+}) {
   const { colors } = useTheme();
   const [transition] = useState(() => new Animated.Value(1));
   const previous = useRef(unit.value);
@@ -32,11 +40,23 @@ function UnitBox({ unit, reducedMotion, urgent }: { unit: Unit; reducedMotion: b
       return;
     }
     transition.setValue(0);
-    Animated.timing(transition, { toValue: 1, duration: motion.fast, useNativeDriver: true }).start();
+    Animated.timing(transition, {
+      toValue: 1,
+      duration: motion.fast,
+      useNativeDriver: true,
+    }).start();
   }, [reducedMotion, transition, unit.value]);
 
   return (
-    <View style={[styles.unitBox, { backgroundColor: colors.poster.text, borderColor: urgent ? colors.poster.accent : 'transparent' }]}>
+    <View
+      style={[
+        styles.unitBox,
+        {
+          backgroundColor: colors.poster.text,
+          borderColor: urgent ? colors.poster.accent : 'transparent',
+        },
+      ]}
+    >
       <Animated.Text
         maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
         style={{
@@ -44,12 +64,21 @@ function UnitBox({ unit, reducedMotion, urgent }: { unit: Unit; reducedMotion: b
           fontFamily: typography.numeric,
           ...text.display,
           opacity: transition,
-          transform: [{ translateY: transition.interpolate({ inputRange: [0, 1], outputRange: [5, 0] }) }],
+          transform: [
+            { translateY: transition.interpolate({ inputRange: [0, 1], outputRange: [5, 0] }) },
+          ],
         }}
       >
         {String(unit.value).padStart(2, '0')}
       </Animated.Text>
-      <Text style={{ color: colors.textMuted, ...text.caption, letterSpacing: 0.7, textTransform: 'uppercase' }}>
+      <Text
+        style={{
+          color: colors.textMuted,
+          ...text.caption,
+          letterSpacing: 0.7,
+          textTransform: 'uppercase',
+        }}
+      >
         {unit.label}
       </Text>
     </View>
@@ -101,5 +130,15 @@ export function Countdown({ targetMs, onExpire }: { targetMs: number; onExpire?:
 
 const styles = StyleSheet.create({
   countdown: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.xs },
-  unitBox: { flex: 1, minWidth: 0, minHeight: 62, alignItems: 'center', justifyContent: 'center', borderRadius: radius.sm, borderWidth: 2, paddingVertical: spacing.xs, gap: spacing.xs },
+  unitBox: {
+    flex: 1,
+    minWidth: 0,
+    minHeight: 62,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: radius.sm,
+    borderWidth: 2,
+    paddingVertical: spacing.xs,
+    gap: spacing.xs,
+  },
 });

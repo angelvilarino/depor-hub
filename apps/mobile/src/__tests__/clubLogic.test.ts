@@ -35,9 +35,7 @@ describe('lógica del Club', () => {
     const capacity = club.stadium!.capacity!;
     expect(capacity.total).toBe(32490);
     expect(capacitySum(capacity)).toBe(capacity.total);
-    expect(capacity.breakdown.map((zone) => zone.zone)).toEqual([
-      'Localidades sentadas',
-    ]);
+    expect(capacity.breakdown.map((zone) => zone.zone)).toEqual(['Localidades sentadas']);
     expect(capacity.sourceUrl).toBe('https://www.rcdeportivo.es/es/estadio-abanca-riazor');
     expect(capacity.confidence).toBe('cross_checked');
     expect(capacity.status).toBe('verified');
@@ -98,12 +96,8 @@ describe('lógica del Club', () => {
 
   it('resuelve imágenes locales contra la base de datos y respeta URLs absolutas', () => {
     const relative = clubImageUrl('img/club/escudos/1906.png');
-    expect(relative).toBe(
-      DATA_BASE_URL ? `${DATA_BASE_URL}/img/club/escudos/1906.png` : null,
-    );
-    expect(clubImageUrl('https://example.test/crest.png')).toBe(
-      'https://example.test/crest.png',
-    );
+    expect(relative).toBe(DATA_BASE_URL ? `${DATA_BASE_URL}/img/club/escudos/1906.png` : null);
+    expect(clubImageUrl('https://example.test/crest.png')).toBe('https://example.test/crest.png');
     expect(clubImageUrl(null)).toBeNull();
     expect(clubImageUrl('  ')).toBeNull();
   });

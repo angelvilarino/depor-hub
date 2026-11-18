@@ -31,7 +31,9 @@ export function MatchCard({ match, competitionName = null, highlight = false }: 
     { team: match.away, goals: match.score.away, depor: !match.deporIsHome },
   ];
   const outColor = out === 'W' ? colors.primary : out === 'L' ? colors.danger : colors.textMuted;
-  const summary = hasScore ? `${match.score.home}–${match.score.away}` : (time ?? t('calendar.timeTbc'));
+  const summary = hasScore
+    ? `${match.score.home}–${match.score.away}`
+    : (time ?? t('calendar.timeTbc'));
   const meta = [
     match.matchday !== null ? t('calendar.matchday', { n: match.matchday }) : null,
     competitionName,
@@ -42,7 +44,12 @@ export function MatchCard({ match, competitionName = null, highlight = false }: 
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={[date, meta, `${teamName(match.home)} ${t('calendar.versus')} ${teamName(match.away)}`, summary]
+      accessibilityLabel={[
+        date,
+        meta,
+        `${teamName(match.home)} ${t('calendar.versus')} ${teamName(match.away)}`,
+        summary,
+      ]
         .filter(Boolean)
         .join('. ')}
       onPress={() => router.push(`/match/${match.id}`)}
@@ -56,7 +63,14 @@ export function MatchCard({ match, competitionName = null, highlight = false }: 
       {highlight ? (
         <View style={styles.nextRow}>
           <Ionicons name="time-outline" size={14} color={colors.primary} />
-          <Text style={{ color: colors.primary, ...text.caption, fontWeight: '800', letterSpacing: 0.8 }}>
+          <Text
+            style={{
+              color: colors.primary,
+              ...text.caption,
+              fontWeight: '800',
+              letterSpacing: 0.8,
+            }}
+          >
             {t('calendar.next')}
             {time ? ` · ${time}` : ''}
           </Text>

@@ -2,7 +2,13 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { seasonLabel, toMatch, transformFixtures } from '../src/transform.js';
 
-const depor = { id: 560, name: 'RC Deportivo', shortName: 'Deportivo', tla: 'DEP', crest: 'https://x/560.png' };
+const depor = {
+  id: 560,
+  name: 'RC Deportivo',
+  shortName: 'Deportivo',
+  tla: 'DEP',
+  crest: 'https://x/560.png',
+};
 const rival = { id: 78, name: 'Atleti', shortName: 'Atleti', tla: 'ATL', crest: null };
 
 function match(overrides = {}) {
@@ -14,9 +20,16 @@ function match(overrides = {}) {
     stage: 'REGULAR_SEASON',
     homeTeam: depor,
     awayTeam: rival,
-    score: { winner: null, fullTime: { home: null, away: null }, halfTime: { home: null, away: null } },
+    score: {
+      winner: null,
+      fullTime: { home: null, away: null },
+      halfTime: { home: null, away: null },
+    },
     venue: 'Riazor',
-    referees: [{ name: 'Árbitro Dos', type: 'ASSISTANT_REFEREE_N1' }, { name: 'Árbitro Uno', type: 'REFEREE' }],
+    referees: [
+      { name: 'Árbitro Dos', type: 'ASSISTANT_REFEREE_N1' },
+      { name: 'Árbitro Uno', type: 'REFEREE' },
+    ],
     ...overrides,
   };
 }
@@ -35,7 +48,13 @@ test('toMatch publica solo los campos del contrato', () => {
     status: 'TIMED',
     matchday: 12,
     stage: 'REGULAR_SEASON',
-    home: { id: 560, name: 'RC Deportivo', shortName: 'Deportivo', tla: 'DEP', crestUrl: 'https://x/560.png' },
+    home: {
+      id: 560,
+      name: 'RC Deportivo',
+      shortName: 'Deportivo',
+      tla: 'DEP',
+      crestUrl: 'https://x/560.png',
+    },
     away: { id: 78, name: 'Atleti', shortName: 'Atleti', tla: 'ATL', crestUrl: null },
     score: { home: null, away: null, halfTimeHome: null, halfTimeAway: null, winner: null },
     deporIsHome: true,
@@ -54,11 +73,17 @@ test('transformFixtures filtra al Depor, ordena y no inventa marcador', () => {
   });
   const other = match({ id: 4, homeTeam: rival, awayTeam: { ...rival, id: 90 } });
 
-  const body = transformFixtures({ matches: [later, other, earlier] }, new Date('2026-11-05T10:00:00Z'));
+  const body = transformFixtures(
+    { matches: [later, other, earlier] },
+    new Date('2026-11-05T10:00:00Z'),
+  );
 
   assert.equal(body.updatedAt, '2026-11-05T10:00:00.000Z');
   assert.equal(body.season, '2026-27');
-  assert.deepEqual(body.matches.map((item) => item.id), [3, 2]);
+  assert.deepEqual(
+    body.matches.map((item) => item.id),
+    [3, 2],
+  );
   assert.equal(body.matches[0].score.home, 2);
   assert.equal(body.matches[1].deporIsHome, false);
 });

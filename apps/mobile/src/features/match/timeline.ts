@@ -53,9 +53,7 @@ export function buildTimeline(detail: MatchDetailT): TimelineEntry[] {
       player: goal.player,
       ownGoal: goal.ownGoal,
       penalty: goal.penalty,
-      scoreAfter: goal.scoreAfter
-        ? `${goal.scoreAfter.home}–${goal.scoreAfter.away}`
-        : null,
+      scoreAfter: goal.scoreAfter ? `${goal.scoreAfter.home}–${goal.scoreAfter.away}` : null,
     })),
     ...detail.cards.map((card, index) => ({
       kind: 'card' as const,
@@ -77,7 +75,5 @@ export function buildTimeline(detail: MatchDetailT): TimelineEntry[] {
     })),
   ];
 
-  return entries.sort(
-    (a, b) => a.minute - b.minute || KIND_ORDER[a.kind] - KIND_ORDER[b.kind],
-  );
+  return entries.sort((a, b) => a.minute - b.minute || KIND_ORDER[a.kind] - KIND_ORDER[b.kind]);
 }

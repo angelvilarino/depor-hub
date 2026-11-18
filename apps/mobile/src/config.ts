@@ -44,7 +44,6 @@ export function dataImageUrl(path: string | null | undefined): string | null {
 /** Alias histórico del contrato Club; comparte resolución con las miniaturas. */
 export const clubImageUrl = dataImageUrl;
 
-
 // Escudos de los equipos (ADR 0006): se cargan desde la URL de la API, nunca se almacenan en el repo.
 // Ponlo a false para volver a monogramas sin tocar nada más.
 export const SHOW_TEAM_CREST = true;

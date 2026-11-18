@@ -91,7 +91,9 @@ describe('contratos públicos v1 (Zod espejo de Pydantic)', () => {
     const files = fs.readdirSync(playersDir).filter((name) => name.endsWith('.json'));
     expect(files.length).toBeGreaterThan(0);
     for (const file of files) {
-      expect(Player.safeParse(JSON.parse(fs.readFileSync(path.join(playersDir, file), 'utf8'))).success).toBe(true);
+      expect(
+        Player.safeParse(JSON.parse(fs.readFileSync(path.join(playersDir, file), 'utf8'))).success,
+      ).toBe(true);
     }
   });
 

@@ -26,16 +26,17 @@ describe.each([
   });
 
   it.each(c.poster.stops.map((stop, index) => [`poster stop ${index + 1}`, c.poster.text, stop]))(
-    '%s has readable poster text', (_label, fg, bg) => {
+    '%s has readable poster text',
+    (_label, fg, bg) => {
       expect(contrastRatio(fg, bg)).toBeGreaterThanOrEqual(AA);
     },
   );
 
-  it.each(c.news.sourceBadges.map((badge, index) => [`news source ${index + 1}`, c.poster.text, badge]))(
-    '%s has readable monogram text', (_label, fg, bg) => {
-      expect(contrastRatio(fg, bg)).toBeGreaterThanOrEqual(AA);
-    },
-  );
+  it.each(
+    c.news.sourceBadges.map((badge, index) => [`news source ${index + 1}`, c.poster.text, badge]),
+  )('%s has readable monogram text', (_label, fg, bg) => {
+    expect(contrastRatio(fg, bg)).toBeGreaterThanOrEqual(AA);
+  });
 
   it.each([
     ['win', c.poster.outcome.winText, c.poster.outcome.winBackground],
@@ -54,6 +55,8 @@ describe.each([
 
 describe('separación de superficies (D-12)', () => {
   it('el papel oscuro se separa del fondo >= 1.3:1', () => {
-    expect(contrastRatio(darkColors.paper.background, darkColors.background)).toBeGreaterThanOrEqual(1.3);
+    expect(
+      contrastRatio(darkColors.paper.background, darkColors.background),
+    ).toBeGreaterThanOrEqual(1.3);
   });
 });

@@ -19,7 +19,11 @@ export function PlayerRow({ player, now }: { player: PlayerSummaryT; now: number
   ]
     .filter(Boolean)
     .join(' · ');
-  const label = [player.name, subtitle, player.shirtNumber !== null ? `${t('player.shirtNumber')} ${player.shirtNumber}` : null]
+  const label = [
+    player.name,
+    subtitle,
+    player.shirtNumber !== null ? `${t('player.shirtNumber')} ${player.shirtNumber}` : null,
+  ]
     .filter(Boolean)
     .join('. ');
 
@@ -32,7 +36,10 @@ export function PlayerRow({ player, now }: { player: PlayerSummaryT; now: number
     >
       <PlayerPortrait player={player} size={44} />
       <View style={styles.text}>
-        <Text numberOfLines={1} style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
+        <Text
+          numberOfLines={1}
+          style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}
+        >
           {player.name}
         </Text>
         {subtitle ? (
@@ -42,7 +49,9 @@ export function PlayerRow({ player, now }: { player: PlayerSummaryT; now: number
         ) : null}
       </View>
       {player.shirtNumber !== null ? (
-        <Text style={{ color: colors.textMuted, ...text.subtitle, fontWeight: '700' }}>{player.shirtNumber}</Text>
+        <Text style={{ color: colors.textMuted, ...text.subtitle, fontWeight: '700' }}>
+          {player.shirtNumber}
+        </Text>
       ) : null}
     </Pressable>
   );

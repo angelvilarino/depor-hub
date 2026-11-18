@@ -9,9 +9,7 @@ import { Club } from '@/data/schemas';
 import i18n from '@/i18n';
 
 const dataDir = path.resolve(__dirname, '../../../../data/public/v1');
-const clubData = Club.parse(
-  JSON.parse(fs.readFileSync(path.join(dataDir, 'club.json'), 'utf8')),
-);
+const clubData = Club.parse(JSON.parse(fs.readFileSync(path.join(dataDir, 'club.json'), 'utf8')));
 const titlesData = JSON.parse(fs.readFileSync(path.join(dataDir, 'titles.json'), 'utf8'));
 const rivalriesData = JSON.parse(fs.readFileSync(path.join(dataDir, 'rivalries.json'), 'utf8'));
 
@@ -125,7 +123,9 @@ describe('pestaña Club', () => {
     expect(clubData.kits).toHaveLength(42);
     expect(kits).toHaveLength(44);
     expect(kits.every((kit) => Boolean(kit.image) || kit.colors.length > 0)).toBe(true);
-    expect(kits.filter((kit) => kit.media?.kind === 'photo' && kit.media.status === 'verified')).toHaveLength(3);
+    expect(
+      kits.filter((kit) => kit.media?.kind === 'photo' && kit.media.status === 'verified'),
+    ).toHaveLength(3);
   });
 
   it('renders a verified historical shirt photo with visible credit and SVG fallback', async () => {
@@ -139,15 +139,21 @@ describe('pestaña Club', () => {
     });
     expect(image.props.source).toEqual([{ uri: season.kits[0]!.media!.url }]);
     expect(season.kits[0]!.image).toMatch(/\.svg$/);
-    expect(screen.getByLabelText('Crédito de imagen: Magno2002 / Wikimedia Commons · Magno2002 · CC0')).toBeTruthy();
+    expect(
+      screen.getByLabelText('Crédito de imagen: Magno2002 / Wikimedia Commons · Magno2002 · CC0'),
+    ).toBeTruthy();
 
     fireEvent(image, 'onError', { nativeEvent: { error: 'network' } });
     await waitFor(() => {
-      expect(screen.getByTestId('kit-1999-00-home-resolved-image', {
-        includeHiddenElements: true,
-      }).props.source).toEqual([{
-        uri: `https://data.test/v1/${season.kits[0]!.image}`,
-      }]);
+      expect(
+        screen.getByTestId('kit-1999-00-home-resolved-image', {
+          includeHiddenElements: true,
+        }).props.source,
+      ).toEqual([
+        {
+          uri: `https://data.test/v1/${season.kits[0]!.image}`,
+        },
+      ]);
     });
   });
 
@@ -193,14 +199,10 @@ describe('secciones del Club', () => {
     expect(screen.getByText('1906-1908')).toBeTruthy();
     expect(screen.getByText('2026-actualidad')).toBeTruthy();
     expect(
-      screen.getAllByLabelText(
-        'Crédito de imagen: Fuente: 1000logos.net · Licencia no verificada',
-      ),
+      screen.getAllByLabelText('Crédito de imagen: Fuente: 1000logos.net · Licencia no verificada'),
     ).toHaveLength(13);
 
-    fireEvent.press(
-      screen.getByLabelText('Comparar 1906-1908 con 1908-1910'),
-    );
+    fireEvent.press(screen.getByLabelText('Comparar 1906-1908 con 1908-1910'));
     await waitFor(() => {
       expect(screen.getByText('Antes · 1906-1908')).toBeTruthy();
       expect(screen.getByText('Después · 1908-1910')).toBeTruthy();
@@ -223,7 +225,11 @@ describe('secciones del Club', () => {
     expect(screen.getByText('2026-27')).toBeTruthy();
     expect(screen.getByTestId('kit-2026-27-home-image')).toBeTruthy();
     expect(screen.getByTestId('kit-2026-27-away-image')).toBeTruthy();
-    expect(screen.getByLabelText('Crédito de imagen: Foto de producto: Deportienda · Derechos reservados')).toBeTruthy();
+    expect(
+      screen.getByLabelText(
+        'Crédito de imagen: Foto de producto: Deportienda · Derechos reservados',
+      ),
+    ).toBeTruthy();
     expect(screen.getAllByText('Ilustración').length).toBeGreaterThan(0);
 
     fireEvent.press(screen.getByLabelText('Ir a la década de 1980s'));
@@ -246,7 +252,9 @@ describe('secciones del Club', () => {
     expect(
       screen.getByTestId('kit-1906-07-home-placeholder', { includeHiddenElements: true }),
     ).toBeTruthy();
-    expect(screen.getAllByText('Ilustración', { includeHiddenElements: true }).length).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText('Ilustración', { includeHiddenElements: true }).length,
+    ).toBeGreaterThan(0);
   });
 
   it('muestra el aforo verificado, su fuente, la historia y abre el mapa nativo', async () => {
@@ -343,7 +351,9 @@ describe('secciones del Club', () => {
 
     fireEvent.press(screen.getByLabelText('Ver imagen ampliada de Foto de ejemplo'));
     expect(screen.queryByLabelText('Ver imagen ampliada de Foto sin verificar')).toBeNull();
-    expect(screen.getAllByLabelText('Crédito de imagen: Foto de ejemplo').length).toBeGreaterThan(0);
+    expect(screen.getAllByLabelText('Crédito de imagen: Foto de ejemplo').length).toBeGreaterThan(
+      0,
+    );
     await waitFor(() => {
       expect(screen.getByTestId('club-photo-fullscreen-viewer')).toBeTruthy();
     });
@@ -375,7 +385,9 @@ describe('secciones del Club', () => {
     expect(screen.getByText('Patrocinadores oficiales')).toBeTruthy();
     expect(screen.getByText('ABANCA')).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Abrir web de ABANCA' })).toBeTruthy();
-    expect(screen.getByText('Patrocinador principal y titular de los derechos de nombre del estadio.')).toBeTruthy();
+    expect(
+      screen.getByText('Patrocinador principal y titular de los derechos de nombre del estadio.'),
+    ).toBeTruthy();
     expect(screen.getByText('2026–actualidad')).toBeTruthy();
     expect(screen.getAllByText('Nike')).toHaveLength(2);
     expect(screen.getAllByText('ABANCA')).toHaveLength(1);
@@ -430,13 +442,13 @@ describe('secciones del Club', () => {
     expect(screen.getAllByText('Balance en BDFutbol').length).toBeGreaterThan(0);
     expect(screen.getByText('Goles: 194 a favor · 202 en contra · BDFutbol')).toBeTruthy();
     expect(screen.getAllByText('Enfrentamientos').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Celta de Vigo 1–1 Deportivo de La Coruña').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Celta de Vigo 1–1 Deportivo de La Coruña').length).toBeGreaterThan(
+      0,
+    );
     expect(screen.queryByText('Partidos míticos')).toBeNull();
     fireEvent.press(screen.getAllByRole('link', { name: 'Balance en BDFutbol' })[0]!);
     await waitFor(() => {
-      expect(linking).toHaveBeenCalledWith(
-        'https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=11',
-      );
+      expect(linking).toHaveBeenCalledWith('https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=11');
     });
     linking.mockRestore();
   });
@@ -445,18 +457,27 @@ describe('secciones del Club', () => {
 describe('detalle de himno', () => {
   it('muestra la letra completa, los créditos y permite compartir', async () => {
     mockParams = { id: 'voa' };
-    mockUseClub.mockReturnValue(query({
-      ...clubData,
-      anthems: clubData.anthems.map((anthem) => anthem.id === 'voa'
-        ? { ...anthem, lyricsRights: { ...anthem.lyricsRights!, status: 'permission_granted' as const } }
-        : anthem),
-    }));
+    mockUseClub.mockReturnValue(
+      query({
+        ...clubData,
+        anthems: clubData.anthems.map((anthem) =>
+          anthem.id === 'voa'
+            ? {
+                ...anthem,
+                lyricsRights: { ...anthem.lyricsRights!, status: 'permission_granted' as const },
+              }
+            : anthem,
+        ),
+      }),
+    );
     const share = jest.spyOn(Share, 'share').mockResolvedValue({ action: 'sharedAction' } as never);
     await render(<AnthemScreen />);
 
     expect(screen.getByText(clubData.anthems[0]!.lyrics!)).toBeTruthy();
     expect(screen.getByText('Músicos')).toBeTruthy();
-    expect(screen.getByText('Xoel López: voz principal, coros, guitarras eléctricas y sintes')).toBeTruthy();
+    expect(
+      screen.getByText('Xoel López: voz principal, coros, guitarras eléctricas y sintes'),
+    ).toBeTruthy();
 
     fireEvent.press(screen.getByText('Compartir letra'));
     await waitFor(() => expect(share).toHaveBeenCalled());

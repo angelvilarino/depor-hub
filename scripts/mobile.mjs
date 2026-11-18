@@ -72,11 +72,15 @@ server.on('error', (error) => {
 });
 
 function startExpo() {
-  const child = spawn('npm', ['run', 'start', '-w', 'apps/mobile', '--', ...process.argv.slice(2)], {
-    cwd: ROOT,
-    stdio: 'inherit',
-    env: { ...process.env, EXPO_PUBLIC_DATA_PORT: String(PORT) },
-  });
+  const child = spawn(
+    'npm',
+    ['run', 'start', '-w', 'apps/mobile', '--', ...process.argv.slice(2)],
+    {
+      cwd: ROOT,
+      stdio: 'inherit',
+      env: { ...process.env, EXPO_PUBLIC_DATA_PORT: String(PORT) },
+    },
+  );
   const stop = (signal) => {
     child.kill(signal);
     server.close(() => process.exit(0));

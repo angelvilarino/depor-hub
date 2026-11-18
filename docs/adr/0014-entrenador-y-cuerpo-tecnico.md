@@ -24,13 +24,13 @@ Se amplía `Coach` con `birthPlace`, `photoUrl`, `career` y `staff`. `CareerEntr
 
 ### 2. Fuentes y prioridad
 
-| Dato | Fuente | Regla |
-|---|---|---|
-| Nombre y nacionalidad | football-data.org | Autoritativos: el enriquecimiento nunca los pisa. |
-| Fecha y lugar de nacimiento | Wikipedia ES, con Wikidata `P569`/`P19`/`P27` como contraste | Wikipedia manda en el lugar; Wikidata aporta la fecha si falta. |
-| Trayectoria como jugador y entrenador | Tablas de Wikipedia ES | Se separan por sección y se marca `role`. |
-| Foto | `og:image` de la ficha oficial del entrenador | Se quita el recorte social (`?rect=…&w=…`); si no hay, iniciales. |
-| Cuerpo técnico | `https://www.rcdeportivo.es/es/depor` | Solo lo que publica la web oficial; 21 miembros en la última pasada. |
+| Dato                                  | Fuente                                                       | Regla                                                                |
+| ------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------- |
+| Nombre y nacionalidad                 | football-data.org                                            | Autoritativos: el enriquecimiento nunca los pisa.                    |
+| Fecha y lugar de nacimiento           | Wikipedia ES, con Wikidata `P569`/`P19`/`P27` como contraste | Wikipedia manda en el lugar; Wikidata aporta la fecha si falta.      |
+| Trayectoria como jugador y entrenador | Tablas de Wikipedia ES                                       | Se separan por sección y se marca `role`.                            |
+| Foto                                  | `og:image` de la ficha oficial del entrenador                | Se quita el recorte social (`?rect=…&w=…`); si no hay, iniciales.    |
+| Cuerpo técnico                        | `https://www.rcdeportivo.es/es/depor`                        | Solo lo que publica la web oficial; 21 miembros en la última pasada. |
 
 El entrenador actual se identifica con Wikidata `Q602465` (Antonio Hidalgo). `data/manual/coach.yml` es la salida generada y revisable; `python -m depor_hub.cli coach` la regenera. `ingest` y `enrich --apply` aceptan `--coach` para aplicarla.
 

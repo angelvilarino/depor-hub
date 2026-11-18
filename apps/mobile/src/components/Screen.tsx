@@ -14,7 +14,11 @@ export function Screen({ children, refreshing = false, onRefresh }: ScreenProps)
       contentContainerStyle={styles.content}
       refreshControl={
         onRefresh ? (
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.primary} />
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={colors.primary}
+          />
         ) : undefined
       }
     >
@@ -37,10 +41,19 @@ export function Card({ children }: { children: ReactNode }) {
 
 export function BodyText({ children, muted }: { children: ReactNode; muted?: boolean }) {
   const { colors } = useTheme();
-  return <Text style={{ color: muted ? colors.textMuted : colors.text, ...text.bodyLarge }}>{children}</Text>;
+  return (
+    <Text style={{ color: muted ? colors.textMuted : colors.text, ...text.bodyLarge }}>
+      {children}
+    </Text>
+  );
 }
 
 const styles = StyleSheet.create({
   content: { padding: spacing.md, gap: spacing.md },
-  card: { padding: spacing.md, borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, gap: spacing.sm },
+  card: {
+    padding: spacing.md,
+    borderRadius: radius.md,
+    borderWidth: StyleSheet.hairlineWidth,
+    gap: spacing.sm,
+  },
 });

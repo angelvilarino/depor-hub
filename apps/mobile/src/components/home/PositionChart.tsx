@@ -1,11 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useWindowDimensions, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, {
-  runOnJS,
-  useAnimatedStyle,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { runOnJS, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import Svg, { Circle, Line, Polyline, Text as SvgText } from 'react-native-svg';
 import { useTranslation } from 'react-i18next';
 import type { PositionPointT, SeasonFormMatchT } from '@/data/schemas';
@@ -41,9 +37,13 @@ function PositionChartBody({ points, matches, selectedMatchday, onSelectMatchday
   const worst = Math.max(...points.map((point) => point.position));
   const span = Math.max(1, worst - best);
   const x = (index: number) => padding + (index / (points.length - 1)) * (chartWidth - padding * 2);
-  const y = (position: number) => padding + ((position - best) / span) * (chartHeight - padding * 2);
+  const y = (position: number) =>
+    padding + ((position - best) / span) * (chartHeight - padding * 2);
   const coords = points.map((point, index) => `${x(index)},${y(point.position)}`).join(' ');
-  const selectedIndex = Math.max(0, points.findIndex((point) => point.matchday === selectedMatchday));
+  const selectedIndex = Math.max(
+    0,
+    points.findIndex((point) => point.matchday === selectedMatchday),
+  );
   const selected = points[selectedIndex] ?? points[points.length - 1]!;
   const match = matches.find((item) => item.matchday === selected.matchday);
   const outcome = match ? t(`calendar.outcomeLong.${match.result}`) : null;
@@ -57,20 +57,36 @@ function PositionChartBody({ points, matches, selectedMatchday, onSelectMatchday
   });
   const guidePosition = x(selectedIndex);
 
-  const animatedGuide = useAnimatedStyle(() => ({
-    opacity: 1,
-    transform: [{ translateX: reduceMotion ? guidePosition : withTiming(guidePosition, { duration: motion.fast }) }],
-  }), [guidePosition, reduceMotion]);
+  const animatedGuide = useAnimatedStyle(
+    () => ({
+      opacity: 1,
+      transform: [
+        {
+          translateX: reduceMotion
+            ? guidePosition
+            : withTiming(guidePosition, { duration: motion.fast }),
+        },
+      ],
+    }),
+    [guidePosition, reduceMotion],
+  );
 
-  const selectAt = useCallback((localX: number) => {
-    const index = positionChartIndex(localX, chartWidth, points.length, padding);
-    const target = points[index];
-    if (target) onSelectMatchday(target.matchday);
-  }, [chartWidth, onSelectMatchday, points]);
-  const gesture = useMemo(() => Gesture.Pan()
-    .minDistance(0)
-    .onBegin((event) => runOnJS(selectAt)(event.x))
-    .onUpdate((event) => runOnJS(selectAt)(event.x)), [selectAt]);
+  const selectAt = useCallback(
+    (localX: number) => {
+      const index = positionChartIndex(localX, chartWidth, points.length, padding);
+      const target = points[index];
+      if (target) onSelectMatchday(target.matchday);
+    },
+    [chartWidth, onSelectMatchday, points],
+  );
+  const gesture = useMemo(
+    () =>
+      Gesture.Pan()
+        .minDistance(0)
+        .onBegin((event) => runOnJS(selectAt)(event.x))
+        .onUpdate((event) => runOnJS(selectAt)(event.x)),
+    [selectAt],
+  );
 
   const moveSelection = (direction: -1 | 1) => {
     const index = Math.max(0, Math.min(points.length - 1, selectedIndex + direction));
@@ -84,8 +100,11 @@ function PositionChartBody({ points, matches, selectedMatchday, onSelectMatchday
     points: points.map((point) => `${point.matchday}: ${point.position}º`).join(', '),
   });
   const date = match
-    ? new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'short', timeZone: 'UTC' })
-        .format(new Date(`${match.date}T12:00:00Z`))
+    ? new Intl.DateTimeFormat(i18n.language, {
+        day: 'numeric',
+        month: 'short',
+        timeZone: 'UTC',
+      }).format(new Date(`${match.date}T12:00:00Z`))
     : null;
 
   return (
@@ -93,12 +112,18 @@ function PositionChartBody({ points, matches, selectedMatchday, onSelectMatchday
       accessible
       accessibilityRole="adjustable"
       accessibilityLabel={label}
-      accessibilityValue={{ min: points[0]!.matchday, max: points[points.length - 1]!.matchday, now: selected.matchday }}
+      accessibilityValue={{
+        min: points[0]!.matchday,
+        max: points[points.length - 1]!.matchday,
+        now: selected.matchday,
+      }}
       accessibilityActions={[
         { name: 'increment', label: t('home.seasonCard.chartIncrement') },
         { name: 'decrement', label: t('home.seasonCard.chartDecrement') },
       ]}
-      onAccessibilityAction={(event) => moveSelection(event.nativeEvent.actionName === 'increment' ? 1 : -1)}
+      onAccessibilityAction={(event) =>
+        moveSelection(event.nativeEvent.actionName === 'increment' ? 1 : -1)
+      }
       style={{ gap: spacing.xs }}
     >
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -110,28 +135,85 @@ function PositionChartBody({ points, matches, selectedMatchday, onSelectMatchday
           >
             {detail}
           </Animated.Text>
-          {date ? <Animated.Text style={{ color: paper.muted, ...text.caption }}>{date} · {match?.home ? t('home.local') : t('home.away')}</Animated.Text> : null}
+          {date ? (
+            <Animated.Text style={{ color: paper.muted, ...text.caption }}>
+              {date} · {match?.home ? t('home.local') : t('home.away')}
+            </Animated.Text>
+          ) : null}
         </View>
-        {match ? (
-          <PressMatchResult result={match.result} label={outcome ?? ''} />
-        ) : null}
+        {match ? <PressMatchResult result={match.result} label={outcome ?? ''} /> : null}
       </View>
       <GestureDetector gesture={gesture}>
         <View style={{ width: chartWidth, height: chartHeight }}>
           <Svg width={chartWidth} height={chartHeight}>
             {[best, worst].map((position, index) => (
-              <Line key={`${position}-${index}`} x1={padding} y1={y(position)} x2={chartWidth - padding} y2={y(position)} stroke={colors.paper.border} strokeWidth={1} />
+              <Line
+                key={`${position}-${index}`}
+                x1={padding}
+                y1={y(position)}
+                x2={chartWidth - padding}
+                y2={y(position)}
+                stroke={colors.paper.border}
+                strokeWidth={1}
+              />
             ))}
-            <SvgText x={1} y={y(best) + 4} fill={paper.muted} fontSize={text.caption.fontSize}>{best}º</SvgText>
-            <SvgText x={1} y={y(worst) + 4} fill={paper.muted} fontSize={text.caption.fontSize}>{worst}º</SvgText>
-            <Polyline points={coords} fill="none" stroke={paper.accent} strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />
+            <SvgText x={1} y={y(best) + 4} fill={paper.muted} fontSize={text.caption.fontSize}>
+              {best}º
+            </SvgText>
+            <SvgText x={1} y={y(worst) + 4} fill={paper.muted} fontSize={text.caption.fontSize}>
+              {worst}º
+            </SvgText>
+            <Polyline
+              points={coords}
+              fill="none"
+              stroke={paper.accent}
+              strokeWidth={2.5}
+              strokeLinejoin="round"
+              strokeLinecap="round"
+            />
             {points.map((point, index) => (
-              <Circle key={point.matchday} cx={x(index)} cy={y(point.position)} r={index === selectedIndex ? 6 : 3} fill={paper.accent} />
+              <Circle
+                key={point.matchday}
+                cx={x(index)}
+                cy={y(point.position)}
+                r={index === selectedIndex ? 6 : 3}
+                fill={paper.accent}
+              />
             ))}
-            {bestDay != null ? <SvgText x={x(points.findIndex((point) => point.matchday === bestDay))} y={y(best) - 8} fill={paper.text} fontSize={text.caption.fontSize}>{t('home.seasonCard.best')}</SvgText> : null}
-            {worstDay != null ? <SvgText x={x(points.findIndex((point) => point.matchday === worstDay))} y={y(worst) + 14} fill={paper.text} fontSize={text.caption.fontSize}>{t('home.seasonCard.worst')}</SvgText> : null}
+            {bestDay != null ? (
+              <SvgText
+                x={x(points.findIndex((point) => point.matchday === bestDay))}
+                y={y(best) - 8}
+                fill={paper.text}
+                fontSize={text.caption.fontSize}
+              >
+                {t('home.seasonCard.best')}
+              </SvgText>
+            ) : null}
+            {worstDay != null ? (
+              <SvgText
+                x={x(points.findIndex((point) => point.matchday === worstDay))}
+                y={y(worst) + 14}
+                fill={paper.text}
+                fontSize={text.caption.fontSize}
+              >
+                {t('home.seasonCard.worst')}
+              </SvgText>
+            ) : null}
           </Svg>
-          <Animated.View pointerEvents="none" style={[{ position: 'absolute', top: padding, bottom: padding, width: 1, backgroundColor: paper.accent }, animatedGuide]} />
+          <Animated.View
+            pointerEvents="none"
+            style={[
+              {
+                position: 'absolute',
+                top: padding,
+                bottom: padding,
+                width: 1,
+                backgroundColor: paper.accent,
+              },
+              animatedGuide,
+            ]}
+          />
         </View>
       </GestureDetector>
     </View>
@@ -143,8 +225,22 @@ function PressMatchResult({ result, label }: { result: 'W' | 'D' | 'L'; label: s
   const { colors } = useTheme();
   const tone = result === 'W' ? colors.win : result === 'L' ? colors.loss : colors.draw;
   return (
-    <View accessible accessibilityLabel={label} style={{ width: 42, minHeight: 42, borderWidth: 2, borderColor: tone, borderRadius: 21, alignItems: 'center', justifyContent: 'center' }}>
-      <Animated.Text style={{ color: tone, fontWeight: '900' }}>{t(`calendar.outcome.${result}`)}</Animated.Text>
+    <View
+      accessible
+      accessibilityLabel={label}
+      style={{
+        width: 42,
+        minHeight: 42,
+        borderWidth: 2,
+        borderColor: tone,
+        borderRadius: 21,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Animated.Text style={{ color: tone, fontWeight: '900' }}>
+        {t(`calendar.outcome.${result}`)}
+      </Animated.Text>
     </View>
   );
 }

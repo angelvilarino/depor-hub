@@ -28,12 +28,7 @@ export function NewsToolbar({
   const active = activeFilterCount(filters);
 
   return (
-    <View
-      style={[
-        styles.bar,
-        { backgroundColor: colors.background, borderColor: colors.border },
-      ]}
-    >
+    <View style={[styles.bar, { backgroundColor: colors.background, borderColor: colors.border }]}>
       <View style={styles.row}>
         <Pressable
           accessibilityRole="button"
@@ -44,7 +39,10 @@ export function NewsToolbar({
         >
           <Ionicons name="search" size={22} color={colors.text} />
         </Pressable>
-        <Text numberOfLines={1} style={{ color: colors.text, flex: 1, ...text.title, fontWeight: '700' }}>
+        <Text
+          numberOfLines={1}
+          style={{ color: colors.text, flex: 1, ...text.title, fontWeight: '700' }}
+        >
           {t('tabs.news')}
         </Text>
         <Pressable
@@ -65,7 +63,9 @@ export function NewsToolbar({
       </View>
 
       {searching ? (
-        <View style={[styles.search, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+        <View
+          style={[styles.search, { backgroundColor: colors.surface, borderColor: colors.border }]}
+        >
           <Ionicons name="search" size={18} color={colors.textMuted} />
           <TextInput
             accessibilityLabel={t('news.searchPlaceholder')}

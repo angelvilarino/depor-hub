@@ -5,7 +5,10 @@ import type { MatchT } from '@/data/schemas';
 import { useMeta } from '@/data/queries';
 import { addMatchToCalendar, type CalendarResult } from '@/features/calendar/system';
 import { teamName } from '@/features/calendar/logic';
-import { ensureReminderPermission, requestExactAlarmPermission } from '@/features/reminders/notifications';
+import {
+  ensureReminderPermission,
+  requestExactAlarmPermission,
+} from '@/features/reminders/notifications';
 import { isRemindable, offsetLabel } from '@/features/reminders/plan';
 import { useSettings } from '@/store/settings';
 import { buildIcs } from '@/utils/ics';

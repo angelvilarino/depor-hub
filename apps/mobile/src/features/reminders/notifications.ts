@@ -30,8 +30,7 @@ async function ensureChannel(): Promise<void> {
 
 export type ReminderPermission = 'granted' | 'notifications_denied' | 'exact_alarm_denied';
 
-const needsExactAlarm = (): boolean =>
-  Platform.OS === 'android' && Number(Platform.Version) >= 31;
+const needsExactAlarm = (): boolean => Platform.OS === 'android' && Number(Platform.Version) >= 31;
 
 /**
  * Comprueba el permiso de alarmas exactas (Android 12+, F3-15). Sin él el
@@ -50,7 +49,8 @@ export async function ensureReminderPermission(): Promise<ReminderPermission> {
   await ensureChannel(); // en Android 13+ el canal debe existir antes de pedir permiso
   const current = await Notifications.getPermissionsAsync();
   const granted =
-    current.granted || (current.canAskAgain && (await Notifications.requestPermissionsAsync()).granted);
+    current.granted ||
+    (current.canAskAgain && (await Notifications.requestPermissionsAsync()).granted);
   if (!granted) return 'notifications_denied';
   // F3-15: en Android 12+ se pide además la alarma exacta; si se deniega, se avisa.
   return (await requestExactAlarmPermission()) ? 'granted' : 'exact_alarm_denied';
@@ -91,7 +91,11 @@ async function applyReminders(matches: MatchT[], remindMatches: ReminderMap): Pr
         body: i18n.t(`reminder.body.${offsetKey(p.offsetMin)}`, { time }),
         data: { kind: KIND, matchId: p.match.id },
       },
-      trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: p.fireAt, channelId: CHANNEL },
+      trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.DATE,
+        date: p.fireAt,
+        channelId: CHANNEL,
+      },
     });
   }
 }

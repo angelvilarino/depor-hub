@@ -65,9 +65,7 @@ export function toMatch(match) {
 export function transformFixtures(payload, now = new Date()) {
   const all = Array.isArray(payload?.matches) ? payload.matches : [];
   const matches = all
-    .filter(
-      (match) => match?.homeTeam?.id === DEPOR_ID || match?.awayTeam?.id === DEPOR_ID,
-    )
+    .filter((match) => match?.homeTeam?.id === DEPOR_ID || match?.awayTeam?.id === DEPOR_ID)
     .map(toMatch)
     .filter(Boolean)
     .sort((a, b) => Date.parse(a.utcDate) - Date.parse(b.utcDate));

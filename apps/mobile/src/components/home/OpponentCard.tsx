@@ -13,11 +13,19 @@ import { useTheme } from '@/theme/useTheme';
 
 function parseForm(value: string | null): FormResult[] {
   if (!value) return [];
-  return value.split(/[^WDL]/).filter((part): part is FormResult => part === 'W' || part === 'D' || part === 'L');
+  return value
+    .split(/[^WDL]/)
+    .filter((part): part is FormResult => part === 'W' || part === 'D' || part === 'L');
 }
 
 function initials(name: string) {
-  return name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase();
 }
 
 export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: RivalT | null }) {
@@ -26,11 +34,16 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
   const form = info.form.length > 0 ? info.form : parseForm(info.row?.form ?? null);
   const head = rival?.headToHead ?? null;
   const label = [
-    t('home.opponent'), teamName(info.opponent),
-    info.row ? t('home.rival.position', { position: info.row.position, points: info.row.points }) : null,
+    t('home.opponent'),
+    teamName(info.opponent),
+    info.row
+      ? t('home.rival.position', { position: info.row.position, points: info.row.points })
+      : null,
     rival?.coach ? `${t('home.rival.coach')}: ${rival.coach}` : null,
     form.map((item) => t(`calendar.outcomeLong.${item}`)).join(', '),
-  ].filter(Boolean).join('. ');
+  ]
+    .filter(Boolean)
+    .join('. ');
 
   return (
     <PosterCard>
@@ -50,7 +63,9 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
             </Text>
             {info.row ? (
               <View style={styles.rankRow}>
-                <Text style={[styles.rank, { color: colors.poster.accent }]}>{info.row.position}º</Text>
+                <Text style={[styles.rank, { color: colors.poster.accent }]}>
+                  {info.row.position}º
+                </Text>
                 <Text style={[styles.points, { color: colors.poster.text }]}>
                   {t('home.rival.points', { points: info.row.points })}
                 </Text>
@@ -61,7 +76,9 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
 
         {form.length > 0 ? (
           <View style={styles.block}>
-            <Text style={[styles.label, { color: colors.poster.muted }]}>{t('home.rival.form')}</Text>
+            <Text style={[styles.label, { color: colors.poster.muted }]}>
+              {t('home.rival.form')}
+            </Text>
             <FormChips results={form} variant="poster" />
           </View>
         ) : null}
@@ -69,10 +86,14 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
         {rival?.coach ? (
           <View style={[styles.coachCard, { borderColor: colors.poster.muted }]}>
             <View style={[styles.coachInitials, { backgroundColor: colors.poster.text }]}>
-              <Text style={{ color: colors.primary, ...text.body, fontWeight: '900' }}>{initials(rival.coach)}</Text>
+              <Text style={{ color: colors.primary, ...text.body, fontWeight: '900' }}>
+                {initials(rival.coach)}
+              </Text>
             </View>
             <View style={styles.coachText}>
-              <Text style={[styles.label, { color: colors.poster.muted }]}>{t('home.rival.coach')}</Text>
+              <Text style={[styles.label, { color: colors.poster.muted }]}>
+                {t('home.rival.coach')}
+              </Text>
               <Text style={[styles.coachName, { color: colors.poster.text }]}>{rival.coach}</Text>
             </View>
           </View>
@@ -80,7 +101,9 @@ export function OpponentCard({ info, rival }: { info: OpponentInfo; rival: Rival
 
         {head ? (
           <View style={styles.block}>
-            <Text style={[styles.label, { color: colors.poster.muted }]}>{t('home.rival.headToHead')}</Text>
+            <Text style={[styles.label, { color: colors.poster.muted }]}>
+              {t('home.rival.headToHead')}
+            </Text>
             <HeadToHeadBar head={head} variant="poster" />
           </View>
         ) : null}
@@ -103,8 +126,20 @@ const styles = StyleSheet.create({
   points: { ...text.bodyLarge, fontWeight: '700' },
   block: { gap: spacing.xs },
   label: { ...text.caption, fontWeight: '700', letterSpacing: 0.8, textTransform: 'uppercase' },
-  coachCard: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm },
-  coachInitials: { width: 42, height: 42, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
+  coachCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: spacing.sm,
+  },
+  coachInitials: {
+    width: 42,
+    height: 42,
+    borderRadius: radius.pill,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   coachText: { gap: spacing.xs },
   coachName: { fontFamily: typography.headline, ...text.subtitle },
   openLink: { ...text.body, fontWeight: '800', alignSelf: 'flex-end' },

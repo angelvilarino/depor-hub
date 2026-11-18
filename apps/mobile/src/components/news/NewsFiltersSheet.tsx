@@ -61,10 +61,7 @@ export function NewsFiltersSheet({
           style={styles.backdrop}
         />
         <View
-          style={[
-            styles.sheet,
-            { backgroundColor: colors.surface, borderColor: colors.border },
-          ]}
+          style={[styles.sheet, { backgroundColor: colors.surface, borderColor: colors.border }]}
         >
           <View style={[styles.handle, { backgroundColor: colors.border }]} />
           <View style={styles.header}>
@@ -82,9 +79,7 @@ export function NewsFiltersSheet({
           </View>
 
           <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-            <Text style={[styles.heading, { color: colors.textMuted }]}>
-              {t('news.kindTitle')}
-            </Text>
+            <Text style={[styles.heading, { color: colors.textMuted }]}>{t('news.kindTitle')}</Text>
             <View style={styles.kindRow}>
               {KINDS.map((kind) => {
                 const selected = filters.kind === kind;
@@ -152,9 +147,7 @@ export function NewsFiltersSheet({
               })}
             </View>
 
-            <Text style={[styles.heading, { color: colors.textMuted }]}>
-              {t('news.sources')}
-            </Text>
+            <Text style={[styles.heading, { color: colors.textMuted }]}>{t('news.sources')}</Text>
             {sources.length === 0 ? (
               <Text style={{ color: colors.textMuted, ...text.body }}>{t('news.noSources')}</Text>
             ) : (
@@ -180,17 +173,13 @@ export function NewsFiltersSheet({
                     <Text style={{ color: colors.text, flex: 1, ...text.bodyLarge }}>
                       {source.name}
                     </Text>
-                    <Text style={{ color: colors.textMuted, ...text.body }}>
-                      {source.items}
-                    </Text>
+                    <Text style={{ color: colors.textMuted, ...text.body }}>{source.items}</Text>
                   </Pressable>
                 );
               })
             )}
 
-            <Text style={[styles.heading, { color: colors.textMuted }]}>
-              {t('news.tagsTitle')}
-            </Text>
+            <Text style={[styles.heading, { color: colors.textMuted }]}>{t('news.tagsTitle')}</Text>
             {tags.length === 0 ? (
               <Text style={{ color: colors.textMuted, ...text.body }}>{t('news.noTags')}</Text>
             ) : (

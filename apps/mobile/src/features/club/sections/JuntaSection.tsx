@@ -13,18 +13,14 @@ import { MutedText, SectionTitle } from './ui';
 
 function initialsFor(name: string) {
   const words = name.trim().split(/\s+/).filter(Boolean);
-  return words.slice(0, 2).map((word) => Array.from(word)[0] ?? '').join('').toLocaleUpperCase();
+  return words
+    .slice(0, 2)
+    .map((word) => Array.from(word)[0] ?? '')
+    .join('')
+    .toLocaleUpperCase();
 }
 
-function PersonNode({
-  name,
-  role,
-  onPress,
-}: {
-  name: string;
-  role: string;
-  onPress?: () => void;
-}) {
+function PersonNode({ name, role, onPress }: { name: string; role: string; onPress?: () => void }) {
   const { colors } = useTheme();
   const content = (
     <>
@@ -67,7 +63,12 @@ function PersonNode({
 
 function Connector() {
   const { colors } = useTheme();
-  return <View accessibilityElementsHidden style={[styles.connector, { backgroundColor: colors.border }]} />;
+  return (
+    <View
+      accessibilityElementsHidden
+      style={[styles.connector, { backgroundColor: colors.border }]}
+    />
+  );
 }
 
 export function JuntaSection({ club }: { club: ClubT }) {
@@ -89,11 +90,16 @@ export function JuntaSection({ club }: { club: ClubT }) {
     <Card>
       <SectionTitle>{t('club.junta.title')}</SectionTitle>
       <View style={styles.orgChart}>
-        {board?.president ? <PersonNode name={board.president} role={t('club.junta.president')} /> : null}
+        {board?.president ? (
+          <PersonNode name={board.president} role={t('club.junta.president')} />
+        ) : null}
         {hasPresident && (hasMembers || hasDirector || coach) ? <Connector /> : null}
         {hasMembers ? (
           <>
-            <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}>
+            <Text
+              accessibilityRole="header"
+              style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}
+            >
               {t('club.junta.members')}
             </Text>
             <View style={[styles.members, { borderLeftColor: colors.border }]}>

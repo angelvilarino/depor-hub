@@ -2,8 +2,19 @@ import { groupByMonth, outcome, splitMatches } from '@/features/calendar/logic';
 import { makeMatch } from '@/test-utils/matches';
 
 describe('calendar logic', () => {
-  const fin = makeMatch({ id: 1, utcDate: '2026-10-16T19:00:00Z', status: 'FINISHED', score: { home: 1, away: 1, halfTimeHome: 0, halfTimeAway: 0, winner: 'DRAW' } });
-  const fin2 = makeMatch({ id: 2, utcDate: '2026-10-11T14:15:00Z', status: 'FINISHED', deporIsHome: false, score: { home: 3, away: 2, halfTimeHome: 2, halfTimeAway: 0, winner: 'HOME_TEAM' } });
+  const fin = makeMatch({
+    id: 1,
+    utcDate: '2026-10-16T19:00:00Z',
+    status: 'FINISHED',
+    score: { home: 1, away: 1, halfTimeHome: 0, halfTimeAway: 0, winner: 'DRAW' },
+  });
+  const fin2 = makeMatch({
+    id: 2,
+    utcDate: '2026-10-11T14:15:00Z',
+    status: 'FINISHED',
+    deporIsHome: false,
+    score: { home: 3, away: 2, halfTimeHome: 2, halfTimeAway: 0, winner: 'HOME_TEAM' },
+  });
   const next = makeMatch({ id: 3, utcDate: '2026-10-24T19:00:00Z' });
   const later = makeMatch({ id: 4, utcDate: '2026-11-22T00:00:00Z', status: 'SCHEDULED' });
   const cancelled = makeMatch({ id: 5, status: 'CANCELLED' });

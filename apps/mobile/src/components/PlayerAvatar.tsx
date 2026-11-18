@@ -10,9 +10,20 @@ export function PlayerAvatar({ id, name, size = 44 }: { id: number; name: string
     <View
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
-      style={[styles.circle, { width: size, height: size, borderRadius: size / 2, backgroundColor: avatarColor(id) }]}
+      style={[
+        styles.circle,
+        { width: size, height: size, borderRadius: size / 2, backgroundColor: avatarColor(id) },
+      ]}
     >
-      <Text style={{ color: colors.onImage, fontSize: Math.max(text.caption.fontSize, Math.round(size * 0.38)), fontWeight: '700' }}>{initials(name)}</Text>
+      <Text
+        style={{
+          color: colors.onImage,
+          fontSize: Math.max(text.caption.fontSize, Math.round(size * 0.38)),
+          fontWeight: '700',
+        }}
+      >
+        {initials(name)}
+      </Text>
     </View>
   );
 }

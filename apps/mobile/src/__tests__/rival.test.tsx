@@ -7,12 +7,14 @@ import { SHOW_RIVAL_PHOTOS } from '@/config';
 import i18n from '@/i18n';
 
 const dataDir = path.resolve(__dirname, '../../../../data/public/v1');
-const read = (name: string): unknown => JSON.parse(fs.readFileSync(path.join(dataDir, name), 'utf8'));
+const read = (name: string): unknown =>
+  JSON.parse(fs.readFileSync(path.join(dataDir, name), 'utf8'));
 const metaData = Meta.parse(read('meta.json'));
 const standingsData = Standings.parse(read('standings.json'));
 const baseRivals = Rivals.parse(read('rivals.json'));
 // Se elige un rival con histórico real para no depender del orden del JSON.
-const featuredRival = baseRivals.rivals.find((rival) => rival.headToHead !== null) ?? baseRivals.rivals[0]!;
+const featuredRival =
+  baseRivals.rivals.find((rival) => rival.headToHead !== null) ?? baseRivals.rivals[0]!;
 let mockTeamId = String(featuredRival.team.id);
 let mockMeta: unknown;
 let mockRivals: unknown;
@@ -44,7 +46,9 @@ const query = (data: unknown) => ({
   refetch: jest.fn(),
 });
 
-beforeAll(async () => { await i18n.changeLanguage('es'); });
+beforeAll(async () => {
+  await i18n.changeLanguage('es');
+});
 beforeEach(() => {
   mockMeta = query(metaData);
   mockStandings = query(standingsData);

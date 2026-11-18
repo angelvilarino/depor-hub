@@ -1,7 +1,11 @@
 import { buildIcs, escapeText, foldLine } from '@/utils/ics';
 import { makeMatch } from '@/test-utils/matches';
 
-const opts = { venue: 'Estadio, Riazor', matchdayLabel: (n: number) => `Jornada ${n}`, tbcLabel: 'Hora por confirmar' };
+const opts = {
+  venue: 'Estadio, Riazor',
+  matchdayLabel: (n: number) => `Jornada ${n}`,
+  tbcLabel: 'Hora por confirmar',
+};
 const NOW = '2026-10-20T10:00:00Z';
 
 describe('ics', () => {
@@ -15,14 +19,22 @@ describe('ics', () => {
   });
 
   it('SCHEDULED es de día completo y avisa de hora pendiente', () => {
-    const ics = buildIcs([makeMatch({ id: 2, status: 'SCHEDULED', utcDate: '2026-11-22T00:00:00Z' })], NOW, opts);
+    const ics = buildIcs(
+      [makeMatch({ id: 2, status: 'SCHEDULED', utcDate: '2026-11-22T00:00:00Z' })],
+      NOW,
+      opts,
+    );
     expect(ics).toContain('DTSTART;VALUE=DATE:20261122');
     expect(ics).toContain('DTEND;VALUE=DATE:20261123');
     expect(ics).toContain('Hora por confirmar');
   });
 
   it('excluye aplazados y no pone sede si juega fuera', () => {
-    const ics = buildIcs([makeMatch({ status: 'POSTPONED' }), makeMatch({ id: 9, deporIsHome: false })], NOW, opts);
+    const ics = buildIcs(
+      [makeMatch({ status: 'POSTPONED' }), makeMatch({ id: 9, deporIsHome: false })],
+      NOW,
+      opts,
+    );
     expect(ics).not.toContain('match-1@');
     expect(ics).not.toContain('LOCATION');
   });

@@ -48,7 +48,11 @@ function LiveBadge({ label }: { label: string }) {
     if (reducedMotion) return;
     const animation = Animated.loop(
       Animated.sequence([
-        Animated.timing(opacity, { toValue: 0.45, duration: motion.standard, useNativeDriver: true }),
+        Animated.timing(opacity, {
+          toValue: 0.45,
+          duration: motion.standard,
+          useNativeDriver: true,
+        }),
         Animated.timing(opacity, { toValue: 1, duration: motion.standard, useNativeDriver: true }),
       ]),
     );
@@ -56,9 +60,15 @@ function LiveBadge({ label }: { label: string }) {
     return () => animation.stop();
   }, [opacity, reducedMotion]);
   return (
-    <View accessible accessibilityLabel={label} style={[styles.liveBadge, { borderColor: colors.poster.text }]}>
+    <View
+      accessible
+      accessibilityLabel={label}
+      style={[styles.liveBadge, { borderColor: colors.poster.text }]}
+    >
       <Animated.View style={[styles.liveDot, { backgroundColor: colors.poster.accent, opacity }]} />
-      <Text style={{ color: colors.poster.text, ...text.caption, fontWeight: '800', letterSpacing: 1 }}>
+      <Text
+        style={{ color: colors.poster.text, ...text.caption, fontWeight: '800', letterSpacing: 1 }}
+      >
         {label}
       </Text>
     </View>
@@ -109,24 +119,35 @@ export function NextMatchCard({
   const homeSide = match.deporIsHome ? t('home.local') : t('home.away');
   const awaySide = match.deporIsHome ? t('home.away') : t('home.local');
   const competition = competitionLabel(competitionCode, competitionName, t);
-  const competitionLine = match.matchday !== null
-    ? `${t('calendar.matchday', { n: match.matchday })}${competition ? ` · ${competition}` : ''}`
-    : competition;
+  const competitionLine =
+    match.matchday !== null
+      ? `${t('calendar.matchday', { n: match.matchday })}${competition ? ` · ${competition}` : ''}`
+      : competition;
   const summary = [
-    t('home.nextMatch'), competitionLine,
+    t('home.nextMatch'),
+    competitionLine,
     `${teamName(match.home)} ${t('calendar.versus')} ${teamName(match.away)}`,
     visiblePhase === 'live' && hasScore ? `${match.score.home}–${match.score.away}` : status,
-    date, timeLabel, venue,
-  ].filter(Boolean).join('. ');
-  const calendarLabel = calendarStatus === 'saved'
-    ? t('match.calendarSaved')
-    : calendarStatus === 'shared'
-      ? t('match.calendarShared')
-      : t('match.addToCalendar');
+    date,
+    timeLabel,
+    venue,
+  ]
+    .filter(Boolean)
+    .join('. ');
+  const calendarLabel =
+    calendarStatus === 'saved'
+      ? t('match.calendarSaved')
+      : calendarStatus === 'shared'
+        ? t('match.calendarShared')
+        : t('match.addToCalendar');
 
   return (
     <PosterCard>
-      <SectionHeader title={t('home.nextMatch')} subtitle={competitionLine ?? undefined} variant="poster" />
+      <SectionHeader
+        title={t('home.nextMatch')}
+        subtitle={competitionLine ?? undefined}
+        variant="poster"
+      />
 
       <Pressable
         accessibilityRole="button"
@@ -137,7 +158,11 @@ export function NextMatchCard({
         <View style={styles.teamsRow}>
           <TeamSide team={match.home} side={homeSide} />
           <View style={styles.vsBox}>
-            <Text adjustsFontSizeToFit numberOfLines={1} style={[styles.vs, { color: colors.poster.accent }]}>
+            <Text
+              adjustsFontSizeToFit
+              numberOfLines={1}
+              style={[styles.vs, { color: colors.poster.accent }]}
+            >
               {t('calendar.versus').toUpperCase()}
             </Text>
           </View>
@@ -147,7 +172,10 @@ export function NextMatchCard({
         {visiblePhase === 'live' ? (
           <View style={styles.stateBlock}>
             <LiveBadge label={t('home.liveNow')} />
-            <Text maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier} style={[styles.heroScore, { color: colors.poster.text }]}>
+            <Text
+              maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
+              style={[styles.heroScore, { color: colors.poster.text }]}
+            >
               {hasScore ? `${match.score.home} – ${match.score.away}` : status}
             </Text>
           </View>
@@ -158,10 +186,14 @@ export function NextMatchCard({
             <Text style={[styles.tbcDays, { color: colors.poster.text }]}>
               {daysUntil <= 0 ? t('home.matchToday') : t('home.daysUntil', { count: daysUntil })}
             </Text>
-            <Text style={{ color: colors.poster.muted, ...text.body }}>{t('calendar.timeTbc')}</Text>
+            <Text style={{ color: colors.poster.muted, ...text.body }}>
+              {t('calendar.timeTbc')}
+            </Text>
           </View>
         ) : visiblePhase === 'awaiting_result' ? (
-          <Text style={[styles.stateText, { color: colors.poster.text }]}>{t('home.awaitingResult')}</Text>
+          <Text style={[styles.stateText, { color: colors.poster.text }]}>
+            {t('home.awaitingResult')}
+          </Text>
         ) : (
           <Text style={[styles.stateText, { color: colors.poster.text }]}>
             {t(`home.phase.${visiblePhase}`, { defaultValue: status })}
@@ -204,7 +236,9 @@ export function NextMatchCard({
           {remindable ? (
             <Button
               variant={reminded ? 'secondary' : 'primary'}
-              label={reminded ? t('reminder.active', { offsets: reminderSummary }) : t('match.remind')}
+              label={
+                reminded ? t('reminder.active', { offsets: reminderSummary }) : t('match.remind')
+              }
               onPress={() => setSheetOpen(true)}
             />
           ) : (
@@ -249,14 +283,33 @@ const styles = StyleSheet.create({
   vs: { fontFamily: typography.display, ...text.subtitle },
   stateBlock: { alignItems: 'center', gap: spacing.sm },
   heroScore: { fontFamily: typography.numeric, ...text.hero },
-  liveBadge: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, borderWidth: 1, borderRadius: radius.pill, paddingHorizontal: spacing.sm, minHeight: 30 },
+  liveBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    borderWidth: 1,
+    borderRadius: radius.pill,
+    paddingHorizontal: spacing.sm,
+    minHeight: 30,
+  },
   liveDot: { width: 8, height: 8, borderRadius: radius.pill },
   tbc: { alignItems: 'center', gap: spacing.xs },
   tbcDays: { fontFamily: typography.display, ...text.display },
   stateText: { fontFamily: typography.headline, ...text.title, textAlign: 'center' },
-  dateLine: { fontFamily: typography.display, ...text.title, textAlign: 'center', letterSpacing: 0.6 },
+  dateLine: {
+    fontFamily: typography.display,
+    ...text.title,
+    textAlign: 'center',
+    letterSpacing: 0.6,
+  },
   venue: { ...text.body, textAlign: 'center' },
-  postponed: { minHeight: minTouch, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.sm, padding: spacing.sm, justifyContent: 'center' },
+  postponed: {
+    minHeight: minTouch,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: radius.sm,
+    padding: spacing.sm,
+    justifyContent: 'center',
+  },
   actions: { flexDirection: 'row', gap: spacing.sm },
   action: { flex: 1, minWidth: 0, justifyContent: 'center', minHeight: minTouch },
 });

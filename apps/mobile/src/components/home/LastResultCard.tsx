@@ -15,26 +15,34 @@ export function LastResultCard({ match }: { match: MatchT }) {
   const result = outcome(match);
   const date = formatMatchDate(match.utcDate, match.status, i18n.language);
   const hasScore = match.score.home !== null && match.score.away !== null;
-  const score = hasScore ? `${match.score.home}–${match.score.away}` : t(`calendar.status.${match.status}`, { defaultValue: match.status });
-  const color = result ? colors.poster.outcome[
-    result === 'W' ? 'winText' : result === 'L' ? 'lossText' : 'drawText'
-  ] : colors.poster.text;
+  const score = hasScore
+    ? `${match.score.home}–${match.score.away}`
+    : t(`calendar.status.${match.status}`, { defaultValue: match.status });
+  const color = result
+    ? colors.poster.outcome[result === 'W' ? 'winText' : result === 'L' ? 'lossText' : 'drawText']
+    : colors.poster.text;
   const label = [
     t('home.finalResult'),
     `${teamName(match.home)} ${score} ${teamName(match.away)}`,
     result ? t(`calendar.outcomeLong.${result}`) : null,
     date,
     match.matchday !== null ? t('calendar.matchday', { n: match.matchday }) : null,
-  ].filter(Boolean).join('. ');
-  const resultBackground = result ? colors.poster.outcome[
-    result === 'W' ? 'winBackground' : result === 'L' ? 'lossBackground' : 'drawBackground'
-  ] : colors.poster.text;
+  ]
+    .filter(Boolean)
+    .join('. ');
+  const resultBackground = result
+    ? colors.poster.outcome[
+        result === 'W' ? 'winBackground' : result === 'L' ? 'lossBackground' : 'drawBackground'
+      ]
+    : colors.poster.text;
 
   return (
     <PosterCard>
       <SectionHeader
         title={t('home.finalResult')}
-        subtitle={match.matchday !== null ? t('calendar.matchday', { n: match.matchday }) : undefined}
+        subtitle={
+          match.matchday !== null ? t('calendar.matchday', { n: match.matchday }) : undefined
+        }
         variant="poster"
       />
       <Pressable
@@ -76,5 +84,10 @@ const styles = StyleSheet.create({
   scoreBox: { alignItems: 'center', gap: spacing.xs },
   score: { fontFamily: typography.numeric, ...text.hero, textAlign: 'center' },
   date: { ...text.caption, textAlign: 'center' },
-  outcome: { alignSelf: 'center', borderRadius: radius.pill, paddingHorizontal: spacing.md, paddingVertical: spacing.xs },
+  outcome: {
+    alignSelf: 'center',
+    borderRadius: radius.pill,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs,
+  },
 });

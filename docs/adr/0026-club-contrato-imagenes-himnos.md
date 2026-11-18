@@ -15,18 +15,18 @@ La ficha es editorial y originalmente no llevaba procedencia visible: el usuario
 
 Pydantic en `scripts/depor_hub/models.py` genera el JSON Schema de `packages/schemas/club.schema.json`; la app mantiene el espejo Zod en `apps/mobile/src/data/schemas.ts`. El objeto raíz es:
 
-| Campo | Tipo | Contenido |
-|---|---|---|
-| `updatedAt` | ISO 8601 | Última escritura con cambios reales |
-| `identity` | objeto | Nombre oficial, nombre corto, fundación, ciudad, país, colores, apodos, lema, presidencia, entidad, sede, web y contacto |
-| `anthems` | lista | `id`, `title`, `kind` (`oficial`/`no_oficial`/`popular`), `authors`, `year`, `description`, `lyrics`, `credits` (`role`, `names`, `text`) |
-| `crests` | lista | `id`, `yearFrom`, `yearTo`, `description`, `image` (ruta relativa) |
-| `kits` | lista | Temporada `AAAA-AA` y equipaciones con `type`, fabricante, patrocinadores, colores, descripción e `image` |
-| `stadium` | objeto | Nombre, dirección, coordenadas, inauguración, reformas, césped, dimensiones, acceso, transporte, aparcamiento y `capacity` |
-| `tickets` | objeto | Temporada, zonas con precio y nota, URL de compra |
-| `museum`, `trainingCenter`, `board`, `sponsors` | objetos | Museo y visitas, ciudad deportiva, junta/organigrama y patrocinios |
-| `titles`, `rivalries`, `facts` | listas | Palmarés por competición, rivalidades y hechos del club |
-| `links` | objeto | Canales oficiales tipados y enlaces adicionales (`others`) |
+| Campo                                           | Tipo     | Contenido                                                                                                                                 |
+| ----------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatedAt`                                     | ISO 8601 | Última escritura con cambios reales                                                                                                       |
+| `identity`                                      | objeto   | Nombre oficial, nombre corto, fundación, ciudad, país, colores, apodos, lema, presidencia, entidad, sede, web y contacto                  |
+| `anthems`                                       | lista    | `id`, `title`, `kind` (`oficial`/`no_oficial`/`popular`), `authors`, `year`, `description`, `lyrics`, `credits` (`role`, `names`, `text`) |
+| `crests`                                        | lista    | `id`, `yearFrom`, `yearTo`, `description`, `image` (ruta relativa)                                                                        |
+| `kits`                                          | lista    | Temporada `AAAA-AA` y equipaciones con `type`, fabricante, patrocinadores, colores, descripción e `image`                                 |
+| `stadium`                                       | objeto   | Nombre, dirección, coordenadas, inauguración, reformas, césped, dimensiones, acceso, transporte, aparcamiento y `capacity`                |
+| `tickets`                                       | objeto   | Temporada, zonas con precio y nota, URL de compra                                                                                         |
+| `museum`, `trainingCenter`, `board`, `sponsors` | objetos  | Museo y visitas, ciudad deportiva, junta/organigrama y patrocinios                                                                        |
+| `titles`, `rivalries`, `facts`                  | listas   | Palmarés por competición, rivalidades y hechos del club                                                                                   |
+| `links`                                         | objeto   | Canales oficiales tipados y enlaces adicionales (`others`)                                                                                |
 
 Reglas del contrato:
 

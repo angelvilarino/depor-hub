@@ -44,7 +44,10 @@ export function CareerTimeline({ career, emptyLabel }: Props) {
             : null,
         ].filter(Boolean);
         return (
-          <View key={`${entry.club}-${entry.from ?? index}-${entry.role ?? 'player'}`} style={styles.row}>
+          <View
+            key={`${entry.club}-${entry.from ?? index}-${entry.role ?? 'player'}`}
+            style={styles.row}
+          >
             <View style={styles.rail}>
               <View style={[styles.dot, { backgroundColor: colors.primary }]} />
               {index < entries.length - 1 ? (

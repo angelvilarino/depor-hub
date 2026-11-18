@@ -58,9 +58,7 @@ export function selectNextMatch(matches: MatchT[]): MatchT | null {
  * Devuelve null si el aplazado no es anterior al próximo partido jugable.
  */
 export function selectPostponedNotice(matches: MatchT[]): MatchT | null {
-  const postponed = splitMatches(matches).upcoming.find(
-    (match) => match.status === 'POSTPONED',
-  );
+  const postponed = splitMatches(matches).upcoming.find((match) => match.status === 'POSTPONED');
   if (!postponed) return null;
   const next = selectNextMatch(matches);
   if (!next) return postponed;
@@ -75,20 +73,14 @@ export function selectLastResult(
   matches: MatchT[],
   nowMs = Number.POSITIVE_INFINITY,
 ): MatchT | null {
-  return (
-    splitMatches(matches).results.find((match) => Date.parse(match.utcDate) <= nowMs) ?? null
-  );
+  return splitMatches(matches).results.find((match) => Date.parse(match.utcDate) <= nowMs) ?? null;
 }
 
 /**
  * Ventana de 5 filas centrada en el equipo cuando se puede. En los extremos se
  * desplaza para que siempre haya 5 filas si la clasificación tiene al menos 5.
  */
-export function miniTableWindow(
-  table: StandingRowT[],
-  teamId: number,
-  radius = 2,
-): StandingRowT[] {
+export function miniTableWindow(table: StandingRowT[], teamId: number, radius = 2): StandingRowT[] {
   if (table.length === 0) return [];
   const sorted = [...table].sort((a, b) => a.position - b.position);
   const index = sorted.findIndex((row) => row.team.id === teamId);
@@ -115,16 +107,18 @@ export function recentFormMatches(matches: MatchT[], n = 5): SeasonFormMatchT[] 
       const scoreAgainst = match.deporIsHome ? match.score.away : match.score.home;
       const result = outcome(match);
       if (scoreFor === null || scoreAgainst === null || result === null) return [];
-      return [{
-        matchId: match.id,
-        matchday: match.matchday,
-        date: match.utcDate.slice(0, 10),
-        opponent: match.deporIsHome ? match.away : match.home,
-        home: match.deporIsHome,
-        scoreFor,
-        scoreAgainst,
-        result,
-      }];
+      return [
+        {
+          matchId: match.id,
+          matchday: match.matchday,
+          date: match.utcDate.slice(0, 10),
+          opponent: match.deporIsHome ? match.away : match.home,
+          home: match.deporIsHome,
+          scoreFor,
+          scoreAgainst,
+          result,
+        },
+      ];
     });
 }
 
@@ -180,8 +174,7 @@ export function nextOpponentInfo(
   const recent: { date: number; result: FormResult }[] = [];
   for (const match of matches) {
     if (!isFinished(match)) continue;
-    const isOpponent =
-      match.home.id === opponent.id || match.away.id === opponent.id;
+    const isOpponent = match.home.id === opponent.id || match.away.id === opponent.id;
     if (!isOpponent) continue;
     const result = outcome(match);
     if (result === null) continue;
@@ -210,8 +203,7 @@ export function nextOpponentInfo(
     match: next,
     opponent,
     row,
-    balance:
-      played > 0 ? { played, won, drawn, lost, goalsFor, goalsAgainst } : null,
+    balance: played > 0 ? { played, won, drawn, lost, goalsFor, goalsAgainst } : null,
     form: recent
       .sort((a, b) => a.date - b.date)
       .slice(-5)
@@ -238,11 +230,7 @@ export function utcDayDiff(targetIso: string, nowMs: number): number {
   const target = new Date(targetIso);
   if (Number.isNaN(target.getTime())) return 0;
   const now = new Date(nowMs);
-  const targetDay = Date.UTC(
-    target.getUTCFullYear(),
-    target.getUTCMonth(),
-    target.getUTCDate(),
-  );
+  const targetDay = Date.UTC(target.getUTCFullYear(), target.getUTCMonth(), target.getUTCDate());
   const nowDay = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
   return Math.round((targetDay - nowDay) / 86_400_000);
 }
@@ -300,5 +288,4 @@ export function isRecentResult(match: MatchT, nowMs: number, windowMs = 86_400_0
 export const hasCountdown = (match: MatchT): boolean => match.status === 'TIMED';
 
 /** TIMED conserva segundos en pantalla hasta el inicio; el reloj se aísla en Countdown. */
-export const showsSeconds = (targetMs: number, nowMs: number): boolean =>
-  targetMs > nowMs;
+export const showsSeconds = (targetMs: number, nowMs: number): boolean => targetMs > nowMs;

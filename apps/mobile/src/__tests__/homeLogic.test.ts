@@ -127,8 +127,12 @@ describe('lógica de la Home', () => {
 
   it('avisa del aplazado solo si es anterior al próximo partido jugable', () => {
     const postponed = match(1, '2026-11-03T20:00:00Z', 'POSTPONED');
-    expect(selectPostponedNotice([postponed, match(2, '2026-11-10T20:00:00Z', 'TIMED')])?.id).toBe(1);
-    expect(selectPostponedNotice([postponed, match(2, '2026-11-01T20:00:00Z', 'TIMED')])).toBeNull();
+    expect(selectPostponedNotice([postponed, match(2, '2026-11-10T20:00:00Z', 'TIMED')])?.id).toBe(
+      1,
+    );
+    expect(
+      selectPostponedNotice([postponed, match(2, '2026-11-01T20:00:00Z', 'TIMED')]),
+    ).toBeNull();
     expect(selectPostponedNotice([match(2, '2026-11-10T20:00:00Z', 'TIMED')])).toBeNull();
     expect(selectPostponedNotice([postponed])?.id).toBe(1);
   });
@@ -151,10 +155,18 @@ describe('lógica de la Home', () => {
 
   it('centra la mini tabla en el Depor y la desplaza en los extremos', () => {
     expect(miniTableWindow(table, depor.id).map((r) => r.position)).toEqual([9, 10, 11, 12, 13]);
-    expect(miniTableWindow(table, table[0]!.team.id).map((r) => r.position)).toEqual([1, 2, 3, 4, 5]);
-    expect(miniTableWindow(table, table[1]!.team.id).map((r) => r.position)).toEqual([1, 2, 3, 4, 5]);
-    expect(miniTableWindow(table, table[18]!.team.id).map((r) => r.position)).toEqual([16, 17, 18, 19, 20]);
-    expect(miniTableWindow(table, table[19]!.team.id).map((r) => r.position)).toEqual([16, 17, 18, 19, 20]);
+    expect(miniTableWindow(table, table[0]!.team.id).map((r) => r.position)).toEqual([
+      1, 2, 3, 4, 5,
+    ]);
+    expect(miniTableWindow(table, table[1]!.team.id).map((r) => r.position)).toEqual([
+      1, 2, 3, 4, 5,
+    ]);
+    expect(miniTableWindow(table, table[18]!.team.id).map((r) => r.position)).toEqual([
+      16, 17, 18, 19, 20,
+    ]);
+    expect(miniTableWindow(table, table[19]!.team.id).map((r) => r.position)).toEqual([
+      16, 17, 18, 19, 20,
+    ]);
     expect(miniTableWindow(table.slice(0, 3), depor.id)).toEqual([]);
     expect(miniTableWindow([], depor.id)).toEqual([]);
     expect(miniTableWindow(table, 999)).toEqual([]);
@@ -175,7 +187,12 @@ describe('lógica de la Home', () => {
   });
 
   it('resume la temporada desde la clasificación', () => {
-    expect(seasonSummary({ updatedAt: '2026-10-25T00:00:00Z', season: '2026-27', matchday: 10, table }, depor.id)).toMatchObject({
+    expect(
+      seasonSummary(
+        { updatedAt: '2026-10-25T00:00:00Z', season: '2026-27', matchday: 10, table },
+        depor.id,
+      ),
+    ).toMatchObject({
       position: 11,
       points: 11,
       played: 10,
@@ -208,7 +225,11 @@ describe('lógica de la Home', () => {
     });
     expect(info?.form).toEqual(['L', 'D']);
 
-    const withoutHistory = nextOpponentInfo([match(3, '2026-11-02T20:00:00Z', 'TIMED')], table, depor.id);
+    const withoutHistory = nextOpponentInfo(
+      [match(3, '2026-11-02T20:00:00Z', 'TIMED')],
+      table,
+      depor.id,
+    );
     expect(withoutHistory?.balance).toBeNull();
     expect(withoutHistory?.form).toEqual([]);
     expect(nextOpponentInfo([], table, depor.id)).toBeNull();
@@ -235,7 +256,9 @@ describe('lógica de la Home', () => {
     const finished = match(1, '2026-10-24T19:00:00Z', 'FINISHED', depor, osasuna, [1, 0]);
     expect(isRecentResult(finished, Date.parse('2026-10-25T10:00:00Z'))).toBe(true);
     expect(isRecentResult(finished, Date.parse('2026-10-26T10:00:00Z'))).toBe(false);
-    expect(isRecentResult(match(2, '2026-10-24T19:00:00Z', 'TIMED'), Date.parse('2026-10-25T10:00:00Z'))).toBe(false);
+    expect(
+      isRecentResult(match(2, '2026-10-24T19:00:00Z', 'TIMED'), Date.parse('2026-10-25T10:00:00Z')),
+    ).toBe(false);
   });
 
   it('descompone la cuenta atrás y no baja de cero', () => {

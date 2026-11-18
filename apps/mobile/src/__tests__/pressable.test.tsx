@@ -15,7 +15,12 @@ describe('Pressable', () => {
     const surface = getByTestId('surface');
     expect(StyleSheet.flatten(surface.props.style)?.opacity).toBeUndefined();
 
-    const event = { nativeEvent: {}, persist: () => {}, preventDefault: () => {}, stopPropagation: () => {} };
+    const event = {
+      nativeEvent: {},
+      persist: () => {},
+      preventDefault: () => {},
+      stopPropagation: () => {},
+    };
     await fireEvent(surface, 'responderGrant', event);
     expect(StyleSheet.flatten(surface.props.style)).toMatchObject({ opacity: 0.68 });
   });

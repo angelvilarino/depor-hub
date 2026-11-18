@@ -1,6 +1,12 @@
 import type { MatchT } from '@/data/schemas';
 
-const team = (id: number, name: string) => ({ id, name, shortName: name, tla: null, crestUrl: null });
+const team = (id: number, name: string) => ({
+  id,
+  name,
+  shortName: name,
+  tla: null,
+  crestUrl: null,
+});
 
 export function makeMatch(over: Partial<MatchT> = {}): MatchT {
   return {

@@ -36,7 +36,9 @@ describe('planReminders', () => {
 
   it('un aplazamiento deja de programar', () => {
     const postponed = { ...m, status: 'POSTPONED' };
-    expect(planReminders([postponed], { 564724: [1440, 60] }, Date.parse('2026-10-20T12:00:00Z'))).toEqual([]);
+    expect(
+      planReminders([postponed], { 564724: [1440, 60] }, Date.parse('2026-10-20T12:00:00Z')),
+    ).toEqual([]);
   });
 
   it('recorta a 64 notificaciones (límite de iOS)', () => {

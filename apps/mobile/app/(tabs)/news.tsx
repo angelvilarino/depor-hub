@@ -1,12 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import {
-  Alert,
-  SectionList,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Alert, SectionList, StyleSheet, Text, View } from 'react-native';
 import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { FreshnessBanner } from '@/components/FreshnessBanner';
@@ -167,21 +161,17 @@ export default function NewsScreen() {
 
   const confirmMarkAll = useCallback(() => {
     if (unread === 0) return;
-    Alert.alert(
-      t('news.markAllTitle'),
-      t('news.markAllMessage', { count: unread }),
-      [
-        { text: t('common.cancel'), style: 'cancel' },
-        {
-          text: t('news.markAllConfirm'),
-          onPress: () => {
-            const snapshot = readIds;
-            markAllRead(filtered.map((story) => story.id));
-            setUndo({ ids: snapshot, count: unread });
-          },
+    Alert.alert(t('news.markAllTitle'), t('news.markAllMessage', { count: unread }), [
+      { text: t('common.cancel'), style: 'cancel' },
+      {
+        text: t('news.markAllConfirm'),
+        onPress: () => {
+          const snapshot = readIds;
+          markAllRead(filtered.map((story) => story.id));
+          setUndo({ ids: snapshot, count: unread });
         },
-      ],
-    );
+      },
+    ]);
   }, [filtered, markAllRead, readIds, t, unread]);
 
   const undoMarkAll = useCallback(() => {

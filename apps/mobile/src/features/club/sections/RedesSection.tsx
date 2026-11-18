@@ -41,7 +41,12 @@ const LINKS: LinkItem[] = [
 function BrandMark({ icon, tint }: { icon: IconName; tint?: SocialColor }) {
   const { colors } = useTheme();
   return (
-    <View style={[styles.mark, { backgroundColor: tint ? socialColors[tint] : colors.primary, borderColor: colors.border }]}>
+    <View
+      style={[
+        styles.mark,
+        { backgroundColor: tint ? socialColors[tint] : colors.primary, borderColor: colors.border },
+      ]}
+    >
       <Ionicons name={icon} size={18} color={tint ? imageTokens.text : colors.onPrimary} />
     </View>
   );
@@ -71,7 +76,11 @@ function LinkRow({
       <BrandMark icon={icon} tint={tint} />
       <View style={styles.rowText}>
         <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>{label}</Text>
-        {handle ? <Text numberOfLines={1} style={{ color: colors.textMuted, ...text.caption }}>{linkHandle(url)}</Text> : null}
+        {handle ? (
+          <Text numberOfLines={1} style={{ color: colors.textMuted, ...text.caption }}>
+            {linkHandle(url)}
+          </Text>
+        ) : null}
       </View>
       <Ionicons name="open-outline" size={18} color={colors.primary} />
     </Pressable>
@@ -101,7 +110,16 @@ export function RedesSection({ club }: { club: ClubT }) {
             const url = links[item.key];
             if (!url) return null;
             const label = item.label.startsWith('club.') ? t(item.label) : item.label;
-            return <LinkRow key={item.key} label={label} url={url} icon={item.icon} tint={item.tint} handle={item.handle} />;
+            return (
+              <LinkRow
+                key={item.key}
+                label={label}
+                url={url}
+                icon={item.icon}
+                tint={item.tint}
+                handle={item.handle}
+              />
+            );
           })}
         </Card>
       ) : null}
@@ -126,7 +144,9 @@ export function RedesSection({ club }: { club: ClubT }) {
               style={styles.row}
             >
               <BrandMark icon="mail-outline" />
-              <Text selectable style={{ color: colors.text, ...text.bodyLarge, flex: 1 }}>{email}</Text>
+              <Text selectable style={{ color: colors.text, ...text.bodyLarge, flex: 1 }}>
+                {email}
+              </Text>
             </Pressable>
           ) : null}
           {phone ? (
@@ -137,7 +157,9 @@ export function RedesSection({ club }: { club: ClubT }) {
               style={styles.row}
             >
               <BrandMark icon="call-outline" />
-              <Text selectable style={{ color: colors.text, ...text.bodyLarge, flex: 1 }}>{phone}</Text>
+              <Text selectable style={{ color: colors.text, ...text.bodyLarge, flex: 1 }}>
+                {phone}
+              </Text>
             </Pressable>
           ) : null}
           <InfoRow label={t('club.redes.address')} value={contact.address} />

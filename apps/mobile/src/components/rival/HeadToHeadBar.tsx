@@ -10,17 +10,30 @@ type Result = 'W' | 'D' | 'L';
 
 const ORDER: Result[] = ['W', 'D', 'L'];
 
-export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT | null; variant?: 'paper' | 'poster' }) {
+export function HeadToHeadBar({
+  head,
+  variant = 'paper',
+}: {
+  head: HeadToHeadT | null;
+  variant?: 'paper' | 'poster';
+}) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   const paper = colors.paper;
   const reducedMotion = useReducedMotion();
   const [progress] = useState(() => new Animated.Value(0));
-  const counts = useMemo(() => head ? [head.won, head.drawn, head.lost] : [0, 0, 0], [head]);
+  const counts = useMemo(() => (head ? [head.won, head.drawn, head.lost] : [0, 0, 0]), [head]);
   const total = counts.reduce((sum, value) => sum + value, 0);
-  const fractions = counts.map((value) => total > 0 ? value / total : 0);
+  const fractions = counts.map((value) => (total > 0 ? value / total : 0));
   const accessibleLabel = head
-    ? t('home.rival.headToHeadA11y', { played: head.played, won: head.won, drawn: head.drawn, lost: head.lost, goalsFor: head.goalsFor, goalsAgainst: head.goalsAgainst })
+    ? t('home.rival.headToHeadA11y', {
+        played: head.played,
+        won: head.won,
+        drawn: head.drawn,
+        lost: head.lost,
+        goalsFor: head.goalsFor,
+        goalsAgainst: head.goalsAgainst,
+      })
     : '';
 
   useEffect(() => {
@@ -30,7 +43,11 @@ export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT |
       return;
     }
     progress.setValue(0);
-    const animation = Animated.timing(progress, { toValue: 1, duration: motion.standard, useNativeDriver: false });
+    const animation = Animated.timing(progress, {
+      toValue: 1,
+      duration: motion.standard,
+      useNativeDriver: false,
+    });
     animation.start();
     return () => animation.stop();
   }, [head, progress, reducedMotion]);
@@ -51,12 +68,17 @@ export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT |
 
   return (
     <View accessible accessibilityLabel={accessibleLabel} style={styles.container}>
-      <View style={[styles.bar, { backgroundColor: isPoster ? colors.poster.muted : paper.border }]}>
+      <View
+        style={[styles.bar, { backgroundColor: isPoster ? colors.poster.muted : paper.border }]}
+      >
         {ORDER.map((result, index) => (
           <Animated.View
             key={result}
             style={{
-              width: progress.interpolate({ inputRange: [0, 1], outputRange: ['0%', `${fractions[index]! * 100}%`] }),
+              width: progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: ['0%', `${fractions[index]! * 100}%`],
+              }),
               height: '100%',
               backgroundColor: barColors[result],
             }}
@@ -80,7 +102,8 @@ export function HeadToHeadBar({ head, variant = 'paper' }: { head: HeadToHeadT |
         ))}
       </View>
       <Text style={{ color: muted, ...text.caption }}>
-        {t('home.rival.headToHeadScope', { source: head.source })} · {head.played} {t('home.rival.matchesShort')}
+        {t('home.rival.headToHeadScope', { source: head.source })} · {head.played}{' '}
+        {t('home.rival.matchesShort')}
       </Text>
       <Text style={{ color: textColor, ...text.body, fontWeight: '700' }}>
         {t('home.rival.goalsRecord', { goalsFor: head.goalsFor, goalsAgainst: head.goalsAgainst })}

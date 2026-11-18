@@ -1,4 +1,5 @@
 # ADR 0006 — Escudos, sede y árbitro por partido (amplía el contrato v1)
+
 - **Estado:** aceptada. Sustituye la decisión de ADR 0003 «no se publican escudos/imágenes».
 - **Contrato (aditivo, sigue en /v1/):** `TeamRef.crestUrl` (también en `meta.team`), `Match.venue`, `Match.referee`; todos `null` si no hay dato. Pydantic es el origen; Zod los acepta con `default(null)` para no romper con un JSON publicado antes del cambio. Se sube `buster` a `data-v2` porque la caché persistida de la app no tiene esos campos.
 - **Origen:** `crest` de football-data.org. Sede = `venue` del partido si viene; si no, el estadio del equipo local (`/competitions/PD/teams`), lo que cubre los partidos fuera de casa. Árbitro = `referees` (prioriza tipo `REFEREE`). **Nunca se inventa:** el plan gratuito puede devolver `referees` vacío y entonces la fila no se muestra. `python -m depor_hub.cli probe` informa de cuántos partidos traen árbitro/sede.

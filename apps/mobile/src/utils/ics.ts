@@ -6,7 +6,8 @@ const EXCLUDED = new Set(['POSTPONED', 'CANCELLED', 'SUSPENDED']);
 const MATCH_MS = 2 * 60 * 60 * 1000;
 
 const p2 = (n: number) => String(n).padStart(2, '0');
-const dateOnly = (d: Date) => `${d.getUTCFullYear()}${p2(d.getUTCMonth() + 1)}${p2(d.getUTCDate())}`;
+const dateOnly = (d: Date) =>
+  `${d.getUTCFullYear()}${p2(d.getUTCMonth() + 1)}${p2(d.getUTCDate())}`;
 const utcStamp = (d: Date) =>
   `${dateOnly(d)}T${p2(d.getUTCHours())}${p2(d.getUTCMinutes())}${p2(d.getUTCSeconds())}Z`;
 
@@ -40,19 +41,27 @@ export function buildIcs(matches: MatchT[], nowIso: string, opts: IcsOptions): s
     if (EXCLUDED.has(m.status)) continue;
     const start = new Date(m.utcDate);
     const timed = hasConfirmedTime(m.status);
-    const desc = [m.matchday !== null ? opts.matchdayLabel(m.matchday) : null, timed ? null : opts.tbcLabel]
+    const desc = [
+      m.matchday !== null ? opts.matchdayLabel(m.matchday) : null,
+      timed ? null : opts.tbcLabel,
+    ]
       .filter(Boolean)
       .join(' · ');
     lines.push('BEGIN:VEVENT', `UID:match-${m.id}@deporhub`, `DTSTAMP:${stamp}`);
     if (timed) {
-      lines.push(`DTSTART:${utcStamp(start)}`, `DTEND:${utcStamp(new Date(start.getTime() + MATCH_MS))}`);
+      lines.push(
+        `DTSTART:${utcStamp(start)}`,
+        `DTEND:${utcStamp(new Date(start.getTime() + MATCH_MS))}`,
+      );
     } else {
       lines.push(
         `DTSTART;VALUE=DATE:${dateOnly(start)}`,
         `DTEND;VALUE=DATE:${dateOnly(new Date(start.getTime() + 86_400_000))}`,
       );
     }
-    lines.push(`SUMMARY:${escapeText(`${m.home.shortName ?? m.home.name} - ${m.away.shortName ?? m.away.name}`)}`);
+    lines.push(
+      `SUMMARY:${escapeText(`${m.home.shortName ?? m.home.name} - ${m.away.shortName ?? m.away.name}`)}`,
+    );
     if (desc) lines.push(`DESCRIPTION:${escapeText(desc)}`);
     const location = m.venue ?? (m.deporIsHome ? opts.venue : null);
     if (location) lines.push(`LOCATION:${escapeText(location)}`);

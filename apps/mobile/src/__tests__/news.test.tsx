@@ -35,7 +35,13 @@ const query = (data: unknown, overrides: Record<string, unknown> = {}) => ({
 
 const sources: NewsSourceT[] = [
   { id: 'medio-a', name: 'Medio A', group: 'galicia', kind: 'article', homepage: 'https://a.test' },
-  { id: 'medio-b', name: 'Medio B', group: 'nacional', kind: 'article', homepage: 'https://b.test' },
+  {
+    id: 'medio-b',
+    name: 'Medio B',
+    group: 'nacional',
+    kind: 'article',
+    homepage: 'https://b.test',
+  },
 ];
 
 const TODAY = new Date().toISOString();
@@ -116,10 +122,7 @@ describe('pantalla Noticias', () => {
 
   it('filtra por grupo y limpia con la hoja', async () => {
     mockNews = query(
-      news([
-        story({ id: 'n01' }),
-        story({ id: 'n02', sourceId: 'medio-b', tags: ['partido'] }),
-      ]),
+      news([story({ id: 'n01' }), story({ id: 'n02', sourceId: 'medio-b', tags: ['partido'] })]),
     );
     await render(<NewsScreen />);
     await fireEvent.press(screen.getByLabelText('Filtros'));
@@ -137,10 +140,7 @@ describe('pantalla Noticias', () => {
 
   it('filtra por fuente desde la hoja inferior', async () => {
     mockNews = query(
-      news([
-        story({ id: 'n01' }),
-        story({ id: 'n02', sourceId: 'medio-b', tags: ['partido'] }),
-      ]),
+      news([story({ id: 'n01' }), story({ id: 'n02', sourceId: 'medio-b', tags: ['partido'] })]),
     );
     await render(<NewsScreen />);
     await fireEvent.press(screen.getByLabelText('Filtros'));

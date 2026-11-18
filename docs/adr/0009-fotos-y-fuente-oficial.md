@@ -21,12 +21,12 @@ La petición es que **todos** los jugadores tengan la máxima información posib
 
 Prioridad por campo:
 
-| Campo | Fuente que se aplica | Conflicto |
-|---|---|---|
-| `heightCm`, `preferredFoot`, `shirtNumber` | Ficha oficial | Se registra con `applied` y `resolution` |
-| `weightKg` | BDFutbol | Se registra con `applied` y `resolution` |
-| `birthPlace` | Consenso de formas compatibles («Arnedo» ⊂ «Arnedo, La Rioja, España») | Las formas disidentes quedan en `candidates` |
-| Resto | Consenso normal; si discrepan, no se aplica | Queda en `conflicts` |
+| Campo                                      | Fuente que se aplica                                                   | Conflicto                                    |
+| ------------------------------------------ | ---------------------------------------------------------------------- | -------------------------------------------- |
+| `heightCm`, `preferredFoot`, `shirtNumber` | Ficha oficial                                                          | Se registra con `applied` y `resolution`     |
+| `weightKg`                                 | BDFutbol                                                               | Se registra con `applied` y `resolution`     |
+| `birthPlace`                               | Consenso de formas compatibles («Arnedo» ⊂ «Arnedo, La Rioja, España») | Las formas disidentes quedan en `candidates` |
+| Resto                                      | Consenso normal; si discrepan, no se aplica                            | Queda en `conflicts`                         |
 
 Una fuente oficial nunca borra la discrepancia: el conflicto sigue visible en `data/manual/squad_enrich.proposed.yml`.
 
@@ -47,16 +47,16 @@ Reglas:
 
 `PlayerPhoto` se añade a `Player` sin romper JSON ni cachés anteriores:
 
-| Campo | Tipo | Notas |
-|---|---|---|
-| `url` | `string` | URL original (https) |
-| `role` | `"portrait" \| "action" \| "other"` | Por defecto `portrait` |
-| `width`, `height` | `int \| null` | Los publica la fuente si los conoce |
-| `license` | `string \| null` | Nombre corto de la licencia o «uso editorial» |
-| `licenseUrl` | `string \| null` | Enlace a la licencia |
-| `author` | `string \| null` | Autoría |
-| `credit` | `string \| null` | Texto de crédito tal como debe mostrarse |
-| `sourceUrl` | `string \| null` | Ficha de la foto o de la noticia |
+| Campo             | Tipo                                | Notas                                         |
+| ----------------- | ----------------------------------- | --------------------------------------------- |
+| `url`             | `string`                            | URL original (https)                          |
+| `role`            | `"portrait" \| "action" \| "other"` | Por defecto `portrait`                        |
+| `width`, `height` | `int \| null`                       | Los publica la fuente si los conoce           |
+| `license`         | `string \| null`                    | Nombre corto de la licencia o «uso editorial» |
+| `licenseUrl`      | `string \| null`                    | Enlace a la licencia                          |
+| `author`          | `string \| null`                    | Autoría                                       |
+| `credit`          | `string \| null`                    | Texto de crédito tal como debe mostrarse      |
+| `sourceUrl`       | `string \| null`                    | Ficha de la foto o de la noticia              |
 
 Pydantic es el origen; `packages/schemas/*.schema.json` se regeneran y el espejo Zod usa `photos: z.array(PlayerPhoto).default([])`. Un JSON o una caché anteriores a este ADR siguen validando.
 
@@ -93,21 +93,21 @@ Los datos manuales viven en `data/manual/squad_overrides.yml`:
 
 `enrich --apply --offline` sobre 28 jugadores:
 
-| Campo | Cobertura |
-|---|---|
-| Dorsal | 28/28 |
-| Contrato | 28/28 (24 generadas + 4 overrides) |
-| Altura | 28/28 |
-| Peso | 25/28 |
-| Lugar de nacimiento | 28/28 |
-| Pie preferido | 28/28 (27 generadas + 1 override) |
-| Redes | 27/28 (19 generadas + 8 overrides) |
-| Fotos | 28/28 (solo la oficial del club) |
-| Carrera | 28/28 |
-| Totales de carrera | 28/28 |
-| Partidos con el Depor | 28/28 |
-| Cesión (`loanFrom`) | 3/28 |
-| Cesión de salida (`loanTo`) | 1/28 (Teun → Al Ain) |
+| Campo                       | Cobertura                          |
+| --------------------------- | ---------------------------------- |
+| Dorsal                      | 28/28                              |
+| Contrato                    | 28/28 (24 generadas + 4 overrides) |
+| Altura                      | 28/28                              |
+| Peso                        | 25/28                              |
+| Lugar de nacimiento         | 28/28                              |
+| Pie preferido               | 28/28 (27 generadas + 1 override)  |
+| Redes                       | 27/28 (19 generadas + 8 overrides) |
+| Fotos                       | 28/28 (solo la oficial del club)   |
+| Carrera                     | 28/28                              |
+| Totales de carrera          | 28/28                              |
+| Partidos con el Depor       | 28/28                              |
+| Cesión (`loanFrom`)         | 3/28                               |
+| Cesión de salida (`loanTo`) | 1/28 (Teun → Al Ain)               |
 
 Los huecos restantes están documentados como pendientes en la propuesta; no se rellenan por deducción.
 

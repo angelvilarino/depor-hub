@@ -7,7 +7,12 @@ import i18n from '@/i18n';
 jest.mock('@/theme/useTheme', () => {
   const { darkColors } = jest.requireActual('@/theme/tokens');
   return {
-    useTheme: () => ({ scheme: 'dark', colors: darkColors, paper: darkColors.paper, poster: darkColors.poster }),
+    useTheme: () => ({
+      scheme: 'dark',
+      colors: darkColors,
+      paper: darkColors.paper,
+      poster: darkColors.poster,
+    }),
   };
 });
 
@@ -61,6 +66,8 @@ describe('HeadToHeadBar', () => {
     expect(StyleSheet.flatten(view.getByText('G 3').props.style)).toMatchObject({
       color: darkColors.win,
     });
-    expect(StyleSheet.flatten(view.getByText('G 3').parent?.props.style)?.backgroundColor).toBeUndefined();
+    expect(
+      StyleSheet.flatten(view.getByText('G 3').parent?.props.style)?.backgroundColor,
+    ).toBeUndefined();
   });
 });

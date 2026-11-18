@@ -40,7 +40,10 @@ type SettingsState = {
  * (`remindMatches: Record<matchId, offsets>`). Conserva los partidos ya marcados
  * con el comportamiento anterior: 24 h y 1 h antes.
  */
-export function migrateSettings(persisted: Record<string, unknown>, version: number): Record<string, unknown> {
+export function migrateSettings(
+  persisted: Record<string, unknown>,
+  version: number,
+): Record<string, unknown> {
   if (!persisted || version >= 1) return persisted;
   const next: Record<string, unknown> = { ...persisted };
   const legacy = next.remindMatchIds;
@@ -85,7 +88,8 @@ export const useSettings = create<SettingsState>()(
           delete next[matchId];
           return { remindMatches: next };
         }),
-      setDefaultReminderOffsets: (offsets) => set({ defaultReminderOffsets: cleanOffsets(offsets) }),
+      setDefaultReminderOffsets: (offsets) =>
+        set({ defaultReminderOffsets: cleanOffsets(offsets) }),
     }),
     {
       name: 'deporhub-settings',

@@ -46,8 +46,14 @@ export function EscudoSection({ club }: { club: ClubT }) {
           return (
             <View key={crest.id} style={styles.row}>
               <View style={styles.rail}>
-                {!first ? <View style={[styles.line, styles.lineTop, { backgroundColor: colors.border }]} /> : null}
-                {!last ? <View style={[styles.line, styles.lineBottom, { backgroundColor: colors.border }]} /> : null}
+                {!first ? (
+                  <View style={[styles.line, styles.lineTop, { backgroundColor: colors.border }]} />
+                ) : null}
+                {!last ? (
+                  <View
+                    style={[styles.line, styles.lineBottom, { backgroundColor: colors.border }]}
+                  />
+                ) : null}
                 <View style={[styles.dot, { backgroundColor: colors.primary }]} />
               </View>
               <View style={styles.entry}>
@@ -68,7 +74,9 @@ export function EscudoSection({ club }: { club: ClubT }) {
                     height={92}
                   />
                   <View style={styles.text}>
-                    <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>{years}</Text>
+                    <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>
+                      {years}
+                    </Text>
                     {crest.description ? (
                       <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>
                         {crest.description}
@@ -104,31 +112,29 @@ export function EscudoSection({ club }: { club: ClubT }) {
         <Card>
           <SectionTitle>{t('club.escudo.comparisonTitle')}</SectionTitle>
           <View style={styles.comparisonRow}>
-            {club.crests.slice(comparisonIndex, comparisonIndex + 2).map(
-              (crest, index) => {
-                const years = crestYearRange(crest, t('club.escudo.present'));
-                return (
-                  <View key={crest.id} style={styles.comparisonVersion}>
-                    <Text style={{ color: colors.text, fontWeight: '700', textAlign: 'center' }}>
-                      {t(index === 0 ? 'club.escudo.before' : 'club.escudo.after', { years })}
+            {club.crests.slice(comparisonIndex, comparisonIndex + 2).map((crest, index) => {
+              const years = crestYearRange(crest, t('club.escudo.present'));
+              return (
+                <View key={crest.id} style={styles.comparisonVersion}>
+                  <Text style={{ color: colors.text, fontWeight: '700', textAlign: 'center' }}>
+                    {t(index === 0 ? 'club.escudo.before' : 'club.escudo.after', { years })}
+                  </Text>
+                  <ClubImage
+                    path={crest.image}
+                    thumbnailPath={crest.thumbnail}
+                    label={t('club.escudo.versionName', { years })}
+                    width={Math.min(110, (width - spacing.lg * 3) / 2)}
+                    height={Math.min(110, (width - spacing.lg * 3) / 2)}
+                  />
+                  {crest.description ? (
+                    <Text style={{ color: colors.textMuted, ...text.caption, textAlign: 'center' }}>
+                      {crest.description}
                     </Text>
-                    <ClubImage
-                      path={crest.image}
-                      thumbnailPath={crest.thumbnail}
-                      label={t('club.escudo.versionName', { years })}
-                      width={Math.min(110, (width - spacing.lg * 3) / 2)}
-                      height={Math.min(110, (width - spacing.lg * 3) / 2)}
-                    />
-                    {crest.description ? (
-                      <Text style={{ color: colors.textMuted, ...text.caption, textAlign: 'center' }}>
-                        {crest.description}
-                      </Text>
-                    ) : null}
-                    {crest.media ? <MediaCredit media={crest.media} inline /> : null}
-                  </View>
-                );
-              },
-            )}
+                  ) : null}
+                  {crest.media ? <MediaCredit media={crest.media} inline /> : null}
+                </View>
+              );
+            })}
           </View>
         </Card>
       ) : null}

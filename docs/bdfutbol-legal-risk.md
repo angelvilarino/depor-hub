@@ -13,13 +13,13 @@
 
 ## Resumen ejecutivo
 
-| Uso | Riesgo | Motivo |
-|---|---|---|
-| Extraer trayectoria, totales y partidos de jugadores desde HTML público | **Medio-alto** | Base de datos protegida y servicio comercial de datos; `robots.txt` permisivo no equivale a licencia |
-| Extraer eventos, alineaciones y estadísticas de partido desde HTML | **Alto** | Es justo el dato que BDFutbol comercializa; extracción sistemática y redistribución |
-| Guardar hechos aislados (fecha, resultado, minutos) sin copiar el HTML | **Medio** | Los hechos no son obra, pero la extracción sustancial de una base protegida sí puede infringir |
-| Usar fotos, escudos o textos de BDFutbol | **Alto** | Derechos de autor y de imagen independientes; no hay licencia editorial |
-| Contratar la API v2 o el servicio de datos | **Bajo, con contrato** | Vía legítima y de pago; hay que revisar la modalidad y el precio |
+| Uso                                                                     | Riesgo                 | Motivo                                                                                               |
+| ----------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| Extraer trayectoria, totales y partidos de jugadores desde HTML público | **Medio-alto**         | Base de datos protegida y servicio comercial de datos; `robots.txt` permisivo no equivale a licencia |
+| Extraer eventos, alineaciones y estadísticas de partido desde HTML      | **Alto**               | Es justo el dato que BDFutbol comercializa; extracción sistemática y redistribución                  |
+| Guardar hechos aislados (fecha, resultado, minutos) sin copiar el HTML  | **Medio**              | Los hechos no son obra, pero la extracción sustancial de una base protegida sí puede infringir       |
+| Usar fotos, escudos o textos de BDFutbol                                | **Alto**               | Derechos de autor y de imagen independientes; no hay licencia editorial                              |
+| Contratar la API v2 o el servicio de datos                              | **Bajo, con contrato** | Vía legítima y de pago; hay que revisar la modalidad y el precio                                     |
 
 **Recomendación:** no implementar scraping de eventos, alineaciones ni
 estadísticas. Mantener el marcador y el estado con football-data.org. Antes de
@@ -55,12 +55,12 @@ Mientras no exista, la ficha sigue en modo degradado honesto (ADR 0028).
   originales pueden estar protegidos por el Texto Refundido de la Ley de
   Propiedad Intelectual. Copiar fragmentos sustanciales o la estructura de una
   ficha puede infringir aunque se cambien algunas palabras.
-- **Derecho *sui generis* sobre bases de datos.** La Directiva 96/9/CE y el
+- **Derecho _sui generis_ sobre bases de datos.** La Directiva 96/9/CE y el
   artículo 12 del TRLPI protegen la inversión sustancial en la obtención,
   verificación o presentación de una base de datos. La extracción o
   reutilización de una parte sustancial requiere autorización. La jurisprudencia
-  del TJUE (por ejemplo, *British Horseracing Board*, *Football Dataco* e
-  *Innoweb*) exige valorar la inversión y también la extracción repetida y
+  del TJUE (por ejemplo, _British Horseracing Board_, _Football Dataco_ e
+  _Innoweb_) exige valorar la inversión y también la extracción repetida y
   sistemática de partes no sustanciales.
 - **Hechos frente a obra.** Un resultado o una fecha son hechos y no son
   propiedad de nadie; lo protegido es la selección, coordinación, estructura,

@@ -1,11 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import {
-  ScrollView,
-  SectionList,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { ScrollView, SectionList, StyleSheet, Text, View } from 'react-native';
 import { Pressable } from '@/components/Pressable';
 import { useTranslation } from 'react-i18next';
 import { ClubImage } from '@/components/club/ClubImage';
@@ -24,7 +18,9 @@ function KitRow({ season, kit }: { season: string; kit: KitT }) {
   const type = t(kitTypeKey(kit.type));
   const details = [kit.manufacturer, kit.chestSponsor].filter(Boolean).join(' · ');
   const extraSponsors = [
-    kit.sleeveSponsor ? t('club.equipaciones.sleeveSponsorValue', { name: kit.sleeveSponsor }) : null,
+    kit.sleeveSponsor
+      ? t('club.equipaciones.sleeveSponsorValue', { name: kit.sleeveSponsor })
+      : null,
     kit.backSponsor ? t('club.equipaciones.backSponsorValue', { name: kit.backSponsor }) : null,
   ].filter(Boolean);
   const colorsText = kit.colors.length > 0 ? kit.colors.join(' / ') : null;
@@ -35,9 +31,7 @@ function KitRow({ season, kit }: { season: string; kit: KitT }) {
         <ClubImage
           path={kit.image}
           remoteUrl={
-            kit.media?.kind === 'photo' && kit.media.status === 'verified'
-              ? kit.media.url
-              : null
+            kit.media?.kind === 'photo' && kit.media.status === 'verified' ? kit.media.url : null
           }
           label={`${season} · ${type}`}
           width={78}
@@ -83,7 +77,9 @@ function SeasonCard({ season }: { season: SeasonKitsT }) {
       style={[styles.seasonCard, { backgroundColor: colors.surface, borderColor: colors.border }]}
     >
       <View style={styles.seasonHeader}>
-        <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>{season.season}</Text>
+        <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>
+          {season.season}
+        </Text>
         <Text style={{ color: colors.textMuted, ...text.caption }}>
           {t('club.equipaciones.kitCount', { count: season.kits.length })}
         </Text>
@@ -112,17 +108,23 @@ export function EquipacionesSection({ club }: { club: ClubT }) {
       })),
     [groups],
   );
-  const [activeDecade, setActiveDecade] = useState<number | null>(
-    sections[0]?.decade ?? null,
-  );
+  const [activeDecade, setActiveDecade] = useState<number | null>(sections[0]?.decade ?? null);
   const [kitFilter, setKitFilter] = useState<string | null>(null);
-  const filteredSections = useMemo(() => sections.map((section) => ({
-    ...section,
-    data: section.data.map((season) => ({
-      ...season,
-      kits: kitFilter ? season.kits.filter((kit) => kit.type === kitFilter) : season.kits,
-    })).filter((season) => season.kits.length > 0),
-  })).filter((section) => section.data.length > 0), [kitFilter, sections]);
+  const filteredSections = useMemo(
+    () =>
+      sections
+        .map((section) => ({
+          ...section,
+          data: section.data
+            .map((season) => ({
+              ...season,
+              kits: kitFilter ? season.kits.filter((kit) => kit.type === kitFilter) : season.kits,
+            }))
+            .filter((season) => season.kits.length > 0),
+        }))
+        .filter((section) => section.data.length > 0),
+    [kitFilter, sections],
+  );
   const kitTypes = [...new Set(club.kits.flatMap((season) => season.kits.map((kit) => kit.type)))];
 
   if (filteredSections.length === 0) {
@@ -147,10 +149,32 @@ export function EquipacionesSection({ club }: { club: ClubT }) {
 
   return (
     <View style={styles.container}>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.selectorContent}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.selectorContent}
+      >
         {[null, ...kitTypes].map((type) => {
           const selected = type === kitFilter;
-          return <Pressable key={type ?? 'all-kits'} accessibilityRole="button" accessibilityState={{ selected }} onPress={() => setKitFilter(type)} style={[styles.chip, { backgroundColor: selected ? colors.primary : colors.surface, borderColor: colors.border }]}><Text style={{ color: selected ? colors.onPrimary : colors.text, fontWeight: '700' }}>{type ? t(`club.kitTypes.${type}`) : t('club.equipaciones.allTypes')}</Text></Pressable>;
+          return (
+            <Pressable
+              key={type ?? 'all-kits'}
+              accessibilityRole="button"
+              accessibilityState={{ selected }}
+              onPress={() => setKitFilter(type)}
+              style={[
+                styles.chip,
+                {
+                  backgroundColor: selected ? colors.primary : colors.surface,
+                  borderColor: colors.border,
+                },
+              ]}
+            >
+              <Text style={{ color: selected ? colors.onPrimary : colors.text, fontWeight: '700' }}>
+                {type ? t(`club.kitTypes.${type}`) : t('club.equipaciones.allTypes')}
+              </Text>
+            </Pressable>
+          );
         })}
       </ScrollView>
       <View style={[styles.selector, { borderBottomColor: colors.border }]}>
@@ -176,7 +200,9 @@ export function EquipacionesSection({ club }: { club: ClubT }) {
                   },
                 ]}
               >
-                <Text style={{ color: selected ? colors.onPrimary : colors.text, fontWeight: '700' }}>
+                <Text
+                  style={{ color: selected ? colors.onPrimary : colors.text, fontWeight: '700' }}
+                >
                   {section.title}
                 </Text>
               </Pressable>
@@ -200,7 +226,12 @@ export function EquipacionesSection({ club }: { club: ClubT }) {
         renderSectionHeader={({ section }) => (
           <Text
             accessibilityRole="header"
-            style={{ color: colors.text, ...text.heading, fontWeight: '800', marginTop: spacing.sm }}
+            style={{
+              color: colors.text,
+              ...text.heading,
+              fontWeight: '800',
+              marginTop: spacing.sm,
+            }}
           >
             {section.title}
           </Text>

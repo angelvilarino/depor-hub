@@ -16,10 +16,10 @@ Además, la web oficial, Wikidata y Wikipedia no publican las redes de varios ju
 
 `Player.loanTo` (`string | null`) indica el club de destino cuando el Depor cede al jugador. Es independiente de `loanFrom`:
 
-| Campo | Significado | Ejemplo |
-|---|---|---|
+| Campo      | Significado                                      | Ejemplo                           |
+| ---------- | ------------------------------------------------ | --------------------------------- |
 | `loanFrom` | El jugador llega cedido al Depor desde otro club | Un jugador cedido por el Atlético |
-| `loanTo` | El Depor cede al jugador a otro club | Teun → Al Ain |
+| `loanTo`   | El Depor cede al jugador a otro club             | Teun → Al Ain                     |
 
 Se añade con `default(null)`, se regeneran los esquemas JSON y el espejo Zod lo tolera ausente. Un JSON o una caché anteriores siguen validando.
 

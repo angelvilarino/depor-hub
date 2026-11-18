@@ -5,9 +5,7 @@ describe('mapUrl', () => {
     expect(mapUrl('Estadio Abanca-Riazor', 'ios')).toBe(
       'http://maps.apple.com/?q=Estadio%20Abanca-Riazor',
     );
-    expect(mapUrl('Estadio Abanca-Riazor', 'android')).toBe(
-      'geo:0,0?q=Estadio%20Abanca-Riazor',
-    );
+    expect(mapUrl('Estadio Abanca-Riazor', 'android')).toBe('geo:0,0?q=Estadio%20Abanca-Riazor');
   });
 
   it('codifica sedes con caracteres especiales', () => {

@@ -34,8 +34,7 @@ export default function MatchDetail() {
     (snapshot.data ? snapshotToMatch(snapshot.data) : undefined);
   const waiting = !match && (fixtures.isPending || (season !== null && snapshot.isPending));
   // F3-22: un fallo de red no es un partido inexistente; se ofrece reintentar.
-  const failed =
-    !match && (fixtures.isError || (season !== null && snapshot.isError));
+  const failed = !match && (fixtures.isError || (season !== null && snapshot.isError));
   const screenOptions = <Stack.Screen options={{ title: t('match.title') }} />;
 
   if (!match) {
@@ -153,9 +152,7 @@ function MatchDetailBody({
             <Button
               variant={reminded ? 'secondary' : 'primary'}
               label={
-                reminded
-                  ? t('reminder.active', { offsets: reminderSummary })
-                  : t('match.remind')
+                reminded ? t('reminder.active', { offsets: reminderSummary }) : t('match.remind')
               }
               onPress={() => setSheetOpen(true)}
             />

@@ -5,7 +5,15 @@ import type { TFunction } from 'i18next';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
 import { useTranslation } from 'react-i18next';
 import { weatherKey, type Weather, type WeatherHour } from '@/features/home/weather';
-import { motion, minTouch, radius, spacing, text, typography, type PaperTokens } from '@/theme/tokens';
+import {
+  motion,
+  minTouch,
+  radius,
+  spacing,
+  text,
+  typography,
+  type PaperTokens,
+} from '@/theme/tokens';
 import { useReducedMotion } from '@/theme/useReducedMotion';
 import { useTheme } from '@/theme/useTheme';
 
@@ -41,8 +49,15 @@ function weatherIcon(code: number, color: string) {
           />
           {['rain', 'showers', 'drizzle', 'storm', 'snow'].includes(kind) ? (
             <>
-              <Path d="m12 26-1 3M19 26l-1 3M26 26l-1 3" stroke={color} strokeWidth={2} strokeLinecap="round" />
-              {kind === 'storm' ? <Path d="m19 16-3 5h4l-3 5" stroke={color} strokeWidth={2} strokeLinejoin="round" /> : null}
+              <Path
+                d="m12 26-1 3M19 26l-1 3M26 26l-1 3"
+                stroke={color}
+                strokeWidth={2}
+                strokeLinecap="round"
+              />
+              {kind === 'storm' ? (
+                <Path d="m19 16-3 5h4l-3 5" stroke={color} strokeWidth={2} strokeLinejoin="round" />
+              ) : null}
             </>
           ) : null}
         </>
@@ -62,10 +77,16 @@ function ageLabel(capturedAt: number, now: number, t: TFunction) {
 function HourItem({ hour, paper, t }: { hour: WeatherHour; paper: PaperTokens; t: TFunction }) {
   const time = hour.hour.split('T')[1]?.slice(0, 2) ?? '--';
   return (
-    <View accessible accessibilityLabel={`${t('home.weather.hour')}, ${time}:00, ${hour.temperatureC}°, ${hour.precipitationProbability ?? '—'}%`} style={styles.hour}>
+    <View
+      accessible
+      accessibilityLabel={`${t('home.weather.hour')}, ${time}:00, ${hour.temperatureC}°, ${hour.precipitationProbability ?? '—'}%`}
+      style={styles.hour}
+    >
       <Text style={[styles.hourTime, { color: paper.muted }]}>{time}:00</Text>
       <Text style={[styles.hourTemp, { color: paper.text }]}>{hour.temperatureC}°</Text>
-      <Text style={[styles.hourRain, { color: paper.muted }]}>{hour.precipitationProbability === null ? '—' : `${hour.precipitationProbability}%`}</Text>
+      <Text style={[styles.hourRain, { color: paper.muted }]}>
+        {hour.precipitationProbability === null ? '—' : `${hour.precipitationProbability}%`}
+      </Text>
     </View>
   );
 }
@@ -112,12 +133,20 @@ export function WeatherLine({
     t('home.weather.temperature', { n: weather.temperatureC }),
     rain === null ? null : t('home.weather.precipitation', { n: rain }),
     weather.windKmh === null ? null : t('home.weather.wind', { n: weather.windKmh }),
-  ].filter(Boolean).join('. ');
+  ]
+    .filter(Boolean)
+    .join('. ');
 
   return (
     <View style={[styles.ticket, { backgroundColor: paper.background, borderColor: paper.border }]}>
-      <View pointerEvents="none" style={[styles.notch, styles.notchLeft, { backgroundColor: paper.background }]} />
-      <View pointerEvents="none" style={[styles.notch, styles.notchRight, { backgroundColor: paper.background }]} />
+      <View
+        pointerEvents="none"
+        style={[styles.notch, styles.notchLeft, { backgroundColor: paper.background }]}
+      />
+      <View
+        pointerEvents="none"
+        style={[styles.notch, styles.notchRight, { backgroundColor: paper.background }]}
+      />
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={label}
@@ -126,34 +155,57 @@ export function WeatherLine({
         onPress={() => setExpanded((value) => !value)}
         style={styles.ticketMain}
       >
-        <Animated.View style={{ transform: [{ translateY }] }}>{weatherIcon(weather.code, paper.accent)}</Animated.View>
+        <Animated.View style={{ transform: [{ translateY }] }}>
+          {weatherIcon(weather.code, paper.accent)}
+        </Animated.View>
         <View style={styles.weatherMain}>
-          <Text style={[styles.temperature, { color: paper.text }]} maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}>
+          <Text
+            style={[styles.temperature, { color: paper.text }]}
+            maxFontSizeMultiplier={typography.displayMaxFontSizeMultiplier}
+          >
             {weather.temperatureC}°
           </Text>
-          <Text style={[styles.condition, { color: paper.muted }]}>{t(`home.weather.${kind}`)}</Text>
+          <Text style={[styles.condition, { color: paper.muted }]}>
+            {t(`home.weather.${kind}`)}
+          </Text>
         </View>
         <View style={styles.weatherMetrics}>
           {rain !== null ? (
             <View style={styles.rainMetric}>
               <View style={styles.rainLabel}>
-                <Text style={{ color: paper.muted, ...text.caption }}>{t('home.weather.rain')}</Text>
-                <Text style={{ color: paper.text, ...text.caption, fontWeight: '700' }}>{rain}%</Text>
+                <Text style={{ color: paper.muted, ...text.caption }}>
+                  {t('home.weather.rain')}
+                </Text>
+                <Text style={{ color: paper.text, ...text.caption, fontWeight: '700' }}>
+                  {rain}%
+                </Text>
               </View>
               <View style={[styles.rainTrack, { backgroundColor: paper.border }]}>
-                <View style={[styles.rainFill, { width: `${Math.max(0, Math.min(100, rain))}%` as DimensionValue, backgroundColor: paper.accent }]} />
+                <View
+                  style={[
+                    styles.rainFill,
+                    {
+                      width: `${Math.max(0, Math.min(100, rain))}%` as DimensionValue,
+                      backgroundColor: paper.accent,
+                    },
+                  ]}
+                />
               </View>
             </View>
           ) : null}
           {weather.windKmh !== null ? (
-            <Text style={{ color: paper.muted, ...text.caption }}>{t('home.weather.wind', { n: weather.windKmh })}</Text>
+            <Text style={{ color: paper.muted, ...text.caption }}>
+              {t('home.weather.wind', { n: weather.windKmh })}
+            </Text>
           ) : null}
         </View>
       </Pressable>
 
       {expanded && weather.nearby && weather.nearby.length > 0 ? (
         <View style={[styles.hours, { borderTopColor: paper.border }]}>
-          {weather.nearby.map((hour) => <HourItem key={hour.hour} hour={hour} paper={paper} t={t} />)}
+          {weather.nearby.map((hour) => (
+            <HourItem key={hour.hour} hour={hour} paper={paper} t={t} />
+          ))}
         </View>
       ) : null}
       <View style={styles.attributionRow}>
@@ -169,8 +221,24 @@ export function WeatherLine({
 }
 
 const styles = StyleSheet.create({
-  ticket: { borderWidth: StyleSheet.hairlineWidth, borderStyle: 'dashed', borderRadius: radius.md, padding: spacing.sm, gap: spacing.sm, overflow: 'hidden' },
-  notch: { position: 'absolute', zIndex: 1, top: '50%', width: 16, height: 16, borderRadius: radius.pill, borderWidth: StyleSheet.hairlineWidth, borderColor: 'transparent' },
+  ticket: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderStyle: 'dashed',
+    borderRadius: radius.md,
+    padding: spacing.sm,
+    gap: spacing.sm,
+    overflow: 'hidden',
+  },
+  notch: {
+    position: 'absolute',
+    zIndex: 1,
+    top: '50%',
+    width: 16,
+    height: 16,
+    borderRadius: radius.pill,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'transparent',
+  },
   notchLeft: { left: -9 },
   notchRight: { right: -9 },
   ticketMain: { minHeight: minTouch, flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
@@ -183,7 +251,13 @@ const styles = StyleSheet.create({
   rainTrack: { height: 6, borderRadius: radius.pill, overflow: 'hidden' },
   rainFill: { height: '100%', borderRadius: radius.pill },
   attributionRow: { flexDirection: 'row', justifyContent: 'space-between', gap: spacing.sm },
-  hours: { borderTopWidth: StyleSheet.hairlineWidth, paddingTop: spacing.sm, flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
+  hours: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: spacing.sm,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.xs,
+  },
   hour: { minWidth: 54, alignItems: 'center', gap: spacing.xs },
   hourTime: { ...text.caption },
   hourTemp: { fontFamily: typography.display, ...text.title },

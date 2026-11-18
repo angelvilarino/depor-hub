@@ -58,7 +58,9 @@ export function ReminderSheet({
   };
   const previews = [...selected]
     .sort((a, b) => b - a)
-    .map((offset) => formatReminderDateTime(new Date(start - offset * 60_000).toISOString(), i18n.language));
+    .map((offset) =>
+      formatReminderDateTime(new Date(start - offset * 60_000).toISOString(), i18n.language),
+    );
 
   const save = async () => {
     if (!remindable) return;
@@ -88,20 +90,33 @@ export function ReminderSheet({
           style={[styles.sheet, { backgroundColor: colors.surface, borderColor: colors.border }]}
         >
           <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-            <Text accessibilityRole="header" style={{ color: colors.text, ...text.title, fontWeight: '700' }}>
+            <Text
+              accessibilityRole="header"
+              style={{ color: colors.text, ...text.title, fontWeight: '700' }}
+            >
               {t('reminder.title')}
             </Text>
-            <Text style={{ color: colors.textMuted, ...text.bodyLarge }}>{t('reminder.explanation')}</Text>
+            <Text style={{ color: colors.textMuted, ...text.bodyLarge }}>
+              {t('reminder.explanation')}
+            </Text>
 
             {!remindersEnabled ? (
               <View style={[styles.notice, { borderColor: colors.border }]}>
-                <Text style={{ color: colors.text, ...text.bodyLarge }}>{t('reminder.globalOff')}</Text>
-                <Button variant="secondary" label={t('reminder.enable')} onPress={onEnableReminders} />
+                <Text style={{ color: colors.text, ...text.bodyLarge }}>
+                  {t('reminder.globalOff')}
+                </Text>
+                <Button
+                  variant="secondary"
+                  label={t('reminder.enable')}
+                  onPress={onEnableReminders}
+                />
               </View>
             ) : null}
 
             {!remindable ? (
-              <Text style={{ color: colors.textMuted, ...text.bodyLarge }}>{t('reminder.tbc')}</Text>
+              <Text style={{ color: colors.textMuted, ...text.bodyLarge }}>
+                {t('reminder.tbc')}
+              </Text>
             ) : null}
 
             <View style={styles.chips}>
@@ -134,7 +149,9 @@ export function ReminderSheet({
                       {offsetLabel(offset, t)}
                     </Text>
                     {past ? (
-                      <Text style={{ color: colors.textMuted, ...text.caption }}>{t('reminder.past')}</Text>
+                      <Text style={{ color: colors.textMuted, ...text.caption }}>
+                        {t('reminder.past')}
+                      </Text>
                     ) : null}
                   </Pressable>
                 );
@@ -151,13 +168,21 @@ export function ReminderSheet({
                 </Text>
               ))
             ) : (
-              <Text style={{ color: colors.textMuted, ...text.body }}>{t('reminder.previewEmpty')}</Text>
+              <Text style={{ color: colors.textMuted, ...text.body }}>
+                {t('reminder.previewEmpty')}
+              </Text>
             )}
 
             {denied ? (
               <View style={[styles.notice, { borderColor: colors.danger }]}>
-                <Text style={{ color: colors.danger, ...text.bodyLarge }}>{t('reminder.permissionDenied')}</Text>
-                <Button variant="secondary" label={t('reminder.openSettings')} onPress={onOpenSettings} />
+                <Text style={{ color: colors.danger, ...text.bodyLarge }}>
+                  {t('reminder.permissionDenied')}
+                </Text>
+                <Button
+                  variant="secondary"
+                  label={t('reminder.openSettings')}
+                  onPress={onOpenSettings}
+                />
               </View>
             ) : null}
 
@@ -228,5 +253,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  notice: { borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.md, padding: spacing.sm, gap: spacing.sm },
+  notice: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: radius.md,
+    padding: spacing.sm,
+    gap: spacing.sm,
+  },
 });

@@ -15,9 +15,7 @@ type Lineup = MatchDetailT['lineups']['home'];
 function PlayerRows({ players }: { players: MatchDetailPlayerT[] }) {
   const { colors } = useTheme();
   if (players.length === 0) {
-    return (
-      <Text style={{ color: colors.paper.muted, ...text.body }}>—</Text>
-    );
+    return <Text style={{ color: colors.paper.muted, ...text.body }}>—</Text>;
   }
   return (
     <View style={styles.rows}>
@@ -38,10 +36,7 @@ function PlayerRows({ players }: { players: MatchDetailPlayerT[] }) {
           >
             {player.shirtNumber ?? '·'}
           </Text>
-          <Text
-            numberOfLines={1}
-            style={{ color: colors.paper.text, flex: 1, ...text.body }}
-          >
+          <Text numberOfLines={1} style={{ color: colors.paper.text, flex: 1, ...text.body }}>
             {player.name}
           </Text>
         </View>
@@ -50,20 +45,17 @@ function PlayerRows({ players }: { players: MatchDetailPlayerT[] }) {
   );
 }
 
-function LineupColumn({
-  lineup,
-  team,
-}: {
-  lineup: Lineup;
-  team: MatchT['home'];
-}) {
+function LineupColumn({ lineup, team }: { lineup: Lineup; team: MatchT['home'] }) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   return (
     <View style={styles.column}>
       <View style={styles.columnHead}>
         <TeamCrest team={team} size={18} />
-        <Text numberOfLines={1} style={{ color: colors.paper.text, flex: 1, ...text.bodyLarge, fontWeight: '700' }}>
+        <Text
+          numberOfLines={1}
+          style={{ color: colors.paper.text, flex: 1, ...text.bodyLarge, fontWeight: '700' }}
+        >
           {teamName(team)}
         </Text>
       </View>
@@ -123,19 +115,32 @@ export function MatchLineups({ match, detail }: { match: MatchT; detail: MatchDe
       </View>
       {showSubstitutes ? (
         <View style={[styles.subs, { borderTopColor: colors.paper.border }]}>
-          <Text style={{ color: colors.paper.muted, ...text.caption, fontWeight: '700', textTransform: 'uppercase' }}>
+          <Text
+            style={{
+              color: colors.paper.muted,
+              ...text.caption,
+              fontWeight: '700',
+              textTransform: 'uppercase',
+            }}
+          >
             {t('match.substitutes')}
           </Text>
           <View style={styles.columns}>
             <View style={styles.column}>
-              <Text numberOfLines={1} style={{ color: colors.paper.muted, ...text.caption, fontWeight: '700' }}>
+              <Text
+                numberOfLines={1}
+                style={{ color: colors.paper.muted, ...text.caption, fontWeight: '700' }}
+              >
                 {teamName(match.home)}
               </Text>
               <PlayerRows players={home.substitutes} />
             </View>
             <View style={[styles.divider, { backgroundColor: colors.paper.border }]} />
             <View style={styles.column}>
-              <Text numberOfLines={1} style={{ color: colors.paper.muted, ...text.caption, fontWeight: '700' }}>
+              <Text
+                numberOfLines={1}
+                style={{ color: colors.paper.muted, ...text.caption, fontWeight: '700' }}
+              >
                 {teamName(match.away)}
               </Text>
               <PlayerRows players={away.substitutes} />

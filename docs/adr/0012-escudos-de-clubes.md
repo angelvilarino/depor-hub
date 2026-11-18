@@ -14,9 +14,9 @@ La ficha ya mostraba el escudo del rival en el calendario, pero la trayectoria y
 
 Se añaden dos campos opcionales:
 
-| Campo | Dónde | Significado |
-|---|---|---|
-| `crestUrl` | `CareerEntry` | URL del escudo del club de esa etapa |
+| Campo              | Dónde         | Significado                             |
+| ------------------ | ------------- | --------------------------------------- |
+| `crestUrl`         | `CareerEntry` | URL del escudo del club de esa etapa    |
 | `opponentCrestUrl` | `PlayerMatch` | URL del escudo del rival de ese partido |
 
 - Pydantic es el origen; se regeneran `packages/schemas` y el espejo Zod los acepta con `default(null)`. Un JSON o una caché anteriores siguen validando.

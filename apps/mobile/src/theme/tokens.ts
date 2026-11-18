@@ -63,9 +63,12 @@ export const lightColors: ColorTokens = {
     muted: '#E3EFFB',
     accent: '#FFD166',
     outcome: {
-      winBackground: '#C7F2DD', winText: '#07513C',
-      drawBackground: '#FFF0BD', drawText: '#654A00',
-      lossBackground: '#FFDAD7', lossText: '#7A1F1A',
+      winBackground: '#C7F2DD',
+      winText: '#07513C',
+      drawBackground: '#FFF0BD',
+      drawText: '#654A00',
+      lossBackground: '#FFDAD7',
+      lossText: '#7A1F1A',
     },
   },
   paper: {
@@ -98,9 +101,12 @@ export const darkColors: ColorTokens = {
     muted: '#E3EFFB',
     accent: '#FFD166',
     outcome: {
-      winBackground: '#C7F2DD', winText: '#07513C',
-      drawBackground: '#FFF0BD', drawText: '#654A00',
-      lossBackground: '#FFDAD7', lossText: '#7A1F1A',
+      winBackground: '#C7F2DD',
+      winText: '#07513C',
+      drawBackground: '#FFF0BD',
+      drawText: '#654A00',
+      lossBackground: '#FFDAD7',
+      lossText: '#7A1F1A',
     },
   },
   paper: {
@@ -135,7 +141,14 @@ export const kitColors = {
   teal: '#0F9E9A',
   outline: '#475569',
 } as const;
-export const avatarPalette = ['#00478F', '#0B6B4F', '#7B3F98', '#9A3412', '#1F5F8B', '#8A2B4A'] as const;
+export const avatarPalette = [
+  '#00478F',
+  '#0B6B4F',
+  '#7B3F98',
+  '#9A3412',
+  '#1F5F8B',
+  '#8A2B4A',
+] as const;
 // D-17: colores de marca de los canales oficiales. Son colores de dominio,
 // no de interfaz; viven aquí para no repetir hexadecimales en las pantallas.
 export const socialColors = {

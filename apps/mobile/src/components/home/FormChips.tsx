@@ -10,7 +10,13 @@ const TONE = {
   L: 'loss',
 } as const;
 
-export function FormChips({ results, variant = 'paper' }: { results: FormResult[]; variant?: 'paper' | 'poster' }) {
+export function FormChips({
+  results,
+  variant = 'paper',
+}: {
+  results: FormResult[];
+  variant?: 'paper' | 'poster';
+}) {
   const { t } = useTranslation();
   const { colors } = useTheme();
   if (results.length === 0) return null;
@@ -18,9 +24,7 @@ export function FormChips({ results, variant = 'paper' }: { results: FormResult[
   return (
     <View
       accessible
-      accessibilityLabel={results
-        .map((result) => t(`calendar.outcomeLong.${result}`))
-        .join(', ')}
+      accessibilityLabel={results.map((result) => t(`calendar.outcomeLong.${result}`)).join(', ')}
       style={styles.row}
     >
       {results.map((result, index) => (
@@ -32,17 +36,34 @@ export function FormChips({ results, variant = 'paper' }: { results: FormResult[
             styles.chip,
             variant === 'poster'
               ? {
-                  backgroundColor: colors.poster.outcome[result === 'W' ? 'winBackground' : result === 'L' ? 'lossBackground' : 'drawBackground'],
-                  borderColor: colors.poster.outcome[result === 'W' ? 'winBackground' : result === 'L' ? 'lossBackground' : 'drawBackground'],
+                  backgroundColor:
+                    colors.poster.outcome[
+                      result === 'W'
+                        ? 'winBackground'
+                        : result === 'L'
+                          ? 'lossBackground'
+                          : 'drawBackground'
+                    ],
+                  borderColor:
+                    colors.poster.outcome[
+                      result === 'W'
+                        ? 'winBackground'
+                        : result === 'L'
+                          ? 'lossBackground'
+                          : 'drawBackground'
+                    ],
                 }
               : { borderColor: colors[TONE[result]] },
           ]}
         >
           <Text
             style={{
-              color: variant === 'poster'
-                ? colors.poster.outcome[result === 'W' ? 'winText' : result === 'L' ? 'lossText' : 'drawText']
-                : colors[TONE[result]],
+              color:
+                variant === 'poster'
+                  ? colors.poster.outcome[
+                      result === 'W' ? 'winText' : result === 'L' ? 'lossText' : 'drawText'
+                    ]
+                  : colors[TONE[result]],
               ...text.body,
               fontWeight: '700',
             }}

@@ -48,7 +48,11 @@ export function PaperCard({
   return (
     <Animated.View
       entering={FadeInUp.duration(motion.standard).delay(motion.stagger)}
-      style={[styles.paper, { backgroundColor: paper.background, borderColor: paper.border }, style]}
+      style={[
+        styles.paper,
+        { backgroundColor: paper.background, borderColor: paper.border },
+        style,
+      ]}
     >
       {children}
     </Animated.View>
@@ -129,7 +133,9 @@ export function Chip({
   const { colors } = useTheme();
   const paper = colors.paper;
   const content = (
-    <Text style={{ color: selected ? colors.onPrimary : paper.accent, ...text.body, fontWeight: '700' }}>
+    <Text
+      style={{ color: selected ? colors.onPrimary : paper.accent, ...text.body, fontWeight: '700' }}
+    >
       {label}
     </Text>
   );
@@ -179,7 +185,15 @@ export function CrestBadge({ team, size = 52 }: { team: TeamRefT; size?: number 
     <View
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
-      style={[styles.crestBadge, { width: size, height: size, borderColor: colors.border, backgroundColor: colors.paper.background }]}
+      style={[
+        styles.crestBadge,
+        {
+          width: size,
+          height: size,
+          borderColor: colors.border,
+          backgroundColor: colors.paper.background,
+        },
+      ]}
     >
       {uri ? (
         <Image
@@ -191,7 +205,13 @@ export function CrestBadge({ team, size = 52 }: { team: TeamRefT; size?: number 
           style={{ width: size * 0.82, height: size * 0.82 }}
         />
       ) : (
-        <Text style={{ color: colors.textMuted, fontSize: Math.max(text.caption.fontSize, size * 0.25), fontWeight: '800' }}>
+        <Text
+          style={{
+            color: colors.textMuted,
+            fontSize: Math.max(text.caption.fontSize, size * 0.25),
+            fontWeight: '800',
+          }}
+        >
           {(team.tla ?? team.name.slice(0, 3)).toUpperCase()}
         </Text>
       )}
@@ -206,7 +226,9 @@ export function BrandMark({ team }: { team: TeamRefT | null }) {
   const uri = SHOW_CLUB_CREST_AS_BRAND && !failed ? team?.crestUrl : null;
   return (
     <View style={styles.brand}>
-      <View style={[styles.brandMark, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+      <View
+        style={[styles.brandMark, { backgroundColor: colors.surface, borderColor: colors.border }]}
+      >
         {uri ? (
           <Image
             accessibilityIgnoresInvertColors
@@ -245,13 +267,38 @@ const styles = StyleSheet.create({
     gap: spacing.md,
     elevation: 1,
   },
-  sectionHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.sm },
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.sm,
+  },
   sectionText: { flex: 1, gap: spacing.xs },
-  chip: { minHeight: minTouch, borderWidth: 1, borderRadius: radius.pill, paddingHorizontal: spacing.md, alignItems: 'center', justifyContent: 'center' },
+  chip: {
+    minHeight: minTouch,
+    borderWidth: 1,
+    borderRadius: radius.pill,
+    paddingHorizontal: spacing.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   statTile: { gap: spacing.xs, minWidth: 68 },
-  crestBadge: { alignItems: 'center', justifyContent: 'center', borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.pill },
+  crestBadge: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: radius.pill,
+  },
   brand: { minHeight: minTouch, flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  brandMark: { width: 38, height: 38, borderWidth: StyleSheet.hairlineWidth, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+  brandMark: {
+    width: 38,
+    height: 38,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: radius.sm,
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
   brandImage: { width: 30, height: 30 },
   brandCopy: { flex: 1, gap: spacing.xs },
 });

@@ -16,7 +16,8 @@
     "typecheck": "npm run typecheck -w apps/mobile",
     "test": "npm run test -w apps/mobile",
     "audit": "node scripts/audit.mjs",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@testing-library/react-native": "^14.1.0",

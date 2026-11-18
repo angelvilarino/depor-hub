@@ -34,7 +34,9 @@ export function StandingsTable({
       <View style={styles.row}>
         {cell(t('calendar.col.pos'), 28, true, true)}
         <View style={{ width: 20 }} />
-        <Text style={{ flex: 1, color: colors.textMuted, ...typeScale.body, fontWeight: '700' }}>{t('calendar.col.team')}</Text>
+        <Text style={{ flex: 1, color: colors.textMuted, ...typeScale.body, fontWeight: '700' }}>
+          {t('calendar.col.team')}
+        </Text>
         {!compact && cell(t('calendar.col.played'), 32, true, true)}
         {!compact && cell(t('calendar.col.goalDiff'), 36, true, true)}
         {cell(t('calendar.col.points'), 36, true, true)}
@@ -46,15 +48,27 @@ export function StandingsTable({
             key={r.team.id}
             accessible
             accessibilityLabel={`${r.position}. ${r.team.shortName ?? r.team.name}, ${r.points} ${t('calendar.col.points')}`}
-            style={[styles.row, { borderLeftWidth: 3, borderLeftColor: me ? colors.primary : 'transparent' }]}
+            style={[
+              styles.row,
+              { borderLeftWidth: 3, borderLeftColor: me ? colors.primary : 'transparent' },
+            ]}
           >
             {cell(r.position, 28, me)}
             <TeamCrest team={r.team} size={20} />
-            <Text numberOfLines={1} style={{ flex: 1, color: colors.text, ...typeScale.bodyLarge, fontWeight: me ? '700' : '400' }}>
+            <Text
+              numberOfLines={1}
+              style={{
+                flex: 1,
+                color: colors.text,
+                ...typeScale.bodyLarge,
+                fontWeight: me ? '700' : '400',
+              }}
+            >
               {r.team.shortName ?? r.team.name}
             </Text>
             {!compact && cell(r.played, 32, me)}
-            {!compact && cell(r.goalDifference > 0 ? `+${r.goalDifference}` : r.goalDifference, 36, me)}
+            {!compact &&
+              cell(r.goalDifference > 0 ? `+${r.goalDifference}` : r.goalDifference, 36, me)}
             {cell(r.points, 36, true)}
           </View>
         );
@@ -64,6 +78,16 @@ export function StandingsTable({
 }
 
 const styles = StyleSheet.create({
-  box: { borderRadius: radius.md, borderWidth: StyleSheet.hairlineWidth, paddingVertical: spacing.xs },
-  row: { flexDirection: 'row', alignItems: 'center', minHeight: 40, paddingHorizontal: spacing.sm, gap: spacing.xs },
+  box: {
+    borderRadius: radius.md,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingVertical: spacing.xs,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    minHeight: 40,
+    paddingHorizontal: spacing.sm,
+    gap: spacing.xs,
+  },
 });

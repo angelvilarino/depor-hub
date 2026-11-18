@@ -33,9 +33,7 @@ describe('buildTimeline', () => {
             scoreAfter: null,
           },
         ],
-        cards: [
-          { minute: 65, minuteLabel: '65', team: 'away', player: 'Aguado', kind: 'yellow' },
-        ],
+        cards: [{ minute: 65, minuteLabel: '65', team: 'away', player: 'Aguado', kind: 'yellow' }],
         substitutions: [
           {
             minute: 60,
@@ -49,12 +47,7 @@ describe('buildTimeline', () => {
     );
 
     expect(entries.map((entry) => entry.minute)).toEqual([21, 60, 65, 88]);
-    expect(entries.map((entry) => entry.kind)).toEqual([
-      'goal',
-      'substitution',
-      'card',
-      'goal',
-    ]);
+    expect(entries.map((entry) => entry.kind)).toEqual(['goal', 'substitution', 'card', 'goal']);
   });
 
   it('a igual minuto ordena gol, tarjeta y cambio', () => {

@@ -5,7 +5,9 @@ import i18n from '@/i18n';
 
 const mockReplace = jest.fn();
 
-jest.mock('expo-router', () => ({ router: { replace: (...args: unknown[]) => mockReplace(...args) } }));
+jest.mock('expo-router', () => ({
+  router: { replace: (...args: unknown[]) => mockReplace(...args) },
+}));
 
 jest.mock('@/theme/useTheme', () => {
   const { lightColors } = jest.requireActual('@/theme/tokens');
@@ -20,8 +22,6 @@ beforeEach(() => {
   mockReplace.mockReset();
   jest.spyOn(console, 'warn').mockImplementation(() => {});
 });
-
-
 
 describe('recuperación de rutas (F3-02)', () => {
   it('una ruta desconocida ofrece volver al inicio', async () => {
@@ -43,6 +43,5 @@ describe('recuperación de rutas (F3-02)', () => {
 
     fireEvent.press(screen.getByText('Ir al inicio'));
     expect(mockReplace).toHaveBeenCalledWith('/');
-
   });
 });

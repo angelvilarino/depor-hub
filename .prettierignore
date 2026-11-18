@@ -1,5 +1,22 @@
-node_modules
-.expo
-dist
+# Artefactos y datos: su formato lo fija el pipeline, no Prettier.
+node_modules/
+.venv/
+.expo/
+dist/
+coverage/
+htmlcov/
+*.egg-info/
 package-lock.json
-data/raw
+workers/live-proxy/package-lock.json
+
+data/
+packages/schemas/
+apps/mobile/src/data/licenses.json
+
+# Documentos escritos por los comandos del pipeline.
+docs/kits_coverage.md
+docs/licenses.md
+docs/sources.md
+
+# Instantáneas de la auditoría: se conservan tal como se entregaron.
+docs/auditoria/

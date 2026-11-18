@@ -11,17 +11,17 @@ updates:
       expo:
         patterns:
           - expo*
-          - "@expo/*"
+          - '@expo/*'
       react-native:
         patterns:
           - react-native*
-          - "@react-native/**"
+          - '@react-native/**'
       tooling:
         patterns:
           - eslint*
           - prettier
           - jest*
-          - "@testing-library/*"
+          - '@testing-library/*'
   # Worker del proxy en directo (Cloudflare + Wrangler).
   - package-ecosystem: npm
     directory: /workers/live-proxy
@@ -41,4 +41,4 @@ updates:
     groups:
       actions:
         patterns:
-          - "*"
+          - '*'

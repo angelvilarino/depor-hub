@@ -23,7 +23,8 @@ export function MuseoSection({ club }: { club: ClubT }) {
     (media) => media.kind === 'photo' && media.status === 'verified',
   );
   const pieces = museumPieces(museum.description);
-  const visitLink = museum.links.find((link) => /entrada|ticket/i.test(`${link.id} ${link.label}`)) ?? null;
+  const visitLink =
+    museum.links.find((link) => /entrada|ticket/i.test(`${link.id} ${link.label}`)) ?? null;
 
   return (
     <View style={{ gap: spacing.md }}>
@@ -45,9 +46,7 @@ export function MuseoSection({ club }: { club: ClubT }) {
       <Card>
         <SectionTitle>{t('club.museo.visit')}</SectionTitle>
         {museum.description ? (
-          <Text style={{ color: colors.text, ...text.bodyLarge }}>
-            {museum.description}
-          </Text>
+          <Text style={{ color: colors.text, ...text.bodyLarge }}>{museum.description}</Text>
         ) : null}
         {museum.schedule ? (
           <InfoRow label={t('club.museo.schedule')} value={museum.schedule} />
@@ -69,7 +68,9 @@ export function MuseoSection({ club }: { club: ClubT }) {
             style={styles.primaryLink}
           >
             <Ionicons name="ticket-outline" size={18} color={colors.primary} />
-            <Text style={{ color: colors.primary, ...text.bodyLarge, fontWeight: '700', flex: 1 }}>{visitLink.label}</Text>
+            <Text style={{ color: colors.primary, ...text.bodyLarge, fontWeight: '700', flex: 1 }}>
+              {visitLink.label}
+            </Text>
             <Ionicons name="open-outline" size={18} color={colors.primary} />
           </Pressable>
         ) : null}
@@ -99,20 +100,24 @@ export function MuseoSection({ club }: { club: ClubT }) {
       {museum.links.length > 1 ? (
         <Card>
           <SectionTitle>{t('club.museo.links')}</SectionTitle>
-          {museum.links.filter((link) => link.id !== visitLink?.id).map((link) => (
-            <Pressable
-              key={link.id}
-              accessibilityRole="link"
-              accessibilityLabel={link.label}
-              onPress={() => void openExternal(link.url)}
-              style={styles.link}
-            >
-              <Text style={{ color: colors.primary, ...text.bodyLarge, fontWeight: '600', flex: 1 }}>
-                {link.label}
-              </Text>
-              <Ionicons name="open-outline" size={18} color={colors.primary} />
-            </Pressable>
-          ))}
+          {museum.links
+            .filter((link) => link.id !== visitLink?.id)
+            .map((link) => (
+              <Pressable
+                key={link.id}
+                accessibilityRole="link"
+                accessibilityLabel={link.label}
+                onPress={() => void openExternal(link.url)}
+                style={styles.link}
+              >
+                <Text
+                  style={{ color: colors.primary, ...text.bodyLarge, fontWeight: '600', flex: 1 }}
+                >
+                  {link.label}
+                </Text>
+                <Ionicons name="open-outline" size={18} color={colors.primary} />
+              </Pressable>
+            ))}
         </Card>
       ) : null}
     </View>

@@ -45,12 +45,12 @@ export default function CalendarScreen() {
   );
   const query = tab === 'standings' ? standings : fixtures;
   const refreshing = fixtures.isRefetching || standings.isRefetching;
-  const refresh = () => { void fixtures.refetch(); void standings.refetch(); void meta.refetch(); };
-  const competition = competitionLabel(
-    meta.data?.competitionCode,
-    meta.data?.competitionName,
-    t,
-  );
+  const refresh = () => {
+    void fixtures.refetch();
+    void standings.refetch();
+    void meta.refetch();
+  };
+  const competition = competitionLabel(meta.data?.competitionCode, meta.data?.competitionName, t);
   const subtitle = [meta.data?.season, competition].filter(Boolean).join(' · ');
   const nextId = tab === 'upcoming' ? (upcoming[0]?.id ?? null) : null;
 
@@ -70,7 +70,11 @@ export default function CalendarScreen() {
 
   const header = (
     <View style={styles.header}>
-      <FreshnessBanner dataUpdatedAt={query.dataUpdatedAt} isFetching={query.isFetching} isError={query.isError} />
+      <FreshnessBanner
+        dataUpdatedAt={query.dataUpdatedAt}
+        isFetching={query.isFetching}
+        isError={query.isError}
+      />
       <PosterCard>
         <SectionHeader
           icon="calendar-outline"
@@ -78,13 +82,21 @@ export default function CalendarScreen() {
           title={t('calendar.title')}
           variant="poster"
         />
-        <SegmentedControl<Tab> value={tab} onChange={setTab} options={[
-          { value: 'upcoming', label: t('calendar.upcoming') },
-          { value: 'results', label: t('calendar.results') },
-          { value: 'standings', label: t('calendar.standings') },
-        ]} />
+        <SegmentedControl<Tab>
+          value={tab}
+          onChange={setTab}
+          options={[
+            { value: 'upcoming', label: t('calendar.upcoming') },
+            { value: 'results', label: t('calendar.results') },
+            { value: 'standings', label: t('calendar.standings') },
+          ]}
+        />
         {tab === 'upcoming' && fixtures.data ? (
-          <Button variant="secondary" label={t('calendar.export')} onPress={() => void onExport()} />
+          <Button
+            variant="secondary"
+            label={t('calendar.export')}
+            onPress={() => void onExport()}
+          />
         ) : null}
       </PosterCard>
     </View>
@@ -103,9 +115,11 @@ export default function CalendarScreen() {
     return (
       <Screen refreshing={refreshing} onRefresh={refresh}>
         {header}
-        {standings.data && standings.data.table.length > 0
-          ? <StandingsTable table={standings.data.table} highlightTeamId={meta.data?.team.id} />
-          : <EmptyState message={t('calendar.emptyStandings')} />}
+        {standings.data && standings.data.table.length > 0 ? (
+          <StandingsTable table={standings.data.table} highlightTeamId={meta.data?.team.id} />
+        ) : (
+          <EmptyState message={t('calendar.emptyStandings')} />
+        )}
       </Screen>
     );
   }
@@ -124,22 +138,27 @@ export default function CalendarScreen() {
       keyExtractor={(m) => String(m.id)}
       stickySectionHeadersEnabled
       ListHeaderComponent={header}
-      ListEmptyComponent={<EmptyState message={t(tab === 'upcoming' ? 'calendar.emptyUpcoming' : 'calendar.emptyResults')} />}
+      ListEmptyComponent={
+        <EmptyState
+          message={t(tab === 'upcoming' ? 'calendar.emptyUpcoming' : 'calendar.emptyResults')}
+        />
+      }
       renderSectionHeader={({ section }) => (
         <View style={[styles.month, { backgroundColor: colors.background }]}>
-          <Text accessibilityRole="header" style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}>
+          <Text
+            accessibilityRole="header"
+            style={{ color: colors.textMuted, ...text.body, fontWeight: '700' }}
+          >
             {section.title}
           </Text>
         </View>
       )}
       renderItem={({ item }) => (
-        <MatchCard
-          competitionName={competition}
-          highlight={item.id === nextId}
-          match={item}
-        />
+        <MatchCard competitionName={competition} highlight={item.id === nextId} match={item} />
       )}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={colors.primary} />}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={colors.primary} />
+      }
     />
   );
 }

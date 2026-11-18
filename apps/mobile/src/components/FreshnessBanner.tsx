@@ -40,7 +40,9 @@ export function FreshnessBanner({ dataUpdatedAt, isFetching, isError, maxAgeHour
 
   return (
     <View style={[styles.box, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-      <Text style={{ color: offline ? colors.danger : colors.textMuted, ...typeScale.body }}>{text}</Text>
+      <Text style={{ color: offline ? colors.danger : colors.textMuted, ...typeScale.body }}>
+        {text}
+      </Text>
     </View>
   );
 }

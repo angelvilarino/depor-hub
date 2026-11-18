@@ -85,7 +85,10 @@ export default function AboutScreen() {
       }
       renderSectionHeader={({ section }) => (
         <View style={[styles.sectionHeader, { borderBottomColor: colors.border }]}>
-          <Text accessibilityRole="header" style={{ color: colors.text, ...text.bodyLarge, fontWeight: '800' }}>
+          <Text
+            accessibilityRole="header"
+            style={{ color: colors.text, ...text.bodyLarge, fontWeight: '800' }}
+          >
             {section.title}
           </Text>
           <Text style={{ color: colors.textMuted, ...text.caption }}>{section.count}</Text>

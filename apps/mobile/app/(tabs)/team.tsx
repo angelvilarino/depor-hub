@@ -71,7 +71,11 @@ function SquadCard({ player, now }: { player: PlayerSummaryT; now: number }) {
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={[player.name, position, age !== null ? t('player.ageValue', { n: age }) : null]
+      accessibilityLabel={[
+        player.name,
+        position,
+        age !== null ? t('player.ageValue', { n: age }) : null,
+      ]
         .filter(Boolean)
         .join('. ')}
       onPress={() => router.push(`/player/${player.id}`)}
@@ -109,18 +113,18 @@ function SquadListRow({ player, now }: { player: PlayerSummaryT; now: number }) 
   const age = ageFrom(player.dateOfBirth, now);
   const flag = countryFlag(player.nationality);
   const position = positionAbbreviation(player, t);
-  const subtitle = [
-    position,
-    flag,
-    player.nationality ? countryLabel(t, player.nationality) : null,
-  ]
+  const subtitle = [position, flag, player.nationality ? countryLabel(t, player.nationality) : null]
     .filter(Boolean)
     .join(' · ');
 
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={[player.name, position, age !== null ? t('player.ageValue', { n: age }) : null]
+      accessibilityLabel={[
+        player.name,
+        position,
+        age !== null ? t('player.ageValue', { n: age }) : null,
+      ]
         .filter(Boolean)
         .join('. ')}
       onPress={() => router.push(`/player/${player.id}`)}
@@ -131,7 +135,10 @@ function SquadListRow({ player, now }: { player: PlayerSummaryT; now: number }) 
       </Text>
       <PlayerPortrait player={player} size={40} quality="small" />
       <View style={styles.listText}>
-        <Text numberOfLines={2} style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}>
+        <Text
+          numberOfLines={2}
+          style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700' }}
+        >
           {player.name}
         </Text>
         {subtitle ? (
@@ -141,9 +148,7 @@ function SquadListRow({ player, now }: { player: PlayerSummaryT; now: number }) 
         ) : null}
         {player.loanTo ? <LoanChip /> : null}
       </View>
-      <Text style={[styles.listAge, { color: colors.textMuted }]}>
-        {age !== null ? age : '—'}
-      </Text>
+      <Text style={[styles.listAge, { color: colors.textMuted }]}>{age !== null ? age : '—'}</Text>
     </Pressable>
   );
 }
@@ -249,7 +254,10 @@ export default function TeamScreen() {
           {t('team.summary', { count: visible.length })}
         </Text>
         <View
-          style={[styles.viewToggle, { backgroundColor: colors.surface, borderColor: colors.border }]}
+          style={[
+            styles.viewToggle,
+            { backgroundColor: colors.surface, borderColor: colors.border },
+          ]}
         >
           {VIEWS.map(({ value, icon }) => {
             const selected = value === squadView;
@@ -260,16 +268,9 @@ export default function TeamScreen() {
                 accessibilityRole="button"
                 accessibilityState={{ selected }}
                 onPress={() => setSquadView(value)}
-                style={[
-                  styles.viewButton,
-                  selected ? { backgroundColor: colors.primary } : null,
-                ]}
+                style={[styles.viewButton, selected ? { backgroundColor: colors.primary } : null]}
               >
-                <Ionicons
-                  name={icon}
-                  size={20}
-                  color={selected ? colors.onPrimary : colors.text}
-                />
+                <Ionicons name={icon} size={20} color={selected ? colors.onPrimary : colors.text} />
               </Pressable>
             );
           })}
@@ -402,7 +403,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
   },
   searchInput: { flex: 1, minHeight: minTouch, ...text.bodyLarge, paddingVertical: spacing.sm },
-  iconButton: { minHeight: minTouch, minWidth: minTouch, alignItems: 'center', justifyContent: 'center' },
+  iconButton: {
+    minHeight: minTouch,
+    minWidth: minTouch,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   toolbar: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   viewToggle: {
     flexDirection: 'row',

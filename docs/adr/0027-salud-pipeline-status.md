@@ -22,10 +22,10 @@ lento podía dejar a las noticias esperando en la misma cola de concurrencia.
      JSON publicado (noticias, partidos, rivales, etc.);
    - `workflows`: última ejecución **completada** de `data-refresh`,
      `news-refresh` y `rivals-refresh`, con conclusión y enlace.
-   La antigüedad se publica como información, **no** como veredicto: un
-   `updatedAt` viejo puede significar simplemente que no hubo cambios. El estado
-   rojo se basa en ficheros requeridos ausentes y en la última conclusión de cada
-   workflow.
+     La antigüedad se publica como información, **no** como veredicto: un
+     `updatedAt` viejo puede significar simplemente que no hubo cambios. El estado
+     rojo se basa en ficheros requeridos ausentes y en la última conclusión de cada
+     workflow.
 2. **Rama `status`**, no Pages. `health.yml` escribe un único `status.json` con
    `git checkout --orphan` y `push --force` a `status`. Se lee en:
    `https://raw.githubusercontent.com/angelvilarino/depor-hub/status/status.json`.

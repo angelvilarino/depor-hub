@@ -35,10 +35,7 @@ jest.mock('@/theme/useTheme', () => {
 
 const today = new Date();
 let expectedAge = today.getUTCFullYear() - 1998;
-if (
-  today.getUTCMonth() + 1 < 4 ||
-  (today.getUTCMonth() + 1 === 4 && today.getUTCDate() < 13)
-) {
+if (today.getUTCMonth() + 1 < 4 || (today.getUTCMonth() + 1 === 4 && today.getUTCDate() < 13)) {
   expectedAge -= 1;
 }
 

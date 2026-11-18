@@ -78,7 +78,9 @@ export function monthKey(utc: string, status: string): string {
 
 export function formatMonth(key: string, locale: string): string {
   const [y, m] = key.split('-').map(Number);
-  return new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
-    new Date(Date.UTC(y ?? 1970, (m ?? 1) - 1, 1)),
-  );
+  return new Intl.DateTimeFormat(locale, {
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(Date.UTC(y ?? 1970, (m ?? 1) - 1, 1)));
 }

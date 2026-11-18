@@ -32,7 +32,10 @@ function Chips<T extends string>(props: {
             onPress={() => props.onChange(o.value)}
             style={[
               styles.chip,
-              { backgroundColor: selected ? colors.primary : colors.surface, borderColor: colors.border },
+              {
+                backgroundColor: selected ? colors.primary : colors.surface,
+                borderColor: colors.border,
+              },
             ]}
           >
             <Text style={{ color: selected ? colors.onPrimary : colors.text }}>{o.label}</Text>
@@ -56,7 +59,8 @@ function formatDateTime(value: string | null | undefined, locale: string): strin
 export default function SettingsScreen() {
   const { t, i18n } = useTranslation();
   const { colors } = useTheme();
-  const { theme, language, remindersEnabled, setTheme, setLanguage, setRemindersEnabled } = useSettings();
+  const { theme, language, remindersEnabled, setTheme, setLanguage, setRemindersEnabled } =
+    useSettings();
   const meta = useMeta();
   const [clearing, setClearing] = useState(false);
 
@@ -133,7 +137,9 @@ export default function SettingsScreen() {
           </Text>
         </View>
         <View style={styles.infoRow}>
-          <Text style={{ color: colors.textMuted, ...text.body }}>{t('settings.dataUpdatedAt')}</Text>
+          <Text style={{ color: colors.textMuted, ...text.body }}>
+            {t('settings.dataUpdatedAt')}
+          </Text>
           <Text style={{ color: colors.text, ...text.body }}>
             {meta.data ? formatDateTime(meta.data.updatedAt, i18n.language) : '—'}
           </Text>

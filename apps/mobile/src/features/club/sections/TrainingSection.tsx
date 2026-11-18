@@ -40,18 +40,27 @@ export function TrainingSection({ club }: { club: ClubT }) {
 
   return (
     <View style={{ gap: spacing.md }}>
-      <HeroHeader title={training.name ?? t('club.sections.training.title')} subtitle={training.location} icon="barbell-outline" />
+      <HeroHeader
+        title={training.name ?? t('club.sections.training.title')}
+        subtitle={training.location}
+        icon="barbell-outline"
+      />
 
       {lead ? (
         // D-19: la cifra del proyecto manda; la descripción la acompaña.
         <PosterCard style={styles.poster}>
-          <Text style={[styles.eyebrow, { color: colors.poster.accent }]}>{t('club.training.project')}</Text>
+          <Text style={[styles.eyebrow, { color: colors.poster.accent }]}>
+            {t('club.training.project')}
+          </Text>
           <Text style={[styles.figure, { color: colors.poster.text }]}>
-            {number.format(lead.value)}{lead.suffix ?? ''}
+            {number.format(lead.value)}
+            {lead.suffix ?? ''}
           </Text>
           <Text style={[styles.figureLabel, { color: colors.poster.muted }]}>{lead.label}</Text>
           {training.description ? (
-            <Text style={[styles.description, { color: colors.poster.muted }]}>{training.description}</Text>
+            <Text style={[styles.description, { color: colors.poster.muted }]}>
+              {training.description}
+            </Text>
           ) : null}
         </PosterCard>
       ) : (
@@ -76,7 +85,9 @@ export function TrainingSection({ club }: { club: ClubT }) {
         </View>
       ) : null}
 
-      {coordinates ? <Button label={t('club.training.openMap')} onPress={() => void openMap()} /> : null}
+      {coordinates ? (
+        <Button label={t('club.training.openMap')} onPress={() => void openMap()} />
+      ) : null}
       {mapFailed ? <MutedText>{t('club.estadio.mapError')}</MutedText> : null}
 
       {notes.length > 0 ? (

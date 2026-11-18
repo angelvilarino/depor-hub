@@ -2,7 +2,13 @@ import { useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
-import { ConfidenceBadge, HeroHeader, PhotoGallery, StatCounter, Timeline } from '@/components/club/Editorial';
+import {
+  ConfidenceBadge,
+  HeroHeader,
+  PhotoGallery,
+  StatCounter,
+  Timeline,
+} from '@/components/club/Editorial';
 import { Card } from '@/components/Screen';
 import { EmptyState } from '@/components/StateViews';
 import type { ClubT } from '@/data/schemas';
@@ -25,12 +31,22 @@ export function EstadioSection({ club }: { club: ClubT }) {
   const opened = formatDate(stadium.openedOn, locale);
   const capacity = stadium.capacity;
   const coordinates = stadium.coordinates;
-  const verifiedPhotos = stadium.media.filter((media) => media.kind === 'photo' && media.status === 'verified');
-  const verifiedAlternatives = stadium.capacityAlternatives.filter((alternative) => Boolean(alternative.sourceUrl));
+  const verifiedPhotos = stadium.media.filter(
+    (media) => media.kind === 'photo' && media.status === 'verified',
+  );
+  const verifiedAlternatives = stadium.capacityAlternatives.filter((alternative) =>
+    Boolean(alternative.sourceUrl),
+  );
   const capacitySourceUrl = capacity?.sourceUrl;
   const timelineEntries = [
     ...(stadium.openedOn
-      ? [{ year: stadium.openedOn.slice(0, 4), title: t('club.estadio.inauguration'), detail: opened }]
+      ? [
+          {
+            year: stadium.openedOn.slice(0, 4),
+            title: t('club.estadio.inauguration'),
+            detail: opened,
+          },
+        ]
       : []),
     ...stadium.renovations.map((detail) => ({
       year: detail.match(/^\d{4}/)?.[0] ?? t('club.estadio.unknownYear'),
@@ -50,7 +66,13 @@ export function EstadioSection({ club }: { club: ClubT }) {
 
   return (
     <View style={{ gap: spacing.md }}>
-      <HeroHeader title={stadium.name} subtitle={stadium.address} icon="football-outline" image={verifiedPhotos[0]?.url} credit={verifiedPhotos[0]} />
+      <HeroHeader
+        title={stadium.name}
+        subtitle={stadium.address}
+        icon="football-outline"
+        image={verifiedPhotos[0]?.url}
+        credit={verifiedPhotos[0]}
+      />
       <PhotoGallery photos={verifiedPhotos} />
       <Card>
         {stadium.description ? (
@@ -72,7 +94,11 @@ export function EstadioSection({ club }: { club: ClubT }) {
         <SectionTitle>{t('club.estadio.capacity')}</SectionTitle>
         {capacity ? (
           <View style={{ gap: spacing.md }}>
-            <StatCounter value={capacity.total} label={t('club.estadio.spectators')} locale={locale} />
+            <StatCounter
+              value={capacity.total}
+              label={t('club.estadio.spectators')}
+              locale={locale}
+            />
             {capacity.breakdown.length > 1 ? (
               <View style={{ gap: spacing.sm }}>
                 {capacity.breakdown.map((zone) => {
@@ -92,7 +118,10 @@ export function EstadioSection({ club }: { club: ClubT }) {
                       </View>
                       <View style={[styles.barTrack, { backgroundColor: colors.background }]}>
                         <View
-                          style={[styles.barFill, { backgroundColor: colors.primary, width: `${share}%` }]}
+                          style={[
+                            styles.barFill,
+                            { backgroundColor: colors.primary, width: `${share}%` },
+                          ]}
                         />
                       </View>
                     </View>
@@ -116,7 +145,10 @@ export function EstadioSection({ club }: { club: ClubT }) {
                 }}
               />
             ) : null}
-            <ConfidenceBadge label={t('club.estadio.capacityConfidence')} status={capacity.status} />
+            <ConfidenceBadge
+              label={t('club.estadio.capacityConfidence')}
+              status={capacity.status}
+            />
           </View>
         ) : (
           <MutedText>{t('club.estadio.noCapacity')}</MutedText>

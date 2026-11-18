@@ -20,11 +20,7 @@ export function MatchTimeline({ match, detail }: { match: MatchT; detail: MatchD
   };
   const note = (entry: TimelineEntry): string | null => {
     if (entry.kind === 'goal') {
-      return entry.penalty
-        ? t('match.penalty')
-        : entry.ownGoal
-          ? t('match.ownGoal')
-          : null;
+      return entry.penalty ? t('match.penalty') : entry.ownGoal ? t('match.ownGoal') : null;
     }
     if (entry.kind === 'card') {
       if (entry.card === 'red') return t('match.red');
@@ -75,25 +71,26 @@ export function MatchTimeline({ match, detail }: { match: MatchT; detail: MatchD
                 style={[
                   styles.row,
                   index > 0
-                    ? { borderTopColor: colors.paper.border, borderTopWidth: StyleSheet.hairlineWidth }
+                    ? {
+                        borderTopColor: colors.paper.border,
+                        borderTopWidth: StyleSheet.hairlineWidth,
+                      }
                     : null,
                 ]}
               >
-                <Text style={{ color: colors.paper.muted, width: 38, ...text.body, fontWeight: '700' }}>
+                <Text
+                  style={{ color: colors.paper.muted, width: 38, ...text.body, fontWeight: '700' }}
+                >
                   {entry.minuteLabel}&apos;
                 </Text>
                 <Ionicons name={icon(entry)} size={16} color={tint(entry)} />
                 <View style={styles.body}>
                   {entry.kind === 'substitution' ? (
-                    <Text style={{ color: colors.paper.text, ...text.body }}>
-                      {extra}
-                    </Text>
+                    <Text style={{ color: colors.paper.text, ...text.body }}>{extra}</Text>
                   ) : (
                     <Text style={{ color: colors.paper.text, ...text.body }}>
                       <Text style={{ fontWeight: '700' }}>{label(entry)}</Text>
-                      {extra ? (
-                        <Text style={{ color: colors.paper.muted }}> ({extra})</Text>
-                      ) : null}
+                      {extra ? <Text style={{ color: colors.paper.muted }}> ({extra})</Text> : null}
                       {entry.kind === 'goal' && entry.scoreAfter ? (
                         <Text style={{ color: colors.paper.accent, fontWeight: '800' }}>
                           {'  '}

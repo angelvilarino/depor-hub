@@ -16,7 +16,11 @@ const oldMatch = {
 
 describe('compatibilidad con JSON anterior a ADR 0006', () => {
   it('fixtures sin campos nuevos -> null', () => {
-    const r = Fixtures.safeParse({ updatedAt: '2026-10-20T10:00:00Z', season: '2026-27', matches: [oldMatch] });
+    const r = Fixtures.safeParse({
+      updatedAt: '2026-10-20T10:00:00Z',
+      season: '2026-27',
+      matches: [oldMatch],
+    });
     expect(r.success).toBe(true);
     if (r.success) {
       const m = r.data.matches[0]!;
@@ -26,10 +30,24 @@ describe('compatibilidad con JSON anterior a ADR 0006', () => {
 
   it('standings sin crestUrl -> null', () => {
     const row = {
-      position: 1, team: oldTeam, played: 1, won: 1, draw: 0, lost: 0, points: 3,
-      goalsFor: 1, goalsAgainst: 0, goalDifference: 1, form: null,
+      position: 1,
+      team: oldTeam,
+      played: 1,
+      won: 1,
+      draw: 0,
+      lost: 0,
+      points: 3,
+      goalsFor: 1,
+      goalsAgainst: 0,
+      goalDifference: 1,
+      form: null,
     };
-    const r = Standings.safeParse({ updatedAt: '2026-10-20T10:00:00Z', season: '2026-27', matchday: 1, table: [row] });
+    const r = Standings.safeParse({
+      updatedAt: '2026-10-20T10:00:00Z',
+      season: '2026-27',
+      matchday: 1,
+      table: [row],
+    });
     expect(r.success).toBe(true);
   });
 });

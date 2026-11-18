@@ -20,49 +20,126 @@ import { minTouch, spacing, text, typography } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 import { openExternal } from '@/utils/openExternal';
 
-function SourceMark({ source, name, compact = false }: { source?: NewsSourceT; name: string; compact?: boolean }) {
+function SourceMark({
+  source,
+  name,
+  compact = false,
+}: {
+  source?: NewsSourceT;
+  name: string;
+  compact?: boolean;
+}) {
   const { colors } = useTheme();
   const [failed, setFailed] = useState(false);
   const size = compact ? 42 : 48;
   const uri = failed ? null : source?.iconUrl;
-  const badge = colors.news.sourceBadges[sourceBadgeIndex(source?.id ?? name, colors.news.sourceBadges.length)]!;
+  const badge =
+    colors.news.sourceBadges[
+      sourceBadgeIndex(source?.id ?? name, colors.news.sourceBadges.length)
+    ]!;
   return (
-    <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={[styles.sourceMark, { width: size, height: size, borderRadius: compact ? 8 : 10, backgroundColor: badge }]}>
+    <View
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      style={[
+        styles.sourceMark,
+        { width: size, height: size, borderRadius: compact ? 8 : 10, backgroundColor: badge },
+      ]}
+    >
       {uri ? (
-        <Image source={{ uri }} cachePolicy="memory-disk" contentFit="contain" onError={() => setFailed(true)} style={{ width: size * 0.7, height: size * 0.7 }} />
+        <Image
+          source={{ uri }}
+          cachePolicy="memory-disk"
+          contentFit="contain"
+          onError={() => setFailed(true)}
+          style={{ width: size * 0.7, height: size * 0.7 }}
+        />
       ) : (
-        <Text style={{ color: colors.poster.text, ...(compact ? text.body : text.bodyLarge), fontWeight: '900' }}>{sourceMonogram(name)}</Text>
+        <Text
+          style={{
+            color: colors.poster.text,
+            ...(compact ? text.body : text.bodyLarge),
+            fontWeight: '900',
+          }}
+        >
+          {sourceMonogram(name)}
+        </Text>
       )}
     </View>
   );
 }
 
-function StoryImage({ story, source, sourceLabel }: { story: NewsStoryT; source?: NewsSourceT; sourceLabel: string }) {
+function StoryImage({
+  story,
+  source,
+  sourceLabel,
+}: {
+  story: NewsStoryT;
+  source?: NewsSourceT;
+  sourceLabel: string;
+}) {
   const [failed, setFailed] = useState(false);
   const { colors } = useTheme();
   const uri = dataImageUrl(story.thumbnailUrl);
   if (uri && !failed) {
-    return <Image source={{ uri }} cachePolicy="memory-disk" contentFit="cover" onError={() => setFailed(true)} style={styles.featureImage} />;
+    return (
+      <Image
+        source={{ uri }}
+        cachePolicy="memory-disk"
+        contentFit="cover"
+        onError={() => setFailed(true)}
+        style={styles.featureImage}
+      />
+    );
   }
-  const badge = colors.news.sourceBadges[sourceBadgeIndex(source?.id ?? story.sourceId, colors.news.sourceBadges.length)]!;
+  const badge =
+    colors.news.sourceBadges[
+      sourceBadgeIndex(source?.id ?? story.sourceId, colors.news.sourceBadges.length)
+    ]!;
   return (
-    <LinearGradient colors={[badge, colors.poster.stops[0]]} style={[styles.featureImage, styles.featureFallback]}>
-      <Text style={[styles.fallbackMonogram, { color: colors.poster.text }]}>{sourceMonogram(sourceLabel)}</Text>
+    <LinearGradient
+      colors={[badge, colors.poster.stops[0]]}
+      style={[styles.featureImage, styles.featureFallback]}
+    >
+      <Text style={[styles.fallbackMonogram, { color: colors.poster.text }]}>
+        {sourceMonogram(sourceLabel)}
+      </Text>
     </LinearGradient>
   );
 }
 
-function StoryThumb({ story, source, sourceLabel }: { story: NewsStoryT; source?: NewsSourceT; sourceLabel: string }) {
+function StoryThumb({
+  story,
+  source,
+  sourceLabel,
+}: {
+  story: NewsStoryT;
+  source?: NewsSourceT;
+  sourceLabel: string;
+}) {
   const [failed, setFailed] = useState(false);
   const { colors } = useTheme();
-  const badge = colors.news.sourceBadges[sourceBadgeIndex(source?.id ?? story.sourceId, colors.news.sourceBadges.length)]!;
+  const badge =
+    colors.news.sourceBadges[
+      sourceBadgeIndex(source?.id ?? story.sourceId, colors.news.sourceBadges.length)
+    ]!;
   const uri = dataImageUrl(story.thumbnailUrl);
   if (uri && !failed) {
-    return <Image source={{ uri }} cachePolicy="memory-disk" contentFit="cover" onError={() => setFailed(true)} style={styles.thumb} />;
+    return (
+      <Image
+        source={{ uri }}
+        cachePolicy="memory-disk"
+        contentFit="cover"
+        onError={() => setFailed(true)}
+        style={styles.thumb}
+      />
+    );
   }
   return (
     <View style={[styles.thumbFallback, { backgroundColor: badge }]}>
-      <Text style={{ color: colors.poster.text, fontWeight: '900', ...text.body }}>{sourceMonogram(sourceLabel)}</Text>
+      <Text style={{ color: colors.poster.text, fontWeight: '900', ...text.body }}>
+        {sourceMonogram(sourceLabel)}
+      </Text>
     </View>
   );
 }
@@ -97,17 +174,29 @@ export function HeadlinesBlock({
     <PaperCard>
       <SectionHeader
         title={t('home.headlines')}
-        trailing={onSeeAll ? (
-          <Pressable accessibilityRole="link" accessibilityLabel={t('home.seeAllHeadlines')} onPress={onSeeAll} style={styles.seeAll}>
-            <Text style={{ color: paper.accent, ...text.body, fontWeight: '700' }}>{t('home.seeAllHeadlines')}</Text>
-          </Pressable>
-        ) : undefined}
+        trailing={
+          onSeeAll ? (
+            <Pressable
+              accessibilityRole="link"
+              accessibilityLabel={t('home.seeAllHeadlines')}
+              onPress={onSeeAll}
+              style={styles.seeAll}
+            >
+              <Text style={{ color: paper.accent, ...text.body, fontWeight: '700' }}>
+                {t('home.seeAllHeadlines')}
+              </Text>
+            </Pressable>
+          ) : undefined
+        }
       />
 
       <View style={styles.feature}>
         <Pressable
           accessibilityRole="link"
-          accessibilityLabel={t('home.openHeadline', { title: featured.title, source: featuredSourceName })}
+          accessibilityLabel={t('home.openHeadline', {
+            title: featured.title,
+            source: featuredSourceName,
+          })}
           accessibilityHint={t('news.openHint')}
           onPress={() => void open(featured.url)}
           style={styles.featurePress}
@@ -120,8 +209,12 @@ export function HeadlinesBlock({
             <View style={styles.meta}>
               <SourceMark source={featuredSource} name={featuredSourceName} compact />
               <View style={styles.metaCopy}>
-                <Text style={{ color: paper.text, ...text.body, fontWeight: '700' }}>{featuredSourceName}</Text>
-                <Text style={{ color: paper.muted, ...text.caption }}>{relative(featured.publishedAt)}</Text>
+                <Text style={{ color: paper.text, ...text.body, fontWeight: '700' }}>
+                  {featuredSourceName}
+                </Text>
+                <Text style={{ color: paper.muted, ...text.caption }}>
+                  {relative(featured.publishedAt)}
+                </Text>
               </View>
             </View>
           </View>
@@ -136,12 +229,21 @@ export function HeadlinesBlock({
               style={styles.coverageButton}
             >
               <Text style={{ color: paper.accent, fontWeight: '700', ...text.caption }}>
-                {t('news.alsoInCount', { count: featured.alsoIn.length })} {alternatesOpen ? '−' : '+'}
+                {t('news.alsoInCount', { count: featured.alsoIn.length })}{' '}
+                {alternatesOpen ? '−' : '+'}
               </Text>
             </Pressable>
             {alternatesOpen ? (
               <View style={[styles.alternateList, { borderColor: paper.border }]}>
-                {featured.alsoIn.map((item) => <AlternateStory key={item.url} item={item} sources={sources} open={open} relative={relative} />)}
+                {featured.alsoIn.map((item) => (
+                  <AlternateStory
+                    key={item.url}
+                    item={item}
+                    sources={sources}
+                    open={open}
+                    relative={relative}
+                  />
+                ))}
               </View>
             ) : null}
           </>
@@ -163,12 +265,21 @@ export function HeadlinesBlock({
               >
                 <StoryThumb story={story} source={source} sourceLabel={name} />
                 <View style={styles.listCopy}>
-                  <Text numberOfLines={3} style={[styles.listTitle, { color: paper.text }]}>{story.title}</Text>
+                  <Text numberOfLines={3} style={[styles.listTitle, { color: paper.text }]}>
+                    {story.title}
+                  </Text>
                   <View style={styles.listMeta}>
                     <SourceMark source={source} name={name} compact />
                     <View style={styles.metaCopy}>
-                      <Text numberOfLines={1} style={{ color: paper.text, ...text.caption, fontWeight: '700' }}>{name}</Text>
-                      <Text style={{ color: paper.muted, ...text.caption }}>{relative(story.publishedAt)}</Text>
+                      <Text
+                        numberOfLines={1}
+                        style={{ color: paper.text, ...text.caption, fontWeight: '700' }}
+                      >
+                        {name}
+                      </Text>
+                      <Text style={{ color: paper.muted, ...text.caption }}>
+                        {relative(story.publishedAt)}
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -180,12 +291,22 @@ export function HeadlinesBlock({
                   onPress={() => setExpandedStory(expandedStory === story.id ? null : story.id)}
                   style={styles.listCoverage}
                 >
-                  <Text style={{ color: paper.accent, fontWeight: '700', ...text.caption }}>{t('news.alsoInCount', { count: story.alsoIn.length })}</Text>
+                  <Text style={{ color: paper.accent, fontWeight: '700', ...text.caption }}>
+                    {t('news.alsoInCount', { count: story.alsoIn.length })}
+                  </Text>
                 </Pressable>
               ) : null}
               {expandedStory === story.id ? (
                 <View style={[styles.alternateList, { borderColor: paper.border }]}>
-                  {story.alsoIn.map((item) => <AlternateStory key={item.url} item={item} sources={sources} open={open} relative={relative} />)}
+                  {story.alsoIn.map((item) => (
+                    <AlternateStory
+                      key={item.url}
+                      item={item}
+                      sources={sources}
+                      open={open}
+                      relative={relative}
+                    />
+                  ))}
                 </View>
               ) : null}
             </View>
@@ -213,7 +334,12 @@ function AlternateStory({
   const source = sourceById(sources, item.sourceId);
   const name = source?.name ?? item.sourceId;
   return (
-    <Pressable accessibilityRole="link" accessibilityLabel={t('news.openAlsoIn', { source: name, title: item.title })} onPress={() => void open(item.url)} style={styles.alternate}>
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={t('news.openAlsoIn', { source: name, title: item.title })}
+      onPress={() => void open(item.url)}
+      style={styles.alternate}
+    >
       <SourceMark source={source} name={name} compact />
       <View style={styles.metaCopy}>
         <Text style={{ color: paper.text, ...text.body, fontWeight: '700' }}>{name}</Text>
@@ -231,22 +357,52 @@ const styles = StyleSheet.create({
   featureImageWrap: { overflow: 'hidden', borderRadius: 12 },
   featureImage: { width: '100%', aspectRatio: 1.78 },
   featureFallback: { alignItems: 'center', justifyContent: 'center' },
-  fallbackMonogram: { fontFamily: typography.display, ...text.numeral, fontWeight: '700', opacity: 0.9 },
+  fallbackMonogram: {
+    fontFamily: typography.display,
+    ...text.numeral,
+    fontWeight: '700',
+    opacity: 0.9,
+  },
   featureHeading: { gap: spacing.sm },
   featureTitle: { fontFamily: typography.headline, ...text.heading },
   meta: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   metaCopy: { flex: 1, minWidth: 0, gap: spacing.xs },
   sourceMark: { alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
-  coverageButton: { minHeight: minTouch, alignSelf: 'flex-start', justifyContent: 'center', paddingHorizontal: spacing.xs },
-  alternateList: { borderTopWidth: StyleSheet.hairlineWidth, gap: spacing.sm, paddingTop: spacing.sm },
+  coverageButton: {
+    minHeight: minTouch,
+    alignSelf: 'flex-start',
+    justifyContent: 'center',
+    paddingHorizontal: spacing.xs,
+  },
+  alternateList: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    gap: spacing.sm,
+    paddingTop: spacing.sm,
+  },
   alternate: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, minHeight: minTouch },
   list: { borderTopWidth: StyleSheet.hairlineWidth, marginTop: spacing.xs },
   listItem: { borderBottomWidth: StyleSheet.hairlineWidth, paddingVertical: spacing.sm },
-  listPress: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.sm, minHeight: minTouch },
+  listPress: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.sm,
+    minHeight: minTouch,
+  },
   listCopy: { flex: 1, minWidth: 0, gap: spacing.xs },
   listTitle: { fontFamily: typography.headline, ...text.subtitle },
   listMeta: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
   thumb: { width: 70, height: 54, borderRadius: 8 },
-  thumbFallback: { width: 70, height: 54, borderRadius: 8, alignItems: 'center', justifyContent: 'center' },
-  listCoverage: { minHeight: minTouch, justifyContent: 'center', alignSelf: 'flex-start', paddingHorizontal: spacing.xs },
+  thumbFallback: {
+    width: 70,
+    height: 54,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  listCoverage: {
+    minHeight: minTouch,
+    justifyContent: 'center',
+    alignSelf: 'flex-start',
+    paddingHorizontal: spacing.xs,
+  },
 });

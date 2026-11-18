@@ -25,12 +25,17 @@ export function TitulosSection({ club }: { club: ClubT }) {
     .filter((edition) => !competition || edition.competition === competition)
     .slice()
     .sort((a, b) => b.year - a.year);
-  if (club.titles.length === 0 && !editions?.length) return <EmptyState message={t('club.titulos.empty')} />;
+  if (club.titles.length === 0 && !editions?.length)
+    return <EmptyState message={t('club.titulos.empty')} />;
 
   return (
     <View style={{ gap: spacing.md }}>
       <Card>
-        <SectionHeader title={t('club.titulos.title')} subtitle={t('club.titulos.editorialSubtitle')} icon="trophy-outline" />
+        <SectionHeader
+          title={t('club.titulos.title')}
+          subtitle={t('club.titulos.editorialSubtitle')}
+          icon="trophy-outline"
+        />
         <Text style={{ color: colors.text, ...text.bodyLarge }}>
           {t('club.titulos.total', {
             total,
@@ -39,40 +44,149 @@ export function TitulosSection({ club }: { club: ClubT }) {
         </Text>
       </Card>
 
-      {competitions.length ? <View style={styles.filters}>{[null, ...competitions].map((item) => <Pressable key={item ?? 'all'} accessibilityRole="button" accessibilityState={{ selected: competition === item }} onPress={() => setCompetition(item)} style={[styles.filter, { backgroundColor: competition === item ? colors.primary : colors.surface, borderColor: colors.border }]}><Text style={{ color: competition === item ? colors.onPrimary : colors.text, fontWeight: '700' }}>{item ?? t('club.titulos.all')}</Text></Pressable>)}</View> : null}
+      {competitions.length ? (
+        <View style={styles.filters}>
+          {[null, ...competitions].map((item) => (
+            <Pressable
+              key={item ?? 'all'}
+              accessibilityRole="button"
+              accessibilityState={{ selected: competition === item }}
+              onPress={() => setCompetition(item)}
+              style={[
+                styles.filter,
+                {
+                  backgroundColor: competition === item ? colors.primary : colors.surface,
+                  borderColor: colors.border,
+                },
+              ]}
+            >
+              <Text
+                style={{
+                  color: competition === item ? colors.onPrimary : colors.text,
+                  fontWeight: '700',
+                }}
+              >
+                {item ?? t('club.titulos.all')}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      ) : null}
 
-      {query.isError ? <Text accessibilityRole="alert" style={{ color: colors.textMuted }}>{t('data.error')}</Text> : null}
+      {query.isError ? (
+        <Text accessibilityRole="alert" style={{ color: colors.textMuted }}>
+          {t('data.error')}
+        </Text>
+      ) : null}
       {visibleEditions.map((edition) => {
         const match = edition.finalMatch;
         const deporName = /deportivo/i;
-        const rival = match?.home && deporName.test(match.home) ? match.away : match?.away && deporName.test(match.away) ? match.home : null;
-        const score = match?.homeGoals !== null && match?.homeGoals !== undefined && match.awayGoals !== null ? `${match.homeGoals}–${match.awayGoals}` : null;
+        const rival =
+          match?.home && deporName.test(match.home)
+            ? match.away
+            : match?.away && deporName.test(match.away)
+              ? match.home
+              : null;
+        const score =
+          match?.homeGoals !== null && match?.homeGoals !== undefined && match.awayGoals !== null
+            ? `${match.homeGoals}–${match.awayGoals}`
+            : null;
         const locale = i18n.language;
-        return <Card key={`${edition.competition}-${edition.year}`}>
-          <View style={styles.editionHeader}><View style={{ flex: 1 }}><Text style={{ color: colors.primary, ...text.body, fontWeight: '800' }}>{edition.year}</Text><Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>{edition.competition}</Text></View><ConfidenceBadge label={t('club.titulos.confidence')} status={edition.status} /></View>
-          {rival ? <Text style={{ color: colors.text, fontFamily: typography.headline, ...text.subtitle }}>{t('club.titulos.finalAgainst', { rival })}</Text> : null}
-          {score ? <Text accessibilityLabel={t('club.titulos.score', { score })} style={{ color: colors.primary, ...text.display, fontWeight: '900' }}>{score}</Text> : null}
-          {match?.date ? <Text style={{ color: colors.textMuted }}>{formatDate(match.date, locale)}</Text> : null}
-          {match?.venue ? <Text style={{ color: colors.textMuted }}>{match.venue}</Text> : null}
-          {edition.coach ? <View style={{ gap: spacing.xs }}>
-            <Text style={{ color: colors.text }}>{t('club.titulos.coach', { coach: edition.coach })}</Text>
-            {edition.coachProvenance ? <FieldProvenance
-              source={edition.coachProvenance.source}
-              confidence={t(`common.confidenceLevel.${edition.coachProvenance.confidence}`)}
-            /> : null}
-          </View> : null}
-          {match?.goalScorers.length ? <View style={{ gap: spacing.xs }}><Text style={{ color: colors.textMuted, fontWeight: '700' }}>{t('club.titulos.scorers')}</Text>{match.goalScorers.map((goal, index) => <Text key={`${goal.player}-${index}`} style={{ color: colors.text }}>{goal.player}{goal.minute !== null ? ` · ${goal.minute}′` : ''}</Text>)}</View> : null}
-          {edition.squad.length ? <View style={{ gap: spacing.xs }}>
-            <Text style={{ color: colors.textMuted, fontWeight: '700' }}>{t('club.titulos.squad')}</Text>
-            {edition.squadProvenance ? <FieldProvenance
-              source={edition.squadProvenance.source}
-              confidence={t(`common.confidenceLevel.${edition.squadProvenance.confidence}`)}
-            /> : null}
-            {edition.squad.map((player) => <Text key={player.name} style={{ color: colors.text }}>{player.name}{player.role ? ` · ${player.role}` : ''}</Text>)}
-          </View> : null}
-          {edition.note ? <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>{edition.note}</Text> : null}
-          {match?.sourceUrl ? <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(match.sourceUrl!)} style={{ minHeight: 44, justifyContent: 'center' }}><Text style={{ color: colors.primary, fontWeight: '700' }}>{t('club.titulos.source')}</Text></Pressable> : null}
-        </Card>;
+        return (
+          <Card key={`${edition.competition}-${edition.year}`}>
+            <View style={styles.editionHeader}>
+              <View style={{ flex: 1 }}>
+                <Text style={{ color: colors.primary, ...text.body, fontWeight: '800' }}>
+                  {edition.year}
+                </Text>
+                <Text style={{ color: colors.text, ...text.subtitle, fontWeight: '800' }}>
+                  {edition.competition}
+                </Text>
+              </View>
+              <ConfidenceBadge label={t('club.titulos.confidence')} status={edition.status} />
+            </View>
+            {rival ? (
+              <Text
+                style={{ color: colors.text, fontFamily: typography.headline, ...text.subtitle }}
+              >
+                {t('club.titulos.finalAgainst', { rival })}
+              </Text>
+            ) : null}
+            {score ? (
+              <Text
+                accessibilityLabel={t('club.titulos.score', { score })}
+                style={{ color: colors.primary, ...text.display, fontWeight: '900' }}
+              >
+                {score}
+              </Text>
+            ) : null}
+            {match?.date ? (
+              <Text style={{ color: colors.textMuted }}>{formatDate(match.date, locale)}</Text>
+            ) : null}
+            {match?.venue ? <Text style={{ color: colors.textMuted }}>{match.venue}</Text> : null}
+            {edition.coach ? (
+              <View style={{ gap: spacing.xs }}>
+                <Text style={{ color: colors.text }}>
+                  {t('club.titulos.coach', { coach: edition.coach })}
+                </Text>
+                {edition.coachProvenance ? (
+                  <FieldProvenance
+                    source={edition.coachProvenance.source}
+                    confidence={t(`common.confidenceLevel.${edition.coachProvenance.confidence}`)}
+                  />
+                ) : null}
+              </View>
+            ) : null}
+            {match?.goalScorers.length ? (
+              <View style={{ gap: spacing.xs }}>
+                <Text style={{ color: colors.textMuted, fontWeight: '700' }}>
+                  {t('club.titulos.scorers')}
+                </Text>
+                {match.goalScorers.map((goal, index) => (
+                  <Text key={`${goal.player}-${index}`} style={{ color: colors.text }}>
+                    {goal.player}
+                    {goal.minute !== null ? ` · ${goal.minute}′` : ''}
+                  </Text>
+                ))}
+              </View>
+            ) : null}
+            {edition.squad.length ? (
+              <View style={{ gap: spacing.xs }}>
+                <Text style={{ color: colors.textMuted, fontWeight: '700' }}>
+                  {t('club.titulos.squad')}
+                </Text>
+                {edition.squadProvenance ? (
+                  <FieldProvenance
+                    source={edition.squadProvenance.source}
+                    confidence={t(`common.confidenceLevel.${edition.squadProvenance.confidence}`)}
+                  />
+                ) : null}
+                {edition.squad.map((player) => (
+                  <Text key={player.name} style={{ color: colors.text }}>
+                    {player.name}
+                    {player.role ? ` · ${player.role}` : ''}
+                  </Text>
+                ))}
+              </View>
+            ) : null}
+            {edition.note ? (
+              <Text style={{ color: colors.textMuted, ...text.body, lineHeight: 20 }}>
+                {edition.note}
+              </Text>
+            ) : null}
+            {match?.sourceUrl ? (
+              <Pressable
+                accessibilityRole="link"
+                onPress={() => void Linking.openURL(match.sourceUrl!)}
+                style={{ minHeight: 44, justifyContent: 'center' }}
+              >
+                <Text style={{ color: colors.primary, fontWeight: '700' }}>
+                  {t('club.titulos.source')}
+                </Text>
+              </Pressable>
+            ) : null}
+          </Card>
+        );
       })}
 
       {club.titles.map((title) => {
@@ -80,10 +194,7 @@ export function TitulosSection({ club }: { club: ClubT }) {
         return (
           <View
             key={title.competition}
-            style={[
-              styles.card,
-              { backgroundColor: colors.surface, borderColor: colors.border },
-            ]}
+            style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}
           >
             <View style={styles.header}>
               <Text style={{ color: colors.text, ...text.bodyLarge, fontWeight: '700', flex: 1 }}>
@@ -117,12 +228,20 @@ function FieldProvenance({ source, confidence }: { source: string; confidence: s
     >
       {content}
     </Pressable>
-  ) : content;
+  ) : (
+    content
+  );
 }
 
 const styles = StyleSheet.create({
   filters: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs },
-  filter: { minHeight: 44, paddingHorizontal: spacing.md, justifyContent: 'center', borderRadius: radius.pill, borderWidth: StyleSheet.hairlineWidth },
+  filter: {
+    minHeight: 44,
+    paddingHorizontal: spacing.md,
+    justifyContent: 'center',
+    borderRadius: radius.pill,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
   editionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   card: {
     padding: spacing.md,

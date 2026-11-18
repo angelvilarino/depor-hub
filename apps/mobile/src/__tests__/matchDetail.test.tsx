@@ -147,7 +147,13 @@ describe('Ficha de partido', () => {
       utcDate: '2026-08-17T19:00:00Z',
       matchday: 1,
       stage: 'REGULAR_SEASON',
-      home: { id: 560, name: 'RC Deportivo La Coruña', shortName: 'Deportivo', tla: 'DEP', crestUrl: null },
+      home: {
+        id: 560,
+        name: 'RC Deportivo La Coruña',
+        shortName: 'Deportivo',
+        tla: 'DEP',
+        crestUrl: null,
+      },
       away: { id: 285, name: 'Elche CF', shortName: 'Elche', tla: 'ELC', crestUrl: null },
       score: { home: 1, away: 1, halfTimeHome: 1, halfTimeAway: 0, winner: 'DRAW' },
       deporIsHome: true,
@@ -209,9 +215,7 @@ describe('Ficha de partido', () => {
           scoreAfter: { home: 1, away: 0 },
         },
       ],
-      cards: [
-        { minute: 65, minuteLabel: '65', team: 'away', player: 'Redondo', kind: 'yellow' },
-      ],
+      cards: [{ minute: 65, minuteLabel: '65', team: 'away', player: 'Redondo', kind: 'yellow' }],
       substitutions: [
         {
           minute: 60,

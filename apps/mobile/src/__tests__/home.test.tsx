@@ -40,7 +40,14 @@ jest.mock('expo-router', () => ({
 
 jest.mock('@/theme/useTheme', () => {
   const { lightColors } = jest.requireActual('@/theme/tokens');
-  return { useTheme: () => ({ scheme: 'light', colors: lightColors, paper: lightColors.paper, poster: lightColors.poster }) };
+  return {
+    useTheme: () => ({
+      scheme: 'light',
+      colors: lightColors,
+      paper: lightColors.paper,
+      poster: lightColors.poster,
+    }),
+  };
 });
 
 jest.mock('@/features/reminders/notifications', () => ({

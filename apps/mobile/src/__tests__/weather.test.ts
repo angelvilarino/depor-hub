@@ -1,10 +1,5 @@
 import { venueCoords } from '@/features/home/venues';
-import {
-  madridDate,
-  pickWeather,
-  weatherEligible,
-  weatherKey,
-} from '@/features/home/weather';
+import { madridDate, pickWeather, weatherEligible, weatherKey } from '@/features/home/weather';
 
 describe('tiempo en la sede', () => {
   it('solo consulta con hora confirmada, coordenadas y menos de 16 días', () => {
@@ -34,9 +29,27 @@ describe('tiempo en la sede', () => {
       code: 3,
       hour: '2026-11-02T21:00',
       nearby: [
-        { hour: '2026-11-02T20:00', temperatureC: 15, precipitationProbability: 10, windKmh: 8, code: 2 },
-        { hour: '2026-11-02T21:00', temperatureC: 17, precipitationProbability: 20, windKmh: 12, code: 3 },
-        { hour: '2026-11-02T22:00', temperatureC: 17, precipitationProbability: 30, windKmh: 14, code: 61 },
+        {
+          hour: '2026-11-02T20:00',
+          temperatureC: 15,
+          precipitationProbability: 10,
+          windKmh: 8,
+          code: 2,
+        },
+        {
+          hour: '2026-11-02T21:00',
+          temperatureC: 17,
+          precipitationProbability: 20,
+          windKmh: 12,
+          code: 3,
+        },
+        {
+          hour: '2026-11-02T22:00',
+          temperatureC: 17,
+          precipitationProbability: 30,
+          windKmh: 14,
+          code: 61,
+        },
       ],
     });
   });

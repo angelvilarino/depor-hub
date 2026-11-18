@@ -61,11 +61,13 @@ export function pickWeather(payload: OpenMeteoResponse, kickoffIso: string): Wea
   const hourly = payload.hourly;
   if (!hourly?.time?.length) return null;
   const target = madridHour(kickoffIso);
-  const wallClockMs = (value: string) => Date.parse(`${value.length === 13 ? `${value}:00` : value}Z`);
+  const wallClockMs = (value: string) =>
+    Date.parse(`${value.length === 13 ? `${value}:00` : value}Z`);
   const targetMs = wallClockMs(target);
   const index = hourly.time.reduce((best, value, candidate) => {
     if (best < 0) return candidate;
-    return Math.abs(wallClockMs(value) - targetMs) < Math.abs(wallClockMs(hourly.time![best]!) - targetMs)
+    return Math.abs(wallClockMs(value) - targetMs) <
+      Math.abs(wallClockMs(hourly.time![best]!) - targetMs)
       ? candidate
       : best;
   }, -1);
@@ -80,7 +82,12 @@ export function pickWeather(payload: OpenMeteoResponse, kickoffIso: string): Wea
     .map((hour, i) => {
       const temperature = hourly.temperature_2m?.[i];
       const code = hourly.weather_code?.[i];
-      if (temperature === null || temperature === undefined || code === null || code === undefined) {
+      if (
+        temperature === null ||
+        temperature === undefined ||
+        code === null ||
+        code === undefined
+      ) {
         return null;
       }
       return {
@@ -95,7 +102,10 @@ export function pickWeather(payload: OpenMeteoResponse, kickoffIso: string): Wea
       } satisfies WeatherHour;
     })
     .filter((value): value is WeatherHour => value !== null)
-    .filter((value) => Math.abs(wallClockMs(value.hour) - wallClockMs(hourly.time![index]!)) <= 3 * 60 * 60 * 1000);
+    .filter(
+      (value) =>
+        Math.abs(wallClockMs(value.hour) - wallClockMs(hourly.time![index]!)) <= 3 * 60 * 60 * 1000,
+    );
 
   return {
     temperatureC: Math.round(temperature),

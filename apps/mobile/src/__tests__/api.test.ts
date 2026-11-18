@@ -4,7 +4,10 @@ import { DataError, fetchData } from '@/data/api';
 import { Squad } from '@/data/schemas';
 
 const example = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../../../../packages/schemas/examples/squad.json'), 'utf8'),
+  fs.readFileSync(
+    path.resolve(__dirname, '../../../../packages/schemas/examples/squad.json'),
+    'utf8',
+  ),
 );
 const BASE = 'https://example.test/v1';
 const fetchMock = jest.fn();

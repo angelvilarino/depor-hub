@@ -36,7 +36,11 @@ export default function TabsLayout() {
           options={{
             title: t(`tabs.${key}`),
             tabBarIcon: ({ focused, size }) => (
-              <Ionicons name={icon} size={size} color={focused ? colors.primary : colors.textMuted} />
+              <Ionicons
+                name={icon}
+                size={size}
+                color={focused ? colors.primary : colors.textMuted}
+              />
             ),
           }}
         />

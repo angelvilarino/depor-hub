@@ -62,10 +62,7 @@ export function activeFilterCount(filters: NewsFilters): number {
   );
 }
 
-export function sourceById(
-  sources: NewsSourceT[],
-  sourceId: string,
-): NewsSourceT | undefined {
+export function sourceById(sources: NewsSourceT[], sourceId: string): NewsSourceT | undefined {
   return sources.find((source) => source.id === sourceId);
 }
 
@@ -81,7 +78,9 @@ export function sourceMonogram(name: string): string {
   const words = name
     .replace(/\(.*?\)/g, '')
     .split(/[\s.-]+/)
-    .filter((word) => word.length > 0 && !['de', 'del', 'la', 'el', 'los', 'las'].includes(fold(word)));
+    .filter(
+      (word) => word.length > 0 && !['de', 'del', 'la', 'el', 'los', 'las'].includes(fold(word)),
+    );
   if (words.length === 0) return '·';
   if (words.length === 1) return words[0]!.slice(0, 2).toLocaleUpperCase();
   return `${words[0]![0]}${words[1]![0]}`.toLocaleUpperCase();
@@ -93,13 +92,14 @@ export function relativePublishedAt(iso: string, locale: string, now = Date.now(
   if (!Number.isFinite(published)) return '';
   const seconds = Math.round((published - now) / 1000);
   const absolute = Math.abs(seconds);
-  const [unit, divisor] = absolute < 60
-    ? ['second', 1]
-    : absolute < 3600
-      ? ['minute', 60]
-      : absolute < 86_400
-        ? ['hour', 3600]
-        : ['day', 86_400];
+  const [unit, divisor] =
+    absolute < 60
+      ? ['second', 1]
+      : absolute < 3600
+        ? ['minute', 60]
+        : absolute < 86_400
+          ? ['hour', 3600]
+          : ['day', 86_400];
   const value = Math.round(seconds / divisor);
   const relativeTimeFormat = Intl.RelativeTimeFormat;
   if (relativeTimeFormat) {
@@ -113,16 +113,39 @@ export function relativePublishedAt(iso: string, locale: string, now = Date.now(
   const spanish = locale.toLowerCase().startsWith('es');
   const amount = Math.abs(value);
   const unitLabel = spanish
-    ? unit === 'second' ? (amount === 1 ? 'segundo' : 'segundos')
-      : unit === 'minute' ? (amount === 1 ? 'minuto' : 'minutos')
-        : unit === 'hour' ? (amount === 1 ? 'hora' : 'horas')
-          : (amount === 1 ? 'día' : 'días')
-    : unit === 'second' ? (amount === 1 ? 'second' : 'seconds')
-      : unit === 'minute' ? (amount === 1 ? 'minute' : 'minutes')
-        : unit === 'hour' ? (amount === 1 ? 'hour' : 'hours')
-          : (amount === 1 ? 'day' : 'days');
+    ? unit === 'second'
+      ? amount === 1
+        ? 'segundo'
+        : 'segundos'
+      : unit === 'minute'
+        ? amount === 1
+          ? 'minuto'
+          : 'minutos'
+        : unit === 'hour'
+          ? amount === 1
+            ? 'hora'
+            : 'horas'
+          : amount === 1
+            ? 'día'
+            : 'días'
+    : unit === 'second'
+      ? amount === 1
+        ? 'second'
+        : 'seconds'
+      : unit === 'minute'
+        ? amount === 1
+          ? 'minute'
+          : 'minutes'
+        : unit === 'hour'
+          ? amount === 1
+            ? 'hour'
+            : 'hours'
+          : amount === 1
+            ? 'day'
+            : 'days';
   if (value === 0) return spanish ? 'ahora' : 'now';
-  if (spanish) return value < 0 ? `hace ${amount} ${unitLabel}` : `dentro de ${amount} ${unitLabel}`;
+  if (spanish)
+    return value < 0 ? `hace ${amount} ${unitLabel}` : `dentro de ${amount} ${unitLabel}`;
   return value < 0 ? `${amount} ${unitLabel} ago` : `in ${amount} ${unitLabel}`;
 }
 
@@ -175,10 +198,7 @@ function dayKey(iso: string, timeZone: string): string {
  * Agrupa por día natural en Madrid. La SectionList pinta una cabecera por grupo y el
  * orden ya viene del JSON (más reciente primero); aquí solo se refuerza.
  */
-export function groupByDay(
-  stories: NewsStoryT[],
-  timeZone: string = MADRID_TZ,
-): NewsSection[] {
+export function groupByDay(stories: NewsStoryT[], timeZone: string = MADRID_TZ): NewsSection[] {
   const sections: NewsSection[] = [];
   const index = new Map<string, NewsSection>();
   const ordered = [...stories].sort(
@@ -202,10 +222,7 @@ export function todayKey(now: number = Date.now(), timeZone: string = MADRID_TZ)
 }
 
 /** Home: cinco titulares como máximo, sin repetir la misma frase ni la misma URL. */
-export function topHeadlines(
-  stories: NewsStoryT[],
-  limit = HOME_HEADLINES,
-): NewsStoryT[] {
+export function topHeadlines(stories: NewsStoryT[], limit = HOME_HEADLINES): NewsStoryT[] {
   const seenTitles = new Set<string>();
   const seenUrls = new Set<string>();
   const out: NewsStoryT[] = [];
@@ -221,10 +238,7 @@ export function topHeadlines(
   return out;
 }
 
-export function sourceOptions(
-  stories: NewsStoryT[],
-  sources: NewsSourceT[],
-): SourceOption[] {
+export function sourceOptions(stories: NewsStoryT[], sources: NewsSourceT[]): SourceOption[] {
   const counts = new Map<string, number>();
   for (const story of stories) {
     counts.set(story.sourceId, (counts.get(story.sourceId) ?? 0) + 1);
@@ -241,9 +255,7 @@ export function sourceOptions(
     .sort((a, b) => b.items - a.items || a.name.localeCompare(b.name));
 }
 
-export function tagOptions(
-  stories: NewsStoryT[],
-): { tag: string; items: number }[] {
+export function tagOptions(stories: NewsStoryT[]): { tag: string; items: number }[] {
   const counts = new Map<string, number>();
   for (const story of stories) {
     for (const tag of story.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
