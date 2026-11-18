@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-11-18T20:04:31Z",
+  "updatedAt": "2026-11-18T20:32:55Z",
   "sources": [
+    {
+      "id": "youtube-club",
+      "name": "RC Deportivo (YouTube)",
+      "group": "club",
+      "kind": "video",
+      "homepage": "https://www.youtube.com/@rcdeportivo",
+      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
+    },
     {
       "id": "riazor",
       "name": "Riazor.org",
@@ -27,6 +35,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "9f1f86978d643346",
+      "title": "Así fuel Dépor ABANCA 1 -1 FC Barcelona desde dentro | INSIDE DÉPOR",
+      "url": "https://youtube.com/watch?v=f6fw3KvjY0A",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-18T20:00:19Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "img/news/c146bf33a92ae3c2.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "148d7b3f47b18e61",
       "title": "Mendizorroza vuelve a entrelazar a Hugo Novoa con sus orígenes",
@@ -93,21 +115,6 @@
       "tags": [
         "partido",
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "65614d016b399a1d",
-      "title": "Hugo Novoa, seis años en la cantera del Dépor y un primer gol en Primera marcado en Balaídos",
-      "url": "https://riazor.org/hugo-novoa-cantera-depor-gol-primera-balaidos",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-18T16:30:45Z",
-      "kind": "article",
-      "summary": "El Deportivo visita este sábado (14:00 horas) Vitoria, lugar en el que se reencontrará con Hugo Novoa, canterano blanquiazul en la…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
       ],
       "alsoIn": []
     }
