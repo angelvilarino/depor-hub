@@ -47,6 +47,7 @@ jest.mock('react-native-gesture-handler', () => {
   return {
     Gesture: { Pan: () => gesture },
     GestureDetector: ({ children }) => React.createElement(View, null, children),
+    GestureHandlerRootView: View,
   };
 });
 
