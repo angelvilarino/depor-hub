@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T10:04:42Z",
+  "updatedAt": "2026-11-18T13:32:52Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "978bdeb4bd7a4f80",
+      "title": "Antídoto FIFA para Lucas Noubi: el parón le abre las puertas del once en el Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-18/antidoto-fifa-para-lucas-noubi-el-paron-le-abre-las-puertas-del-once-en-el-depor-891689.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-18T13:00:51Z",
+      "kind": "article",
+      "summary": "El belga regresa como el internacional con más minutos en un escenario delicado para Hidalgo a la hora de elegir defensa ante el Alavés",
+      "thumbnailUrl": "img/news/bcee3fb68acf3528.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "8be519be8b79ffcb",
       "title": "El Dépor ya prepara el partido ante el Alavés sin los internacionales, pero con Zaka y Ede",
@@ -93,20 +105,6 @@
       "thumbnailUrl": "img/news/8d943ddb0b22e7a7.webp",
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "a20115185f02189a",
-      "title": "Antonio Hidalgo explica cómo influyó el Barcelona en el fichaje de Aubameyang: \"Nos dieron unas referencias increíbles\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/antonio-hidalgo-explica-como-influyo-el-barcelona-en-el-fichaje-de-aubameyang-nos-dieron-unas-referencias-increibles-891455.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-17T11:40:09Z",
-      "kind": "article",
-      "summary": "El técnico aprovechó su estancia en Barcelona para ofrecer una entrevista a Catalunya Radio",
-      "thumbnailUrl": "img/news/66fbffd7fa5cebda.webp",
-      "tags": [
-        "fichajes"
       ],
       "alsoIn": []
     }
