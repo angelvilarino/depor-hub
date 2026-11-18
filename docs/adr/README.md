@@ -2,18 +2,19 @@
 
 Las decisiones numeradas conservan el orden histórico de asignación. El número **0013 no fue asignado**; no se ha creado una decisión retroactiva con ese número.
 
-| Número | Decisión |
-|---|---|
-| 0003–0012 | Esquemas, datos, calendario, enriquecimiento y fichas |
-| 0014–0024 | Entrenador, equipo, inicio, noticias, rivales e identidad |
-| [0025](0025-publicacion-y-compatibilidad.md) | Publicación fiable, cadencias y compatibilidad |
-| [0026](0026-club-contrato-imagenes-himnos.md) | Club: contrato, imágenes locales e himnos |
-| [0027](0027-salud-pipeline-status.md) | Salud del pipeline y `status.json` en la rama `status` |
-| [0028](0028-snapshots-partidos-terminados.md) | Snapshots congelados de partidos terminados |
-| [0029](0029-iconos-fuentes-noticias.md) | Iconos oficiales de las fuentes de noticias |
-| [0030](0030-proxy-directo-worker.md) | Proxy de lectura para el marcador en directo |
-| [0031](0031-detalle-partido-bdfutbol.md) | Detalle de partido con BDFutbol |
-| [0032](0032-club-datos-ampliados.md) | Club: datos ampliados, títulos, rivalidades y medios externos |
-| [0033](0033-himnos-reproduccion-oficial.md) | Himnos: reproducción oficial bajo demanda |
-| [0034](0034-aforo-estadio-y-galeria-museo.md) | Aforo del estadio y galería del museo |
-| [0035](0035-titulos-y-conflictos-de-fuente.md) | Procedencia y conflictos en los detalles de títulos |
+| Número                                         | Decisión                                                      |
+| ---------------------------------------------- | ------------------------------------------------------------- |
+| 0003–0012                                      | Esquemas, datos, calendario, enriquecimiento y fichas         |
+| 0014–0024                                      | Entrenador, equipo, inicio, noticias, rivales e identidad     |
+| [0025](0025-publicacion-y-compatibilidad.md)   | Publicación fiable, cadencias y compatibilidad                |
+| [0026](0026-club-contrato-imagenes-himnos.md)  | Club: contrato, imágenes locales e himnos                     |
+| [0027](0027-salud-pipeline-status.md)          | Salud del pipeline y `status.json` en la rama `status`        |
+| [0028](0028-snapshots-partidos-terminados.md)  | Snapshots congelados de partidos terminados                   |
+| [0029](0029-iconos-fuentes-noticias.md)        | Iconos oficiales de las fuentes de noticias                   |
+| [0030](0030-proxy-directo-worker.md)           | Proxy de lectura para el marcador en directo                  |
+| [0031](0031-detalle-partido-bdfutbol.md)       | Detalle de partido con BDFutbol                               |
+| [0032](0032-club-datos-ampliados.md)           | Club: datos ampliados, títulos, rivalidades y medios externos |
+| [0033](0033-himnos-reproduccion-oficial.md)    | Himnos: reproducción oficial bajo demanda                     |
+| [0034](0034-aforo-estadio-y-galeria-museo.md)  | Aforo del estadio y galería del museo                         |
+| [0035](0035-titulos-y-conflictos-de-fuente.md) | Procedencia y conflictos en los detalles de títulos           |
+| [0036](0036-higiene-contrato-auditoria.md)     | Higiene del contrato, auditoría y documentación               |

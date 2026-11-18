@@ -1,30 +1,32 @@
 # Depor Hub (no oficial)
+
 Proyecto de aficionados sin vinculación oficial con el Real Club Deportivo de La Coruña, S.A.D.
 
 App Expo (React Native + TypeScript) con datos públicos del Depor: Inicio con identidad Cartel + Prensa, resultado y cuenta atrás, ficha del rival con histórico BDFutbol, temporada interactiva, prensa con noticias agrupadas, calendario, plantilla y fichas enriquecidas, vídeos, redes oficiales y ficha completa del club (historia, himnos, escudo, equipaciones, estadio, museo, junta, palmarés y enlaces). Las estadísticas y fotos individuales de rivales se omiten al no usar una fuente gratuita verificada para 2026/27. Los datos se publican como JSON estático en GitHub Pages; la app no contiene claves.
 
 ## Requisitos
+
 - Node >= 22.13 y npm.
 - Python 3.12 para los scripts de ingesta.
 - git.
 
-Copia `DEPOR_HUB_CONTEXTO.md` a `docs/CONTEXTO.md` si aún no existe.
+El contexto editorial y las decisiones abiertas están en [`docs/CONTEXTO.md`](docs/CONTEXTO.md).
 
 ## Primera vez
+
 ```bash
 nvm use             # Node 22 (ver .nvmrc; package.json exige >=22.13)
 npm install         # instala el monorepo y apps/mobile
 npm run mobile      # sirve data/public en local y arranca Expo
 ```
+
 `npm run mobile` levanta un servidor estático de solo lectura sobre `data/public` (puerto 8000) y arranca Expo. La app deriva la URL del host de Metro, así que en desarrollo siempre enseña los datos locales; para apuntar a GitHub Pages, define `EXPO_PUBLIC_DATA_BASE_URL` en `apps/mobile/.env` (ver `.env.example`). El marcador en directo es opcional: define `EXPO_PUBLIC_LIVE_BASE_URL` con la URL del Worker de `workers/live-proxy`; sin ella no se hacen peticiones en directo.
 
 ## Estado de Actions y actualización local
 
-**Actions está deshabilitado a nivel de repositorio desde el 11-nov-2026.** Los workflows siguen versionados y sus crons no se ejecutan; los datos publicados están congelados hasta que se reactive. No se reactiva solo: queda pendiente de decisión del propietario.
+**Actions está reactivado (17-nov-2026)** y los crons publican y despliegan Pages. La cadencia es: Data una vez al día (`0 6 * * *`) y cada 10 min en la ventana de un partido del Depor (supervisor `data-matchday.yml`), News cada 30 min, Rivals los lunes a las 22:00 UTC y Health una vez al día a las 07:00 UTC. El Club es estático y se publica a mano. Data, News y Rivals comparten el grupo `main-write` y despliegan con el workflow reutilizable `publish.yml`; las acciones de las workflows están fijadas por SHA. La operación y la verificación están en [`docs/operations.md`](docs/operations.md).
 
-Al reactivarlo, la cadencia es: Data una vez al día (`0 6 * * *`) y cada 10 min en la ventana de un partido del Depor (supervisor `data-matchday.yml`), News cada 30 min, Rivals los lunes a las 22:00 UTC y Health una vez al día. El Club es estático y se publica a mano. Data, News y Rivals comparten el grupo `main-write` y despliegan con el workflow reutilizable `publish.yml`; las instrucciones de reactivación y verificación están en [`docs/operations.md`](docs/operations.md#reactivar-actions).
-
-Mientras esté pausado, la actualización es local y explícita:
+La actualización también se puede lanzar a mano y en local:
 
 ```bash
 python -m depor_hub.cli ingest --if-due      # datos deportivos
@@ -35,11 +37,12 @@ python -m depor_hub.cli validate --data data/public/v1
 python -m depor_hub.cli smoke --data data/public/v1
 ```
 
-`smoke` comprueba los 11 documentos raíz del contrato, los valida con Pydantic y verifica que `meta.dataHash` coincide con el contenido deportivo. Contra Pages: `python -m depor_hub.cli smoke`. Para ver el estado real de Actions: `gh api repos/angelvilarino/depor-hub/actions/permissions` y `gh run list --limit 10`.
+`smoke` comprueba los 11 documentos raíz del contrato, los 28 detalles de jugador y los snapshots/detalles de partido que anuncia la publicación, los valida con Pydantic y verifica que `meta.dataHash` coincide con el contenido deportivo. Contra Pages: `python -m depor_hub.cli smoke`. Para ver el estado real de Actions: `gh api repos/angelvilarino/depor-hub/actions/permissions` y `gh run list --limit 10`.
 
 El proyecto usa **Expo SDK 58** (React Native 0.88), el SDK que soporta Expo Go actualmente. Para probar en iPhone con un SDK recién salido, Expo Go de la App Store puede ir por detrás: usa un development build (EAS) o `eas go`.
 
 ## Scripts de datos
+
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e "scripts[dev]"
@@ -59,7 +62,6 @@ python -m depor_hub.cli news audit --write-docs     # actualiza docs/sources.md 
 python -m depor_hub.cli news                        # publica news.json
 python -m depor_hub.cli news --report               # informe de relevancia y clústeres
 python -m depor_hub.cli news --offline              # repite desde data/raw/news sin red
-python -m depor_hub.cli social                      # regenera social.json desde social_pins.yml
 python -m depor_hub.cli club                        # publica club.json y docs/kits_coverage.md
 python -m depor_hub.cli club-images                 # descarga y normaliza las imágenes locales del club
 python -m depor_hub.cli club-images --offline       # comprueba las imágenes ya presentes sin red
@@ -75,29 +77,36 @@ La ficha del entrenador (`/coach`) se genera con Wikidata `Q602465`, Wikipedia E
 
 La ficha de un partido terminado usa `fixtures.json` (o el snapshot congelado si el partido ya no está) y, cuando existe, `match-details/<season>/<matchId>.json` (ADR 0031). Ese detalle publica alineaciones, entrenadores, goles, tarjetas y cambios leídos de BDFutbol; no incluye fotos, escudos, textos, estadísticas ni eventos deducidos del marcador. Si la ficha no existe, la app mantiene el aviso honesto. El responsable asumió el riesgo legal el 05-nov-2026 tras el [informe](docs/bdfutbol-legal-risk.md).
 
-Las noticias salen de **cinco fuentes curadas** (`data/manual/news_feeds.yml`): Riazor.org, DXT Campeón, La Voz de Galicia, Marca y el canal oficial de YouTube. Solo se publica lo que entrega el feed: nunca se descarga el cuerpo del artículo ni se rodean bloqueos. El filtro de relevancia descarta otros «Deportivo» y los titulares que solo se apoyan en el extracto; la deduplicación agrupa cada historia entre medios (principal por prioridad y antigüedad, resto en `alsoIn`) y la ventana es de 14 días con un máximo de 150 historias. Las cinco fuentes viajan dentro de `news.json`; `social.json` solo contiene perfiles oficiales verificados y los pins se curan a mano. Detalles en [`docs/adr/0018-noticias-curacion-dedupe-filtros.md`](docs/adr/0018-noticias-curacion-dedupe-filtros.md).
+Las noticias salen de **cinco fuentes curadas** (`data/manual/news_feeds.yml`): Riazor.org, DXT Campeón, La Voz de Galicia, Marca y el canal oficial de YouTube. Solo se publica lo que entrega el feed: nunca se descarga el cuerpo del artículo ni se rodean bloqueos. El filtro de relevancia descarta otros «Deportivo» y los titulares que solo se apoyan en el extracto; la deduplicación agrupa cada historia entre medios (principal por prioridad y antigüedad, resto en `alsoIn`) y la ventana es de 14 días con un máximo de 150 historias. Las cinco fuentes viajan dentro de `news.json`; los perfiles oficiales de redes viven en la pestaña Club y no en un documento aparte. Detalles en [`docs/adr/0018-noticias-curacion-dedupe-filtros.md`](docs/adr/0018-noticias-curacion-dedupe-filtros.md).
 
 La pestaña **Club** se alimenta de `data/manual/club.yml` y de las letras de `data/manual/himnos/*.txt` (ADR 0026). Cubre identidad, tres himnos con letra y créditos, 14 versiones del escudo, 42 temporadas de equipaciones (44 equipaciones), estadio con aforo oficial de **32.490** y fuente/confianza visibles, museo, ciudad deportiva, junta, patrocinadores, palmarés, rivalidades y enlaces. La procedencia se publica solo donde la interfaz la presenta; lo desconocido es `null` y no se inventan fechas, dorsales, patrocinadores ni equipaciones.
 
-Las imágenes del club son las únicas que se guardan en el repositorio: `data/public/v1/img/club/` tiene **58 ficheros** (14 escudos y 44 equipaciones), con **2,3 MB solo en los escudos**. El JSON solo guarda rutas relativas y la app las resuelve con `clubImageUrl`; si falta una imagen o falla la carga, se pinta un marcador del mismo tamaño. Solo la equipación local 2026-27 tiene foto real; el resto queda pendiente y así se refleja en [`docs/kits_coverage.md`](docs/kits_coverage.md). Las letras y nombres propios no se traducen.
+Las imágenes del club son las únicas que se guardan en el repositorio: `data/public/v1/img/club/` tiene **71 ficheros** (14 escudos PNG + 13 miniaturas WebP + 43 equipaciones SVG + 1 foto), con **2,2 MB en los PNG** y **180 KB en las miniaturas**. El JSON solo guarda rutas relativas y la app las resuelve con `clubImageUrl`; si falta una imagen o falla la carga, se pinta un marcador del mismo tamaño. Solo la equipación local 2026-27 tiene foto real; el resto queda pendiente y así se refleja en [`docs/kits_coverage.md`](docs/kits_coverage.md). Las letras y nombres propios no se traducen.
 
-Ajustes añade el borrado de la caché de datos (solo TanStack Query, no ajustes ni recordatorios), la versión de la app, `meta.dataHash`/`updatedAt` y el acceso a **Acerca de**. Acerca de muestra el aviso de proyecto no oficial, el contacto y las licencias de terceros generadas con `npm run licenses` desde `package-lock.json` (1.052 paquetes en 16 grupos). No se lista ninguna fuente de datos.
+Ajustes añade el borrado de la caché de datos (solo TanStack Query, no ajustes ni recordatorios), la versión de la app, `meta.dataHash`/`updatedAt` y el acceso a **Acerca de**. Acerca de muestra el aviso de proyecto no oficial, el contacto y las licencias de terceros generadas con `npm run licenses` desde `package-lock.json` (729 paquetes en 15 grupos). No se lista ninguna fuente de datos.
 
 ## Verificación H5.3
+
 Las fuentes libres empaquetadas suman 776.496 bytes. No se midió el arranque en gama media; el splash permanece visible mientras `expo-font` las carga. El escudo remoto solo se usa dentro de Inicio, con aviso no oficial; icono y splash siguen con DH. No se necesita `API_FOOTBALL_KEY`.
 
 ## Comprobaciones
+
 ```bash
 ruff check scripts && pytest scripts
+python -m depor_hub.cli validate --data data/public/v1
+python -m depor_hub.cli smoke --data data/public/v1
 python -m depor_hub.cli schemas && git diff --exit-code packages/schemas
-npm run lint && npm run typecheck && npm test
+npm run lint && npm run typecheck && npm test && npm run audit
+npm run format:check                        # Prettier; `npm run format` lo aplica
 npm run licenses && git diff --exit-code apps/mobile/src/data/licenses.json
 python -m depor_hub.cli club                # idempotente: la segunda pasada da changed=false
-(cd workers/live-proxy && npm test)         # pruebas del proxy en directo
+(cd workers/live-proxy && npm ci && npm test)  # pruebas del proxy en directo
 ```
 
 ## Secretos
+
 Ver `.env.example`. El token de football-data.org vive solo en GitHub Secrets (`FOOTBALL_DATA_TOKEN`). `CONTACT_EMAIL` se configura como variable de Actions para el User-Agent de las peticiones.
 
 ## Estado
+
 H0 (andamiaje), H1 (contratos y datos), H2 (capa de datos), H3 (calendario), H4 (plantilla + ficha enriquecida, rediseño de Equipo/ficha, escudos de clubes, entrenador y cuerpo técnico), H5.3 (Inicio Cartel + Prensa, ficha de rival e historias agrupadas), H6 (noticias, vídeos y redes curadas) y H7 (club, ajustes y acerca de) hechos. Fase 2: H0.1 (sincronización con `main`), H0.2 (salud del pipeline y `status.json`), el Hito 1 visible (ficha de partido con ciclo de vida y degradación honesta), H3.5 (snapshots congelados de partidos terminados), H2 (iconos de fuentes), el detalle de partido con BDFutbol (ADR 0031) y el proxy en directo (Cloudflare Worker + fusión en la app) hechos. Para cerrar el Hito 4 falta desplegar el Worker y definir `EXPO_PUBLIC_LIVE_BASE_URL`; mientras tanto la app funciona con los datos estáticos, los snapshots y el detalle de BDFutbol. Hoja de ruta y cobertura actual en [`docs/ESTADO.md`](docs/ESTADO.md); decisiones en [`docs/adr/`](docs/adr/) y operación en [`docs/operations.md`](docs/operations.md).

@@ -99,8 +99,8 @@ gh workflow run health.yml --ref main
 # `data-matchday.yml` solo dispara Data: no hace falta lanzarlo a mano.
 # El club es estático: se publica con los comandos de «Club manual» si cambió.
 
-# 3. Verificar los 13 documentos del contrato (11 raíz + snapshots/detalles).
-for f in meta standings fixtures squad season club news rivals social titles rivalries; do
+# 3. Verificar los 11 documentos raíz del contrato (el smoke añade los detalles).
+for f in meta standings fixtures squad season club news news-home rivals titles rivalries; do
   curl -o /dev/null -w "%{http_code} $f.json\n" \
     "https://angelvilarino.github.io/depor-hub/v1/$f.json"
 done

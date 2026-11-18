@@ -10,12 +10,12 @@ football-data.org (plan gratuito) da posición, fecha de nacimiento y nacionalid
 
 ## Fuentes y prioridad
 
-| Prioridad | Fuente | Aporta | Motivo |
-|---|---|---|---|
-| 1 | **BDFutbol** | Trayectoria por club y temporada, totales, partidos con el Depor (minutos, goles, tarjetas, resultado) y dorsal de la temporada actual | Fuente principal; HTML público, `robots.txt` permite `/es/`; respondió 200 en las pruebas |
-| 2 | **Wikipedia ES** (plantilla del club) | Dorsal, contrato, procedencia y cesión | Datos de plantilla actualizados; la fecha de nacimiento desambigua |
-| 3 | **Wikidata** (API de entidades) | Lugar de nacimiento, altura, pie (`P8006`), dorsal con `P54=Q8760`, redes, contraste de carrera | Datos estructurados y reutilizables; CC0 |
-| 4 | **Web oficial** (opcional, `--official-url`) | Contrato, cesión, dorsal | Solo si se configura una URL; nunca se asume |
+| Prioridad | Fuente                                       | Aporta                                                                                                                                 | Motivo                                                                                    |
+| --------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| 1         | **BDFutbol**                                 | Trayectoria por club y temporada, totales, partidos con el Depor (minutos, goles, tarjetas, resultado) y dorsal de la temporada actual | Fuente principal; HTML público, `robots.txt` permite `/es/`; respondió 200 en las pruebas |
+| 2         | **Wikipedia ES** (plantilla del club)        | Dorsal, contrato, procedencia y cesión                                                                                                 | Datos de plantilla actualizados; la fecha de nacimiento desambigua                        |
+| 3         | **Wikidata** (API de entidades)              | Lugar de nacimiento, altura, pie (`P8006`), dorsal con `P54=Q8760`, redes, contraste de carrera                                        | Datos estructurados y reutilizables; CC0                                                  |
+| 4         | **Web oficial** (opcional, `--official-url`) | Contrato, cesión, dorsal                                                                                                               | Solo si se configura una URL; nunca se asume                                              |
 
 Descartadas para esta fase:
 
@@ -50,22 +50,21 @@ La fecha de nacimiento de football-data.org es la clave. Un homónimo sin fecha 
 
 Se amplía `Player` sin romper JSON ni cachés anteriores. Pydantic es el origen; los esquemas JSON se regeneran y el espejo Zod usa `default(...)`.
 
-| Campo público | Tipo | Origen |
-|---|---|---|
-| `shirtNumber` | `int \| null` | BDFutbol (temporada actual) / Wikipedia / Wikidata |
-| `contractUntil` | `string \| null` | Wikipedia |
-| `heightCm` | `int \| null` | BDFutbol / Wikidata |
-| `birthPlace` | `string \| null` | BDFutbol / Wikidata |
-| `preferredFoot` | `"left" \| "right" \| "both" \| null` | Wikidata `P8006` |
-| `loanFrom` | `string \| null` | Wikipedia / oficial |
-| `marketValueEur` | `int \| null` | Manual; la UI lo marca siempre como **estimación** |
-| `weightKg` | `int \| null` | BDFutbol |
-| `social` | `{x, instagram, tiktok}` (handles, no URLs) | Wikidata |
-| `career` | `CareerEntry[]` | BDFutbol (contraste Wikidata) |
-| `careerTotals` | `CareerTotals` | BDFutbol |
-| `deporMatches` | `PlayerMatch[]` | BDFutbol |
-| `provenance` | `Record<campo, Provenance>` | Generador / manual |
-| `coach.*` | `birthDate`, `since`, `contractUntil`, `provenance` | Aditivo, opcional |
+| Campo público   | Tipo                                                | Origen                                             |
+| --------------- | --------------------------------------------------- | -------------------------------------------------- |
+| `shirtNumber`   | `int \| null`                                       | BDFutbol (temporada actual) / Wikipedia / Wikidata |
+| `contractUntil` | `string \| null`                                    | Wikipedia                                          |
+| `heightCm`      | `int \| null`                                       | BDFutbol / Wikidata                                |
+| `birthPlace`    | `string \| null`                                    | BDFutbol / Wikidata                                |
+| `preferredFoot` | `"left" \| "right" \| "both" \| null`               | Wikidata `P8006`                                   |
+| `loanFrom`      | `string \| null`                                    | Wikipedia / oficial                                |
+| `weightKg`      | `int \| null`                                       | BDFutbol                                           |
+| `social`        | `{x, instagram, tiktok}` (handles, no URLs)         | Wikidata                                           |
+| `career`        | `CareerEntry[]`                                     | BDFutbol (contraste Wikidata)                      |
+| `careerTotals`  | `CareerTotals`                                      | BDFutbol                                           |
+| `deporMatches`  | `PlayerMatch[]`                                     | BDFutbol                                           |
+| `provenance`    | `Record<campo, Provenance>`                         | Generador / manual                                 |
+| `coach.*`       | `birthDate`, `since`, `contractUntil`, `provenance` | Aditivo, opcional                                  |
 
 Detalles:
 

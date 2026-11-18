@@ -1,7 +1,7 @@
 # ADR 0016 — Noticias, vídeos y redes curadas
 
-- **Estado:** aceptada (27-oct-2026); **superada en fuentes, contrato y deduplicación por ADR 0018**. Solo siguen vigentes `social.json` y los perfiles curados.
-- **Vigencia operativa (14-nov-2026):** el catálogo actual tiene **16 entradas y 5 activas**, no 21; el grupo de concurrencia de noticias es **`news-publish`** (separado de `data-publish`) y el rebase es `git pull --rebase origin main`, sin `--autostash`. `news.json` publicado el 10-nov-2026 tiene **0 historias** porque Actions está deshabilitado; no es un fallo del contrato.
+- **Estado:** **superada** (27-oct-2026) por ADR 0018 en fuentes, contrato, deduplicación y pestaña; y por el Lote 7 (18-nov-2026) en redes, que retira `social.json`. Se conserva como registro histórico: no describe el contrato vigente.
+- **Vigencia:** el catálogo real son **5 fuentes activas** (ADR 0018) y el grupo de concurrencia es **`main-write`**. `social.json` ya no se publica. Datos actuales en [`docs/ESTADO.md`](../ESTADO.md), no aquí.
 - **Alcance:** ingesta real de RSS/Atom y YouTube, filtro de relevancia, deduplicación entre medios, contrato público `news.json`/`sources.json`/`social.json`, workflow cada 30 minutos y pestaña Noticias.
 - **Regla base:** se publica solo lo que entrega el feed (titular, enlace, fecha, miniatura y resumen). No se descarga ni se scrapea el cuerpo del artículo, no se rodean muros de pago ni bloqueos y no se inventan publicaciones sociales.
 

@@ -9,7 +9,7 @@ H5 proponía fotos y estadísticas actuales de rivales con API-Football, con fal
 
 ## Decisión
 
-No llamar a API-Football ni a `/scorers`, no pedir ni publicar `API_FOOTBALL_KEY`, y no mostrar cifras ni fotos individuales de rivales. La app conserva la ficha básica de equipo, entrenador de football-data.org e histórico oficial Depor–rival de BDFutbol. `SHOW_RIVAL_PHOTOS=false` hace explícita la opción apagada. `keyPlayers` permanece vacío en los JSON nuevos y el esquema tolera cachés antiguas.
+No llamar a API-Football ni a `/scorers`, no pedir ni publicar `API_FOOTBALL_KEY`, y no mostrar cifras ni fotos individuales de rivales. La app conserva la ficha básica de equipo, entrenador de football-data.org e histórico oficial Depor–rival de BDFutbol. `SHOW_RIVAL_PHOTOS=false` hace explícita la opción apagada. `keyPlayers` se retiró del contrato en el Lote 7; el esquema Zod tolera cachés antiguas descartando el campo.
 
 ## Consecuencias
 

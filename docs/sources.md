@@ -85,7 +85,7 @@ La deduplicación agrupa la misma historia entre medios (±48 h, similitud base 
 
 `news.json` pasa a `{ updatedAt, sources, stories }`. Cada historia incluye `id`, `title`, `url`, `sourceId`, `publishedAt`, `kind`, `summary`, `thumbnailUrl`, `tags` y `alsoIn`. Las fuentes incluyen `iconUrl` opcional; el catálogo declara el favicon o `apple-touch-icon` oficial ya verificado, sin rastrear la portada (ADR 0029). Si el icono falta o falla, se genera un monograma con color estable. `sources.json` desaparece: las fuentes viajan dentro de `news.json` para resolver nombre, grupo y monograma. Pydantic genera el JSON Schema y el espejo Zod de la app.
 
-`social.json` sigue publicándose desde `data/manual/social_pins.yml`, pero la pestaña Noticias ya no lo muestra: los perfiles verificados quedan para una futura sección social.
+`social.json` se retiró en el Lote 7: Noticias ya no lo mostraba y ninguna pantalla lo consumía. Los perfiles oficiales que enseña Club se curan en `data/manual/club.yml`.
 
 ### Cadencia
 
@@ -132,7 +132,7 @@ La clave es la **fecha de nacimiento** de football-data.org + nombre normalizado
 | Resumen, racha y evolución de la posición | football-data.org (`standings`, `matches`) | Cálculo propio por jornada con los partidos terminados; se marca `estimated` | La evolución es una reconstrucción, no una tabla publicada |
 | Balance histórico y últimos 5 cruces | BDFutbol `https://www.bdfutbol.com/es/p/vs.php?e1=13&e2=<id>` | HTML público; se leen los totales (`valorpj`, `valorpg`, `valorpp`, `valorpe`, `valorgf`, `valorgc`) y las filas de partidos | Alcance `all_official_matches`; se cita fuente y enlace. `robots.txt` permite `/es/`. Si el balance dice que hubo partidos pero no se parsea ningún cruce, es `SourceError`, no un rival sin histórico (PIPE-07) |
 | Entrenador del rival | football-data.org (`competitions/PD/teams`) | Campo `coach.name` | Si la API no lo da, `null` |
-| Estadísticas individuales del rival | No se publican | No se verificó una fuente gratuita suficientemente fiable para la temporada 2026/27; no se llama a `/scorers` ni a API-Football | Campo `keyPlayers` vacío por compatibilidad; sin fotografías rivales |
+| Estadísticas individuales del rival | No se publican | No se verificó una fuente gratuita suficientemente fiable para la temporada 2026/27; no se llama a `/scorers` ni a API-Football | `keyPlayers` retirado del contrato en el Lote 7; sin fotografías rivales |
 
 BDFutbol se usa para el historial oficial y los cruces Depor–rival, no como sustituto automático de datos actuales de plantilla: su cobertura para esta temporada no se considera comprobada para este uso. No se añadió `API_FOOTBALL_KEY`; no se requiere una clave para mostrar la ficha básica del rival. El mapa football-data → BDFutbol es manual y verificado en `data/manual/bdfutbol_teams.yml`. No se resuelve por búsqueda automática: un homónimo (filial, club histórico) produciría un balance equivocado. Depor = `13`. Los 19 rivales de la temporada tienen histórico; si una consulta falla, ese rival queda con `headToHead: null` y el resto se publica.
 
@@ -301,7 +301,6 @@ python -m depor_hub.cli news audit --write-docs      # además actualiza docs/so
 python -m depor_hub.cli news                         # publica news.json
 python -m depor_hub.cli news --report                # informe de relevancia y clústeres
 python -m depor_hub.cli news --offline               # repite desde data/raw/news sin red
-python -m depor_hub.cli social                       # regenera social.json desde social_pins.yml
 python -m depor_hub.cli club                         # publica club.json y docs/kits_coverage.md
 python -m depor_hub.cli club-images                  # descarga y normaliza las imágenes locales del club
 python -m depor_hub.cli club-images --offline        # comprueba las imágenes presentes sin red

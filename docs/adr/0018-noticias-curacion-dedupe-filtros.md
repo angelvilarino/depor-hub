@@ -1,7 +1,7 @@
 # ADR 0018 — Noticias curadas, clústeres y filtros sin ruido
 
-- **Estado:** aceptada (30-oct-2026). **Vigencia operativa (14-nov-2026):** el cron real es cada 30 min, no cada 6 h (ya corregido abajo), y el grupo es `main-write`; Actions está deshabilitado y `news.json` tiene 0 historias publicadas desde el 10-nov-2026.
-- **Sustituye a:** ADR 0016 en todo lo relativo a fuentes, contrato, deduplicación y pestaña Noticias. `social.json` y sus perfiles curados siguen vigentes.
+- **Estado:** aceptada (30-oct-2026); **vigente en fuentes, relevancia, deduplicación y pestaña**. **Vigencia (18-nov-2026):** el cron real es cada 30 min, el grupo es `main-write` y Actions está reactivado. `social.json` se retiró del contrato en el Lote 7.
+- **Sustituye a:** ADR 0016 en todo lo relativo a fuentes, contrato, deduplicación y pestaña Noticias.
 - **Alcance:** catálogo de 5 fuentes, relevancia explicable, taxonomía cerrada, historias con clústeres, contrato `news.json` v1 roto de forma deliberada, retención, CLI, workflow cada 6 h y rediseño completo de la pestaña.
 - **Regla base:** solo se publica lo que entrega el feed. No se descarga el cuerpo del artículo, no se rodean bloqueos y no se inventan fechas, medios, resúmenes ni miniaturas.
 
@@ -15,13 +15,13 @@ La auditoría del 29-oct-2026 midió cada feed con el filtro real. Solo cinco fu
 
 ### 1. Cinco fuentes curadas
 
-| Fuente | Grupo | Prioridad | Papel |
-|---|---|---:|---|
-| RC Deportivo (YouTube) | club | 5 | Vídeos oficiales |
-| Riazor.org | galicia | 10 | Medio independiente centrado en el Depor |
-| DXT Campeón | galicia | 20 | Sección deportiva del Ideal Gallego |
-| La Voz de Galicia | galicia | 30 | Feed de tema Deportivo, no la portada |
-| Marca | nacional | 40 | Único nacional con feed directo del Depor |
+| Fuente                 | Grupo    | Prioridad | Papel                                     |
+| ---------------------- | -------- | --------: | ----------------------------------------- |
+| RC Deportivo (YouTube) | club     |         5 | Vídeos oficiales                          |
+| Riazor.org             | galicia  |        10 | Medio independiente centrado en el Depor  |
+| DXT Campeón            | galicia  |        20 | Sección deportiva del Ideal Gallego       |
+| La Voz de Galicia      | galicia  |        30 | Feed de tema Deportivo, no la portada     |
+| Marca                  | nacional |        40 | Único nacional con feed directo del Depor |
 
 `group` es cerrado (`club`, `galicia`, `nacional`) y gobierna los chips de la barra. `priority` decide qué versión representa la historia: menor gana. El catálogo documenta once fuentes descartadas con su motivo (sin RSS, 403/406, sección 410, feed general sin señal o tag ambiguo); no se reintentan a ciegas.
 
@@ -59,7 +59,7 @@ La unidad publicada es una `NewsStory` con una versión principal y las demás e
 - ventana de **±48 h**;
 - misma URL ⇒ mismo ítem, sin discusión;
 - dos entradas del **mismo medio** con URL distinta **nunca** se fusionan: pueden ser dos noticias del mismo jugador o dos piezas del mismo día;
-- similitud de titulares con tokens, *shingles* y Jaccard; umbral base **0,52**;
+- similitud de titulares con tokens, _shingles_ y Jaccard; umbral base **0,52**;
 - fusión por solapamiento de palabras ≥ 0,55 cuando la similitud supera el umbral;
 - fusión por entidades (jugador, entrenador, rival) con umbral **0,44** y solapamiento fuerte;
 - conflicto previa/crónica: una previa y una crónica del mismo partido no se fusionan;
@@ -77,7 +77,13 @@ Se autorizó romper `/v1/` y sustituir `items`/`meta` por `stories`/`sources`. E
 {
   "updatedAt": "2026-10-29T10:00:00Z",
   "sources": [
-    { "id": "riazor", "name": "Riazor.org", "group": "galicia", "kind": "article", "homepage": "https://www.riazor.org/" }
+    {
+      "id": "riazor",
+      "name": "Riazor.org",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.riazor.org/"
+    }
   ],
   "stories": [
     {
@@ -90,9 +96,7 @@ Se autorizó romper `/v1/` y sustituir `items`/`meta` por `stories`/`sources`. E
       "summary": null,
       "thumbnailUrl": null,
       "tags": ["fichajes"],
-      "alsoIn": [
-        { "sourceId": "dxt-campeon", "title": "…", "url": "…", "publishedAt": "…" }
-      ]
+      "alsoIn": [{ "sourceId": "dxt-campeon", "title": "…", "url": "…", "publishedAt": "…" }]
     }
   ]
 }
@@ -151,7 +155,7 @@ La Home sigue mostrando cinco titulares y «Ver todas», ahora resolviendo el no
 - Marca es el único nacional viable con feed directo; no se sustituye por Google News para no depender de un agregador sin miniaturas.
 - El clúster es heurístico. Los umbrales están calibrados con pares reales y cubiertos por tests; cualquier ajuste debe añadir un caso real al test.
 - YouTube sigue siendo una excepción documentada a `robots.txt`; si el club cambia de canal o cierra el RSS, la fuente se deshabilita y las demás siguen publicando.
-- `social.json` deja de mostrarse en Noticias, pero se sigue generando y validando para no romper el contrato ni perder los perfiles curados.
+- `social.json` deja de mostrarse en Noticias; el Lote 7 lo retira del contrato y del pipeline al no consumirlo ninguna pantalla.
 
 ## Alternativas descartadas
 
