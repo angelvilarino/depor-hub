@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T14:04:09Z",
+  "updatedAt": "2026-11-18T17:04:27Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "65614d016b399a1d",
+      "title": "Hugo Novoa, seis años en la cantera del Dépor y un primer gol en Primera marcado en Balaídos",
+      "url": "https://riazor.org/hugo-novoa-cantera-depor-gol-primera-balaidos",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-18T16:30:45Z",
+      "kind": "article",
+      "summary": "El Deportivo visita este sábado (14:00 horas) Vitoria, lugar en el que se reencontrará con Hugo Novoa, canterano blanquiazul en la…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "4606ceb3cec736d0",
       "title": "El Dépor respondón: suma más puntos cuando empieza perdiendo (8) que cuando marca primero (6)",
@@ -2168,25 +2183,6 @@
         "partido"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "83bc2f6944aa94b1",
-      "title": "David Mella, convocado con España sub-21… como defensa",
-      "url": "https://riazor.org/david-mella-espana-sub-21-defensa",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-06T11:49:43Z",
-      "kind": "article",
-      "summary": "El futbolista del Deportivo aparece en la lista de convocados como defensa después de haber jugado eventualmente como lateral. La entrada…",
-      "thumbnailUrl": null,
-      "tags": [],
-      "alsoIn": [
-        {
-          "sourceId": "dxt-campeon",
-          "title": "David Mella se gana la llamada de España sub-21 como defensa",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/david-mella-se-gana-la-llamada-de-espana-sub-21-como-defensa-889361.html",
-          "publishedAt": "2026-11-06T11:22:17Z"
-        }
-      ]
     }
   ]
 }

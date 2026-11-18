@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T14:04:09Z",
+  "updatedAt": "2026-11-18T17:04:27Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "65614d016b399a1d",
+      "title": "Hugo Novoa, seis años en la cantera del Dépor y un primer gol en Primera marcado en Balaídos",
+      "url": "https://riazor.org/hugo-novoa-cantera-depor-gol-primera-balaidos",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-18T16:30:45Z",
+      "kind": "article",
+      "summary": "El Deportivo visita este sábado (14:00 horas) Vitoria, lugar en el que se reencontrará con Hugo Novoa, canterano blanquiazul en la…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "4606ceb3cec736d0",
       "title": "El Dépor respondón: suma más puntos cuando empieza perdiendo (8) que cuando marca primero (6)",
@@ -92,20 +107,6 @@
       "summary": "El gabonés quiere liderar al Dépor en su visita a Mendizorroza desde el inicio. Las tres victorias del cuadro gallego fueron con Auba en…",
       "thumbnailUrl": "img/news/b7d0d2c43729090c.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "47684379ac901797",
-      "title": "Hugo Novoa se reencuentra con el Dépor tras un gol 'a lo Djalminha' que le abrió las puertas en Vitoria",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/hugo-novoa-se-reencuentra-con-el-depor-tras-un-gol-a-lo-djalminha-que-le-abrio-las-puertas-en-vitoria-891533.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-17T16:34:45Z",
-      "kind": "article",
-      "summary": "Sin minutos en las ocho primeras jornadas, su diana en Balaídos le ha otorgado continuidad en los planes de Sánchez Flores en el Alavés",
-      "thumbnailUrl": "img/news/53b789f6d17cf5a5.webp",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
