@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T13:32:52Z",
+  "updatedAt": "2026-11-18T14:04:09Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "4606ceb3cec736d0",
+      "title": "El Dépor respondón: suma más puntos cuando empieza perdiendo (8) que cuando marca primero (6)",
+      "url": "https://riazor.org/depor-respondon-suma-puntos-empieza-perdiendo-marca-primero",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-18T14:00:17Z",
+      "kind": "article",
+      "summary": "El Deportivo ha sumado 8 puntos en los partidos que empezó perdiendo y 6 en los que marcó primero. Los datos de las doce jornadas, partido…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "978bdeb4bd7a4f80",
       "title": "Antídoto FIFA para Lucas Noubi: el parón le abre las puertas del once en el Dépor",
@@ -2173,20 +2187,6 @@
           "publishedAt": "2026-11-06T11:22:17Z"
         }
       ]
-    },
-    {
-      "id": "e8bdafac17c4819c",
-      "title": "Así ve Antonio Hidalgo el Espanyol-Deportivo: \"Conocemos a Sarabia, pero vas un poco a ciegas\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/asi-ve-antonio-hidalgo-el-espanyol-deportivo-conocemos-a-sarabia-pero-vas-un-poco-a-ciegas-889341.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-06T09:48:05Z",
-      "kind": "article",
-      "summary": "El técnico del Dépor repasa la actualidad del equipo y el partido del fin de semana",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/11/6acbbd2cb7e45.r_d.1462-1071-0.JPG",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
     }
   ]
 }

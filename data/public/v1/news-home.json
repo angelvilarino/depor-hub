@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T13:32:52Z",
+  "updatedAt": "2026-11-18T14:04:09Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "4606ceb3cec736d0",
+      "title": "El Dépor respondón: suma más puntos cuando empieza perdiendo (8) que cuando marca primero (6)",
+      "url": "https://riazor.org/depor-respondon-suma-puntos-empieza-perdiendo-marca-primero",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-18T14:00:17Z",
+      "kind": "article",
+      "summary": "El Deportivo ha sumado 8 puntos en los partidos que empezó perdiendo y 6 en los que marcó primero. Los datos de las doce jornadas, partido…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "978bdeb4bd7a4f80",
       "title": "Antídoto FIFA para Lucas Noubi: el parón le abre las puertas del once en el Dépor",
@@ -89,20 +103,6 @@
       "kind": "article",
       "summary": "Sin minutos en las ocho primeras jornadas, su diana en Balaídos le ha otorgado continuidad en los planes de Sánchez Flores en el Alavés",
       "thumbnailUrl": "img/news/53b789f6d17cf5a5.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "5145404bd01d37f6",
-      "title": "Mariano Díaz sonó para el Dépor, le marcó 23 días después y ahora le espera con el Alavés",
-      "url": "https://riazor.org/mariano-diaz-sono-depor-marco-23-dias-despues-ahora-espera-alaves",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-17T12:00:57Z",
-      "kind": "article",
-      "summary": "El 17 de noviembre de 2016 Mariano Díaz estaba en la agenda del Dépor. Diez años después le espera con el Alavés: cuatro goles en Liga y…",
-      "thumbnailUrl": "img/news/8d943ddb0b22e7a7.webp",
       "tags": [
         "partido"
       ],
