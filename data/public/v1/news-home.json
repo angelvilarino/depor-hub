@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T15:33:22Z",
+  "updatedAt": "2026-11-19T16:32:33Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,35 @@
   ],
   "stories": [
     {
+      "id": "7c906a68d5a2008a",
+      "title": "Quique Sánchez Flores: \"El Dépor es de nuestra liga, pero con un músculo que no tienen muchos en Primera\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/quique-sanchez-flores-el-depor-es-de-nuestra-liga-pero-con-un-musculo-que-no-tienen-muchos-en-primera-891955.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-19T16:21:16Z",
+      "kind": "article",
+      "summary": "El técnico del Alavés analiza el encuentro ante el conjunto blanquiazul y admite que lleva \"imaginando ese partido bastante tiempo\"",
+      "thumbnailUrl": "img/news/a871e3849ff36076.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "33f87130c0a88f1c",
+      "title": "Alberto Rodríguez pasa página tras la polémica en el Dépor ABANCA – Barça: «Es pasado, felicitar al equipo y a por el siguiente reto»",
+      "url": "https://riazor.org/alberto-rodriguez-polemica-depor-abanca-barca",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-19T16:00:58Z",
+      "kind": "article",
+      "summary": "Alberto Rodríguez dejó en el pasado el discutido tramo final de partido entre Dépor ABANCA y Barcelona. El arteixán puso el foco en el…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "f43ab29955388ea3",
       "title": "El tobillo de Aubameyang enciende las alarmas antes del Alavés – Deportivo",
       "url": "https://riazor.org/tobillo-aubameyang-alarmas-alaves-deportivo",
@@ -85,7 +114,7 @@
       "alsoIn": [
         {
           "sourceId": "la-voz",
-          "title": "Alarma en el Deportivo: Aubameyang se ejercitó al margen por molestias en un tobillo",
+          "title": "Alarma en el Deportivo: Aubameyang se ejercitó al margen por molestias en un tobillo y acudió a un hospital",
           "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/19/alarma-deportivo-aubameyang-ejercito-margen-molestias-tobillo/00031795097547643139700.htm",
           "publishedAt": "2026-11-19T14:45:00Z"
         }
@@ -102,32 +131,6 @@
       "thumbnailUrl": "img/news/0c103fd528cac7de.webp",
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e9e26592a8bfbba0",
-      "title": "Luismi Cruz, en busca de repetir exhibición en Mendizorrotza: «Ojalá pueda vivir algo parecido»",
-      "url": "https://riazor.org/luismi-cruz-repetir-exhibicion-mendizorrotza",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-19T12:15:20Z",
-      "kind": "article",
-      "summary": "El Deportivo visita este sábado (14:00 horas) Medizorrotza. Allí -la pasada temporada y ante el Mirandés- Luismi Cruz marcó sus primeros…",
-      "thumbnailUrl": null,
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "7f642745aaf4d631",
-      "title": "Luismi Cruz y su vuelta a Mendizorroza: \"Ojalá pueda repetir el partido tan especial que hice\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/luismi-cruz-y-su-vuelta-a-mendizorroza-ojala-pueda-repetir-el-partido-tan-especial-que-hice-891895.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-19T12:04:13Z",
-      "kind": "article",
-      "summary": "El gaditano destaca las ganas del vestuario de volver a ganar y advierte de la dificultad del partido ante \"un rival directo\"",
-      "thumbnailUrl": "img/news/7b080339b8e91016.webp",
-      "tags": [
         "partido"
       ],
       "alsoIn": []
