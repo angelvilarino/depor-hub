@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T09:04:45Z",
+  "updatedAt": "2026-11-19T12:35:46Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -36,6 +36,46 @@
   ],
   "stories": [
     {
+      "id": "8c0814e2bce1d7fd",
+      "title": "Rueda de prensa de Luismi Cruz previa al Deportivo Alavés - RC Deportivo",
+      "url": "https://youtube.com/watch?v=1k4JbWyhNTs",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-19T12:17:01Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "img/news/f735042ac2e79623.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e9e26592a8bfbba0",
+      "title": "Luismi Cruz, en busca de repetir exhibición en Mendizorrotza: «Ojalá pueda vivir algo parecido»",
+      "url": "https://riazor.org/luismi-cruz-repetir-exhibicion-mendizorrotza",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-19T12:15:20Z",
+      "kind": "article",
+      "summary": "El Deportivo visita este sábado (14:00 horas) Medizorrotza. Allí -la pasada temporada y ante el Mirandés- Luismi Cruz marcó sus primeros…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "7f642745aaf4d631",
+      "title": "Luismi y su vuelta a Mendizorroza: \"Ojalá pueda repetir el partido tan especial que hice\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/luismi-cruz-y-su-vuelta-a-mendizorroza-ojala-pueda-repetir-el-partido-tan-especial-que-hice-891895.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-19T12:04:13Z",
+      "kind": "article",
+      "summary": "El gaditano destaca las ganas del vestuario de volver a ganar y advierte de la dificultad del partido ante \"un rival directo\"",
+      "thumbnailUrl": "img/news/7b080339b8e91016.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "01e846bc75fb1fa1",
       "title": "El Dépor, del GTA V al GTA VI: tres ascensos, dos descensos y cuatro años en el barro",
       "url": "https://riazor.org/depor-gta-v-al-gta-vi-tres-ascensos-dos-descensos-cuatro-anos-barro",
@@ -62,20 +102,6 @@
       "alsoIn": []
     },
     {
-      "id": "9f1f86978d643346",
-      "title": "Así fuel Dépor ABANCA 1 -1 FC Barcelona desde dentro | INSIDE DÉPOR",
-      "url": "https://youtube.com/watch?v=f6fw3KvjY0A",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-18T20:00:19Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "img/news/c146bf33a92ae3c2.webp",
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
       "id": "148d7b3f47b18e61",
       "title": "Mendizorroza vuelve a entrelazar a Hugo Novoa con sus orígenes",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/18/mendizorroza-vuelve-entrelazar-hugo-novoa-origenes/00031795029241102256204.htm",
@@ -86,34 +112,6 @@
       "thumbnailUrl": "img/news/ad4c670d85f5e0fc.webp",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "83e8dd72ae16cbf6",
-      "title": "La afición del Dépor se las ingenia para estar en Mendizorroza: \"Unos cogimos para grada local y a otros les dejaron los abonos gente del Alavés\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-18/la-aficion-del-depor-se-las-ingenia-para-estar-en-mendizorroza-unos-cogimos-para-grada-local-y-a-otros-les-dejaron-los-abonos-gente-del-alaves-891771.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-18T19:11:22Z",
-      "kind": "article",
-      "summary": "Diferentes peñas del Deportivo relatan cómo se las han ingeniado para conseguir entradas en la grada local",
-      "thumbnailUrl": "img/news/d6cfce13fc1a4eb7.webp",
-      "tags": [
-        "aficion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "85f65613ec932264",
-      "title": "CONTRAPUNTO | ¿Aubameyang debe ser titular en el Alavés – Deportivo?",
-      "url": "https://riazor.org/contrapunto-aubameyang-titular-alaves-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-18T19:00:23Z",
-      "kind": "article",
-      "summary": "Debatimos y te damos la opción de votar sobre la necesidad de que Aubameyang sea titular en el partido de este sábado en Vitoria. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }

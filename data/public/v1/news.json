@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T09:04:45Z",
+  "updatedAt": "2026-11-19T12:35:46Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,46 @@
     }
   ],
   "stories": [
+    {
+      "id": "8c0814e2bce1d7fd",
+      "title": "Rueda de prensa de Luismi Cruz previa al Deportivo Alavés - RC Deportivo",
+      "url": "https://youtube.com/watch?v=1k4JbWyhNTs",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-19T12:17:01Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i2.ytimg.com/vi/1k4JbWyhNTs/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e9e26592a8bfbba0",
+      "title": "Luismi Cruz, en busca de repetir exhibición en Mendizorrotza: «Ojalá pueda vivir algo parecido»",
+      "url": "https://riazor.org/luismi-cruz-repetir-exhibicion-mendizorrotza",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-19T12:15:20Z",
+      "kind": "article",
+      "summary": "El Deportivo visita este sábado (14:00 horas) Medizorrotza. Allí -la pasada temporada y ante el Mirandés- Luismi Cruz marcó sus primeros…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "7f642745aaf4d631",
+      "title": "Luismi y su vuelta a Mendizorroza: \"Ojalá pueda repetir el partido tan especial que hice\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/luismi-cruz-y-su-vuelta-a-mendizorroza-ojala-pueda-repetir-el-partido-tan-especial-que-hice-891895.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-19T12:04:13Z",
+      "kind": "article",
+      "summary": "El gaditano destaca las ganas del vestuario de volver a ganar y advierte de la dificultad del partido ante \"un rival directo\"",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/05/6aecc701ce367.r_d.1450-1028-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "01e846bc75fb1fa1",
       "title": "El Dépor, del GTA V al GTA VI: tres ascensos, dos descensos y cuatro años en el barro",
@@ -2140,45 +2180,6 @@
       "summary": "El Deportivo visita este sábado al Espanyol con la intención de sumar un nuevo triunfo que le permita afrontar el parón instalado en la…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "ecefa1452fef4fc4",
-      "title": "El último baile deportivista en la carretera de Sarriá",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/historia/2026-11-07/el-ultimo-baile-deportivista-en-la-carretera-de-sarria-889424.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-07T04:00:00Z",
-      "kind": "article",
-      "summary": "El próximo mes de marzo se cumplirán 30 años de la última visita coruñesa al viejo templo perico, en la que el Dépor del profesor Silva se…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/06/6aedfa3d7480d.r_d.1292-764-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "e0fff7242339db3d",
-      "title": "Alberto Lopo: “Siento envidia sana al ver lo bien que está ahora el Dépor”",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/alberto-lopo-siento-envidia-sana-al-ver-lo-bien-que-esta-ahora-el-depor-889528.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-07T04:00:00Z",
-      "kind": "article",
-      "summary": "El exfutbolista del equipo coruñés y de su rival de hoy, ahora entrenador, repasa su trayectoria y admite que le gustaría volver a…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2025/09/11/68c201faa6a9e.r_d.460-277-0.jpeg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "b24ff05db8aa7269",
-      "title": "La previa del Espanyol-Dépor | Un partido para recordar y una victoria para confirmar",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/la-previa-del-espanyol-depor-un-partido-para-recordar-y-una-victoria-para-confirmar-889420.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-06T20:14:10Z",
-      "kind": "article",
-      "summary": "Ambos equipos buscarán confirmar que sus malas rachas ya han quedado atrás en un encuentro que estará marcado por el homenaje a Jesús de…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/06/6aee07d655290.r_d.1657-1239-0.jpg",
-      "tags": [
-        "partido",
-        "club"
-      ],
       "alsoIn": []
     }
   ]
