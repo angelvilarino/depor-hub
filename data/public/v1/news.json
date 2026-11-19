@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T20:32:55Z",
+  "updatedAt": "2026-11-19T04:32:45Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "1619fa99d9751ecf",
+      "title": "Bil y Toni, dos delanteros que son más que gol",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/bil-y-toni-dos-delanteros-que-son-mas-que-gol-891752.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-19T04:00:00Z",
+      "kind": "article",
+      "summary": "Los puntas de Dépor y Alavés llegan al duelos del sábado como los menos eficaces de la Liga, pero son claves en el juego de sus equipos",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/18/6afdd12dd780f.r_d.1516-1098-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "9f1f86978d643346",
       "title": "Así fuel Dépor ABANCA 1 -1 FC Barcelona desde dentro | INSIDE DÉPOR",
@@ -2166,20 +2180,6 @@
       "thumbnailUrl": null,
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e12ad619f4271707",
-      "title": "Sarabia, sobre Aubameyang: \"Sorprende el rendimiento que tiene a su edad. Después de la lesión, igual no está al 100%, o eso espero\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-06/sarabia-sobre-aubameyang-sorprende-el-rendimiento-que-tiene-a-su-edad-despues-de-la-lesion-igual-no-esta-al-100-o-eso-espero-889494.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-06T18:43:43Z",
-      "kind": "article",
-      "summary": "El técnico del conjunto perico analizó el encuentro ante los blanquiazules: \"En esos últimos metros es uno de los equipos con más talento…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/06/6aee1dd519e4e.r_d.575-410-0.jfif",
-      "tags": [
-        "lesiones"
       ],
       "alsoIn": []
     }
