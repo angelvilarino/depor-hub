@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T14:04:41Z",
+  "updatedAt": "2026-11-19T15:33:22Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -24,6 +24,14 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     },
     {
       "id": "marca",
@@ -74,7 +82,14 @@
         "lesiones",
         "club"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "Alarma en el Deportivo: Aubameyang se ejercitó al margen por molestias en un tobillo",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/19/alarma-deportivo-aubameyang-ejercito-margen-molestias-tobillo/00031795097547643139700.htm",
+          "publishedAt": "2026-11-19T14:45:00Z"
+        }
+      ]
     },
     {
       "id": "51414f0fa98828a8",

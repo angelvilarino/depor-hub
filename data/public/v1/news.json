@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T14:04:41Z",
+  "updatedAt": "2026-11-19T15:33:22Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -82,7 +82,14 @@
         "lesiones",
         "club"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "Alarma en el Deportivo: Aubameyang se ejercitó al margen por molestias en un tobillo",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/19/alarma-deportivo-aubameyang-ejercito-margen-molestias-tobillo/00031795097547643139700.htm",
+          "publishedAt": "2026-11-19T14:45:00Z"
+        }
+      ]
     },
     {
       "id": "51414f0fa98828a8",
