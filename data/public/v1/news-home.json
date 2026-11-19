@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T13:33:28Z",
+  "updatedAt": "2026-11-19T14:04:41Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -35,6 +35,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "f43ab29955388ea3",
+      "title": "El tobillo de Aubameyang enciende las alarmas antes del Alavés – Deportivo",
+      "url": "https://riazor.org/tobillo-aubameyang-alarmas-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-19T13:30:24Z",
+      "kind": "article",
+      "summary": "Aubameyang se entrenó en solitario en la sesión de este jueves. El delantero tiene molestias en el tobillo y es duda para el encuentro de…",
+      "thumbnailUrl": null,
+      "tags": [
+        "lesiones"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "04e09150fdaef0bf",
       "title": "Luismi: “El Alavés es un rival directo, tenemos que ir a por los tres puntos”",
@@ -101,18 +115,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "01e846bc75fb1fa1",
-      "title": "El Dépor, del GTA V al GTA VI: tres ascensos, dos descensos y cuatro años en el barro",
-      "url": "https://riazor.org/depor-gta-v-al-gta-vi-tres-ascensos-dos-descensos-cuatro-anos-barro",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-19T09:01:05Z",
-      "kind": "article",
-      "summary": "GTA VI sale el 19 de noviembre de 2026. Cuando llegó GTA V, en 2013, el Deportivo estaba en Segunda y en concurso. Esto pasó entre uno y…",
-      "thumbnailUrl": null,
-      "tags": [],
       "alsoIn": []
     }
   ]

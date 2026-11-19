@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T13:33:28Z",
+  "updatedAt": "2026-11-19T14:04:41Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "f43ab29955388ea3",
+      "title": "El tobillo de Aubameyang enciende las alarmas antes del Alavés – Deportivo",
+      "url": "https://riazor.org/tobillo-aubameyang-alarmas-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-19T13:30:24Z",
+      "kind": "article",
+      "summary": "Aubameyang se entrenó en solitario en la sesión de este jueves. El delantero tiene molestias en el tobillo y es duda para el encuentro de…",
+      "thumbnailUrl": null,
+      "tags": [
+        "lesiones"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "04e09150fdaef0bf",
       "title": "Luismi: “El Alavés es un rival directo, tenemos que ir a por los tres puntos”",
@@ -2169,20 +2183,6 @@
           "publishedAt": "2026-11-07T18:06:07Z"
         }
       ]
-    },
-    {
-      "id": "581afd380844e741",
-      "title": "Así fue el homenaje a Jesús de Miguel en el RCDE Stadium durante el Espanyol-Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/asi-fue-el-homenaje-a-jesus-de-miguel-en-el-rcde-stadium-durane-el-espanyol-depor-889616.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-07T16:35:46Z",
-      "kind": "article",
-      "summary": "Jugadores de Espanyol y Deportivo participaron en un recuerdo al delantero que tuvo varios momentos especialmente emotivos antes y después…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/07/6aef523c2bc97.JPG",
-      "tags": [
-        "club"
-      ],
-      "alsoIn": []
     }
   ]
 }
