@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T04:32:45Z",
+  "updatedAt": "2026-11-19T09:04:45Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "01e846bc75fb1fa1",
+      "title": "El Dépor, del GTA V al GTA VI: tres ascensos, dos descensos y cuatro años en el barro",
+      "url": "https://riazor.org/depor-gta-v-al-gta-vi-tres-ascensos-dos-descensos-cuatro-anos-barro",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-19T09:01:05Z",
+      "kind": "article",
+      "summary": "GTA VI sale el 19 de noviembre de 2026. Cuando llegó GTA V, en 2013, el Deportivo estaba en Segunda y en concurso. Esto pasó entre uno y…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "1619fa99d9751ecf",
       "title": "Bil y Toni, dos delanteros que son más que gol",
@@ -2166,20 +2178,6 @@
       "tags": [
         "partido",
         "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e032d39874750dbf",
-      "title": "Edu Expósito y los otros viejos conocidos del Dépor en el Espanyol",
-      "url": "https://riazor.org/edu-exposito-otros-viejos-conocidos-depor-espanyol",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-06T19:30:43Z",
-      "kind": "article",
-      "summary": "El Deportivo se reencontrará este sábado con Edu Expósito -exjugador blanquiazul- y tres futbolistas que ya le hicieron gol la temporada…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }
