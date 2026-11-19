@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T13:04:28Z",
+  "updatedAt": "2026-11-19T13:33:28Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,33 @@
   ],
   "stories": [
     {
+      "id": "04e09150fdaef0bf",
+      "title": "Luismi: “El Alavés es un rival directo, tenemos que ir a por los tres puntos”",
+      "url": "https://marca.com/futbol/deportivo/2026/11/19/luismi-alaves-rival-directo-tres-puntos.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-19T13:25:16Z",
+      "kind": "article",
+      "summary": "El jugador se centra en lo inmediato y no mira a los posteriores duelos ante Barcelona y Real Madrid",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/19/6afef7e6a479b.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "8231db1690568946",
+      "title": "Susto en el Dépor: Aubameyang acude a un hospital para que le examinen unas molestias en un tobillo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/susto-en-el-depor-aubameyang-acude-a-un-hospital-para-que-le-examinen-unas-molestias-en-un-tobilla-891914.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-19T13:16:47Z",
+      "kind": "article",
+      "summary": "El club asegura que \"en principio\" carecen de importancia",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/31/6ae5f1e5931ec.r_d.1013-416-0.jpg",
+      "tags": [
+        "lesiones",
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "51414f0fa98828a8",
       "title": "Rueda de prensa de Alberto Rodríguez previa al FC Badalona Women - Dépor ABANCA",
       "url": "https://youtube.com/watch?v=2mtWbJbfL3E",
@@ -86,7 +113,7 @@
     },
     {
       "id": "7f642745aaf4d631",
-      "title": "Luismi y su vuelta a Mendizorroza: \"Ojalá pueda repetir el partido tan especial que hice\"",
+      "title": "Luismi Cruz y su vuelta a Mendizorroza: \"Ojalá pueda repetir el partido tan especial que hice\"",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/luismi-cruz-y-su-vuelta-a-mendizorroza-ojala-pueda-repetir-el-partido-tan-especial-que-hice-891895.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-19T12:04:13Z",
@@ -2154,34 +2181,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/07/6aef523c2bc97.JPG",
       "tags": [
         "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "9af707d9ef236ec6",
-      "title": "Espanyol-Dépor en directo: Diez minutos para llegar al final del partido (0-0)",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/directo-sigue-todo-lo-que-ocurre-en-el-espanyol-deportivo-previa-y-minuto-a-minuto-889593.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-07T13:40:59Z",
-      "kind": "article",
-      "summary": "El conjunto coruñés busca mantenerse en la senda de la victoria ante un rival que estrena entrenador: Eder Sarabia",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef482691d5a.r_d.1429-928-0.JPG",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "04ec49c576cf2d22",
-      "title": "Eder Sarabia: «En los últimos metros, quitando a los grandes, el Dépor es uno de los equipos con más talento»",
-      "url": "https://riazor.org/eder-sarabia-ultimos-metros-grandes-depor-talento",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-07T11:00:12Z",
-      "kind": "article",
-      "summary": "El entrenador del Espanyol, recién llegado a Barcelona, dejó unas buenas palabras sobre el Deportivo antes del partido de este sábado. La…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/f09f8ea5-eder-sarabia-roda-d.jpg",
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }

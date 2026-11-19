@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T13:04:28Z",
+  "updatedAt": "2026-11-19T13:33:28Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -26,15 +26,42 @@
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
     },
     {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
+      "id": "marca",
+      "name": "Marca",
+      "group": "nacional",
       "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
+      "homepage": "https://www.marca.com/futbol/deportivo.html",
+      "iconUrl": "https://www.marca.com/apple-touch-icon.png"
     }
   ],
   "stories": [
+    {
+      "id": "04e09150fdaef0bf",
+      "title": "Luismi: “El Alavés es un rival directo, tenemos que ir a por los tres puntos”",
+      "url": "https://marca.com/futbol/deportivo/2026/11/19/luismi-alaves-rival-directo-tres-puntos.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-19T13:25:16Z",
+      "kind": "article",
+      "summary": "El jugador se centra en lo inmediato y no mira a los posteriores duelos ante Barcelona y Real Madrid",
+      "thumbnailUrl": "img/news/e6b9bade122dd9e9.webp",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "8231db1690568946",
+      "title": "Susto en el Dépor: Aubameyang acude a un hospital para que le examinen unas molestias en un tobillo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/susto-en-el-depor-aubameyang-acude-a-un-hospital-para-que-le-examinen-unas-molestias-en-un-tobilla-891914.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-19T13:16:47Z",
+      "kind": "article",
+      "summary": "El club asegura que \"en principio\" carecen de importancia",
+      "thumbnailUrl": "img/news/3dbe39722113a3df.webp",
+      "tags": [
+        "lesiones",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "51414f0fa98828a8",
       "title": "Rueda de prensa de Alberto Rodríguez previa al FC Badalona Women - Dépor ABANCA",
@@ -64,7 +91,7 @@
     },
     {
       "id": "7f642745aaf4d631",
-      "title": "Luismi y su vuelta a Mendizorroza: \"Ojalá pueda repetir el partido tan especial que hice\"",
+      "title": "Luismi Cruz y su vuelta a Mendizorroza: \"Ojalá pueda repetir el partido tan especial que hice\"",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/luismi-cruz-y-su-vuelta-a-mendizorroza-ojala-pueda-repetir-el-partido-tan-especial-que-hice-891895.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-19T12:04:13Z",
@@ -86,34 +113,6 @@
       "summary": "GTA VI sale el 19 de noviembre de 2026. Cuando llegó GTA V, en 2013, el Deportivo estaba en Segunda y en concurso. Esto pasó entre uno y…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "1619fa99d9751ecf",
-      "title": "Bil y Toni, dos delanteros que son más que gol",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/bil-y-toni-dos-delanteros-que-son-mas-que-gol-891752.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-19T04:00:00Z",
-      "kind": "article",
-      "summary": "Los puntas de Dépor y Alavés llegan al duelos del sábado como los menos eficaces de la Liga, pero son claves en el juego de sus equipos",
-      "thumbnailUrl": "img/news/753c5b82164664c8.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "148d7b3f47b18e61",
-      "title": "Mendizorroza vuelve a entrelazar a Hugo Novoa con sus orígenes",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/18/mendizorroza-vuelve-entrelazar-hugo-novoa-origenes/00031795029241102256204.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-18T19:17:00Z",
-      "kind": "article",
-      "summary": "«Ya en la cantera del Dépor era un misil, cuando cogía el balón era capaz de llevarse a jugadores solo por carrera», relata uno de sus…",
-      "thumbnailUrl": "img/news/ad4c670d85f5e0fc.webp",
-      "tags": [
-        "cantera"
-      ],
       "alsoIn": []
     }
   ]
