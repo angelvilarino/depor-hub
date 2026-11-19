@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T12:35:46Z",
+  "updatedAt": "2026-11-19T13:04:28Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -36,15 +36,16 @@
   ],
   "stories": [
     {
-      "id": "8c0814e2bce1d7fd",
-      "title": "Rueda de prensa de Luismi Cruz previa al Deportivo Alavés - RC Deportivo",
-      "url": "https://youtube.com/watch?v=1k4JbWyhNTs",
+      "id": "51414f0fa98828a8",
+      "title": "Rueda de prensa de Alberto Rodríguez previa al FC Badalona Women - Dépor ABANCA",
+      "url": "https://youtube.com/watch?v=2mtWbJbfL3E",
       "sourceId": "youtube-club",
-      "publishedAt": "2026-11-19T12:17:01Z",
+      "publishedAt": "2026-11-19T12:36:41Z",
       "kind": "video",
       "summary": null,
-      "thumbnailUrl": "img/news/f735042ac2e79623.webp",
+      "thumbnailUrl": "img/news/0c103fd528cac7de.webp",
       "tags": [
+        "cantera",
         "partido"
       ],
       "alsoIn": []
