@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T16:32:33Z",
+  "updatedAt": "2026-11-19T18:05:29Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "0421bd5bd886f6ce",
+      "title": "Alavés – Deportivo · Jornada 13: elige el once del Dépor, con Procesos Inmobiliaria",
+      "url": "https://riazor.org/elige-el-once-alaves-deportivo-jornada-13",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-19T18:00:55Z",
+      "kind": "article",
+      "summary": "Elige el once del Deportivo ante el Alavés · Jornada 13 de LaLiga EA Sports. Votación abierta hasta el sábado 21 de noviembre a las 11:00…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "7c906a68d5a2008a",
       "title": "Quique Sánchez Flores: \"El Dépor es de nuestra liga, pero con un músculo que no tienen muchos en Primera\"",
@@ -2168,20 +2182,6 @@
       "kind": "article",
       "summary": "Primera vez que el Dépor mantiene la portería a cero",
       "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/07/6aef5f5d30b40.png",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "d3899178c59d4e01",
-      "title": "Así te contamos el empate entre Espanyol y Deportivo en el RCDE Stadium (0-0)",
-      "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/07/directo-espanyol-deportivo-hidalgo-repite-once-osasuna/01071794059842292912513.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-07T17:20:00Z",
-      "kind": "article",
-      "summary": "Los blanquiazules no pasaron de las tablas en un partido muy intenso y con grandes ocasiones para los dos equipos, con Leo Román como…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/HV7M3w44JtnxR5l7zQf5aawpHss=/768x/2026/11/07/00121794068582985186361/Foto/j_20261107_171900000.jpg",
       "tags": [
         "partido"
       ],
