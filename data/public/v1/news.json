@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T18:33:17Z",
+  "updatedAt": "2026-11-19T21:33:04Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -540,6 +540,21 @@
       "tags": [
         "partido",
         "aficion"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e119a26bbaf52471",
+      "title": "Los 16 minutos del «atropello» en Riazor",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/04/16-minutos-atropello-riazor/00031794853657577162549.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-16T18:30:00Z",
+      "kind": "article",
+      "summary": "Así fue la secuencia de hechos que impidió un triunfo histórico del Dépor Abanca sobre el Barça",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/97-fKhgInveG-xIc3ht9EW-AIfI=/768x/2026/11/16/00121794853682052591263/Foto/i_20261115_195203001.jpg",
+      "tags": [
+        "cantera",
+        "club"
       ],
       "alsoIn": []
     },
@@ -2172,18 +2187,6 @@
       "kind": "article",
       "summary": "El guardameta realizó una gran actuación ante el conjunto perico y los blanquiazules firmaron su primera portería a cero de la temporada",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef5e3a610b6.r_d.1566-967-0.JPG",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "19a6d791d7509086",
-      "title": "Leo Román: «Cuando no estuve acertado, el equipo me arropó»",
-      "url": "https://riazor.org/leo-roman-cuando-no-estuve-acertado-el-equipo-me-arropo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-07T17:27:18Z",
-      "kind": "article",
-      "summary": "Leo Román fue el mejor jugador del Deportivo ante el Espanyol. Consiguió dejar la portería a cero y con dos grandes paradas sostuvo el…",
-      "thumbnailUrl": null,
       "tags": [],
       "alsoIn": []
     }
