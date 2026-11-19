@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T18:05:29Z",
+  "updatedAt": "2026-11-19T18:33:17Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "4ca62038894d7e0f",
+      "title": "El rival del Dépor en Copa saldrá de Primera o Segunda RFEF con filtro geográfico",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/el-rival-del-depor-en-copa-saldra-de-primera-o-segunda-rfef-con-filtro-geografico-892010.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-19T18:15:29Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul conocerá a su adversario este lunes tras un sorteo condicionado por una división por zonas que la Federación todavía…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/19/6aff37ef935d4.r_d.1500-1000-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "0421bd5bd886f6ce",
       "title": "Alavés – Deportivo · Jornada 13: elige el once del Dépor, con Procesos Inmobiliaria",
@@ -177,7 +191,7 @@
     },
     {
       "id": "7f642745aaf4d631",
-      "title": "Luismi y su vuelta a Mendizorroza: \"Ojalá pueda repetir el partido tan especial que hice\"",
+      "title": "Luismi Cruz y su vuelta a Mendizorroza: \"Ojalá pueda repetir el partido tan especial que hice\"",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/luismi-cruz-y-su-vuelta-a-mendizorroza-ojala-pueda-repetir-el-partido-tan-especial-que-hice-891895.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-19T12:04:13Z",
@@ -2171,20 +2185,6 @@
       "summary": "Leo Román fue el mejor jugador del Deportivo ante el Espanyol. Consiguió dejar la portería a cero y con dos grandes paradas sostuvo el…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "b9a5cdc9d351c938",
-      "title": "Leo Román, MVP del partido con dos grandes paradas",
-      "url": "https://marca.com/futbol/deportivo/2026/11/07/leo-roman-mvp-partido-dos-grandes-paradas.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-07T17:27:12Z",
-      "kind": "article",
-      "summary": "Primera vez que el Dépor mantiene la portería a cero",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/07/6aef5f5d30b40.png",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

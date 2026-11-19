@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T18:05:29Z",
+  "updatedAt": "2026-11-19T18:33:17Z",
   "sources": [
     {
       "id": "riazor",
@@ -18,14 +18,6 @@
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
     },
     {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
-    },
-    {
       "id": "marca",
       "name": "Marca",
       "group": "nacional",
@@ -35,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "4ca62038894d7e0f",
+      "title": "El rival del Dépor en Copa saldrá de Primera o Segunda RFEF con filtro geográfico",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/el-rival-del-depor-en-copa-saldra-de-primera-o-segunda-rfef-con-filtro-geografico-892010.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-19T18:15:29Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul conocerá a su adversario este lunes tras un sorteo condicionado por una división por zonas que la Federación todavía…",
+      "thumbnailUrl": "img/news/2cc90d38d7e7c9c7.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "0421bd5bd886f6ce",
       "title": "Alavés – Deportivo · Jornada 13: elige el once del Dépor, con Procesos Inmobiliaria",
@@ -103,28 +109,6 @@
       "thumbnailUrl": "img/news/e6b9bade122dd9e9.webp",
       "tags": [],
       "alsoIn": []
-    },
-    {
-      "id": "8231db1690568946",
-      "title": "Susto en el Dépor: Aubameyang acude a un hospital para que le examinen unas molestias en un tobillo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/susto-en-el-depor-aubameyang-acude-a-un-hospital-para-que-le-examinen-unas-molestias-en-un-tobilla-891914.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-19T13:16:47Z",
-      "kind": "article",
-      "summary": "El club asegura que \"en principio\" carecen de importancia",
-      "thumbnailUrl": "img/news/3dbe39722113a3df.webp",
-      "tags": [
-        "lesiones",
-        "club"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "Alarma en el Deportivo: Aubameyang se ejercitó al margen por molestias en un tobillo y acudió a un hospital",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/19/alarma-deportivo-aubameyang-ejercito-margen-molestias-tobillo/00031795097547643139700.htm",
-          "publishedAt": "2026-11-19T14:45:00Z"
-        }
-      ]
     }
   ]
 }
