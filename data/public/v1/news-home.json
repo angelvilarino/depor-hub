@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T17:04:03Z",
+  "updatedAt": "2026-11-20T17:32:59Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -10,31 +10,27 @@
       "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
     },
     {
-      "id": "riazor",
-      "name": "Riazor.org",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.riazor.org/",
-      "iconUrl": "https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png"
-    },
-    {
       "id": "dxt-campeon",
       "name": "DXT Campeón",
       "group": "galicia",
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
-    },
-    {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "43aa9286355ef767",
+      "title": "Altas, bajas y posible once del Deportivo ante el Alavés: las selecciones y el tobillo de Aubameyang lo condicionan todo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/altas-bajas-y-posible-once-del-deportivo-ante-el-alaves-las-selecciones-y-el-tobillo-de-aubameyang-lo-condicionan-todo-892165.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T17:10:39Z",
+      "kind": "article",
+      "summary": "Hidalgo no recupera futbolistas, aunque podría dar la alternativa en el once a Casadó",
+      "thumbnailUrl": "img/news/d9f0dc59c5ff0df2.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "5efc430724051671",
       "title": "El Deportivo contará con Aubameyang en Mendizorroza",
@@ -102,34 +98,6 @@
         "partido"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "43af799397d16e41",
-      "title": "Hidalgo confirma las dudas con Aubameyang: «No parece nada preocupante, pero falta poco para el partido»",
-      "url": "https://riazor.org/hidalgo-confirma-las-dudas-con-aubameyang-no-parece-nada-preocupante-pero-falta-poco-para-el-partido",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-20T10:35:11Z",
-      "kind": "article",
-      "summary": "Antonio Hidalgo, en rueda de prensa, no aclaró si Aubameyang -con unas molestias en el tobillo- estará disponible para la visita a…",
-      "thumbnailUrl": "img/news/66fbffd7fa5cebda.webp",
-      "tags": [
-        "partido",
-        "lesiones"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "dxt-campeon",
-          "title": "Antonio Hidalgo habla sobre el estado de Aubameyang: \"No parece nada importante, pero queda muy poco para el partido\"",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/antonio-hidalgo-habla-sobre-el-estado-de-aubameyang-no-parece-nada-importante-pero-queda-muy-poco-para-el-partido-892107.html",
-          "publishedAt": "2026-11-20T10:28:39Z"
-        },
-        {
-          "sourceId": "la-voz",
-          "title": "Antonio Hidalgo: «Lo de Aubameyang no parece nada preocupante, pero falta muy poco para el partido»",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/20/antonio-hidalgo/00031795169067884201453.htm",
-          "publishedAt": "2026-11-20T11:38:00Z"
-        }
-      ]
     }
   ]
 }

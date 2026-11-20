@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T17:04:03Z",
+  "updatedAt": "2026-11-20T17:32:59Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "43aa9286355ef767",
+      "title": "Altas, bajas y posible once del Deportivo ante el Alavés: las selecciones y el tobillo de Aubameyang lo condicionan todo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/altas-bajas-y-posible-once-del-deportivo-ante-el-alaves-las-selecciones-y-el-tobillo-de-aubameyang-lo-condicionan-todo-892165.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T17:10:39Z",
+      "kind": "article",
+      "summary": "Hidalgo no recupera futbolistas, aunque podría dar la alternativa en el once a Casadó",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/20/6b00637d9b6d5.r_d.1483-1073-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "5efc430724051671",
       "title": "El Deportivo contará con Aubameyang en Mendizorroza",
@@ -134,23 +146,23 @@
       "publishedAt": "2026-11-20T10:35:11Z",
       "kind": "article",
       "summary": "Antonio Hidalgo, en rueda de prensa, no aclaró si Aubameyang -con unas molestias en el tobillo- estará disponible para la visita a…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/17/6afc371ec954b.r_d.1488-1118-0.jpg",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/gPUVLjKs_v_cFIlfd46yaJSP9RE=/768x/2026/11/20/00121795168982960184410/Foto/h_20261020_135638000.jpg",
       "tags": [
         "partido",
         "lesiones"
       ],
       "alsoIn": [
         {
-          "sourceId": "dxt-campeon",
-          "title": "Antonio Hidalgo habla sobre el estado de Aubameyang: \"No parece nada importante, pero queda muy poco para el partido\"",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/antonio-hidalgo-habla-sobre-el-estado-de-aubameyang-no-parece-nada-importante-pero-queda-muy-poco-para-el-partido-892107.html",
-          "publishedAt": "2026-11-20T10:28:39Z"
-        },
-        {
           "sourceId": "la-voz",
           "title": "Antonio Hidalgo: «Lo de Aubameyang no parece nada preocupante, pero falta muy poco para el partido»",
           "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/20/antonio-hidalgo/00031795169067884201453.htm",
           "publishedAt": "2026-11-20T11:38:00Z"
+        },
+        {
+          "sourceId": "dxt-campeon",
+          "title": "Antonio Hidalgo habla sobre el estado de Aubameyang: \"No parece nada importante, pero queda muy poco para el partido\"",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/antonio-hidalgo-habla-sobre-el-estado-de-aubameyang-no-parece-nada-importante-pero-queda-muy-poco-para-el-partido-892107.html",
+          "publishedAt": "2026-11-20T10:28:39Z"
         }
       ]
     },
@@ -2183,18 +2195,6 @@
         "lesiones",
         "aficion"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "6084887cfc0041ba",
-      "title": "Leo Román recupera el honor: «A veces el fútbol te castiga y no sabes por qué»",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/07/leo-roman-recupera-honor-veces-futbol-castiga-sabes-/00031794078256162902378.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-07T19:08:00Z",
-      "kind": "article",
-      "summary": "«Cuando no he estado acertado, el equipo me ha arropado; hoy les hacía falta yo y he querido estar a la altura», verbalizó aliviado el…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/UxJdxReNLWX0QwIuOUsBYkLcxrs=/768x/2026/11/07/00121794078362780139458/Foto/eup_20261107_165533601.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]
