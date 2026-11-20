@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T21:33:04Z",
+  "updatedAt": "2026-11-20T04:33:04Z",
   "sources": [
     {
       "id": "riazor",
@@ -18,15 +18,43 @@
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
     },
     {
-      "id": "marca",
-      "name": "Marca",
-      "group": "nacional",
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
       "kind": "article",
-      "homepage": "https://www.marca.com/futbol/deportivo.html",
-      "iconUrl": "https://www.marca.com/apple-touch-icon.png"
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "de2f676935d4600e",
+      "title": "El giro de la cantera del Deportivo: Abegondo quiere ser más vertical",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/15/abegondo-quiere-vertical/00031792058128244164695.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-20T04:00:00Z",
+      "kind": "article",
+      "summary": "Busca este curso ser más directo hacia la meta rival y se abre a los dos delanteros, siguiendo los pasos del primer equipo",
+      "thumbnailUrl": "img/news/0d75c59961611921.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "0e0ce0839b9defd3",
+      "title": "Leo Román, portero del Deportivo: «Se me ha castigado mucho»",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/19/leo-roman-me-castigado-/00031795110315508757398.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-20T04:00:00Z",
+      "kind": "article",
+      "summary": "«El partido contra el Espanyol fue una liberación, sentí que el fútbol me devolvía todo el trabajo que estoy haciendo en silencio»…",
+      "thumbnailUrl": "img/news/4109bc4cc70cec98.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "4ca62038894d7e0f",
       "title": "El rival del Dépor en Copa saldrá de Primera o Segunda RFEF con filtro geográfico",
@@ -82,32 +110,6 @@
         "cantera",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "f43ab29955388ea3",
-      "title": "El tobillo de Aubameyang enciende las alarmas antes del Alavés – Deportivo",
-      "url": "https://riazor.org/tobillo-aubameyang-alarmas-alaves-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-19T13:30:24Z",
-      "kind": "article",
-      "summary": "Aubameyang se entrenó en solitario en la sesión de este jueves. El delantero tiene molestias en el tobillo y es duda para el encuentro de…",
-      "thumbnailUrl": null,
-      "tags": [
-        "lesiones"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "04e09150fdaef0bf",
-      "title": "Luismi: “El Alavés es un rival directo, tenemos que ir a por los tres puntos”",
-      "url": "https://marca.com/futbol/deportivo/2026/11/19/luismi-alaves-rival-directo-tres-puntos.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-19T13:25:16Z",
-      "kind": "article",
-      "summary": "El jugador se centra en lo inmediato y no mira a los posteriores duelos ante Barcelona y Real Madrid",
-      "thumbnailUrl": "img/news/e6b9bade122dd9e9.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
