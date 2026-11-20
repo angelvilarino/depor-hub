@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T12:35:46Z",
+  "updatedAt": "2026-11-20T17:04:03Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -36,6 +36,18 @@
   ],
   "stories": [
     {
+      "id": "5efc430724051671",
+      "title": "El Deportivo contará con Aubameyang en Mendizorroza",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/el-deportivo-contara-con-aubameyang-en-mendizorroza-892195.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T16:49:18Z",
+      "kind": "article",
+      "summary": "El delantero gabonés ha viajado junto al resto del equipo, aunque sus sensaciones dictaminarán de cuántos minutos dispone",
+      "thumbnailUrl": "img/news/92f0f817881c151e.webp",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
       "id": "18a0923b8abbd913",
       "title": "Manuel Pablo: \"Nuestra línea debe ser la de estos últimos partidos\"",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-20/manuel-pablo-nuestra-linea-debe-ser-la-de-estos-ultimos-partidos-892101.html",
@@ -52,7 +64,7 @@
     },
     {
       "id": "f59c074d96ba6b7e",
-      "title": "Hidalgo no rebaja la exigencia pese al buen inicio del Dépor: \"Tenemos que ir a nuestro límite siempre y estar alerta\"",
+      "title": "Hidalgo no rebaja la exigencia pese al buen inicio del Dépor: \"Tenemos que ir a nuestro límite siempre\"",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/hidalgo-no-rebaja-la-exigencia-pese-al-buen-inicio-del-depor-tenemos-que-ir-a-nuestro-limite-siempre-y-estar-alerta-892125.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-20T12:11:24Z",
@@ -118,20 +130,6 @@
           "publishedAt": "2026-11-20T11:38:00Z"
         }
       ]
-    },
-    {
-      "id": "de2f676935d4600e",
-      "title": "El giro de la cantera del Deportivo: Abegondo quiere ser más vertical",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/10/15/abegondo-quiere-vertical/00031792058128244164695.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-20T04:00:00Z",
-      "kind": "article",
-      "summary": "Busca este curso ser más directo hacia la meta rival y se abre a los dos delanteros, siguiendo los pasos del primer equipo",
-      "thumbnailUrl": "img/news/0d75c59961611921.webp",
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
     }
   ]
 }

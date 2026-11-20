@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T12:35:46Z",
+  "updatedAt": "2026-11-20T17:04:03Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,18 @@
   ],
   "stories": [
     {
+      "id": "5efc430724051671",
+      "title": "El Deportivo contará con Aubameyang en Mendizorroza",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/el-deportivo-contara-con-aubameyang-en-mendizorroza-892195.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T16:49:18Z",
+      "kind": "article",
+      "summary": "El delantero gabonés ha viajado junto al resto del equipo, aunque sus sensaciones dictaminarán de cuántos minutos dispone",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/20/6b00786ea4d3a.jfif",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
       "id": "18a0923b8abbd913",
       "title": "Manuel Pablo: \"Nuestra línea debe ser la de estos últimos partidos\"",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-20/manuel-pablo-nuestra-linea-debe-ser-la-de-estos-ultimos-partidos-892101.html",
@@ -60,7 +72,7 @@
     },
     {
       "id": "f59c074d96ba6b7e",
-      "title": "Hidalgo no rebaja la exigencia pese al buen inicio del Dépor: \"Tenemos que ir a nuestro límite siempre y estar alerta\"",
+      "title": "Hidalgo no rebaja la exigencia pese al buen inicio del Dépor: \"Tenemos que ir a nuestro límite siempre\"",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/hidalgo-no-rebaja-la-exigencia-pese-al-buen-inicio-del-depor-tenemos-que-ir-a-nuestro-limite-siempre-y-estar-alerta-892125.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-20T12:11:24Z",
@@ -2183,20 +2195,6 @@
       "summary": "«Cuando no he estado acertado, el equipo me ha arropado; hoy les hacía falta yo y he querido estar a la altura», verbalizó aliviado el…",
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/UxJdxReNLWX0QwIuOUsBYkLcxrs=/768x/2026/11/07/00121794078362780139458/Foto/eup_20261107_165533601.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "cbad39051171c1d7",
-      "title": "Casadó celebra su rápida vuelta: «La recuperación ha ido bien, lo importante es ayudar al equipo»",
-      "url": "https://riazor.org/casado-celebra-rapida-vuelta",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-07T19:00:20Z",
-      "kind": "article",
-      "summary": "Marc Casadó valora en DAZN su regreso tras la lesión, el recibimiento en el campo del Espanyol y la acción final: «los rivales saben quién…",
-      "thumbnailUrl": null,
-      "tags": [
-        "lesiones"
-      ],
       "alsoIn": []
     }
   ]
