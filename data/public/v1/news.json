@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T11:04:04Z",
+  "updatedAt": "2026-11-20T11:33:31Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "c1bf946989a195a5",
+      "title": "Manuel Pablo confirma que Manu Ferreiro sufre una rotura",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-20/manuel-pablo-confirma-que-manu-ferreiro-sufre-una-rotura-892119.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T11:31:21Z",
+      "kind": "article",
+      "summary": "El mediapunta lucense sigue pendiente de pruebas, pero el técnico del Fabril descarta un regreso a corto plazo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/20/6b002ed6e86e5.r_d.706-650-0.jpg",
+      "tags": [
+        "lesiones",
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "fc7fbaa691f4adbf",
       "title": "Rueda de prensa de Antonio Hidalgo previa al Deportivo Alavés - RC Deportivo",
@@ -2174,20 +2189,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i4.ytimg.com/vi/OaM9FEeVp9U/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "39f71d335576d74f",
-      "title": "Rueda de prensa de Antonio Hidalgo tras el RCD Espanyol 0 - 0 RC Deportivo",
-      "url": "https://youtube.com/watch?v=MDOBcfeOflA",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-07T18:21:37Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i2.ytimg.com/vi/MDOBcfeOflA/hqdefault.jpg",
       "tags": [
         "partido"
       ],

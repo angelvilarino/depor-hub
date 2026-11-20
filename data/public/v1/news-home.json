@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T11:04:04Z",
+  "updatedAt": "2026-11-20T11:33:31Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -35,6 +35,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "c1bf946989a195a5",
+      "title": "Manuel Pablo confirma que Manu Ferreiro sufre una rotura",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-20/manuel-pablo-confirma-que-manu-ferreiro-sufre-una-rotura-892119.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T11:31:21Z",
+      "kind": "article",
+      "summary": "El mediapunta lucense sigue pendiente de pruebas, pero el técnico del Fabril descarta un regreso a corto plazo",
+      "thumbnailUrl": "img/news/9d0f0fbf073ee2dd.webp",
+      "tags": [
+        "lesiones",
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "fc7fbaa691f4adbf",
       "title": "Rueda de prensa de Antonio Hidalgo previa al Deportivo Alavés - RC Deportivo",
@@ -108,20 +123,6 @@
       "kind": "article",
       "summary": "El equipo blanquiazul conocerá a su adversario este lunes tras un sorteo condicionado por una división por zonas que la Federación todavía…",
       "thumbnailUrl": "img/news/2cc90d38d7e7c9c7.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "0421bd5bd886f6ce",
-      "title": "Alavés – Deportivo · Jornada 13: elige el once del Dépor, con Procesos Inmobiliaria",
-      "url": "https://riazor.org/elige-el-once-alaves-deportivo-jornada-13",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-19T18:00:55Z",
-      "kind": "article",
-      "summary": "Elige el once del Deportivo ante el Alavés · Jornada 13 de LaLiga EA Sports. Votación abierta hasta el sábado 21 de noviembre a las 11:00…",
-      "thumbnailUrl": null,
       "tags": [
         "partido"
       ],
