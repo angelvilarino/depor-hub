@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T04:33:04Z",
+  "updatedAt": "2026-11-20T10:33:16Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "43af799397d16e41",
+      "title": "Antonio Hidalgo habla sobre el estado de Aubameyang: \"No parece nada importante, pero queda muy poco para el partido\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/antonio-hidalgo-habla-sobre-el-estado-de-aubameyang-no-parece-nada-importante-pero-queda-muy-poco-para-el-partido-892107.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T10:28:39Z",
+      "kind": "article",
+      "summary": "El técnico del Deportivo apeló a \"escuchar al jugador muchísimo\" para decidir sobre si participará en Mendizorroza",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/17/6afc371ec954b.r_d.1488-1118-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "de2f676935d4600e",
       "title": "El giro de la cantera del Deportivo: Abegondo quiere ser más vertical",
@@ -2166,21 +2180,6 @@
       "summary": "Destacó la actuación de su guardameta y se mostró satisfecho con el empate",
       "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/10/16/6ad29cd74035b.jpeg",
       "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "bef3f74490ba20ff",
-      "title": "El 1x1 del Dépor ante el Espanyol: Leo Román empieza a saldar su deuda",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/el-1x1-del-depor-ante-el-espanyol-leo-roman-empieza-a-saldar-su-deuda-889601.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-07T17:42:35Z",
-      "kind": "article",
-      "summary": "Valoración uno por uno y notas de los jugadores del Dépor en su partido contra el Espanyol de LaLiga EA Sports",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef4e6caa51d.r_d.1456-1015-0.JPG",
-      "tags": [
-        "opinion",
         "partido"
       ],
       "alsoIn": []
