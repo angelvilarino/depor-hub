@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T17:32:59Z",
+  "updatedAt": "2026-11-20T19:03:57Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "f9396e77bd775f16",
+      "title": "El Dépor ABANCA empató con el Barça, el Badalona con el Madrid: ambos se cruzan en Palamós",
+      "url": "https://riazor.org/el-depor-abanca-empato-con-el-barca-el-badalona-con-el-madrid-ambos-se-cruzan-en-palamos",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-20T19:00:45Z",
+      "kind": "article",
+      "summary": "El Dépor ABANCA visita al Badalona el sábado 21 (12:00, DAZN y RTVE Play) tras el 1-1 ante el Barça. Clasificación, rival y declaraciones…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "1864796d17122b17",
+      "title": "Previa | Aterrizaje incómodo en Palamós",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-20/previa-aterrizaje-incomodo-en-palamos-892221.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T18:40:07Z",
+      "kind": "article",
+      "summary": "El Dépor busca trasladar la buena energía a Badalona para superar a un rival que acumula ocho jornadas sin ganar",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/15/6af9e9c43351a.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "43aa9286355ef767",
       "title": "Altas, bajas y posible once del Deportivo ante el Alavés: las selecciones y el tobillo de Aubameyang lo condicionan todo",
@@ -2166,35 +2194,6 @@
       "summary": "Ahora que la Primera División se detiene, llega de nuevo el momento en el que el foco futbolístico se pone otra vez sobre las selecciones…",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2025/09/16/drh37qyb0mfmjbrdy.png",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "fc2dedea07f0e97e",
-      "title": "RCD Espanyol vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
-      "url": "https://youtube.com/watch?v=iI7AcrXOwcQ",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-07T19:37:36Z",
-      "kind": "video",
-      "summary": "Vive en directo el partido de la jornada 12 entre el Espanyol y el Dépor perteneciente a la primera eliminatoria de la competición",
-      "thumbnailUrl": "https://i2.ytimg.com/vi/iI7AcrXOwcQ/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "b84118bc601d0351",
-      "title": "Marc Casadó reaparece 48 días después en territorio hostil: \"Los rivales saben quién viene de lesión y dónde la tiene\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-07/marc-casado-reaparece-48-dias-despues-en-territorio-hostil-los-rivales-saben-quien-viene-de-lesion-y-donde-la-tiene-889654.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-07T19:28:24Z",
-      "kind": "article",
-      "summary": "El centrocampista volvió ante el Espanyol tras superar su lesión de clavícula. La afición local le recibió con una sonora pitada",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef79e5ca72b.r_d.582-316-0.jpeg",
-      "tags": [
-        "lesiones",
-        "aficion"
-      ],
       "alsoIn": []
     }
   ]

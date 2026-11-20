@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-11-20T17:32:59Z",
+  "updatedAt": "2026-11-20T19:03:57Z",
   "sources": [
     {
-      "id": "youtube-club",
-      "name": "RC Deportivo (YouTube)",
-      "group": "club",
-      "kind": "video",
-      "homepage": "https://www.youtube.com/@rcdeportivo",
-      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
+      "id": "riazor",
+      "name": "Riazor.org",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.riazor.org/",
+      "iconUrl": "https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png"
     },
     {
       "id": "dxt-campeon",
@@ -19,6 +19,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "f9396e77bd775f16",
+      "title": "El Dépor ABANCA empató con el Barça, el Badalona con el Madrid: ambos se cruzan en Palamós",
+      "url": "https://riazor.org/el-depor-abanca-empato-con-el-barca-el-badalona-con-el-madrid-ambos-se-cruzan-en-palamos",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-20T19:00:45Z",
+      "kind": "article",
+      "summary": "El Dépor ABANCA visita al Badalona el sábado 21 (12:00, DAZN y RTVE Play) tras el 1-1 ante el Barça. Clasificación, rival y declaraciones…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "1864796d17122b17",
+      "title": "Previa | Aterrizaje incómodo en Palamós",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-20/previa-aterrizaje-incomodo-en-palamos-892221.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T18:40:07Z",
+      "kind": "article",
+      "summary": "El Dépor busca trasladar la buena energía a Badalona para superar a un rival que acumula ocho jornadas sin ganar",
+      "thumbnailUrl": "img/news/6375a90c63fb8cb9.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "43aa9286355ef767",
       "title": "Altas, bajas y posible once del Deportivo ante el Alavés: las selecciones y el tobillo de Aubameyang lo condicionan todo",
@@ -68,35 +96,6 @@
       "summary": "El técnico habló sobre el Alavés-Deportivo y reconoció que Casadó está disponible para jugar \"los 90 minutos\"",
       "thumbnailUrl": "img/news/1ecaff86de4fb800.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "c1bf946989a195a5",
-      "title": "Manuel Pablo confirma que Manu Ferreiro sufre una rotura",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-20/manuel-pablo-confirma-que-manu-ferreiro-sufre-una-rotura-892119.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-20T11:31:21Z",
-      "kind": "article",
-      "summary": "El mediapunta lucense sigue pendiente de pruebas, pero el técnico del Fabril descarta un regreso a corto plazo",
-      "thumbnailUrl": "img/news/9d0f0fbf073ee2dd.webp",
-      "tags": [
-        "lesiones",
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "fc7fbaa691f4adbf",
-      "title": "Rueda de prensa de Antonio Hidalgo previa al Deportivo Alavés - RC Deportivo",
-      "url": "https://youtube.com/watch?v=5SxxebemncQ",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-20T10:50:08Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "img/news/83733f6cfcbec46c.webp",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
