@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T11:33:31Z",
+  "updatedAt": "2026-11-20T12:35:46Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -35,6 +35,33 @@
     }
   ],
   "stories": [
+    {
+      "id": "18a0923b8abbd913",
+      "title": "Manuel Pablo: \"Nuestra línea debe ser la de estos últimos partidos\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-20/manuel-pablo-nuestra-linea-debe-ser-la-de-estos-ultimos-partidos-892101.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T12:16:30Z",
+      "kind": "article",
+      "summary": "El técnico destaca la mejoría competitiva del Fabril, aunque insiste en la necesidad de corregir los errores, en especial a balón parado",
+      "thumbnailUrl": "img/news/d89437c70d64fcd0.webp",
+      "tags": [
+        "partido",
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "f59c074d96ba6b7e",
+      "title": "Hidalgo no rebaja la exigencia pese al buen inicio del Dépor: \"Tenemos que ir a nuestro límite siempre y estar alerta\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/hidalgo-no-rebaja-la-exigencia-pese-al-buen-inicio-del-depor-tenemos-que-ir-a-nuestro-limite-siempre-y-estar-alerta-892125.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-20T12:11:24Z",
+      "kind": "article",
+      "summary": "El técnico habló sobre el Alavés-Deportivo y reconoció que Casadó está disponible para jugar \"los 90 minutos\"",
+      "thumbnailUrl": "img/news/1ecaff86de4fb800.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "c1bf946989a195a5",
       "title": "Manuel Pablo confirma que Manu Ferreiro sufre una rotura",
@@ -83,6 +110,12 @@
           "title": "Antonio Hidalgo habla sobre el estado de Aubameyang: \"No parece nada importante, pero queda muy poco para el partido\"",
           "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/antonio-hidalgo-habla-sobre-el-estado-de-aubameyang-no-parece-nada-importante-pero-queda-muy-poco-para-el-partido-892107.html",
           "publishedAt": "2026-11-20T10:28:39Z"
+        },
+        {
+          "sourceId": "la-voz",
+          "title": "Antonio Hidalgo: «Lo de Aubameyang no parece nada preocupante, pero falta muy poco para el partido»",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/20/antonio-hidalgo/00031795169067884201453.htm",
+          "publishedAt": "2026-11-20T11:38:00Z"
         }
       ]
     },
@@ -97,34 +130,6 @@
       "thumbnailUrl": "img/news/0d75c59961611921.webp",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "0e0ce0839b9defd3",
-      "title": "Leo Román, portero del Deportivo: «Se me ha castigado mucho»",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/19/leo-roman-me-castigado-/00031795110315508757398.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-20T04:00:00Z",
-      "kind": "article",
-      "summary": "«El partido contra el Espanyol fue una liberación, sentí que el fútbol me devolvía todo el trabajo que estoy haciendo en silencio»…",
-      "thumbnailUrl": "img/news/4109bc4cc70cec98.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4ca62038894d7e0f",
-      "title": "El rival del Dépor en Copa saldrá de Primera o Segunda RFEF con filtro geográfico",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/el-rival-del-depor-en-copa-saldra-de-primera-o-segunda-rfef-con-filtro-geografico-892010.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-19T18:15:29Z",
-      "kind": "article",
-      "summary": "El equipo blanquiazul conocerá a su adversario este lunes tras un sorteo condicionado por una división por zonas que la Federación todavía…",
-      "thumbnailUrl": "img/news/2cc90d38d7e7c9c7.webp",
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }
