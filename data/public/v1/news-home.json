@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T19:03:57Z",
+  "updatedAt": "2026-11-20T19:32:58Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,6 +16,14 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
@@ -44,6 +52,20 @@
       "thumbnailUrl": "img/news/6375a90c63fb8cb9.webp",
       "tags": [
         "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "7cac452612ff6a94",
+      "title": "Josema Giménez se hace de hierro en el Dépor",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/20/josemagimenez-hierro-depor/00031795188276124276940.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-20T18:25:01Z",
+      "kind": "article",
+      "summary": "Tras catorce partes de lesiones y 498 días de baja en el Atlético desde el 2022, enlaza nueve titularidades seguidas por primera vez en 42…",
+      "thumbnailUrl": "img/news/582db057205c56ac.webp",
+      "tags": [
+        "lesiones"
       ],
       "alsoIn": []
     },
@@ -84,18 +106,6 @@
         "partido",
         "cantera"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "f59c074d96ba6b7e",
-      "title": "Hidalgo no rebaja la exigencia pese al buen inicio del Dépor: \"Tenemos que ir a nuestro límite siempre\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/hidalgo-no-rebaja-la-exigencia-pese-al-buen-inicio-del-depor-tenemos-que-ir-a-nuestro-limite-siempre-y-estar-alerta-892125.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-20T12:11:24Z",
-      "kind": "article",
-      "summary": "El técnico habló sobre el Alavés-Deportivo y reconoció que Casadó está disponible para jugar \"los 90 minutos\"",
-      "thumbnailUrl": "img/news/1ecaff86de4fb800.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
