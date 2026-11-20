@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-11-20T10:33:16Z",
+  "updatedAt": "2026-11-20T11:04:04Z",
   "sources": [
+    {
+      "id": "youtube-club",
+      "name": "RC Deportivo (YouTube)",
+      "group": "club",
+      "kind": "video",
+      "homepage": "https://www.youtube.com/@rcdeportivo",
+      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
+    },
     {
       "id": "riazor",
       "name": "Riazor.org",
@@ -28,18 +36,40 @@
   ],
   "stories": [
     {
-      "id": "43af799397d16e41",
-      "title": "Antonio Hidalgo habla sobre el estado de Aubameyang: \"No parece nada importante, pero queda muy poco para el partido\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/antonio-hidalgo-habla-sobre-el-estado-de-aubameyang-no-parece-nada-importante-pero-queda-muy-poco-para-el-partido-892107.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-20T10:28:39Z",
-      "kind": "article",
-      "summary": "El técnico del Deportivo apeló a \"escuchar al jugador muchísimo\" para decidir sobre si participará en Mendizorroza",
-      "thumbnailUrl": "img/news/66fbffd7fa5cebda.webp",
+      "id": "fc7fbaa691f4adbf",
+      "title": "Rueda de prensa de Antonio Hidalgo previa al Deportivo Alavés - RC Deportivo",
+      "url": "https://youtube.com/watch?v=5SxxebemncQ",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-20T10:50:08Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "img/news/83733f6cfcbec46c.webp",
       "tags": [
         "partido"
       ],
       "alsoIn": []
+    },
+    {
+      "id": "43af799397d16e41",
+      "title": "Hidalgo confirma las dudas con Aubameyang: «No parece nada preocupante, pero falta poco para el partido»",
+      "url": "https://riazor.org/hidalgo-confirma-las-dudas-con-aubameyang-no-parece-nada-preocupante-pero-falta-poco-para-el-partido",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-20T10:35:11Z",
+      "kind": "article",
+      "summary": "Antonio Hidalgo, en rueda de prensa, no aclaró si Aubameyang -con unas molestias en el tobillo- estará disponible para la visita a…",
+      "thumbnailUrl": "img/news/66fbffd7fa5cebda.webp",
+      "tags": [
+        "partido",
+        "lesiones"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "Antonio Hidalgo habla sobre el estado de Aubameyang: \"No parece nada importante, pero queda muy poco para el partido\"",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/antonio-hidalgo-habla-sobre-el-estado-de-aubameyang-no-parece-nada-importante-pero-queda-muy-poco-para-el-partido-892107.html",
+          "publishedAt": "2026-11-20T10:28:39Z"
+        }
+      ]
     },
     {
       "id": "de2f676935d4600e",
@@ -92,20 +122,6 @@
       "kind": "article",
       "summary": "Elige el once del Deportivo ante el Alavés · Jornada 13 de LaLiga EA Sports. Votación abierta hasta el sábado 21 de noviembre a las 11:00…",
       "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "7c906a68d5a2008a",
-      "title": "Quique Sánchez Flores: \"El Dépor es de nuestra liga, pero con un músculo que no tienen muchos en Primera\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-19/quique-sanchez-flores-el-depor-es-de-nuestra-liga-pero-con-un-musculo-que-no-tienen-muchos-en-primera-891955.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-19T16:21:16Z",
-      "kind": "article",
-      "summary": "El técnico del Alavés analiza el encuentro ante el conjunto blanquiazul y admite que lleva \"imaginando ese partido bastante tiempo\"",
-      "thumbnailUrl": "img/news/a871e3849ff36076.webp",
       "tags": [
         "partido"
       ],
