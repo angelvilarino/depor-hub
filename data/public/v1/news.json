@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T13:32:51Z",
+  "updatedAt": "2026-11-21T14:04:05Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,36 @@
   ],
   "stories": [
     {
+      "id": "26a9010875754a9b",
+      "title": "Rueda de prensa de Alberto Rodríguez tras el FC Badalona Women 2 - 1 Dépor ABANCA",
+      "url": "https://youtube.com/watch?v=pHYNWWBGV6E",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-21T13:52:43Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i1.ytimg.com/vi/pHYNWWBGV6E/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c9eb11c6e0d9f3d4",
+      "title": "Resumen del FC Badalona Women 2 - 1 Dépor ABANCA",
+      "url": "https://youtube.com/watch?v=sBLRvldTdQg",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-21T13:40:12Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/sBLRvldTdQg/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "586b64ff0c8c3721",
       "title": "Crónica | El Dépor prolonga la resaca y cae ante el Badalona (2-1)",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-21/cronica-el-depor-prolonga-la-resaca-y-cae-ante-el-badalona-2-892331.html",
@@ -71,14 +101,16 @@
     },
     {
       "id": "9d6cc8cb0250bca2",
-      "title": "Alavés-Dépor, en directo: El equipo blanquiazul sigue a merced de su rival (1-0)",
+      "title": "Alavés-Dépor, en directo: Descanso en Mendizorroza con empate en el marcador (1-1)",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/alaves-depor-en-directo-alineaciones-previa-y-minuto-a-minuto-de-la-jornada-13-de-primera-892336.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-21T11:38:24Z",
       "kind": "article",
       "summary": "Sigue con nosotros todo lo que ocurra en Mendizorroza en el regreso de LaLiga",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/21/6b019c3ea3108.JPG",
-      "tags": [],
+      "tags": [
+        "partido"
+      ],
       "alsoIn": []
     },
     {
@@ -2156,36 +2188,6 @@
       "kind": "article",
       "summary": "El mediocentro del Fabril se sirvió de una elegante maniobra para anotar su primer gol de la temporada con el filial en Fadura. La entrada…",
       "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/resumen-primerafederacion-arenas.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "0f77066717fff450",
-      "title": "Rueda de prensa de Manuel Pablo tras el Arenas Club de Getxo 2 - 1 Fabril",
-      "url": "https://youtube.com/watch?v=G5rQWjCWcfM",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-08T13:44:25Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/G5rQWjCWcfM/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "13edbd8d1e7b0863",
-      "title": "Crónica | El Fabril no consigue cambiar la tendencia (2-1)",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-08/cronica-el-fabril-no-consigue-cambiar-la-tendencia-2-889749.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-08T12:59:21Z",
-      "kind": "article",
-      "summary": "El filial cae en Getxo ante el colista tras encajar el tanto definitivo a siete minutos del final",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af06d71029f5.r_d.453-491-0.jfif",
       "tags": [
         "cantera",
         "partido"
