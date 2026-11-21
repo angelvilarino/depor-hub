@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T11:32:02Z",
+  "updatedAt": "2026-11-21T12:05:50Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "9d6cc8cb0250bca2",
+      "title": "Alavés-Dépor, en directo: Aubameyang y Casadó, titulares en Mendizorroza",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/alaves-depor-en-directo-alineaciones-previa-y-minuto-a-minuto-de-la-jornada-13-de-primera-892336.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T11:38:24Z",
+      "kind": "article",
+      "summary": "Sigue con nosotros todo lo que ocurra en Mendizorroza en el regreso de LaLiga",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/21/6b018192efcf9.png",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "5c52218dce02b204",
       "title": "De la visita a un vecino en Vilagarcía a la carambola para volver a Zaragoza: los 17 posibles rivales del Dépor en la segunda ronda de la Copa",
@@ -2180,20 +2192,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af067095d065.r_d.1358-598-0.jpg",
       "tags": [
         "lesiones"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "448891ac5bcfdb5e",
-      "title": "¿Viajaste a Barcelona para animar al Dépor? ¡Búscate en nuestra galería de la afición del Espanyol – Deportivo!",
-      "url": "https://riazor.org/barcelona-galeria-aficion-espanyol-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-08T12:00:27Z",
-      "kind": "article",
-      "summary": "El deportivismo se desplazó una vez más para seguir a su equipo, esta vez a Barcelona. Búscate en nuestra galería galería de público del…",
-      "thumbnailUrl": null,
-      "tags": [
-        "aficion"
       ],
       "alsoIn": []
     }

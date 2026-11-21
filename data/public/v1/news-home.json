@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T11:32:02Z",
+  "updatedAt": "2026-11-21T12:05:50Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "9d6cc8cb0250bca2",
+      "title": "Alavés-Dépor, en directo: Aubameyang y Casadó, titulares en Mendizorroza",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/alaves-depor-en-directo-alineaciones-previa-y-minuto-a-minuto-de-la-jornada-13-de-primera-892336.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T11:38:24Z",
+      "kind": "article",
+      "summary": "Sigue con nosotros todo lo que ocurra en Mendizorroza en el regreso de LaLiga",
+      "thumbnailUrl": "img/news/09c40f5b2fc4386b.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "5c52218dce02b204",
       "title": "De la visita a un vecino en Vilagarcía a la carambola para volver a Zaragoza: los 17 posibles rivales del Dépor en la segunda ronda de la Copa",
@@ -93,20 +105,6 @@
       "thumbnailUrl": null,
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "1864796d17122b17",
-      "title": "Previa | Aterrizaje incómodo en Palamós",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-20/previa-aterrizaje-incomodo-en-palamos-892221.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-20T18:40:07Z",
-      "kind": "article",
-      "summary": "El Dépor busca trasladar la buena energía a Badalona para superar a un rival que acumula ocho jornadas sin ganar",
-      "thumbnailUrl": "img/news/6375a90c63fb8cb9.webp",
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }
