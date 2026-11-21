@@ -1,14 +1,6 @@
 {
-  "updatedAt": "2026-11-21T12:05:50Z",
+  "updatedAt": "2026-11-21T12:32:59Z",
   "sources": [
-    {
-      "id": "riazor",
-      "name": "Riazor.org",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.riazor.org/",
-      "iconUrl": "https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png"
-    },
     {
       "id": "dxt-campeon",
       "name": "DXT Campeón",
@@ -16,6 +8,14 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     },
     {
       "id": "marca",
@@ -27,6 +27,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "92819d52946f9597",
+      "title": "En directo: Alavés - Deportivo; Aubameyang, principal novedad en un once sin Bil Nsongo",
+      "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/21/directo-alaves-deportivo/01071795260778247774595.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-21T12:29:00Z",
+      "kind": "article",
+      "summary": "El conjunto coruñés visita Mendizorroza en busca de su segundo triunfo liguero a domicilio",
+      "thumbnailUrl": "img/news/7086b445f8e65040.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "9d6cc8cb0250bca2",
       "title": "Alavés-Dépor, en directo: Aubameyang y Casadó, titulares en Mendizorroza",
@@ -92,20 +104,6 @@
       "summary": "El Dépor, que viene de firmar su encuentro a domicilio con mayor número de pérdidas en campo propio, busca soluciones para ganar fluidez…",
       "thumbnailUrl": "img/news/12a979679d5a365e.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "f9396e77bd775f16",
-      "title": "El Dépor ABANCA empató con el Barça, el Badalona con el Madrid: ambos se cruzan en Palamós",
-      "url": "https://riazor.org/el-depor-abanca-empato-con-el-barca-el-badalona-con-el-madrid-ambos-se-cruzan-en-palamos",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-20T19:00:45Z",
-      "kind": "article",
-      "summary": "El Dépor ABANCA visita al Badalona el sábado 21 (12:00, DAZN y RTVE Play) tras el 1-1 ante el Barça. Clasificación, rival y declaraciones…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera"
-      ],
       "alsoIn": []
     }
   ]
