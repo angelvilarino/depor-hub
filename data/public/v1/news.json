@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T12:32:59Z",
+  "updatedAt": "2026-11-21T13:03:53Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,20 @@
   ],
   "stories": [
     {
+      "id": "586b64ff0c8c3721",
+      "title": "Crónica | El Dépor prolonga la resaca y cae ante el Badalona (2-1)",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-21/cronica-el-depor-prolonga-la-resaca-y-cae-ante-el-badalona-2-892331.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T13:00:08Z",
+      "kind": "article",
+      "summary": "El equipo coruñés, sin ideas, no fue capaz de puntuar ante un rival que acumulaba ocho jornadas sin ganar",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/21/6b0186a9798f4.r_d.802-561-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "92819d52946f9597",
       "title": "En directo: Alavés - Deportivo; Aubameyang, principal novedad en un once sin Bil Nsongo",
       "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/21/directo-alaves-deportivo/01071795260778247774595.htm",
@@ -57,7 +71,7 @@
     },
     {
       "id": "9d6cc8cb0250bca2",
-      "title": "Alavés-Dépor, en directo: Aubameyang y Casadó, titulares en Mendizorroza",
+      "title": "Alavés-Dépor, en directo: Ángel Pérez adelanta al Alavés (1-0)",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/alaves-depor-en-directo-alineaciones-previa-y-minuto-a-minuto-de-la-jornada-13-de-primera-892336.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-21T11:38:24Z",
@@ -2172,21 +2186,6 @@
       "kind": "article",
       "summary": "El filial cae en Getxo ante el colista tras encajar el tanto definitivo a siete minutos del final",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af06d71029f5.r_d.453-491-0.jfif",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e1fbe25740634a40",
-      "title": "Rueda de prensa de Alberto Rodríguez previa al Dépor ABANCA - Valencia Fem",
-      "url": "https://youtube.com/watch?v=yNP4IyC2EGM",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-08T12:25:21Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i2.ytimg.com/vi/yNP4IyC2EGM/hqdefault.jpg",
       "tags": [
         "cantera",
         "partido"

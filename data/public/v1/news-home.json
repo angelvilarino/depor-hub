@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T12:32:59Z",
+  "updatedAt": "2026-11-21T13:03:53Z",
   "sources": [
     {
       "id": "dxt-campeon",
@@ -28,6 +28,20 @@
   ],
   "stories": [
     {
+      "id": "586b64ff0c8c3721",
+      "title": "Crónica | El Dépor prolonga la resaca y cae ante el Badalona (2-1)",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-21/cronica-el-depor-prolonga-la-resaca-y-cae-ante-el-badalona-2-892331.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T13:00:08Z",
+      "kind": "article",
+      "summary": "El equipo coruñés, sin ideas, no fue capaz de puntuar ante un rival que acumulaba ocho jornadas sin ganar",
+      "thumbnailUrl": "img/news/d5d785c90412267f.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "92819d52946f9597",
       "title": "En directo: Alavés - Deportivo; Aubameyang, principal novedad en un once sin Bil Nsongo",
       "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/21/directo-alaves-deportivo/01071795260778247774595.htm",
@@ -41,7 +55,7 @@
     },
     {
       "id": "9d6cc8cb0250bca2",
-      "title": "Alavés-Dépor, en directo: Aubameyang y Casadó, titulares en Mendizorroza",
+      "title": "Alavés-Dépor, en directo: Ángel Pérez adelanta al Alavés (1-0)",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/alaves-depor-en-directo-alineaciones-previa-y-minuto-a-minuto-de-la-jornada-13-de-primera-892336.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-21T11:38:24Z",
@@ -92,18 +106,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "1d61cd95559c8996",
-      "title": "Mendizorroza y el peligro para el Deportivo: no poder salir de la cueva",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/mendizorroza-y-el-peligro-para-el-deportivo-no-poder-salir-de-la-cueva-892201.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-21T04:00:00Z",
-      "kind": "article",
-      "summary": "El Dépor, que viene de firmar su encuentro a domicilio con mayor número de pérdidas en campo propio, busca soluciones para ganar fluidez…",
-      "thumbnailUrl": "img/news/12a979679d5a365e.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
