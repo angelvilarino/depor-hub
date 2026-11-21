@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T15:33:00Z",
+  "updatedAt": "2026-11-21T16:04:17Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,60 @@
     }
   ],
   "stories": [
+    {
+      "id": "59787ad5c4cf1f38",
+      "title": "Hidalgo, harto de etiquetas: \"Aquí parece que solo gasta el Dépor\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/hidalgo-harto-de-etiquetas-aqui-parece-que-solo-gasta-el-depor-892367.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T15:56:01Z",
+      "kind": "article",
+      "summary": "El técnico blanquiazul reconoce la superioridad del Alavés y exige más intensidad",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/21/6b01bd789e47a.JPG",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "6b3c53020863a706",
+      "title": "Deportivo Alavés vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
+      "url": "https://youtube.com/watch?v=BOhsSg1E-38",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-21T15:55:02Z",
+      "kind": "video",
+      "summary": "Vive en directo el partido de la jornada 13 entre el Alavés y el Dépor perteneciente a la primera eliminatoria de la competición",
+      "thumbnailUrl": "https://i3.ytimg.com/vi/BOhsSg1E-38/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "94b02bae84ef4d81",
+      "title": "Marc Casadó: \"Nos hemos encontrado un gol temprano y nos ha costado\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/marc-casado-nos-hemos-encontrado-un-gol-temprano-y-nos-ha-costado-892362.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T15:54:03Z",
+      "kind": "article",
+      "summary": "El centrocampista catalán fue titular y jugó los 90 minutos en Mendizorroza",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/21/6b01b37c2d5b5.r_d.1458-945-0.JPG",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "064cb28c7a883031",
+      "title": "Antonio Hidalgo: “El Alavés nos ha ganado bien y fue superior”",
+      "url": "https://marca.com/futbol/deportivo/2026/11/21/antonio-hidalgo-alaves-ganado-bien-superior.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-21T15:49:45Z",
+      "kind": "article",
+      "summary": "El técnico del Dépor encajó con deportividad la derrota",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/21/6b01bd4222af3.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "cca9bba812fb6ea9",
       "title": "El «1x1» de la derrota del Dépor ante el Alavés",
@@ -1054,20 +1108,6 @@
       "kind": "article",
       "summary": "Desde las 14.00 horas, nuevo episodio del videopodcast de Dxt Campeón respondiendo en vivo a las preguntas de la audiencia",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/16/6afaedfe58bb9.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "6b3c53020863a706",
-      "title": "Deportivo Alavés vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
-      "url": "https://youtube.com/watch?v=BOhsSg1E-38",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-16T11:00:25Z",
-      "kind": "video",
-      "summary": "Vive en directo el partido de la jornada 13 entre el Alavés y el Dépor perteneciente a la primera eliminatoria de la competición",
-      "thumbnailUrl": "https://i3.ytimg.com/vi/BOhsSg1E-38/hqdefault.jpg",
       "tags": [
         "partido"
       ],
@@ -2147,46 +2187,6 @@
       "thumbnailUrl": null,
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "9456772c07031e12",
-      "title": "Cedidos del Dépor: Diego Gómez, final antes de tiempo en un derbi aragonés con aroma blanquiazul",
-      "url": "https://riazor.org/cedidos-depor-expulsion-diego-gomez-derbi-aragones",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-09T11:16:05Z",
-      "kind": "article",
-      "summary": "Repasamos la jornada de los cedidos por el Deportivo. Diego Gómez fue expulsado por doble amarilla en el derbi aragonés entre Huesca y…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/resumen-primerafederacion-real-z.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "af79039ac72564f6",
-      "title": "La velocidad de crucero del Dépor lleva al puerto de la permanencia",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/la-velocidad-de-crucero-del-depor-lleva-al-puerto-de-la-permanencia-889899.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-09T09:55:33Z",
-      "kind": "article",
-      "summary": "El equipo blanquiazul es uno de los mejores recién ascendidos del último lustro después de 12 jornadas",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/03/6ae91ffaa0133.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "d65e556c32965ba8",
-      "title": "Cornellà seca por completo el ataque del Deportivo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/cornella-seca-por-completo-el-ataque-del-deportivo-889778.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-09T04:00:00Z",
-      "kind": "article",
-      "summary": "Sin remates en la segunda mitad, el Dépor firmó ante el Espanyol su segundo partido del curso con menos amenaza y el más pobre en posesión",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af0793559656.r_d.1774-797-0.jpg",
-      "tags": [
         "partido"
       ],
       "alsoIn": []

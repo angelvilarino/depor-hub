@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T15:33:00Z",
+  "updatedAt": "2026-11-21T16:04:17Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -36,6 +36,60 @@
   ],
   "stories": [
     {
+      "id": "59787ad5c4cf1f38",
+      "title": "Hidalgo, harto de etiquetas: \"Aquí parece que solo gasta el Dépor\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/hidalgo-harto-de-etiquetas-aqui-parece-que-solo-gasta-el-depor-892367.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T15:56:01Z",
+      "kind": "article",
+      "summary": "El técnico blanquiazul reconoce la superioridad del Alavés y exige más intensidad",
+      "thumbnailUrl": "img/news/5d2c7594a70be821.webp",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "6b3c53020863a706",
+      "title": "Deportivo Alavés vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
+      "url": "https://youtube.com/watch?v=BOhsSg1E-38",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-21T15:55:02Z",
+      "kind": "video",
+      "summary": "Vive en directo el partido de la jornada 13 entre el Alavés y el Dépor perteneciente a la primera eliminatoria de la competición",
+      "thumbnailUrl": "img/news/bef2a3d17f9feb4d.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "94b02bae84ef4d81",
+      "title": "Marc Casadó: \"Nos hemos encontrado un gol temprano y nos ha costado\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/marc-casado-nos-hemos-encontrado-un-gol-temprano-y-nos-ha-costado-892362.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T15:54:03Z",
+      "kind": "article",
+      "summary": "El centrocampista catalán fue titular y jugó los 90 minutos en Mendizorroza",
+      "thumbnailUrl": "img/news/e63e4c22e873a0e6.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "064cb28c7a883031",
+      "title": "Antonio Hidalgo: “El Alavés nos ha ganado bien y fue superior”",
+      "url": "https://marca.com/futbol/deportivo/2026/11/21/antonio-hidalgo-alaves-ganado-bien-superior.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-21T15:49:45Z",
+      "kind": "article",
+      "summary": "El técnico del Dépor encajó con deportividad la derrota",
+      "thumbnailUrl": "img/news/51866879984182aa.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "cca9bba812fb6ea9",
       "title": "El «1x1» de la derrota del Dépor ante el Alavés",
       "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/1x1-derrota-depor-ante-alaves/00031795274853872665808.htm",
@@ -60,63 +114,6 @@
       "thumbnailUrl": "img/news/d170c0e1db340158.webp",
       "tags": [
         "opinion",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "717339b8c566a2f7",
-      "title": "Las claves del Alavés-Deportivo: Sometidos por un plan simple y efectivo",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/claves-alaves-deportivo-sometidos-plan-simple-efectivo/00031795274145095564235.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-21T15:20:00Z",
-      "kind": "article",
-      "summary": "Hasta 67 envíos en largo efectuó un cuatro vitoriano que dejó en apenas 0,24 goles esperados al Dépor y que solo permitió a Yeremay tocar…",
-      "thumbnailUrl": "img/news/bc47085030017776.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "aed00552976bdbf1",
-      "title": "El Dépor pierde y apenas compite en Mendizorroza (3-1)",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/depor-pierde-apenas-compite-mendizorroza-3-1/00031795273477903543452.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-21T15:15:00Z",
-      "kind": "article",
-      "summary": "En un partido en el que fue inferior de principio a fin y apenas chutó a portería, sufrió una clara derrota frente a un Alavés que lo…",
-      "thumbnailUrl": "img/news/81d607073cf91042.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "6a23b63c61408484",
-      "title": "El Alavés resucita sometiendo a un Dépor que sigue de parón",
-      "url": "https://marca.com/futbol/primera-division/cronica/2026/11/21/alaves-resucita-sometiendo-depor-sigue-paron.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-21T14:56:34Z",
-      "kind": "article",
-      "summary": "Los de Quique rompen dos meses y medio de sequía impulsados por un Boyé estelar, que tumbó con polémica la resistencia gallega tras el gol…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "26a9010875754a9b",
-      "title": "Rueda de prensa de Alberto Rodríguez tras el FC Badalona Women 2 - 1 Dépor ABANCA",
-      "url": "https://youtube.com/watch?v=pHYNWWBGV6E",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-21T13:52:43Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "img/news/7fd0a9dfc6bb0282.webp",
-      "tags": [
-        "cantera",
         "partido"
       ],
       "alsoIn": []
