@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T17:33:10Z",
+  "updatedAt": "2026-11-21T18:04:34Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "98951ecf0aebe611",
+      "title": "Loureiro: «Sin ánimo de buscar excusas, el segundo gol es falta clarísima»",
+      "url": "https://riazor.org/loureiro-sin-excusas-segundo-gol-falta-clarisima",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-21T18:00:41Z",
+      "kind": "article",
+      "summary": "Miguel Loureiro, en zona mixta, hizo autocrítica y dio su punto de vista de la acción del segundo gol alavesista. \"Es falta clarísima\"…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "adf82ec8c3440cab",
       "title": "¿Estuviste en Mendizorroza apoyando al Dépor? ¡Búscate en nuestra galería!",
@@ -2177,18 +2191,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "58eb582afb3a9896",
-      "title": "El Dépor pone a la venta este miércoles las entradas para recibir al Barça desde 110 euros",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/el-depor-pone-a-la-venta-este-miercoles-las-entradas-para-recibir-al-barca-desde-110-euros-890066.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-09T19:31:45Z",
-      "kind": "article",
-      "summary": "El conjunto azulgrana visita Riazor el próximo 29 de noviembre a las 16.15 horas",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/09/24/6ab55d65c6bf3.r_d.1419-817-0.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]

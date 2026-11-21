@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T17:33:10Z",
+  "updatedAt": "2026-11-21T18:04:34Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -10,23 +10,37 @@
       "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
     },
     {
+      "id": "riazor",
+      "name": "Riazor.org",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.riazor.org/",
+      "iconUrl": "https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png"
+    },
+    {
       "id": "dxt-campeon",
       "name": "DXT Campeón",
       "group": "galicia",
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
-    },
-    {
-      "id": "marca",
-      "name": "Marca",
-      "group": "nacional",
-      "kind": "article",
-      "homepage": "https://www.marca.com/futbol/deportivo.html",
-      "iconUrl": "https://www.marca.com/apple-touch-icon.png"
     }
   ],
   "stories": [
+    {
+      "id": "98951ecf0aebe611",
+      "title": "Loureiro: «Sin ánimo de buscar excusas, el segundo gol es falta clarísima»",
+      "url": "https://riazor.org/loureiro-sin-excusas-segundo-gol-falta-clarisima",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-21T18:00:41Z",
+      "kind": "article",
+      "summary": "Miguel Loureiro, en zona mixta, hizo autocrítica y dio su punto de vista de la acción del segundo gol alavesista. \"Es falta clarísima\"…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "adf82ec8c3440cab",
       "title": "¿Estuviste en Mendizorroza apoyando al Dépor? ¡Búscate en nuestra galería!",
@@ -89,20 +103,6 @@
       "kind": "article",
       "summary": "El centrocampista catalán fue titular y jugó los 90 minutos en Mendizorroza",
       "thumbnailUrl": "img/news/e63e4c22e873a0e6.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "064cb28c7a883031",
-      "title": "Antonio Hidalgo: “El Alavés nos ha ganado bien y fue superior”",
-      "url": "https://marca.com/futbol/deportivo/2026/11/21/antonio-hidalgo-alaves-ganado-bien-superior.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-21T15:49:45Z",
-      "kind": "article",
-      "summary": "El técnico del Dépor encajó con deportividad la derrota",
-      "thumbnailUrl": "img/news/51866879984182aa.webp",
       "tags": [
         "partido"
       ],
