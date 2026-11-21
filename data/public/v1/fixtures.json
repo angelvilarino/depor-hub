@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T06:17:05Z",
+  "updatedAt": "2026-11-21T12:30:39Z",
   "season": "2026-27",
   "matches": [
     {
@@ -403,7 +403,7 @@
       },
       "deporIsHome": false,
       "venue": "Estadio de Mendizorroza",
-      "referee": null
+      "referee": "Víctor García Verdura"
     },
     {
       "id": 564766,
