@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T04:33:01Z",
+  "updatedAt": "2026-11-21T10:32:43Z",
   "sources": [
     {
       "id": "riazor",
@@ -24,9 +24,32 @@
       "kind": "article",
       "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
       "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
+    },
+    {
+      "id": "marca",
+      "name": "Marca",
+      "group": "nacional",
+      "kind": "article",
+      "homepage": "https://www.marca.com/futbol/deportivo.html",
+      "iconUrl": "https://www.marca.com/apple-touch-icon.png"
     }
   ],
   "stories": [
+    {
+      "id": "5d4436dfe30a352e",
+      "title": "Alavés - Deportivo de A Coruña: horario, dónde ver hoy en TV y canal del partido de LaLiga EA Sports",
+      "url": "https://marca.com/futbol/primera-division/2026/11/21/alaves-deportivo-coruna-horario-ver-hoy-tv-canal-partido-laliga-ea-sports.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-21T10:18:34Z",
+      "kind": "article",
+      "summary": "Supone el regreso de este histórico enfrentamiento a la máxima categoría del fútbol español más de ocho años después",
+      "thumbnailUrl": "img/news/bfc246999bb1769d.webp",
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "8ac95d0efa0d1e33",
       "title": "Previa | Las ‘cebras’ reciben al Oviedo tras sumar en el derbi",
@@ -93,18 +116,6 @@
       "tags": [
         "lesiones"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "43aa9286355ef767",
-      "title": "Altas, bajas y posible once del Deportivo ante el Alavés: las selecciones y el tobillo de Aubameyang lo condicionan todo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/altas-bajas-y-posible-once-del-deportivo-ante-el-alaves-las-selecciones-y-el-tobillo-de-aubameyang-lo-condicionan-todo-892165.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-20T17:10:39Z",
-      "kind": "article",
-      "summary": "Hidalgo no recupera futbolistas, aunque podría dar la alternativa en el once a Casadó",
-      "thumbnailUrl": "img/news/d9f0dc59c5ff0df2.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
