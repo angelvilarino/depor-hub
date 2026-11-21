@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T13:30:45Z",
+  "updatedAt": "2026-11-21T13:50:49Z",
   "season": "2026-27",
   "matches": [
     {
@@ -396,10 +396,10 @@
       },
       "score": {
         "home": 1,
-        "away": 0,
+        "away": 1,
         "halfTimeHome": null,
         "halfTimeAway": null,
-        "winner": "HOME_TEAM"
+        "winner": "DRAW"
       },
       "deporIsHome": false,
       "venue": "Estadio de Mendizorroza",
