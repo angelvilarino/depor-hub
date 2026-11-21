@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T14:10:48Z",
+  "updatedAt": "2026-11-21T14:30:55Z",
   "season": "2026-27",
   "matches": [
     {
@@ -377,7 +377,7 @@
     {
       "id": 564755,
       "utcDate": "2026-11-21T13:00:00Z",
-      "status": "IN_PLAY",
+      "status": "TIMED",
       "matchday": 13,
       "stage": "REGULAR_SEASON",
       "home": {
@@ -395,11 +395,11 @@
         "crestUrl": "https://crests.football-data.org/560.png"
       },
       "score": {
-        "home": 1,
-        "away": 1,
-        "halfTimeHome": 1,
-        "halfTimeAway": 1,
-        "winner": "DRAW"
+        "home": null,
+        "away": null,
+        "halfTimeHome": null,
+        "halfTimeAway": null,
+        "winner": null
       },
       "deporIsHome": false,
       "venue": "Estadio de Mendizorroza",
