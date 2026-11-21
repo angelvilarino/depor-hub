@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T15:03:50Z",
+  "updatedAt": "2026-11-21T15:33:00Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,63 @@
   ],
   "stories": [
     {
+      "id": "cca9bba812fb6ea9",
+      "title": "El «1x1» de la derrota del Dépor ante el Alavés",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/1x1-derrota-depor-ante-alaves/00031795274853872665808.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-21T15:32:00Z",
+      "kind": "article",
+      "summary": "Lucas Noubi, que regresaba al once, no logró superar el examen de Hidalgo: se le vio muy desubicado, dejó varios pases comprometidos y…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/8wVbV8IeG_jzvgEywVJ7YWBXtEg=/768x/2026/11/21/00121795274882088179325/Foto/j_20261121_144109000.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e3a13682b93ce70b",
+      "title": "El 1x1 del Dépor ante el Alavés: que salga Bil Nsongo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/el-1x1-del-depor-ante-el-alaves-que-salga-bil-nsongo-892360.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T15:23:12Z",
+      "kind": "article",
+      "summary": "La entrada del camerunés en el segundo tiempo fue lo único que amagó con cambiar un pobrísimo partido blanquiazul",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/21/6b01b27813fa8.JPG",
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "717339b8c566a2f7",
+      "title": "Las claves del Alavés-Deportivo: Sometidos por un plan simple y efectivo",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/claves-alaves-deportivo-sometidos-plan-simple-efectivo/00031795274145095564235.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-21T15:20:00Z",
+      "kind": "article",
+      "summary": "Hasta 67 envíos en largo efectuó un cuatro vitoriano que dejó en apenas 0,24 goles esperados al Dépor y que solo permitió a Yeremay tocar…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/Sql2xYl_1X_NOZq908rA-2x84ss=/768x/2026/11/21/00121795274221559573978/Foto/j_20261121_151837000.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "aed00552976bdbf1",
+      "title": "El Dépor pierde y apenas compite en Mendizorroza (3-1)",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/depor-pierde-apenas-compite-mendizorroza-3-1/00031795273477903543452.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-21T15:15:00Z",
+      "kind": "article",
+      "summary": "En un partido en el que fue inferior de principio a fin y apenas chutó a portería, sufrió una clara derrota frente a un Alavés que lo…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/N78IyRBDMXqVqqZ3WYdthKsbj00=/768x/2026/11/21/00121795274102268585797/Foto/efe_20261121_141130902.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "6a23b63c61408484",
       "title": "El Alavés resucita sometiendo a un Dépor que sigue de parón",
       "url": "https://marca.com/futbol/primera-division/cronica/2026/11/21/alaves-resucita-sometiendo-depor-sigue-paron.html",
@@ -51,7 +108,7 @@
       "publishedAt": "2026-11-21T14:56:34Z",
       "kind": "article",
       "summary": "Los de Quique rompen dos meses y medio de sequía impulsados por un Boyé estelar, que tumbó con polémica la resistencia gallega tras el gol…",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/21/6b01ae139a60b.jpeg",
+      "thumbnailUrl": null,
       "tags": [
         "partido"
       ],
@@ -129,14 +186,16 @@
     },
     {
       "id": "9d6cc8cb0250bca2",
-      "title": "Así fue: El Dépor cae con justicia ante el Alavés (3-1)",
+      "title": "Alavés-Dépor, en directo: alineaciones, previa y minuto a minuto de la jornada 13 de Primera",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/alaves-depor-en-directo-alineaciones-previa-y-minuto-a-minuto-de-la-jornada-13-de-primera-892336.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-21T11:38:24Z",
       "kind": "article",
       "summary": "Sigue con nosotros todo lo que ocurra en Mendizorroza en el regreso de LaLiga",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/21/6b019c3ea3108.JPG",
-      "tags": [],
+      "tags": [
+        "partido"
+      ],
       "alsoIn": []
     },
     {
@@ -2128,64 +2187,6 @@
       "summary": "Sin remates en la segunda mitad, el Dépor firmó ante el Espanyol su segundo partido del curso con menos amenaza y el más pobre en posesión",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af0793559656.r_d.1774-797-0.jpg",
       "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3ab103d0e2ff7b7a",
-      "title": "Hidalgo repite once en el Dépor un año después de la última vez",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/hidalgo-repite-once-en-el-depor-un-ano-despues-de-la-ultima-vez-889831.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-09T04:00:00Z",
-      "kind": "article",
-      "summary": "El técnico presentó la misma alineación ante Osasuna y Espanyol, algo que no ocurría desde las jornadas 12 y 13 de la 2025-26",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af0c844a38ae.r_d.1361-977-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3b32cd9c42809046",
-      "title": "Resumen del Arenas Club de Getxo 2 - 1 Fabril",
-      "url": "https://youtube.com/watch?v=5Kzn0N74asQ",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-08T21:28:57Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i2.ytimg.com/vi/5Kzn0N74asQ/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "05443ba41d02888f",
-      "title": "Hidalgo espía al Celta en Balaídos",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-08/hidalgo-espia-al-celta-en-balaidos-889848.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-08T20:23:42Z",
-      "kind": "article",
-      "summary": "El técnico blanquiazul acudió al estadio vigués para presenciar el duelo entre el Levante y el equipo celeste, rival del Dépor el próximo…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/08/6af0d80510e87.r_d.527-992-0.jpeg",
-      "tags": [
-        "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e532899f6c79d377",
-      "title": "Leo Román, conde de Barcelona: las notas del Espanyol – Deportivo",
-      "url": "https://riazor.org/leo-roman-conde-barcelona-notas-espanyol-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-08T17:43:34Z",
-      "kind": "article",
-      "summary": "Estas son las notas de los jugadores y el cuerpo técnico blanquiazul en el Espanyol - Deportivo de la jornada 12 de LaLiga EA Sports. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "opinion",
         "partido"
       ],
       "alsoIn": []

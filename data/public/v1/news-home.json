@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T15:03:50Z",
+  "updatedAt": "2026-11-21T15:33:00Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -8,14 +8,6 @@
       "kind": "video",
       "homepage": "https://www.youtube.com/@rcdeportivo",
       "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
-    },
-    {
-      "id": "riazor",
-      "name": "Riazor.org",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.riazor.org/",
-      "iconUrl": "https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png"
     },
     {
       "id": "dxt-campeon",
@@ -44,6 +36,63 @@
   ],
   "stories": [
     {
+      "id": "cca9bba812fb6ea9",
+      "title": "El «1x1» de la derrota del Dépor ante el Alavés",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/1x1-derrota-depor-ante-alaves/00031795274853872665808.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-21T15:32:00Z",
+      "kind": "article",
+      "summary": "Lucas Noubi, que regresaba al once, no logró superar el examen de Hidalgo: se le vio muy desubicado, dejó varios pases comprometidos y…",
+      "thumbnailUrl": "img/news/c0126b8297fb175a.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e3a13682b93ce70b",
+      "title": "El 1x1 del Dépor ante el Alavés: que salga Bil Nsongo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/el-1x1-del-depor-ante-el-alaves-que-salga-bil-nsongo-892360.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T15:23:12Z",
+      "kind": "article",
+      "summary": "La entrada del camerunés en el segundo tiempo fue lo único que amagó con cambiar un pobrísimo partido blanquiazul",
+      "thumbnailUrl": "img/news/d170c0e1db340158.webp",
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "717339b8c566a2f7",
+      "title": "Las claves del Alavés-Deportivo: Sometidos por un plan simple y efectivo",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/claves-alaves-deportivo-sometidos-plan-simple-efectivo/00031795274145095564235.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-21T15:20:00Z",
+      "kind": "article",
+      "summary": "Hasta 67 envíos en largo efectuó un cuatro vitoriano que dejó en apenas 0,24 goles esperados al Dépor y que solo permitió a Yeremay tocar…",
+      "thumbnailUrl": "img/news/bc47085030017776.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "aed00552976bdbf1",
+      "title": "El Dépor pierde y apenas compite en Mendizorroza (3-1)",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/depor-pierde-apenas-compite-mendizorroza-3-1/00031795273477903543452.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-21T15:15:00Z",
+      "kind": "article",
+      "summary": "En un partido en el que fue inferior de principio a fin y apenas chutó a portería, sufrió una clara derrota frente a un Alavés que lo…",
+      "thumbnailUrl": "img/news/81d607073cf91042.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "6a23b63c61408484",
       "title": "El Alavés resucita sometiendo a un Dépor que sigue de parón",
       "url": "https://marca.com/futbol/primera-division/cronica/2026/11/21/alaves-resucita-sometiendo-depor-sigue-paron.html",
@@ -51,7 +100,7 @@
       "publishedAt": "2026-11-21T14:56:34Z",
       "kind": "article",
       "summary": "Los de Quique rompen dos meses y medio de sequía impulsados por un Boyé estelar, que tumbó con polémica la resistencia gallega tras el gol…",
-      "thumbnailUrl": "img/news/5b5bb17a15d12429.webp",
+      "thumbnailUrl": null,
       "tags": [
         "partido"
       ],
@@ -70,58 +119,6 @@
         "cantera",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "586b64ff0c8c3721",
-      "title": "Crónica | El Dépor prolonga la resaca y cae ante el Badalona (2-1)",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-21/cronica-el-depor-prolonga-la-resaca-y-cae-ante-el-badalona-2-892331.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-21T13:00:08Z",
-      "kind": "article",
-      "summary": "El equipo coruñés, sin ideas, no fue capaz de puntuar ante un rival que acumulaba ocho jornadas sin ganar",
-      "thumbnailUrl": "img/news/d5d785c90412267f.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "92819d52946f9597",
-      "title": "En directo: Alavés - Deportivo; Aubameyang, principal novedad en un once sin Bil Nsongo",
-      "url": "https://lavozdegalicia.es/retransmision/torremarathon/2026/11/21/directo-alaves-deportivo/01071795260778247774595.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-21T12:29:00Z",
-      "kind": "article",
-      "summary": "El conjunto coruñés visita Mendizorroza en busca de su segundo triunfo liguero a domicilio",
-      "thumbnailUrl": "img/news/7086b445f8e65040.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "15dd583d9af8d9e7",
-      "title": "Así te contamos el Alavés 3–1 Deportivo: Ángel Pérez, Boyé y Denis Suárez condenan al Dépor",
-      "url": "https://riazor.org/alaves-deportivo-en-directo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-21T12:00:30Z",
-      "kind": "article",
-      "summary": "Sigue en directo el Alavés – Deportivo de LaLiga (21 de noviembre, 14:00 horas, Mendizorrotza): alineaciones, goles, resultado y minuto a…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "9d6cc8cb0250bca2",
-      "title": "Así fue: El Dépor cae con justicia ante el Alavés (3-1)",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/alaves-depor-en-directo-alineaciones-previa-y-minuto-a-minuto-de-la-jornada-13-de-primera-892336.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-21T11:38:24Z",
-      "kind": "article",
-      "summary": "Sigue con nosotros todo lo que ocurra en Mendizorroza en el regreso de LaLiga",
-      "thumbnailUrl": "img/news/d5e104110a42aff3.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
