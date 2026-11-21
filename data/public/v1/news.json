@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T19:32:58Z",
+  "updatedAt": "2026-11-21T04:33:01Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "8ac95d0efa0d1e33",
+      "title": "Previa | Las ‘cebras’ reciben al Oviedo tras sumar en el derbi",
+      "url": "https://dxtcampeon.elidealgallego.com/o-noso-futbol/2026-11-21/previa-las-cebras-reciben-al-oviedo-tras-sumar-en-el-derbi-892247.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T04:00:00Z",
+      "kind": "article",
+      "summary": "Nuevo partido de máxima dificultad para el conjunto coruñés, que recibe al equipo que sigue más de cerca al Dépor B",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/20/6b00973e7d0ef.r_d.1353-900-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "1d61cd95559c8996",
+      "title": "Mendizorroza y el peligro para el Deportivo: no poder salir de la cueva",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/mendizorroza-y-el-peligro-para-el-deportivo-no-poder-salir-de-la-cueva-892201.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T04:00:00Z",
+      "kind": "article",
+      "summary": "El Dépor, que viene de firmar su encuentro a domicilio con mayor número de pérdidas en campo propio, busca soluciones para ganar fluidez…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/20/6b007cb0c7e0b.r_d.1472-923-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "f9396e77bd775f16",
       "title": "El Dépor ABANCA empató con el Barça, el Badalona con el Madrid: ambos se cruzan en Palamós",
@@ -126,7 +152,7 @@
     },
     {
       "id": "f59c074d96ba6b7e",
-      "title": "Hidalgo no rebaja la exigencia pese al buen inicio del Dépor: \"Tenemos que ir a nuestro límite siempre\"",
+      "title": "Hidalgo no rebaja la exigencia pese al buen inicio del Dépor: \"Tenemos que ir a nuestro límite siempre y estar alerta\"",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/hidalgo-no-rebaja-la-exigencia-pese-al-buen-inicio-del-depor-tenemos-que-ir-a-nuestro-limite-siempre-y-estar-alerta-892125.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-20T12:11:24Z",
@@ -2167,35 +2193,6 @@
       "summary": "El portero respondió al respaldo del vestuario tras su error ante Osasuna con dos paradas decisivas y la primera portería a cero del curso",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef6d382d125.r_d.1494-1008-0.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "f0cdcd5a1717af96",
-      "title": "Cinco apuntes del Espanyol-Dépor: un punto para crecer desde atrás",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-08/cinco-apuntes-del-espanyol-depor-un-punto-para-crecer-desde-atras-889726.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-08T04:00:00Z",
-      "kind": "article",
-      "summary": "El equipo mantuvo la puerta a cero para sumar en Cornellá, pero la falta de pegada le impidió ganar",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/07/6aef9c8c99c68.r_d.2027-865-0.jpg",
-      "tags": [
-        "opinion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "2ed0cb7c0317945b",
-      "title": "Previa del Arenas-Fabril | La delgada línea entre el alivio y el impulso",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-08/previa-la-delgada-linea-entre-el-alivio-y-el-impulso-889576.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-08T04:00:00Z",
-      "kind": "article",
-      "summary": "El Fabril, con Kevin Sánchez de vuelta, visita al Arenas de Getxo con el objetivo de confirmar su reacción y salir de los puestos de…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/10/04/6ac25bfc1f0bf.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

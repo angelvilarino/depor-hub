@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T19:32:58Z",
+  "updatedAt": "2026-11-21T04:33:01Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "8ac95d0efa0d1e33",
+      "title": "Previa | Las ‘cebras’ reciben al Oviedo tras sumar en el derbi",
+      "url": "https://dxtcampeon.elidealgallego.com/o-noso-futbol/2026-11-21/previa-las-cebras-reciben-al-oviedo-tras-sumar-en-el-derbi-892247.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T04:00:00Z",
+      "kind": "article",
+      "summary": "Nuevo partido de máxima dificultad para el conjunto coruñés, que recibe al equipo que sigue más de cerca al Dépor B",
+      "thumbnailUrl": "img/news/f4a35485a040da01.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "1d61cd95559c8996",
+      "title": "Mendizorroza y el peligro para el Deportivo: no poder salir de la cueva",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/mendizorroza-y-el-peligro-para-el-deportivo-no-poder-salir-de-la-cueva-892201.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T04:00:00Z",
+      "kind": "article",
+      "summary": "El Dépor, que viene de firmar su encuentro a domicilio con mayor número de pérdidas en campo propio, busca soluciones para ganar fluidez…",
+      "thumbnailUrl": "img/news/12a979679d5a365e.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "f9396e77bd775f16",
       "title": "El Dépor ABANCA empató con el Barça, el Badalona con el Madrid: ambos se cruzan en Palamós",
@@ -79,33 +105,6 @@
       "summary": "Hidalgo no recupera futbolistas, aunque podría dar la alternativa en el once a Casadó",
       "thumbnailUrl": "img/news/d9f0dc59c5ff0df2.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "5efc430724051671",
-      "title": "El Deportivo contará con Aubameyang en Mendizorroza",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-20/el-deportivo-contara-con-aubameyang-en-mendizorroza-892195.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-20T16:49:18Z",
-      "kind": "article",
-      "summary": "El delantero gabonés ha viajado junto al resto del equipo, aunque sus sensaciones dictaminarán de cuántos minutos dispone",
-      "thumbnailUrl": "img/news/92f0f817881c151e.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "18a0923b8abbd913",
-      "title": "Manuel Pablo: \"Nuestra línea debe ser la de estos últimos partidos\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-20/manuel-pablo-nuestra-linea-debe-ser-la-de-estos-ultimos-partidos-892101.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-20T12:16:30Z",
-      "kind": "article",
-      "summary": "El técnico destaca la mejoría competitiva del Fabril, aunque insiste en la necesidad de corregir los errores, en especial a balón parado",
-      "thumbnailUrl": "img/news/d89437c70d64fcd0.webp",
-      "tags": [
-        "partido",
-        "cantera"
-      ],
       "alsoIn": []
     }
   ]
