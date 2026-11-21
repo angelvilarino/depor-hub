@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T16:04:17Z",
+  "updatedAt": "2026-11-21T16:32:47Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -36,6 +36,20 @@
   ],
   "stories": [
     {
+      "id": "a68f0122270d20e5",
+      "title": "Rueda de prensa de Antonio Hidalgo tras el Deportivo Alavés 3 - 1 RC Deportivo",
+      "url": "https://youtube.com/watch?v=XLWkwbKlfCI",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-21T16:06:10Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "img/news/758f2191b5a14948.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "59787ad5c4cf1f38",
       "title": "Hidalgo, harto de etiquetas: \"Aquí parece que solo gasta el Dépor\"",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/hidalgo-harto-de-etiquetas-aqui-parece-que-solo-gasta-el-depor-892367.html",
@@ -45,20 +59,6 @@
       "summary": "El técnico blanquiazul reconoce la superioridad del Alavés y exige más intensidad",
       "thumbnailUrl": "img/news/5d2c7594a70be821.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "6b3c53020863a706",
-      "title": "Deportivo Alavés vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
-      "url": "https://youtube.com/watch?v=BOhsSg1E-38",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-21T15:55:02Z",
-      "kind": "video",
-      "summary": "Vive en directo el partido de la jornada 13 entre el Alavés y el Dépor perteneciente a la primera eliminatoria de la competición",
-      "thumbnailUrl": "img/news/bef2a3d17f9feb4d.webp",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     },
     {

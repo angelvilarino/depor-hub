@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T16:04:17Z",
+  "updatedAt": "2026-11-21T16:32:47Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "a68f0122270d20e5",
+      "title": "Rueda de prensa de Antonio Hidalgo tras el Deportivo Alavés 3 - 1 RC Deportivo",
+      "url": "https://youtube.com/watch?v=XLWkwbKlfCI",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-21T16:06:10Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i1.ytimg.com/vi/XLWkwbKlfCI/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "59787ad5c4cf1f38",
       "title": "Hidalgo, harto de etiquetas: \"Aquí parece que solo gasta el Dépor\"",
@@ -2172,21 +2186,6 @@
       "summary": "La primera portería a cero del Dépor ha tenido que esperas hasta la jornada 12 pese a ser uno de los equipos que mejor defiende de LaLiga…",
       "thumbnailUrl": null,
       "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "b3fda8bbaa7c4b6f",
-      "title": "Dépor ABANCA – Valencia: Volver a ganar tras el parón",
-      "url": "https://riazor.org/depor-abanca-valencia-volver-ganar-tras-paron",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-09T13:00:48Z",
-      "kind": "article",
-      "summary": "El Dépor ABANCA vuelve a la Liga F tras el parón este lunes (21:00 horas) ante un Valencia que es colista y estrenará entrenador en…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
         "partido"
       ],
       "alsoIn": []
