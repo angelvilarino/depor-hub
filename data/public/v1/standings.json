@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T12:30:39Z",
+  "updatedAt": "2026-11-21T13:10:46Z",
   "season": "2026-27",
   "matchday": 13,
   "table": [
@@ -139,6 +139,25 @@
     {
       "position": 8,
       "team": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
+      },
+      "played": 13,
+      "won": 3,
+      "draw": 7,
+      "lost": 3,
+      "points": 16,
+      "goalsFor": 15,
+      "goalsAgainst": 14,
+      "goalDifference": 1,
+      "form": null
+    },
+    {
+      "position": 9,
+      "team": {
         "id": 94,
         "name": "Villarreal CF",
         "shortName": "Villarreal",
@@ -153,25 +172,6 @@
       "goalsFor": 17,
       "goalsAgainst": 15,
       "goalDifference": 2,
-      "form": null
-    },
-    {
-      "position": 9,
-      "team": {
-        "id": 560,
-        "name": "RC Deportivo La Coruña",
-        "shortName": "Deportivo",
-        "tla": "DEP",
-        "crestUrl": "https://crests.football-data.org/560.png"
-      },
-      "played": 12,
-      "won": 3,
-      "draw": 6,
-      "lost": 3,
-      "points": 15,
-      "goalsFor": 15,
-      "goalsAgainst": 14,
-      "goalDifference": 1,
       "form": null
     },
     {
@@ -196,6 +196,25 @@
     {
       "position": 11,
       "team": {
+        "id": 263,
+        "name": "Deportivo Alavés",
+        "shortName": "Alavés",
+        "tla": "ALA",
+        "crestUrl": "https://crests.football-data.org/263.png"
+      },
+      "played": 13,
+      "won": 3,
+      "draw": 5,
+      "lost": 5,
+      "points": 14,
+      "goalsFor": 15,
+      "goalsAgainst": 17,
+      "goalDifference": -2,
+      "form": null
+    },
+    {
+      "position": 12,
+      "team": {
         "id": 5335,
         "name": "Real Racing Club de Santander",
         "shortName": "Santander",
@@ -213,7 +232,7 @@
       "form": null
     },
     {
-      "position": 12,
+      "position": 13,
       "team": {
         "id": 558,
         "name": "RC Celta de Vigo",
@@ -229,25 +248,6 @@
       "goalsFor": 10,
       "goalsAgainst": 10,
       "goalDifference": 0,
-      "form": null
-    },
-    {
-      "position": 13,
-      "team": {
-        "id": 263,
-        "name": "Deportivo Alavés",
-        "shortName": "Alavés",
-        "tla": "ALA",
-        "crestUrl": "https://crests.football-data.org/263.png"
-      },
-      "played": 12,
-      "won": 3,
-      "draw": 4,
-      "lost": 5,
-      "points": 13,
-      "goalsFor": 15,
-      "goalsAgainst": 17,
-      "goalDifference": -2,
       "form": null
     },
     {
