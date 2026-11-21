@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T10:32:43Z",
+  "updatedAt": "2026-11-21T11:32:02Z",
   "sources": [
     {
       "id": "riazor",
@@ -18,14 +18,6 @@
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
     },
     {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
-    },
-    {
       "id": "marca",
       "name": "Marca",
       "group": "nacional",
@@ -35,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "5c52218dce02b204",
+      "title": "De la visita a un vecino en Vilagarcía a la carambola para volver a Zaragoza: los 17 posibles rivales del Dépor en la segunda ronda de la Copa",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/de-la-visita-a-un-vecino-en-vilagarcia-a-la-carambola-para-volver-a-zaragoza-los-17-posibles-rivales-del-depor-en-la-segunda-ronda-de-la-copa-892333.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T11:24:50Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul conocerá este lunes el destino para la nueva eliminatoria del torneo del KO de principios de diciembre",
+      "thumbnailUrl": "img/news/2cc90d38d7e7c9c7.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "5d4436dfe30a352e",
       "title": "Alavés - Deportivo de A Coruña: horario, dónde ver hoy en TV y canal del partido de LaLiga EA Sports",
@@ -101,20 +107,6 @@
       "thumbnailUrl": "img/news/6375a90c63fb8cb9.webp",
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "7cac452612ff6a94",
-      "title": "Josema Giménez se hace de hierro en el Dépor",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/20/josemagimenez-hierro-depor/00031795188276124276940.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-20T18:25:01Z",
-      "kind": "article",
-      "summary": "Tras catorce partes de lesiones y 498 días de baja en el Atlético desde el 2022, enlaza nueve titularidades seguidas por primera vez en 42…",
-      "thumbnailUrl": "img/news/582db057205c56ac.webp",
-      "tags": [
-        "lesiones"
       ],
       "alsoIn": []
     }

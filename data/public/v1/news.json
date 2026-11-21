@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T10:32:43Z",
+  "updatedAt": "2026-11-21T11:32:02Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "5c52218dce02b204",
+      "title": "De la visita a un vecino en Vilagarcía a la carambola para volver a Zaragoza: los 17 posibles rivales del Dépor en la segunda ronda de la Copa",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/de-la-visita-a-un-vecino-en-vilagarcia-a-la-carambola-para-volver-a-zaragoza-los-17-posibles-rivales-del-depor-en-la-segunda-ronda-de-la-copa-892333.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T11:24:50Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul conocerá este lunes el destino para la nueva eliminatoria del torneo del KO de principios de diciembre",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/19/6aff37ef935d4.r_d.1500-1000-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "5d4436dfe30a352e",
       "title": "Alavés - Deportivo de A Coruña: horario, dónde ver hoy en TV y canal del partido de LaLiga EA Sports",
@@ -2180,21 +2194,6 @@
       "thumbnailUrl": null,
       "tags": [
         "aficion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "dd153a733680e186",
-      "title": "El Fabril visita a un Arenas Club colista pero con dos victorias seguidas",
-      "url": "https://riazor.org/el-fabril-visita-a-un-arenas-club-colista-pero-con-dos-victorias-seguidas",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-08T10:00:21Z",
-      "kind": "article",
-      "summary": "El Fabril juega el domingo 8 de noviembre a las 12:00 en Fadura ante el Arenas Club, colista con 8 puntos y dos triunfos seguidos. Bajas…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "club"
       ],
       "alsoIn": []
     }
