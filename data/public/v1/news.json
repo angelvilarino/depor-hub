@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T18:04:34Z",
+  "updatedAt": "2026-11-21T22:04:04Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "818209be75d033c1",
+      "title": "Resumen del Deportivo Alavés 3 - 1 RC Deportivo",
+      "url": "https://youtube.com/watch?v=XXKRFRthTX0",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-21T22:00:32Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i1.ytimg.com/vi/XXKRFRthTX0/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "98951ecf0aebe611",
       "title": "Loureiro: «Sin ánimo de buscar excusas, el segundo gol es falta clarísima»",
@@ -2174,20 +2188,6 @@
       "kind": "article",
       "summary": "Ainara Acevedo mostró la roja directa a Michi Apóstol en el minuto 15 tras un pisotón inevitable para la jugadora blanquiazul",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/09/6af230502c46d.r_d.1194-1051-0.jpeg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "c5d5a6d1367e0492",
-      "title": "El menú de los internacionales del Dépor: fuego real para Bil y clásico amistoso para Giménez",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-09/el-menu-de-los-internacionales-del-depor-fuego-real-para-bil-y-clasico-amistoso-para-gimenez-890018.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-09T19:33:04Z",
-      "kind": "article",
-      "summary": "El camerunés es el único que afrontará partidos de competición oficial, mientras que Mella y Amatucci podrían debutar con la sub-21",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/26/6adfa0a11fc67.r_d.1591-994-0.jpg",
       "tags": [
         "partido"
       ],

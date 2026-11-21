@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T18:04:34Z",
+  "updatedAt": "2026-11-21T22:04:04Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "818209be75d033c1",
+      "title": "Resumen del Deportivo Alavés 3 - 1 RC Deportivo",
+      "url": "https://youtube.com/watch?v=XXKRFRthTX0",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-21T22:00:32Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "img/news/4e2484153da2d627.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "98951ecf0aebe611",
       "title": "Loureiro: «Sin ánimo de buscar excusas, el segundo gol es falta clarísima»",
@@ -66,20 +80,6 @@
       "summary": "El defensa del Deportivo reclamó falta del delantero alavesista en el 2-1: “Me desequilibra por completo”",
       "thumbnailUrl": "img/news/1fd3295cf38bb861.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "df11fa8e6cc056cf",
-      "title": "Comparecencia de Miguel Loureiro tras el Deportivo Alavés 3-1 RC Deportivo",
-      "url": "https://youtube.com/watch?v=65LtKc8-9Do",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-21T17:09:53Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "img/news/936d236904a8a88a.webp",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     },
     {
