@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T14:32:44Z",
+  "updatedAt": "2026-11-21T15:03:50Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -8,6 +8,14 @@
       "kind": "video",
       "homepage": "https://www.youtube.com/@rcdeportivo",
       "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
+    },
+    {
+      "id": "riazor",
+      "name": "Riazor.org",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.riazor.org/",
+      "iconUrl": "https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png"
     },
     {
       "id": "dxt-campeon",
@@ -35,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "6a23b63c61408484",
+      "title": "El Alavés resucita sometiendo a un Dépor que sigue de parón",
+      "url": "https://marca.com/futbol/primera-division/cronica/2026/11/21/alaves-resucita-sometiendo-depor-sigue-paron.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-21T14:56:34Z",
+      "kind": "article",
+      "summary": "Los de Quique rompen dos meses y medio de sequía impulsados por un Boyé estelar, que tumbó con polémica la resistencia gallega tras el gol…",
+      "thumbnailUrl": "img/news/5b5bb17a15d12429.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "26a9010875754a9b",
       "title": "Rueda de prensa de Alberto Rodríguez tras el FC Badalona Women 2 - 1 Dépor ABANCA",
@@ -77,8 +99,22 @@
       "alsoIn": []
     },
     {
+      "id": "15dd583d9af8d9e7",
+      "title": "Así te contamos el Alavés 3–1 Deportivo: Ángel Pérez, Boyé y Denis Suárez condenan al Dépor",
+      "url": "https://riazor.org/alaves-deportivo-en-directo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-21T12:00:30Z",
+      "kind": "article",
+      "summary": "Sigue en directo el Alavés – Deportivo de LaLiga (21 de noviembre, 14:00 horas, Mendizorrotza): alineaciones, goles, resultado y minuto a…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "9d6cc8cb0250bca2",
-      "title": "Alavés-Dépor, en directo: Boyé adelanta al Alavés de cabeza (2-1)",
+      "title": "Así fue: El Dépor cae con justicia ante el Alavés (3-1)",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/alaves-depor-en-directo-alineaciones-previa-y-minuto-a-minuto-de-la-jornada-13-de-primera-892336.html",
       "sourceId": "dxt-campeon",
       "publishedAt": "2026-11-21T11:38:24Z",
@@ -86,35 +122,6 @@
       "summary": "Sigue con nosotros todo lo que ocurra en Mendizorroza en el regreso de LaLiga",
       "thumbnailUrl": "img/news/d5e104110a42aff3.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "5c52218dce02b204",
-      "title": "De la visita a un vecino en Vilagarcía a la carambola para volver a Zaragoza: los 17 posibles rivales del Dépor en la segunda ronda de la Copa",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/de-la-visita-a-un-vecino-en-vilagarcia-a-la-carambola-para-volver-a-zaragoza-los-17-posibles-rivales-del-depor-en-la-segunda-ronda-de-la-copa-892333.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-21T11:24:50Z",
-      "kind": "article",
-      "summary": "El equipo blanquiazul conocerá este lunes el destino para la nueva eliminatoria del torneo del KO de principios de diciembre",
-      "thumbnailUrl": "img/news/2cc90d38d7e7c9c7.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "5d4436dfe30a352e",
-      "title": "Alavés - Deportivo de A Coruña: horario, dónde ver hoy en TV y canal del partido de LaLiga EA Sports",
-      "url": "https://marca.com/futbol/primera-division/2026/11/21/alaves-deportivo-coruna-horario-ver-hoy-tv-canal-partido-laliga-ea-sports.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-21T10:18:34Z",
-      "kind": "article",
-      "summary": "Supone el regreso de este histórico enfrentamiento a la máxima categoría del fútbol español más de ocho años después",
-      "thumbnailUrl": "img/news/bfc246999bb1769d.webp",
-      "tags": [
-        "partido",
-        "club"
-      ],
       "alsoIn": []
     }
   ]
