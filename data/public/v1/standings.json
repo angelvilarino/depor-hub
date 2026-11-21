@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T14:50:58Z",
+  "updatedAt": "2026-11-21T15:10:59Z",
   "season": "2026-27",
   "matchday": 13,
   "table": [
@@ -150,9 +150,9 @@
       "draw": 4,
       "lost": 5,
       "points": 16,
-      "goalsFor": 17,
+      "goalsFor": 18,
       "goalsAgainst": 18,
-      "goalDifference": -1,
+      "goalDifference": 0,
       "form": null
     },
     {
@@ -177,25 +177,6 @@
     {
       "position": 10,
       "team": {
-        "id": 560,
-        "name": "RC Deportivo La Coruña",
-        "shortName": "Deportivo",
-        "tla": "DEP",
-        "crestUrl": "https://crests.football-data.org/560.png"
-      },
-      "played": 13,
-      "won": 3,
-      "draw": 6,
-      "lost": 4,
-      "points": 15,
-      "goalsFor": 16,
-      "goalsAgainst": 16,
-      "goalDifference": 0,
-      "form": null
-    },
-    {
-      "position": 11,
-      "team": {
         "id": 80,
         "name": "RCD Espanyol de Barcelona",
         "shortName": "Espanyol",
@@ -210,6 +191,25 @@
       "goalsFor": 14,
       "goalsAgainst": 14,
       "goalDifference": 0,
+      "form": null
+    },
+    {
+      "position": 11,
+      "team": {
+        "id": 560,
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP",
+        "crestUrl": "https://crests.football-data.org/560.png"
+      },
+      "played": 13,
+      "won": 3,
+      "draw": 6,
+      "lost": 4,
+      "points": 15,
+      "goalsFor": 16,
+      "goalsAgainst": 17,
+      "goalDifference": -1,
       "form": null
     },
     {

@@ -1,0 +1,34 @@
+{
+  "matchId": 564755,
+  "season": "2026-27",
+  "capturedAt": "2026-11-21T15:11:03Z",
+  "source": "football-data.org",
+  "status": "FINISHED",
+  "utcDate": "2026-11-21T13:00:00Z",
+  "matchday": 13,
+  "stage": "REGULAR_SEASON",
+  "home": {
+    "id": 263,
+    "name": "Deportivo Alavés",
+    "shortName": "Alavés",
+    "tla": "ALA",
+    "crestUrl": "https://crests.football-data.org/263.png"
+  },
+  "away": {
+    "id": 560,
+    "name": "RC Deportivo La Coruña",
+    "shortName": "Deportivo",
+    "tla": "DEP",
+    "crestUrl": "https://crests.football-data.org/560.png"
+  },
+  "score": {
+    "home": 3,
+    "away": 1,
+    "halfTimeHome": 1,
+    "halfTimeAway": 1,
+    "winner": "HOME_TEAM"
+  },
+  "deporIsHome": false,
+  "venue": "Estadio de Mendizorroza",
+  "referee": "Víctor García Verdura"
+}

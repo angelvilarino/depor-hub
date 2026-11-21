@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T14:50:58Z",
+  "updatedAt": "2026-11-21T15:10:59Z",
   "season": "2026-27",
   "matchday": 13,
   "team": {
@@ -10,17 +10,33 @@
     "crestUrl": "https://crests.football-data.org/560.png"
   },
   "summary": {
-    "position": 10,
+    "position": 11,
     "points": 15,
     "played": 13,
     "won": 3,
     "drawn": 6,
     "lost": 4,
     "goalsFor": 16,
-    "goalsAgainst": 16,
-    "goalDifference": 0
+    "goalsAgainst": 17,
+    "goalDifference": -1
   },
   "form": [
+    {
+      "matchId": 564755,
+      "matchday": 13,
+      "date": "2026-11-21",
+      "opponent": {
+        "id": 263,
+        "name": "Deportivo Alavés",
+        "shortName": "Alavés",
+        "tla": "ALA",
+        "crestUrl": "https://crests.football-data.org/263.png"
+      },
+      "home": false,
+      "scoreFor": 1,
+      "scoreAgainst": 3,
+      "result": "L"
+    },
     {
       "matchId": 564745,
       "matchday": 12,
@@ -84,22 +100,6 @@
       "scoreFor": 1,
       "scoreAgainst": 1,
       "result": "D"
-    },
-    {
-      "matchId": 564707,
-      "matchday": 8,
-      "date": "2026-10-11",
-      "opponent": {
-        "id": 92,
-        "name": "Real Sociedad de Fútbol",
-        "shortName": "Real Sociedad",
-        "tla": "RSO",
-        "crestUrl": "https://crests.football-data.org/92.png"
-      },
-      "home": false,
-      "scoreFor": 2,
-      "scoreAgainst": 3,
-      "result": "L"
     }
   ],
   "positionEvolution": [
@@ -162,23 +162,28 @@
       "matchday": 12,
       "position": 9,
       "points": 15
+    },
+    {
+      "matchday": 13,
+      "position": 11,
+      "points": 15
     }
   ],
   "provenance": {
     "summary": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-21T14:50:58Z"
+      "capturedAt": "2026-11-21T15:10:59Z"
     },
     "form": {
       "source": "football-data.org",
       "confidence": "verified",
-      "capturedAt": "2026-11-21T14:50:58Z"
+      "capturedAt": "2026-11-21T15:10:59Z"
     },
     "positionEvolution": {
       "source": "football-data.org (cálculo propio por jornada)",
       "confidence": "estimated",
-      "capturedAt": "2026-11-21T14:50:58Z"
+      "capturedAt": "2026-11-21T15:10:59Z"
     }
   }
 }
