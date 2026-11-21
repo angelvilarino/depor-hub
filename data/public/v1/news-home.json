@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T16:32:47Z",
+  "updatedAt": "2026-11-21T17:33:10Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -18,14 +18,6 @@
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
     },
     {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
-    },
-    {
       "id": "marca",
       "name": "Marca",
       "group": "nacional",
@@ -36,14 +28,41 @@
   ],
   "stories": [
     {
-      "id": "a68f0122270d20e5",
-      "title": "Rueda de prensa de Antonio Hidalgo tras el Deportivo Alavés 3 - 1 RC Deportivo",
-      "url": "https://youtube.com/watch?v=XLWkwbKlfCI",
+      "id": "adf82ec8c3440cab",
+      "title": "¿Estuviste en Mendizorroza apoyando al Dépor? ¡Búscate en nuestra galería!",
+      "url": "https://dxtcampeon.elidealgallego.com/audiovisuales/galerias/2026-11-21/estuviste-en-mendizorroza-apoyando-al-depor-buscate-en-nuestra-galeria-892385.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T17:31:48Z",
+      "kind": "article",
+      "summary": "La afición del equipo coruñés no falló a su cita y estuvo presente en el estadio del Alavés",
+      "thumbnailUrl": "img/news/bd3162b7f876177e.webp",
+      "tags": [
+        "aficion",
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "3f7b71e9922dc61a",
+      "title": "Miguel Loureiro, Lucas Boyé y un polémico duelo que lo desequilibró todo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/miguel-loureiro-lucas-boye-y-un-polemico-duelo-que-lo-desequilibro-todo-892381.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-21T17:29:16Z",
+      "kind": "article",
+      "summary": "El defensa del Deportivo reclamó falta del delantero alavesista en el 2-1: “Me desequilibra por completo”",
+      "thumbnailUrl": "img/news/1fd3295cf38bb861.webp",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "df11fa8e6cc056cf",
+      "title": "Comparecencia de Miguel Loureiro tras el Deportivo Alavés 3-1 RC Deportivo",
+      "url": "https://youtube.com/watch?v=65LtKc8-9Do",
       "sourceId": "youtube-club",
-      "publishedAt": "2026-11-21T16:06:10Z",
+      "publishedAt": "2026-11-21T17:09:53Z",
       "kind": "video",
       "summary": null,
-      "thumbnailUrl": "img/news/758f2191b5a14948.webp",
+      "thumbnailUrl": "img/news/936d236904a8a88a.webp",
       "tags": [
         "partido"
       ],
@@ -85,35 +104,6 @@
       "summary": "El técnico del Dépor encajó con deportividad la derrota",
       "thumbnailUrl": "img/news/51866879984182aa.webp",
       "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "cca9bba812fb6ea9",
-      "title": "El «1x1» de la derrota del Dépor ante el Alavés",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/21/1x1-derrota-depor-ante-alaves/00031795274853872665808.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-21T15:32:00Z",
-      "kind": "article",
-      "summary": "Lucas Noubi, que regresaba al once, no logró superar el examen de Hidalgo: se le vio muy desubicado, dejó varios pases comprometidos y…",
-      "thumbnailUrl": "img/news/c0126b8297fb175a.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e3a13682b93ce70b",
-      "title": "El 1x1 del Dépor ante el Alavés: que salga Bil Nsongo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/el-1x1-del-depor-ante-el-alaves-que-salga-bil-nsongo-892360.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-21T15:23:12Z",
-      "kind": "article",
-      "summary": "La entrada del camerunés en el segundo tiempo fue lo único que amagó con cambiar un pobrísimo partido blanquiazul",
-      "thumbnailUrl": "img/news/d170c0e1db340158.webp",
-      "tags": [
-        "opinion",
         "partido"
       ],
       "alsoIn": []
