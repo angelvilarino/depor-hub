@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T17:32:41Z",
+  "updatedAt": "2026-11-22T18:04:40Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,36 @@
     }
   ],
   "stories": [
+    {
+      "id": "cc49ad3c2dc6ab7a",
+      "title": "Rueda de prensa de Manuel Pablo tras el Fabril 3 - 3 CD Coria",
+      "url": "https://youtube.com/watch?v=DOSjcRQr3j8",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-22T17:53:50Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i1.ytimg.com/vi/DOSjcRQr3j8/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "47f5d20ec75c8ba4",
+      "title": "El Fabril colapsa en el descuento y deja escapar dos puntos ante el Coria (3-3)",
+      "url": "https://riazor.org/fabril-colapsa-descuento-escapar-dos-puntos-coria",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-22T17:30:46Z",
+      "kind": "article",
+      "summary": "Crónica y resultado del Fabril – Coria de la jornada 13 de Primera Federación, que finalizó en empate tras un dramático final de partido…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "ef89e69f5ce323a4",
       "title": "Crónica | Seis goles, tres penaltis y un inexplicable empate en Abegondo (3-3)",
@@ -2159,33 +2189,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i3.ytimg.com/vi/VHI86MiOkRU/hqdefault.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "b98e7a05818e75d9",
-      "title": "‘Los Apuntes’ de Borja Guerreiro: análisis al detalle del Espanyol 0-0 Deportivo",
-      "url": "https://riazor.org/apuntes-borja-guerreiro-analisis-espanyol-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-10T14:55:03Z",
-      "kind": "article",
-      "summary": "Análisis del Espanyol 0-0 Deportivo en 'Los Apuntes' con Borja Guerreiro: en empate con gran protagonismo para el portero Leo Román. La…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/apuntes-espanyol-0-0-deportivo-1600x900-1.jpg",
-      "tags": [
-        "opinion",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "20cc6b136ba014d7",
-      "title": "Así sobrevivió el Dépor ante el Espanyol: las herramientas para sostenerse en el caos",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-10/asi-sobrevivio-el-depor-ante-el-espanyol-las-herramientas-para-sostenerse-en-el-caos-890145.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-10T12:36:41Z",
-      "kind": "article",
-      "summary": "El conjunto deportivista fue incapaz en todas las zonas de ataque y sufrió en defensa, hasta que ajustó la presión con la entrada de…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/10/6af30fc8f0b5b.jpg",
       "tags": [],
       "alsoIn": []
     }

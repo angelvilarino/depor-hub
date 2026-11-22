@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-11-22T17:32:41Z",
+  "updatedAt": "2026-11-22T18:04:40Z",
   "sources": [
+    {
+      "id": "youtube-club",
+      "name": "RC Deportivo (YouTube)",
+      "group": "club",
+      "kind": "video",
+      "homepage": "https://www.youtube.com/@rcdeportivo",
+      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
+    },
     {
       "id": "riazor",
       "name": "Riazor.org",
@@ -19,6 +27,36 @@
     }
   ],
   "stories": [
+    {
+      "id": "cc49ad3c2dc6ab7a",
+      "title": "Rueda de prensa de Manuel Pablo tras el Fabril 3 - 3 CD Coria",
+      "url": "https://youtube.com/watch?v=DOSjcRQr3j8",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-22T17:53:50Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "img/news/5f5b00e253a7cbd9.webp",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "47f5d20ec75c8ba4",
+      "title": "El Fabril colapsa en el descuento y deja escapar dos puntos ante el Coria (3-3)",
+      "url": "https://riazor.org/fabril-colapsa-descuento-escapar-dos-puntos-coria",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-22T17:30:46Z",
+      "kind": "article",
+      "summary": "Crónica y resultado del Fabril – Coria de la jornada 13 de Primera Federación, que finalizó en empate tras un dramático final de partido…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "ef89e69f5ce323a4",
       "title": "Crónica | Seis goles, tres penaltis y un inexplicable empate en Abegondo (3-3)",
@@ -73,33 +111,6 @@
       "thumbnailUrl": null,
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "1018a58e4dd577d4",
-      "title": "Denis Suárez y su dardo a A Coruña tras el Alavés-Dépor: \"Necesitan un poco de humildad, vienen de diez años en Segunda\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/denis-suarez-y-su-dardo-a-a-coruna-tras-el-alaves-depor-necesitan-un-poco-de-humildad-vienen-de-diez-anos-en-segunda-892504.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-22T13:00:24Z",
-      "kind": "article",
-      "summary": "El canterano del Celta, que cerró el triunfo vitoriano con el 3-1, se mostró molesto con algunos mensajes de medios de comunicación",
-      "thumbnailUrl": "img/news/94ab3cb0544412b1.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "fc2257862cef24a0",
-      "title": "El Dépor ABANCA pierde ante el Badalona y se mete en un lío antes del parón (2-1)",
-      "url": "https://riazor.org/depor-abanca-pierde-badalona-mete-lio-antes-paron",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-22T10:50:54Z",
-      "kind": "article",
-      "summary": "El Dépor ABANCA perdió 2-1 ante el Badalona y podría irse al parón de selecciones empatado a puntos con los puestos de descenso. La…",
-      "thumbnailUrl": "img/news/dfdffd6ad736339e.webp",
-      "tags": [
-        "cantera",
-        "partido"
       ],
       "alsoIn": []
     }
