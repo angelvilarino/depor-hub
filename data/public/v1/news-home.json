@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T04:33:04Z",
+  "updatedAt": "2026-11-22T11:03:29Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -27,6 +27,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "fc2257862cef24a0",
+      "title": "El Dépor ABANCA pierde ante el Badalona y se mete en un lío antes del parón (2-1)",
+      "url": "https://riazor.org/depor-abanca-pierde-badalona-mete-lio-antes-paron",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-22T10:50:54Z",
+      "kind": "article",
+      "summary": "El Dépor ABANCA perdió 2-1 ante el Badalona y podría irse al parón de selecciones empatado a puntos con los puestos de descenso. La…",
+      "thumbnailUrl": "img/news/dfdffd6ad736339e.webp",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "a833a52352d5a788",
       "title": "Previa | Segundo intento en Abegondo para el Fabril",
@@ -95,18 +110,6 @@
         "aficion",
         "club"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "3f7b71e9922dc61a",
-      "title": "Miguel Loureiro, Lucas Boyé y un polémico duelo que lo desequilibró todo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/miguel-loureiro-lucas-boye-y-un-polemico-duelo-que-lo-desequilibro-todo-892381.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-21T17:29:16Z",
-      "kind": "article",
-      "summary": "El defensa del Deportivo reclamó falta del delantero alavesista en el 2-1: “Me desequilibra por completo”",
-      "thumbnailUrl": "img/news/1fd3295cf38bb861.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T04:33:04Z",
+  "updatedAt": "2026-11-22T11:03:29Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "fc2257862cef24a0",
+      "title": "El Dépor ABANCA pierde ante el Badalona y se mete en un lío antes del parón (2-1)",
+      "url": "https://riazor.org/depor-abanca-pierde-badalona-mete-lio-antes-paron",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-22T10:50:54Z",
+      "kind": "article",
+      "summary": "El Dépor ABANCA perdió 2-1 ante el Badalona y podría irse al parón de selecciones empatado a puntos con los puestos de descenso. La…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/resumen-del-fc-badalona-women-2-.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "a833a52352d5a788",
       "title": "Previa | Segundo intento en Abegondo para el Fabril",
@@ -2168,21 +2183,6 @@
       "summary": "O adestrador do Deportivo amosou a súa tristeza por cómo a expulsión de Michi condicionou o encontro",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/16/6ad20c062e013.r_d.1326-693-0.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "5d779d9319c74d6f",
-      "title": "Rueda de prensa de Alberto Rodríguez tras el Dépor ABANCA 0 - 2 Valencia Fem",
-      "url": "https://youtube.com/watch?v=GOr28bL83lw",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-09T23:35:05Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/GOr28bL83lw/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
