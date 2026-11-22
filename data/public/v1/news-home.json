@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T11:03:29Z",
+  "updatedAt": "2026-11-22T11:32:45Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -38,6 +38,21 @@
       "thumbnailUrl": "img/news/dfdffd6ad736339e.webp",
       "tags": [
         "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "67477942db03eea6",
+      "title": "Cinco apuntes del Alavés-Dépor: Demasiado cambio que no cambió nada",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/cinco-apuntes-del-alaves-depor-demasiado-cambio-que-no-cambio-nada-892491.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T10:39:52Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul completó un pobre partido en la línea del duelo con el Espanyol, marcado por otro inicio que no estuvo a la altura",
+      "thumbnailUrl": "img/news/1f85174b3b003c77.webp",
+      "tags": [
+        "opinion",
         "partido"
       ],
       "alsoIn": []
@@ -94,21 +109,6 @@
       "thumbnailUrl": null,
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "adf82ec8c3440cab",
-      "title": "¿Estuviste en Mendizorroza apoyando al Dépor? ¡Búscate en nuestra galería!",
-      "url": "https://dxtcampeon.elidealgallego.com/audiovisuales/galerias/2026-11-21/estuviste-en-mendizorroza-apoyando-al-depor-buscate-en-nuestra-galeria-892385.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-21T17:31:48Z",
-      "kind": "article",
-      "summary": "La afición del equipo coruñés no falló a su cita y estuvo presente en el estadio del Alavés",
-      "thumbnailUrl": "img/news/bd3162b7f876177e.webp",
-      "tags": [
-        "aficion",
-        "club"
       ],
       "alsoIn": []
     }

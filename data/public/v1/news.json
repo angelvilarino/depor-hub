@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T11:03:29Z",
+  "updatedAt": "2026-11-22T11:32:45Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -54,6 +54,21 @@
       "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/resumen-del-fc-badalona-women-2-.jpg",
       "tags": [
         "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "67477942db03eea6",
+      "title": "Cinco apuntes del Alavés-Dépor: Demasiado cambio que no cambió nada",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/cinco-apuntes-del-alaves-depor-demasiado-cambio-que-no-cambio-nada-892491.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T10:39:52Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul completó un pobre partido en la línea del duelo con el Espanyol, marcado por otro inicio que no estuvo a la altura",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/22/6b02c5a0789e1.jpg",
+      "tags": [
+        "opinion",
         "partido"
       ],
       "alsoIn": []
@@ -2170,18 +2185,6 @@
       "kind": "article",
       "summary": "En la frontera del tercio de competición con un nuevo parón para trabajar, el Dépor alcanza un nivel de juego óptimo en todas las facetas",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/09/6af21b6d03355.r_d.1371-1435-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "0f4273e387bfdc63",
-      "title": "Alberto Rodríguez, sobre a actuación arbitral no Dépor-Valencia: \"Non teño claro que o criterio se mantivese sempre\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-10/alberto-rodriguez-sobre-a-actuacion-arbitral-no-depor-valencia-non-teno-claro-que-o-criterio-se-mantivese-sempre-890114.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-09T23:43:03Z",
-      "kind": "article",
-      "summary": "O adestrador do Deportivo amosou a súa tristeza por cómo a expulsión de Michi condicionou o encontro",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/16/6ad20c062e013.r_d.1326-693-0.jpg",
       "tags": [],
       "alsoIn": []
     }
