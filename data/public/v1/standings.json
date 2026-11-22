@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T15:10:59Z",
+  "updatedAt": "2026-11-22T06:17:01Z",
   "season": "2026-27",
   "matchday": 13,
   "table": [
@@ -31,14 +31,14 @@
         "tla": "RMA",
         "crestUrl": "https://crests.football-data.org/86.png"
       },
-      "played": 12,
-      "won": 10,
+      "played": 13,
+      "won": 11,
       "draw": 0,
       "lost": 2,
-      "points": 30,
-      "goalsFor": 31,
-      "goalsAgainst": 10,
-      "goalDifference": 21,
+      "points": 33,
+      "goalsFor": 33,
+      "goalsAgainst": 11,
+      "goalDifference": 22,
       "form": null
     },
     {
@@ -69,13 +69,13 @@
         "tla": "BET",
         "crestUrl": "https://crests.football-data.org/90.png"
       },
-      "played": 12,
+      "played": 13,
       "won": 8,
-      "draw": 2,
+      "draw": 3,
       "lost": 2,
-      "points": 26,
-      "goalsFor": 20,
-      "goalsAgainst": 15,
+      "points": 27,
+      "goalsFor": 21,
+      "goalsAgainst": 16,
       "goalDifference": 5,
       "form": null
     },
@@ -107,13 +107,13 @@
         "tla": "SEV",
         "crestUrl": "https://crests.football-data.org/559.png"
       },
-      "played": 12,
+      "played": 13,
       "won": 5,
-      "draw": 3,
+      "draw": 4,
       "lost": 4,
-      "points": 18,
-      "goalsFor": 17,
-      "goalsAgainst": 19,
+      "points": 19,
+      "goalsFor": 18,
+      "goalsAgainst": 20,
       "goalDifference": -2,
       "form": null
     },
@@ -240,14 +240,14 @@
         "tla": "CEL",
         "crestUrl": "https://crests.football-data.org/558.png"
       },
-      "played": 12,
+      "played": 13,
       "won": 2,
       "draw": 7,
-      "lost": 3,
+      "lost": 4,
       "points": 13,
-      "goalsFor": 10,
-      "goalsAgainst": 10,
-      "goalDifference": 0,
+      "goalsFor": 11,
+      "goalsAgainst": 12,
+      "goalDifference": -1,
       "form": null
     },
     {
@@ -259,14 +259,14 @@
         "tla": "RAY",
         "crestUrl": "https://crests.football-data.org/87.png"
       },
-      "played": 11,
+      "played": 12,
       "won": 3,
       "draw": 3,
-      "lost": 5,
+      "lost": 6,
       "points": 12,
       "goalsFor": 15,
-      "goalsAgainst": 21,
-      "goalDifference": -6,
+      "goalsAgainst": 22,
+      "goalDifference": -7,
       "form": null
     },
     {
@@ -310,6 +310,25 @@
     {
       "position": 17,
       "team": {
+        "id": 95,
+        "name": "Valencia CF",
+        "shortName": "Valencia",
+        "tla": "VAL",
+        "crestUrl": "https://crests.football-data.org/95.png"
+      },
+      "played": 13,
+      "won": 3,
+      "draw": 3,
+      "lost": 7,
+      "points": 12,
+      "goalsFor": 9,
+      "goalsAgainst": 20,
+      "goalDifference": -11,
+      "form": null
+    },
+    {
+      "position": 18,
+      "team": {
         "id": 88,
         "name": "Levante UD",
         "shortName": "Levante",
@@ -327,7 +346,7 @@
       "form": null
     },
     {
-      "position": 18,
+      "position": 19,
       "team": {
         "id": 285,
         "name": "Elche CF",
@@ -343,25 +362,6 @@
       "goalsFor": 14,
       "goalsAgainst": 20,
       "goalDifference": -6,
-      "form": null
-    },
-    {
-      "position": 19,
-      "team": {
-        "id": 95,
-        "name": "Valencia CF",
-        "shortName": "Valencia",
-        "tla": "VAL",
-        "crestUrl": "https://crests.football-data.org/95.png"
-      },
-      "played": 12,
-      "won": 2,
-      "draw": 3,
-      "lost": 7,
-      "points": 9,
-      "goalsFor": 8,
-      "goalsAgainst": 20,
-      "goalDifference": -12,
       "form": null
     },
     {
