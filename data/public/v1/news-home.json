@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T22:04:04Z",
+  "updatedAt": "2026-11-22T04:33:04Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -27,6 +27,33 @@
     }
   ],
   "stories": [
+    {
+      "id": "a833a52352d5a788",
+      "title": "Previa | Segundo intento en Abegondo para el Fabril",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-22/previa-segundo-intento-en-abegondo-para-el-fabril-892395.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T03:32:00Z",
+      "kind": "article",
+      "summary": "El filial repite en el Arsenio Iglesias ante el Coria con la urgencia de volver a la senda del triunfo",
+      "thumbnailUrl": "img/news/cc6e528159c69c1c.webp",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "622043f6a79ae321",
+      "title": "La paradoja en Vitoria: el Alavés ganó la pelea que el Dépor quiso evitar",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/la-paradoja-en-vitoria-el-alaves-gano-la-pelea-que-el-depor-quiso-evitar-892374.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T03:25:00Z",
+      "kind": "article",
+      "summary": "Hidalgo apostó por sumar centrocampistas para contrarrestar el juego directo de los locales, pero Boyé y Toni Martínez encontraron un…",
+      "thumbnailUrl": "img/news/e4006c56afb73b00.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "818209be75d033c1",
       "title": "Resumen del Deportivo Alavés 3 - 1 RC Deportivo",
@@ -80,32 +107,6 @@
       "summary": "El defensa del Deportivo reclamó falta del delantero alavesista en el 2-1: “Me desequilibra por completo”",
       "thumbnailUrl": "img/news/1fd3295cf38bb861.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "59787ad5c4cf1f38",
-      "title": "Hidalgo, harto de etiquetas: \"Aquí parece que solo gasta el Dépor\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/hidalgo-harto-de-etiquetas-aqui-parece-que-solo-gasta-el-depor-892367.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-21T15:56:01Z",
-      "kind": "article",
-      "summary": "El técnico blanquiazul reconoce la superioridad del Alavés y exige más intensidad",
-      "thumbnailUrl": "img/news/5d2c7594a70be821.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "94b02bae84ef4d81",
-      "title": "Marc Casadó: \"Nos hemos encontrado un gol temprano y nos ha costado\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-21/marc-casado-nos-hemos-encontrado-un-gol-temprano-y-nos-ha-costado-892362.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-21T15:54:03Z",
-      "kind": "article",
-      "summary": "El centrocampista catalán fue titular y jugó los 90 minutos en Mendizorroza",
-      "thumbnailUrl": "img/news/e63e4c22e873a0e6.webp",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
