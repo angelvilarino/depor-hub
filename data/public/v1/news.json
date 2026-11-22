@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T19:32:50Z",
+  "updatedAt": "2026-11-22T20:04:17Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -55,6 +55,21 @@
       "tags": [
         "cantera",
         "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "a7e3fc5548d4381f",
+      "title": "El 1x1 del Fabril-Coria: Héroes de la reacción, víctimas del desenlace",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-22/1x1-fabril-coria-heroes-reaccion-victimas-desenlace-892507.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T19:05:54Z",
+      "kind": "article",
+      "summary": "Las notas de los jugadores del filial blanquiazul en una tarde en la que ocurrió de todo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/22/6b0320e449b52.jpg",
+      "tags": [
+        "cantera",
+        "opinion"
       ],
       "alsoIn": []
     },
@@ -2179,21 +2194,6 @@
       "summary": "David Mella explica en Radio Marca por qué rechazó al Brighton para seguir en el Deportivo y confiesa su deseo para esta temporada…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "9364d7c124b9681a",
-      "title": "«Leo Román es el mejor portero del plantel y es buena noticia que se convenza de ello»: las claves de Manu Sánchez tras el Espanyol – Deportivo",
-      "url": "https://riazor.org/leo-roman-mejor-portero-claves-espanyol-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-11T06:00:16Z",
-      "kind": "article",
-      "summary": "El extécnico del Dépor ABANCA analiza las claves del empate del Deportivo ante el Espanyol justo antes del segundo parón del curso. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
