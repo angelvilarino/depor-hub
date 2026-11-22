@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T11:32:45Z",
+  "updatedAt": "2026-11-22T13:03:48Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "d975ace3aaa31bb4",
+      "title": "Fabril – Coria: Otro rival directo y otra vez en Abegondo",
+      "url": "https://riazor.org/fabril-coria-rival-directo-otra-vez-abegondo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-22T13:00:39Z",
+      "kind": "article",
+      "summary": "El Fabril recibe este domingo (16:00 horas) al CD Coria en Abegondo. Los dos recién ascendidos se enfrentarán en un duelo directo por la…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "fc2257862cef24a0",
       "title": "El Dépor ABANCA pierde ante el Badalona y se mete en un lío antes del parón (2-1)",
@@ -2174,18 +2188,6 @@
         "cantera",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "034837a250f2ac7d",
-      "title": "El Deportivo de Primera División: una radiografía a través de siete métricas",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-10/el-deportivo-de-primera-division-una-radiografia-a-traves-de-siete-metricas-890050.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-10T04:00:00Z",
-      "kind": "article",
-      "summary": "En la frontera del tercio de competición con un nuevo parón para trabajar, el Dépor alcanza un nivel de juego óptimo en todas las facetas",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/09/6af21b6d03355.r_d.1371-1435-0.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]
