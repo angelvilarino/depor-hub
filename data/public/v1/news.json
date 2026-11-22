@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T13:32:44Z",
+  "updatedAt": "2026-11-22T16:32:39Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "3e41b1c98e390cac",
+      "title": "El calentón de Fermín que le costó la roja ante el Villarreal y su baja en el Dépor-Barça: \"No me jodas\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/rivales/2026-11-22/el-calenton-de-fermin-que-le-costo-la-roja-ante-el-villarreal-y-su-baja-en-el-depor-barca-no-me-jodas-892542.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T16:23:37Z",
+      "kind": "article",
+      "summary": "El atacante culé fue expulsado tras ser sustituido después de marcar uno de los goles de la remontada azulgrana (3-2)",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/22/6b0313d5ded75.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "d975ace3aaa31bb4",
       "title": "Fabril – Coria: Otro rival directo y otra vez en Abegondo",
@@ -2171,20 +2185,6 @@
       "summary": "A unos días de cumplir los 30, Miguel Loureiro se consolida en la defensa del Deportivo después de escalar en la rotación de Hidalgo",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/10/6af2ee72ab5a1.r_d.1500-1000-0.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "b05af74b8f70c84b",
-      "title": "David Mella se entrena con la absoluta de De la Fuente: qué significa y qué no para el deportivista",
-      "url": "https://riazor.org/david-mella-se-entrena-con-la-absoluta-de-de-la-fuente-que-significa-y-que-no-para-el-deportivista",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-10T08:54:50Z",
-      "kind": "article",
-      "summary": "David Mella se entrenó con la absoluta de De la Fuente en Las Rozas. No es una convocatoria: qué hizo, por qué estaba allí y cuándo juega…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

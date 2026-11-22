@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T13:32:44Z",
+  "updatedAt": "2026-11-22T16:32:39Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "3e41b1c98e390cac",
+      "title": "El calentón de Fermín que le costó la roja ante el Villarreal y su baja en el Dépor-Barça: \"No me jodas\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/rivales/2026-11-22/el-calenton-de-fermin-que-le-costo-la-roja-ante-el-villarreal-y-su-baja-en-el-depor-barca-no-me-jodas-892542.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T16:23:37Z",
+      "kind": "article",
+      "summary": "El atacante culé fue expulsado tras ser sustituido después de marcar uno de los goles de la remontada azulgrana (3-2)",
+      "thumbnailUrl": "img/news/9131a22be1d8a9d0.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "d975ace3aaa31bb4",
       "title": "Fabril – Coria: Otro rival directo y otra vez en Abegondo",
@@ -88,18 +102,6 @@
         "cantera",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "622043f6a79ae321",
-      "title": "La paradoja en Vitoria: el Alavés ganó la pelea que el Dépor quiso evitar",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/la-paradoja-en-vitoria-el-alaves-gano-la-pelea-que-el-depor-quiso-evitar-892374.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-22T03:25:00Z",
-      "kind": "article",
-      "summary": "Hidalgo apostó por sumar centrocampistas para contrarrestar el juego directo de los locales, pero Boyé y Toni Martínez encontraron un…",
-      "thumbnailUrl": "img/news/e4006c56afb73b00.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
