@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T16:32:39Z",
+  "updatedAt": "2026-11-22T17:32:41Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,35 @@
     }
   ],
   "stories": [
+    {
+      "id": "ef89e69f5ce323a4",
+      "title": "Crónica | Seis goles, tres penaltis y un inexplicable empate en Abegondo (3-3)",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-22/cronica-seis-goles-tres-penaltis-y-un-inexplicable-empate-en-abegondo-3-892505.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T17:24:10Z",
+      "kind": "article",
+      "summary": "El Fabril dejó escapar ante el Coria una victoria que tenía prácticamente asegurada, después de llegar al minuto 90 con dos goles de ventaja",
+      "thumbnailUrl": "img/news/e75bdacbb17324e7.webp",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "f2c814a7a66c590e",
+      "title": "El Dépor rompe su resistencia: fin a ocho meses sin caer por dos goles",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/el-depor-rompe-su-resistencia-fin-a-ocho-meses-sin-caer-por-dos-goles-892544.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T17:06:06Z",
+      "kind": "article",
+      "summary": "En Vitoria se cortó una racha de 26 partidos oficiales sin perder por más de un tanto... y ahora viene el Barça",
+      "thumbnailUrl": "img/news/08b0606574112b75.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3e41b1c98e390cac",
       "title": "El calentón de Fermín que le costó la roja ante el Villarreal y su baja en el Dépor-Barça: \"No me jodas\"",
@@ -68,36 +97,6 @@
       "kind": "article",
       "summary": "El Dépor ABANCA perdió 2-1 ante el Badalona y podría irse al parón de selecciones empatado a puntos con los puestos de descenso. La…",
       "thumbnailUrl": "img/news/dfdffd6ad736339e.webp",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "67477942db03eea6",
-      "title": "Cinco apuntes del Alavés-Dépor: Demasiado cambio que no cambió nada",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/cinco-apuntes-del-alaves-depor-demasiado-cambio-que-no-cambio-nada-892491.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-22T10:39:52Z",
-      "kind": "article",
-      "summary": "El equipo blanquiazul completó un pobre partido en la línea del duelo con el Espanyol, marcado por otro inicio que no estuvo a la altura",
-      "thumbnailUrl": "img/news/1f85174b3b003c77.webp",
-      "tags": [
-        "opinion",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "a833a52352d5a788",
-      "title": "Previa | Segundo intento en Abegondo para el Fabril",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-22/previa-segundo-intento-en-abegondo-para-el-fabril-892395.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-22T03:32:00Z",
-      "kind": "article",
-      "summary": "El filial repite en el Arsenio Iglesias ante el Coria con la urgencia de volver a la senda del triunfo",
-      "thumbnailUrl": "img/news/cc6e528159c69c1c.webp",
       "tags": [
         "cantera",
         "partido"

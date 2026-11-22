@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T16:32:39Z",
+  "updatedAt": "2026-11-22T17:32:41Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,35 @@
     }
   ],
   "stories": [
+    {
+      "id": "ef89e69f5ce323a4",
+      "title": "Crónica | Seis goles, tres penaltis y un inexplicable empate en Abegondo (3-3)",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-22/cronica-seis-goles-tres-penaltis-y-un-inexplicable-empate-en-abegondo-3-892505.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T17:24:10Z",
+      "kind": "article",
+      "summary": "El Fabril dejó escapar ante el Coria una victoria que tenía prácticamente asegurada, después de llegar al minuto 90 con dos goles de ventaja",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/22/6b0320dd25c99.r_d.1540-1232-0.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "f2c814a7a66c590e",
+      "title": "El Dépor rompe su resistencia: fin a ocho meses sin caer por dos goles",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/el-depor-rompe-su-resistencia-fin-a-ocho-meses-sin-caer-por-dos-goles-892544.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T17:06:06Z",
+      "kind": "article",
+      "summary": "En Vitoria se cortó una racha de 26 partidos oficiales sin perder por más de un tanto... y ahora viene el Barça",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/22/6b0318a13bf16.r_d.1891-927-0.JPG",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3e41b1c98e390cac",
       "title": "El calentón de Fermín que le costó la roja ante el Villarreal y su baja en el Dépor-Barça: \"No me jodas\"",
@@ -2157,33 +2186,6 @@
       "kind": "article",
       "summary": "El conjunto deportivista fue incapaz en todas las zonas de ataque y sufrió en defensa, hasta que ajustó la presión con la entrada de…",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/10/6af30fc8f0b5b.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "161bfd4253a6f8b0",
-      "title": "El menú para el deportivismo durante el parón de selecciones",
-      "url": "https://riazor.org/menu-deportivismo-durante-paron-selecciones",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-10T12:00:54Z",
-      "kind": "article",
-      "summary": "Repasamos las fechas a anotar por la afición del Deportivo en el parón de selecciones: partidos de Dépor ABANCA, Fabril e internacionales…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3a3fd0bf84790329",
-      "title": "Miguel Loureiro se lo pone difícil a los chavales del Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-10/miguel-loureiro-se-lo-pone-dificil-a-los-chavales-del-depor-890124.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-10T10:16:57Z",
-      "kind": "article",
-      "summary": "A unos días de cumplir los 30, Miguel Loureiro se consolida en la defensa del Deportivo después de escalar en la rotación de Hidalgo",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/10/6af2ee72ab5a1.r_d.1500-1000-0.jpg",
       "tags": [],
       "alsoIn": []
     }
