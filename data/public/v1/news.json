@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T19:03:48Z",
+  "updatedAt": "2026-11-22T19:32:50Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "d80332ee8b11458b",
+      "title": "Resumen del Fabril 3 - 3 CD Coria",
+      "url": "https://youtube.com/watch?v=F2jvuHuIrHU",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-22T19:20:25Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i3.ytimg.com/vi/F2jvuHuIrHU/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "e3348e035bdd46c7",
       "title": "El 1x1 del Fabril-Coria: Héroes de la reacción, víctimas del desenlace",
@@ -2177,20 +2192,6 @@
       "thumbnailUrl": null,
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "bacaafe0454735b3",
-      "title": "Mella: \"Sueño con Europa con el Dépor y con el Europeo con la Sub 21\"",
-      "url": "https://marca.com/radio/2026/11/10/mella-sueno-europa-depor-europeo-sub-21.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-10T21:15:36Z",
-      "kind": "article",
-      "summary": "El futbolista del Deportivo vive su primera convocatoria con la Sub-21 habla en 'Otra Ronda'",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/10/6af38923ae019.jpeg",
-      "tags": [
         "partido"
       ],
       "alsoIn": []
