@@ -1,14 +1,6 @@
 {
-  "updatedAt": "2026-11-22T13:03:48Z",
+  "updatedAt": "2026-11-22T13:32:44Z",
   "sources": [
-    {
-      "id": "youtube-club",
-      "name": "RC Deportivo (YouTube)",
-      "group": "club",
-      "kind": "video",
-      "homepage": "https://www.youtube.com/@rcdeportivo",
-      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
-    },
     {
       "id": "riazor",
       "name": "Riazor.org",
@@ -39,6 +31,18 @@
       "tags": [
         "cantera"
       ],
+      "alsoIn": []
+    },
+    {
+      "id": "1018a58e4dd577d4",
+      "title": "Denis Suárez y su dardo a A Coruña tras el Alavés-Dépor: \"Necesitan un poco de humildad, vienen de diez años en Segunda\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/denis-suarez-y-su-dardo-a-a-coruna-tras-el-alaves-depor-necesitan-un-poco-de-humildad-vienen-de-diez-anos-en-segunda-892504.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-22T13:00:24Z",
+      "kind": "article",
+      "summary": "El canterano del Celta, que cerró el triunfo vitoriano con el 3-1, se mostró molesto con algunos mensajes de medios de comunicación",
+      "thumbnailUrl": "img/news/94ab3cb0544412b1.webp",
+      "tags": [],
       "alsoIn": []
     },
     {
@@ -96,20 +100,6 @@
       "summary": "Hidalgo apostó por sumar centrocampistas para contrarrestar el juego directo de los locales, pero Boyé y Toni Martínez encontraron un…",
       "thumbnailUrl": "img/news/e4006c56afb73b00.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "818209be75d033c1",
-      "title": "Resumen del Deportivo Alavés 3 - 1 RC Deportivo",
-      "url": "https://youtube.com/watch?v=XXKRFRthTX0",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-21T22:00:32Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "img/news/4e2484153da2d627.webp",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
