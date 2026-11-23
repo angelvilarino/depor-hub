@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T05:05:28Z",
+  "updatedAt": "2026-11-23T06:09:48Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "aee4a620918fe9ee",
+      "title": "¿Viajaste a Vitoria para animar al Dépor? ¡Búscate en nuestra galería de la afición del Alavés – Deportivo!",
+      "url": "https://riazor.org/buscate-nuestra-galeria-aficion-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T06:00:22Z",
+      "kind": "article",
+      "summary": "Centenares de aficionados animaron al Dépor en las gradas de Mendizorrotza. Búscate en nuestra galería de público del Alavés - Deportivo…",
+      "thumbnailUrl": null,
+      "tags": [
+        "aficion"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "fcd700ec1038778b",
       "title": "Un Dépor débil, sin intensidad y a merced de lo que propuso el Alavés",
@@ -2179,21 +2193,6 @@
       "summary": "Bebeto ha recibido un nuevo reconocimiento a su carrera. La leyenda deportivista ha entrado en el Salón de la Fama del Fútbol…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "a7ce5ea557c066ae",
-      "title": "Rueda de prensa de Alberto Rodríguez previa al partido de Copa De La REINA CE Europa - Dépor ABANCA",
-      "url": "https://youtube.com/watch?v=GOiBHtBbfNA",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-11T10:50:26Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/GOiBHtBbfNA/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

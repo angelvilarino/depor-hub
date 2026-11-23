@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T05:05:28Z",
+  "updatedAt": "2026-11-23T06:09:48Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -35,6 +35,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "aee4a620918fe9ee",
+      "title": "¿Viajaste a Vitoria para animar al Dépor? ¡Búscate en nuestra galería de la afición del Alavés – Deportivo!",
+      "url": "https://riazor.org/buscate-nuestra-galeria-aficion-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T06:00:22Z",
+      "kind": "article",
+      "summary": "Centenares de aficionados animaron al Dépor en las gradas de Mendizorrotza. Búscate en nuestra galería de público del Alavés - Deportivo…",
+      "thumbnailUrl": null,
+      "tags": [
+        "aficion"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "fcd700ec1038778b",
       "title": "Un Dépor débil, sin intensidad y a merced de lo que propuso el Alavés",
@@ -103,20 +117,6 @@
       "thumbnailUrl": "img/news/e75bdacbb17324e7.webp",
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "f2c814a7a66c590e",
-      "title": "El Dépor rompe su resistencia: fin a ocho meses sin caer por dos goles",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-22/el-depor-rompe-su-resistencia-fin-a-ocho-meses-sin-caer-por-dos-goles-892544.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-22T17:06:06Z",
-      "kind": "article",
-      "summary": "En Vitoria se cortó una racha de 26 partidos oficiales sin perder por más de un tanto... y ahora viene el Barça",
-      "thumbnailUrl": "img/news/08b0606574112b75.webp",
-      "tags": [
         "partido"
       ],
       "alsoIn": []
