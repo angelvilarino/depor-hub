@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T18:32:52Z",
+  "updatedAt": "2026-11-23T19:32:44Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "aa2c6cc1931e0971",
+      "title": "El Portugalete vasco, un rival vertical y de ímpetu para el Dépor en la Copa",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/23/portugalete-vasco-rival-vertical-impetu-depor-copa/00031795458933883332478.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-23T18:41:00Z",
+      "kind": "article",
+      "summary": "Añón y Lamas, adversarios ligueros del nuevo contrincante blanquiazul en el torneo del KO, avisan de que es un equipo que obliga a poner…",
+      "thumbnailUrl": "img/news/3a561d9c938c3c6f.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "6f0bfca215c7bcf8",
       "title": "Óscar Gilsanz, el favorito de Unionistas para su banquillo",
@@ -97,21 +111,6 @@
       "thumbnailUrl": null,
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "b1193d3253910351",
-      "title": "El documental «Dépor, voa» llegará a los cines el próximo 26 de diciembre",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/23/documental-depor-voa-llegara-cines-proximo-26-diciembre/00031795443518311928596.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-23T14:37:00Z",
-      "kind": "article",
-      "summary": "La pieza mostrará imágenes inéditas del ascenso a Primera y cómo se vivió el mercado de fichajes; la preventa de entradas dará comienzo…",
-      "thumbnailUrl": "img/news/5d61a12b7e51fc17.webp",
-      "tags": [
-        "fichajes",
         "partido"
       ],
       "alsoIn": []

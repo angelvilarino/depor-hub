@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T18:32:52Z",
+  "updatedAt": "2026-11-23T19:32:44Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "aa2c6cc1931e0971",
+      "title": "El Portugalete vasco, un rival vertical y de ímpetu para el Dépor en la Copa",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/23/portugalete-vasco-rival-vertical-impetu-depor-copa/00031795458933883332478.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-23T18:41:00Z",
+      "kind": "article",
+      "summary": "Añón y Lamas, adversarios ligueros del nuevo contrincante blanquiazul en el torneo del KO, avisan de que es un equipo que obliga a poner…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/WGmoxnV4TFMUE_qPgrtBtHr7Yjc=/768x/2026/11/23/00121795459022800602482/Foto/c_20260927_192235000.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "6f0bfca215c7bcf8",
       "title": "Óscar Gilsanz, el favorito de Unionistas para su banquillo",
@@ -2182,20 +2196,6 @@
       "summary": "El central polaco sigue con su proceso de recuperación y espera estar listo ante el Alavés",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/13/6af72a222bec3.r_d.707-1273-0.jfif",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "18dfcbe9f5fea66b",
-      "title": "Son de Riazor, con público: programa especial sobre la cantera el viernes 13 de noviembre en MULLIGAN",
-      "url": "https://riazor.org/son-de-riazor-con-publico-programa-especial-sobre-la-cantera-el-viernes-13-de-noviembre-en-mulligan",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-13T13:00:39Z",
-      "kind": "article",
-      "summary": "Son de Riazor emite un programa especial sobre la cantera el viernes 13 de noviembre a las 20:00 en MULLIGAN (Rúa Franja, 53). Aforo…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/son-de-riazor-especial-debate-web-1404x672-2.jpg",
-      "tags": [
-        "cantera"
-      ],
       "alsoIn": []
     }
   ]
