@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T13:05:02Z",
+  "updatedAt": "2026-11-23T14:04:41Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "3a1e26c5567f7bac",
+      "title": "Cedidos del Dépor: El Huesca de Diego Gómez, en apuros en Primera Federación",
+      "url": "https://riazor.org/cedidos-depor-huesca-diego-gomez-apuros-primera",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T14:00:23Z",
+      "kind": "article",
+      "summary": "Repasamos la jornada de los cedidos: dura derrota del Huesca de Diego Gómez, que se queda a las puertas de la zona de descenso. La entrada…",
+      "thumbnailUrl": "img/news/5e93b510667a310c.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "54851ad46efd589c",
       "title": "Directo | Orden y Talento #56: Así vimos el Alavés 3-1 Dépor",
@@ -84,21 +98,6 @@
       "summary": "El equipo blanquiazul recibirá al conjunto vasco en Riazor después de viajar a Santander",
       "thumbnailUrl": "img/news/53611bd131c8b2a0.webp",
       "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "2c9c03f07f74a753",
-      "title": "Lamine Yamal, entre algodones antes del Dépor-Barça",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/lamine-yamal-entre-algodones-antes-del-depor-barca-892644.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-23T10:06:22Z",
-      "kind": "article",
-      "summary": "El extremo sufres unas molestias en el tobillo y no jugará el partido de Champions League de este miércoles",
-      "thumbnailUrl": "img/news/d6d0038c771d99d9.webp",
-      "tags": [
-        "lesiones",
         "partido"
       ],
       "alsoIn": []
