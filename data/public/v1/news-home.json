@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T09:06:14Z",
+  "updatedAt": "2026-11-23T09:40:09Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -35,6 +35,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "9fc24c2d55e022a9",
+      "title": "El documental 'Dépor, voa' podrá verse en los cines de A Coruña estas Navidades",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/el-documental-depor-voa-podra-verse-en-los-cines-de-a-coruna-estas-navidades-892637.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-23T09:15:42Z",
+      "kind": "article",
+      "summary": "La pieza audiovisual sobre el regreso a primera",
+      "thumbnailUrl": "img/news/2416eb5075c105d5.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "3144057d37ac32e1",
       "title": "¿Quién puede tocarle al Dépor en la Copa? 17 rivales, pero ocho se llevan el 89% de las opciones",
@@ -102,21 +114,6 @@
       "tags": [
         "cantera",
         "opinion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "47f5d20ec75c8ba4",
-      "title": "El Fabril colapsa en el descuento y deja escapar dos puntos ante el Coria (3-3)",
-      "url": "https://riazor.org/fabril-colapsa-descuento-escapar-dos-puntos-coria",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-22T17:30:46Z",
-      "kind": "article",
-      "summary": "Crónica y resultado del Fabril – Coria de la jornada 13 de Primera Federación, que finalizó en empate tras un dramático final de partido…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
       ],
       "alsoIn": []
     }
