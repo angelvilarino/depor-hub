@@ -1,14 +1,6 @@
 {
-  "updatedAt": "2026-11-23T09:40:09Z",
+  "updatedAt": "2026-11-23T10:33:12Z",
   "sources": [
-    {
-      "id": "youtube-club",
-      "name": "RC Deportivo (YouTube)",
-      "group": "club",
-      "kind": "video",
-      "homepage": "https://www.youtube.com/@rcdeportivo",
-      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
-    },
     {
       "id": "riazor",
       "name": "Riazor.org",
@@ -24,17 +16,53 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
-    },
-    {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "7a0800064dc19da8",
+      "title": "Lamine Yamal se reserva para Riazor: no jugará en Champions pero sí ante el Dépor",
+      "url": "https://riazor.org/lamine-yamal-se-reserva-para-riazor-no-jugara-en-champions-pero-si-ante-el-depor",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T10:27:34Z",
+      "kind": "article",
+      "summary": "El Barcelona comunica que Lamine Yamal sufre unas leves molestias en su tobillo derecho. No jugará en Champions pero sí llegará al partido…",
+      "thumbnailUrl": null,
+      "tags": [
+        "lesiones",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "39b9f5d7bedeb5cc",
+      "title": "El Dépor-Athletic de la jornada 16 ya tiene fecha y hora",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/el-depor-athletic-de-la-jornada-16-ya-tiene-fecha-y-hora-892646.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-23T10:10:20Z",
+      "kind": "article",
+      "summary": "El equipo blanquiazul recibirá al conjunto vasco en Riazor después de viajar a Santander",
+      "thumbnailUrl": "img/news/53611bd131c8b2a0.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "2c9c03f07f74a753",
+      "title": "Lamine Yamal, entre algodones antes del Dépor-Barça",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/lamine-yamal-entre-algodones-antes-del-depor-barca-892644.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-23T10:06:22Z",
+      "kind": "article",
+      "summary": "El extremo sufres unas molestias en el tobillo y no jugará el partido de Champions League de este miércoles",
+      "thumbnailUrl": "img/news/6bb0a2ea73ef7d75.webp",
+      "tags": [
+        "lesiones",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "9fc24c2d55e022a9",
       "title": "El documental 'Dépor, voa' podrá verse en los cines de A Coruña estas Navidades",
@@ -72,48 +100,6 @@
       "thumbnailUrl": null,
       "tags": [
         "aficion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "fcd700ec1038778b",
-      "title": "Un Dépor débil, sin intensidad y a merced de lo que propuso el Alavés",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/22/depor-debil-intensidad-merced-propuso-alaves/00031795378631454810551.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-23T04:00:00Z",
-      "kind": "article",
-      "summary": "El calendario se complica e Hidalgo debe ponerles las pilas a los jugadores",
-      "thumbnailUrl": "img/news/6bc245864a58ab8e.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "d80332ee8b11458b",
-      "title": "Resumen del Fabril 3 - 3 CD Coria",
-      "url": "https://youtube.com/watch?v=F2jvuHuIrHU",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-22T19:20:25Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "img/news/e42e7d276c6bfcf6.webp",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "a7e3fc5548d4381f",
-      "title": "El 1x1 del Fabril-Coria: Héroes de la reacción, víctimas del desenlace",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-22/1x1-fabril-coria-heroes-reaccion-victimas-desenlace-892507.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-22T19:05:54Z",
-      "kind": "article",
-      "summary": "Las notas de los jugadores del filial blanquiazul en una tarde en la que ocurrió de todo",
-      "thumbnailUrl": "img/news/980e29b0fdcafa64.webp",
-      "tags": [
-        "cantera",
-        "opinion"
       ],
       "alsoIn": []
     }
