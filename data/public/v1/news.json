@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T06:09:48Z",
+  "updatedAt": "2026-11-23T09:06:14Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "3144057d37ac32e1",
+      "title": "¿Quién puede tocarle al Dépor en la Copa? 17 rivales, pero ocho se llevan el 89% de las opciones",
+      "url": "https://riazor.org/quien-puede-tocarle-depor-copa-segunda-ronda",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T08:38:25Z",
+      "kind": "article",
+      "summary": "El Dépor conoce este lunes 23 de noviembre a su rival en la Copa del Rey. Los 17 candidatos, la probabilidad de cada uno y el encaje en el…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "aee4a620918fe9ee",
       "title": "¿Viajaste a Vitoria para animar al Dépor? ¡Búscate en nuestra galería de la afición del Alavés – Deportivo!",
@@ -2181,18 +2195,6 @@
       "tags": [
         "lesiones"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "c63d016e4f206fbe",
-      "title": "Bebeto entra en el Salón de la Fama y se acuerda del Dépor: «Volvieron al sitio del que nunca deberían salir»",
-      "url": "https://riazor.org/bebeto-salon-fama-acuerda-depor-sitio-nunca-salir",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-11T11:21:11Z",
-      "kind": "article",
-      "summary": "Bebeto ha recibido un nuevo reconocimiento a su carrera. La leyenda deportivista ha entrado en el Salón de la Fama del Fútbol…",
-      "thumbnailUrl": null,
-      "tags": [],
       "alsoIn": []
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T06:09:48Z",
+  "updatedAt": "2026-11-23T09:06:14Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -35,6 +35,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "3144057d37ac32e1",
+      "title": "¿Quién puede tocarle al Dépor en la Copa? 17 rivales, pero ocho se llevan el 89% de las opciones",
+      "url": "https://riazor.org/quien-puede-tocarle-depor-copa-segunda-ronda",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T08:38:25Z",
+      "kind": "article",
+      "summary": "El Dépor conoce este lunes 23 de noviembre a su rival en la Copa del Rey. Los 17 candidatos, la probabilidad de cada uno y el encaje en el…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "aee4a620918fe9ee",
       "title": "¿Viajaste a Vitoria para animar al Dépor? ¡Búscate en nuestra galería de la afición del Alavés – Deportivo!",
@@ -100,21 +114,6 @@
       "kind": "article",
       "summary": "Crónica y resultado del Fabril – Coria de la jornada 13 de Primera Federación, que finalizó en empate tras un dramático final de partido…",
       "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ef89e69f5ce323a4",
-      "title": "Crónica | Seis goles, tres penaltis y un inexplicable empate en Abegondo (3-3)",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-22/cronica-seis-goles-tres-penaltis-y-un-inexplicable-empate-en-abegondo-3-892505.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-22T17:24:10Z",
-      "kind": "article",
-      "summary": "El Fabril dejó escapar ante el Coria una victoria que tenía prácticamente asegurada, después de llegar al minuto 90 con dos goles de ventaja",
-      "thumbnailUrl": "img/news/e75bdacbb17324e7.webp",
       "tags": [
         "cantera",
         "partido"
