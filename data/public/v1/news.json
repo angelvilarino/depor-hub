@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T10:33:12Z",
+  "updatedAt": "2026-11-23T11:33:22Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,34 @@
   ],
   "stories": [
     {
+      "id": "88903660ee2c96bf",
+      "title": "Del ascenso a Aubameyang: «Dépor, voa» llega a los cines el 26 de diciembre",
+      "url": "https://riazor.org/del-ascenso-a-aubameyang-depor-voa-llega-a-los-cines-el-26-de-diciembre",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T11:31:48Z",
+      "kind": "article",
+      "summary": "El documental del Dépor se estrena el 26 de diciembre en Los Cantones Cines, con preventa desde este martes 24 a las 12:00 horas en…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "d8cf56efe5d42ac0",
+      "title": "El Dépor conoce a su rival en la Copa: sigue en directo el sorteo de la segunda ronda",
+      "url": "https://riazor.org/depor-conoce-rival-copa-directo-sorteo-segunda-ronda",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T11:20:40Z",
+      "kind": "article",
+      "summary": "Sigue en directo el sorteo de la segunda ronda de la Copa del Rey. El Deportivo conoce a su rival entre 17 candidatos. Vídeo, criterios y…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/10/auriense-deportivo-antonio-hidalgo.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "7a0800064dc19da8",
       "title": "Lamine Yamal se reserva para Riazor: no jugará en Champions pero sí ante el Dépor",
       "url": "https://riazor.org/lamine-yamal-se-reserva-para-riazor-no-jugara-en-champions-pero-si-ante-el-depor",
@@ -80,7 +108,7 @@
       "publishedAt": "2026-11-23T10:06:22Z",
       "kind": "article",
       "summary": "El extremo sufres unas molestias en el tobillo y no jugará el partido de Champions League de este miércoles",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/09/16/6aab0d6b1c551.r_d.1503-1051-0.jpg",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/23/6b041071861b9.r_d.1636-922-0.jpg",
       "tags": [
         "lesiones",
         "partido"
@@ -2160,32 +2188,6 @@
       "kind": "article",
       "summary": "El centrocampista se midió con Adama Traoré en su primera sesión completa y explicó cómo recortó los plazos tras la operación. La entrada…",
       "thumbnailUrl": null,
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "c72dabb3ac242e82",
-      "title": "Marc Casadó podrá jugar contra el Barcelona en Riazor: su cesión no incluye cláusula del miedo",
-      "url": "https://riazor.org/marc-casado-reencuentra-jugar-barcelona-riazor",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-12T14:10:50Z",
-      "kind": "article",
-      "summary": "La cesión de Marc Casadó no incluye cláusula del miedo: el centrocampista puede jugar el Deportivo-Barcelona del 29 de noviembre (16:15)…",
-      "thumbnailUrl": null,
-      "tags": [
-        "fichajes"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "c40e7f5a96708892",
-      "title": "Marc Casadó sobre su recuperación en tiempo récord: \"Cuando el cirujano me dijo tres meses miré al médico del Dépor y le dije que eso no iba a pasar\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-12/marc-casado-sobre-su-recuperacion-en-tiempo-record-cuando-el-cirujano-me-dijo-tres-meses-mire-al-medico-del-depor-y-le-dije-que-eso-no-iba-a-pasar-890533.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-12T14:10:17Z",
-      "kind": "article",
-      "summary": "\"La clavícula está perfecta. Hasta yo me sorprendo porque no noto nada. Está como nueva\"",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/12/6af5c74d36855.jpeg",
       "tags": [],
       "alsoIn": []
     }

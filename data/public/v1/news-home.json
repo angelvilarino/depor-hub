@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T10:33:12Z",
+  "updatedAt": "2026-11-23T11:33:22Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "88903660ee2c96bf",
+      "title": "Del ascenso a Aubameyang: «Dépor, voa» llega a los cines el 26 de diciembre",
+      "url": "https://riazor.org/del-ascenso-a-aubameyang-depor-voa-llega-a-los-cines-el-26-de-diciembre",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T11:31:48Z",
+      "kind": "article",
+      "summary": "El documental del Dépor se estrena el 26 de diciembre en Los Cantones Cines, con preventa desde este martes 24 a las 12:00 horas en…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "d8cf56efe5d42ac0",
+      "title": "El Dépor conoce a su rival en la Copa: sigue en directo el sorteo de la segunda ronda",
+      "url": "https://riazor.org/depor-conoce-rival-copa-directo-sorteo-segunda-ronda",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T11:20:40Z",
+      "kind": "article",
+      "summary": "Sigue en directo el sorteo de la segunda ronda de la Copa del Rey. El Deportivo conoce a su rival entre 17 candidatos. Vídeo, criterios y…",
+      "thumbnailUrl": "img/news/3f4f86a568edd891.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "7a0800064dc19da8",
       "title": "Lamine Yamal se reserva para Riazor: no jugará en Champions pero sí ante el Dépor",
@@ -56,7 +84,7 @@
       "publishedAt": "2026-11-23T10:06:22Z",
       "kind": "article",
       "summary": "El extremo sufres unas molestias en el tobillo y no jugará el partido de Champions League de este miércoles",
-      "thumbnailUrl": "img/news/6bb0a2ea73ef7d75.webp",
+      "thumbnailUrl": "img/news/d6d0038c771d99d9.webp",
       "tags": [
         "lesiones",
         "partido"
@@ -73,34 +101,6 @@
       "summary": "La pieza audiovisual sobre el regreso a primera",
       "thumbnailUrl": "img/news/2416eb5075c105d5.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "3144057d37ac32e1",
-      "title": "¿Quién puede tocarle al Dépor en la Copa? 17 rivales, pero ocho se llevan el 89% de las opciones",
-      "url": "https://riazor.org/quien-puede-tocarle-depor-copa-segunda-ronda",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-23T08:38:25Z",
-      "kind": "article",
-      "summary": "El Dépor conoce este lunes 23 de noviembre a su rival en la Copa del Rey. Los 17 candidatos, la probabilidad de cada uno y el encaje en el…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "aee4a620918fe9ee",
-      "title": "¿Viajaste a Vitoria para animar al Dépor? ¡Búscate en nuestra galería de la afición del Alavés – Deportivo!",
-      "url": "https://riazor.org/buscate-nuestra-galeria-aficion-alaves-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-23T06:00:22Z",
-      "kind": "article",
-      "summary": "Centenares de aficionados animaron al Dépor en las gradas de Mendizorrotza. Búscate en nuestra galería de público del Alavés - Deportivo…",
-      "thumbnailUrl": null,
-      "tags": [
-        "aficion"
-      ],
       "alsoIn": []
     }
   ]
