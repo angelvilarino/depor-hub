@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T17:32:55Z",
+  "updatedAt": "2026-11-23T18:32:52Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "6f0bfca215c7bcf8",
+      "title": "Óscar Gilsanz, el favorito de Unionistas para su banquillo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-23/oscar-gilsanz-el-favorito-de-unionistas-para-su-banquillo-892763.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-23T18:10:51Z",
+      "kind": "article",
+      "summary": "El técnico betanceiro es el principal candidato para hacerse cargo del equipo charro, próximo rival del Fabril",
+      "thumbnailUrl": "img/news/189f72a890c291d0.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "214906eb954a874c",
       "title": "Leo Román suma méritos bajo palos: las notas del Alavés – Deportivo",
@@ -98,20 +112,6 @@
       "thumbnailUrl": "img/news/5d61a12b7e51fc17.webp",
       "tags": [
         "fichajes",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3a1e26c5567f7bac",
-      "title": "Cedidos del Dépor: El Huesca de Diego Gómez, en apuros en Primera Federación",
-      "url": "https://riazor.org/cedidos-depor-huesca-diego-gomez-apuros-primera",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-23T14:00:23Z",
-      "kind": "article",
-      "summary": "Repasamos la jornada de los cedidos: dura derrota del Huesca de Diego Gómez, que se queda a las puertas de la zona de descenso. La entrada…",
-      "thumbnailUrl": "img/news/5e93b510667a310c.webp",
-      "tags": [
         "partido"
       ],
       "alsoIn": []

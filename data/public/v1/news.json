@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T17:32:55Z",
+  "updatedAt": "2026-11-23T18:32:52Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "6f0bfca215c7bcf8",
+      "title": "Óscar Gilsanz, el favorito de Unionistas para su banquillo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-23/oscar-gilsanz-el-favorito-de-unionistas-para-su-banquillo-892763.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-23T18:10:51Z",
+      "kind": "article",
+      "summary": "El técnico betanceiro es el principal candidato para hacerse cargo del equipo charro, próximo rival del Fabril",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2025/09/11/68c2059ed4caf.jpeg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "214906eb954a874c",
       "title": "Leo Román suma méritos bajo palos: las notas del Alavés – Deportivo",
@@ -2182,18 +2196,6 @@
       "tags": [
         "cantera"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "f88d8ff0b021120b",
-      "title": "El 'mercado' donde Adama Traoré y Giménez son los más cotizados del Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-13/el-mercado-donde-adama-traore-y-gimenez-son-los-mas-cotizados-del-depor-890717.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-13T10:08:15Z",
-      "kind": "article",
-      "summary": "El truque de cromos organizado en la calle Riego de Agua atrae cada domingo a cientos de coleccionistas",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/13/6af6dcd89c0ad.r_d.1433-964-0.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]
