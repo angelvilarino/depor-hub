@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T20:04:17Z",
+  "updatedAt": "2026-11-23T05:05:28Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "fcd700ec1038778b",
+      "title": "Un Dépor débil, sin intensidad y a merced de lo que propuso el Alavés",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/22/depor-debil-intensidad-merced-propuso-alaves/00031795378631454810551.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-23T04:00:00Z",
+      "kind": "article",
+      "summary": "El calendario se complica e Hidalgo debe ponerles las pilas a los jugadores",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/RYMpq1Uz07ZQCZDG4tJNhDKScFk=/768x/2026/11/22/00121795376941902321650/Foto/HN23P33F1_204738.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "d80332ee8b11458b",
       "title": "Resumen del Fabril 3 - 3 CD Coria",
@@ -2182,18 +2194,6 @@
         "cantera",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "eb47b7fbfe5fc85a",
-      "title": "Mella, sobre su ‘no’ al Brighton: «El Dépor me hacía un proyecto deportivo muy bueno y me lo hizo. Aquí estoy»",
-      "url": "https://riazor.org/mella-sobre-su-no-al-brighton-el-depor-me-hacia-un-proyecto-deportivo-muy-bueno-y-me-lo-hizo-aqui-estoy",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-11T09:06:43Z",
-      "kind": "article",
-      "summary": "David Mella explica en Radio Marca por qué rechazó al Brighton para seguir en el Deportivo y confiesa su deseo para esta temporada…",
-      "thumbnailUrl": null,
-      "tags": [],
       "alsoIn": []
     }
   ]
