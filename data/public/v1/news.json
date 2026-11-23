@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T17:04:29Z",
+  "updatedAt": "2026-11-23T17:32:55Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "214906eb954a874c",
+      "title": "Leo Román suma méritos bajo palos: las notas del Alavés – Deportivo",
+      "url": "https://riazor.org/leo-roman-suma-meritos-palos-notas-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T17:15:50Z",
+      "kind": "article",
+      "summary": "Estas son las notas de los jugadores y el cuerpo técnico blanquiazul en el Alavés - Deportivo de la jornada 13 de LaLiga EA Sports. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "0a60ee552e1615d4",
       "title": "El Fabril sigue sin encontrar la salida",
@@ -2179,20 +2194,6 @@
       "summary": "El truque de cromos organizado en la calle Riego de Agua atrae cada domingo a cientos de coleccionistas",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/13/6af6dcd89c0ad.r_d.1433-964-0.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "63897d42879ef2fa",
-      "title": "Nsongo Bil marca en el 2-0 de Camerún ante Namibia: así fue su segundo gol con la absoluta",
-      "url": "https://riazor.org/nsongo-bil-marca-en-el-2-0-de-camerun-ante-namibia-asi-fue-su-segundo-gol-con-la-absoluta",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-13T08:29:01Z",
-      "kind": "article",
-      "summary": "Nsongo Bil remató en el minuto 28 un centro desde la derecha en el Camerún 2-0 Namibia, de la clasificación para la Copa de África 2027…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T17:04:29Z",
+  "updatedAt": "2026-11-23T17:32:55Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "214906eb954a874c",
+      "title": "Leo Román suma méritos bajo palos: las notas del Alavés – Deportivo",
+      "url": "https://riazor.org/leo-roman-suma-meritos-palos-notas-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T17:15:50Z",
+      "kind": "article",
+      "summary": "Estas son las notas de los jugadores y el cuerpo técnico blanquiazul en el Alavés - Deportivo de la jornada 13 de LaLiga EA Sports. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "opinion",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "0a60ee552e1615d4",
       "title": "El Fabril sigue sin encontrar la salida",
@@ -99,18 +114,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "54851ad46efd589c",
-      "title": "Directo | Orden y Talento #56: Así vimos el Alavés 3-1 Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/directo-orden-y-talento-56-asi-vimos-el-alaves-3-1-depor-892663.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-23T13:00:27Z",
-      "kind": "article",
-      "summary": "Lucía Dávila, Bea Arrizado, Xurxo Gómez y",
-      "thumbnailUrl": "img/news/ffebf5dc78d759e0.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
