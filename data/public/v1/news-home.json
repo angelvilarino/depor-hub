@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T15:04:32Z",
+  "updatedAt": "2026-11-23T15:33:16Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,36 @@
     }
   ],
   "stories": [
+    {
+      "id": "7ea71eef75d0ce46",
+      "title": "Eduardo Rivacoba, presidente del Portugalete: \"Le dirán al entrenador del Dépor: 'Cuidado, que en el Portu no son mancos'\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/eduardo-rivacoba-presidente-del-portugalete-le-diran-al-entrenador-del-depor-cuidado-que-en-el-portu-no-son-mancos-892704.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-23T15:28:22Z",
+      "kind": "article",
+      "summary": "El mandatario explica la ilusión por recibir al club blanquiazul en Copa, recuerda una anécdota con Bebeto, detalla el reparto de las más…",
+      "thumbnailUrl": "img/news/6a81818376f19a3a.webp",
+      "tags": [
+        "club",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "7ea5a2fb7e1cc08e",
+      "title": "«No servir balones a Aubameyang es como tener un Ferrari y no echarle gasolina»: las claves de Manu Sánchez tras el Alavés – Deportivo",
+      "url": "https://riazor.org/no-servir-balones-a-aubameyang-es-como-tener-un-ferrari-y-no-echarle-gasolina-las-claves-de-manu-sanchez-tras-el-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T15:00:54Z",
+      "kind": "article",
+      "summary": "El extécnico del Dépor ABANCA analiza las claves de la derrota del Deportivo ante el Alavés en un muy mal partido en Mendizorroza. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "b1193d3253910351",
       "title": "El documental «Dépor, voa» llegará a los cines el próximo 26 de diciembre",
@@ -78,35 +108,6 @@
       "summary": "El documental del Dépor se estrena el 26 de diciembre en Los Cantones Cines, con preventa desde este martes 24 a las 12:00 horas en…",
       "thumbnailUrl": null,
       "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "d8cf56efe5d42ac0",
-      "title": "El Dépor conoce a su rival en la Copa: sigue en directo el sorteo de la segunda ronda",
-      "url": "https://riazor.org/depor-conoce-rival-copa-directo-sorteo-segunda-ronda",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-23T11:20:40Z",
-      "kind": "article",
-      "summary": "Sigue en directo el sorteo de la segunda ronda de la Copa del Rey. El Deportivo conoce a su rival entre 17 candidatos. Vídeo, criterios y…",
-      "thumbnailUrl": "img/news/3f4f86a568edd891.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "7a0800064dc19da8",
-      "title": "Lamine Yamal se reserva para Riazor: no jugará en Champions pero sí ante el Dépor",
-      "url": "https://riazor.org/lamine-yamal-se-reserva-para-riazor-no-jugara-en-champions-pero-si-ante-el-depor",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-23T10:27:34Z",
-      "kind": "article",
-      "summary": "El Barcelona comunica que Lamine Yamal sufre unas leves molestias en su tobillo derecho. No jugará en Champions pero sí llegará al partido…",
-      "thumbnailUrl": null,
-      "tags": [
-        "lesiones",
         "partido"
       ],
       "alsoIn": []

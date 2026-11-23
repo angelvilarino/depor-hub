@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T15:04:32Z",
+  "updatedAt": "2026-11-23T15:33:16Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,36 @@
     }
   ],
   "stories": [
+    {
+      "id": "7ea71eef75d0ce46",
+      "title": "Eduardo Rivacoba, presidente del Portugalete: \"Le dirán al entrenador del Dépor: 'Cuidado, que en el Portu no son mancos'\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/eduardo-rivacoba-presidente-del-portugalete-le-diran-al-entrenador-del-depor-cuidado-que-en-el-portu-no-son-mancos-892704.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-23T15:28:22Z",
+      "kind": "article",
+      "summary": "El mandatario explica la ilusión por recibir al club blanquiazul en Copa, recuerda una anécdota con Bebeto, detalla el reparto de las más…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/23/6b0456c6acbdf.r_d.776-1050-0.jpg",
+      "tags": [
+        "club",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "7ea5a2fb7e1cc08e",
+      "title": "«No servir balones a Aubameyang es como tener un Ferrari y no echarle gasolina»: las claves de Manu Sánchez tras el Alavés – Deportivo",
+      "url": "https://riazor.org/no-servir-balones-a-aubameyang-es-como-tener-un-ferrari-y-no-echarle-gasolina-las-claves-de-manu-sanchez-tras-el-alaves-deportivo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T15:00:54Z",
+      "kind": "article",
+      "summary": "El extécnico del Dépor ABANCA analiza las claves de la derrota del Deportivo ante el Alavés en un muy mal partido en Mendizorroza. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "b1193d3253910351",
       "title": "El documental «Dépor, voa» llegará a los cines el próximo 26 de diciembre",
@@ -2163,33 +2193,6 @@
         "cantera",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "00fdeff454b77def",
-      "title": "Rueda de prensa de Alberto Rodríguez tras el CE Europa 0 - 1 Dépor ABANCA",
-      "url": "https://youtube.com/watch?v=BROStIT14JE",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-12T21:51:02Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i3.ytimg.com/vi/BROStIT14JE/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "0a2b5a35b9ae5df5",
-      "title": "Falas Dépor, charla a charla: horarios, ponentes y moderadores del programa definitivo",
-      "url": "https://riazor.org/falas-depor-charla-a-charla-horarios-ponentes-y-moderadores-del-programa-definitivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-12T19:30:59Z",
-      "kind": "article",
-      "summary": "Programa definitivo de Falas Dépor: las ocho charlas del 13 al 15 de noviembre, con horarios, sedes, ponentes, moderadores y cómo…",
-      "thumbnailUrl": null,
-      "tags": [],
       "alsoIn": []
     }
   ]
