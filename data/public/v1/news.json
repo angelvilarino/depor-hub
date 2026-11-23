@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T14:04:41Z",
+  "updatedAt": "2026-11-23T15:04:32Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "b1193d3253910351",
+      "title": "El documental «Dépor, voa» llegará a los cines el próximo 26 de diciembre",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/23/documental-depor-voa-llegara-cines-proximo-26-diciembre/00031795443518311928596.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-23T14:37:00Z",
+      "kind": "article",
+      "summary": "La pieza mostrará imágenes inéditas del ascenso a Primera y cómo se vivió el mercado de fichajes; la preventa de entradas dará comienzo…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/c8pG8kzaDgOBPXLRhXPEvZFqW0k=/768x/2026/11/23/00121795443602434126356/Foto/h_20260712_183632000.jpg",
+      "tags": [
+        "fichajes",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3a1e26c5567f7bac",
       "title": "Cedidos del Dépor: El Huesca de Diego Gómez, en apuros en Primera Federación",
@@ -2175,21 +2190,6 @@
       "summary": "Programa definitivo de Falas Dépor: las ocho charlas del 13 al 15 de noviembre, con horarios, sedes, ponentes, moderadores y cómo…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "62c4369a79d9d9f0",
-      "title": "Europa – Dépor ABANCA: La Copa de la Reina como punto de inflexión",
-      "url": "https://riazor.org/europa-depor-abanca-copa-reina-punto-inflexion",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-12T18:00:11Z",
-      "kind": "article",
-      "summary": "El Dépor ABANCA visitará este jueves (20:00 horas) el Nou Sardenya, campo del CE Europa de Segunda Federación, para estrenarse este curso…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T14:04:41Z",
+  "updatedAt": "2026-11-23T15:04:32Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,9 +16,32 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "b1193d3253910351",
+      "title": "El documental «Dépor, voa» llegará a los cines el próximo 26 de diciembre",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/23/documental-depor-voa-llegara-cines-proximo-26-diciembre/00031795443518311928596.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-23T14:37:00Z",
+      "kind": "article",
+      "summary": "La pieza mostrará imágenes inéditas del ascenso a Primera y cómo se vivió el mercado de fichajes; la preventa de entradas dará comienzo…",
+      "thumbnailUrl": "img/news/5d61a12b7e51fc17.webp",
+      "tags": [
+        "fichajes",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3a1e26c5567f7bac",
       "title": "Cedidos del Dépor: El Huesca de Diego Gómez, en apuros en Primera Federación",
@@ -84,20 +107,6 @@
       "thumbnailUrl": null,
       "tags": [
         "lesiones",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "39b9f5d7bedeb5cc",
-      "title": "El Dépor-Athletic de la jornada 16 ya tiene fecha y hora",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/el-depor-athletic-de-la-jornada-16-ya-tiene-fecha-y-hora-892646.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-23T10:10:20Z",
-      "kind": "article",
-      "summary": "El equipo blanquiazul recibirá al conjunto vasco en Riazor después de viajar a Santander",
-      "thumbnailUrl": "img/news/53611bd131c8b2a0.webp",
-      "tags": [
         "partido"
       ],
       "alsoIn": []
