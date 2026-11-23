@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T20:04:13Z",
+  "updatedAt": "2026-11-23T21:03:54Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "bed7265ac394eaf8",
+      "title": "El Dépor ya conoce el horario de su cita copera ante el Portugalete",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/el-depor-ya-conoce-el-horario-de-su-cita-copera-ante-el-portugalete-892834.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-23T20:32:43Z",
+      "kind": "article",
+      "summary": "Los blanquiazules visitarán La Florida el miércoles 2 de diciembre a las 19.00 horas y el partido será televisado por Movistar+",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/10/29/6ae3b232d376e.r_d.1562-1100-0.JPG",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "e08334ed3eed1201",
       "title": "Son de Riazor #27 | ¿El Dépor sigue de parón?",
@@ -2186,18 +2200,6 @@
         "cantera",
         "opinion"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "f452f1cb11deea68",
-      "title": "Alavés – Dépor: entradas para Mendizorroza, plazos, precios y cómo llegar",
-      "url": "https://riazor.org/alaves-depor-entradas-mendizorrotza-plazos-precios",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-13T17:00:38Z",
-      "kind": "article",
-      "summary": "El Dépor activa la prerreserva de entradas para la visita a Mendizorrotza. Consulta precios, plazos, sorteo, cómo reservar y cómo llegar…",
-      "thumbnailUrl": null,
-      "tags": [],
       "alsoIn": []
     }
   ]
