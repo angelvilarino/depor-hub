@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T19:32:44Z",
+  "updatedAt": "2026-11-23T20:04:13Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "e08334ed3eed1201",
+      "title": "Son de Riazor #27 | ¿El Dépor sigue de parón?",
+      "url": "https://riazor.org/son-de-riazor-27-depor-sigue-paron",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T19:45:23Z",
+      "kind": "article",
+      "summary": "Analizamos el fin de semana en clave blanquiazul: derrota del Deportivo en Mendizorroza en un mal partido de los de Antonio Hidalgo. La…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/son-de-riazor-alaves-deportivo-1-3-1600x900-1.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "aa2c6cc1931e0971",
       "title": "El Portugalete vasco, un rival vertical y de ímpetu para el Dépor en la Copa",
@@ -2183,18 +2197,6 @@
       "kind": "article",
       "summary": "El Dépor activa la prerreserva de entradas para la visita a Mendizorrotza. Consulta precios, plazos, sorteo, cómo reservar y cómo llegar…",
       "thumbnailUrl": null,
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "24d5ac9119b0312d",
-      "title": "La plantilla del Dépor disfrutará de un fin de semana largo tras una última sesión sin Bright Ede",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-13/la-plantilla-del-depor-disfrutara-del-fin-de-semana-libre-tras-una-ultima-sesion-sin-bright-ede-890776.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-13T15:24:06Z",
-      "kind": "article",
-      "summary": "El central polaco sigue con su proceso de recuperación y espera estar listo ante el Alavés",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/13/6af72a222bec3.r_d.707-1273-0.jfif",
       "tags": [],
       "alsoIn": []
     }

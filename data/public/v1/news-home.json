@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T19:32:44Z",
+  "updatedAt": "2026-11-23T20:04:13Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "e08334ed3eed1201",
+      "title": "Son de Riazor #27 | ¿El Dépor sigue de parón?",
+      "url": "https://riazor.org/son-de-riazor-27-depor-sigue-paron",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-23T19:45:23Z",
+      "kind": "article",
+      "summary": "Analizamos el fin de semana en clave blanquiazul: derrota del Deportivo en Mendizorroza en un mal partido de los de Antonio Hidalgo. La…",
+      "thumbnailUrl": "img/news/5472eb2561bc6f16.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "aa2c6cc1931e0971",
       "title": "El Portugalete vasco, un rival vertical y de ímpetu para el Dépor en la Copa",
@@ -96,21 +110,6 @@
       "thumbnailUrl": "img/news/6a81818376f19a3a.webp",
       "tags": [
         "club",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "7ea5a2fb7e1cc08e",
-      "title": "«No servir balones a Aubameyang es como tener un Ferrari y no echarle gasolina»: las claves de Manu Sánchez tras el Alavés – Deportivo",
-      "url": "https://riazor.org/no-servir-balones-a-aubameyang-es-como-tener-un-ferrari-y-no-echarle-gasolina-las-claves-de-manu-sanchez-tras-el-alaves-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-23T15:00:54Z",
-      "kind": "article",
-      "summary": "El extécnico del Dépor ABANCA analiza las claves de la derrota del Deportivo ante el Alavés en un muy mal partido en Mendizorroza. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
         "partido"
       ],
       "alsoIn": []
