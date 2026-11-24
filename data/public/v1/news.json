@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T06:07:26Z",
+  "updatedAt": "2026-11-24T09:05:05Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,35 @@
     }
   ],
   "stories": [
+    {
+      "id": "7e31633dffb06994",
+      "title": "El Dépor confía en el ‘break even’ en 2026-27 tras apostar 12 millones al ascenso a Primera",
+      "url": "https://marca.com/sport-business/2playbook/2026/11/24/depor-confia-break-even-2026-27-apostar-12-millones-ascenso-primera.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-24T09:00:15Z",
+      "kind": "article",
+      "summary": "El club gallego, de vuelta a LaLiga EA Sports, rozó los 25 millones de negocio en 25-26, con récord reciente en comercial",
+      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/06/24/btnKI1gEtdKVjRVVB.jpeg",
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "99e5afc9e3173e21",
+      "title": "Portugalete-Dépor, el miércoles 2 a las 19:00 por Movistar: entradas y cómo llegar a La Florida",
+      "url": "https://riazor.org/portugalete-deportivo-copa-horario-tv-entradas",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-24T08:43:29Z",
+      "kind": "article",
+      "summary": "El Portugalete-Deportivo de Copa se juega el miércoles 2 de diciembre a las 19:00 en La Florida, por Movistar Plus+. Aforo, entradas y…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "94a8b62f10e50a9d",
       "title": "Galería de imágenes del Alavés – Deportivo: Un Dépor irreconocible",
@@ -2164,40 +2193,6 @@
         "partido"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "4704a3a96288bb4f",
-      "title": "Amatucci logra su esperado debut con Italia sub-21 y Noubi se afianza en Bélgica",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-13/amatucci-logra-su-esperado-debut-con-italia-sub-21-y-noubi-se-afianza-en-belgica-890881.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-13T20:44:49Z",
-      "kind": "article",
-      "summary": "Los jugadores del Dépor fueron titulares y sus selecciones vencieron",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/13/6af77167c594a.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "2c23dbb1ee0e65ee",
-      "title": "El Deportivo presenta un documental sobre el ascenso a Primera División y el nuevo proyecto",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/13/deportivo-presenta-documental-sobre-ascenso-primera-nuevo-proyecto/00031794600760185908463.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-13T20:16:01Z",
-      "kind": "article",
-      "summary": "Con el nombre de «Dépor, voa», mostrará desde dentro el proceso de transformación deportiva, institucional y social que ha acompañado al…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/QUTxh92T5gBUpuSZRSMIkeBy7WU=/768x/2026/11/13/00121794600902000157503/Foto/h_20260712_183331000.jpg",
-      "tags": [
-        "partido",
-        "club"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "riazor",
-          "title": "El Deportivo presenta ‘Dépor, voa’, un documental de los entresijos del ascenso a Primera",
-          "url": "https://riazor.org/presenta-depor-voa-documental-ascenso-primera",
-          "publishedAt": "2026-11-13T11:25:50Z"
-        }
-      ]
     }
   ]
 }
