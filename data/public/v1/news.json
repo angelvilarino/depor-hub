@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T04:32:56Z",
+  "updatedAt": "2026-11-24T06:07:26Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "94a8b62f10e50a9d",
+      "title": "Galería de imágenes del Alavés – Deportivo: Un Dépor irreconocible",
+      "url": "https://riazor.org/galeria-imagenes-alaves-deportivo-irreconocible",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-24T06:00:07Z",
+      "kind": "article",
+      "summary": "Repasamos en imágenes la derrota del Deportivo en su visita a Mendizorrotza. El Dépor cayó 3-1 ante un Alavés que fue muy superior. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "dce5c7b25a5eea81",
       "title": "El Dépor pierde el balón y también el peligro",
@@ -2184,20 +2198,6 @@
           "publishedAt": "2026-11-13T11:25:50Z"
         }
       ]
-    },
-    {
-      "id": "3a595e65ef16009c",
-      "title": "El futuro del periodismo con el fútbol como eje vertebrador: Juan Ignacio Gallardo y José Félix Díaz inauguran 'Falas Dépor'",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-13/el-futuro-del-periodismo-con-el-futbol-como-eje-vertebrador-juan-ignacio-gallardo-y-jose-felix-diaz-inauguran-falas-depor-890868.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-13T19:59:24Z",
-      "kind": "article",
-      "summary": "Los directores de Marca y As protagonizaron en el Museo del club la primera de las charlas del fin de semana",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/13/6af76a7e1507e.jpg",
-      "tags": [
-        "club"
-      ],
-      "alsoIn": []
     }
   ]
 }

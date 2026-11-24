@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T04:32:56Z",
+  "updatedAt": "2026-11-24T06:07:26Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "94a8b62f10e50a9d",
+      "title": "Galería de imágenes del Alavés – Deportivo: Un Dépor irreconocible",
+      "url": "https://riazor.org/galeria-imagenes-alaves-deportivo-irreconocible",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-24T06:00:07Z",
+      "kind": "article",
+      "summary": "Repasamos en imágenes la derrota del Deportivo en su visita a Mendizorrotza. El Dépor cayó 3-1 ante un Alavés que fue muy superior. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "dce5c7b25a5eea81",
       "title": "El Dépor pierde el balón y también el peligro",
@@ -92,21 +106,6 @@
       "thumbnailUrl": "img/news/189f72a890c291d0.webp",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "214906eb954a874c",
-      "title": "Leo Román suma méritos bajo palos: las notas del Alavés – Deportivo",
-      "url": "https://riazor.org/leo-roman-suma-meritos-palos-notas-alaves-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-23T17:15:50Z",
-      "kind": "article",
-      "summary": "Estas son las notas de los jugadores y el cuerpo técnico blanquiazul en el Alavés - Deportivo de la jornada 13 de LaLiga EA Sports. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "opinion",
-        "partido"
       ],
       "alsoIn": []
     }
