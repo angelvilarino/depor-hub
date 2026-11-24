@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T10:33:12Z",
+  "updatedAt": "2026-11-24T12:06:24Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "2e342eb549790a03",
+      "title": "El Dépor prepara una miniconcentración entre los partidos de Portugalete y Santander",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/el-depor-prepara-una-miniconcentracion-entre-los-partidos-de-portugalete-y-santander-892883.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-24T11:53:16Z",
+      "kind": "article",
+      "summary": "La plantilla no regresará a A Coruña tras el duelo de Copa como ya hizo la temporada pasada tras visitar al Sámano",
+      "thumbnailUrl": "img/news/4c68f35cf61601f1.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "9ba5a0fbc4e5989c",
+      "title": "‘Dépor, voa’ abre la taquilla: así puedes ver el documental del ascenso en el cine",
+      "url": "https://riazor.org/depor-voa-abre-taquilla-ver-documental-ascenso-cine",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-24T11:43:48Z",
+      "kind": "article",
+      "summary": "Precio, sesiones y cómo comprar entradas para «Dépor, voa», el documental del ascenso del Deportivo, que llega a Los Cantones Cines el 26…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "e7d5c8bdb0c61ef6",
       "title": "Lamine Yamal, el jefe final para Quagliata en su ascenso hacia la élite",
@@ -80,32 +108,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "94a8b62f10e50a9d",
-      "title": "Galería de imágenes del Alavés – Deportivo: Un Dépor irreconocible",
-      "url": "https://riazor.org/galeria-imagenes-alaves-deportivo-irreconocible",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-24T06:00:07Z",
-      "kind": "article",
-      "summary": "Repasamos en imágenes la derrota del Deportivo en su visita a Mendizorrotza. El Dépor cayó 3-1 ante un Alavés que fue muy superior. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "dce5c7b25a5eea81",
-      "title": "El Dépor pierde el balón y también el peligro",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/el-depor-pierde-el-balon-y-tambien-el-peligro-892606.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-24T04:00:00Z",
-      "kind": "article",
-      "summary": "Los datos de las dos últimas jornadas reflejan el deterioro en el control del juego y la capacidad para generar ocasiones",
-      "thumbnailUrl": "img/news/9b3e30a77bee27b0.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
