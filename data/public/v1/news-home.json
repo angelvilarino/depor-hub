@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T12:06:24Z",
+  "updatedAt": "2026-11-24T13:33:27Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "b72cffa574b412d5",
+      "title": "El Dépor regresa a Abegondo para disputar la jornada 13 de Liga F ante la Real Sociedad",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-24/el-depor-regresa-a-abegondo-para-disputar-la-jornada-13-de-liga-f-ante-la-real-sociedad-892900.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-24T13:31:11Z",
+      "kind": "article",
+      "summary": "El club alega \"trabajos de mantenimiento del césped de Riazor\"",
+      "thumbnailUrl": "img/news/8a575aa41d6bc1ca.webp",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "2e342eb549790a03",
       "title": "El Dépor prepara una miniconcentración entre los partidos de Portugalete y Santander",
@@ -93,20 +108,6 @@
       "tags": [
         "partido",
         "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "99e5afc9e3173e21",
-      "title": "Portugalete-Dépor, el miércoles 2 a las 19:00 por Movistar: entradas y cómo llegar a La Florida",
-      "url": "https://riazor.org/portugalete-deportivo-copa-horario-tv-entradas",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-24T08:43:29Z",
-      "kind": "article",
-      "summary": "El Portugalete-Deportivo de Copa se juega el miércoles 2 de diciembre a las 19:00 en La Florida, por Movistar Plus+. Aforo, entradas y…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T12:06:24Z",
+  "updatedAt": "2026-11-24T13:33:27Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "b72cffa574b412d5",
+      "title": "El Dépor regresa a Abegondo para disputar la jornada 13 de Liga F ante la Real Sociedad",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-24/el-depor-regresa-a-abegondo-para-disputar-la-jornada-13-de-liga-f-ante-la-real-sociedad-892900.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-24T13:31:11Z",
+      "kind": "article",
+      "summary": "El club alega \"trabajos de mantenimiento del césped de Riazor\"",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/24/6b0590b893f3d.r_d.1066-596-0.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "2e342eb549790a03",
       "title": "El Dépor prepara una miniconcentración entre los partidos de Portugalete y Santander",
@@ -2175,20 +2190,6 @@
       "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/rueda-de-prensa-de-alberto-rodri.jpg",
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "72e356de137fc978",
-      "title": "Lorenzo Amatucci, ‘il bambino’ del Deportivo ya es ‘azzurrini’",
-      "url": "https://riazor.org/lorenzo-amatucci-bambino-deportivo-azzurrini",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-14T10:00:24Z",
-      "kind": "article",
-      "summary": "El centrocampista del Deportivo debutó con la selección italiana sub-21 en la victoria frente a Francia disputando 62 minutos. La entrada…",
-      "thumbnailUrl": null,
-      "tags": [
         "partido"
       ],
       "alsoIn": []
