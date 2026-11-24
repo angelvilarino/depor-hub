@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T06:26:09Z",
+  "updatedAt": "2026-11-24T06:19:12Z",
   "season": "2026-27",
   "matches": [
     {
@@ -469,8 +469,8 @@
     },
     {
       "id": 564781,
-      "utcDate": "2026-12-13T00:00:00Z",
-      "status": "SCHEDULED",
+      "utcDate": "2026-12-13T15:15:00Z",
+      "status": "TIMED",
       "matchday": 16,
       "stage": "REGULAR_SEASON",
       "home": {
