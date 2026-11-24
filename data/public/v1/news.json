@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T15:04:28Z",
+  "updatedAt": "2026-11-24T20:33:06Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "bb8259c99857ccfa",
+      "title": "Tristán, sobre su etapa en el Dépor: «Tendría que haber sido más cercano»",
+      "url": "https://riazor.org/tristan-sobre-su-etapa-en-el-depor-tendria-que-haber-sido-mas-cercano",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-24T20:00:33Z",
+      "kind": "article",
+      "summary": "Diego Tristán reconoce en Panenka que la fama tras el Pichichi de 2002 le superó y que se arrepiente de haberse alejado de la gente en su…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "b72cffa574b412d5",
       "title": "El Dépor regresa a Abegondo para disputar la jornada 13 de Liga F ante la Real Sociedad",
@@ -2173,21 +2185,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i4.ytimg.com/vi/7grye4dC-h4/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "6ff469d38147b067",
-      "title": "Alberto Rodríguez: «La palabra es motivación y reto al saber que nos enfrentamos a uno de los mejores equipos del mundo»",
-      "url": "https://riazor.org/alberto-rodriguez-motivacion-reto-mejores-equipos",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-14T12:30:21Z",
-      "kind": "article",
-      "summary": "El entrenador del Dépor ABANCA explicó cómo llega el equipo al partido de este domingo ante un 'coco' como el Barcelona en Riazor. La…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/rueda-de-prensa-de-alberto-rodri.jpg",
       "tags": [
         "cantera",
         "partido"

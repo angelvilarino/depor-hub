@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T15:04:28Z",
+  "updatedAt": "2026-11-24T20:33:06Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,17 +16,21 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
-    },
-    {
-      "id": "marca",
-      "name": "Marca",
-      "group": "nacional",
-      "kind": "article",
-      "homepage": "https://www.marca.com/futbol/deportivo.html",
-      "iconUrl": "https://www.marca.com/apple-touch-icon.png"
     }
   ],
   "stories": [
+    {
+      "id": "bb8259c99857ccfa",
+      "title": "Tristán, sobre su etapa en el Dépor: «Tendría que haber sido más cercano»",
+      "url": "https://riazor.org/tristan-sobre-su-etapa-en-el-depor-tendria-que-haber-sido-mas-cercano",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-24T20:00:33Z",
+      "kind": "article",
+      "summary": "Diego Tristán reconoce en Panenka que la fama tras el Pichichi de 2002 le superó y que se arrepiente de haberse alejado de la gente en su…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "b72cffa574b412d5",
       "title": "El Dépor regresa a Abegondo para disputar la jornada 13 de Liga F ante la Real Sociedad",
@@ -94,21 +98,6 @@
       "summary": "Chuchi Aranguren y Eusebio Ríos dirigieron a los blanquiazules en dos temporadas en que la fortuna dio la espalda al Deportivo en dos…",
       "thumbnailUrl": "img/news/abccb75b9975f244.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "7e31633dffb06994",
-      "title": "El Dépor confía en el ‘break even’ en 2026-27 tras apostar 12 millones al ascenso a Primera",
-      "url": "https://marca.com/sport-business/2playbook/2026/11/24/depor-confia-break-even-2026-27-apostar-12-millones-ascenso-primera.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-24T09:00:15Z",
-      "kind": "article",
-      "summary": "El club gallego, de vuelta a LaLiga EA Sports, rozó los 25 millones de negocio en 25-26, con récord reciente en comercial",
-      "thumbnailUrl": "img/news/c2be6f5f0e4d8025.webp",
-      "tags": [
-        "partido",
-        "club"
-      ],
       "alsoIn": []
     }
   ]
