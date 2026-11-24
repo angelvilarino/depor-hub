@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T21:03:54Z",
+  "updatedAt": "2026-11-24T04:32:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "dce5c7b25a5eea81",
+      "title": "El Dépor pierde el balón y también el peligro",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/el-depor-pierde-el-balon-y-tambien-el-peligro-892606.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-24T04:00:00Z",
+      "kind": "article",
+      "summary": "Los datos de las dos últimas jornadas reflejan el deterioro en el control del juego y la capacidad para generar ocasiones",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/22/6b0353de5ec3f.r_d.2720-953-0.JPG",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "bed7265ac394eaf8",
       "title": "El Dépor ya conoce el horario de su cita copera ante el Portugalete",
@@ -2184,21 +2196,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/13/6af76a7e1507e.jpg",
       "tags": [
         "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "eb5a04120f469dff",
-      "title": "‘Son de Riazor’ by MULLIGAN: La cantera a debate | Especial en directo con público",
-      "url": "https://riazor.org/son-de-riazor-mulligan-cantera-debate-especial",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-13T18:39:34Z",
-      "kind": "article",
-      "summary": "RiazorTV se desplaza hasta MULLIGAN para una edición especial de 'Son de Riazor' con público con la cantera en el centro del debate. La…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/son-de-riazor-especial-debate-web-1404x672-2.jpg",
-      "tags": [
-        "cantera",
-        "opinion"
       ],
       "alsoIn": []
     }

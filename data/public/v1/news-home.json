@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T21:03:54Z",
+  "updatedAt": "2026-11-24T04:32:56Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "dce5c7b25a5eea81",
+      "title": "El Dépor pierde el balón y también el peligro",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/el-depor-pierde-el-balon-y-tambien-el-peligro-892606.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-24T04:00:00Z",
+      "kind": "article",
+      "summary": "Los datos de las dos últimas jornadas reflejan el deterioro en el control del juego y la capacidad para generar ocasiones",
+      "thumbnailUrl": "img/news/9b3e30a77bee27b0.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "bed7265ac394eaf8",
       "title": "El Dépor ya conoce el horario de su cita copera ante el Portugalete",
@@ -94,21 +106,6 @@
       "thumbnailUrl": null,
       "tags": [
         "opinion",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "0a60ee552e1615d4",
-      "title": "El Fabril sigue sin encontrar la salida",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/el-fabril-sigue-sin-encontrar-la-salida-892718.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-23T16:37:21Z",
-      "kind": "article",
-      "summary": "Los empates ante Barakaldo y Coria impiden al filial blanquiazul aprovechar dos oportunidades para abandonar el descenso",
-      "thumbnailUrl": "img/news/4a2a550941b403e1.webp",
-      "tags": [
-        "cantera",
         "partido"
       ],
       "alsoIn": []
