@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T09:05:05Z",
+  "updatedAt": "2026-11-24T10:33:12Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "e7d5c8bdb0c61ef6",
+      "title": "Lamine Yamal, el jefe final para Quagliata en su ascenso hacia la élite",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/lamine-yamal-el-jefe-final-para-quagliata-en-su-ascenso-hacia-la-elite-892871.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-24T10:25:56Z",
+      "kind": "article",
+      "summary": "Giacomo Quagliata afronta el desafío definitivo ante Lamine Yamal en el Dépor-Barcelona de Riazor",
+      "thumbnailUrl": "img/news/369df5dd4feaafa4.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "896c73bb75224944",
+      "title": "Los dos entrenadores portugalujos llevaron al Dépor a las puertas de la Primera División",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/los-dos-entrenadores-portugalujos-llevaron-al-depor-a-las-puertas-de-la-primera-division-892727.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-24T10:08:24Z",
+      "kind": "article",
+      "summary": "Chuchi Aranguren y Eusebio Ríos dirigieron a los blanquiazules en dos temporadas en que la fortuna dio la espalda al Deportivo en dos…",
+      "thumbnailUrl": "img/news/abccb75b9975f244.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "7e31633dffb06994",
       "title": "El Dépor confía en el ‘break even’ en 2026-27 tras apostar 12 millones al ascenso a Primera",
@@ -80,34 +106,6 @@
       "summary": "Los datos de las dos últimas jornadas reflejan el deterioro en el control del juego y la capacidad para generar ocasiones",
       "thumbnailUrl": "img/news/9b3e30a77bee27b0.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "bed7265ac394eaf8",
-      "title": "El Dépor ya conoce el horario de su cita copera ante el Portugalete",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-23/el-depor-ya-conoce-el-horario-de-su-cita-copera-ante-el-portugalete-892834.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-23T20:32:43Z",
-      "kind": "article",
-      "summary": "Los blanquiazules visitarán La Florida el miércoles 2 de diciembre a las 19.00 horas y el partido será televisado por Movistar+",
-      "thumbnailUrl": "img/news/c770a882ff2fdc2c.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e08334ed3eed1201",
-      "title": "Son de Riazor #27 | ¿El Dépor sigue de parón?",
-      "url": "https://riazor.org/son-de-riazor-27-depor-sigue-paron",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-23T19:45:23Z",
-      "kind": "article",
-      "summary": "Analizamos el fin de semana en clave blanquiazul: derrota del Deportivo en Mendizorroza en un mal partido de los de Antonio Hidalgo. La…",
-      "thumbnailUrl": "img/news/5472eb2561bc6f16.webp",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

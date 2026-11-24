@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T09:05:05Z",
+  "updatedAt": "2026-11-24T10:33:12Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,32 @@
     }
   ],
   "stories": [
+    {
+      "id": "e7d5c8bdb0c61ef6",
+      "title": "Lamine Yamal, el jefe final para Quagliata en su ascenso hacia la élite",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/lamine-yamal-el-jefe-final-para-quagliata-en-su-ascenso-hacia-la-elite-892871.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-24T10:25:56Z",
+      "kind": "article",
+      "summary": "Giacomo Quagliata afronta el desafío definitivo ante Lamine Yamal en el Dépor-Barcelona de Riazor",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/24/6b0563e9c0203.r_d.1502-1100-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "896c73bb75224944",
+      "title": "Los dos entrenadores portugalujos llevaron al Dépor a las puertas de la Primera División",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/los-dos-entrenadores-portugalujos-llevaron-al-depor-a-las-puertas-de-la-primera-division-892727.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-24T10:08:24Z",
+      "kind": "article",
+      "summary": "Chuchi Aranguren y Eusebio Ríos dirigieron a los blanquiazules en dos temporadas en que la fortuna dio la espalda al Deportivo en dos…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/23/6b0476bdac9b1.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "7e31633dffb06994",
       "title": "El Dépor confía en el ‘break even’ en 2026-27 tras apostar 12 millones al ascenso a Primera",
@@ -2162,35 +2188,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/13/6af76f7218692.r_d.801-887-0.jfif",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "96e43f5fe6419eb7",
-      "title": "Previa | Un examen de fuerza y contundencia",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-14/previa-un-examen-de-fuerza-y-contundencia-890784.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-14T04:00:00Z",
-      "kind": "article",
-      "summary": "El Fabril regresa a Abegondo para recibir a un Barakaldo cuyas fortalezas coinciden con las principales carencias del filial",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/13/6af73c3827537.jpg",
-      "tags": [
-        "partido",
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "837494472d9c2514",
-      "title": "El difícil encaje del facilitador blanquiazul",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-14/el-dificil-encaje-del-facilitador-blanquiazul-890795.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-14T04:00:00Z",
-      "kind": "article",
-      "summary": "Los retornos de Aubameyang y Casadó complican la continuidad de Luismi Cruz, situado en el top-15 de la Liga en creación de ocasiones",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/13/6af73c93bcf94.jpg",
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }
