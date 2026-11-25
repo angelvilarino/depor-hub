@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T13:33:06Z",
+  "updatedAt": "2026-11-25T14:04:45Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "32736eeb2395d226",
+      "title": "Carmelo del Pozo vuelve a una secretaría técnica de Primera División",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/rivales/2026-11-25/carmelo-del-pozo-vuelve-a-una-secretaria-tecnica-de-primera-division-893099.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T13:48:12Z",
+      "kind": "article",
+      "summary": "El exdirector deportivo del Dépor se une al nuevo proyecto de Miguel Ángel Corona en el Málaga tras la salida de Loren Juarros",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2025/11/26/6927001654657.r_d.2112-746-0.jpeg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "4e722a875ddff1eb",
       "title": "Eddahchouri completa el entrenamiento con el grupo y apunta al Barça, Ede sigue al margen",
@@ -2159,21 +2171,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i1.ytimg.com/vi/d6vOsJMKmD4/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4a9238c1361231f1",
-      "title": "Manuel Pablo: \"Hemos cometido errores y, como siempre, nos han perjudicado mucho\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-14/manuel-pablo-hemos-cometido-errores-siempre-han-perjudicado-891041.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-14T21:03:16Z",
-      "kind": "article",
-      "summary": "El técnico del Fabril analizó en rueda de prensa el empate del filial blanquiazul ante el Barakaldo (2-2)",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/12/6af5dd331dad5.r_d.1699-868-0.jpg",
       "tags": [
         "cantera",
         "partido"

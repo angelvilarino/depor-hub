@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T13:33:06Z",
+  "updatedAt": "2026-11-25T14:04:45Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "32736eeb2395d226",
+      "title": "Carmelo del Pozo vuelve a una secretaría técnica de Primera División",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/rivales/2026-11-25/carmelo-del-pozo-vuelve-a-una-secretaria-tecnica-de-primera-division-893099.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T13:48:12Z",
+      "kind": "article",
+      "summary": "El exdirector deportivo del Dépor se une al nuevo proyecto de Miguel Ángel Corona en el Málaga tras la salida de Loren Juarros",
+      "thumbnailUrl": "img/news/f9ac61e5fe25a5a3.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "4e722a875ddff1eb",
       "title": "Eddahchouri completa el entrenamiento con el grupo y apunta al Barça, Ede sigue al margen",
@@ -92,20 +104,6 @@
       "summary": "El Deportivo-Barcelona se juega el domingo 29 de noviembre a las 16:15 en Riazor y se ve por DAZN. Entradas agotadas, asientos liberados y…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "7127d9ab1bcf7d34",
-      "title": "El Dépor ABANCA se muda (temporalmente) a Abegondo",
-      "url": "https://riazor.org/el-depor-abanca-se-muda-temporalmente-a-abegondo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-25T06:00:41Z",
-      "kind": "article",
-      "summary": "El encuentro entre el Dépor ABANCA y la Real Sociedad del miércoles 9 de diciembre (18:00 horas) se disputará en el campo Arsenio…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera"
-      ],
       "alsoIn": []
     }
   ]
