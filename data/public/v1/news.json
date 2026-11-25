@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T10:33:06Z",
+  "updatedAt": "2026-11-25T11:04:19Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "3ee08b6ae4568cb1",
+      "title": "Óscar Gilsanz, camino de Salamanca para entrenar a Unionistas… y debutar contra el Fabril",
+      "url": "https://riazor.org/oscar-gilsanz-entrenar-unionistas-debutar-fabril",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-25T10:45:34Z",
+      "kind": "article",
+      "summary": "El exentrenador del Deportivo tomaría las riendas del conjunto charro, antepenúltimo en Primera Federación, y debutaría con el filial…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "77e289ec5afc6ac7",
       "title": "Óscar Gilsanz asume el banquillo de Unionistas y se estrenará ante 'su' Fabril",
@@ -2166,21 +2180,6 @@
       "tags": [
         "cantera",
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "7598e7389332fccf",
-      "title": "El 1x1 del Fabril-Barakaldo: Noé Carrillo, palabras mayores",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-14/el-1x1-del-fabril-barakaldo-noe-carrillo-palabras-mayores-890982.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-14T20:26:46Z",
-      "kind": "article",
-      "summary": "Partido de sobresaliente del centrocampista, que rescató al filial blanquiazul con un gol en el minuto 89",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/14/6af8c1ddacfa9.r_d.1418-888-0.jpg",
-      "tags": [
-        "cantera",
-        "opinion"
       ],
       "alsoIn": []
     }

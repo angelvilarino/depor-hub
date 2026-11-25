@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T10:33:06Z",
+  "updatedAt": "2026-11-25T11:04:19Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "3ee08b6ae4568cb1",
+      "title": "Óscar Gilsanz, camino de Salamanca para entrenar a Unionistas… y debutar contra el Fabril",
+      "url": "https://riazor.org/oscar-gilsanz-entrenar-unionistas-debutar-fabril",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-25T10:45:34Z",
+      "kind": "article",
+      "summary": "El exentrenador del Deportivo tomaría las riendas del conjunto charro, antepenúltimo en Primera Federación, y debutaría con el filial…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "77e289ec5afc6ac7",
       "title": "Óscar Gilsanz asume el banquillo de Unionistas y se estrenará ante 'su' Fabril",
@@ -80,18 +94,6 @@
       "kind": "article",
       "summary": "El Dépor genera más peligro, pisa más el área rival y se asocia mejor cuando Bil Nsongo está sobre el césped",
       "thumbnailUrl": "img/news/f39b51e0a73e4dc0.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "bb8259c99857ccfa",
-      "title": "Tristán, sobre su etapa en el Dépor: «Tendría que haber sido más cercano»",
-      "url": "https://riazor.org/tristan-sobre-su-etapa-en-el-depor-tendria-que-haber-sido-mas-cercano",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-24T20:00:33Z",
-      "kind": "article",
-      "summary": "Diego Tristán reconoce en Panenka que la fama tras el Pichichi de 2002 le superó y que se arrepiente de haberse alejado de la gente en su…",
-      "thumbnailUrl": null,
       "tags": [],
       "alsoIn": []
     }
