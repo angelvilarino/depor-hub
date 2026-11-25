@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T09:33:39Z",
+  "updatedAt": "2026-11-25T10:33:06Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "77e289ec5afc6ac7",
+      "title": "Óscar Gilsanz asume el banquillo de Unionistas y se estrenará ante 'su' Fabril",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-25/oscar-gilsanz-asume-el-banquillo-de-unionistas-y-se-estrenara-ante-su-fabril-893068.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T10:14:49Z",
+      "kind": "article",
+      "summary": "El técnico betanceiro volverá a dirigir a un equipa tras su salida del Deportivo y debutará ante el filial blanquiazul",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2025/09/11/68c1fd8f7490b.jpeg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "161c0d1aef0dd00b",
       "title": "Dépor-Barcelona, el domingo 29 a las 16:15 por DAZN: asientos liberados y elecciones el mismo día",
@@ -2167,21 +2181,6 @@
       "tags": [
         "cantera",
         "opinion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ca5eed01b6ec23e8",
-      "title": "El FVS deja a un Fabril liderado por Noé sin remontada ante el Barakaldo (2-2)",
-      "url": "https://riazor.org/fvs-fabril-liderado-noe-sin-remontada-barakaldo-2-2",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-14T20:07:15Z",
-      "kind": "article",
-      "summary": "Crónica y resultado del Fabril – Barakaldo de la jornada 12 de Primera Federación, que finalizó en empate a dos con goles de Kevin Sánchez…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
       ],
       "alsoIn": []
     }

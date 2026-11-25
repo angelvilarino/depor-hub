@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T09:33:39Z",
+  "updatedAt": "2026-11-25T10:33:06Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "77e289ec5afc6ac7",
+      "title": "Óscar Gilsanz asume el banquillo de Unionistas y se estrenará ante 'su' Fabril",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-25/oscar-gilsanz-asume-el-banquillo-de-unionistas-y-se-estrenara-ante-su-fabril-893068.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T10:14:49Z",
+      "kind": "article",
+      "summary": "El técnico betanceiro volverá a dirigir a un equipa tras su salida del Deportivo y debutará ante el filial blanquiazul",
+      "thumbnailUrl": "img/news/2a760b8c45852bdc.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "161c0d1aef0dd00b",
       "title": "Dépor-Barcelona, el domingo 29 a las 16:15 por DAZN: asientos liberados y elecciones el mismo día",
@@ -79,21 +93,6 @@
       "summary": "Diego Tristán reconoce en Panenka que la fama tras el Pichichi de 2002 le superó y que se arrepiente de haberse alejado de la gente en su…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "b72cffa574b412d5",
-      "title": "El Dépor regresa a Abegondo para disputar la jornada 13 de Liga F ante la Real Sociedad",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-24/el-depor-regresa-a-abegondo-para-disputar-la-jornada-13-de-liga-f-ante-la-real-sociedad-892900.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-24T13:31:11Z",
-      "kind": "article",
-      "summary": "El club alega \"trabajos de mantenimiento del césped de Riazor\"",
-      "thumbnailUrl": "img/news/8a575aa41d6bc1ca.webp",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
