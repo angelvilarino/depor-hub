@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T12:37:17Z",
+  "updatedAt": "2026-11-25T13:33:06Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "4e722a875ddff1eb",
+      "title": "Eddahchouri completa el entrenamiento con el grupo y apunta al Barça, Ede sigue al margen",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/eddahchouri-completa-el-entrenamiento-con-el-grupo-y-apunta-al-barca-ede-sigue-al-margen-893093.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T13:22:36Z",
+      "kind": "article",
+      "summary": "El delantero neerlandés se ejercitó por primera vez con normalidad junto a sus compañeros tras pasar por quirófano el pasado 25 de…",
+      "thumbnailUrl": "img/news/b3171405a1a688b8.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "70610a8130fb2454",
       "title": "Óscar Gilsanz, nuevo entrenador del Unionistas de Salamanca, próximo rival del Fabril",
@@ -94,18 +106,6 @@
       "tags": [
         "cantera"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "3541c8c6db4ae71f",
-      "title": "Bil-Auba, una doble punta pendiente de continuidad y con margen de mejora",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/bil-auba-una-doble-punta-pendiente-de-continuidad-y-con-margen-de-mejora-892950.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-25T03:04:00Z",
-      "kind": "article",
-      "summary": "El Dépor todavía no ha exprimido al máximo la complementariedad Bil Nsongo y Aubameyang",
-      "thumbnailUrl": "img/news/dccc4a7d74715e8f.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]

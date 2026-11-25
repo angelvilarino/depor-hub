@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T12:37:17Z",
+  "updatedAt": "2026-11-25T13:33:06Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "4e722a875ddff1eb",
+      "title": "Eddahchouri completa el entrenamiento con el grupo y apunta al Barça, Ede sigue al margen",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/eddahchouri-completa-el-entrenamiento-con-el-grupo-y-apunta-al-barca-ede-sigue-al-margen-893093.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T13:22:36Z",
+      "kind": "article",
+      "summary": "El delantero neerlandés se ejercitó por primera vez con normalidad junto a sus compañeros tras pasar por quirófano el pasado 25 de…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/25/6b06e0dfc18e0.r_d.896-599-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "70610a8130fb2454",
       "title": "Óscar Gilsanz, nuevo entrenador del Unionistas de Salamanca, próximo rival del Fabril",
@@ -2162,21 +2174,6 @@
       "kind": "article",
       "summary": "El técnico del Fabril analizó en rueda de prensa el empate del filial blanquiazul ante el Barakaldo (2-2)",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/12/6af5dd331dad5.r_d.1699-868-0.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "7dc5a1eff142b807",
-      "title": "Rueda de prensa de Manuel Pablo tras el Fabril 2 - 2 Barakaldo",
-      "url": "https://youtube.com/watch?v=gRR8gPDqxeg",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-14T20:29:22Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/gRR8gPDqxeg/hqdefault.jpg",
       "tags": [
         "cantera",
         "partido"
