@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T11:04:19Z",
+  "updatedAt": "2026-11-25T12:37:17Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,9 +16,32 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "70610a8130fb2454",
+      "title": "Óscar Gilsanz, nuevo entrenador del Unionistas de Salamanca, próximo rival del Fabril",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/25/oscar-gilsanz-nuevo-entrenador-unionistas-salamanca-proximo-rival-fabril/00031795607909054855654.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-25T11:59:00Z",
+      "kind": "article",
+      "summary": "Viajó este miércoles a la ciudad charra con el objetivo de salvar al equipo, que es antepenúltimo en Primera Federación",
+      "thumbnailUrl": "img/news/e89dc4a00fd1902f.webp",
+      "tags": [
+        "cantera",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3ee08b6ae4568cb1",
       "title": "Óscar Gilsanz, camino de Salamanca para entrenar a Unionistas… y debutar contra el Fabril",
@@ -82,18 +105,6 @@
       "kind": "article",
       "summary": "El Dépor todavía no ha exprimido al máximo la complementariedad Bil Nsongo y Aubameyang",
       "thumbnailUrl": "img/news/dccc4a7d74715e8f.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "be20526b2024b765",
-      "title": "El efecto Bil: el Dépor multiplica las llegadas con el punta en el campo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/el-efecto-bil-el-depor-multiplica-las-llegadas-con-el-punta-en-el-campo-892942.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-25T03:03:00Z",
-      "kind": "article",
-      "summary": "El Dépor genera más peligro, pisa más el área rival y se asocia mejor cuando Bil Nsongo está sobre el césped",
-      "thumbnailUrl": "img/news/f39b51e0a73e4dc0.webp",
       "tags": [],
       "alsoIn": []
     }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T11:04:19Z",
+  "updatedAt": "2026-11-25T12:37:17Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "70610a8130fb2454",
+      "title": "Óscar Gilsanz, nuevo entrenador del Unionistas de Salamanca, próximo rival del Fabril",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/25/oscar-gilsanz-nuevo-entrenador-unionistas-salamanca-proximo-rival-fabril/00031795607909054855654.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-25T11:59:00Z",
+      "kind": "article",
+      "summary": "Viajó este miércoles a la ciudad charra con el objetivo de salvar al equipo, que es antepenúltimo en Primera Federación",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/W8u0Ss_CSfjOjfuOvqvlXK9NslQ=/768x/2026/11/25/00121795607822494223729/Foto/h_20260926_102153004.jpg",
+      "tags": [
+        "cantera",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "3ee08b6ae4568cb1",
       "title": "Óscar Gilsanz, camino de Salamanca para entrenar a Unionistas… y debutar contra el Fabril",
@@ -2162,21 +2177,6 @@
       "kind": "video",
       "summary": null,
       "thumbnailUrl": "https://i4.ytimg.com/vi/gRR8gPDqxeg/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "1107ec1b9c615222",
-      "title": "Noé Carrillo salva el empate para un Fabril que mereció más",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/14/noe-carrillo-salva-empate-fabril-merecio/00031794687721693663598.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-14T20:27:00Z",
-      "kind": "article",
-      "summary": "El filial deportivista empezó ganando, pero marcó el 2-2 en el último minuto del tiempo reglamentario",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/rGlZfnKjH1GXnmKk8so3NwoPZJ0=/768x/2026/11/14/00121794687302761240980/Foto/fabrbarkaldo.png",
       "tags": [
         "cantera",
         "partido"
