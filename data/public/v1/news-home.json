@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T19:03:45Z",
+  "updatedAt": "2026-11-25T20:32:54Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "f963e367b4496b62",
+      "title": "Vega Montesinos desplaza el dilema a la derecha",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-25/vega-montesinos-desplaza-el-dilema-a-la-derecha-893142.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T20:03:03Z",
+      "kind": "article",
+      "summary": "La llegada de la murciana permite al Dépor contar con una lateral zurda de garantías tras dos cursos de continuas pruebas",
+      "thumbnailUrl": "img/news/3dd52f3f853cb36f.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "634dddf6c6b90632",
       "title": "LaLiga reconoce el paradón de Leo Román en el Espanyol-Deportivo",
@@ -87,20 +99,6 @@
       "tags": [
         "cantera",
         "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "3ee08b6ae4568cb1",
-      "title": "Óscar Gilsanz, camino de Salamanca para entrenar a Unionistas… y debutar contra el Fabril",
-      "url": "https://riazor.org/oscar-gilsanz-entrenar-unionistas-debutar-fabril",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-25T10:45:34Z",
-      "kind": "article",
-      "summary": "El exentrenador del Deportivo tomaría las riendas del conjunto charro, antepenúltimo en Primera Federación, y debutaría con el filial…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera"
       ],
       "alsoIn": []
     }
