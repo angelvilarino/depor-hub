@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T20:33:06Z",
+  "updatedAt": "2026-11-25T06:07:19Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "7127d9ab1bcf7d34",
+      "title": "El Dépor ABANCA se muda (temporalmente) a Abegondo",
+      "url": "https://riazor.org/el-depor-abanca-se-muda-temporalmente-a-abegondo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-25T06:00:41Z",
+      "kind": "article",
+      "summary": "El encuentro entre el Dépor ABANCA y la Real Sociedad del miércoles 9 de diciembre (18:00 horas) se disputará en el campo Arsenio…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "bb8259c99857ccfa",
       "title": "Tristán, sobre su etapa en el Dépor: «Tendría que haber sido más cercano»",
@@ -86,18 +100,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "896c73bb75224944",
-      "title": "Los dos entrenadores de Portugalete que llevaron al Dépor a las puertas de la Primera División",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/los-dos-entrenadores-portugalujos-llevaron-al-depor-a-las-puertas-de-la-primera-division-892727.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-24T10:08:24Z",
-      "kind": "article",
-      "summary": "Chuchi Aranguren y Eusebio Ríos dirigieron a los blanquiazules en dos temporadas en que la fortuna dio la espalda al Deportivo en dos…",
-      "thumbnailUrl": "img/news/abccb75b9975f244.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]

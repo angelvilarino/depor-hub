@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T20:33:06Z",
+  "updatedAt": "2026-11-25T06:07:19Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "7127d9ab1bcf7d34",
+      "title": "El Dépor ABANCA se muda (temporalmente) a Abegondo",
+      "url": "https://riazor.org/el-depor-abanca-se-muda-temporalmente-a-abegondo",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-25T06:00:41Z",
+      "kind": "article",
+      "summary": "El encuentro entre el Dépor ABANCA y la Real Sociedad del miércoles 9 de diciembre (18:00 horas) se disputará en el campo Arsenio…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "bb8259c99857ccfa",
       "title": "Tristán, sobre su etapa en el Dépor: «Tendría que haber sido más cercano»",
@@ -2173,21 +2187,6 @@
       "thumbnailUrl": null,
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "412f64ed15074895",
-      "title": "Rueda de prensa de Alberto Rodríguez antes del Dépor ABANCA - FC Barcelona",
-      "url": "https://youtube.com/watch?v=7grye4dC-h4",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-14T12:50:01Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/7grye4dC-h4/hqdefault.jpg",
-      "tags": [
-        "cantera",
-        "partido"
       ],
       "alsoIn": []
     }
