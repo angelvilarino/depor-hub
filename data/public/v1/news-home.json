@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T14:04:45Z",
+  "updatedAt": "2026-11-25T15:04:25Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "9e2f75729795e444",
+      "title": "Riki Rodríguez, protagonista de una nueva entrevista en directo en RiazorTV",
+      "url": "https://riazor.org/riki-rodriguez-nueva-entrevista-directo-riazortv",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-25T15:00:59Z",
+      "kind": "article",
+      "summary": "Riki Rodríguez, en RiazorTV: el momento del equipo, su adaptación a Primera y el Dépor - Barça del domingo. Entrevista completa en vídeo…",
+      "thumbnailUrl": "img/news/9faa9d45f6b0c333.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "32736eeb2395d226",
       "title": "Carmelo del Pozo vuelve a una secretaría técnica de Primera División",
@@ -92,18 +104,6 @@
       "tags": [
         "cantera"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "161c0d1aef0dd00b",
-      "title": "Dépor-Barcelona, el domingo 29 a las 16:15 por DAZN: asientos liberados y elecciones el mismo día",
-      "url": "https://riazor.org/deportivo-barcelona-horario-tv-entradas-riazor",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-25T09:18:02Z",
-      "kind": "article",
-      "summary": "El Deportivo-Barcelona se juega el domingo 29 de noviembre a las 16:15 en Riazor y se ve por DAZN. Entradas agotadas, asientos liberados y…",
-      "thumbnailUrl": null,
-      "tags": [],
       "alsoIn": []
     }
   ]
