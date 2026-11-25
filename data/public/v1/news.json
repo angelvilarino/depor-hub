@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T06:07:19Z",
+  "updatedAt": "2026-11-25T07:05:22Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -55,6 +55,30 @@
       "tags": [
         "cantera"
       ],
+      "alsoIn": []
+    },
+    {
+      "id": "3541c8c6db4ae71f",
+      "title": "Bil-Auba, una doble punta pendiente de continuidad y con margen de mejora",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/bil-auba-una-doble-punta-pendiente-de-continuidad-y-con-margen-de-mejora-892950.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T03:04:00Z",
+      "kind": "article",
+      "summary": "El Dépor todavía no ha exprimido al máximo la complementariedad Bil Nsongo y Aubameyang",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/24/6b05c1065a7bc.r_d.692-964-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "be20526b2024b765",
+      "title": "El efecto Bil: el Dépor multiplica las llegadas con el punta en el campo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/el-efecto-bil-el-depor-multiplica-las-llegadas-con-el-punta-en-el-campo-892942.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T03:03:00Z",
+      "kind": "article",
+      "summary": "El Dépor genera más peligro, pisa más el área rival y se asocia mejor cuando Bil Nsongo está sobre el césped",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/24/6b05b94a54c3d.jpg",
+      "tags": [],
       "alsoIn": []
     },
     {
@@ -2160,32 +2184,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/14/6af8ba4c12756.r_d.1166-824-0.jpeg",
       "tags": [
         "partido",
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "0d94e78cf8d2dadb",
-      "title": "Territorio inexplorado para Ximo Navarro con el Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-14/territorio-inexplorado-para-ximo-navarro-con-el-depor-890947.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-14T16:44:44Z",
-      "kind": "article",
-      "summary": "El lateral ha jugado un minuto en las últimas tres jornadas y por primera vez pierde el puesto por decisión técnica",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/14/6af862653739b.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "79d93864a43770da",
-      "title": "Fabril – Barakaldo: De vuelta en Abegondo",
-      "url": "https://riazor.org/fabril-barakaldo-de-vuelta-en-abegondo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-14T16:00:24Z",
-      "kind": "article",
-      "summary": "El Fabril recibe este sábado (18:45 horas) al Barakaldo en Abegondo. El filial cambia Riazor por el Arsenio Iglesias, donde se estrenará…",
-      "thumbnailUrl": null,
-      "tags": [
         "cantera"
       ],
       "alsoIn": []

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T06:07:19Z",
+  "updatedAt": "2026-11-25T07:05:22Z",
   "sources": [
     {
       "id": "riazor",
@@ -31,6 +31,30 @@
       "tags": [
         "cantera"
       ],
+      "alsoIn": []
+    },
+    {
+      "id": "3541c8c6db4ae71f",
+      "title": "Bil-Auba, una doble punta pendiente de continuidad y con margen de mejora",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/bil-auba-una-doble-punta-pendiente-de-continuidad-y-con-margen-de-mejora-892950.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T03:04:00Z",
+      "kind": "article",
+      "summary": "El Dépor todavía no ha exprimido al máximo la complementariedad Bil Nsongo y Aubameyang",
+      "thumbnailUrl": "img/news/dccc4a7d74715e8f.webp",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "be20526b2024b765",
+      "title": "El efecto Bil: el Dépor multiplica las llegadas con el punta en el campo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/el-efecto-bil-el-depor-multiplica-las-llegadas-con-el-punta-en-el-campo-892942.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T03:03:00Z",
+      "kind": "article",
+      "summary": "El Dépor genera más peligro, pisa más el área rival y se asocia mejor cuando Bil Nsongo está sobre el césped",
+      "thumbnailUrl": "img/news/f39b51e0a73e4dc0.webp",
+      "tags": [],
       "alsoIn": []
     },
     {
@@ -69,34 +93,6 @@
       "kind": "article",
       "summary": "La plantilla no regresará a A Coruña tras el duelo de Copa como ya hizo la temporada pasada tras visitar al Sámano",
       "thumbnailUrl": "img/news/4c68f35cf61601f1.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "9ba5a0fbc4e5989c",
-      "title": "‘Dépor, voa’ abre la taquilla: así puedes ver el documental del ascenso en el cine",
-      "url": "https://riazor.org/depor-voa-abre-taquilla-ver-documental-ascenso-cine",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-24T11:43:48Z",
-      "kind": "article",
-      "summary": "Precio, sesiones y cómo comprar entradas para «Dépor, voa», el documental del ascenso del Deportivo, que llega a Los Cantones Cines el 26…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e7d5c8bdb0c61ef6",
-      "title": "Lamine Yamal, el jefe final para Quagliata en su ascenso hacia la élite",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/lamine-yamal-el-jefe-final-para-quagliata-en-su-ascenso-hacia-la-elite-892871.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-24T10:25:56Z",
-      "kind": "article",
-      "summary": "Giacomo Quagliata afronta el desafío definitivo ante Lamine Yamal en el Dépor-Barcelona de Riazor",
-      "thumbnailUrl": "img/news/369df5dd4feaafa4.webp",
       "tags": [
         "partido"
       ],
