@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T15:04:25Z",
+  "updatedAt": "2026-11-25T19:03:45Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "634dddf6c6b90632",
+      "title": "LaLiga reconoce el paradón de Leo Román en el Espanyol-Deportivo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/laliga-reconoce-el-paradon-de-leo-roman-en-el-espanyol-deportivo-893183.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-25T18:44:51Z",
+      "kind": "article",
+      "summary": "Su intervención ante el cabezazo de Alejandro Santiago está nominada a mejor parada del mes de noviembre",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/25/6b0729806d069.r_d.1472-848-0.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "9e2f75729795e444",
       "title": "Riki Rodríguez, protagonista de una nueva entrevista en directo en RiazorTV",
@@ -2157,20 +2169,6 @@
       "tags": [
         "cantera",
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "cdf90412bde798fa",
-      "title": "El lugar que la historia merece",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-15/el-lugar-que-la-historia-merece-891086.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-15T04:00:00Z",
-      "kind": "article",
-      "summary": "‘Falas Dépor’ reunió ayer a personas decisivas para preservar los recuerdos de clubes punteros",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/15/6af8ecaeeb251.jpg",
-      "tags": [
-        "club"
       ],
       "alsoIn": []
     }
