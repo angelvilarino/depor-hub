@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T07:05:22Z",
+  "updatedAt": "2026-11-25T09:33:39Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "161c0d1aef0dd00b",
+      "title": "Dépor-Barcelona, el domingo 29 a las 16:15 por DAZN: asientos liberados y elecciones el mismo día",
+      "url": "https://riazor.org/deportivo-barcelona-horario-tv-entradas-riazor",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-25T09:18:02Z",
+      "kind": "article",
+      "summary": "El Deportivo-Barcelona se juega el domingo 29 de noviembre a las 16:15 en Riazor y se ve por DAZN. Entradas agotadas, asientos liberados y…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "7127d9ab1bcf7d34",
       "title": "El Dépor ABANCA se muda (temporalmente) a Abegondo",
@@ -2170,21 +2182,6 @@
       "tags": [
         "cantera",
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "ff434b3cb9e0a804",
-      "title": "Crónica | El Fabril suma un punto y evita males mayores (2-2)",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-14/cronica-el-fabril-suma-un-punto-y-evita-males-mayores-2-890981.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-14T19:50:56Z",
-      "kind": "article",
-      "summary": "Noé Carrillo apareció en el último minuto del tiempo reglamentario para rescatar el empate ante el Barakaldo",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/14/6af8ba4c12756.r_d.1166-824-0.jpeg",
-      "tags": [
-        "partido",
-        "cantera"
       ],
       "alsoIn": []
     }

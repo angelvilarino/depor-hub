@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T07:05:22Z",
+  "updatedAt": "2026-11-25T09:33:39Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "161c0d1aef0dd00b",
+      "title": "Dépor-Barcelona, el domingo 29 a las 16:15 por DAZN: asientos liberados y elecciones el mismo día",
+      "url": "https://riazor.org/deportivo-barcelona-horario-tv-entradas-riazor",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-25T09:18:02Z",
+      "kind": "article",
+      "summary": "El Deportivo-Barcelona se juega el domingo 29 de noviembre a las 16:15 en Riazor y se ve por DAZN. Entradas agotadas, asientos liberados y…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "7127d9ab1bcf7d34",
       "title": "El Dépor ABANCA se muda (temporalmente) a Abegondo",
@@ -80,20 +92,6 @@
       "thumbnailUrl": "img/news/8a575aa41d6bc1ca.webp",
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "2e342eb549790a03",
-      "title": "El Dépor prepara una miniconcentración entre los partidos de Portugalete y Santander",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-24/el-depor-prepara-una-miniconcentracion-entre-los-partidos-de-portugalete-y-santander-892883.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-24T11:53:16Z",
-      "kind": "article",
-      "summary": "La plantilla no regresará a A Coruña tras el duelo de Copa como ya hizo la temporada pasada tras visitar al Sámano",
-      "thumbnailUrl": "img/news/4c68f35cf61601f1.webp",
-      "tags": [
         "partido"
       ],
       "alsoIn": []
