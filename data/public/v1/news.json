@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T17:32:56Z",
+  "updatedAt": "2026-11-26T19:32:49Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "92c60b607d5dfa3e",
+      "title": "Gerard Romero: «El Barça es favorito, pero el Dépor sabe que si aprovecha sus oportunidades algún gol puede caer»",
+      "url": "https://riazor.org/gerard-romero-barca-favorito-depor-oportunidades",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-26T19:30:39Z",
+      "kind": "article",
+      "summary": "El director de Jijantes FC destacó en RiazorTV el reencuentro con varios exbarcelonistas en Riazor, especialmente con Marc Casadó. La…",
+      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/gerard-romero-1600x900-1.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "aa427e087b05f08d",
       "title": "¿Bil, o Aubameyang y Yeremay juntos? Elige tu once ante el Barcelona, con Procesos Inmobiliaria",
@@ -2138,34 +2152,6 @@
         "club"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "ff8df7e82f9751a2",
-      "title": "El Dépor organiza un torneo de fútbol 7 entre sus abonados con final en Riazor",
-      "url": "https://riazor.org/depor-torneo-futbol-7-abonados-final-riazor",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-16T14:15:05Z",
-      "kind": "article",
-      "summary": "El Deportivo organiza un torneo por su 120 aniversario entre aficionados del club con final en Riazor. Te explicamos cómo te puedes…",
-      "thumbnailUrl": null,
-      "tags": [
-        "aficion",
-        "club"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "dxt-campeon",
-          "title": "El Dépor aprueba este martes las cuentas del ascenso y un tope de remuneración para sus administradores",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/el-depor-aprueba-este-martes-las-cuentas-del-ascenso-y-un-tope-de-remuneracion-para-sus-administradores-891321.html",
-          "publishedAt": "2026-11-16T16:54:41Z"
-        },
-        {
-          "sourceId": "dxt-campeon",
-          "title": "El Dépor organiza un torneo de fútbol 7 para sus aficionados... con la final en Riazor",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/el-depor-organiza-un-torneo-de-futbol-7-para-sus-aficionados-con-la-final-en-riazor-891254.html",
-          "publishedAt": "2026-11-16T12:00:46Z"
-        }
-      ]
     }
   ]
 }

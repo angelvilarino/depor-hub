@@ -1,14 +1,6 @@
 {
-  "updatedAt": "2026-11-26T17:32:56Z",
+  "updatedAt": "2026-11-26T19:32:49Z",
   "sources": [
-    {
-      "id": "youtube-club",
-      "name": "RC Deportivo (YouTube)",
-      "group": "club",
-      "kind": "video",
-      "homepage": "https://www.youtube.com/@rcdeportivo",
-      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
-    },
     {
       "id": "riazor",
       "name": "Riazor.org",
@@ -27,6 +19,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "92c60b607d5dfa3e",
+      "title": "Gerard Romero: «El Barça es favorito, pero el Dépor sabe que si aprovecha sus oportunidades algún gol puede caer»",
+      "url": "https://riazor.org/gerard-romero-barca-favorito-depor-oportunidades",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-26T19:30:39Z",
+      "kind": "article",
+      "summary": "El director de Jijantes FC destacó en RiazorTV el reencuentro con varios exbarcelonistas en Riazor, especialmente con Marc Casadó. La…",
+      "thumbnailUrl": "img/news/32a3680159cdbe01.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "aa427e087b05f08d",
       "title": "¿Bil, o Aubameyang y Yeremay juntos? Elige tu once ante el Barcelona, con Procesos Inmobiliaria",
@@ -93,20 +99,6 @@
       "tags": [
         "fichajes",
         "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "0811775022f78355",
-      "title": "DÉPOR vs FC Barcelona en DIRECTO | Dépor Live by Sotelo",
-      "url": "https://youtube.com/watch?v=oEphw_3sj7s",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-26T15:46:06Z",
-      "kind": "video",
-      "summary": "Vive en directo el partido entre el Dépor y el Barça perteneciente a la jornada 14 de LaLiga.",
-      "thumbnailUrl": "img/news/44025537ff1b4111.webp",
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }
