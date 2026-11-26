@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T17:03:40Z",
+  "updatedAt": "2026-11-26T17:32:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "aa427e087b05f08d",
+      "title": "¿Bil, o Aubameyang y Yeremay juntos? Elige tu once ante el Barcelona, con Procesos Inmobiliaria",
+      "url": "https://riazor.org/elige-el-once-deportivo-fc-barcelona-jornada-14",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-26T17:30:38Z",
+      "kind": "article",
+      "summary": "Elige el once del Deportivo ante el FC Barcelona · Jornada 14 de LaLiga EA Sports. Votación abierta hasta el domingo 29 de noviembre a las…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "71c80ffb8bee26c1",
+      "title": "Los 'niños' de Gilsanz, ahora contra su mentor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-26/los-ninos-de-gilsanz-ahora-contra-su-mentor-893319.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T17:17:45Z",
+      "kind": "article",
+      "summary": "Catorce futbolistas del Fabril coincidieron con el técnico betanceiro en sus diferentes etapas en Abegondo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/26/6b0857989fc1d.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "51391ba606ce05af",
       "title": "El Barça vuelve a tener la llave de los 30.000 en Riazor",
@@ -2138,34 +2166,6 @@
           "publishedAt": "2026-11-16T12:00:46Z"
         }
       ]
-    },
-    {
-      "id": "68b297d049db66cf",
-      "title": "Sorteo entradas Deportivo Alavés - RC Deportivo | Jornada 13 | Temporada 26/27",
-      "url": "https://youtube.com/watch?v=Gsff4rr-saM",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-16T12:55:03Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "https://i4.ytimg.com/vi/Gsff4rr-saM/hqdefault.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e6d052dcb740df88",
-      "title": "Orden y Talento #55 en directo | Preguntas y respuestas del primer tercio de Liga del Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-16/orden-y-talento-55-en-directo-preguntas-y-respuestas-del-primer-tercio-de-liga-del-depor-891255.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-16T11:59:12Z",
-      "kind": "article",
-      "summary": "Desde las 14.00 horas, nuevo episodio del videopodcast de Dxt Campeón respondiendo en vivo a las preguntas de la audiencia",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/16/6afaedfe58bb9.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
     }
   ]
 }

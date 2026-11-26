@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T17:03:40Z",
+  "updatedAt": "2026-11-26T17:32:56Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -27,6 +27,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "aa427e087b05f08d",
+      "title": "¿Bil, o Aubameyang y Yeremay juntos? Elige tu once ante el Barcelona, con Procesos Inmobiliaria",
+      "url": "https://riazor.org/elige-el-once-deportivo-fc-barcelona-jornada-14",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-26T17:30:38Z",
+      "kind": "article",
+      "summary": "Elige el once del Deportivo ante el FC Barcelona · Jornada 14 de LaLiga EA Sports. Votación abierta hasta el domingo 29 de noviembre a las…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "71c80ffb8bee26c1",
+      "title": "Los 'niños' de Gilsanz, ahora contra su mentor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-26/los-ninos-de-gilsanz-ahora-contra-su-mentor-893319.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T17:17:45Z",
+      "kind": "article",
+      "summary": "Catorce futbolistas del Fabril coincidieron con el técnico betanceiro en sus diferentes etapas en Abegondo",
+      "thumbnailUrl": "img/news/438669badae64449.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "51391ba606ce05af",
       "title": "El Barça vuelve a tener la llave de los 30.000 en Riazor",
@@ -79,34 +107,6 @@
       "thumbnailUrl": "img/news/44025537ff1b4111.webp",
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "53e3ed6585859de0",
-      "title": "La imagen del coche de Aubameyang tras el leve incidente en el trayecto hacia Abegondo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/la-imagen-del-coche-de-aubameyang-tras-el-leve-incidente-en-el-trayecto-hacia-abegondo-893324.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T15:36:29Z",
-      "kind": "article",
-      "summary": "El jugador pudo acudir a entrenar en su propio vehículo tras un choque en la autopista",
-      "thumbnailUrl": "img/news/4ccf40059bb29d0a.webp",
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "9266207ec571a11c",
-      "title": "Aubameyang avisa al Barça: \"Es la primera semana que he podido entrenar sin dolor, estoy al 100%\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/aubameyang-avisa-al-barca-es-la-primera-semana-que-he-podido-entrenar-sin-dolor-estoy-al-893289.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T12:28:32Z",
-      "kind": "article",
-      "summary": "Aubameyang dejó sus impresiones sobre su vuelta tras la lesión antes del Dépor-Barcelona",
-      "thumbnailUrl": "img/news/d5e104110a42aff3.webp",
-      "tags": [
-        "lesiones"
       ],
       "alsoIn": []
     }
