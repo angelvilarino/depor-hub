@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T19:32:49Z",
+  "updatedAt": "2026-11-26T21:33:00Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,9 +16,57 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "de3148c3a08adf38",
+      "title": "Aubameyang matiza su mensaje sobre el Barça: \"Cuando vuelva a Barcelona, sí será especial\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/aubameyang-matiza-su-mensaje-sobre-el-barca-cuando-vuelva-a-barcelona-si-sera-especial-893454.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T21:24:09Z",
+      "kind": "article",
+      "summary": "El delantero aclara en redes sociales sus palabras en Abegondo sobre su pasado azulgrana",
+      "thumbnailUrl": "img/news/bce52e6c4b16ff28.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "ab6752c802eaee2f",
+      "title": "De Messi y Kubala, a Lamine Yamal: las grandes estrellas de los Dépor-Barça",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/26/messi-kubala-lamine-yamal-grandes-estrellas-depor-barca/00031795719986273812500.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-26T21:13:00Z",
+      "kind": "article",
+      "summary": "El nuevo crac azulgrana estaba en 5.º de Primaria la última vez que el Barça jugó con el Dépor, con Leo firmando su tercer «hat trick» en…",
+      "thumbnailUrl": "img/news/7cc2130148891fe2.webp",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "7ed2fc64d6bd2f33",
+      "title": "Dépor-Barça: Un duelo con 116 años de historia",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/26/depor-barca-duelo-116-anos-historia/00031795720811626611937.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-26T21:13:00Z",
+      "kind": "article",
+      "summary": "Se llevan enfrentando desde 1910, con encuentros memorables, como el que casi manda a los azulgranas a Segunda División",
+      "thumbnailUrl": "img/news/abfd55f241f77985.webp",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "92c60b607d5dfa3e",
       "title": "Gerard Romero: «El Barça es favorito, pero el Dépor sabe que si aprovecha sus oportunidades algún gol puede caer»",
@@ -58,47 +106,6 @@
       "thumbnailUrl": "img/news/438669badae64449.webp",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "51391ba606ce05af",
-      "title": "El Barça vuelve a tener la llave de los 30.000 en Riazor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/el-barca-vuelve-a-tener-la-llave-de-los-30-000-en-riazor-893341.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T16:51:30Z",
-      "kind": "article",
-      "summary": "El Dépor solo ha superado esa barrera dos veces en diez años y el récord de la última década se produjo ante el filial azulgrana",
-      "thumbnailUrl": "img/news/dfc3206495569574.webp",
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "812c3b70615a8231",
-      "title": "Pau Cubarsí y Gerard Martín, una pareja de élite a la que el Dépor castigó en el barro",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/pau-cubarsi-y-gerard-martin-una-pareja-de-elite-a-la-que-el-depor-castigo-en-el-barro-893338.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T16:34:12Z",
-      "kind": "article",
-      "summary": "Ambos salieron derrotados en el fulgurante camino del equipo blanquiazul hacia Segunda",
-      "thumbnailUrl": "img/news/727559fe7c424610.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "f33d9987ac9fdf7b",
-      "title": "El reproche de Florentino Pérez al Deportivo: «Os dejamos a Valverde y lo tuvisteis en el vestuario»",
-      "url": "https://riazor.org/reproche-florentino-perez-deportivo-valverde",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-26T16:00:10Z",
-      "kind": "article",
-      "summary": "El presidente del Real Madrid no quedó del todo satisfecho con el tiempo que el uruguayo pasó cedido en el Deportivo de A Coruña. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "fichajes",
-        "club"
       ],
       "alsoIn": []
     }
