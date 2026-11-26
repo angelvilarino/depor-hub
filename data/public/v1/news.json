@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T20:32:54Z",
+  "updatedAt": "2026-11-26T06:40:10Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,35 @@
     }
   ],
   "stories": [
+    {
+      "id": "9b5105ca9e9d6b7d",
+      "title": "Cuando tu partido coincide con un Dépor-Barcelona",
+      "url": "https://dxtcampeon.elidealgallego.com/o-noso-futbol/2026-11-26/depor-barca-condiciona-horarios-futbol-modesto-corunes-893218.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T03:28:00Z",
+      "kind": "article",
+      "summary": "La mayoría de las negociaciones entre clubes llegaron a buen puerto y los partidos que coinciden con el duelo de Riazor son la excepción",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/25/6b0732e7b64aa.r_d.1407-1442-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e8bc1a067ef76644",
+      "title": "Luismi Cruz: \"Lamine Yamal era muy diferente a los demás, su trayectoria ya tenía este destino\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/luismi-cruz-lamine-yamal-era-muy-diferente-a-los-demas-su-trayectoria-ya-tenia-este-destino-893153.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T03:10:00Z",
+      "kind": "article",
+      "summary": "El extremo del Dépor hace autocrítica sobre la derrota en Mendizorroza y su año en la cantera del Barça, donde le dio la alternativa al…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/25/6b0718fc7ec8e.r_d.1391-884-0.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "f963e367b4496b62",
       "title": "Vega Montesinos desplaza el dilema a la derecha",
@@ -2136,34 +2165,6 @@
       "kind": "article",
       "summary": "El Dépor ABANCA recibe este domingo (18:00 h) al Barça. Las blanquiazules tratarán de derribar al gigante del fútbol femenino con el…",
       "thumbnailUrl": null,
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "607edb31e78c4eb4",
-      "title": "¿Cuándo vuelven los internacionales del Dépor a Abegondo?",
-      "url": "https://riazor.org/cuando-vuelven-internacionales-depor-abegondo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-15T10:00:00Z",
-      "kind": "article",
-      "summary": "Los internacionales del Deportivo harán frente a las últimas citas con sus selecciones antes de regresar al trabajo diario en Abegondo. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "a4321d245c100efa",
-      "title": "Noé Carrillo no ha dicho su última palabra",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-15/noe-carrillo-no-dicho-ultima-palabra-depor-891089.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-15T09:33:45Z",
-      "kind": "article",
-      "summary": "Noé Carrillo aprovecha el parón para reivindicarse con el Fabril y reclamar su sitio en el Dépor",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/15/6af97b72d759b.r_d.1290-1070-0.jpg",
       "tags": [
         "cantera"
       ],

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T20:32:54Z",
+  "updatedAt": "2026-11-26T06:40:10Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,17 +16,38 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
-    },
-    {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "9b5105ca9e9d6b7d",
+      "title": "Cuando tu partido coincide con un Dépor-Barcelona",
+      "url": "https://dxtcampeon.elidealgallego.com/o-noso-futbol/2026-11-26/depor-barca-condiciona-horarios-futbol-modesto-corunes-893218.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T03:28:00Z",
+      "kind": "article",
+      "summary": "La mayoría de las negociaciones entre clubes llegaron a buen puerto y los partidos que coinciden con el duelo de Riazor son la excepción",
+      "thumbnailUrl": "img/news/ef7d40201d68dc63.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "e8bc1a067ef76644",
+      "title": "Luismi Cruz: \"Lamine Yamal era muy diferente a los demás, su trayectoria ya tenía este destino\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/luismi-cruz-lamine-yamal-era-muy-diferente-a-los-demas-su-trayectoria-ya-tenia-este-destino-893153.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T03:10:00Z",
+      "kind": "article",
+      "summary": "El extremo del Dépor hace autocrítica sobre la derrota en Mendizorroza y su año en la cantera del Barça, donde le dio la alternativa al…",
+      "thumbnailUrl": "img/news/bebca1a321dbf98d.webp",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "f963e367b4496b62",
       "title": "Vega Montesinos desplaza el dilema a la derecha",
@@ -73,33 +94,6 @@
       "summary": "El exdirector deportivo del Dépor se une al nuevo proyecto de Miguel Ángel Corona en el Málaga tras la salida de Loren Juarros",
       "thumbnailUrl": "img/news/f9ac61e5fe25a5a3.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "4e722a875ddff1eb",
-      "title": "Eddahchouri completa el entrenamiento con el grupo y apunta al Barça, Ede sigue al margen",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/eddahchouri-completa-el-entrenamiento-con-el-grupo-y-apunta-al-barca-ede-sigue-al-margen-893093.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-25T13:22:36Z",
-      "kind": "article",
-      "summary": "El delantero neerlandés se ejercitó por primera vez con normalidad junto a sus compañeros tras pasar por quirófano el pasado 25 de…",
-      "thumbnailUrl": "img/news/b3171405a1a688b8.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "70610a8130fb2454",
-      "title": "Óscar Gilsanz, nuevo entrenador del Unionistas de Salamanca, próximo rival del Fabril",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/25/oscar-gilsanz-nuevo-entrenador-unionistas-salamanca-proximo-rival-fabril/00031795607909054855654.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-25T11:59:00Z",
-      "kind": "article",
-      "summary": "Viajó este miércoles a la ciudad charra con el objetivo de salvar al equipo, que es antepenúltimo en Primera Federación",
-      "thumbnailUrl": "img/news/e89dc4a00fd1902f.webp",
-      "tags": [
-        "cantera",
-        "club"
-      ],
       "alsoIn": []
     }
   ]
