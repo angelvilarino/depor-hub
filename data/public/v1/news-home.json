@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T09:05:06Z",
+  "updatedAt": "2026-11-26T10:33:03Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "e82a60abcd427882",
+      "title": "Dos meses después, Zakaria Eddahchouri llama a la puerta para el Barcelona",
+      "url": "https://riazor.org/dos-meses-despues-zakaria-eddahchouri-llama-a-la-puerta-para-el-barcelona",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-26T10:30:44Z",
+      "kind": "article",
+      "summary": "Zakaria Eddahchouri completa por primera vez el entrenamiento con el grupo dos meses después de lesionarse y apunta al Dépor - Barcelona…",
+      "thumbnailUrl": null,
+      "tags": [
+        "lesiones"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "18baa628bc9a66e1",
+      "title": "Otro susto con Aubameyang, que sufrió un accidente en la AP-9 cuando iba a entrenar a Abegondo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/otro-susto-con-aubameyang-que-sufrio-un-accidente-en-la-ap-9-cuando-iba-a-entrenar-a-abegondo-893272.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T10:16:34Z",
+      "kind": "article",
+      "summary": "El jugador trabaja con el resto de sus compañeros tras chocar contra otro coche en un incidente sin daños personales",
+      "thumbnailUrl": "img/news/92f0f817881c151e.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "becd6a93972fc768",
       "title": "Flick compensa los kilómetros con rotaciones antes de visitar al Dépor: solo cinco habituales fueron titulares en Azerbaiyán",
@@ -72,30 +100,6 @@
         "cantera",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "f963e367b4496b62",
-      "title": "Vega Montesinos desplaza el dilema a la derecha",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-25/vega-montesinos-desplaza-el-dilema-a-la-derecha-893142.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-25T20:03:03Z",
-      "kind": "article",
-      "summary": "La llegada de la murciana permite al Dépor contar con una lateral zurda de garantías tras dos cursos de continuas pruebas",
-      "thumbnailUrl": "img/news/3dd52f3f853cb36f.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "634dddf6c6b90632",
-      "title": "LaLiga reconoce el paradón de Leo Román en el Espanyol-Deportivo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-25/laliga-reconoce-el-paradon-de-leo-roman-en-el-espanyol-deportivo-893183.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-25T18:44:51Z",
-      "kind": "article",
-      "summary": "Su intervención ante el cabezazo de Alejandro Santiago está nominada a mejor parada del mes de noviembre",
-      "thumbnailUrl": "img/news/ba7fbc0ef9ca5f08.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
