@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T13:04:10Z",
+  "updatedAt": "2026-11-26T16:04:49Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "0811775022f78355",
+      "title": "DÉPOR vs FC Barcelona en DIRECTO | Dépor Live by Sotelo",
+      "url": "https://youtube.com/watch?v=oEphw_3sj7s",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-26T15:46:06Z",
+      "kind": "video",
+      "summary": "Vive en directo el partido entre el Dépor y el Barça perteneciente a la jornada 14 de LaLiga.",
+      "thumbnailUrl": "https://i4.ytimg.com/vi/oEphw_3sj7s/hqdefault.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "53e3ed6585859de0",
+      "title": "La imagen del coche de Aubameyang tras el leve incidente en el trayecto hacia Abegondo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/la-imagen-del-coche-de-aubameyang-tras-el-leve-incidente-en-el-trayecto-hacia-abegondo-893324.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T15:36:29Z",
+      "kind": "article",
+      "summary": "El jugador pudo acudir a entrenar en su propio vehículo tras un choque en la autopista",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/26/6b084f1329511.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "7578bf53531b3937",
       "title": "Rueda de prensa de Aubameyang previa al RC Deportivo - FC Barcelona",
@@ -2139,35 +2167,6 @@
       "tags": [
         "partido",
         "opinion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "34c7f622f988b284",
-      "title": "El Dépor estalla con el arbitraje ante el Barça femenino: \"Resulta inadmisible y compromete las garantías competitivas\"",
-      "url": "https://marca.com/futbol/futbol-femenino/2026/11/15/depor-estalla-arbitraje-barca-femenino-resulta-inadmisible-compromete-garantias-competitivas.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-15T20:08:02Z",
-      "kind": "article",
-      "summary": "El equipo azulgrana empató en el 102' después de que el árbitro decidiera ampliar 8 minutos",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/15/6afa10d1df962.jpeg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "817b6d761e88051c",
-      "title": "El Deportivo se harta: tilda de «atropello» el arbitraje ante el Barça y pide explicaciones",
-      "url": "https://riazor.org/deportivo-harta-atropello-arbitraje-barca",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-15T19:59:54Z",
-      "kind": "article",
-      "summary": "El Deportivo expresa su enfado tras el empate del Dépor ABANCA ante el Barcelona, con gol de las blaugranas con el tiempo ya cumplido. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
       ],
       "alsoIn": []
     }

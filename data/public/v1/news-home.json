@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T13:04:10Z",
+  "updatedAt": "2026-11-26T16:04:49Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -28,25 +28,32 @@
   ],
   "stories": [
     {
-      "id": "7578bf53531b3937",
-      "title": "Rueda de prensa de Aubameyang previa al RC Deportivo - FC Barcelona",
-      "url": "https://youtube.com/watch?v=6ximfBrjVW8",
+      "id": "0811775022f78355",
+      "title": "DÉPOR vs FC Barcelona en DIRECTO | Dépor Live by Sotelo",
+      "url": "https://youtube.com/watch?v=oEphw_3sj7s",
       "sourceId": "youtube-club",
-      "publishedAt": "2026-11-26T12:40:13Z",
+      "publishedAt": "2026-11-26T15:46:06Z",
       "kind": "video",
-      "summary": "Sigue en directo la rueda de prensa de Aubameyang antes del Dépor – Barça que se disputará este domingo (16:15 horas) en Riazor. La…",
-      "thumbnailUrl": "img/news/34ebd43ffe30d136.webp",
+      "summary": "Vive en directo el partido entre el Dépor y el Barça perteneciente a la jornada 14 de LaLiga.",
+      "thumbnailUrl": "img/news/44025537ff1b4111.webp",
       "tags": [
         "partido"
       ],
-      "alsoIn": [
-        {
-          "sourceId": "riazor",
-          "title": "Aubameyang, en directo | Sigue su rueda de prensa previa al Deportivo – Barcelona",
-          "url": "https://riazor.org/aubameynag-directo-rueda-prensa-deportivo-barcelona",
-          "publishedAt": "2026-11-26T11:10:27Z"
-        }
-      ]
+      "alsoIn": []
+    },
+    {
+      "id": "53e3ed6585859de0",
+      "title": "La imagen del coche de Aubameyang tras el leve incidente en el trayecto hacia Abegondo",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/la-imagen-del-coche-de-aubameyang-tras-el-leve-incidente-en-el-trayecto-hacia-abegondo-893324.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T15:36:29Z",
+      "kind": "article",
+      "summary": "El jugador pudo acudir a entrenar en su propio vehículo tras un choque en la autopista",
+      "thumbnailUrl": "img/news/4ccf40059bb29d0a.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
     },
     {
       "id": "9266207ec571a11c",
@@ -102,20 +109,6 @@
       "thumbnailUrl": null,
       "tags": [
         "lesiones"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "18baa628bc9a66e1",
-      "title": "Otro susto con Aubameyang, que sufrió un accidente en la AP-9 cuando iba a entrenar a Abegondo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/otro-susto-con-aubameyang-que-sufrio-un-accidente-en-la-ap-9-cuando-iba-a-entrenar-a-abegondo-893272.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T10:16:34Z",
-      "kind": "article",
-      "summary": "El jugador trabaja con el resto de sus compañeros tras chocar contra otro coche en un incidente sin daños personales",
-      "thumbnailUrl": "img/news/92f0f817881c151e.webp",
-      "tags": [
-        "cantera"
       ],
       "alsoIn": []
     }
