@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T16:04:49Z",
+  "updatedAt": "2026-11-26T17:03:40Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,47 @@
     }
   ],
   "stories": [
+    {
+      "id": "51391ba606ce05af",
+      "title": "El Barça vuelve a tener la llave de los 30.000 en Riazor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/el-barca-vuelve-a-tener-la-llave-de-los-30-000-en-riazor-893341.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T16:51:30Z",
+      "kind": "article",
+      "summary": "El Dépor solo ha superado esa barrera dos veces en diez años y el récord de la última década se produjo ante el filial azulgrana",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/26/6b08610188efb.r_d.1358-1125-0.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "812c3b70615a8231",
+      "title": "Pau Cubarsí y Gerard Martín, una pareja de élite a la que el Dépor castigó en el barro",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/pau-cubarsi-y-gerard-martin-una-pareja-de-elite-a-la-que-el-depor-castigo-en-el-barro-893338.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T16:34:12Z",
+      "kind": "article",
+      "summary": "Ambos salieron derrotados en el fulgurante camino del equipo blanquiazul hacia Segunda",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/26/6b085dce4dd37.r_d.1213-693-0.webp",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "f33d9987ac9fdf7b",
+      "title": "El reproche de Florentino Pérez al Deportivo: «Os dejamos a Valverde y lo tuvisteis en el vestuario»",
+      "url": "https://riazor.org/reproche-florentino-perez-deportivo-valverde",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-26T16:00:10Z",
+      "kind": "article",
+      "summary": "El presidente del Real Madrid no quedó del todo satisfecho con el tiempo que el uruguayo pasó cedido en el Deportivo de A Coruña. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "fichajes",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "0811775022f78355",
       "title": "DÉPOR vs FC Barcelona en DIRECTO | Dépor Live by Sotelo",
@@ -117,21 +158,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/26/6b0820665004f.jpeg",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "f33d9987ac9fdf7b",
-      "title": "El reproche de Florentino Pérez al Deportivo: «Os dejamos a Valverde y lo tuvisteis en el vestuario»",
-      "url": "https://riazor.org/reproche-florentino-perez-deportivo-valverde",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-26T11:00:10Z",
-      "kind": "article",
-      "summary": "El presidente del Real Madrid no quedó del todo satisfecho con el tiempo que el uruguayo pasó cedido en el Deportivo de A Coruña. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "fichajes",
-        "club"
       ],
       "alsoIn": []
     },
@@ -2138,35 +2164,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/16/6afaedfe58bb9.jpg",
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "790247c3e37d3aa6",
-      "title": "Cedidos del Dépor: Patiño aprovecha el parón para coger ritmo y sumar minutos",
-      "url": "https://riazor.org/cedidos-depor-patino-aprovecha-paron-ritmo-minutos",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-16T11:00:11Z",
-      "kind": "article",
-      "summary": "Repasamos la jornada de los cedidos por el Deportivo. Charlie Patiño volvió a ser titular con el Bochum en un amistoso durante el parón de…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "b369e39b3584604f",
-      "title": "El Barça le marcó el gol del empate al Dépor un minuto y 27 segundos fuera de tiempo",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-16/el-barca-le-marco-el-gol-del-empate-al-depor-un-minuto-y-27-segundos-fuera-de-tiempo-891237.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-16T01:56:00Z",
-      "kind": "article",
-      "summary": "El análisis al detalle de las pausas y cronometrajes del partido de Liga F jugado en Riazor revela una pésima gestión por parte de las…",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/16/6afa609c1466b.jpeg",
-      "tags": [
-        "partido",
-        "opinion"
       ],
       "alsoIn": []
     }
