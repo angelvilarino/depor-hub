@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-11-26T12:37:14Z",
+  "updatedAt": "2026-11-26T13:04:10Z",
   "sources": [
+    {
+      "id": "youtube-club",
+      "name": "RC Deportivo (YouTube)",
+      "group": "club",
+      "kind": "video",
+      "homepage": "https://www.youtube.com/@rcdeportivo",
+      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
+    },
     {
       "id": "riazor",
       "name": "Riazor.org",
@@ -19,6 +27,27 @@
     }
   ],
   "stories": [
+    {
+      "id": "7578bf53531b3937",
+      "title": "Rueda de prensa de Aubameyang previa al RC Deportivo - FC Barcelona",
+      "url": "https://youtube.com/watch?v=6ximfBrjVW8",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-26T12:40:13Z",
+      "kind": "video",
+      "summary": "Sigue en directo la rueda de prensa de Aubameyang antes del Dépor – Barça que se disputará este domingo (16:15 horas) en Riazor. La…",
+      "thumbnailUrl": "img/news/34ebd43ffe30d136.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "riazor",
+          "title": "Aubameyang, en directo | Sigue su rueda de prensa previa al Deportivo – Barcelona",
+          "url": "https://riazor.org/aubameynag-directo-rueda-prensa-deportivo-barcelona",
+          "publishedAt": "2026-11-26T11:10:27Z"
+        }
+      ]
+    },
     {
       "id": "9266207ec571a11c",
       "title": "Aubameyang avisa al Barça: \"Es la primera semana que he podido entrenar sin dolor, estoy al 100%\"",
@@ -44,20 +73,6 @@
       "thumbnailUrl": "img/news/edf7ba98a5c46363.webp",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "7578bf53531b3937",
-      "title": "Aubameyang, en directo | Sigue su rueda de prensa previa al Deportivo – Barcelona",
-      "url": "https://riazor.org/aubameynag-directo-rueda-prensa-deportivo-barcelona",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-26T11:10:27Z",
-      "kind": "article",
-      "summary": "Sigue en directo la rueda de prensa de Aubameyang antes del Dépor – Barça que se disputará este domingo (16:15 horas) en Riazor. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     },
