@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T08:06:01Z",
+  "updatedAt": "2026-11-26T09:05:06Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "becd6a93972fc768",
+      "title": "Flick compensa los kilómetros con rotaciones antes de visitar al Dépor: solo cinco habituales fueron titulares en Azerbaiyán",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/flick-compensa-los-kilometros-con-rotaciones-antes-de-visitar-al-depor-solo-cinco-habituales-fueron-titulares-en-azerbaiyan-893267.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T08:59:10Z",
+      "kind": "article",
+      "summary": "Flick solo alineó de inicio a cinco habituales en el Barcelona-Sabah de Champions League antes de visitar al Dépor",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/26/6b07f2a7b0efd.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "7345ffeabc2d48aa",
       "title": "Giménez quiere seguir en el Dépor: «Mis hijos me dijeron que me quedase cuatro años más»",
@@ -2149,21 +2161,6 @@
       "kind": "article",
       "summary": "El Deportivo ha publicado el tráiler de Dépor voa, un documental sobre la transformación del club en los últimos meses y el ascenso a…",
       "thumbnailUrl": null,
-      "tags": [
-        "partido",
-        "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "2a0cb4fb48b2e7b9",
-      "title": "Dépor voa | Tráiler oficial",
-      "url": "https://youtube.com/watch?v=YqVvntTwVzs",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-15T12:36:57Z",
-      "kind": "video",
-      "summary": "O documental sobre a gran transformación dun club con 120 anos de historia. Un ascenso irrepetible. Proximamente.",
-      "thumbnailUrl": "https://i2.ytimg.com/vi/YqVvntTwVzs/hqdefault.jpg",
       "tags": [
         "partido",
         "club"
