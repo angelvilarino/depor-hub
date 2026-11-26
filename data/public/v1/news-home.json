@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T10:33:03Z",
+  "updatedAt": "2026-11-26T11:33:04Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,35 @@
     }
   ],
   "stories": [
+    {
+      "id": "7578bf53531b3937",
+      "title": "Aubameyang, en directo | Sigue su rueda de prensa previa al Deportivo – Barcelona",
+      "url": "https://riazor.org/aubameynag-directo-rueda-prensa-deportivo-barcelona",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-26T11:10:27Z",
+      "kind": "article",
+      "summary": "Sigue en directo la rueda de prensa de Aubameyang antes del Dépor – Barça que se disputará este domingo (16:15 horas) en Riazor. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "f33d9987ac9fdf7b",
+      "title": "El reproche de Florentino Pérez al Deportivo: «Os dejamos a Valverde y lo tuvisteis en el vestuario»",
+      "url": "https://riazor.org/reproche-florentino-perez-deportivo-valverde",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-26T11:00:10Z",
+      "kind": "article",
+      "summary": "El presidente del Real Madrid no quedó del todo satisfecho con el tiempo que el uruguayo pasó cedido en el Deportivo de A Coruña. La…",
+      "thumbnailUrl": null,
+      "tags": [
+        "fichajes",
+        "club"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "e82a60abcd427882",
       "title": "Dos meses después, Zakaria Eddahchouri llama a la puerta para el Barcelona",
@@ -70,35 +99,6 @@
       "thumbnailUrl": null,
       "tags": [
         "fichajes"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "9b5105ca9e9d6b7d",
-      "title": "Cuando tu partido coincide con un Dépor-Barcelona",
-      "url": "https://dxtcampeon.elidealgallego.com/o-noso-futbol/2026-11-26/depor-barca-condiciona-horarios-futbol-modesto-corunes-893218.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T03:28:00Z",
-      "kind": "article",
-      "summary": "La mayoría de las negociaciones entre clubes llegaron a buen puerto y los partidos que coinciden con el duelo de Riazor son la excepción",
-      "thumbnailUrl": "img/news/ef7d40201d68dc63.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e8bc1a067ef76644",
-      "title": "Luismi Cruz: \"Lamine Yamal era muy diferente a los demás, su trayectoria ya tenía este destino\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/luismi-cruz-lamine-yamal-era-muy-diferente-a-los-demas-su-trayectoria-ya-tenia-este-destino-893153.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T03:10:00Z",
-      "kind": "article",
-      "summary": "El extremo del Dépor hace autocrítica sobre la derrota en Mendizorroza y su año en la cantera del Barça, donde le dio la alternativa al…",
-      "thumbnailUrl": "img/news/bebca1a321dbf98d.webp",
-      "tags": [
-        "cantera",
-        "partido"
       ],
       "alsoIn": []
     }
