@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T11:33:04Z",
+  "updatedAt": "2026-11-26T12:37:14Z",
   "sources": [
     {
       "id": "riazor",
@@ -19,6 +19,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "9266207ec571a11c",
+      "title": "Aubameyang avisa al Barça: \"Es la primera semana que he podido entrenar sin dolor, estoy al 100%\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/aubameyang-avisa-al-barca-es-la-primera-semana-que-he-podido-entrenar-sin-dolor-estoy-al-893289.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T12:28:32Z",
+      "kind": "article",
+      "summary": "Aubameyang dejó sus impresiones sobre su vuelta tras la lesión antes del Dépor-Barcelona",
+      "thumbnailUrl": "img/news/d5e104110a42aff3.webp",
+      "tags": [
+        "lesiones"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "8c7083c4472b2fc5",
+      "title": "Aubameyang tranquiliza tras su accidente: \"Lo más importante es que la otra persona no tiene nada\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/aubameyang-tranquiliza-tras-su-accidente-lo-mas-importante-es-que-la-otra-persona-no-tiene-nada-893286.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T12:10:50Z",
+      "kind": "article",
+      "summary": "El delantero del Dépor habló sobre su percance de este jueves en la autopista camino de Abegondo",
+      "thumbnailUrl": "img/news/edf7ba98a5c46363.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "7578bf53531b3937",
       "title": "Aubameyang, en directo | Sigue su rueda de prensa previa al Deportivo – Barcelona",
@@ -73,32 +101,6 @@
       "thumbnailUrl": "img/news/92f0f817881c151e.webp",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "becd6a93972fc768",
-      "title": "Flick compensa los kilómetros con rotaciones antes de visitar al Dépor: solo cinco habituales fueron titulares en Azerbaiyán",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/flick-compensa-los-kilometros-con-rotaciones-antes-de-visitar-al-depor-solo-cinco-habituales-fueron-titulares-en-azerbaiyan-893267.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T08:59:10Z",
-      "kind": "article",
-      "summary": "Flick solo alineó de inicio a cinco habituales en el Barcelona-Sabah de Champions League antes de visitar al Dépor",
-      "thumbnailUrl": "img/news/40ecaafb5070c49b.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "7345ffeabc2d48aa",
-      "title": "Giménez quiere seguir en el Dépor: «Mis hijos me dijeron que me quedase cuatro años más»",
-      "url": "https://riazor.org/gimenez-quiere-seguir-en-el-depor-mis-hijos-me-dijeron-que-me-quedase-cuatro-anos-mas",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-26T07:54:03Z",
-      "kind": "article",
-      "summary": "El central no renuncia a los dos años de contrato que le quedan con el Atlético y asegura que todavía no hubo contactos para su…",
-      "thumbnailUrl": null,
-      "tags": [
-        "fichajes"
       ],
       "alsoIn": []
     }

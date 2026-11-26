@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T11:33:04Z",
+  "updatedAt": "2026-11-26T12:37:14Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,34 @@
     }
   ],
   "stories": [
+    {
+      "id": "9266207ec571a11c",
+      "title": "Aubameyang avisa al Barça: \"Es la primera semana que he podido entrenar sin dolor, estoy al 100%\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/aubameyang-avisa-al-barca-es-la-primera-semana-que-he-podido-entrenar-sin-dolor-estoy-al-893289.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T12:28:32Z",
+      "kind": "article",
+      "summary": "Aubameyang dejó sus impresiones sobre su vuelta tras la lesión antes del Dépor-Barcelona",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/21/6b019c3ea3108.JPG",
+      "tags": [
+        "lesiones"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "8c7083c4472b2fc5",
+      "title": "Aubameyang tranquiliza tras su accidente: \"Lo más importante es que la otra persona no tiene nada\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/aubameyang-tranquiliza-tras-su-accidente-lo-mas-importante-es-que-la-otra-persona-no-tiene-nada-893286.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-26T12:10:50Z",
+      "kind": "article",
+      "summary": "El delantero del Dépor habló sobre su percance de este jueves en la autopista camino de Abegondo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/26/6b0820665004f.jpeg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "7578bf53531b3937",
       "title": "Aubameyang, en directo | Sigue su rueda de prensa previa al Deportivo – Barcelona",
@@ -2133,35 +2161,6 @@
       "tags": [
         "cantera",
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "b355e91fe406efb5",
-      "title": "Pere Romeu, sobre el descuento: \"Las árbitras han añadido poco\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor-femenino/2026-11-15/pere-romeu-sobre-el-descuento-las-arbitras-han-anadido-poco-891196.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-15T19:56:02Z",
-      "kind": "article",
-      "summary": "El técnico del Barcelona reconoce que el partido de su equipo ha sido \"flojo\" ante un Dépor al que felicita por su trabajo",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/15/6afa0e0db4ae6.r_d.697-775-0.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "feb42c857154ff88",
-      "title": "El Deportivo expresa «su profunda indignación por la actuación arbitral sufrida por el Dépor Abanca ante el Barcelona»",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/15/deportivo-expresa-profunda-indignacion-actuacion-arbitral-sufrida-depor-abanca-ante-barcelona/00031794771485764421740.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-15T19:54:00Z",
-      "kind": "article",
-      "summary": "El club coruñés considera «imprescindible que los organismos competentes analicen lo sucedido, ofrezcan las explicaciones oportunas y…",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/_1tEQQ2RURz8P2nAECVeZf6IIEg=/768x/2026/11/15/00121794772562167219213/Foto/i_20261115_195255003.jpg",
-      "tags": [
-        "cantera",
-        "club"
       ],
       "alsoIn": []
     }
