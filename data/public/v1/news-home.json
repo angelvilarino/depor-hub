@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T09:33:09Z",
+  "updatedAt": "2026-11-27T10:04:28Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -8,14 +8,6 @@
       "kind": "video",
       "homepage": "https://www.youtube.com/@rcdeportivo",
       "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
-    },
-    {
-      "id": "riazor",
-      "name": "Riazor.org",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.riazor.org/",
-      "iconUrl": "https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png"
     },
     {
       "id": "dxt-campeon",
@@ -44,14 +36,41 @@
   ],
   "stories": [
     {
-      "id": "fa4ba4a09fae8e27",
-      "title": "Rueda de prensa de Antonio Hidalgo previa al RC Deportivo - FC Barcelona",
-      "url": "https://youtube.com/watch?v=IjOKg7E2gP4",
+      "id": "62d7af5dc373b0dd",
+      "title": "Un elogio al modelo de Flick y preparado para contener a Lamine: \"Tienen un patrón muy claro\", explica Hidalgo sobre el Barça",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/un-elogio-al-modelo-de-flick-y-preparado-para-contener-a-lamine-tienen-un-patron-muy-claro-explica-hidalgo-sobre-el-barca-893484.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T09:43:07Z",
+      "kind": "article",
+      "summary": "El técnico del Dépor destaca que las rotaciones apenas alteran la identidad del Barça y contempla todos los escenarios ante la posible…",
+      "thumbnailUrl": "img/news/2df2fe6546d4a2e1.webp",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "be109b54b8e85d0f",
+      "title": "Rueda de prensa de Manuel Pablo previa al Unionistas de Salamanca CF - Fabril",
+      "url": "https://youtube.com/watch?v=sl2IFglG6VM",
       "sourceId": "youtube-club",
-      "publishedAt": "2026-11-27T09:12:16Z",
+      "publishedAt": "2026-11-27T09:42:16Z",
       "kind": "video",
       "summary": null,
-      "thumbnailUrl": "img/news/464d2536a498ad48.webp",
+      "thumbnailUrl": "img/news/f6a0e08fdad55ab8.webp",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "652d874801799aa2",
+      "title": "Hidalgo: \"Nos hemos ganado el derecho de competir contra los mejores de la Liga y del mundo\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/hidalgo-nos-hemos-ganado-el-derecho-de-competir-contra-los-mejores-de-la-liga-y-del-mundo-893483.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T09:39:04Z",
+      "kind": "article",
+      "summary": "El técnico del Dépor asegura que su equipo deberá estar dispuesto a \"sufrir muchísimo\" ante el Barça",
+      "thumbnailUrl": "img/news/ce28622a1fcea5c6.webp",
       "tags": [
         "partido"
       ],
@@ -93,34 +112,6 @@
       "summary": "El nuevo crac azulgrana estaba en 5.º de Primaria la última vez que el Barça jugó con el Dépor, con Leo firmando su tercer «hat trick» en…",
       "thumbnailUrl": "img/news/7cc2130148891fe2.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "7ed2fc64d6bd2f33",
-      "title": "Dépor-Barça: Un duelo con 116 años de historia",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/26/depor-barca-duelo-116-anos-historia/00031795720811626611937.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-26T21:13:00Z",
-      "kind": "article",
-      "summary": "Se llevan enfrentando desde 1910, con encuentros memorables, como el que casi manda a los azulgranas a Segunda División",
-      "thumbnailUrl": "img/news/abfd55f241f77985.webp",
-      "tags": [
-        "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "92c60b607d5dfa3e",
-      "title": "Gerard Romero: «El Barça es favorito, pero el Dépor sabe que si aprovecha sus oportunidades algún gol puede caer»",
-      "url": "https://riazor.org/gerard-romero-barca-favorito-depor-oportunidades",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-26T19:30:39Z",
-      "kind": "article",
-      "summary": "El director de Jijantes FC destacó en RiazorTV el reencuentro con varios exbarcelonistas en Riazor, especialmente con Marc Casadó. La…",
-      "thumbnailUrl": "img/news/32a3680159cdbe01.webp",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

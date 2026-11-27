@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T09:33:09Z",
+  "updatedAt": "2026-11-27T10:04:28Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,47 @@
     }
   ],
   "stories": [
+    {
+      "id": "62d7af5dc373b0dd",
+      "title": "Un elogio al modelo de Flick y preparado para contener a Lamine: \"Tienen un patrón muy claro\", explica Hidalgo sobre el Barça",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/un-elogio-al-modelo-de-flick-y-preparado-para-contener-a-lamine-tienen-un-patron-muy-claro-explica-hidalgo-sobre-el-barca-893484.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T09:43:07Z",
+      "kind": "article",
+      "summary": "El técnico del Dépor destaca que las rotaciones apenas alteran la identidad del Barça y contempla todos los escenarios ante la posible…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/21/6b01b579290da.JPG",
+      "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "be109b54b8e85d0f",
+      "title": "Rueda de prensa de Manuel Pablo previa al Unionistas de Salamanca CF - Fabril",
+      "url": "https://youtube.com/watch?v=sl2IFglG6VM",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-27T09:42:16Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "https://i4.ytimg.com/vi/sl2IFglG6VM/hqdefault.jpg",
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "652d874801799aa2",
+      "title": "Hidalgo: \"Nos hemos ganado el derecho de competir contra los mejores de la Liga y del mundo\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/hidalgo-nos-hemos-ganado-el-derecho-de-competir-contra-los-mejores-de-la-liga-y-del-mundo-893483.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T09:39:04Z",
+      "kind": "article",
+      "summary": "El técnico del Dépor asegura que su equipo deberá estar dispuesto a \"sufrir muchísimo\" ante el Barça",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/07/31/6a6c54da9d257.r_d.1418-504-0.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "fa4ba4a09fae8e27",
       "title": "Rueda de prensa de Antonio Hidalgo previa al RC Deportivo - FC Barcelona",
@@ -2104,48 +2145,6 @@
           "publishedAt": "2026-11-17T18:42:23Z"
         }
       ]
-    },
-    {
-      "id": "c87bdbf6c82f0dfd",
-      "title": "Lucas Viña: «Villares tenía un potencial increíble y sabías que tarde o temprano le iba a llegar la oportunidad»",
-      "url": "https://riazor.org/lucas-vina-villares-tarde-temprano-oportunidad",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-17T06:00:12Z",
-      "kind": "article",
-      "summary": "El exjugador del Fabril recordó en 'Son de Riazor' su etapa en A Coruña después de ganar el derbi barcelonés entre Europa y Sant Andreu…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/lucas-vina-sant-andreu-1600x900-1.jpg",
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4c9def0793fdb0d1",
-      "title": "El calendario del Dépor hasta Navidad: una montaña rusa con dos ochomiles",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/el-calendario-del-depor-hasta-navidad-una-montana-rusa-con-dos-ochomiles-891405.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-17T04:00:00Z",
-      "kind": "article",
-      "summary": "El equipo blanquiazul retoma la Liga ante el Alavés y recibirá en Riazor a Barcelona y Madrid para cerrar noviembre y diciembre",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/08/12/6a7cec1332b25.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "f228380d67149a10",
-      "title": "Lucas Viña, el estreno del RomboQuiz y la entrevista con IFFE, esta noche en Son de Riazor",
-      "url": "https://riazor.org/son-de-riazor-lucas-vina-romboquiz",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-16T19:40:04Z",
-      "kind": "article",
-      "summary": "Son de Riazor vuelve esta noche a las 21:00 con Lucas Viña, ex del Fabril, la actualidad del Dépor y el estreno del RomboQuiz, un concurso…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/son-de-riazor-lucas-vina-702x336-1.jpg",
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": []
     }
   ]
 }
