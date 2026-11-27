@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T11:03:59Z",
+  "updatedAt": "2026-11-27T12:06:37Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -26,6 +26,14 @@
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
     },
     {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
+    },
+    {
       "id": "marca",
       "name": "Marca",
       "group": "nacional",
@@ -43,12 +51,19 @@
       "publishedAt": "2026-11-27T11:00:12Z",
       "kind": "article",
       "summary": "Manuel Pablo, en rueda de prensa, habló de cómo será su reencuentro con Gilsanz este sábado en la visita del Fabril a Salamanca, donde…",
-      "thumbnailUrl": null,
+      "thumbnailUrl": "img/news/a217bcf6760f9c8e.webp",
       "tags": [
         "partido",
         "cantera"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "la-voz",
+          "title": "Manuel Pablo, en la previa de su reencuentro con Óscar Gilsanz: «Hay muy buena relación»",
+          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/27/manuel-pablo-previa-reencuentro-oscar-gilsanz-buena-relacion/00031795779978232861353.htm",
+          "publishedAt": "2026-11-27T11:53:00Z"
+        }
+      ]
     },
     {
       "id": "814a0ad8b35f7459",
