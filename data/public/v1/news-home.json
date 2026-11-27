@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T12:06:37Z",
+  "updatedAt": "2026-11-27T13:04:14Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "40d8c1677ec4cdee",
+      "title": "El Dépor hará su miniconcentración en Bilbao",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/el-depor-hara-su-miniconcentracion-en-bilbao-893504.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T12:52:28Z",
+      "kind": "article",
+      "summary": "El equipo coruñés permanecerá en tierras vascas y se entrenará en Lezama entre su duelo copero ante el Portugalete y su visita liguera al…",
+      "thumbnailUrl": "img/news/49e694d33888f29c.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "5b94b6b8d6f7e935",
       "title": "Manuel Pablo y su «raro» reencuentro con Gilsanz: «Son cosas del fútbol que haya coincidido con este partido»",
@@ -116,20 +128,6 @@
       "summary": "El lateral blanquiazul analiza en 'La Tribu' de Radio MARCA el enfrentamiento ante su antiguo equipo, habla del reto de medirse a Lamine…",
       "thumbnailUrl": "img/news/a1a41bce5818e5c3.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "de3148c3a08adf38",
-      "title": "Aubameyang matiza su mensaje sobre el Barça: \"Cuando vuelva a Barcelona, sí será especial\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-26/aubameyang-matiza-su-mensaje-sobre-el-barca-cuando-vuelva-a-barcelona-si-sera-especial-893454.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T21:24:09Z",
-      "kind": "article",
-      "summary": "El delantero aclara en redes sociales sus palabras en Abegondo sobre su pasado azulgrana",
-      "thumbnailUrl": "img/news/bce52e6c4b16ff28.webp",
-      "tags": [
-        "cantera"
-      ],
       "alsoIn": []
     }
   ]

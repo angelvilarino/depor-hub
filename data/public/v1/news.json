@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T12:06:37Z",
+  "updatedAt": "2026-11-27T13:04:14Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "40d8c1677ec4cdee",
+      "title": "El Dépor hará su miniconcentración en Bilbao",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/el-depor-hara-su-miniconcentracion-en-bilbao-893504.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T12:52:28Z",
+      "kind": "article",
+      "summary": "El equipo coruñés permanecerá en tierras vascas y se entrenará en Lezama entre su duelo copero ante el Portugalete y su visita liguera al…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/27/6b0974b7e80fc.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "5b94b6b8d6f7e935",
       "title": "Manuel Pablo y su «raro» reencuentro con Gilsanz: «Son cosas del fútbol que haya coincidido con este partido»",
@@ -2130,20 +2142,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/17/6afc371ec954b.r_d.1488-1118-0.jpg",
       "tags": [
         "fichajes"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "c8b5737e817fdb5f",
-      "title": "El Dépor aprueba las cuentas de la 2025-26 y confirma un consejo de administración de seis miembros",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/el-depor-aprueba-las-cuentas-de-la-2025-26-y-confirma-un-consejo-de-administracion-de-seis-miembros-891444.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-17T10:15:13Z",
-      "kind": "article",
-      "summary": "El club celebró este martes la Junta General de accionistas, en la que todos los puntos del día se aprobaron por unanimidad",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/17/6afc289340112.r_d.1000-562-0.jpg",
-      "tags": [
-        "club"
       ],
       "alsoIn": []
     }
