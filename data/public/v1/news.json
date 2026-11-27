@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T17:32:55Z",
+  "updatedAt": "2026-11-27T19:33:09Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -44,6 +44,42 @@
   ],
   "stories": [
     {
+      "id": "9baf833fe42eeeb3",
+      "title": "Leyendas del Dépor contra el Real Madrid: así puedes conseguir tu entrada para el 120nariazo",
+      "url": "https://riazor.org/entradas-partido-leyendas-deportivo-real-madrid-120-aniversario",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-27T19:30:00Z",
+      "kind": "article",
+      "summary": "El Deportivo prepara una jornada de música, homenajes y fútbol para celebrar su 120 aniversario el martes 8 de diciembre en Riazor. La…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/27/6b097dd87c069.r_d.798-714-0.jpg",
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "Las leyendas del Dépor se enfrentarán a los veteranos del Real Madrid por el 120 aniversario del club",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/las-leyendas-del-depor-se-enfrentaran-a-los-veteranos-del-real-madrid-por-el-120-aniversario-del-club-893513.html",
+          "publishedAt": "2026-11-27T13:31:50Z"
+        }
+      ]
+    },
+    {
+      "id": "598d95a32b482d35",
+      "title": "Los 120 años de historia del Dépor, a través de la mirada de La Voz",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/27/120-anos-historia-depor-traves-mirada-voz/00031795806144571705589.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-27T19:06:00Z",
+      "kind": "article",
+      "summary": "El puerto acoge, desde este viernes y hasta el próximo 9 de diciembre, una exposición de portadas y fotos icónicas",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/CUMH1EPAIN_oWdrfnHWsFC7WQcQ=/768x/2026/11/27/00121795805402865418644/Foto/h_20261127_183042000.jpg",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "2908d659044a5856",
       "title": "Gilsanz se presenta con Unionistas antes de medirse al Fabril: «Ellos también me conocen bien a mí»",
       "url": "https://riazor.org/gilsanz-presenta-unionistas-antes-medirse-fabril-ellos-conocen-bien",
@@ -63,21 +99,6 @@
           "publishedAt": "2026-11-27T13:35:23Z"
         }
       ]
-    },
-    {
-      "id": "9baf833fe42eeeb3",
-      "title": "Las leyendas del Dépor se enfrentarán a los veteranos del Real Madrid por el 120 aniversario del club",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/las-leyendas-del-depor-se-enfrentaran-a-los-veteranos-del-real-madrid-por-el-120-aniversario-del-club-893513.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-27T13:31:50Z",
-      "kind": "article",
-      "summary": "Riazor acogerá el 8 de diciembre un partido entre antiguos futbolistas de ambos equipos y una jornada de actividades para el deportivismo",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/27/6b097dd87c069.r_d.798-714-0.jpg",
-      "tags": [
-        "club",
-        "partido"
-      ],
-      "alsoIn": []
     },
     {
       "id": "40d8c1677ec4cdee",
@@ -2137,20 +2158,6 @@
       "summary": "El gabonés quiere liderar al Dépor en su visita a Mendizorroza desde el inicio. Las tres victorias del cuadro gallego fueron con Auba en…",
       "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/02/6ae8e8b0c0b86.jpeg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "47684379ac901797",
-      "title": "Hugo Novoa se reencuentra con el Dépor tras un gol 'a lo Djalminha' que le abrió las puertas en Vitoria",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/hugo-novoa-se-reencuentra-con-el-depor-tras-un-gol-a-lo-djalminha-que-le-abrio-las-puertas-en-vitoria-891533.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-17T16:34:45Z",
-      "kind": "article",
-      "summary": "Sin minutos en las ocho primeras jornadas, su diana en Balaídos le ha otorgado continuidad en los planes de Sánchez Flores en el Alavés",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/17/6afc7c119bb6b.jpg",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]

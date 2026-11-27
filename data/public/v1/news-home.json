@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T17:32:55Z",
+  "updatedAt": "2026-11-27T19:33:09Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -36,6 +36,42 @@
   ],
   "stories": [
     {
+      "id": "9baf833fe42eeeb3",
+      "title": "Leyendas del Dépor contra el Real Madrid: así puedes conseguir tu entrada para el 120nariazo",
+      "url": "https://riazor.org/entradas-partido-leyendas-deportivo-real-madrid-120-aniversario",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-27T19:30:00Z",
+      "kind": "article",
+      "summary": "El Deportivo prepara una jornada de música, homenajes y fútbol para celebrar su 120 aniversario el martes 8 de diciembre en Riazor. La…",
+      "thumbnailUrl": "img/news/ff57423abc79fffb.webp",
+      "tags": [
+        "partido",
+        "club"
+      ],
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "Las leyendas del Dépor se enfrentarán a los veteranos del Real Madrid por el 120 aniversario del club",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/las-leyendas-del-depor-se-enfrentaran-a-los-veteranos-del-real-madrid-por-el-120-aniversario-del-club-893513.html",
+          "publishedAt": "2026-11-27T13:31:50Z"
+        }
+      ]
+    },
+    {
+      "id": "598d95a32b482d35",
+      "title": "Los 120 años de historia del Dépor, a través de la mirada de La Voz",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/27/120-anos-historia-depor-traves-mirada-voz/00031795806144571705589.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-27T19:06:00Z",
+      "kind": "article",
+      "summary": "El puerto acoge, desde este viernes y hasta el próximo 9 de diciembre, una exposición de portadas y fotos icónicas",
+      "thumbnailUrl": "img/news/9697e1e049d23cbc.webp",
+      "tags": [
+        "club"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "2908d659044a5856",
       "title": "Gilsanz se presenta con Unionistas antes de medirse al Fabril: «Ellos también me conocen bien a mí»",
       "url": "https://riazor.org/gilsanz-presenta-unionistas-antes-medirse-fabril-ellos-conocen-bien",
@@ -55,21 +91,6 @@
           "publishedAt": "2026-11-27T13:35:23Z"
         }
       ]
-    },
-    {
-      "id": "9baf833fe42eeeb3",
-      "title": "Las leyendas del Dépor se enfrentarán a los veteranos del Real Madrid por el 120 aniversario del club",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/las-leyendas-del-depor-se-enfrentaran-a-los-veteranos-del-real-madrid-por-el-120-aniversario-del-club-893513.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-27T13:31:50Z",
-      "kind": "article",
-      "summary": "Riazor acogerá el 8 de diciembre un partido entre antiguos futbolistas de ambos equipos y una jornada de actividades para el deportivismo",
-      "thumbnailUrl": "img/news/ff57423abc79fffb.webp",
-      "tags": [
-        "club",
-        "partido"
-      ],
-      "alsoIn": []
     },
     {
       "id": "40d8c1677ec4cdee",
@@ -118,18 +139,6 @@
         "club",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "62d7af5dc373b0dd",
-      "title": "Un elogio al modelo de Flick y preparado para contener a Lamine: \"Tienen un patrón muy claro\", explica Hidalgo sobre el Barça",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/un-elogio-al-modelo-de-flick-y-preparado-para-contener-a-lamine-tienen-un-patron-muy-claro-explica-hidalgo-sobre-el-barca-893484.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-27T09:43:07Z",
-      "kind": "article",
-      "summary": "El técnico del Dépor destaca que las rotaciones apenas alteran la identidad del Barça y contempla todos los escenarios ante la posible…",
-      "thumbnailUrl": "img/news/955b951487d4943c.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
