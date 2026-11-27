@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T13:04:14Z",
+  "updatedAt": "2026-11-27T13:33:03Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "9baf833fe42eeeb3",
+      "title": "Las leyendas del Dépor se enfrentarán a los veteranos del Real Madrid por el 120 aniversario del club",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/las-leyendas-del-depor-se-enfrentaran-a-los-veteranos-del-real-madrid-por-el-120-aniversario-del-club-893513.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T13:31:50Z",
+      "kind": "article",
+      "summary": "Riazor acogerá el 8 de diciembre un partido entre antiguos futbolistas de ambos equipos y una jornada de actividades para el deportivismo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/27/6b097dd87c069.r_d.798-714-0.jpg",
+      "tags": [
+        "club",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "40d8c1677ec4cdee",
       "title": "El Dépor hará su miniconcentración en Bilbao",
@@ -2128,20 +2143,6 @@
       "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/real-madrid-vs-deportivo-goals-m.jpg",
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "a20115185f02189a",
-      "title": "Antonio Hidalgo explica cómo influyó el Barcelona en el fichaje de Aubameyang: \"Nos dieron unas referencias increíbles\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-17/antonio-hidalgo-explica-como-influyo-el-barcelona-en-el-fichaje-de-aubameyang-nos-dieron-unas-referencias-increibles-891455.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-17T11:40:09Z",
-      "kind": "article",
-      "summary": "El técnico aprovechó su estancia en Barcelona para ofrecer una entrevista a Catalunya Radio",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/17/6afc371ec954b.r_d.1488-1118-0.jpg",
-      "tags": [
-        "fichajes"
       ],
       "alsoIn": []
     }

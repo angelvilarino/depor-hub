@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T13:04:14Z",
+  "updatedAt": "2026-11-27T13:33:03Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -32,17 +32,24 @@
       "kind": "article",
       "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
       "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
-    },
-    {
-      "id": "marca",
-      "name": "Marca",
-      "group": "nacional",
-      "kind": "article",
-      "homepage": "https://www.marca.com/futbol/deportivo.html",
-      "iconUrl": "https://www.marca.com/apple-touch-icon.png"
     }
   ],
   "stories": [
+    {
+      "id": "9baf833fe42eeeb3",
+      "title": "Las leyendas del Dépor se enfrentarán a los veteranos del Real Madrid por el 120 aniversario del club",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/las-leyendas-del-depor-se-enfrentaran-a-los-veteranos-del-real-madrid-por-el-120-aniversario-del-club-893513.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T13:31:50Z",
+      "kind": "article",
+      "summary": "Riazor acogerá el 8 de diciembre un partido entre antiguos futbolistas de ambos equipos y una jornada de actividades para el deportivismo",
+      "thumbnailUrl": "img/news/ff57423abc79fffb.webp",
+      "tags": [
+        "club",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "40d8c1677ec4cdee",
       "title": "El Dépor hará su miniconcentración en Bilbao",
@@ -116,18 +123,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "04c5455de1a9ad47",
-      "title": "Adrià Altimira reivindica al Dépor antes de recibir al Barça: \"Nos merecemos estar en Primera y lo vamos a demostrar\"",
-      "url": "https://marca.com/radio/2026/11/27/adria-altimira-reivindica-depor-recibir-barca-merecemos-primera-demostrar.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-27T07:14:07Z",
-      "kind": "article",
-      "summary": "El lateral blanquiazul analiza en 'La Tribu' de Radio MARCA el enfrentamiento ante su antiguo equipo, habla del reto de medirse a Lamine…",
-      "thumbnailUrl": "img/news/a1a41bce5818e5c3.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
