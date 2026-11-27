@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T10:32:44Z",
+  "updatedAt": "2026-11-27T11:03:59Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -10,20 +10,20 @@
       "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
     },
     {
+      "id": "riazor",
+      "name": "Riazor.org",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.riazor.org/",
+      "iconUrl": "https://www.riazor.org/wp-content/uploads/2022/07/cropped-favicon2-192x192.png"
+    },
+    {
       "id": "dxt-campeon",
       "name": "DXT Campeón",
       "group": "galicia",
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
-    },
-    {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     },
     {
       "id": "marca",
@@ -36,6 +36,36 @@
   ],
   "stories": [
     {
+      "id": "5b94b6b8d6f7e935",
+      "title": "Manuel Pablo y su «raro» reencuentro con Gilsanz: «Son cosas del fútbol que haya coincidido con este partido»",
+      "url": "https://riazor.org/manuel-pablo-raro-reencuentro-gilsanz-cosas-futbol",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-27T11:00:12Z",
+      "kind": "article",
+      "summary": "Manuel Pablo, en rueda de prensa, habló de cómo será su reencuentro con Gilsanz este sábado en la visita del Fabril a Salamanca, donde…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido",
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "814a0ad8b35f7459",
+      "title": "Club Portugalete vs DÉPOR en DIRECTO | Dépor Live by Sotelo",
+      "url": "https://youtube.com/watch?v=Phdy4l9eYP0",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-27T10:45:18Z",
+      "kind": "video",
+      "summary": "Vive en directo el partido de la segunda ronda de Copa del Rey entre el Portugalete y el Dépor",
+      "thumbnailUrl": "img/news/cab17e3aa001e324.webp",
+      "tags": [
+        "club",
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
       "id": "62d7af5dc373b0dd",
       "title": "Un elogio al modelo de Flick y preparado para contener a Lamine: \"Tienen un patrón muy claro\", explica Hidalgo sobre el Barça",
       "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/un-elogio-al-modelo-de-flick-y-preparado-para-contener-a-lamine-tienen-un-patron-muy-claro-explica-hidalgo-sobre-el-barca-893484.html",
@@ -45,21 +75,6 @@
       "summary": "El técnico del Dépor destaca que las rotaciones apenas alteran la identidad del Barça y contempla todos los escenarios ante la posible…",
       "thumbnailUrl": "img/news/955b951487d4943c.webp",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "be109b54b8e85d0f",
-      "title": "Rueda de prensa de Manuel Pablo previa al Unionistas de Salamanca CF - Fabril",
-      "url": "https://youtube.com/watch?v=sl2IFglG6VM",
-      "sourceId": "youtube-club",
-      "publishedAt": "2026-11-27T09:42:16Z",
-      "kind": "video",
-      "summary": null,
-      "thumbnailUrl": "img/news/f6a0e08fdad55ab8.webp",
-      "tags": [
-        "cantera",
-        "partido"
-      ],
       "alsoIn": []
     },
     {
@@ -100,18 +115,6 @@
       "tags": [
         "cantera"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "ab6752c802eaee2f",
-      "title": "De Messi y Kubala, a Lamine Yamal: las grandes estrellas de los Dépor-Barça",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/26/messi-kubala-lamine-yamal-grandes-estrellas-depor-barca/00031795719986273812500.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-26T21:13:00Z",
-      "kind": "article",
-      "summary": "El nuevo crac azulgrana estaba en 5.º de Primaria la última vez que el Barça jugó con el Dépor, con Leo firmando su tercer «hat trick» en…",
-      "thumbnailUrl": "img/news/7cc2130148891fe2.webp",
-      "tags": [],
       "alsoIn": []
     }
   ]
