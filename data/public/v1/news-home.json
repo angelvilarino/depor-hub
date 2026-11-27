@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-11-27T08:06:01Z",
+  "updatedAt": "2026-11-27T09:33:09Z",
   "sources": [
+    {
+      "id": "youtube-club",
+      "name": "RC Deportivo (YouTube)",
+      "group": "club",
+      "kind": "video",
+      "homepage": "https://www.youtube.com/@rcdeportivo",
+      "iconUrl": "https://yt3.googleusercontent.com/UfcgJmXUdXbh12jcDozgmXLxdspVW4V28kZkrThV7qQikTvBFj-X9OX5-1WPBtDAdne0N4z-Vg=s176-c-k-c0x00ffffff-no-rj"
+    },
     {
       "id": "riazor",
       "name": "Riazor.org",
@@ -35,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "fa4ba4a09fae8e27",
+      "title": "Rueda de prensa de Antonio Hidalgo previa al RC Deportivo - FC Barcelona",
+      "url": "https://youtube.com/watch?v=IjOKg7E2gP4",
+      "sourceId": "youtube-club",
+      "publishedAt": "2026-11-27T09:12:16Z",
+      "kind": "video",
+      "summary": null,
+      "thumbnailUrl": "img/news/464d2536a498ad48.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "04c5455de1a9ad47",
       "title": "Adrià Altimira reivindica al Dépor antes de recibir al Barça: \"Nos merecemos estar en Primera y lo vamos a demostrar\"",
@@ -96,20 +118,6 @@
       "kind": "article",
       "summary": "El director de Jijantes FC destacó en RiazorTV el reencuentro con varios exbarcelonistas en Riazor, especialmente con Marc Casadó. La…",
       "thumbnailUrl": "img/news/32a3680159cdbe01.webp",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "aa427e087b05f08d",
-      "title": "¿Bil, o Aubameyang y Yeremay juntos? Elige tu once ante el Barcelona, con Procesos Inmobiliaria",
-      "url": "https://riazor.org/elige-el-once-deportivo-fc-barcelona-jornada-14",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-26T17:30:38Z",
-      "kind": "article",
-      "summary": "Elige el once del Deportivo ante el FC Barcelona · Jornada 14 de LaLiga EA Sports. Votación abierta hasta el domingo 29 de noviembre a las…",
-      "thumbnailUrl": null,
       "tags": [
         "partido"
       ],
