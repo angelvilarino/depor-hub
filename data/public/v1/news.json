@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T06:40:30Z",
+  "updatedAt": "2026-11-27T07:32:59Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "04c5455de1a9ad47",
+      "title": "Adrià Altimira reivindica al Dépor antes de recibir al Barça: \"Nos merecemos estar en Primera y lo vamos a demostrar\"",
+      "url": "https://marca.com/radio/2026/11/27/adria-altimira-reivindica-depor-recibir-barca-merecemos-primera-demostrar.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-27T07:14:07Z",
+      "kind": "article",
+      "summary": "El lateral blanquiazul analiza en 'La Tribu' de Radio MARCA el enfrentamiento ante su antiguo equipo, habla del reto de medirse a Lamine…",
+      "thumbnailUrl": "https://s2.dmcdn.net/v/hIc0E1h2IkATuAz6Q/x1080",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "de3148c3a08adf38",
       "title": "Aubameyang matiza su mensaje sobre el Barça: \"Cuando vuelva a Barcelona, sí será especial\"",
@@ -2133,21 +2145,6 @@
       "tags": [
         "partido",
         "aficion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "e119a26bbaf52471",
-      "title": "Los 16 minutos del «atropello» en Riazor",
-      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/04/16-minutos-atropello-riazor/00031794853657577162549.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-16T18:30:00Z",
-      "kind": "article",
-      "summary": "Así fue la secuencia de hechos que impidió un triunfo histórico del Dépor Abanca sobre el Barça",
-      "thumbnailUrl": "https://cflvdg.avoz.es/sc/97-fKhgInveG-xIc3ht9EW-AIfI=/768x/2026/11/16/00121794853682052591263/Foto/i_20261115_195203001.jpg",
-      "tags": [
-        "cantera",
-        "club"
       ],
       "alsoIn": []
     }

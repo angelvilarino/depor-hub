@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T06:40:30Z",
+  "updatedAt": "2026-11-27T07:32:59Z",
   "sources": [
     {
       "id": "riazor",
@@ -24,9 +24,29 @@
       "kind": "article",
       "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
       "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
+    },
+    {
+      "id": "marca",
+      "name": "Marca",
+      "group": "nacional",
+      "kind": "article",
+      "homepage": "https://www.marca.com/futbol/deportivo.html",
+      "iconUrl": "https://www.marca.com/apple-touch-icon.png"
     }
   ],
   "stories": [
+    {
+      "id": "04c5455de1a9ad47",
+      "title": "Adrià Altimira reivindica al Dépor antes de recibir al Barça: \"Nos merecemos estar en Primera y lo vamos a demostrar\"",
+      "url": "https://marca.com/radio/2026/11/27/adria-altimira-reivindica-depor-recibir-barca-merecemos-primera-demostrar.html",
+      "sourceId": "marca",
+      "publishedAt": "2026-11-27T07:14:07Z",
+      "kind": "article",
+      "summary": "El lateral blanquiazul analiza en 'La Tribu' de Radio MARCA el enfrentamiento ante su antiguo equipo, habla del reto de medirse a Lamine…",
+      "thumbnailUrl": "img/news/a1a41bce5818e5c3.webp",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "de3148c3a08adf38",
       "title": "Aubameyang matiza su mensaje sobre el Barça: \"Cuando vuelva a Barcelona, sí será especial\"",
@@ -92,20 +112,6 @@
       "thumbnailUrl": null,
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "71c80ffb8bee26c1",
-      "title": "Los 'niños' de Gilsanz, ahora contra su mentor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-26/los-ninos-de-gilsanz-ahora-contra-su-mentor-893319.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-26T17:17:45Z",
-      "kind": "article",
-      "summary": "Catorce futbolistas del Fabril coincidieron con el técnico betanceiro en sus diferentes etapas en Abegondo",
-      "thumbnailUrl": "img/news/438669badae64449.webp",
-      "tags": [
-        "cantera"
       ],
       "alsoIn": []
     }
