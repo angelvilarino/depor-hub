@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T13:33:03Z",
+  "updatedAt": "2026-11-27T14:04:16Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "2908d659044a5856",
+      "title": "Óscar Gilsanz en su presentación con Unionistas: \"Todos queremos un proyecto en el que confíen en ti\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-27/oscar-gilsanz-en-su-presentacion-con-unionistas-todos-queremos-un-proyecto-en-el-que-confien-en-ti-893520.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T13:35:23Z",
+      "kind": "article",
+      "summary": "El técnico betanceiro debuta esté sábado ante el Fabril. \"Es un equipo al que conozco bien, pero ellos también a mí\", confiesa",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/26/6b08579ac6543.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "9baf833fe42eeeb3",
       "title": "Las leyendas del Dépor se enfrentarán a los veteranos del Real Madrid por el 120 aniversario del club",
@@ -2127,20 +2141,6 @@
       "kind": "article",
       "summary": "Sin minutos en las ocho primeras jornadas, su diana en Balaídos le ha otorgado continuidad en los planes de Sánchez Flores en el Alavés",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/17/6afc7c119bb6b.jpg",
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "5145404bd01d37f6",
-      "title": "Mariano Díaz sonó para el Dépor, le marcó 23 días después y ahora le espera con el Alavés",
-      "url": "https://riazor.org/mariano-diaz-sono-depor-marco-23-dias-despues-ahora-espera-alaves",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-17T12:00:57Z",
-      "kind": "article",
-      "summary": "El 17 de noviembre de 2016 Mariano Díaz estaba en la agenda del Dépor. Diez años después le espera con el Alavés: cuatro goles en Liga y…",
-      "thumbnailUrl": "https://www.riazor.org/wp-content/uploads/2026/11/real-madrid-vs-deportivo-goals-m.jpg",
       "tags": [
         "partido"
       ],
