@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T19:33:09Z",
+  "updatedAt": "2026-11-27T21:03:44Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "672b4f60543dc693",
+      "title": "Un Dépor-Barça con los trajes de gala",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/27/depor-barca-trajes-gala/00031795807965387666893.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-27T19:45:00Z",
+      "kind": "article",
+      "summary": "Hansi Flick ha recuperado a diez efectivos, los últimos Rodri Hernández y Lamine Yamal; mientras que Hidalgo dispondrá de un Aubameyang…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/jk3UVuVq15ccmSeAqQoJhaJJasA=/768x/2026/11/27/00121795807802511706960/Foto/efe_20261102_114743096.jpg",
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "9baf833fe42eeeb3",
       "title": "Leyendas del Dépor contra el Real Madrid: así puedes conseguir tu entrada para el 120nariazo",
@@ -2146,18 +2158,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "6f6d61bc2f0d6170",
-      "title": "La hora de Aubameyang",
-      "url": "https://marca.com/futbol/deportivo/2026/11/17/hora-aubameyang.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-17T16:44:10Z",
-      "kind": "article",
-      "summary": "El gabonés quiere liderar al Dépor en su visita a Mendizorroza desde el inicio. Las tres victorias del cuadro gallego fueron con Auba en…",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/02/6ae8e8b0c0b86.jpeg",
-      "tags": [],
       "alsoIn": []
     }
   ]
