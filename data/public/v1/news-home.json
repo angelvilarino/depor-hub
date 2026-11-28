@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T15:33:03Z",
+  "updatedAt": "2026-11-28T16:04:21Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,6 +16,14 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
+    },
+    {
+      "id": "la-voz",
+      "name": "La Voz de Galicia",
+      "group": "galicia",
+      "kind": "article",
+      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
+      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
@@ -29,6 +37,20 @@
       "summary": "Díaz de Mera será el encargado de arbitrar el Deportivo - Barcelona de este domingo (16:15 horas). Recordamos los seis encuentros entre el…",
       "thumbnailUrl": null,
       "tags": [],
+      "alsoIn": []
+    },
+    {
+      "id": "52cdecd101db668f",
+      "title": "Hansi Flick, sobre Marc Casadó: «Va a ayudar mucho al Dépor; solo puedo decir cosas positivas de él»",
+      "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/28/hansi-flick-sobre-marc-casadova-ayudar-depor-solo-puedo-decir-positivas-/00031795878349847512640.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-28T15:18:00Z",
+      "kind": "article",
+      "summary": "En la previa de su visita a Abanca Riazor, el técnico del Barça alaba al mediocentro blanquiazul y apunta que, para su estilo de juego…",
+      "thumbnailUrl": "img/news/4cb9cb404679d1ce.webp",
+      "tags": [
+        "partido"
+      ],
       "alsoIn": []
     },
     {
@@ -84,18 +106,6 @@
         "cantera",
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "161c0d1aef0dd00b",
-      "title": "El líder vuelve a Riazor ocho años después: hora, televisión y bajas del Dépor – Barça",
-      "url": "https://riazor.org/deportivo-barcelona-horario-tv-entradas-riazor",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-28T09:00:02Z",
-      "kind": "article",
-      "summary": "El Deportivo recibe al Barcelona el domingo 29 de noviembre a las 16:15 en Riazor. Hora, televisión, once probable, bajas de los dos…",
-      "thumbnailUrl": null,
-      "tags": [],
       "alsoIn": []
     }
   ]
