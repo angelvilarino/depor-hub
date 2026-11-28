@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T04:32:57Z",
+  "updatedAt": "2026-11-28T05:04:12Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "f70cd90197dfa579",
+      "title": "Noche de veteranos del Dépor en el Plaza de A Coruña",
+      "url": "https://lavozdegalicia.es/noticia/coruna/2026/11/27/noche-veteranos-depor-plaza-coruna/00031795812227005175438.htm",
+      "sourceId": "la-voz",
+      "publishedAt": "2026-11-28T04:00:00Z",
+      "kind": "article",
+      "summary": "Es casualidad que este tradicional encuentro de Navidad coincida unas horas antes de unas elecciones generales y de un partido contra el…",
+      "thumbnailUrl": "https://cflvdg.avoz.es/sc/8jlzfPOwwOQR0uS7eDHYR4_35s4=/768x/2026/11/27/00121795812122639709124/Foto/HN28C12F3_214121.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "f02911194daea24f",
       "title": "Hugo Ríos: \"Gilsanz fue muy importante para mí como entrenador y persona\"",
@@ -2143,20 +2157,6 @@
       "thumbnailUrl": null,
       "tags": [
         "cantera",
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "4606ceb3cec736d0",
-      "title": "El Dépor respondón: suma más puntos cuando empieza perdiendo (8) que cuando marca primero (6)",
-      "url": "https://riazor.org/depor-respondon-suma-puntos-empieza-perdiendo-marca-primero",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-18T14:00:17Z",
-      "kind": "article",
-      "summary": "El Deportivo ha sumado 8 puntos en los partidos que empezó perdiendo y 6 en los que marcó primero. Los datos de las doce jornadas, partido…",
-      "thumbnailUrl": null,
-      "tags": [
         "partido"
       ],
       "alsoIn": []
