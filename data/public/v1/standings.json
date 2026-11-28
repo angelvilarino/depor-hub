@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T06:19:32Z",
+  "updatedAt": "2026-11-28T06:16:51Z",
   "season": "2026-27",
   "matchday": 14,
   "table": [
@@ -101,6 +101,25 @@
     {
       "position": 6,
       "team": {
+        "id": 5335,
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crestUrl": "https://crests.football-data.org/5335.png"
+      },
+      "played": 14,
+      "won": 6,
+      "draw": 2,
+      "lost": 6,
+      "points": 20,
+      "goalsFor": 23,
+      "goalsAgainst": 33,
+      "goalDifference": -10,
+      "form": null
+    },
+    {
+      "position": 7,
+      "team": {
         "id": 559,
         "name": "Sevilla FC",
         "shortName": "Sevilla FC",
@@ -115,25 +134,6 @@
       "goalsFor": 18,
       "goalsAgainst": 20,
       "goalDifference": -2,
-      "form": null
-    },
-    {
-      "position": 7,
-      "team": {
-        "id": 5335,
-        "name": "Real Racing Club de Santander",
-        "shortName": "Santander",
-        "tla": "SAN",
-        "crestUrl": "https://crests.football-data.org/5335.png"
-      },
-      "played": 13,
-      "won": 5,
-      "draw": 2,
-      "lost": 6,
-      "points": 17,
-      "goalsFor": 20,
-      "goalsAgainst": 32,
-      "goalDifference": -12,
       "form": null
     },
     {
@@ -278,14 +278,14 @@
         "tla": "LEV",
         "crestUrl": "https://crests.football-data.org/88.png"
       },
-      "played": 13,
+      "played": 14,
       "won": 2,
       "draw": 6,
-      "lost": 5,
+      "lost": 6,
       "points": 12,
-      "goalsFor": 17,
-      "goalsAgainst": 22,
-      "goalDifference": -5,
+      "goalsFor": 18,
+      "goalsAgainst": 25,
+      "goalDifference": -7,
       "form": null
     },
     {
