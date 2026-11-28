@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T11:03:58Z",
+  "updatedAt": "2026-11-28T11:32:54Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "24e4b14f8ee59d6e",
+      "title": "De Rekarte a Aubameyang, el puente aéreo que solo Rivaldo cruzó de vuelta",
+      "url": "https://riazor.org/de-rekarte-a-aubameyang-el-puente-aereo-que-solo-rivaldo-cruzo-de-vuelta",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-28T11:30:57Z",
+      "kind": "article",
+      "summary": "Catorce futbolistas del primer equipo del Barça jugaron después en el Dépor desde 1990. En sentido contrario solo viajó Rivaldo. El censo…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "a1f7b6d979c2aade",
       "title": "El Fabril se mide al Unionistas de Gilsanz con la salida del descenso a tiro",
@@ -93,20 +105,6 @@
       "thumbnailUrl": "img/news/c9641785261b8000.webp",
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "c78e675659d7f544",
-      "title": "Manuel Pablo, preocupado por el balón parado: \"Hay situaciones donde no miramos ni el balón\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-28/manuel-pablo-preocupado-por-el-balon-parado-hay-situaciones-donde-no-miramos-ni-el-balon-893482.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-27T23:06:03Z",
-      "kind": "article",
-      "summary": "El técnico del Fabril admite los errores defensivos, pero no pierde la calma: \"Queda mucho tiempo por delante\"",
-      "thumbnailUrl": "img/news/d89437c70d64fcd0.webp",
-      "tags": [
-        "cantera"
       ],
       "alsoIn": []
     }

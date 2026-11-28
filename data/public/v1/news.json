@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T11:03:58Z",
+  "updatedAt": "2026-11-28T11:32:54Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "24e4b14f8ee59d6e",
+      "title": "De Rekarte a Aubameyang, el puente aéreo que solo Rivaldo cruzó de vuelta",
+      "url": "https://riazor.org/de-rekarte-a-aubameyang-el-puente-aereo-que-solo-rivaldo-cruzo-de-vuelta",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-28T11:30:57Z",
+      "kind": "article",
+      "summary": "Catorce futbolistas del primer equipo del Barça jugaron después en el Dépor desde 1990. En sentido contrario solo viajó Rivaldo. El censo…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "a1f7b6d979c2aade",
       "title": "El Fabril se mide al Unionistas de Gilsanz con la salida del descenso a tiro",
@@ -2144,21 +2156,6 @@
       "summary": "El Alavés lidera la categoría en centros completados y el equipo coruñés destaca en despejes, envíos interceptados y duelos aéreos",
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/18/6afdd467a03ac.r_d.1624-1169-0.jpg",
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "18016d664c152513",
-      "title": "El balón parado vuelve a castigar al Fabril por cuarta jornada consecutiva",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-18/el-balon-parado-vuelve-a-castigar-al-fabril-por-cuarta-jornada-consecutiva-891696.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-18T18:01:08Z",
-      "kind": "article",
-      "summary": "El 38,1% de los goles recibidos esta temporada han llegado en acciones de estrategia",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/18/6afd8fabceebf.r_d.1319-1083-0.jpg",
-      "tags": [
-        "partido",
-        "cantera"
-      ],
       "alsoIn": []
     }
   ]
