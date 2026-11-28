@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T10:04:02Z",
+  "updatedAt": "2026-11-28T11:03:58Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -56,6 +56,18 @@
         "cantera",
         "partido"
       ],
+      "alsoIn": []
+    },
+    {
+      "id": "161c0d1aef0dd00b",
+      "title": "El líder vuelve a Riazor ocho años después: hora, televisión y bajas del Dépor – Barça",
+      "url": "https://riazor.org/deportivo-barcelona-horario-tv-entradas-riazor",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-28T09:00:02Z",
+      "kind": "article",
+      "summary": "El Deportivo recibe al Barcelona el domingo 29 de noviembre a las 16:15 en Riazor. Hora, televisión, once probable, bajas de los dos…",
+      "thumbnailUrl": null,
+      "tags": [],
       "alsoIn": []
     },
     {
@@ -683,18 +695,6 @@
       "tags": [
         "cantera"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "161c0d1aef0dd00b",
-      "title": "Dépor-Barcelona, el domingo 29 a las 16:15 por DAZN: asientos liberados y elecciones el mismo día",
-      "url": "https://riazor.org/deportivo-barcelona-horario-tv-entradas-riazor",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-25T09:18:02Z",
-      "kind": "article",
-      "summary": "El Deportivo-Barcelona se juega el domingo 29 de noviembre a las 16:15 en Riazor y se ve por DAZN. Entradas agotadas, asientos liberados y…",
-      "thumbnailUrl": null,
-      "tags": [],
       "alsoIn": []
     },
     {
