@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T08:05:33Z",
+  "updatedAt": "2026-11-28T10:04:02Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "a1f7b6d979c2aade",
+      "title": "El Fabril se mide al Unionistas de Gilsanz con la salida del descenso a tiro",
+      "url": "https://riazor.org/el-fabril-se-mide-al-unionistas-de-gilsanz-con-la-salida-del-descenso-a-tiro",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-28T10:00:40Z",
+      "kind": "article",
+      "summary": "El Fabril visita a Unionistas el sábado 28 de noviembre a las 16:30. Los dos suman 13 puntos, están en descenso y Óscar Gilsanz debuta en…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "f70cd90197dfa579",
       "title": "Noche de veteranos del Dépor en el Plaza de A Coruña",
@@ -2143,21 +2158,6 @@
       "tags": [
         "partido",
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "65614d016b399a1d",
-      "title": "Hugo Novoa, seis años en la cantera del Dépor y un primer gol en Primera marcado en Balaídos",
-      "url": "https://riazor.org/hugo-novoa-cantera-depor-gol-primera-balaidos",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-18T16:30:45Z",
-      "kind": "article",
-      "summary": "El Deportivo visita este sábado (14:00 horas) Vitoria, lugar en el que se reencontrará con Hugo Novoa, canterano blanquiazul en la…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera",
-        "partido"
       ],
       "alsoIn": []
     }

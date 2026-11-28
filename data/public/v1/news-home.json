@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T08:05:33Z",
+  "updatedAt": "2026-11-28T10:04:02Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,21 @@
     }
   ],
   "stories": [
+    {
+      "id": "a1f7b6d979c2aade",
+      "title": "El Fabril se mide al Unionistas de Gilsanz con la salida del descenso a tiro",
+      "url": "https://riazor.org/el-fabril-se-mide-al-unionistas-de-gilsanz-con-la-salida-del-descenso-a-tiro",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-28T10:00:40Z",
+      "kind": "article",
+      "summary": "El Fabril visita a Unionistas el sábado 28 de noviembre a las 16:30. Los dos suman 13 puntos, están en descenso y Óscar Gilsanz debuta en…",
+      "thumbnailUrl": null,
+      "tags": [
+        "cantera",
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "f70cd90197dfa579",
       "title": "Noche de veteranos del Dépor en el Plaza de A Coruña",
@@ -94,28 +109,6 @@
       "thumbnailUrl": "img/news/069f35d22d10996e.webp",
       "tags": [],
       "alsoIn": []
-    },
-    {
-      "id": "9baf833fe42eeeb3",
-      "title": "Leyendas del Dépor contra el Real Madrid: así puedes conseguir tu entrada para el 120nariazo",
-      "url": "https://riazor.org/entradas-partido-leyendas-deportivo-real-madrid-120-aniversario",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-27T19:30:00Z",
-      "kind": "article",
-      "summary": "El Deportivo prepara una jornada de música, homenajes y fútbol para celebrar su 120 aniversario el martes 8 de diciembre en Riazor. La…",
-      "thumbnailUrl": "img/news/ff57423abc79fffb.webp",
-      "tags": [
-        "partido",
-        "club"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "dxt-campeon",
-          "title": "Las leyendas del Dépor se enfrentarán a los veteranos del Real Madrid por el 120 aniversario del club",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/las-leyendas-del-depor-se-enfrentaran-a-los-veteranos-del-real-madrid-por-el-120-aniversario-del-club-893513.html",
-          "publishedAt": "2026-11-27T13:31:50Z"
-        }
-      ]
     }
   ]
 }
