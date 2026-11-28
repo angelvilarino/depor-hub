@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T14:03:42Z",
+  "updatedAt": "2026-11-28T15:33:03Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,18 @@
     }
   ],
   "stories": [
+    {
+      "id": "ff4b02a394c3a3de",
+      "title": "Díaz de Mera y el Dépor: de la polémica expulsión de Quique al caso Fuenlabrada",
+      "url": "https://riazor.org/diaz-de-mera-depor-expulsion-quique-fuenlabrada",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-28T15:30:09Z",
+      "kind": "article",
+      "summary": "Díaz de Mera será el encargado de arbitrar el Deportivo - Barcelona de este domingo (16:15 horas). Recordamos los seis encuentros entre el…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "844b99af588d42eb",
       "title": "El árbitro del Dépor-Barcelona: el mismo que expulsó a Quique González por una chilena",
@@ -2150,20 +2162,6 @@
       "thumbnailUrl": "https://cflvdg.avoz.es/sc/bsOAfkIyUxo4UI_63I4JipbLyEM=/768x/2026/11/18/00121795029212275203633/Foto/HNN.jpg",
       "tags": [
         "cantera"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "83e8dd72ae16cbf6",
-      "title": "La afición del Dépor se las ingenia para estar en Mendizorroza: \"Unos cogimos para grada local y a otros les dejaron los abonos gente del Alavés\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-18/la-aficion-del-depor-se-las-ingenia-para-estar-en-mendizorroza-unos-cogimos-para-grada-local-y-a-otros-les-dejaron-los-abonos-gente-del-alaves-891771.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-18T19:11:22Z",
-      "kind": "article",
-      "summary": "Diferentes peñas del Deportivo relatan cómo se las han ingeniado para conseguir entradas en la grada local",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/18/6afde415688d7.r_d.1054-773-0.jpg",
-      "tags": [
-        "aficion"
       ],
       "alsoIn": []
     }

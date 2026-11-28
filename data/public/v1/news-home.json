@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T14:03:42Z",
+  "updatedAt": "2026-11-28T15:33:03Z",
   "sources": [
     {
       "id": "riazor",
@@ -16,17 +16,21 @@
       "kind": "article",
       "homepage": "https://dxtcampeon.elidealgallego.com/",
       "iconUrl": "https://dxtcampeon.elidealgallego.com/icon/dxtcampeon/favicon.ico"
-    },
-    {
-      "id": "la-voz",
-      "name": "La Voz de Galicia",
-      "group": "galicia",
-      "kind": "article",
-      "homepage": "https://www.lavozdegalicia.es/temas/deportivo/",
-      "iconUrl": "https://www.lavozdegalicia.es/favicon.ico"
     }
   ],
   "stories": [
+    {
+      "id": "ff4b02a394c3a3de",
+      "title": "Díaz de Mera y el Dépor: de la polémica expulsión de Quique al caso Fuenlabrada",
+      "url": "https://riazor.org/diaz-de-mera-depor-expulsion-quique-fuenlabrada",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-28T15:30:09Z",
+      "kind": "article",
+      "summary": "Díaz de Mera será el encargado de arbitrar el Deportivo - Barcelona de este domingo (16:15 horas). Recordamos los seis encuentros entre el…",
+      "thumbnailUrl": null,
+      "tags": [],
+      "alsoIn": []
+    },
     {
       "id": "844b99af588d42eb",
       "title": "El árbitro del Dépor-Barcelona: el mismo que expulsó a Quique González por una chilena",
@@ -92,20 +96,6 @@
       "summary": "El Deportivo recibe al Barcelona el domingo 29 de noviembre a las 16:15 en Riazor. Hora, televisión, once probable, bajas de los dos…",
       "thumbnailUrl": null,
       "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "f70cd90197dfa579",
-      "title": "Noche de veteranos del Dépor en el Plaza de A Coruña",
-      "url": "https://lavozdegalicia.es/noticia/coruna/2026/11/27/noche-veteranos-depor-plaza-coruna/00031795812227005175438.htm",
-      "sourceId": "la-voz",
-      "publishedAt": "2026-11-28T04:00:00Z",
-      "kind": "article",
-      "summary": "Es casualidad que este tradicional encuentro de Navidad coincida unas horas antes de unas elecciones generales y de un partido contra el…",
-      "thumbnailUrl": "img/news/fb6349e91ab99fee.webp",
-      "tags": [
-        "partido"
-      ],
       "alsoIn": []
     }
   ]
