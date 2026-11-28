@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T13:32:30Z",
+  "updatedAt": "2026-11-28T14:03:42Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "844b99af588d42eb",
+      "title": "El árbitro del Dépor-Barcelona: el mismo que expulsó a Quique González por una chilena",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-28/el-arbitro-del-depor-barcelona-el-mismo-que-expulso-a-quique-gonzalez-por-una-chilena-893707.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-28T13:55:23Z",
+      "kind": "article",
+      "summary": "También fue el colegiado que dirigió el partido aplazado ante el Fuenlabrada y que expulsó a Vinicius esta temporada por agarrar del pelo",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/28/6b0ad6b0a2f96.r_d.588-298-0.jpg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "aaaddb1445c6bda2",
       "title": "Flick se deshace en elogios hacia Casadó: «Solo puedo decir cosas positivas, es un gran jugador y un gran profesional»",
@@ -389,7 +403,14 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
+      "alsoIn": [
+        {
+          "sourceId": "dxt-campeon",
+          "title": "Hansi Flick, sobre Marc Casadó: \"Para el Dépor es una pieza importante, estoy contento de que esté de vuelta tras su lesión\"",
+          "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-28/hansi-flick-sobre-marc-casado-para-el-depor-es-una-pieza-importante-estoy-contento-de-que-este-de-vuelta-tras-su-lesion-893712.html",
+          "publishedAt": "2026-11-28T13:47:46Z"
+        }
+      ]
     },
     {
       "id": "aa427e087b05f08d",
@@ -2143,20 +2164,6 @@
       "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/18/6afde415688d7.r_d.1054-773-0.jpg",
       "tags": [
         "aficion"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "85f65613ec932264",
-      "title": "CONTRAPUNTO | ¿Aubameyang debe ser titular en el Alavés – Deportivo?",
-      "url": "https://riazor.org/contrapunto-aubameyang-titular-alaves-deportivo",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-18T19:00:23Z",
-      "kind": "article",
-      "summary": "Debatimos y te damos la opción de votar sobre la necesidad de que Aubameyang sea titular en el partido de este sábado en Vitoria. La…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido"
       ],
       "alsoIn": []
     }

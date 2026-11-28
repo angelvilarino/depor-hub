@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T13:32:30Z",
+  "updatedAt": "2026-11-28T14:03:42Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "844b99af588d42eb",
+      "title": "El árbitro del Dépor-Barcelona: el mismo que expulsó a Quique González por una chilena",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-28/el-arbitro-del-depor-barcelona-el-mismo-que-expulso-a-quique-gonzalez-por-una-chilena-893707.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-28T13:55:23Z",
+      "kind": "article",
+      "summary": "También fue el colegiado que dirigió el partido aplazado ante el Fuenlabrada y que expulsó a Vinicius esta temporada por agarrar del pelo",
+      "thumbnailUrl": "img/news/39059c4aa53a8a06.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "aaaddb1445c6bda2",
       "title": "Flick se deshace en elogios hacia Casadó: «Solo puedo decir cosas positivas, es un gran jugador y un gran profesional»",
@@ -91,20 +105,6 @@
       "thumbnailUrl": "img/news/fb6349e91ab99fee.webp",
       "tags": [
         "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "f02911194daea24f",
-      "title": "Hugo Ríos: \"Gilsanz fue muy importante para mí como entrenador y persona\"",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-28/hugo-rios-gilsanz-fue-muy-importante-para-mi-como-entrenador-y-persona-893091.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-28T04:00:00Z",
-      "kind": "article",
-      "summary": "El capitán del Fabril confía en revertir la mala dinámica de resultados. \"Esto va a cambiar más pronto que tarde\", asegura",
-      "thumbnailUrl": "img/news/f5cb9824803d41e2.webp",
-      "tags": [
-        "cantera"
       ],
       "alsoIn": []
     }
