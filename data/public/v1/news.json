@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T11:32:54Z",
+  "updatedAt": "2026-11-28T13:32:30Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,20 @@
     }
   ],
   "stories": [
+    {
+      "id": "aaaddb1445c6bda2",
+      "title": "Flick se deshace en elogios hacia Casadó: «Solo puedo decir cosas positivas, es un gran jugador y un gran profesional»",
+      "url": "https://riazor.org/flick-elogios-casado-cosas-positivas-profesional",
+      "sourceId": "riazor",
+      "publishedAt": "2026-11-28T13:30:07Z",
+      "kind": "article",
+      "summary": "Hansi Flick, en la rueda de prensa previa al Deportivo - Barcelona, alabó la figura de un Marc Casadó que podrá jugar este domingo ante el…",
+      "thumbnailUrl": null,
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "24e4b14f8ee59d6e",
       "title": "De Rekarte a Aubameyang, el puente aéreo que solo Rivaldo cruzó de vuelta",
@@ -2144,18 +2158,6 @@
       "tags": [
         "partido"
       ],
-      "alsoIn": []
-    },
-    {
-      "id": "89ae317eb5cd5c5f",
-      "title": "Un frontón en Mendizorroza: el Dépor mide su defensa del área ante el mejor centrador de Primera",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-18/un-fronton-en-mendizorroza-el-depor-mide-su-defensa-del-area-ante-el-mejor-centrador-de-primera-891760.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-18T18:51:02Z",
-      "kind": "article",
-      "summary": "El Alavés lidera la categoría en centros completados y el equipo coruñés destaca en despejes, envíos interceptados y duelos aéreos",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/18/6afdd467a03ac.r_d.1624-1169-0.jpg",
-      "tags": [],
       "alsoIn": []
     }
   ]
