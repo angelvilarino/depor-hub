@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T23:03:51Z",
+  "updatedAt": "2026-11-28T04:32:57Z",
   "sources": [
     {
       "id": "riazor",
@@ -27,6 +27,48 @@
     }
   ],
   "stories": [
+    {
+      "id": "f02911194daea24f",
+      "title": "Hugo Ríos: \"Gilsanz fue muy importante para mí como entrenador y persona\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-28/hugo-rios-gilsanz-fue-muy-importante-para-mi-como-entrenador-y-persona-893091.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-28T04:00:00Z",
+      "kind": "article",
+      "summary": "El capitán del Fabril confía en revertir la mala dinámica de resultados. \"Esto va a cambiar más pronto que tarde\", asegura",
+      "thumbnailUrl": "img/news/f5cb9824803d41e2.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "cc26915fbcae96ad",
+      "title": "El manual para ganar al Barça de Flick: las tres derrotas azulgranas que dan pistas al Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-28/el-manual-para-ganar-al-barca-de-flick-las-tres-derrotas-azulgranas-que-dan-pistas-al-depor-893496.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-28T04:00:00Z",
+      "kind": "article",
+      "summary": "El Barcelona solo ha perdido siete veces en la era Flick ante rivales terrenales con la Liga en juego; Sevilla, Real Sociedad y Girona lo…",
+      "thumbnailUrl": "img/news/c9641785261b8000.webp",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c78e675659d7f544",
+      "title": "Manuel Pablo, preocupado por el balón parado: \"Hay situaciones donde no miramos ni el balón\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-28/manuel-pablo-preocupado-por-el-balon-parado-hay-situaciones-donde-no-miramos-ni-el-balon-893482.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T23:06:03Z",
+      "kind": "article",
+      "summary": "El técnico del Fabril admite los errores defensivos, pero no pierde la calma: \"Queda mucho tiempo por delante\"",
+      "thumbnailUrl": "img/news/d89437c70d64fcd0.webp",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "672b4f60543dc693",
       "title": "Un Dépor-Barça con los trajes de gala",
@@ -74,61 +116,6 @@
         "club"
       ],
       "alsoIn": []
-    },
-    {
-      "id": "2908d659044a5856",
-      "title": "Gilsanz se presenta con Unionistas antes de medirse al Fabril: «Ellos también me conocen bien a mí»",
-      "url": "https://riazor.org/gilsanz-presenta-unionistas-antes-medirse-fabril-ellos-conocen-bien",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-27T17:30:37Z",
-      "kind": "article",
-      "summary": "Óscar Gilsanz se presenta en Unionistas y debuta el sábado 28 ante el Fabril. «Creo que tiene una calidad para estar mucho más arriba»…",
-      "thumbnailUrl": null,
-      "tags": [
-        "cantera"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "dxt-campeon",
-          "title": "Óscar Gilsanz en su presentación con Unionistas: \"Todos queremos un proyecto en el que confíen en ti\"",
-          "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-27/oscar-gilsanz-en-su-presentacion-con-unionistas-todos-queremos-un-proyecto-en-el-que-confien-en-ti-893520.html",
-          "publishedAt": "2026-11-27T13:35:23Z"
-        }
-      ]
-    },
-    {
-      "id": "40d8c1677ec4cdee",
-      "title": "El Dépor hará su miniconcentración en Bilbao",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-27/el-depor-hara-su-miniconcentracion-en-bilbao-893504.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-27T12:52:28Z",
-      "kind": "article",
-      "summary": "El equipo coruñés permanecerá en tierras vascas y se entrenará en Lezama entre su duelo copero ante el Portugalete y su visita liguera al…",
-      "thumbnailUrl": "img/news/49e694d33888f29c.webp",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "5b94b6b8d6f7e935",
-      "title": "Manuel Pablo y su «raro» reencuentro con Gilsanz: «Son cosas del fútbol que haya coincidido con este partido»",
-      "url": "https://riazor.org/manuel-pablo-raro-reencuentro-gilsanz-cosas-futbol",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-27T11:00:12Z",
-      "kind": "article",
-      "summary": "Manuel Pablo, en rueda de prensa, habló de cómo será su reencuentro con Gilsanz este sábado en la visita del Fabril a Salamanca, donde…",
-      "thumbnailUrl": "img/news/a217bcf6760f9c8e.webp",
-      "tags": [
-        "partido",
-        "cantera"
-      ],
-      "alsoIn": [
-        {
-          "sourceId": "la-voz",
-          "title": "Manuel Pablo, en la previa de su reencuentro con Óscar Gilsanz: «Hay muy buena relación»",
-          "url": "https://lavozdegalicia.es/noticia/torremarathon/2026/11/27/manuel-pablo-previa-reencuentro-oscar-gilsanz-buena-relacion/00031795779978232861353.htm",
-          "publishedAt": "2026-11-27T11:53:00Z"
-        }
-      ]
     }
   ]
 }

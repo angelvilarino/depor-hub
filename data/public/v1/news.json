@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T23:03:51Z",
+  "updatedAt": "2026-11-28T04:32:57Z",
   "sources": [
     {
       "id": "youtube-club",
@@ -43,6 +43,48 @@
     }
   ],
   "stories": [
+    {
+      "id": "f02911194daea24f",
+      "title": "Hugo Ríos: \"Gilsanz fue muy importante para mí como entrenador y persona\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-28/hugo-rios-gilsanz-fue-muy-importante-para-mi-como-entrenador-y-persona-893091.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-28T04:00:00Z",
+      "kind": "article",
+      "summary": "El capitán del Fabril confía en revertir la mala dinámica de resultados. \"Esto va a cambiar más pronto que tarde\", asegura",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/25/6b06de991b724.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "cc26915fbcae96ad",
+      "title": "El manual para ganar al Barça de Flick: las tres derrotas azulgranas que dan pistas al Dépor",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-28/el-manual-para-ganar-al-barca-de-flick-las-tres-derrotas-azulgranas-que-dan-pistas-al-depor-893496.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-28T04:00:00Z",
+      "kind": "article",
+      "summary": "El Barcelona solo ha perdido siete veces en la era Flick ante rivales terrenales con la Liga en juego; Sevilla, Real Sociedad y Girona lo…",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/uploads/2026/11/27/6b0963378242a.jpeg",
+      "tags": [
+        "partido"
+      ],
+      "alsoIn": []
+    },
+    {
+      "id": "c78e675659d7f544",
+      "title": "Manuel Pablo, preocupado por el balón parado: \"Hay situaciones donde no miramos ni el balón\"",
+      "url": "https://dxtcampeon.elidealgallego.com/deportivo/cantera/2026-11-28/manuel-pablo-preocupado-por-el-balon-parado-hay-situaciones-donde-no-miramos-ni-el-balon-893482.html",
+      "sourceId": "dxt-campeon",
+      "publishedAt": "2026-11-27T23:06:03Z",
+      "kind": "article",
+      "summary": "El técnico del Fabril admite los errores defensivos, pero no pierde la calma: \"Queda mucho tiempo por delante\"",
+      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/12/6af5dd331dad5.r_d.1699-868-0.jpg",
+      "tags": [
+        "cantera"
+      ],
+      "alsoIn": []
+    },
     {
       "id": "672b4f60543dc693",
       "title": "Un Dépor-Barça con los trajes de gala",
@@ -2114,47 +2156,6 @@
       "kind": "article",
       "summary": "El Deportivo ha sumado 8 puntos en los partidos que empezó perdiendo y 6 en los que marcó primero. Los datos de las doce jornadas, partido…",
       "thumbnailUrl": null,
-      "tags": [
-        "partido"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "978bdeb4bd7a4f80",
-      "title": "Antídoto FIFA para Lucas Noubi: el parón le abre las puertas del once en el Dépor",
-      "url": "https://dxtcampeon.elidealgallego.com/deportivo/depor/2026-11-18/antidoto-fifa-para-lucas-noubi-el-paron-le-abre-las-puertas-del-once-en-el-depor-891689.html",
-      "sourceId": "dxt-campeon",
-      "publishedAt": "2026-11-18T13:00:51Z",
-      "kind": "article",
-      "summary": "El belga regresa como el internacional con más minutos en un escenario delicado para Hidalgo a la hora de elegir defensa ante el Alavés",
-      "thumbnailUrl": "https://dxtcampeon-imagenes.elidealgallego.com/files/og_thumbnail/files/fp/uploads/2026/11/18/6afd9fadd793d.r_d.1038-357-0.jpg",
-      "tags": [],
-      "alsoIn": []
-    },
-    {
-      "id": "8be519be8b79ffcb",
-      "title": "El Dépor ya prepara el partido ante el Alavés sin los internacionales, pero con Zaka y Ede",
-      "url": "https://riazor.org/depor-prepara-partido-alaves-espera-internacionales",
-      "sourceId": "riazor",
-      "publishedAt": "2026-11-17T19:00:48Z",
-      "kind": "article",
-      "summary": "El Deportivo inicia la semana de entrenamientos sin ninguno de sus internacionales y con la mirada puesta en Mendizorrotza, estadio que…",
-      "thumbnailUrl": null,
-      "tags": [
-        "partido",
-        "club"
-      ],
-      "alsoIn": []
-    },
-    {
-      "id": "bbe52f82e240f409",
-      "title": "Rodri podría regresar frente al Dépor",
-      "url": "https://marca.com/futbol/barcelona/2026/11/17/rodri-podria-regresar-frente-depor.html",
-      "sourceId": "marca",
-      "publishedAt": "2026-11-17T17:09:03Z",
-      "kind": "article",
-      "summary": "La previsión es que se incorpore al grupo al regreso del partido en Azerbaiyán frente al Sabah",
-      "thumbnailUrl": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat/uploads/2026/11/17/6afc87d3b0497.jpeg",
       "tags": [
         "partido"
       ],
